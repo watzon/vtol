@@ -33,10 +33,14 @@ The repository is in scaffold mode. The package layout, public placeholder types
 ## Development
 
 ```bash
+v run scripts/fetch_schemas.vsh
+v run scripts/gen_tl.vsh
 v fmt -w .
 v fmt -verify .
 v test .
 ```
+
+The TL generation workflow and upgrade process are documented in `docs/tl-generation.md`.
 
 ## Roadmap
 

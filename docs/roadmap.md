@@ -28,13 +28,13 @@ Status key:
 
 ## Phase 2: TL schema ingestion and code generation
 
-- [ ] 2.1 Add schema source management for Telegram TL definitions and layer metadata.
-- [ ] 2.2 Define a repeatable generation pipeline that fetches, normalizes, and snapshots schema inputs.
-- [ ] 2.3 Generate constructors, functions, enums, flags, and sum-type-like unions into the `tl` module.
-- [ ] 2.4 Generate serialization and deserialization code instead of hand-writing wire logic for API objects.
+- [x] 2.1 Add schema source management for Telegram TL definitions and layer metadata.
+- [x] 2.2 Define a repeatable generation pipeline that fetches, normalizes, and snapshots schema inputs.
+- [x] 2.3 Generate constructors, functions, enums, flags, and sum-type-like unions into the `tl` module.
+- [x] 2.4 Generate serialization and deserialization code instead of hand-writing wire logic for API objects.
 - [ ] 2.5 Preserve unknown or future constructors gracefully so layer bumps are survivable.
-- [ ] 2.6 Add golden fixture tests for generated binary encoding and decoding.
-- [ ] 2.7 Add a compatibility process for upgrading Telegram layers without breaking session or request code.
+- [x] 2.6 Add golden fixture tests for generated binary encoding and decoding.
+- [x] 2.7 Add a compatibility process for upgrading Telegram layers without breaking session or request code.
 
 ## Phase 3: Binary codec and transport engine
 

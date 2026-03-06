@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - 'codex/**'
+  pull_request:
+
+jobs:
+  validate:
+    name: Validate on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install V
+        run: |
+          git clone --depth 1 https://github.com/vlang/v /tmp/v
+          make -C /tmp/v
+          echo "/tmp/v" >> "$GITHUB_PATH"
+
+      - name: Verify formatting
+        run: v fmt -verify .
+
+      - name: Run tests
+        run: v test .

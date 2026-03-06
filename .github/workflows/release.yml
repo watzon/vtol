@@ -1,0 +1,29 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  verify:
+    name: Verify tagged build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install V
+        run: |
+          git clone --depth 1 https://github.com/vlang/v /tmp/v
+          make -C /tmp/v
+          echo "/tmp/v" >> "$GITHUB_PATH"
+
+      - name: Verify formatting
+        run: v fmt -verify .
+
+      - name: Run tests
+        run: v test .
+
+      - name: Package source archive
+        run: tar -czf vtol-source.tar.gz .

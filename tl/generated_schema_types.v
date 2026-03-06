@@ -6,3055 +6,20163 @@ pub interface AccessPointRuleType {
 	is_access_point_rule_type()
 }
 
+pub struct UnknownAccessPointRuleType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAccessPointRuleType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAccessPointRuleType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAccessPointRuleType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown AccessPointRule#${u.constructor:08x}'
+}
+
+fn (u UnknownAccessPointRuleType) is_access_point_rule_type() {}
+
 pub interface AccountDaysTTLType {
 	Object
 	is_account_days_t_t_l_type()
 }
+
+pub struct UnknownAccountDaysTTLType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAccountDaysTTLType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAccountDaysTTLType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAccountDaysTTLType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown AccountDaysTTL#${u.constructor:08x}'
+}
+
+fn (u UnknownAccountDaysTTLType) is_account_days_t_t_l_type() {}
 
 pub interface AttachMenuBotType {
 	Object
 	is_attach_menu_bot_type()
 }
 
+pub struct UnknownAttachMenuBotType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAttachMenuBotType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAttachMenuBotType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAttachMenuBotType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown AttachMenuBot#${u.constructor:08x}'
+}
+
+fn (u UnknownAttachMenuBotType) is_attach_menu_bot_type() {}
+
 pub interface AttachMenuBotIconType {
 	Object
 	is_attach_menu_bot_icon_type()
 }
+
+pub struct UnknownAttachMenuBotIconType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAttachMenuBotIconType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAttachMenuBotIconType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAttachMenuBotIconType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown AttachMenuBotIcon#${u.constructor:08x}'
+}
+
+fn (u UnknownAttachMenuBotIconType) is_attach_menu_bot_icon_type() {}
 
 pub interface AttachMenuBotIconColorType {
 	Object
 	is_attach_menu_bot_icon_color_type()
 }
 
+pub struct UnknownAttachMenuBotIconColorType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAttachMenuBotIconColorType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAttachMenuBotIconColorType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAttachMenuBotIconColorType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown AttachMenuBotIconColor#${u.constructor:08x}'
+}
+
+fn (u UnknownAttachMenuBotIconColorType) is_attach_menu_bot_icon_color_type() {}
+
 pub interface AttachMenuBotsType {
 	Object
 	is_attach_menu_bots_type()
 }
+
+pub struct UnknownAttachMenuBotsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAttachMenuBotsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAttachMenuBotsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAttachMenuBotsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown AttachMenuBots#${u.constructor:08x}'
+}
+
+fn (u UnknownAttachMenuBotsType) is_attach_menu_bots_type() {}
 
 pub interface AttachMenuBotsBotType {
 	Object
 	is_attach_menu_bots_bot_type()
 }
 
+pub struct UnknownAttachMenuBotsBotType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAttachMenuBotsBotType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAttachMenuBotsBotType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAttachMenuBotsBotType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown AttachMenuBotsBot#${u.constructor:08x}'
+}
+
+fn (u UnknownAttachMenuBotsBotType) is_attach_menu_bots_bot_type() {}
+
 pub interface AttachMenuPeerTypeType {
 	Object
 	is_attach_menu_peer_type_type()
 }
+
+pub struct UnknownAttachMenuPeerTypeType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAttachMenuPeerTypeType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAttachMenuPeerTypeType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAttachMenuPeerTypeType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown AttachMenuPeerType#${u.constructor:08x}'
+}
+
+fn (u UnknownAttachMenuPeerTypeType) is_attach_menu_peer_type_type() {}
 
 pub interface AuctionBidLevelType {
 	Object
 	is_auction_bid_level_type()
 }
 
+pub struct UnknownAuctionBidLevelType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAuctionBidLevelType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAuctionBidLevelType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAuctionBidLevelType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown AuctionBidLevel#${u.constructor:08x}'
+}
+
+fn (u UnknownAuctionBidLevelType) is_auction_bid_level_type() {}
+
 pub interface AuthorizationType {
 	Object
 	is_authorization_type()
 }
+
+pub struct UnknownAuthorizationType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAuthorizationType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAuthorizationType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAuthorizationType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown Authorization#${u.constructor:08x}'
+}
+
+fn (u UnknownAuthorizationType) is_authorization_type() {}
 
 pub interface AutoDownloadSettingsType {
 	Object
 	is_auto_download_settings_type()
 }
 
+pub struct UnknownAutoDownloadSettingsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAutoDownloadSettingsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAutoDownloadSettingsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAutoDownloadSettingsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown AutoDownloadSettings#${u.constructor:08x}'
+}
+
+fn (u UnknownAutoDownloadSettingsType) is_auto_download_settings_type() {}
+
 pub interface AutoSaveExceptionType {
 	Object
 	is_auto_save_exception_type()
 }
+
+pub struct UnknownAutoSaveExceptionType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAutoSaveExceptionType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAutoSaveExceptionType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAutoSaveExceptionType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown AutoSaveException#${u.constructor:08x}'
+}
+
+fn (u UnknownAutoSaveExceptionType) is_auto_save_exception_type() {}
 
 pub interface AutoSaveSettingsType {
 	Object
 	is_auto_save_settings_type()
 }
 
+pub struct UnknownAutoSaveSettingsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAutoSaveSettingsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAutoSaveSettingsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAutoSaveSettingsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown AutoSaveSettings#${u.constructor:08x}'
+}
+
+fn (u UnknownAutoSaveSettingsType) is_auto_save_settings_type() {}
+
 pub interface AvailableEffectType {
 	Object
 	is_available_effect_type()
 }
+
+pub struct UnknownAvailableEffectType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAvailableEffectType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAvailableEffectType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAvailableEffectType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown AvailableEffect#${u.constructor:08x}'
+}
+
+fn (u UnknownAvailableEffectType) is_available_effect_type() {}
 
 pub interface AvailableReactionType {
 	Object
 	is_available_reaction_type()
 }
 
+pub struct UnknownAvailableReactionType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAvailableReactionType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAvailableReactionType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAvailableReactionType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown AvailableReaction#${u.constructor:08x}'
+}
+
+fn (u UnknownAvailableReactionType) is_available_reaction_type() {}
+
 pub interface BadMsgNotificationType {
 	Object
 	is_bad_msg_notification_type()
 }
+
+pub struct UnknownBadMsgNotificationType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownBadMsgNotificationType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownBadMsgNotificationType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownBadMsgNotificationType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown BadMsgNotification#${u.constructor:08x}'
+}
+
+fn (u UnknownBadMsgNotificationType) is_bad_msg_notification_type() {}
 
 pub interface BankCardOpenUrlType {
 	Object
 	is_bank_card_open_url_type()
 }
 
+pub struct UnknownBankCardOpenUrlType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownBankCardOpenUrlType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownBankCardOpenUrlType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownBankCardOpenUrlType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown BankCardOpenUrl#${u.constructor:08x}'
+}
+
+fn (u UnknownBankCardOpenUrlType) is_bank_card_open_url_type() {}
+
 pub interface BaseThemeType {
 	Object
 	is_base_theme_type()
 }
+
+pub struct UnknownBaseThemeType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownBaseThemeType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownBaseThemeType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownBaseThemeType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown BaseTheme#${u.constructor:08x}'
+}
+
+fn (u UnknownBaseThemeType) is_base_theme_type() {}
 
 pub interface BindAuthKeyInnerType {
 	Object
 	is_bind_auth_key_inner_type()
 }
 
+pub struct UnknownBindAuthKeyInnerType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownBindAuthKeyInnerType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownBindAuthKeyInnerType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownBindAuthKeyInnerType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown BindAuthKeyInner#${u.constructor:08x}'
+}
+
+fn (u UnknownBindAuthKeyInnerType) is_bind_auth_key_inner_type() {}
+
 pub interface BirthdayType {
 	Object
 	is_birthday_type()
 }
+
+pub struct UnknownBirthdayType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownBirthdayType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownBirthdayType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownBirthdayType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown Birthday#${u.constructor:08x}'
+}
+
+fn (u UnknownBirthdayType) is_birthday_type() {}
 
 pub interface BoostType {
 	Object
 	is_boost_type()
 }
 
+pub struct UnknownBoostType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownBoostType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownBoostType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownBoostType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown Boost#${u.constructor:08x}'
+}
+
+fn (u UnknownBoostType) is_boost_type() {}
+
 pub interface BotAppType {
 	Object
 	is_bot_app_type()
 }
+
+pub struct UnknownBotAppType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownBotAppType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownBotAppType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownBotAppType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown BotApp#${u.constructor:08x}'
+}
+
+fn (u UnknownBotAppType) is_bot_app_type() {}
 
 pub interface BotAppSettingsType {
 	Object
 	is_bot_app_settings_type()
 }
 
+pub struct UnknownBotAppSettingsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownBotAppSettingsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownBotAppSettingsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownBotAppSettingsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown BotAppSettings#${u.constructor:08x}'
+}
+
+fn (u UnknownBotAppSettingsType) is_bot_app_settings_type() {}
+
 pub interface BotBusinessConnectionType {
 	Object
 	is_bot_business_connection_type()
 }
+
+pub struct UnknownBotBusinessConnectionType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownBotBusinessConnectionType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownBotBusinessConnectionType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownBotBusinessConnectionType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown BotBusinessConnection#${u.constructor:08x}'
+}
+
+fn (u UnknownBotBusinessConnectionType) is_bot_business_connection_type() {}
 
 pub interface BotCommandType {
 	Object
 	is_bot_command_type()
 }
 
+pub struct UnknownBotCommandType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownBotCommandType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownBotCommandType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownBotCommandType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown BotCommand#${u.constructor:08x}'
+}
+
+fn (u UnknownBotCommandType) is_bot_command_type() {}
+
 pub interface BotCommandScopeType {
 	Object
 	is_bot_command_scope_type()
 }
+
+pub struct UnknownBotCommandScopeType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownBotCommandScopeType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownBotCommandScopeType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownBotCommandScopeType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown BotCommandScope#${u.constructor:08x}'
+}
+
+fn (u UnknownBotCommandScopeType) is_bot_command_scope_type() {}
 
 pub interface BotInfoType {
 	Object
 	is_bot_info_type()
 }
 
+pub struct UnknownBotInfoType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownBotInfoType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownBotInfoType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownBotInfoType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown BotInfo#${u.constructor:08x}'
+}
+
+fn (u UnknownBotInfoType) is_bot_info_type() {}
+
 pub interface BotInlineMessageType {
 	Object
 	is_bot_inline_message_type()
 }
+
+pub struct UnknownBotInlineMessageType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownBotInlineMessageType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownBotInlineMessageType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownBotInlineMessageType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown BotInlineMessage#${u.constructor:08x}'
+}
+
+fn (u UnknownBotInlineMessageType) is_bot_inline_message_type() {}
 
 pub interface BotInlineResultType {
 	Object
 	is_bot_inline_result_type()
 }
 
+pub struct UnknownBotInlineResultType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownBotInlineResultType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownBotInlineResultType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownBotInlineResultType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown BotInlineResult#${u.constructor:08x}'
+}
+
+fn (u UnknownBotInlineResultType) is_bot_inline_result_type() {}
+
 pub interface BotMenuButtonType {
 	Object
 	is_bot_menu_button_type()
 }
+
+pub struct UnknownBotMenuButtonType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownBotMenuButtonType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownBotMenuButtonType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownBotMenuButtonType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown BotMenuButton#${u.constructor:08x}'
+}
+
+fn (u UnknownBotMenuButtonType) is_bot_menu_button_type() {}
 
 pub interface BotPreviewMediaType {
 	Object
 	is_bot_preview_media_type()
 }
 
+pub struct UnknownBotPreviewMediaType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownBotPreviewMediaType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownBotPreviewMediaType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownBotPreviewMediaType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown BotPreviewMedia#${u.constructor:08x}'
+}
+
+fn (u UnknownBotPreviewMediaType) is_bot_preview_media_type() {}
+
 pub interface BotVerificationType {
 	Object
 	is_bot_verification_type()
 }
+
+pub struct UnknownBotVerificationType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownBotVerificationType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownBotVerificationType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownBotVerificationType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown BotVerification#${u.constructor:08x}'
+}
+
+fn (u UnknownBotVerificationType) is_bot_verification_type() {}
 
 pub interface BotVerifierSettingsType {
 	Object
 	is_bot_verifier_settings_type()
 }
 
+pub struct UnknownBotVerifierSettingsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownBotVerifierSettingsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownBotVerifierSettingsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownBotVerifierSettingsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown BotVerifierSettings#${u.constructor:08x}'
+}
+
+fn (u UnknownBotVerifierSettingsType) is_bot_verifier_settings_type() {}
+
 pub interface BusinessAwayMessageType {
 	Object
 	is_business_away_message_type()
 }
+
+pub struct UnknownBusinessAwayMessageType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownBusinessAwayMessageType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownBusinessAwayMessageType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownBusinessAwayMessageType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown BusinessAwayMessage#${u.constructor:08x}'
+}
+
+fn (u UnknownBusinessAwayMessageType) is_business_away_message_type() {}
 
 pub interface BusinessAwayMessageScheduleType {
 	Object
 	is_business_away_message_schedule_type()
 }
 
+pub struct UnknownBusinessAwayMessageScheduleType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownBusinessAwayMessageScheduleType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownBusinessAwayMessageScheduleType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownBusinessAwayMessageScheduleType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown BusinessAwayMessageSchedule#${u.constructor:08x}'
+}
+
+fn (u UnknownBusinessAwayMessageScheduleType) is_business_away_message_schedule_type() {}
+
 pub interface BusinessBotRecipientsType {
 	Object
 	is_business_bot_recipients_type()
 }
+
+pub struct UnknownBusinessBotRecipientsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownBusinessBotRecipientsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownBusinessBotRecipientsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownBusinessBotRecipientsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown BusinessBotRecipients#${u.constructor:08x}'
+}
+
+fn (u UnknownBusinessBotRecipientsType) is_business_bot_recipients_type() {}
 
 pub interface BusinessBotRightsType {
 	Object
 	is_business_bot_rights_type()
 }
 
+pub struct UnknownBusinessBotRightsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownBusinessBotRightsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownBusinessBotRightsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownBusinessBotRightsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown BusinessBotRights#${u.constructor:08x}'
+}
+
+fn (u UnknownBusinessBotRightsType) is_business_bot_rights_type() {}
+
 pub interface BusinessChatLinkType {
 	Object
 	is_business_chat_link_type()
 }
+
+pub struct UnknownBusinessChatLinkType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownBusinessChatLinkType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownBusinessChatLinkType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownBusinessChatLinkType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown BusinessChatLink#${u.constructor:08x}'
+}
+
+fn (u UnknownBusinessChatLinkType) is_business_chat_link_type() {}
 
 pub interface BusinessGreetingMessageType {
 	Object
 	is_business_greeting_message_type()
 }
 
+pub struct UnknownBusinessGreetingMessageType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownBusinessGreetingMessageType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownBusinessGreetingMessageType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownBusinessGreetingMessageType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown BusinessGreetingMessage#${u.constructor:08x}'
+}
+
+fn (u UnknownBusinessGreetingMessageType) is_business_greeting_message_type() {}
+
 pub interface BusinessIntroType {
 	Object
 	is_business_intro_type()
 }
+
+pub struct UnknownBusinessIntroType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownBusinessIntroType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownBusinessIntroType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownBusinessIntroType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown BusinessIntro#${u.constructor:08x}'
+}
+
+fn (u UnknownBusinessIntroType) is_business_intro_type() {}
 
 pub interface BusinessLocationType {
 	Object
 	is_business_location_type()
 }
 
+pub struct UnknownBusinessLocationType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownBusinessLocationType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownBusinessLocationType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownBusinessLocationType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown BusinessLocation#${u.constructor:08x}'
+}
+
+fn (u UnknownBusinessLocationType) is_business_location_type() {}
+
 pub interface BusinessRecipientsType {
 	Object
 	is_business_recipients_type()
 }
+
+pub struct UnknownBusinessRecipientsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownBusinessRecipientsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownBusinessRecipientsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownBusinessRecipientsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown BusinessRecipients#${u.constructor:08x}'
+}
+
+fn (u UnknownBusinessRecipientsType) is_business_recipients_type() {}
 
 pub interface BusinessWeeklyOpenType {
 	Object
 	is_business_weekly_open_type()
 }
 
+pub struct UnknownBusinessWeeklyOpenType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownBusinessWeeklyOpenType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownBusinessWeeklyOpenType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownBusinessWeeklyOpenType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown BusinessWeeklyOpen#${u.constructor:08x}'
+}
+
+fn (u UnknownBusinessWeeklyOpenType) is_business_weekly_open_type() {}
+
 pub interface BusinessWorkHoursType {
 	Object
 	is_business_work_hours_type()
 }
+
+pub struct UnknownBusinessWorkHoursType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownBusinessWorkHoursType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownBusinessWorkHoursType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownBusinessWorkHoursType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown BusinessWorkHours#${u.constructor:08x}'
+}
+
+fn (u UnknownBusinessWorkHoursType) is_business_work_hours_type() {}
 
 pub interface CdnConfigType {
 	Object
 	is_cdn_config_type()
 }
 
+pub struct UnknownCdnConfigType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownCdnConfigType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownCdnConfigType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownCdnConfigType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown CdnConfig#${u.constructor:08x}'
+}
+
+fn (u UnknownCdnConfigType) is_cdn_config_type() {}
+
 pub interface CdnPublicKeyType {
 	Object
 	is_cdn_public_key_type()
 }
+
+pub struct UnknownCdnPublicKeyType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownCdnPublicKeyType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownCdnPublicKeyType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownCdnPublicKeyType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown CdnPublicKey#${u.constructor:08x}'
+}
+
+fn (u UnknownCdnPublicKeyType) is_cdn_public_key_type() {}
 
 pub interface ChannelAdminLogEventType {
 	Object
 	is_channel_admin_log_event_type()
 }
 
+pub struct UnknownChannelAdminLogEventType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownChannelAdminLogEventType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownChannelAdminLogEventType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownChannelAdminLogEventType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ChannelAdminLogEvent#${u.constructor:08x}'
+}
+
+fn (u UnknownChannelAdminLogEventType) is_channel_admin_log_event_type() {}
+
 pub interface ChannelAdminLogEventActionType {
 	Object
 	is_channel_admin_log_event_action_type()
 }
+
+pub struct UnknownChannelAdminLogEventActionType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownChannelAdminLogEventActionType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownChannelAdminLogEventActionType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownChannelAdminLogEventActionType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ChannelAdminLogEventAction#${u.constructor:08x}'
+}
+
+fn (u UnknownChannelAdminLogEventActionType) is_channel_admin_log_event_action_type() {}
 
 pub interface ChannelAdminLogEventsFilterType {
 	Object
 	is_channel_admin_log_events_filter_type()
 }
 
+pub struct UnknownChannelAdminLogEventsFilterType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownChannelAdminLogEventsFilterType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownChannelAdminLogEventsFilterType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownChannelAdminLogEventsFilterType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ChannelAdminLogEventsFilter#${u.constructor:08x}'
+}
+
+fn (u UnknownChannelAdminLogEventsFilterType) is_channel_admin_log_events_filter_type() {}
+
 pub interface ChannelLocationType {
 	Object
 	is_channel_location_type()
 }
+
+pub struct UnknownChannelLocationType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownChannelLocationType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownChannelLocationType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownChannelLocationType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ChannelLocation#${u.constructor:08x}'
+}
+
+fn (u UnknownChannelLocationType) is_channel_location_type() {}
 
 pub interface ChannelMessagesFilterType {
 	Object
 	is_channel_messages_filter_type()
 }
 
+pub struct UnknownChannelMessagesFilterType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownChannelMessagesFilterType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownChannelMessagesFilterType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownChannelMessagesFilterType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ChannelMessagesFilter#${u.constructor:08x}'
+}
+
+fn (u UnknownChannelMessagesFilterType) is_channel_messages_filter_type() {}
+
 pub interface ChannelParticipantType {
 	Object
 	is_channel_participant_type()
 }
+
+pub struct UnknownChannelParticipantType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownChannelParticipantType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownChannelParticipantType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownChannelParticipantType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ChannelParticipant#${u.constructor:08x}'
+}
+
+fn (u UnknownChannelParticipantType) is_channel_participant_type() {}
 
 pub interface ChannelParticipantsFilterType {
 	Object
 	is_channel_participants_filter_type()
 }
 
+pub struct UnknownChannelParticipantsFilterType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownChannelParticipantsFilterType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownChannelParticipantsFilterType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownChannelParticipantsFilterType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ChannelParticipantsFilter#${u.constructor:08x}'
+}
+
+fn (u UnknownChannelParticipantsFilterType) is_channel_participants_filter_type() {}
+
 pub interface ChatType {
 	Object
 	is_chat_type()
 }
+
+pub struct UnknownChatType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownChatType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownChatType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownChatType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown Chat#${u.constructor:08x}'
+}
+
+fn (u UnknownChatType) is_chat_type() {}
 
 pub interface ChatAdminRightsType {
 	Object
 	is_chat_admin_rights_type()
 }
 
+pub struct UnknownChatAdminRightsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownChatAdminRightsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownChatAdminRightsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownChatAdminRightsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ChatAdminRights#${u.constructor:08x}'
+}
+
+fn (u UnknownChatAdminRightsType) is_chat_admin_rights_type() {}
+
 pub interface ChatAdminWithInvitesType {
 	Object
 	is_chat_admin_with_invites_type()
 }
+
+pub struct UnknownChatAdminWithInvitesType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownChatAdminWithInvitesType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownChatAdminWithInvitesType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownChatAdminWithInvitesType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ChatAdminWithInvites#${u.constructor:08x}'
+}
+
+fn (u UnknownChatAdminWithInvitesType) is_chat_admin_with_invites_type() {}
 
 pub interface ChatBannedRightsType {
 	Object
 	is_chat_banned_rights_type()
 }
 
+pub struct UnknownChatBannedRightsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownChatBannedRightsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownChatBannedRightsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownChatBannedRightsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ChatBannedRights#${u.constructor:08x}'
+}
+
+fn (u UnknownChatBannedRightsType) is_chat_banned_rights_type() {}
+
 pub interface ChatFullType {
 	Object
 	is_chat_full_type()
 }
+
+pub struct UnknownChatFullType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownChatFullType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownChatFullType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownChatFullType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ChatFull#${u.constructor:08x}'
+}
+
+fn (u UnknownChatFullType) is_chat_full_type() {}
 
 pub interface ChatInviteType {
 	Object
 	is_chat_invite_type()
 }
 
+pub struct UnknownChatInviteType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownChatInviteType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownChatInviteType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownChatInviteType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ChatInvite#${u.constructor:08x}'
+}
+
+fn (u UnknownChatInviteType) is_chat_invite_type() {}
+
 pub interface ChatInviteImporterType {
 	Object
 	is_chat_invite_importer_type()
 }
+
+pub struct UnknownChatInviteImporterType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownChatInviteImporterType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownChatInviteImporterType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownChatInviteImporterType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ChatInviteImporter#${u.constructor:08x}'
+}
+
+fn (u UnknownChatInviteImporterType) is_chat_invite_importer_type() {}
 
 pub interface ChatOnlinesType {
 	Object
 	is_chat_onlines_type()
 }
 
+pub struct UnknownChatOnlinesType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownChatOnlinesType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownChatOnlinesType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownChatOnlinesType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ChatOnlines#${u.constructor:08x}'
+}
+
+fn (u UnknownChatOnlinesType) is_chat_onlines_type() {}
+
 pub interface ChatParticipantType {
 	Object
 	is_chat_participant_type()
 }
+
+pub struct UnknownChatParticipantType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownChatParticipantType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownChatParticipantType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownChatParticipantType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ChatParticipant#${u.constructor:08x}'
+}
+
+fn (u UnknownChatParticipantType) is_chat_participant_type() {}
 
 pub interface ChatParticipantsType {
 	Object
 	is_chat_participants_type()
 }
 
+pub struct UnknownChatParticipantsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownChatParticipantsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownChatParticipantsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownChatParticipantsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ChatParticipants#${u.constructor:08x}'
+}
+
+fn (u UnknownChatParticipantsType) is_chat_participants_type() {}
+
 pub interface ChatPhotoType {
 	Object
 	is_chat_photo_type()
 }
+
+pub struct UnknownChatPhotoType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownChatPhotoType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownChatPhotoType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownChatPhotoType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ChatPhoto#${u.constructor:08x}'
+}
+
+fn (u UnknownChatPhotoType) is_chat_photo_type() {}
 
 pub interface ChatReactionsType {
 	Object
 	is_chat_reactions_type()
 }
 
+pub struct UnknownChatReactionsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownChatReactionsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownChatReactionsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownChatReactionsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ChatReactions#${u.constructor:08x}'
+}
+
+fn (u UnknownChatReactionsType) is_chat_reactions_type() {}
+
 pub interface ChatThemeType {
 	Object
 	is_chat_theme_type()
 }
+
+pub struct UnknownChatThemeType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownChatThemeType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownChatThemeType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownChatThemeType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ChatTheme#${u.constructor:08x}'
+}
+
+fn (u UnknownChatThemeType) is_chat_theme_type() {}
 
 pub interface ClientDHInnerDataType {
 	Object
 	is_client_d_h_inner_data_type()
 }
 
+pub struct UnknownClientDHInnerDataType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownClientDHInnerDataType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownClientDHInnerDataType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownClientDHInnerDataType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown Client_DH_Inner_Data#${u.constructor:08x}'
+}
+
+fn (u UnknownClientDHInnerDataType) is_client_d_h_inner_data_type() {}
+
 pub interface CodeSettingsType {
 	Object
 	is_code_settings_type()
 }
+
+pub struct UnknownCodeSettingsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownCodeSettingsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownCodeSettingsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownCodeSettingsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown CodeSettings#${u.constructor:08x}'
+}
+
+fn (u UnknownCodeSettingsType) is_code_settings_type() {}
 
 pub interface ConfigType {
 	Object
 	is_config_type()
 }
 
+pub struct UnknownConfigType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownConfigType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownConfigType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownConfigType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown Config#${u.constructor:08x}'
+}
+
+fn (u UnknownConfigType) is_config_type() {}
+
 pub interface ConnectedBotType {
 	Object
 	is_connected_bot_type()
 }
+
+pub struct UnknownConnectedBotType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownConnectedBotType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownConnectedBotType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownConnectedBotType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ConnectedBot#${u.constructor:08x}'
+}
+
+fn (u UnknownConnectedBotType) is_connected_bot_type() {}
 
 pub interface ConnectedBotStarRefType {
 	Object
 	is_connected_bot_star_ref_type()
 }
 
+pub struct UnknownConnectedBotStarRefType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownConnectedBotStarRefType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownConnectedBotStarRefType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownConnectedBotStarRefType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ConnectedBotStarRef#${u.constructor:08x}'
+}
+
+fn (u UnknownConnectedBotStarRefType) is_connected_bot_star_ref_type() {}
+
 pub interface ContactType {
 	Object
 	is_contact_type()
 }
+
+pub struct UnknownContactType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownContactType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownContactType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownContactType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown Contact#${u.constructor:08x}'
+}
+
+fn (u UnknownContactType) is_contact_type() {}
 
 pub interface ContactBirthdayType {
 	Object
 	is_contact_birthday_type()
 }
 
+pub struct UnknownContactBirthdayType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownContactBirthdayType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownContactBirthdayType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownContactBirthdayType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ContactBirthday#${u.constructor:08x}'
+}
+
+fn (u UnknownContactBirthdayType) is_contact_birthday_type() {}
+
 pub interface ContactStatusType {
 	Object
 	is_contact_status_type()
 }
+
+pub struct UnknownContactStatusType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownContactStatusType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownContactStatusType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownContactStatusType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ContactStatus#${u.constructor:08x}'
+}
+
+fn (u UnknownContactStatusType) is_contact_status_type() {}
 
 pub interface DataJSONType {
 	Object
 	is_data_j_s_o_n_type()
 }
 
+pub struct UnknownDataJSONType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownDataJSONType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownDataJSONType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownDataJSONType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown DataJSON#${u.constructor:08x}'
+}
+
+fn (u UnknownDataJSONType) is_data_j_s_o_n_type() {}
+
 pub interface DcOptionType {
 	Object
 	is_dc_option_type()
 }
+
+pub struct UnknownDcOptionType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownDcOptionType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownDcOptionType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownDcOptionType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown DcOption#${u.constructor:08x}'
+}
+
+fn (u UnknownDcOptionType) is_dc_option_type() {}
 
 pub interface DefaultHistoryTTLType {
 	Object
 	is_default_history_t_t_l_type()
 }
 
+pub struct UnknownDefaultHistoryTTLType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownDefaultHistoryTTLType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownDefaultHistoryTTLType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownDefaultHistoryTTLType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown DefaultHistoryTTL#${u.constructor:08x}'
+}
+
+fn (u UnknownDefaultHistoryTTLType) is_default_history_t_t_l_type() {}
+
 pub interface DestroyAuthKeyResType {
 	Object
 	is_destroy_auth_key_res_type()
 }
+
+pub struct UnknownDestroyAuthKeyResType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownDestroyAuthKeyResType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownDestroyAuthKeyResType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownDestroyAuthKeyResType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown DestroyAuthKeyRes#${u.constructor:08x}'
+}
+
+fn (u UnknownDestroyAuthKeyResType) is_destroy_auth_key_res_type() {}
 
 pub interface DestroySessionResType {
 	Object
 	is_destroy_session_res_type()
 }
 
+pub struct UnknownDestroySessionResType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownDestroySessionResType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownDestroySessionResType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownDestroySessionResType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown DestroySessionRes#${u.constructor:08x}'
+}
+
+fn (u UnknownDestroySessionResType) is_destroy_session_res_type() {}
+
 pub interface DialogType {
 	Object
 	is_dialog_type()
 }
+
+pub struct UnknownDialogType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownDialogType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownDialogType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownDialogType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown Dialog#${u.constructor:08x}'
+}
+
+fn (u UnknownDialogType) is_dialog_type() {}
 
 pub interface DialogFilterType {
 	Object
 	is_dialog_filter_type()
 }
 
+pub struct UnknownDialogFilterType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownDialogFilterType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownDialogFilterType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownDialogFilterType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown DialogFilter#${u.constructor:08x}'
+}
+
+fn (u UnknownDialogFilterType) is_dialog_filter_type() {}
+
 pub interface DialogFilterSuggestedType {
 	Object
 	is_dialog_filter_suggested_type()
 }
+
+pub struct UnknownDialogFilterSuggestedType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownDialogFilterSuggestedType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownDialogFilterSuggestedType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownDialogFilterSuggestedType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown DialogFilterSuggested#${u.constructor:08x}'
+}
+
+fn (u UnknownDialogFilterSuggestedType) is_dialog_filter_suggested_type() {}
 
 pub interface DialogPeerType {
 	Object
 	is_dialog_peer_type()
 }
 
+pub struct UnknownDialogPeerType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownDialogPeerType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownDialogPeerType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownDialogPeerType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown DialogPeer#${u.constructor:08x}'
+}
+
+fn (u UnknownDialogPeerType) is_dialog_peer_type() {}
+
 pub interface DisallowedGiftsSettingsType {
 	Object
 	is_disallowed_gifts_settings_type()
 }
+
+pub struct UnknownDisallowedGiftsSettingsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownDisallowedGiftsSettingsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownDisallowedGiftsSettingsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownDisallowedGiftsSettingsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown DisallowedGiftsSettings#${u.constructor:08x}'
+}
+
+fn (u UnknownDisallowedGiftsSettingsType) is_disallowed_gifts_settings_type() {}
 
 pub interface DocumentType {
 	Object
 	is_document_type()
 }
 
+pub struct UnknownDocumentType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownDocumentType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownDocumentType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownDocumentType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown Document#${u.constructor:08x}'
+}
+
+fn (u UnknownDocumentType) is_document_type() {}
+
 pub interface DocumentAttributeType {
 	Object
 	is_document_attribute_type()
 }
+
+pub struct UnknownDocumentAttributeType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownDocumentAttributeType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownDocumentAttributeType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownDocumentAttributeType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown DocumentAttribute#${u.constructor:08x}'
+}
+
+fn (u UnknownDocumentAttributeType) is_document_attribute_type() {}
 
 pub interface DraftMessageType {
 	Object
 	is_draft_message_type()
 }
 
+pub struct UnknownDraftMessageType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownDraftMessageType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownDraftMessageType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownDraftMessageType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown DraftMessage#${u.constructor:08x}'
+}
+
+fn (u UnknownDraftMessageType) is_draft_message_type() {}
+
 pub interface EmailVerificationType {
 	Object
 	is_email_verification_type()
 }
+
+pub struct UnknownEmailVerificationType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownEmailVerificationType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownEmailVerificationType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownEmailVerificationType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown EmailVerification#${u.constructor:08x}'
+}
+
+fn (u UnknownEmailVerificationType) is_email_verification_type() {}
 
 pub interface EmailVerifyPurposeType {
 	Object
 	is_email_verify_purpose_type()
 }
 
+pub struct UnknownEmailVerifyPurposeType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownEmailVerifyPurposeType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownEmailVerifyPurposeType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownEmailVerifyPurposeType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown EmailVerifyPurpose#${u.constructor:08x}'
+}
+
+fn (u UnknownEmailVerifyPurposeType) is_email_verify_purpose_type() {}
+
 pub interface EmojiGroupType {
 	Object
 	is_emoji_group_type()
 }
+
+pub struct UnknownEmojiGroupType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownEmojiGroupType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownEmojiGroupType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownEmojiGroupType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown EmojiGroup#${u.constructor:08x}'
+}
+
+fn (u UnknownEmojiGroupType) is_emoji_group_type() {}
 
 pub interface EmojiKeywordType {
 	Object
 	is_emoji_keyword_type()
 }
 
+pub struct UnknownEmojiKeywordType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownEmojiKeywordType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownEmojiKeywordType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownEmojiKeywordType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown EmojiKeyword#${u.constructor:08x}'
+}
+
+fn (u UnknownEmojiKeywordType) is_emoji_keyword_type() {}
+
 pub interface EmojiKeywordsDifferenceType {
 	Object
 	is_emoji_keywords_difference_type()
 }
+
+pub struct UnknownEmojiKeywordsDifferenceType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownEmojiKeywordsDifferenceType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownEmojiKeywordsDifferenceType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownEmojiKeywordsDifferenceType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown EmojiKeywordsDifference#${u.constructor:08x}'
+}
+
+fn (u UnknownEmojiKeywordsDifferenceType) is_emoji_keywords_difference_type() {}
 
 pub interface EmojiLanguageType {
 	Object
 	is_emoji_language_type()
 }
 
+pub struct UnknownEmojiLanguageType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownEmojiLanguageType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownEmojiLanguageType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownEmojiLanguageType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown EmojiLanguage#${u.constructor:08x}'
+}
+
+fn (u UnknownEmojiLanguageType) is_emoji_language_type() {}
+
 pub interface EmojiListType {
 	Object
 	is_emoji_list_type()
 }
+
+pub struct UnknownEmojiListType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownEmojiListType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownEmojiListType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownEmojiListType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown EmojiList#${u.constructor:08x}'
+}
+
+fn (u UnknownEmojiListType) is_emoji_list_type() {}
 
 pub interface EmojiStatusType {
 	Object
 	is_emoji_status_type()
 }
 
+pub struct UnknownEmojiStatusType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownEmojiStatusType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownEmojiStatusType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownEmojiStatusType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown EmojiStatus#${u.constructor:08x}'
+}
+
+fn (u UnknownEmojiStatusType) is_emoji_status_type() {}
+
 pub interface EmojiURLType {
 	Object
 	is_emoji_u_r_l_type()
 }
+
+pub struct UnknownEmojiURLType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownEmojiURLType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownEmojiURLType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownEmojiURLType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown EmojiURL#${u.constructor:08x}'
+}
+
+fn (u UnknownEmojiURLType) is_emoji_u_r_l_type() {}
 
 pub interface EncryptedChatType {
 	Object
 	is_encrypted_chat_type()
 }
 
+pub struct UnknownEncryptedChatType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownEncryptedChatType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownEncryptedChatType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownEncryptedChatType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown EncryptedChat#${u.constructor:08x}'
+}
+
+fn (u UnknownEncryptedChatType) is_encrypted_chat_type() {}
+
 pub interface EncryptedFileType {
 	Object
 	is_encrypted_file_type()
 }
+
+pub struct UnknownEncryptedFileType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownEncryptedFileType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownEncryptedFileType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownEncryptedFileType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown EncryptedFile#${u.constructor:08x}'
+}
+
+fn (u UnknownEncryptedFileType) is_encrypted_file_type() {}
 
 pub interface EncryptedMessageType {
 	Object
 	is_encrypted_message_type()
 }
 
+pub struct UnknownEncryptedMessageType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownEncryptedMessageType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownEncryptedMessageType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownEncryptedMessageType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown EncryptedMessage#${u.constructor:08x}'
+}
+
+fn (u UnknownEncryptedMessageType) is_encrypted_message_type() {}
+
 pub interface TlErrorType {
 	Object
 	is_error_type()
 }
+
+pub struct UnknownTlErrorType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownTlErrorType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownTlErrorType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownTlErrorType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown Error#${u.constructor:08x}'
+}
+
+fn (u UnknownTlErrorType) is_error_type() {}
 
 pub interface ExportedChatInviteType {
 	Object
 	is_exported_chat_invite_type()
 }
 
+pub struct UnknownExportedChatInviteType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownExportedChatInviteType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownExportedChatInviteType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownExportedChatInviteType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ExportedChatInvite#${u.constructor:08x}'
+}
+
+fn (u UnknownExportedChatInviteType) is_exported_chat_invite_type() {}
+
 pub interface ExportedChatlistInviteType {
 	Object
 	is_exported_chatlist_invite_type()
 }
+
+pub struct UnknownExportedChatlistInviteType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownExportedChatlistInviteType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownExportedChatlistInviteType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownExportedChatlistInviteType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ExportedChatlistInvite#${u.constructor:08x}'
+}
+
+fn (u UnknownExportedChatlistInviteType) is_exported_chatlist_invite_type() {}
 
 pub interface ExportedContactTokenType {
 	Object
 	is_exported_contact_token_type()
 }
 
+pub struct UnknownExportedContactTokenType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownExportedContactTokenType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownExportedContactTokenType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownExportedContactTokenType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ExportedContactToken#${u.constructor:08x}'
+}
+
+fn (u UnknownExportedContactTokenType) is_exported_contact_token_type() {}
+
 pub interface ExportedMessageLinkType {
 	Object
 	is_exported_message_link_type()
 }
+
+pub struct UnknownExportedMessageLinkType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownExportedMessageLinkType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownExportedMessageLinkType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownExportedMessageLinkType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ExportedMessageLink#${u.constructor:08x}'
+}
+
+fn (u UnknownExportedMessageLinkType) is_exported_message_link_type() {}
 
 pub interface ExportedStoryLinkType {
 	Object
 	is_exported_story_link_type()
 }
 
+pub struct UnknownExportedStoryLinkType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownExportedStoryLinkType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownExportedStoryLinkType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownExportedStoryLinkType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ExportedStoryLink#${u.constructor:08x}'
+}
+
+fn (u UnknownExportedStoryLinkType) is_exported_story_link_type() {}
+
 pub interface FactCheckType {
 	Object
 	is_fact_check_type()
 }
+
+pub struct UnknownFactCheckType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownFactCheckType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownFactCheckType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownFactCheckType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown FactCheck#${u.constructor:08x}'
+}
+
+fn (u UnknownFactCheckType) is_fact_check_type() {}
 
 pub interface FileHashType {
 	Object
 	is_file_hash_type()
 }
 
+pub struct UnknownFileHashType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownFileHashType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownFileHashType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownFileHashType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown FileHash#${u.constructor:08x}'
+}
+
+fn (u UnknownFileHashType) is_file_hash_type() {}
+
 pub interface FolderType {
 	Object
 	is_folder_type()
 }
+
+pub struct UnknownFolderType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownFolderType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownFolderType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownFolderType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown Folder#${u.constructor:08x}'
+}
+
+fn (u UnknownFolderType) is_folder_type() {}
 
 pub interface FolderPeerType {
 	Object
 	is_folder_peer_type()
 }
 
+pub struct UnknownFolderPeerType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownFolderPeerType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownFolderPeerType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownFolderPeerType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown FolderPeer#${u.constructor:08x}'
+}
+
+fn (u UnknownFolderPeerType) is_folder_peer_type() {}
+
 pub interface ForumTopicType {
 	Object
 	is_forum_topic_type()
 }
+
+pub struct UnknownForumTopicType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownForumTopicType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownForumTopicType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownForumTopicType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ForumTopic#${u.constructor:08x}'
+}
+
+fn (u UnknownForumTopicType) is_forum_topic_type() {}
 
 pub interface FoundStoryType {
 	Object
 	is_found_story_type()
 }
 
+pub struct UnknownFoundStoryType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownFoundStoryType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownFoundStoryType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownFoundStoryType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown FoundStory#${u.constructor:08x}'
+}
+
+fn (u UnknownFoundStoryType) is_found_story_type() {}
+
 pub interface FutureSaltType {
 	Object
 	is_future_salt_type()
 }
+
+pub struct UnknownFutureSaltType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownFutureSaltType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownFutureSaltType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownFutureSaltType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown FutureSalt#${u.constructor:08x}'
+}
+
+fn (u UnknownFutureSaltType) is_future_salt_type() {}
 
 pub interface FutureSaltsType {
 	Object
 	is_future_salts_type()
 }
 
+pub struct UnknownFutureSaltsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownFutureSaltsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownFutureSaltsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownFutureSaltsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown FutureSalts#${u.constructor:08x}'
+}
+
+fn (u UnknownFutureSaltsType) is_future_salts_type() {}
+
 pub interface GameType {
 	Object
 	is_game_type()
 }
+
+pub struct UnknownGameType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownGameType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownGameType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownGameType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown Game#${u.constructor:08x}'
+}
+
+fn (u UnknownGameType) is_game_type() {}
 
 pub interface GeoPointType {
 	Object
 	is_geo_point_type()
 }
 
+pub struct UnknownGeoPointType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownGeoPointType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownGeoPointType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownGeoPointType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown GeoPoint#${u.constructor:08x}'
+}
+
+fn (u UnknownGeoPointType) is_geo_point_type() {}
+
 pub interface GeoPointAddressType {
 	Object
 	is_geo_point_address_type()
 }
+
+pub struct UnknownGeoPointAddressType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownGeoPointAddressType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownGeoPointAddressType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownGeoPointAddressType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown GeoPointAddress#${u.constructor:08x}'
+}
+
+fn (u UnknownGeoPointAddressType) is_geo_point_address_type() {}
 
 pub interface GlobalPrivacySettingsType {
 	Object
 	is_global_privacy_settings_type()
 }
 
+pub struct UnknownGlobalPrivacySettingsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownGlobalPrivacySettingsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownGlobalPrivacySettingsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownGlobalPrivacySettingsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown GlobalPrivacySettings#${u.constructor:08x}'
+}
+
+fn (u UnknownGlobalPrivacySettingsType) is_global_privacy_settings_type() {}
+
 pub interface GroupCallType {
 	Object
 	is_group_call_type()
 }
+
+pub struct UnknownGroupCallType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownGroupCallType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownGroupCallType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownGroupCallType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown GroupCall#${u.constructor:08x}'
+}
+
+fn (u UnknownGroupCallType) is_group_call_type() {}
 
 pub interface GroupCallDonorType {
 	Object
 	is_group_call_donor_type()
 }
 
+pub struct UnknownGroupCallDonorType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownGroupCallDonorType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownGroupCallDonorType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownGroupCallDonorType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown GroupCallDonor#${u.constructor:08x}'
+}
+
+fn (u UnknownGroupCallDonorType) is_group_call_donor_type() {}
+
 pub interface GroupCallMessageType {
 	Object
 	is_group_call_message_type()
 }
+
+pub struct UnknownGroupCallMessageType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownGroupCallMessageType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownGroupCallMessageType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownGroupCallMessageType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown GroupCallMessage#${u.constructor:08x}'
+}
+
+fn (u UnknownGroupCallMessageType) is_group_call_message_type() {}
 
 pub interface GroupCallParticipantType {
 	Object
 	is_group_call_participant_type()
 }
 
+pub struct UnknownGroupCallParticipantType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownGroupCallParticipantType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownGroupCallParticipantType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownGroupCallParticipantType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown GroupCallParticipant#${u.constructor:08x}'
+}
+
+fn (u UnknownGroupCallParticipantType) is_group_call_participant_type() {}
+
 pub interface GroupCallParticipantVideoType {
 	Object
 	is_group_call_participant_video_type()
 }
+
+pub struct UnknownGroupCallParticipantVideoType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownGroupCallParticipantVideoType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownGroupCallParticipantVideoType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownGroupCallParticipantVideoType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown GroupCallParticipantVideo#${u.constructor:08x}'
+}
+
+fn (u UnknownGroupCallParticipantVideoType) is_group_call_participant_video_type() {}
 
 pub interface GroupCallParticipantVideoSourceGroupType {
 	Object
 	is_group_call_participant_video_source_group_type()
 }
 
+pub struct UnknownGroupCallParticipantVideoSourceGroupType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownGroupCallParticipantVideoSourceGroupType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownGroupCallParticipantVideoSourceGroupType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownGroupCallParticipantVideoSourceGroupType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown GroupCallParticipantVideoSourceGroup#${u.constructor:08x}'
+}
+
+fn (u UnknownGroupCallParticipantVideoSourceGroupType) is_group_call_participant_video_source_group_type() {}
+
 pub interface GroupCallStreamChannelType {
 	Object
 	is_group_call_stream_channel_type()
 }
+
+pub struct UnknownGroupCallStreamChannelType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownGroupCallStreamChannelType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownGroupCallStreamChannelType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownGroupCallStreamChannelType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown GroupCallStreamChannel#${u.constructor:08x}'
+}
+
+fn (u UnknownGroupCallStreamChannelType) is_group_call_stream_channel_type() {}
 
 pub interface HighScoreType {
 	Object
 	is_high_score_type()
 }
 
+pub struct UnknownHighScoreType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownHighScoreType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownHighScoreType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownHighScoreType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown HighScore#${u.constructor:08x}'
+}
+
+fn (u UnknownHighScoreType) is_high_score_type() {}
+
 pub interface HttpWaitType {
 	Object
 	is_http_wait_type()
 }
+
+pub struct UnknownHttpWaitType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownHttpWaitType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownHttpWaitType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownHttpWaitType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown HttpWait#${u.constructor:08x}'
+}
+
+fn (u UnknownHttpWaitType) is_http_wait_type() {}
 
 pub interface ImportedContactType {
 	Object
 	is_imported_contact_type()
 }
 
+pub struct UnknownImportedContactType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownImportedContactType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownImportedContactType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownImportedContactType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ImportedContact#${u.constructor:08x}'
+}
+
+fn (u UnknownImportedContactType) is_imported_contact_type() {}
+
 pub interface InlineBotSwitchPMType {
 	Object
 	is_inline_bot_switch_p_m_type()
 }
+
+pub struct UnknownInlineBotSwitchPMType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInlineBotSwitchPMType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInlineBotSwitchPMType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInlineBotSwitchPMType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InlineBotSwitchPM#${u.constructor:08x}'
+}
+
+fn (u UnknownInlineBotSwitchPMType) is_inline_bot_switch_p_m_type() {}
 
 pub interface InlineBotWebViewType {
 	Object
 	is_inline_bot_web_view_type()
 }
 
+pub struct UnknownInlineBotWebViewType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInlineBotWebViewType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInlineBotWebViewType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInlineBotWebViewType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InlineBotWebView#${u.constructor:08x}'
+}
+
+fn (u UnknownInlineBotWebViewType) is_inline_bot_web_view_type() {}
+
 pub interface InlineQueryPeerTypeType {
 	Object
 	is_inline_query_peer_type_type()
 }
+
+pub struct UnknownInlineQueryPeerTypeType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInlineQueryPeerTypeType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInlineQueryPeerTypeType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInlineQueryPeerTypeType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InlineQueryPeerType#${u.constructor:08x}'
+}
+
+fn (u UnknownInlineQueryPeerTypeType) is_inline_query_peer_type_type() {}
 
 pub interface InputAppEventType {
 	Object
 	is_input_app_event_type()
 }
 
+pub struct UnknownInputAppEventType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputAppEventType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputAppEventType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputAppEventType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputAppEvent#${u.constructor:08x}'
+}
+
+fn (u UnknownInputAppEventType) is_input_app_event_type() {}
+
 pub interface InputBotAppType {
 	Object
 	is_input_bot_app_type()
 }
+
+pub struct UnknownInputBotAppType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputBotAppType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputBotAppType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputBotAppType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputBotApp#${u.constructor:08x}'
+}
+
+fn (u UnknownInputBotAppType) is_input_bot_app_type() {}
 
 pub interface InputBotInlineMessageType {
 	Object
 	is_input_bot_inline_message_type()
 }
 
+pub struct UnknownInputBotInlineMessageType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputBotInlineMessageType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputBotInlineMessageType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputBotInlineMessageType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputBotInlineMessage#${u.constructor:08x}'
+}
+
+fn (u UnknownInputBotInlineMessageType) is_input_bot_inline_message_type() {}
+
 pub interface InputBotInlineMessageIDType {
 	Object
 	is_input_bot_inline_message_i_d_type()
 }
+
+pub struct UnknownInputBotInlineMessageIDType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputBotInlineMessageIDType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputBotInlineMessageIDType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputBotInlineMessageIDType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputBotInlineMessageID#${u.constructor:08x}'
+}
+
+fn (u UnknownInputBotInlineMessageIDType) is_input_bot_inline_message_i_d_type() {}
 
 pub interface InputBotInlineResultType {
 	Object
 	is_input_bot_inline_result_type()
 }
 
+pub struct UnknownInputBotInlineResultType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputBotInlineResultType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputBotInlineResultType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputBotInlineResultType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputBotInlineResult#${u.constructor:08x}'
+}
+
+fn (u UnknownInputBotInlineResultType) is_input_bot_inline_result_type() {}
+
 pub interface InputBusinessAwayMessageType {
 	Object
 	is_input_business_away_message_type()
 }
+
+pub struct UnknownInputBusinessAwayMessageType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputBusinessAwayMessageType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputBusinessAwayMessageType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputBusinessAwayMessageType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputBusinessAwayMessage#${u.constructor:08x}'
+}
+
+fn (u UnknownInputBusinessAwayMessageType) is_input_business_away_message_type() {}
 
 pub interface InputBusinessBotRecipientsType {
 	Object
 	is_input_business_bot_recipients_type()
 }
 
+pub struct UnknownInputBusinessBotRecipientsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputBusinessBotRecipientsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputBusinessBotRecipientsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputBusinessBotRecipientsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputBusinessBotRecipients#${u.constructor:08x}'
+}
+
+fn (u UnknownInputBusinessBotRecipientsType) is_input_business_bot_recipients_type() {}
+
 pub interface InputBusinessChatLinkType {
 	Object
 	is_input_business_chat_link_type()
 }
+
+pub struct UnknownInputBusinessChatLinkType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputBusinessChatLinkType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputBusinessChatLinkType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputBusinessChatLinkType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputBusinessChatLink#${u.constructor:08x}'
+}
+
+fn (u UnknownInputBusinessChatLinkType) is_input_business_chat_link_type() {}
 
 pub interface InputBusinessGreetingMessageType {
 	Object
 	is_input_business_greeting_message_type()
 }
 
+pub struct UnknownInputBusinessGreetingMessageType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputBusinessGreetingMessageType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputBusinessGreetingMessageType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputBusinessGreetingMessageType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputBusinessGreetingMessage#${u.constructor:08x}'
+}
+
+fn (u UnknownInputBusinessGreetingMessageType) is_input_business_greeting_message_type() {}
+
 pub interface InputBusinessIntroType {
 	Object
 	is_input_business_intro_type()
 }
+
+pub struct UnknownInputBusinessIntroType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputBusinessIntroType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputBusinessIntroType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputBusinessIntroType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputBusinessIntro#${u.constructor:08x}'
+}
+
+fn (u UnknownInputBusinessIntroType) is_input_business_intro_type() {}
 
 pub interface InputBusinessRecipientsType {
 	Object
 	is_input_business_recipients_type()
 }
 
+pub struct UnknownInputBusinessRecipientsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputBusinessRecipientsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputBusinessRecipientsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputBusinessRecipientsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputBusinessRecipients#${u.constructor:08x}'
+}
+
+fn (u UnknownInputBusinessRecipientsType) is_input_business_recipients_type() {}
+
 pub interface InputChannelType {
 	Object
 	is_input_channel_type()
 }
+
+pub struct UnknownInputChannelType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputChannelType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputChannelType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputChannelType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputChannel#${u.constructor:08x}'
+}
+
+fn (u UnknownInputChannelType) is_input_channel_type() {}
 
 pub interface InputChatPhotoType {
 	Object
 	is_input_chat_photo_type()
 }
 
+pub struct UnknownInputChatPhotoType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputChatPhotoType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputChatPhotoType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputChatPhotoType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputChatPhoto#${u.constructor:08x}'
+}
+
+fn (u UnknownInputChatPhotoType) is_input_chat_photo_type() {}
+
 pub interface InputChatThemeType {
 	Object
 	is_input_chat_theme_type()
 }
+
+pub struct UnknownInputChatThemeType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputChatThemeType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputChatThemeType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputChatThemeType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputChatTheme#${u.constructor:08x}'
+}
+
+fn (u UnknownInputChatThemeType) is_input_chat_theme_type() {}
 
 pub interface InputChatlistType {
 	Object
 	is_input_chatlist_type()
 }
 
+pub struct UnknownInputChatlistType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputChatlistType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputChatlistType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputChatlistType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputChatlist#${u.constructor:08x}'
+}
+
+fn (u UnknownInputChatlistType) is_input_chatlist_type() {}
+
 pub interface InputCheckPasswordSRPType {
 	Object
 	is_input_check_password_s_r_p_type()
 }
+
+pub struct UnknownInputCheckPasswordSRPType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputCheckPasswordSRPType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputCheckPasswordSRPType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputCheckPasswordSRPType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputCheckPasswordSRP#${u.constructor:08x}'
+}
+
+fn (u UnknownInputCheckPasswordSRPType) is_input_check_password_s_r_p_type() {}
 
 pub interface InputClientProxyType {
 	Object
 	is_input_client_proxy_type()
 }
 
+pub struct UnknownInputClientProxyType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputClientProxyType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputClientProxyType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputClientProxyType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputClientProxy#${u.constructor:08x}'
+}
+
+fn (u UnknownInputClientProxyType) is_input_client_proxy_type() {}
+
 pub interface InputCollectibleType {
 	Object
 	is_input_collectible_type()
 }
+
+pub struct UnknownInputCollectibleType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputCollectibleType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputCollectibleType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputCollectibleType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputCollectible#${u.constructor:08x}'
+}
+
+fn (u UnknownInputCollectibleType) is_input_collectible_type() {}
 
 pub interface InputContactType {
 	Object
 	is_input_contact_type()
 }
 
+pub struct UnknownInputContactType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputContactType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputContactType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputContactType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputContact#${u.constructor:08x}'
+}
+
+fn (u UnknownInputContactType) is_input_contact_type() {}
+
 pub interface InputDialogPeerType {
 	Object
 	is_input_dialog_peer_type()
 }
+
+pub struct UnknownInputDialogPeerType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputDialogPeerType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputDialogPeerType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputDialogPeerType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputDialogPeer#${u.constructor:08x}'
+}
+
+fn (u UnknownInputDialogPeerType) is_input_dialog_peer_type() {}
 
 pub interface InputDocumentType {
 	Object
 	is_input_document_type()
 }
 
+pub struct UnknownInputDocumentType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputDocumentType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputDocumentType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputDocumentType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputDocument#${u.constructor:08x}'
+}
+
+fn (u UnknownInputDocumentType) is_input_document_type() {}
+
 pub interface InputEncryptedChatType {
 	Object
 	is_input_encrypted_chat_type()
 }
+
+pub struct UnknownInputEncryptedChatType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputEncryptedChatType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputEncryptedChatType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputEncryptedChatType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputEncryptedChat#${u.constructor:08x}'
+}
+
+fn (u UnknownInputEncryptedChatType) is_input_encrypted_chat_type() {}
 
 pub interface InputEncryptedFileType {
 	Object
 	is_input_encrypted_file_type()
 }
 
+pub struct UnknownInputEncryptedFileType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputEncryptedFileType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputEncryptedFileType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputEncryptedFileType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputEncryptedFile#${u.constructor:08x}'
+}
+
+fn (u UnknownInputEncryptedFileType) is_input_encrypted_file_type() {}
+
 pub interface InputFileType {
 	Object
 	is_input_file_type()
 }
+
+pub struct UnknownInputFileType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputFileType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputFileType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputFileType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputFile#${u.constructor:08x}'
+}
+
+fn (u UnknownInputFileType) is_input_file_type() {}
 
 pub interface InputFileLocationType {
 	Object
 	is_input_file_location_type()
 }
 
+pub struct UnknownInputFileLocationType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputFileLocationType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputFileLocationType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputFileLocationType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputFileLocation#${u.constructor:08x}'
+}
+
+fn (u UnknownInputFileLocationType) is_input_file_location_type() {}
+
 pub interface InputFolderPeerType {
 	Object
 	is_input_folder_peer_type()
 }
+
+pub struct UnknownInputFolderPeerType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputFolderPeerType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputFolderPeerType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputFolderPeerType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputFolderPeer#${u.constructor:08x}'
+}
+
+fn (u UnknownInputFolderPeerType) is_input_folder_peer_type() {}
 
 pub interface InputGameType {
 	Object
 	is_input_game_type()
 }
 
+pub struct UnknownInputGameType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputGameType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputGameType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputGameType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputGame#${u.constructor:08x}'
+}
+
+fn (u UnknownInputGameType) is_input_game_type() {}
+
 pub interface InputGeoPointType {
 	Object
 	is_input_geo_point_type()
 }
+
+pub struct UnknownInputGeoPointType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputGeoPointType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputGeoPointType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputGeoPointType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputGeoPoint#${u.constructor:08x}'
+}
+
+fn (u UnknownInputGeoPointType) is_input_geo_point_type() {}
 
 pub interface InputGroupCallType {
 	Object
 	is_input_group_call_type()
 }
 
+pub struct UnknownInputGroupCallType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputGroupCallType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputGroupCallType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputGroupCallType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputGroupCall#${u.constructor:08x}'
+}
+
+fn (u UnknownInputGroupCallType) is_input_group_call_type() {}
+
 pub interface InputInvoiceType {
 	Object
 	is_input_invoice_type()
 }
+
+pub struct UnknownInputInvoiceType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputInvoiceType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputInvoiceType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputInvoiceType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputInvoice#${u.constructor:08x}'
+}
+
+fn (u UnknownInputInvoiceType) is_input_invoice_type() {}
 
 pub interface InputMediaType {
 	Object
 	is_input_media_type()
 }
 
+pub struct UnknownInputMediaType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputMediaType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputMediaType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputMediaType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputMedia#${u.constructor:08x}'
+}
+
+fn (u UnknownInputMediaType) is_input_media_type() {}
+
 pub interface InputMessageType {
 	Object
 	is_input_message_type()
 }
+
+pub struct UnknownInputMessageType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputMessageType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputMessageType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputMessageType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputMessage#${u.constructor:08x}'
+}
+
+fn (u UnknownInputMessageType) is_input_message_type() {}
 
 pub interface InputNotifyPeerType {
 	Object
 	is_input_notify_peer_type()
 }
 
+pub struct UnknownInputNotifyPeerType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputNotifyPeerType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputNotifyPeerType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputNotifyPeerType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputNotifyPeer#${u.constructor:08x}'
+}
+
+fn (u UnknownInputNotifyPeerType) is_input_notify_peer_type() {}
+
 pub interface InputPasskeyCredentialType {
 	Object
 	is_input_passkey_credential_type()
 }
+
+pub struct UnknownInputPasskeyCredentialType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputPasskeyCredentialType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputPasskeyCredentialType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputPasskeyCredentialType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputPasskeyCredential#${u.constructor:08x}'
+}
+
+fn (u UnknownInputPasskeyCredentialType) is_input_passkey_credential_type() {}
 
 pub interface InputPasskeyResponseType {
 	Object
 	is_input_passkey_response_type()
 }
 
+pub struct UnknownInputPasskeyResponseType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputPasskeyResponseType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputPasskeyResponseType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputPasskeyResponseType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputPasskeyResponse#${u.constructor:08x}'
+}
+
+fn (u UnknownInputPasskeyResponseType) is_input_passkey_response_type() {}
+
 pub interface InputPaymentCredentialsType {
 	Object
 	is_input_payment_credentials_type()
 }
+
+pub struct UnknownInputPaymentCredentialsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputPaymentCredentialsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputPaymentCredentialsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputPaymentCredentialsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputPaymentCredentials#${u.constructor:08x}'
+}
+
+fn (u UnknownInputPaymentCredentialsType) is_input_payment_credentials_type() {}
 
 pub interface InputPeerType {
 	Object
 	is_input_peer_type()
 }
 
+pub struct UnknownInputPeerType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputPeerType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputPeerType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputPeerType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputPeer#${u.constructor:08x}'
+}
+
+fn (u UnknownInputPeerType) is_input_peer_type() {}
+
 pub interface InputPeerNotifySettingsType {
 	Object
 	is_input_peer_notify_settings_type()
 }
+
+pub struct UnknownInputPeerNotifySettingsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputPeerNotifySettingsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputPeerNotifySettingsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputPeerNotifySettingsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputPeerNotifySettings#${u.constructor:08x}'
+}
+
+fn (u UnknownInputPeerNotifySettingsType) is_input_peer_notify_settings_type() {}
 
 pub interface InputPhoneCallType {
 	Object
 	is_input_phone_call_type()
 }
 
+pub struct UnknownInputPhoneCallType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputPhoneCallType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputPhoneCallType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputPhoneCallType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputPhoneCall#${u.constructor:08x}'
+}
+
+fn (u UnknownInputPhoneCallType) is_input_phone_call_type() {}
+
 pub interface InputPhotoType {
 	Object
 	is_input_photo_type()
 }
+
+pub struct UnknownInputPhotoType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputPhotoType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputPhotoType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputPhotoType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputPhoto#${u.constructor:08x}'
+}
+
+fn (u UnknownInputPhotoType) is_input_photo_type() {}
 
 pub interface InputPrivacyKeyType {
 	Object
 	is_input_privacy_key_type()
 }
 
+pub struct UnknownInputPrivacyKeyType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputPrivacyKeyType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputPrivacyKeyType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputPrivacyKeyType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputPrivacyKey#${u.constructor:08x}'
+}
+
+fn (u UnknownInputPrivacyKeyType) is_input_privacy_key_type() {}
+
 pub interface InputPrivacyRuleType {
 	Object
 	is_input_privacy_rule_type()
 }
+
+pub struct UnknownInputPrivacyRuleType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputPrivacyRuleType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputPrivacyRuleType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputPrivacyRuleType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputPrivacyRule#${u.constructor:08x}'
+}
+
+fn (u UnknownInputPrivacyRuleType) is_input_privacy_rule_type() {}
 
 pub interface InputQuickReplyShortcutType {
 	Object
 	is_input_quick_reply_shortcut_type()
 }
 
+pub struct UnknownInputQuickReplyShortcutType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputQuickReplyShortcutType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputQuickReplyShortcutType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputQuickReplyShortcutType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputQuickReplyShortcut#${u.constructor:08x}'
+}
+
+fn (u UnknownInputQuickReplyShortcutType) is_input_quick_reply_shortcut_type() {}
+
 pub interface InputReplyToType {
 	Object
 	is_input_reply_to_type()
 }
+
+pub struct UnknownInputReplyToType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputReplyToType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputReplyToType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputReplyToType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputReplyTo#${u.constructor:08x}'
+}
+
+fn (u UnknownInputReplyToType) is_input_reply_to_type() {}
 
 pub interface InputSavedStarGiftType {
 	Object
 	is_input_saved_star_gift_type()
 }
 
+pub struct UnknownInputSavedStarGiftType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputSavedStarGiftType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputSavedStarGiftType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputSavedStarGiftType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputSavedStarGift#${u.constructor:08x}'
+}
+
+fn (u UnknownInputSavedStarGiftType) is_input_saved_star_gift_type() {}
+
 pub interface InputSecureFileType {
 	Object
 	is_input_secure_file_type()
 }
+
+pub struct UnknownInputSecureFileType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputSecureFileType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputSecureFileType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputSecureFileType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputSecureFile#${u.constructor:08x}'
+}
+
+fn (u UnknownInputSecureFileType) is_input_secure_file_type() {}
 
 pub interface InputSecureValueType {
 	Object
 	is_input_secure_value_type()
 }
 
+pub struct UnknownInputSecureValueType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputSecureValueType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputSecureValueType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputSecureValueType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputSecureValue#${u.constructor:08x}'
+}
+
+fn (u UnknownInputSecureValueType) is_input_secure_value_type() {}
+
 pub interface InputSingleMediaType {
 	Object
 	is_input_single_media_type()
 }
+
+pub struct UnknownInputSingleMediaType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputSingleMediaType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputSingleMediaType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputSingleMediaType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputSingleMedia#${u.constructor:08x}'
+}
+
+fn (u UnknownInputSingleMediaType) is_input_single_media_type() {}
 
 pub interface InputStarGiftAuctionType {
 	Object
 	is_input_star_gift_auction_type()
 }
 
+pub struct UnknownInputStarGiftAuctionType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputStarGiftAuctionType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputStarGiftAuctionType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputStarGiftAuctionType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputStarGiftAuction#${u.constructor:08x}'
+}
+
+fn (u UnknownInputStarGiftAuctionType) is_input_star_gift_auction_type() {}
+
 pub interface InputStarsTransactionType {
 	Object
 	is_input_stars_transaction_type()
 }
+
+pub struct UnknownInputStarsTransactionType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputStarsTransactionType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputStarsTransactionType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputStarsTransactionType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputStarsTransaction#${u.constructor:08x}'
+}
+
+fn (u UnknownInputStarsTransactionType) is_input_stars_transaction_type() {}
 
 pub interface InputStickerSetType {
 	Object
 	is_input_sticker_set_type()
 }
 
+pub struct UnknownInputStickerSetType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputStickerSetType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputStickerSetType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputStickerSetType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputStickerSet#${u.constructor:08x}'
+}
+
+fn (u UnknownInputStickerSetType) is_input_sticker_set_type() {}
+
 pub interface InputStickerSetItemType {
 	Object
 	is_input_sticker_set_item_type()
 }
+
+pub struct UnknownInputStickerSetItemType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputStickerSetItemType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputStickerSetItemType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputStickerSetItemType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputStickerSetItem#${u.constructor:08x}'
+}
+
+fn (u UnknownInputStickerSetItemType) is_input_sticker_set_item_type() {}
 
 pub interface InputStickeredMediaType {
 	Object
 	is_input_stickered_media_type()
 }
 
+pub struct UnknownInputStickeredMediaType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputStickeredMediaType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputStickeredMediaType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputStickeredMediaType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputStickeredMedia#${u.constructor:08x}'
+}
+
+fn (u UnknownInputStickeredMediaType) is_input_stickered_media_type() {}
+
 pub interface InputStorePaymentPurposeType {
 	Object
 	is_input_store_payment_purpose_type()
 }
+
+pub struct UnknownInputStorePaymentPurposeType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputStorePaymentPurposeType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputStorePaymentPurposeType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputStorePaymentPurposeType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputStorePaymentPurpose#${u.constructor:08x}'
+}
+
+fn (u UnknownInputStorePaymentPurposeType) is_input_store_payment_purpose_type() {}
 
 pub interface InputThemeType {
 	Object
 	is_input_theme_type()
 }
 
+pub struct UnknownInputThemeType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputThemeType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputThemeType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputThemeType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputTheme#${u.constructor:08x}'
+}
+
+fn (u UnknownInputThemeType) is_input_theme_type() {}
+
 pub interface InputThemeSettingsType {
 	Object
 	is_input_theme_settings_type()
 }
+
+pub struct UnknownInputThemeSettingsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputThemeSettingsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputThemeSettingsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputThemeSettingsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputThemeSettings#${u.constructor:08x}'
+}
+
+fn (u UnknownInputThemeSettingsType) is_input_theme_settings_type() {}
 
 pub interface InputUserType {
 	Object
 	is_input_user_type()
 }
 
+pub struct UnknownInputUserType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputUserType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputUserType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputUserType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputUser#${u.constructor:08x}'
+}
+
+fn (u UnknownInputUserType) is_input_user_type() {}
+
 pub interface InputWallPaperType {
 	Object
 	is_input_wall_paper_type()
 }
+
+pub struct UnknownInputWallPaperType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputWallPaperType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputWallPaperType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputWallPaperType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputWallPaper#${u.constructor:08x}'
+}
+
+fn (u UnknownInputWallPaperType) is_input_wall_paper_type() {}
 
 pub interface InputWebDocumentType {
 	Object
 	is_input_web_document_type()
 }
 
+pub struct UnknownInputWebDocumentType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputWebDocumentType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputWebDocumentType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputWebDocumentType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputWebDocument#${u.constructor:08x}'
+}
+
+fn (u UnknownInputWebDocumentType) is_input_web_document_type() {}
+
 pub interface InputWebFileLocationType {
 	Object
 	is_input_web_file_location_type()
 }
+
+pub struct UnknownInputWebFileLocationType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInputWebFileLocationType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInputWebFileLocationType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInputWebFileLocationType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown InputWebFileLocation#${u.constructor:08x}'
+}
+
+fn (u UnknownInputWebFileLocationType) is_input_web_file_location_type() {}
 
 pub interface InvoiceType {
 	Object
 	is_invoice_type()
 }
 
+pub struct UnknownInvoiceType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownInvoiceType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownInvoiceType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownInvoiceType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown Invoice#${u.constructor:08x}'
+}
+
+fn (u UnknownInvoiceType) is_invoice_type() {}
+
 pub interface IpPortType {
 	Object
 	is_ip_port_type()
 }
+
+pub struct UnknownIpPortType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownIpPortType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownIpPortType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownIpPortType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown IpPort#${u.constructor:08x}'
+}
+
+fn (u UnknownIpPortType) is_ip_port_type() {}
 
 pub interface JSONObjectValueType {
 	Object
 	is_j_s_o_n_object_value_type()
 }
 
+pub struct UnknownJSONObjectValueType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownJSONObjectValueType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownJSONObjectValueType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownJSONObjectValueType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown JSONObjectValue#${u.constructor:08x}'
+}
+
+fn (u UnknownJSONObjectValueType) is_j_s_o_n_object_value_type() {}
+
 pub interface JSONValueType {
 	Object
 	is_j_s_o_n_value_type()
 }
+
+pub struct UnknownJSONValueType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownJSONValueType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownJSONValueType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownJSONValueType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown JSONValue#${u.constructor:08x}'
+}
+
+fn (u UnknownJSONValueType) is_j_s_o_n_value_type() {}
 
 pub interface KeyboardButtonType {
 	Object
 	is_keyboard_button_type()
 }
 
+pub struct UnknownKeyboardButtonType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownKeyboardButtonType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownKeyboardButtonType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownKeyboardButtonType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown KeyboardButton#${u.constructor:08x}'
+}
+
+fn (u UnknownKeyboardButtonType) is_keyboard_button_type() {}
+
 pub interface KeyboardButtonRowType {
 	Object
 	is_keyboard_button_row_type()
 }
+
+pub struct UnknownKeyboardButtonRowType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownKeyboardButtonRowType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownKeyboardButtonRowType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownKeyboardButtonRowType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown KeyboardButtonRow#${u.constructor:08x}'
+}
+
+fn (u UnknownKeyboardButtonRowType) is_keyboard_button_row_type() {}
 
 pub interface KeyboardButtonStyleType {
 	Object
 	is_keyboard_button_style_type()
 }
 
+pub struct UnknownKeyboardButtonStyleType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownKeyboardButtonStyleType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownKeyboardButtonStyleType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownKeyboardButtonStyleType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown KeyboardButtonStyle#${u.constructor:08x}'
+}
+
+fn (u UnknownKeyboardButtonStyleType) is_keyboard_button_style_type() {}
+
 pub interface LabeledPriceType {
 	Object
 	is_labeled_price_type()
 }
+
+pub struct UnknownLabeledPriceType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownLabeledPriceType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownLabeledPriceType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownLabeledPriceType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown LabeledPrice#${u.constructor:08x}'
+}
+
+fn (u UnknownLabeledPriceType) is_labeled_price_type() {}
 
 pub interface LangPackDifferenceType {
 	Object
 	is_lang_pack_difference_type()
 }
 
+pub struct UnknownLangPackDifferenceType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownLangPackDifferenceType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownLangPackDifferenceType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownLangPackDifferenceType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown LangPackDifference#${u.constructor:08x}'
+}
+
+fn (u UnknownLangPackDifferenceType) is_lang_pack_difference_type() {}
+
 pub interface LangPackLanguageType {
 	Object
 	is_lang_pack_language_type()
 }
+
+pub struct UnknownLangPackLanguageType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownLangPackLanguageType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownLangPackLanguageType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownLangPackLanguageType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown LangPackLanguage#${u.constructor:08x}'
+}
+
+fn (u UnknownLangPackLanguageType) is_lang_pack_language_type() {}
 
 pub interface LangPackStringType {
 	Object
 	is_lang_pack_string_type()
 }
 
+pub struct UnknownLangPackStringType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownLangPackStringType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownLangPackStringType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownLangPackStringType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown LangPackString#${u.constructor:08x}'
+}
+
+fn (u UnknownLangPackStringType) is_lang_pack_string_type() {}
+
 pub interface MaskCoordsType {
 	Object
 	is_mask_coords_type()
 }
+
+pub struct UnknownMaskCoordsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMaskCoordsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMaskCoordsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMaskCoordsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown MaskCoords#${u.constructor:08x}'
+}
+
+fn (u UnknownMaskCoordsType) is_mask_coords_type() {}
 
 pub interface MediaAreaType {
 	Object
 	is_media_area_type()
 }
 
+pub struct UnknownMediaAreaType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMediaAreaType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMediaAreaType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMediaAreaType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown MediaArea#${u.constructor:08x}'
+}
+
+fn (u UnknownMediaAreaType) is_media_area_type() {}
+
 pub interface MediaAreaCoordinatesType {
 	Object
 	is_media_area_coordinates_type()
 }
+
+pub struct UnknownMediaAreaCoordinatesType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMediaAreaCoordinatesType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMediaAreaCoordinatesType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMediaAreaCoordinatesType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown MediaAreaCoordinates#${u.constructor:08x}'
+}
+
+fn (u UnknownMediaAreaCoordinatesType) is_media_area_coordinates_type() {}
 
 pub interface MessageType {
 	Object
 	is_message_type()
 }
 
+pub struct UnknownMessageType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessageType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessageType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessageType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown Message#${u.constructor:08x}'
+}
+
+fn (u UnknownMessageType) is_message_type() {}
+
 pub interface MessageActionType {
 	Object
 	is_message_action_type()
 }
+
+pub struct UnknownMessageActionType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessageActionType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessageActionType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessageActionType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown MessageAction#${u.constructor:08x}'
+}
+
+fn (u UnknownMessageActionType) is_message_action_type() {}
 
 pub interface MessageEntityType {
 	Object
 	is_message_entity_type()
 }
 
+pub struct UnknownMessageEntityType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessageEntityType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessageEntityType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessageEntityType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown MessageEntity#${u.constructor:08x}'
+}
+
+fn (u UnknownMessageEntityType) is_message_entity_type() {}
+
 pub interface MessageExtendedMediaType {
 	Object
 	is_message_extended_media_type()
 }
+
+pub struct UnknownMessageExtendedMediaType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessageExtendedMediaType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessageExtendedMediaType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessageExtendedMediaType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown MessageExtendedMedia#${u.constructor:08x}'
+}
+
+fn (u UnknownMessageExtendedMediaType) is_message_extended_media_type() {}
 
 pub interface MessageFwdHeaderType {
 	Object
 	is_message_fwd_header_type()
 }
 
+pub struct UnknownMessageFwdHeaderType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessageFwdHeaderType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessageFwdHeaderType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessageFwdHeaderType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown MessageFwdHeader#${u.constructor:08x}'
+}
+
+fn (u UnknownMessageFwdHeaderType) is_message_fwd_header_type() {}
+
 pub interface MessageMediaType {
 	Object
 	is_message_media_type()
 }
+
+pub struct UnknownMessageMediaType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessageMediaType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessageMediaType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessageMediaType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown MessageMedia#${u.constructor:08x}'
+}
+
+fn (u UnknownMessageMediaType) is_message_media_type() {}
 
 pub interface MessagePeerReactionType {
 	Object
 	is_message_peer_reaction_type()
 }
 
+pub struct UnknownMessagePeerReactionType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagePeerReactionType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagePeerReactionType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagePeerReactionType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown MessagePeerReaction#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagePeerReactionType) is_message_peer_reaction_type() {}
+
 pub interface MessagePeerVoteType {
 	Object
 	is_message_peer_vote_type()
 }
+
+pub struct UnknownMessagePeerVoteType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagePeerVoteType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagePeerVoteType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagePeerVoteType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown MessagePeerVote#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagePeerVoteType) is_message_peer_vote_type() {}
 
 pub interface MessageRangeType {
 	Object
 	is_message_range_type()
 }
 
+pub struct UnknownMessageRangeType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessageRangeType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessageRangeType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessageRangeType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown MessageRange#${u.constructor:08x}'
+}
+
+fn (u UnknownMessageRangeType) is_message_range_type() {}
+
 pub interface MessageReactionsType {
 	Object
 	is_message_reactions_type()
 }
+
+pub struct UnknownMessageReactionsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessageReactionsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessageReactionsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessageReactionsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown MessageReactions#${u.constructor:08x}'
+}
+
+fn (u UnknownMessageReactionsType) is_message_reactions_type() {}
 
 pub interface MessageReactorType {
 	Object
 	is_message_reactor_type()
 }
 
+pub struct UnknownMessageReactorType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessageReactorType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessageReactorType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessageReactorType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown MessageReactor#${u.constructor:08x}'
+}
+
+fn (u UnknownMessageReactorType) is_message_reactor_type() {}
+
 pub interface MessageRepliesType {
 	Object
 	is_message_replies_type()
 }
+
+pub struct UnknownMessageRepliesType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessageRepliesType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessageRepliesType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessageRepliesType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown MessageReplies#${u.constructor:08x}'
+}
+
+fn (u UnknownMessageRepliesType) is_message_replies_type() {}
 
 pub interface MessageReplyHeaderType {
 	Object
 	is_message_reply_header_type()
 }
 
+pub struct UnknownMessageReplyHeaderType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessageReplyHeaderType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessageReplyHeaderType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessageReplyHeaderType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown MessageReplyHeader#${u.constructor:08x}'
+}
+
+fn (u UnknownMessageReplyHeaderType) is_message_reply_header_type() {}
+
 pub interface MessageReportOptionType {
 	Object
 	is_message_report_option_type()
 }
+
+pub struct UnknownMessageReportOptionType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessageReportOptionType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessageReportOptionType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessageReportOptionType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown MessageReportOption#${u.constructor:08x}'
+}
+
+fn (u UnknownMessageReportOptionType) is_message_report_option_type() {}
 
 pub interface MessageViewsType {
 	Object
 	is_message_views_type()
 }
 
+pub struct UnknownMessageViewsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessageViewsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessageViewsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessageViewsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown MessageViews#${u.constructor:08x}'
+}
+
+fn (u UnknownMessageViewsType) is_message_views_type() {}
+
 pub interface MessagesFilterType {
 	Object
 	is_messages_filter_type()
 }
+
+pub struct UnknownMessagesFilterType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesFilterType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesFilterType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesFilterType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown MessagesFilter#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesFilterType) is_messages_filter_type() {}
 
 pub interface MissingInviteeType {
 	Object
 	is_missing_invitee_type()
 }
 
+pub struct UnknownMissingInviteeType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMissingInviteeType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMissingInviteeType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMissingInviteeType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown MissingInvitee#${u.constructor:08x}'
+}
+
+fn (u UnknownMissingInviteeType) is_missing_invitee_type() {}
+
 pub interface MsgDetailedInfoType {
 	Object
 	is_msg_detailed_info_type()
 }
+
+pub struct UnknownMsgDetailedInfoType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMsgDetailedInfoType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMsgDetailedInfoType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMsgDetailedInfoType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown MsgDetailedInfo#${u.constructor:08x}'
+}
+
+fn (u UnknownMsgDetailedInfoType) is_msg_detailed_info_type() {}
 
 pub interface MsgResendReqType {
 	Object
 	is_msg_resend_req_type()
 }
 
+pub struct UnknownMsgResendReqType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMsgResendReqType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMsgResendReqType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMsgResendReqType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown MsgResendReq#${u.constructor:08x}'
+}
+
+fn (u UnknownMsgResendReqType) is_msg_resend_req_type() {}
+
 pub interface MsgsAckType {
 	Object
 	is_msgs_ack_type()
 }
+
+pub struct UnknownMsgsAckType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMsgsAckType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMsgsAckType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMsgsAckType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown MsgsAck#${u.constructor:08x}'
+}
+
+fn (u UnknownMsgsAckType) is_msgs_ack_type() {}
 
 pub interface MsgsAllInfoType {
 	Object
 	is_msgs_all_info_type()
 }
 
+pub struct UnknownMsgsAllInfoType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMsgsAllInfoType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMsgsAllInfoType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMsgsAllInfoType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown MsgsAllInfo#${u.constructor:08x}'
+}
+
+fn (u UnknownMsgsAllInfoType) is_msgs_all_info_type() {}
+
 pub interface MsgsStateInfoType {
 	Object
 	is_msgs_state_info_type()
 }
+
+pub struct UnknownMsgsStateInfoType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMsgsStateInfoType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMsgsStateInfoType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMsgsStateInfoType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown MsgsStateInfo#${u.constructor:08x}'
+}
+
+fn (u UnknownMsgsStateInfoType) is_msgs_state_info_type() {}
 
 pub interface MsgsStateReqType {
 	Object
 	is_msgs_state_req_type()
 }
 
+pub struct UnknownMsgsStateReqType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMsgsStateReqType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMsgsStateReqType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMsgsStateReqType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown MsgsStateReq#${u.constructor:08x}'
+}
+
+fn (u UnknownMsgsStateReqType) is_msgs_state_req_type() {}
+
 pub interface MyBoostType {
 	Object
 	is_my_boost_type()
 }
+
+pub struct UnknownMyBoostType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMyBoostType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMyBoostType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMyBoostType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown MyBoost#${u.constructor:08x}'
+}
+
+fn (u UnknownMyBoostType) is_my_boost_type() {}
 
 pub interface NearestDcType {
 	Object
 	is_nearest_dc_type()
 }
 
+pub struct UnknownNearestDcType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownNearestDcType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownNearestDcType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownNearestDcType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown NearestDc#${u.constructor:08x}'
+}
+
+fn (u UnknownNearestDcType) is_nearest_dc_type() {}
+
 pub interface NewSessionType {
 	Object
 	is_new_session_type()
 }
+
+pub struct UnknownNewSessionType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownNewSessionType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownNewSessionType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownNewSessionType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown NewSession#${u.constructor:08x}'
+}
+
+fn (u UnknownNewSessionType) is_new_session_type() {}
 
 pub interface NotificationSoundType {
 	Object
 	is_notification_sound_type()
 }
 
+pub struct UnknownNotificationSoundType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownNotificationSoundType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownNotificationSoundType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownNotificationSoundType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown NotificationSound#${u.constructor:08x}'
+}
+
+fn (u UnknownNotificationSoundType) is_notification_sound_type() {}
+
 pub interface NotifyPeerType {
 	Object
 	is_notify_peer_type()
 }
+
+pub struct UnknownNotifyPeerType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownNotifyPeerType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownNotifyPeerType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownNotifyPeerType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown NotifyPeer#${u.constructor:08x}'
+}
+
+fn (u UnknownNotifyPeerType) is_notify_peer_type() {}
 
 pub interface NullType {
 	Object
 	is_null_type()
 }
 
+pub struct UnknownNullType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownNullType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownNullType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownNullType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown Null#${u.constructor:08x}'
+}
+
+fn (u UnknownNullType) is_null_type() {}
+
 pub interface OutboxReadDateType {
 	Object
 	is_outbox_read_date_type()
 }
+
+pub struct UnknownOutboxReadDateType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownOutboxReadDateType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownOutboxReadDateType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownOutboxReadDateType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown OutboxReadDate#${u.constructor:08x}'
+}
+
+fn (u UnknownOutboxReadDateType) is_outbox_read_date_type() {}
 
 pub interface PQInnerDataType {
 	Object
 	is_p_q_inner_data_type()
 }
 
+pub struct UnknownPQInnerDataType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPQInnerDataType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPQInnerDataType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPQInnerDataType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown P_Q_inner_data#${u.constructor:08x}'
+}
+
+fn (u UnknownPQInnerDataType) is_p_q_inner_data_type() {}
+
 pub interface PageType {
 	Object
 	is_page_type()
 }
+
+pub struct UnknownPageType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPageType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPageType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPageType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown Page#${u.constructor:08x}'
+}
+
+fn (u UnknownPageType) is_page_type() {}
 
 pub interface PageBlockType {
 	Object
 	is_page_block_type()
 }
 
+pub struct UnknownPageBlockType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPageBlockType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPageBlockType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPageBlockType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PageBlock#${u.constructor:08x}'
+}
+
+fn (u UnknownPageBlockType) is_page_block_type() {}
+
 pub interface PageCaptionType {
 	Object
 	is_page_caption_type()
 }
+
+pub struct UnknownPageCaptionType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPageCaptionType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPageCaptionType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPageCaptionType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PageCaption#${u.constructor:08x}'
+}
+
+fn (u UnknownPageCaptionType) is_page_caption_type() {}
 
 pub interface PageListItemType {
 	Object
 	is_page_list_item_type()
 }
 
+pub struct UnknownPageListItemType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPageListItemType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPageListItemType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPageListItemType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PageListItem#${u.constructor:08x}'
+}
+
+fn (u UnknownPageListItemType) is_page_list_item_type() {}
+
 pub interface PageListOrderedItemType {
 	Object
 	is_page_list_ordered_item_type()
 }
+
+pub struct UnknownPageListOrderedItemType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPageListOrderedItemType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPageListOrderedItemType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPageListOrderedItemType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PageListOrderedItem#${u.constructor:08x}'
+}
+
+fn (u UnknownPageListOrderedItemType) is_page_list_ordered_item_type() {}
 
 pub interface PageRelatedArticleType {
 	Object
 	is_page_related_article_type()
 }
 
+pub struct UnknownPageRelatedArticleType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPageRelatedArticleType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPageRelatedArticleType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPageRelatedArticleType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PageRelatedArticle#${u.constructor:08x}'
+}
+
+fn (u UnknownPageRelatedArticleType) is_page_related_article_type() {}
+
 pub interface PageTableCellType {
 	Object
 	is_page_table_cell_type()
 }
+
+pub struct UnknownPageTableCellType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPageTableCellType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPageTableCellType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPageTableCellType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PageTableCell#${u.constructor:08x}'
+}
+
+fn (u UnknownPageTableCellType) is_page_table_cell_type() {}
 
 pub interface PageTableRowType {
 	Object
 	is_page_table_row_type()
 }
 
+pub struct UnknownPageTableRowType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPageTableRowType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPageTableRowType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPageTableRowType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PageTableRow#${u.constructor:08x}'
+}
+
+fn (u UnknownPageTableRowType) is_page_table_row_type() {}
+
 pub interface PaidReactionPrivacyType {
 	Object
 	is_paid_reaction_privacy_type()
 }
+
+pub struct UnknownPaidReactionPrivacyType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaidReactionPrivacyType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaidReactionPrivacyType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaidReactionPrivacyType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PaidReactionPrivacy#${u.constructor:08x}'
+}
+
+fn (u UnknownPaidReactionPrivacyType) is_paid_reaction_privacy_type() {}
 
 pub interface PasskeyType {
 	Object
 	is_passkey_type()
 }
 
+pub struct UnknownPasskeyType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPasskeyType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPasskeyType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPasskeyType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown Passkey#${u.constructor:08x}'
+}
+
+fn (u UnknownPasskeyType) is_passkey_type() {}
+
 pub interface PasswordKdfAlgoType {
 	Object
 	is_password_kdf_algo_type()
 }
+
+pub struct UnknownPasswordKdfAlgoType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPasswordKdfAlgoType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPasswordKdfAlgoType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPasswordKdfAlgoType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PasswordKdfAlgo#${u.constructor:08x}'
+}
+
+fn (u UnknownPasswordKdfAlgoType) is_password_kdf_algo_type() {}
 
 pub interface PaymentChargeType {
 	Object
 	is_payment_charge_type()
 }
 
+pub struct UnknownPaymentChargeType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaymentChargeType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaymentChargeType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaymentChargeType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PaymentCharge#${u.constructor:08x}'
+}
+
+fn (u UnknownPaymentChargeType) is_payment_charge_type() {}
+
 pub interface PaymentFormMethodType {
 	Object
 	is_payment_form_method_type()
 }
+
+pub struct UnknownPaymentFormMethodType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaymentFormMethodType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaymentFormMethodType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaymentFormMethodType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PaymentFormMethod#${u.constructor:08x}'
+}
+
+fn (u UnknownPaymentFormMethodType) is_payment_form_method_type() {}
 
 pub interface PaymentRequestedInfoType {
 	Object
 	is_payment_requested_info_type()
 }
 
+pub struct UnknownPaymentRequestedInfoType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaymentRequestedInfoType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaymentRequestedInfoType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaymentRequestedInfoType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PaymentRequestedInfo#${u.constructor:08x}'
+}
+
+fn (u UnknownPaymentRequestedInfoType) is_payment_requested_info_type() {}
+
 pub interface PaymentSavedCredentialsType {
 	Object
 	is_payment_saved_credentials_type()
 }
+
+pub struct UnknownPaymentSavedCredentialsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaymentSavedCredentialsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaymentSavedCredentialsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaymentSavedCredentialsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PaymentSavedCredentials#${u.constructor:08x}'
+}
+
+fn (u UnknownPaymentSavedCredentialsType) is_payment_saved_credentials_type() {}
 
 pub interface PeerType {
 	Object
 	is_peer_type()
 }
 
+pub struct UnknownPeerType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPeerType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPeerType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPeerType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown Peer#${u.constructor:08x}'
+}
+
+fn (u UnknownPeerType) is_peer_type() {}
+
 pub interface PeerBlockedType {
 	Object
 	is_peer_blocked_type()
 }
+
+pub struct UnknownPeerBlockedType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPeerBlockedType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPeerBlockedType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPeerBlockedType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PeerBlocked#${u.constructor:08x}'
+}
+
+fn (u UnknownPeerBlockedType) is_peer_blocked_type() {}
 
 pub interface PeerColorType {
 	Object
 	is_peer_color_type()
 }
 
+pub struct UnknownPeerColorType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPeerColorType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPeerColorType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPeerColorType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PeerColor#${u.constructor:08x}'
+}
+
+fn (u UnknownPeerColorType) is_peer_color_type() {}
+
 pub interface PeerLocatedType {
 	Object
 	is_peer_located_type()
 }
+
+pub struct UnknownPeerLocatedType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPeerLocatedType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPeerLocatedType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPeerLocatedType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PeerLocated#${u.constructor:08x}'
+}
+
+fn (u UnknownPeerLocatedType) is_peer_located_type() {}
 
 pub interface PeerNotifySettingsType {
 	Object
 	is_peer_notify_settings_type()
 }
 
+pub struct UnknownPeerNotifySettingsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPeerNotifySettingsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPeerNotifySettingsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPeerNotifySettingsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PeerNotifySettings#${u.constructor:08x}'
+}
+
+fn (u UnknownPeerNotifySettingsType) is_peer_notify_settings_type() {}
+
 pub interface PeerSettingsType {
 	Object
 	is_peer_settings_type()
 }
+
+pub struct UnknownPeerSettingsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPeerSettingsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPeerSettingsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPeerSettingsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PeerSettings#${u.constructor:08x}'
+}
+
+fn (u UnknownPeerSettingsType) is_peer_settings_type() {}
 
 pub interface PeerStoriesType {
 	Object
 	is_peer_stories_type()
 }
 
+pub struct UnknownPeerStoriesType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPeerStoriesType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPeerStoriesType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPeerStoriesType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PeerStories#${u.constructor:08x}'
+}
+
+fn (u UnknownPeerStoriesType) is_peer_stories_type() {}
+
 pub interface PendingSuggestionType {
 	Object
 	is_pending_suggestion_type()
 }
+
+pub struct UnknownPendingSuggestionType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPendingSuggestionType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPendingSuggestionType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPendingSuggestionType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PendingSuggestion#${u.constructor:08x}'
+}
+
+fn (u UnknownPendingSuggestionType) is_pending_suggestion_type() {}
 
 pub interface PhoneCallType {
 	Object
 	is_phone_call_type()
 }
 
+pub struct UnknownPhoneCallType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPhoneCallType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPhoneCallType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPhoneCallType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PhoneCall#${u.constructor:08x}'
+}
+
+fn (u UnknownPhoneCallType) is_phone_call_type() {}
+
 pub interface PhoneCallDiscardReasonType {
 	Object
 	is_phone_call_discard_reason_type()
 }
+
+pub struct UnknownPhoneCallDiscardReasonType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPhoneCallDiscardReasonType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPhoneCallDiscardReasonType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPhoneCallDiscardReasonType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PhoneCallDiscardReason#${u.constructor:08x}'
+}
+
+fn (u UnknownPhoneCallDiscardReasonType) is_phone_call_discard_reason_type() {}
 
 pub interface PhoneCallProtocolType {
 	Object
 	is_phone_call_protocol_type()
 }
 
+pub struct UnknownPhoneCallProtocolType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPhoneCallProtocolType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPhoneCallProtocolType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPhoneCallProtocolType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PhoneCallProtocol#${u.constructor:08x}'
+}
+
+fn (u UnknownPhoneCallProtocolType) is_phone_call_protocol_type() {}
+
 pub interface PhoneConnectionType {
 	Object
 	is_phone_connection_type()
 }
+
+pub struct UnknownPhoneConnectionType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPhoneConnectionType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPhoneConnectionType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPhoneConnectionType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PhoneConnection#${u.constructor:08x}'
+}
+
+fn (u UnknownPhoneConnectionType) is_phone_connection_type() {}
 
 pub interface PhotoType {
 	Object
 	is_photo_type()
 }
 
+pub struct UnknownPhotoType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPhotoType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPhotoType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPhotoType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown Photo#${u.constructor:08x}'
+}
+
+fn (u UnknownPhotoType) is_photo_type() {}
+
 pub interface PhotoSizeType {
 	Object
 	is_photo_size_type()
 }
+
+pub struct UnknownPhotoSizeType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPhotoSizeType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPhotoSizeType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPhotoSizeType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PhotoSize#${u.constructor:08x}'
+}
+
+fn (u UnknownPhotoSizeType) is_photo_size_type() {}
 
 pub interface PollType {
 	Object
 	is_poll_type()
 }
 
+pub struct UnknownPollType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPollType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPollType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPollType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown Poll#${u.constructor:08x}'
+}
+
+fn (u UnknownPollType) is_poll_type() {}
+
 pub interface PollAnswerType {
 	Object
 	is_poll_answer_type()
 }
+
+pub struct UnknownPollAnswerType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPollAnswerType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPollAnswerType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPollAnswerType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PollAnswer#${u.constructor:08x}'
+}
+
+fn (u UnknownPollAnswerType) is_poll_answer_type() {}
 
 pub interface PollAnswerVotersType {
 	Object
 	is_poll_answer_voters_type()
 }
 
+pub struct UnknownPollAnswerVotersType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPollAnswerVotersType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPollAnswerVotersType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPollAnswerVotersType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PollAnswerVoters#${u.constructor:08x}'
+}
+
+fn (u UnknownPollAnswerVotersType) is_poll_answer_voters_type() {}
+
 pub interface PollResultsType {
 	Object
 	is_poll_results_type()
 }
+
+pub struct UnknownPollResultsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPollResultsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPollResultsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPollResultsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PollResults#${u.constructor:08x}'
+}
+
+fn (u UnknownPollResultsType) is_poll_results_type() {}
 
 pub interface PongType {
 	Object
 	is_pong_type()
 }
 
+pub struct UnknownPongType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPongType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPongType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPongType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown Pong#${u.constructor:08x}'
+}
+
+fn (u UnknownPongType) is_pong_type() {}
+
 pub interface PopularContactType {
 	Object
 	is_popular_contact_type()
 }
+
+pub struct UnknownPopularContactType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPopularContactType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPopularContactType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPopularContactType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PopularContact#${u.constructor:08x}'
+}
+
+fn (u UnknownPopularContactType) is_popular_contact_type() {}
 
 pub interface PostAddressType {
 	Object
 	is_post_address_type()
 }
 
+pub struct UnknownPostAddressType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPostAddressType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPostAddressType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPostAddressType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PostAddress#${u.constructor:08x}'
+}
+
+fn (u UnknownPostAddressType) is_post_address_type() {}
+
 pub interface PostInteractionCountersType {
 	Object
 	is_post_interaction_counters_type()
 }
+
+pub struct UnknownPostInteractionCountersType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPostInteractionCountersType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPostInteractionCountersType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPostInteractionCountersType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PostInteractionCounters#${u.constructor:08x}'
+}
+
+fn (u UnknownPostInteractionCountersType) is_post_interaction_counters_type() {}
 
 pub interface PremiumGiftCodeOptionType {
 	Object
 	is_premium_gift_code_option_type()
 }
 
+pub struct UnknownPremiumGiftCodeOptionType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPremiumGiftCodeOptionType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPremiumGiftCodeOptionType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPremiumGiftCodeOptionType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PremiumGiftCodeOption#${u.constructor:08x}'
+}
+
+fn (u UnknownPremiumGiftCodeOptionType) is_premium_gift_code_option_type() {}
+
 pub interface PremiumSubscriptionOptionType {
 	Object
 	is_premium_subscription_option_type()
 }
+
+pub struct UnknownPremiumSubscriptionOptionType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPremiumSubscriptionOptionType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPremiumSubscriptionOptionType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPremiumSubscriptionOptionType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PremiumSubscriptionOption#${u.constructor:08x}'
+}
+
+fn (u UnknownPremiumSubscriptionOptionType) is_premium_subscription_option_type() {}
 
 pub interface PrepaidGiveawayType {
 	Object
 	is_prepaid_giveaway_type()
 }
 
+pub struct UnknownPrepaidGiveawayType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPrepaidGiveawayType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPrepaidGiveawayType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPrepaidGiveawayType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PrepaidGiveaway#${u.constructor:08x}'
+}
+
+fn (u UnknownPrepaidGiveawayType) is_prepaid_giveaway_type() {}
+
 pub interface PrivacyKeyType {
 	Object
 	is_privacy_key_type()
 }
+
+pub struct UnknownPrivacyKeyType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPrivacyKeyType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPrivacyKeyType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPrivacyKeyType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PrivacyKey#${u.constructor:08x}'
+}
+
+fn (u UnknownPrivacyKeyType) is_privacy_key_type() {}
 
 pub interface PrivacyRuleType {
 	Object
 	is_privacy_rule_type()
 }
 
+pub struct UnknownPrivacyRuleType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPrivacyRuleType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPrivacyRuleType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPrivacyRuleType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PrivacyRule#${u.constructor:08x}'
+}
+
+fn (u UnknownPrivacyRuleType) is_privacy_rule_type() {}
+
 pub interface ProfileTabType {
 	Object
 	is_profile_tab_type()
 }
+
+pub struct UnknownProfileTabType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownProfileTabType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownProfileTabType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownProfileTabType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ProfileTab#${u.constructor:08x}'
+}
+
+fn (u UnknownProfileTabType) is_profile_tab_type() {}
 
 pub interface PublicForwardType {
 	Object
 	is_public_forward_type()
 }
 
+pub struct UnknownPublicForwardType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPublicForwardType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPublicForwardType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPublicForwardType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown PublicForward#${u.constructor:08x}'
+}
+
+fn (u UnknownPublicForwardType) is_public_forward_type() {}
+
 pub interface QuickReplyType {
 	Object
 	is_quick_reply_type()
 }
+
+pub struct UnknownQuickReplyType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownQuickReplyType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownQuickReplyType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownQuickReplyType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown QuickReply#${u.constructor:08x}'
+}
+
+fn (u UnknownQuickReplyType) is_quick_reply_type() {}
 
 pub interface ReactionType {
 	Object
 	is_reaction_type()
 }
 
+pub struct UnknownReactionType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownReactionType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownReactionType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownReactionType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown Reaction#${u.constructor:08x}'
+}
+
+fn (u UnknownReactionType) is_reaction_type() {}
+
 pub interface ReactionCountType {
 	Object
 	is_reaction_count_type()
 }
+
+pub struct UnknownReactionCountType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownReactionCountType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownReactionCountType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownReactionCountType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ReactionCount#${u.constructor:08x}'
+}
+
+fn (u UnknownReactionCountType) is_reaction_count_type() {}
 
 pub interface ReactionNotificationsFromType {
 	Object
 	is_reaction_notifications_from_type()
 }
 
+pub struct UnknownReactionNotificationsFromType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownReactionNotificationsFromType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownReactionNotificationsFromType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownReactionNotificationsFromType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ReactionNotificationsFrom#${u.constructor:08x}'
+}
+
+fn (u UnknownReactionNotificationsFromType) is_reaction_notifications_from_type() {}
+
 pub interface ReactionsNotifySettingsType {
 	Object
 	is_reactions_notify_settings_type()
 }
+
+pub struct UnknownReactionsNotifySettingsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownReactionsNotifySettingsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownReactionsNotifySettingsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownReactionsNotifySettingsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ReactionsNotifySettings#${u.constructor:08x}'
+}
+
+fn (u UnknownReactionsNotifySettingsType) is_reactions_notify_settings_type() {}
 
 pub interface ReadParticipantDateType {
 	Object
 	is_read_participant_date_type()
 }
 
+pub struct UnknownReadParticipantDateType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownReadParticipantDateType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownReadParticipantDateType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownReadParticipantDateType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ReadParticipantDate#${u.constructor:08x}'
+}
+
+fn (u UnknownReadParticipantDateType) is_read_participant_date_type() {}
+
 pub interface ReceivedNotifyMessageType {
 	Object
 	is_received_notify_message_type()
 }
+
+pub struct UnknownReceivedNotifyMessageType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownReceivedNotifyMessageType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownReceivedNotifyMessageType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownReceivedNotifyMessageType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ReceivedNotifyMessage#${u.constructor:08x}'
+}
+
+fn (u UnknownReceivedNotifyMessageType) is_received_notify_message_type() {}
 
 pub interface RecentMeUrlType {
 	Object
 	is_recent_me_url_type()
 }
 
+pub struct UnknownRecentMeUrlType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownRecentMeUrlType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownRecentMeUrlType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownRecentMeUrlType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown RecentMeUrl#${u.constructor:08x}'
+}
+
+fn (u UnknownRecentMeUrlType) is_recent_me_url_type() {}
+
 pub interface RecentStoryType {
 	Object
 	is_recent_story_type()
 }
+
+pub struct UnknownRecentStoryType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownRecentStoryType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownRecentStoryType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownRecentStoryType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown RecentStory#${u.constructor:08x}'
+}
+
+fn (u UnknownRecentStoryType) is_recent_story_type() {}
 
 pub interface ReplyMarkupType {
 	Object
 	is_reply_markup_type()
 }
 
+pub struct UnknownReplyMarkupType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownReplyMarkupType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownReplyMarkupType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownReplyMarkupType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ReplyMarkup#${u.constructor:08x}'
+}
+
+fn (u UnknownReplyMarkupType) is_reply_markup_type() {}
+
 pub interface ReportReasonType {
 	Object
 	is_report_reason_type()
 }
+
+pub struct UnknownReportReasonType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownReportReasonType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownReportReasonType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownReportReasonType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ReportReason#${u.constructor:08x}'
+}
+
+fn (u UnknownReportReasonType) is_report_reason_type() {}
 
 pub interface ReportResultType {
 	Object
 	is_report_result_type()
 }
 
+pub struct UnknownReportResultType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownReportResultType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownReportResultType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownReportResultType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ReportResult#${u.constructor:08x}'
+}
+
+fn (u UnknownReportResultType) is_report_result_type() {}
+
 pub interface RequestPeerTypeType {
 	Object
 	is_request_peer_type_type()
 }
+
+pub struct UnknownRequestPeerTypeType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownRequestPeerTypeType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownRequestPeerTypeType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownRequestPeerTypeType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown RequestPeerType#${u.constructor:08x}'
+}
+
+fn (u UnknownRequestPeerTypeType) is_request_peer_type_type() {}
 
 pub interface RequestedPeerType {
 	Object
 	is_requested_peer_type()
 }
 
+pub struct UnknownRequestedPeerType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownRequestedPeerType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownRequestedPeerType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownRequestedPeerType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown RequestedPeer#${u.constructor:08x}'
+}
+
+fn (u UnknownRequestedPeerType) is_requested_peer_type() {}
+
 pub interface RequirementToContactType {
 	Object
 	is_requirement_to_contact_type()
 }
+
+pub struct UnknownRequirementToContactType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownRequirementToContactType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownRequirementToContactType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownRequirementToContactType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown RequirementToContact#${u.constructor:08x}'
+}
+
+fn (u UnknownRequirementToContactType) is_requirement_to_contact_type() {}
 
 pub interface ResPQType {
 	Object
 	is_res_p_q_type()
 }
 
+pub struct UnknownResPQType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownResPQType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownResPQType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownResPQType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ResPQ#${u.constructor:08x}'
+}
+
+fn (u UnknownResPQType) is_res_p_q_type() {}
+
 pub interface RestrictionReasonType {
 	Object
 	is_restriction_reason_type()
 }
+
+pub struct UnknownRestrictionReasonType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownRestrictionReasonType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownRestrictionReasonType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownRestrictionReasonType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown RestrictionReason#${u.constructor:08x}'
+}
+
+fn (u UnknownRestrictionReasonType) is_restriction_reason_type() {}
 
 pub interface RichTextType {
 	Object
 	is_rich_text_type()
 }
 
+pub struct UnknownRichTextType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownRichTextType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownRichTextType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownRichTextType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown RichText#${u.constructor:08x}'
+}
+
+fn (u UnknownRichTextType) is_rich_text_type() {}
+
 pub interface RpcDropAnswerType {
 	Object
 	is_rpc_drop_answer_type()
 }
+
+pub struct UnknownRpcDropAnswerType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownRpcDropAnswerType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownRpcDropAnswerType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownRpcDropAnswerType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown RpcDropAnswer#${u.constructor:08x}'
+}
+
+fn (u UnknownRpcDropAnswerType) is_rpc_drop_answer_type() {}
 
 pub interface RpcErrorType {
 	Object
 	is_rpc_error_type()
 }
 
+pub struct UnknownRpcErrorType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownRpcErrorType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownRpcErrorType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownRpcErrorType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown RpcError#${u.constructor:08x}'
+}
+
+fn (u UnknownRpcErrorType) is_rpc_error_type() {}
+
 pub interface SavedContactType {
 	Object
 	is_saved_contact_type()
 }
+
+pub struct UnknownSavedContactType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownSavedContactType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownSavedContactType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownSavedContactType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown SavedContact#${u.constructor:08x}'
+}
+
+fn (u UnknownSavedContactType) is_saved_contact_type() {}
 
 pub interface SavedDialogType {
 	Object
 	is_saved_dialog_type()
 }
 
+pub struct UnknownSavedDialogType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownSavedDialogType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownSavedDialogType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownSavedDialogType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown SavedDialog#${u.constructor:08x}'
+}
+
+fn (u UnknownSavedDialogType) is_saved_dialog_type() {}
+
 pub interface SavedReactionTagType {
 	Object
 	is_saved_reaction_tag_type()
 }
+
+pub struct UnknownSavedReactionTagType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownSavedReactionTagType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownSavedReactionTagType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownSavedReactionTagType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown SavedReactionTag#${u.constructor:08x}'
+}
+
+fn (u UnknownSavedReactionTagType) is_saved_reaction_tag_type() {}
 
 pub interface SavedStarGiftType {
 	Object
 	is_saved_star_gift_type()
 }
 
+pub struct UnknownSavedStarGiftType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownSavedStarGiftType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownSavedStarGiftType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownSavedStarGiftType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown SavedStarGift#${u.constructor:08x}'
+}
+
+fn (u UnknownSavedStarGiftType) is_saved_star_gift_type() {}
+
 pub interface SearchPostsFloodType {
 	Object
 	is_search_posts_flood_type()
 }
+
+pub struct UnknownSearchPostsFloodType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownSearchPostsFloodType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownSearchPostsFloodType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownSearchPostsFloodType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown SearchPostsFlood#${u.constructor:08x}'
+}
+
+fn (u UnknownSearchPostsFloodType) is_search_posts_flood_type() {}
 
 pub interface SearchResultsCalendarPeriodType {
 	Object
 	is_search_results_calendar_period_type()
 }
 
+pub struct UnknownSearchResultsCalendarPeriodType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownSearchResultsCalendarPeriodType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownSearchResultsCalendarPeriodType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownSearchResultsCalendarPeriodType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown SearchResultsCalendarPeriod#${u.constructor:08x}'
+}
+
+fn (u UnknownSearchResultsCalendarPeriodType) is_search_results_calendar_period_type() {}
+
 pub interface SearchResultsPositionType {
 	Object
 	is_search_results_position_type()
 }
+
+pub struct UnknownSearchResultsPositionType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownSearchResultsPositionType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownSearchResultsPositionType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownSearchResultsPositionType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown SearchResultsPosition#${u.constructor:08x}'
+}
+
+fn (u UnknownSearchResultsPositionType) is_search_results_position_type() {}
 
 pub interface SecureCredentialsEncryptedType {
 	Object
 	is_secure_credentials_encrypted_type()
 }
 
+pub struct UnknownSecureCredentialsEncryptedType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownSecureCredentialsEncryptedType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownSecureCredentialsEncryptedType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownSecureCredentialsEncryptedType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown SecureCredentialsEncrypted#${u.constructor:08x}'
+}
+
+fn (u UnknownSecureCredentialsEncryptedType) is_secure_credentials_encrypted_type() {}
+
 pub interface SecureDataType {
 	Object
 	is_secure_data_type()
 }
+
+pub struct UnknownSecureDataType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownSecureDataType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownSecureDataType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownSecureDataType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown SecureData#${u.constructor:08x}'
+}
+
+fn (u UnknownSecureDataType) is_secure_data_type() {}
 
 pub interface SecureFileType {
 	Object
 	is_secure_file_type()
 }
 
+pub struct UnknownSecureFileType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownSecureFileType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownSecureFileType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownSecureFileType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown SecureFile#${u.constructor:08x}'
+}
+
+fn (u UnknownSecureFileType) is_secure_file_type() {}
+
 pub interface SecurePasswordKdfAlgoType {
 	Object
 	is_secure_password_kdf_algo_type()
 }
+
+pub struct UnknownSecurePasswordKdfAlgoType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownSecurePasswordKdfAlgoType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownSecurePasswordKdfAlgoType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownSecurePasswordKdfAlgoType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown SecurePasswordKdfAlgo#${u.constructor:08x}'
+}
+
+fn (u UnknownSecurePasswordKdfAlgoType) is_secure_password_kdf_algo_type() {}
 
 pub interface SecurePlainDataType {
 	Object
 	is_secure_plain_data_type()
 }
 
+pub struct UnknownSecurePlainDataType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownSecurePlainDataType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownSecurePlainDataType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownSecurePlainDataType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown SecurePlainData#${u.constructor:08x}'
+}
+
+fn (u UnknownSecurePlainDataType) is_secure_plain_data_type() {}
+
 pub interface SecureRequiredTypeType {
 	Object
 	is_secure_required_type_type()
 }
+
+pub struct UnknownSecureRequiredTypeType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownSecureRequiredTypeType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownSecureRequiredTypeType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownSecureRequiredTypeType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown SecureRequiredType#${u.constructor:08x}'
+}
+
+fn (u UnknownSecureRequiredTypeType) is_secure_required_type_type() {}
 
 pub interface SecureSecretSettingsType {
 	Object
 	is_secure_secret_settings_type()
 }
 
+pub struct UnknownSecureSecretSettingsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownSecureSecretSettingsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownSecureSecretSettingsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownSecureSecretSettingsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown SecureSecretSettings#${u.constructor:08x}'
+}
+
+fn (u UnknownSecureSecretSettingsType) is_secure_secret_settings_type() {}
+
 pub interface SecureValueType {
 	Object
 	is_secure_value_type()
 }
+
+pub struct UnknownSecureValueType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownSecureValueType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownSecureValueType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownSecureValueType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown SecureValue#${u.constructor:08x}'
+}
+
+fn (u UnknownSecureValueType) is_secure_value_type() {}
 
 pub interface SecureValueErrorType {
 	Object
 	is_secure_value_error_type()
 }
 
+pub struct UnknownSecureValueErrorType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownSecureValueErrorType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownSecureValueErrorType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownSecureValueErrorType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown SecureValueError#${u.constructor:08x}'
+}
+
+fn (u UnknownSecureValueErrorType) is_secure_value_error_type() {}
+
 pub interface SecureValueHashType {
 	Object
 	is_secure_value_hash_type()
 }
+
+pub struct UnknownSecureValueHashType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownSecureValueHashType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownSecureValueHashType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownSecureValueHashType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown SecureValueHash#${u.constructor:08x}'
+}
+
+fn (u UnknownSecureValueHashType) is_secure_value_hash_type() {}
 
 pub interface SecureValueTypeType {
 	Object
 	is_secure_value_type_type()
 }
 
+pub struct UnknownSecureValueTypeType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownSecureValueTypeType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownSecureValueTypeType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownSecureValueTypeType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown SecureValueType#${u.constructor:08x}'
+}
+
+fn (u UnknownSecureValueTypeType) is_secure_value_type_type() {}
+
 pub interface SendAsPeerType {
 	Object
 	is_send_as_peer_type()
 }
+
+pub struct UnknownSendAsPeerType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownSendAsPeerType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownSendAsPeerType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownSendAsPeerType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown SendAsPeer#${u.constructor:08x}'
+}
+
+fn (u UnknownSendAsPeerType) is_send_as_peer_type() {}
 
 pub interface SendMessageActionType {
 	Object
 	is_send_message_action_type()
 }
 
+pub struct UnknownSendMessageActionType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownSendMessageActionType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownSendMessageActionType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownSendMessageActionType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown SendMessageAction#${u.constructor:08x}'
+}
+
+fn (u UnknownSendMessageActionType) is_send_message_action_type() {}
+
 pub interface ServerDHParamsType {
 	Object
 	is_server_d_h_params_type()
 }
+
+pub struct UnknownServerDHParamsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownServerDHParamsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownServerDHParamsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownServerDHParamsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown Server_DH_Params#${u.constructor:08x}'
+}
+
+fn (u UnknownServerDHParamsType) is_server_d_h_params_type() {}
 
 pub interface ServerDHInnerDataType {
 	Object
 	is_server_d_h_inner_data_type()
 }
 
+pub struct UnknownServerDHInnerDataType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownServerDHInnerDataType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownServerDHInnerDataType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownServerDHInnerDataType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown Server_DH_inner_data#${u.constructor:08x}'
+}
+
+fn (u UnknownServerDHInnerDataType) is_server_d_h_inner_data_type() {}
+
 pub interface SetClientDHParamsAnswerType {
 	Object
 	is_set_client_d_h_params_answer_type()
 }
+
+pub struct UnknownSetClientDHParamsAnswerType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownSetClientDHParamsAnswerType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownSetClientDHParamsAnswerType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownSetClientDHParamsAnswerType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown Set_client_DH_params_answer#${u.constructor:08x}'
+}
+
+fn (u UnknownSetClientDHParamsAnswerType) is_set_client_d_h_params_answer_type() {}
 
 pub interface ShippingOptionType {
 	Object
 	is_shipping_option_type()
 }
 
+pub struct UnknownShippingOptionType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownShippingOptionType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownShippingOptionType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownShippingOptionType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ShippingOption#${u.constructor:08x}'
+}
+
+fn (u UnknownShippingOptionType) is_shipping_option_type() {}
+
 pub interface SmsJobType {
 	Object
 	is_sms_job_type()
 }
+
+pub struct UnknownSmsJobType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownSmsJobType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownSmsJobType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownSmsJobType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown SmsJob#${u.constructor:08x}'
+}
+
+fn (u UnknownSmsJobType) is_sms_job_type() {}
 
 pub interface SponsoredMessageType {
 	Object
 	is_sponsored_message_type()
 }
 
+pub struct UnknownSponsoredMessageType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownSponsoredMessageType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownSponsoredMessageType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownSponsoredMessageType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown SponsoredMessage#${u.constructor:08x}'
+}
+
+fn (u UnknownSponsoredMessageType) is_sponsored_message_type() {}
+
 pub interface SponsoredMessageReportOptionType {
 	Object
 	is_sponsored_message_report_option_type()
 }
+
+pub struct UnknownSponsoredMessageReportOptionType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownSponsoredMessageReportOptionType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownSponsoredMessageReportOptionType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownSponsoredMessageReportOptionType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown SponsoredMessageReportOption#${u.constructor:08x}'
+}
+
+fn (u UnknownSponsoredMessageReportOptionType) is_sponsored_message_report_option_type() {}
 
 pub interface SponsoredPeerType {
 	Object
 	is_sponsored_peer_type()
 }
 
+pub struct UnknownSponsoredPeerType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownSponsoredPeerType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownSponsoredPeerType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownSponsoredPeerType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown SponsoredPeer#${u.constructor:08x}'
+}
+
+fn (u UnknownSponsoredPeerType) is_sponsored_peer_type() {}
+
 pub interface StarGiftType {
 	Object
 	is_star_gift_type()
 }
+
+pub struct UnknownStarGiftType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStarGiftType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStarGiftType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStarGiftType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StarGift#${u.constructor:08x}'
+}
+
+fn (u UnknownStarGiftType) is_star_gift_type() {}
 
 pub interface StarGiftActiveAuctionStateType {
 	Object
 	is_star_gift_active_auction_state_type()
 }
 
+pub struct UnknownStarGiftActiveAuctionStateType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStarGiftActiveAuctionStateType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStarGiftActiveAuctionStateType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStarGiftActiveAuctionStateType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StarGiftActiveAuctionState#${u.constructor:08x}'
+}
+
+fn (u UnknownStarGiftActiveAuctionStateType) is_star_gift_active_auction_state_type() {}
+
 pub interface StarGiftAttributeType {
 	Object
 	is_star_gift_attribute_type()
 }
+
+pub struct UnknownStarGiftAttributeType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStarGiftAttributeType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStarGiftAttributeType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStarGiftAttributeType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StarGiftAttribute#${u.constructor:08x}'
+}
+
+fn (u UnknownStarGiftAttributeType) is_star_gift_attribute_type() {}
 
 pub interface StarGiftAttributeCounterType {
 	Object
 	is_star_gift_attribute_counter_type()
 }
 
+pub struct UnknownStarGiftAttributeCounterType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStarGiftAttributeCounterType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStarGiftAttributeCounterType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStarGiftAttributeCounterType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StarGiftAttributeCounter#${u.constructor:08x}'
+}
+
+fn (u UnknownStarGiftAttributeCounterType) is_star_gift_attribute_counter_type() {}
+
 pub interface StarGiftAttributeIdType {
 	Object
 	is_star_gift_attribute_id_type()
 }
+
+pub struct UnknownStarGiftAttributeIdType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStarGiftAttributeIdType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStarGiftAttributeIdType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStarGiftAttributeIdType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StarGiftAttributeId#${u.constructor:08x}'
+}
+
+fn (u UnknownStarGiftAttributeIdType) is_star_gift_attribute_id_type() {}
 
 pub interface StarGiftAttributeRarityType {
 	Object
 	is_star_gift_attribute_rarity_type()
 }
 
+pub struct UnknownStarGiftAttributeRarityType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStarGiftAttributeRarityType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStarGiftAttributeRarityType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStarGiftAttributeRarityType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StarGiftAttributeRarity#${u.constructor:08x}'
+}
+
+fn (u UnknownStarGiftAttributeRarityType) is_star_gift_attribute_rarity_type() {}
+
 pub interface StarGiftAuctionAcquiredGiftType {
 	Object
 	is_star_gift_auction_acquired_gift_type()
 }
+
+pub struct UnknownStarGiftAuctionAcquiredGiftType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStarGiftAuctionAcquiredGiftType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStarGiftAuctionAcquiredGiftType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStarGiftAuctionAcquiredGiftType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StarGiftAuctionAcquiredGift#${u.constructor:08x}'
+}
+
+fn (u UnknownStarGiftAuctionAcquiredGiftType) is_star_gift_auction_acquired_gift_type() {}
 
 pub interface StarGiftAuctionRoundType {
 	Object
 	is_star_gift_auction_round_type()
 }
 
+pub struct UnknownStarGiftAuctionRoundType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStarGiftAuctionRoundType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStarGiftAuctionRoundType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStarGiftAuctionRoundType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StarGiftAuctionRound#${u.constructor:08x}'
+}
+
+fn (u UnknownStarGiftAuctionRoundType) is_star_gift_auction_round_type() {}
+
 pub interface StarGiftAuctionStateType {
 	Object
 	is_star_gift_auction_state_type()
 }
+
+pub struct UnknownStarGiftAuctionStateType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStarGiftAuctionStateType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStarGiftAuctionStateType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStarGiftAuctionStateType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StarGiftAuctionState#${u.constructor:08x}'
+}
+
+fn (u UnknownStarGiftAuctionStateType) is_star_gift_auction_state_type() {}
 
 pub interface StarGiftAuctionUserStateType {
 	Object
 	is_star_gift_auction_user_state_type()
 }
 
+pub struct UnknownStarGiftAuctionUserStateType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStarGiftAuctionUserStateType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStarGiftAuctionUserStateType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStarGiftAuctionUserStateType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StarGiftAuctionUserState#${u.constructor:08x}'
+}
+
+fn (u UnknownStarGiftAuctionUserStateType) is_star_gift_auction_user_state_type() {}
+
 pub interface StarGiftBackgroundType {
 	Object
 	is_star_gift_background_type()
 }
+
+pub struct UnknownStarGiftBackgroundType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStarGiftBackgroundType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStarGiftBackgroundType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStarGiftBackgroundType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StarGiftBackground#${u.constructor:08x}'
+}
+
+fn (u UnknownStarGiftBackgroundType) is_star_gift_background_type() {}
 
 pub interface StarGiftCollectionType {
 	Object
 	is_star_gift_collection_type()
 }
 
+pub struct UnknownStarGiftCollectionType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStarGiftCollectionType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStarGiftCollectionType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStarGiftCollectionType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StarGiftCollection#${u.constructor:08x}'
+}
+
+fn (u UnknownStarGiftCollectionType) is_star_gift_collection_type() {}
+
 pub interface StarGiftUpgradePriceType {
 	Object
 	is_star_gift_upgrade_price_type()
 }
+
+pub struct UnknownStarGiftUpgradePriceType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStarGiftUpgradePriceType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStarGiftUpgradePriceType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStarGiftUpgradePriceType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StarGiftUpgradePrice#${u.constructor:08x}'
+}
+
+fn (u UnknownStarGiftUpgradePriceType) is_star_gift_upgrade_price_type() {}
 
 pub interface StarRefProgramType {
 	Object
 	is_star_ref_program_type()
 }
 
+pub struct UnknownStarRefProgramType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStarRefProgramType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStarRefProgramType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStarRefProgramType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StarRefProgram#${u.constructor:08x}'
+}
+
+fn (u UnknownStarRefProgramType) is_star_ref_program_type() {}
+
 pub interface StarsAmountType {
 	Object
 	is_stars_amount_type()
 }
+
+pub struct UnknownStarsAmountType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStarsAmountType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStarsAmountType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStarsAmountType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StarsAmount#${u.constructor:08x}'
+}
+
+fn (u UnknownStarsAmountType) is_stars_amount_type() {}
 
 pub interface StarsGiftOptionType {
 	Object
 	is_stars_gift_option_type()
 }
 
+pub struct UnknownStarsGiftOptionType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStarsGiftOptionType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStarsGiftOptionType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStarsGiftOptionType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StarsGiftOption#${u.constructor:08x}'
+}
+
+fn (u UnknownStarsGiftOptionType) is_stars_gift_option_type() {}
+
 pub interface StarsGiveawayOptionType {
 	Object
 	is_stars_giveaway_option_type()
 }
+
+pub struct UnknownStarsGiveawayOptionType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStarsGiveawayOptionType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStarsGiveawayOptionType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStarsGiveawayOptionType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StarsGiveawayOption#${u.constructor:08x}'
+}
+
+fn (u UnknownStarsGiveawayOptionType) is_stars_giveaway_option_type() {}
 
 pub interface StarsGiveawayWinnersOptionType {
 	Object
 	is_stars_giveaway_winners_option_type()
 }
 
+pub struct UnknownStarsGiveawayWinnersOptionType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStarsGiveawayWinnersOptionType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStarsGiveawayWinnersOptionType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStarsGiveawayWinnersOptionType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StarsGiveawayWinnersOption#${u.constructor:08x}'
+}
+
+fn (u UnknownStarsGiveawayWinnersOptionType) is_stars_giveaway_winners_option_type() {}
+
 pub interface StarsRatingType {
 	Object
 	is_stars_rating_type()
 }
+
+pub struct UnknownStarsRatingType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStarsRatingType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStarsRatingType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStarsRatingType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StarsRating#${u.constructor:08x}'
+}
+
+fn (u UnknownStarsRatingType) is_stars_rating_type() {}
 
 pub interface StarsRevenueStatusType {
 	Object
 	is_stars_revenue_status_type()
 }
 
+pub struct UnknownStarsRevenueStatusType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStarsRevenueStatusType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStarsRevenueStatusType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStarsRevenueStatusType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StarsRevenueStatus#${u.constructor:08x}'
+}
+
+fn (u UnknownStarsRevenueStatusType) is_stars_revenue_status_type() {}
+
 pub interface StarsSubscriptionType {
 	Object
 	is_stars_subscription_type()
 }
+
+pub struct UnknownStarsSubscriptionType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStarsSubscriptionType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStarsSubscriptionType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStarsSubscriptionType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StarsSubscription#${u.constructor:08x}'
+}
+
+fn (u UnknownStarsSubscriptionType) is_stars_subscription_type() {}
 
 pub interface StarsSubscriptionPricingType {
 	Object
 	is_stars_subscription_pricing_type()
 }
 
+pub struct UnknownStarsSubscriptionPricingType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStarsSubscriptionPricingType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStarsSubscriptionPricingType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStarsSubscriptionPricingType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StarsSubscriptionPricing#${u.constructor:08x}'
+}
+
+fn (u UnknownStarsSubscriptionPricingType) is_stars_subscription_pricing_type() {}
+
 pub interface StarsTopupOptionType {
 	Object
 	is_stars_topup_option_type()
 }
+
+pub struct UnknownStarsTopupOptionType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStarsTopupOptionType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStarsTopupOptionType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStarsTopupOptionType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StarsTopupOption#${u.constructor:08x}'
+}
+
+fn (u UnknownStarsTopupOptionType) is_stars_topup_option_type() {}
 
 pub interface StarsTransactionType {
 	Object
 	is_stars_transaction_type()
 }
 
+pub struct UnknownStarsTransactionType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStarsTransactionType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStarsTransactionType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStarsTransactionType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StarsTransaction#${u.constructor:08x}'
+}
+
+fn (u UnknownStarsTransactionType) is_stars_transaction_type() {}
+
 pub interface StarsTransactionPeerType {
 	Object
 	is_stars_transaction_peer_type()
 }
+
+pub struct UnknownStarsTransactionPeerType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStarsTransactionPeerType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStarsTransactionPeerType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStarsTransactionPeerType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StarsTransactionPeer#${u.constructor:08x}'
+}
+
+fn (u UnknownStarsTransactionPeerType) is_stars_transaction_peer_type() {}
 
 pub interface StatsAbsValueAndPrevType {
 	Object
 	is_stats_abs_value_and_prev_type()
 }
 
+pub struct UnknownStatsAbsValueAndPrevType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStatsAbsValueAndPrevType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStatsAbsValueAndPrevType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStatsAbsValueAndPrevType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StatsAbsValueAndPrev#${u.constructor:08x}'
+}
+
+fn (u UnknownStatsAbsValueAndPrevType) is_stats_abs_value_and_prev_type() {}
+
 pub interface StatsDateRangeDaysType {
 	Object
 	is_stats_date_range_days_type()
 }
+
+pub struct UnknownStatsDateRangeDaysType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStatsDateRangeDaysType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStatsDateRangeDaysType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStatsDateRangeDaysType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StatsDateRangeDays#${u.constructor:08x}'
+}
+
+fn (u UnknownStatsDateRangeDaysType) is_stats_date_range_days_type() {}
 
 pub interface StatsGraphType {
 	Object
 	is_stats_graph_type()
 }
 
+pub struct UnknownStatsGraphType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStatsGraphType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStatsGraphType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStatsGraphType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StatsGraph#${u.constructor:08x}'
+}
+
+fn (u UnknownStatsGraphType) is_stats_graph_type() {}
+
 pub interface StatsGroupTopAdminType {
 	Object
 	is_stats_group_top_admin_type()
 }
+
+pub struct UnknownStatsGroupTopAdminType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStatsGroupTopAdminType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStatsGroupTopAdminType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStatsGroupTopAdminType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StatsGroupTopAdmin#${u.constructor:08x}'
+}
+
+fn (u UnknownStatsGroupTopAdminType) is_stats_group_top_admin_type() {}
 
 pub interface StatsGroupTopInviterType {
 	Object
 	is_stats_group_top_inviter_type()
 }
 
+pub struct UnknownStatsGroupTopInviterType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStatsGroupTopInviterType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStatsGroupTopInviterType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStatsGroupTopInviterType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StatsGroupTopInviter#${u.constructor:08x}'
+}
+
+fn (u UnknownStatsGroupTopInviterType) is_stats_group_top_inviter_type() {}
+
 pub interface StatsGroupTopPosterType {
 	Object
 	is_stats_group_top_poster_type()
 }
+
+pub struct UnknownStatsGroupTopPosterType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStatsGroupTopPosterType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStatsGroupTopPosterType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStatsGroupTopPosterType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StatsGroupTopPoster#${u.constructor:08x}'
+}
+
+fn (u UnknownStatsGroupTopPosterType) is_stats_group_top_poster_type() {}
 
 pub interface StatsPercentValueType {
 	Object
 	is_stats_percent_value_type()
 }
 
+pub struct UnknownStatsPercentValueType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStatsPercentValueType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStatsPercentValueType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStatsPercentValueType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StatsPercentValue#${u.constructor:08x}'
+}
+
+fn (u UnknownStatsPercentValueType) is_stats_percent_value_type() {}
+
 pub interface StatsURLType {
 	Object
 	is_stats_u_r_l_type()
 }
+
+pub struct UnknownStatsURLType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStatsURLType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStatsURLType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStatsURLType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StatsURL#${u.constructor:08x}'
+}
+
+fn (u UnknownStatsURLType) is_stats_u_r_l_type() {}
 
 pub interface StickerKeywordType {
 	Object
 	is_sticker_keyword_type()
 }
 
+pub struct UnknownStickerKeywordType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStickerKeywordType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStickerKeywordType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStickerKeywordType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StickerKeyword#${u.constructor:08x}'
+}
+
+fn (u UnknownStickerKeywordType) is_sticker_keyword_type() {}
+
 pub interface StickerPackType {
 	Object
 	is_sticker_pack_type()
 }
+
+pub struct UnknownStickerPackType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStickerPackType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStickerPackType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStickerPackType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StickerPack#${u.constructor:08x}'
+}
+
+fn (u UnknownStickerPackType) is_sticker_pack_type() {}
 
 pub interface StickerSetType {
 	Object
 	is_sticker_set_type()
 }
 
+pub struct UnknownStickerSetType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStickerSetType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStickerSetType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStickerSetType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StickerSet#${u.constructor:08x}'
+}
+
+fn (u UnknownStickerSetType) is_sticker_set_type() {}
+
 pub interface StickerSetCoveredType {
 	Object
 	is_sticker_set_covered_type()
 }
+
+pub struct UnknownStickerSetCoveredType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStickerSetCoveredType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStickerSetCoveredType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStickerSetCoveredType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StickerSetCovered#${u.constructor:08x}'
+}
+
+fn (u UnknownStickerSetCoveredType) is_sticker_set_covered_type() {}
 
 pub interface StoriesStealthModeType {
 	Object
 	is_stories_stealth_mode_type()
 }
 
+pub struct UnknownStoriesStealthModeType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStoriesStealthModeType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStoriesStealthModeType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStoriesStealthModeType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StoriesStealthMode#${u.constructor:08x}'
+}
+
+fn (u UnknownStoriesStealthModeType) is_stories_stealth_mode_type() {}
+
 pub interface StoryAlbumType {
 	Object
 	is_story_album_type()
 }
+
+pub struct UnknownStoryAlbumType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStoryAlbumType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStoryAlbumType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStoryAlbumType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StoryAlbum#${u.constructor:08x}'
+}
+
+fn (u UnknownStoryAlbumType) is_story_album_type() {}
 
 pub interface StoryFwdHeaderType {
 	Object
 	is_story_fwd_header_type()
 }
 
+pub struct UnknownStoryFwdHeaderType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStoryFwdHeaderType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStoryFwdHeaderType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStoryFwdHeaderType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StoryFwdHeader#${u.constructor:08x}'
+}
+
+fn (u UnknownStoryFwdHeaderType) is_story_fwd_header_type() {}
+
 pub interface StoryItemType {
 	Object
 	is_story_item_type()
 }
+
+pub struct UnknownStoryItemType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStoryItemType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStoryItemType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStoryItemType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StoryItem#${u.constructor:08x}'
+}
+
+fn (u UnknownStoryItemType) is_story_item_type() {}
 
 pub interface StoryReactionType {
 	Object
 	is_story_reaction_type()
 }
 
+pub struct UnknownStoryReactionType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStoryReactionType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStoryReactionType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStoryReactionType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StoryReaction#${u.constructor:08x}'
+}
+
+fn (u UnknownStoryReactionType) is_story_reaction_type() {}
+
 pub interface StoryViewType {
 	Object
 	is_story_view_type()
 }
+
+pub struct UnknownStoryViewType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStoryViewType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStoryViewType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStoryViewType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StoryView#${u.constructor:08x}'
+}
+
+fn (u UnknownStoryViewType) is_story_view_type() {}
 
 pub interface StoryViewsType {
 	Object
 	is_story_views_type()
 }
 
+pub struct UnknownStoryViewsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStoryViewsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStoryViewsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStoryViewsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown StoryViews#${u.constructor:08x}'
+}
+
+fn (u UnknownStoryViewsType) is_story_views_type() {}
+
 pub interface SuggestedPostType {
 	Object
 	is_suggested_post_type()
 }
+
+pub struct UnknownSuggestedPostType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownSuggestedPostType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownSuggestedPostType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownSuggestedPostType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown SuggestedPost#${u.constructor:08x}'
+}
+
+fn (u UnknownSuggestedPostType) is_suggested_post_type() {}
 
 pub interface TextWithEntitiesType {
 	Object
 	is_text_with_entities_type()
 }
 
+pub struct UnknownTextWithEntitiesType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownTextWithEntitiesType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownTextWithEntitiesType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownTextWithEntitiesType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown TextWithEntities#${u.constructor:08x}'
+}
+
+fn (u UnknownTextWithEntitiesType) is_text_with_entities_type() {}
+
 pub interface ThemeType {
 	Object
 	is_theme_type()
 }
+
+pub struct UnknownThemeType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownThemeType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownThemeType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownThemeType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown Theme#${u.constructor:08x}'
+}
+
+fn (u UnknownThemeType) is_theme_type() {}
 
 pub interface ThemeSettingsType {
 	Object
 	is_theme_settings_type()
 }
 
+pub struct UnknownThemeSettingsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownThemeSettingsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownThemeSettingsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownThemeSettingsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown ThemeSettings#${u.constructor:08x}'
+}
+
+fn (u UnknownThemeSettingsType) is_theme_settings_type() {}
+
 pub interface TimezoneType {
 	Object
 	is_timezone_type()
 }
+
+pub struct UnknownTimezoneType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownTimezoneType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownTimezoneType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownTimezoneType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown Timezone#${u.constructor:08x}'
+}
+
+fn (u UnknownTimezoneType) is_timezone_type() {}
 
 pub interface TlsBlockType {
 	Object
 	is_tls_block_type()
 }
 
+pub struct UnknownTlsBlockType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownTlsBlockType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownTlsBlockType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownTlsBlockType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown TlsBlock#${u.constructor:08x}'
+}
+
+fn (u UnknownTlsBlockType) is_tls_block_type() {}
+
 pub interface TlsClientHelloType {
 	Object
 	is_tls_client_hello_type()
 }
+
+pub struct UnknownTlsClientHelloType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownTlsClientHelloType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownTlsClientHelloType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownTlsClientHelloType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown TlsClientHello#${u.constructor:08x}'
+}
+
+fn (u UnknownTlsClientHelloType) is_tls_client_hello_type() {}
 
 pub interface TodoCompletionType {
 	Object
 	is_todo_completion_type()
 }
 
+pub struct UnknownTodoCompletionType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownTodoCompletionType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownTodoCompletionType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownTodoCompletionType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown TodoCompletion#${u.constructor:08x}'
+}
+
+fn (u UnknownTodoCompletionType) is_todo_completion_type() {}
+
 pub interface TodoItemType {
 	Object
 	is_todo_item_type()
 }
+
+pub struct UnknownTodoItemType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownTodoItemType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownTodoItemType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownTodoItemType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown TodoItem#${u.constructor:08x}'
+}
+
+fn (u UnknownTodoItemType) is_todo_item_type() {}
 
 pub interface TodoListType {
 	Object
 	is_todo_list_type()
 }
 
+pub struct UnknownTodoListType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownTodoListType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownTodoListType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownTodoListType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown TodoList#${u.constructor:08x}'
+}
+
+fn (u UnknownTodoListType) is_todo_list_type() {}
+
 pub interface TopPeerType {
 	Object
 	is_top_peer_type()
 }
+
+pub struct UnknownTopPeerType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownTopPeerType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownTopPeerType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownTopPeerType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown TopPeer#${u.constructor:08x}'
+}
+
+fn (u UnknownTopPeerType) is_top_peer_type() {}
 
 pub interface TopPeerCategoryType {
 	Object
 	is_top_peer_category_type()
 }
 
+pub struct UnknownTopPeerCategoryType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownTopPeerCategoryType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownTopPeerCategoryType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownTopPeerCategoryType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown TopPeerCategory#${u.constructor:08x}'
+}
+
+fn (u UnknownTopPeerCategoryType) is_top_peer_category_type() {}
+
 pub interface TopPeerCategoryPeersType {
 	Object
 	is_top_peer_category_peers_type()
 }
+
+pub struct UnknownTopPeerCategoryPeersType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownTopPeerCategoryPeersType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownTopPeerCategoryPeersType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownTopPeerCategoryPeersType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown TopPeerCategoryPeers#${u.constructor:08x}'
+}
+
+fn (u UnknownTopPeerCategoryPeersType) is_top_peer_category_peers_type() {}
 
 pub interface TrueType {
 	Object
 	is_true_type()
 }
 
+pub struct UnknownTrueType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownTrueType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownTrueType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownTrueType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown True#${u.constructor:08x}'
+}
+
+fn (u UnknownTrueType) is_true_type() {}
+
 pub interface UpdateType {
 	Object
 	is_update_type()
 }
+
+pub struct UnknownUpdateType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownUpdateType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownUpdateType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownUpdateType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown Update#${u.constructor:08x}'
+}
+
+fn (u UnknownUpdateType) is_update_type() {}
 
 pub interface UpdatesType {
 	Object
 	is_updates_type()
 }
 
+pub struct UnknownUpdatesType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownUpdatesType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownUpdatesType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownUpdatesType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown Updates#${u.constructor:08x}'
+}
+
+fn (u UnknownUpdatesType) is_updates_type() {}
+
 pub interface UrlAuthResultType {
 	Object
 	is_url_auth_result_type()
 }
+
+pub struct UnknownUrlAuthResultType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownUrlAuthResultType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownUrlAuthResultType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownUrlAuthResultType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown UrlAuthResult#${u.constructor:08x}'
+}
+
+fn (u UnknownUrlAuthResultType) is_url_auth_result_type() {}
 
 pub interface UserType {
 	Object
 	is_user_type()
 }
 
+pub struct UnknownUserType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownUserType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownUserType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownUserType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown User#${u.constructor:08x}'
+}
+
+fn (u UnknownUserType) is_user_type() {}
+
 pub interface UserFullType {
 	Object
 	is_user_full_type()
 }
+
+pub struct UnknownUserFullType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownUserFullType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownUserFullType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownUserFullType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown UserFull#${u.constructor:08x}'
+}
+
+fn (u UnknownUserFullType) is_user_full_type() {}
 
 pub interface UserProfilePhotoType {
 	Object
 	is_user_profile_photo_type()
 }
 
+pub struct UnknownUserProfilePhotoType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownUserProfilePhotoType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownUserProfilePhotoType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownUserProfilePhotoType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown UserProfilePhoto#${u.constructor:08x}'
+}
+
+fn (u UnknownUserProfilePhotoType) is_user_profile_photo_type() {}
+
 pub interface UserStatusType {
 	Object
 	is_user_status_type()
 }
+
+pub struct UnknownUserStatusType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownUserStatusType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownUserStatusType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownUserStatusType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown UserStatus#${u.constructor:08x}'
+}
+
+fn (u UnknownUserStatusType) is_user_status_type() {}
 
 pub interface UsernameType {
 	Object
 	is_username_type()
 }
 
+pub struct UnknownUsernameType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownUsernameType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownUsernameType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownUsernameType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown Username#${u.constructor:08x}'
+}
+
+fn (u UnknownUsernameType) is_username_type() {}
+
 pub interface VideoSizeType {
 	Object
 	is_video_size_type()
 }
+
+pub struct UnknownVideoSizeType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownVideoSizeType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownVideoSizeType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownVideoSizeType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown VideoSize#${u.constructor:08x}'
+}
+
+fn (u UnknownVideoSizeType) is_video_size_type() {}
 
 pub interface WallPaperType {
 	Object
 	is_wall_paper_type()
 }
 
+pub struct UnknownWallPaperType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownWallPaperType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownWallPaperType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownWallPaperType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown WallPaper#${u.constructor:08x}'
+}
+
+fn (u UnknownWallPaperType) is_wall_paper_type() {}
+
 pub interface WallPaperSettingsType {
 	Object
 	is_wall_paper_settings_type()
 }
+
+pub struct UnknownWallPaperSettingsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownWallPaperSettingsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownWallPaperSettingsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownWallPaperSettingsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown WallPaperSettings#${u.constructor:08x}'
+}
+
+fn (u UnknownWallPaperSettingsType) is_wall_paper_settings_type() {}
 
 pub interface WebAuthorizationType {
 	Object
 	is_web_authorization_type()
 }
 
+pub struct UnknownWebAuthorizationType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownWebAuthorizationType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownWebAuthorizationType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownWebAuthorizationType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown WebAuthorization#${u.constructor:08x}'
+}
+
+fn (u UnknownWebAuthorizationType) is_web_authorization_type() {}
+
 pub interface WebDocumentType {
 	Object
 	is_web_document_type()
 }
+
+pub struct UnknownWebDocumentType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownWebDocumentType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownWebDocumentType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownWebDocumentType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown WebDocument#${u.constructor:08x}'
+}
+
+fn (u UnknownWebDocumentType) is_web_document_type() {}
 
 pub interface WebPageType {
 	Object
 	is_web_page_type()
 }
 
+pub struct UnknownWebPageType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownWebPageType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownWebPageType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownWebPageType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown WebPage#${u.constructor:08x}'
+}
+
+fn (u UnknownWebPageType) is_web_page_type() {}
+
 pub interface WebPageAttributeType {
 	Object
 	is_web_page_attribute_type()
 }
+
+pub struct UnknownWebPageAttributeType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownWebPageAttributeType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownWebPageAttributeType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownWebPageAttributeType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown WebPageAttribute#${u.constructor:08x}'
+}
+
+fn (u UnknownWebPageAttributeType) is_web_page_attribute_type() {}
 
 pub interface WebViewMessageSentType {
 	Object
 	is_web_view_message_sent_type()
 }
 
+pub struct UnknownWebViewMessageSentType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownWebViewMessageSentType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownWebViewMessageSentType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownWebViewMessageSentType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown WebViewMessageSent#${u.constructor:08x}'
+}
+
+fn (u UnknownWebViewMessageSentType) is_web_view_message_sent_type() {}
+
 pub interface WebViewResultType {
 	Object
 	is_web_view_result_type()
 }
+
+pub struct UnknownWebViewResultType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownWebViewResultType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownWebViewResultType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownWebViewResultType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown WebViewResult#${u.constructor:08x}'
+}
+
+fn (u UnknownWebViewResultType) is_web_view_result_type() {}
 
 pub interface AccountAuthorizationFormType {
 	Object
 	is_account_authorization_form_type()
 }
 
+pub struct UnknownAccountAuthorizationFormType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAccountAuthorizationFormType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAccountAuthorizationFormType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAccountAuthorizationFormType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown account.AuthorizationForm#${u.constructor:08x}'
+}
+
+fn (u UnknownAccountAuthorizationFormType) is_account_authorization_form_type() {}
+
 pub interface AccountAuthorizationsType {
 	Object
 	is_account_authorizations_type()
 }
+
+pub struct UnknownAccountAuthorizationsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAccountAuthorizationsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAccountAuthorizationsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAccountAuthorizationsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown account.Authorizations#${u.constructor:08x}'
+}
+
+fn (u UnknownAccountAuthorizationsType) is_account_authorizations_type() {}
 
 pub interface AccountAutoDownloadSettingsType {
 	Object
 	is_account_auto_download_settings_type()
 }
 
+pub struct UnknownAccountAutoDownloadSettingsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAccountAutoDownloadSettingsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAccountAutoDownloadSettingsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAccountAutoDownloadSettingsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown account.AutoDownloadSettings#${u.constructor:08x}'
+}
+
+fn (u UnknownAccountAutoDownloadSettingsType) is_account_auto_download_settings_type() {}
+
 pub interface AccountAutoSaveSettingsType {
 	Object
 	is_account_auto_save_settings_type()
 }
+
+pub struct UnknownAccountAutoSaveSettingsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAccountAutoSaveSettingsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAccountAutoSaveSettingsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAccountAutoSaveSettingsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown account.AutoSaveSettings#${u.constructor:08x}'
+}
+
+fn (u UnknownAccountAutoSaveSettingsType) is_account_auto_save_settings_type() {}
 
 pub interface AccountBusinessChatLinksType {
 	Object
 	is_account_business_chat_links_type()
 }
 
+pub struct UnknownAccountBusinessChatLinksType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAccountBusinessChatLinksType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAccountBusinessChatLinksType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAccountBusinessChatLinksType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown account.BusinessChatLinks#${u.constructor:08x}'
+}
+
+fn (u UnknownAccountBusinessChatLinksType) is_account_business_chat_links_type() {}
+
 pub interface AccountChatThemesType {
 	Object
 	is_account_chat_themes_type()
 }
+
+pub struct UnknownAccountChatThemesType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAccountChatThemesType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAccountChatThemesType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAccountChatThemesType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown account.ChatThemes#${u.constructor:08x}'
+}
+
+fn (u UnknownAccountChatThemesType) is_account_chat_themes_type() {}
 
 pub interface AccountConnectedBotsType {
 	Object
 	is_account_connected_bots_type()
 }
 
+pub struct UnknownAccountConnectedBotsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAccountConnectedBotsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAccountConnectedBotsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAccountConnectedBotsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown account.ConnectedBots#${u.constructor:08x}'
+}
+
+fn (u UnknownAccountConnectedBotsType) is_account_connected_bots_type() {}
+
 pub interface AccountContentSettingsType {
 	Object
 	is_account_content_settings_type()
 }
+
+pub struct UnknownAccountContentSettingsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAccountContentSettingsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAccountContentSettingsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAccountContentSettingsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown account.ContentSettings#${u.constructor:08x}'
+}
+
+fn (u UnknownAccountContentSettingsType) is_account_content_settings_type() {}
 
 pub interface AccountEmailVerifiedType {
 	Object
 	is_account_email_verified_type()
 }
 
+pub struct UnknownAccountEmailVerifiedType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAccountEmailVerifiedType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAccountEmailVerifiedType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAccountEmailVerifiedType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown account.EmailVerified#${u.constructor:08x}'
+}
+
+fn (u UnknownAccountEmailVerifiedType) is_account_email_verified_type() {}
+
 pub interface AccountEmojiStatusesType {
 	Object
 	is_account_emoji_statuses_type()
 }
+
+pub struct UnknownAccountEmojiStatusesType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAccountEmojiStatusesType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAccountEmojiStatusesType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAccountEmojiStatusesType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown account.EmojiStatuses#${u.constructor:08x}'
+}
+
+fn (u UnknownAccountEmojiStatusesType) is_account_emoji_statuses_type() {}
 
 pub interface AccountPaidMessagesRevenueType {
 	Object
 	is_account_paid_messages_revenue_type()
 }
 
+pub struct UnknownAccountPaidMessagesRevenueType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAccountPaidMessagesRevenueType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAccountPaidMessagesRevenueType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAccountPaidMessagesRevenueType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown account.PaidMessagesRevenue#${u.constructor:08x}'
+}
+
+fn (u UnknownAccountPaidMessagesRevenueType) is_account_paid_messages_revenue_type() {}
+
 pub interface AccountPasskeyRegistrationOptionsType {
 	Object
 	is_account_passkey_registration_options_type()
 }
+
+pub struct UnknownAccountPasskeyRegistrationOptionsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAccountPasskeyRegistrationOptionsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAccountPasskeyRegistrationOptionsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAccountPasskeyRegistrationOptionsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown account.PasskeyRegistrationOptions#${u.constructor:08x}'
+}
+
+fn (u UnknownAccountPasskeyRegistrationOptionsType) is_account_passkey_registration_options_type() {}
 
 pub interface AccountPasskeysType {
 	Object
 	is_account_passkeys_type()
 }
 
+pub struct UnknownAccountPasskeysType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAccountPasskeysType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAccountPasskeysType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAccountPasskeysType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown account.Passkeys#${u.constructor:08x}'
+}
+
+fn (u UnknownAccountPasskeysType) is_account_passkeys_type() {}
+
 pub interface AccountPasswordType {
 	Object
 	is_account_password_type()
 }
+
+pub struct UnknownAccountPasswordType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAccountPasswordType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAccountPasswordType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAccountPasswordType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown account.Password#${u.constructor:08x}'
+}
+
+fn (u UnknownAccountPasswordType) is_account_password_type() {}
 
 pub interface AccountPasswordInputSettingsType {
 	Object
 	is_account_password_input_settings_type()
 }
 
+pub struct UnknownAccountPasswordInputSettingsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAccountPasswordInputSettingsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAccountPasswordInputSettingsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAccountPasswordInputSettingsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown account.PasswordInputSettings#${u.constructor:08x}'
+}
+
+fn (u UnknownAccountPasswordInputSettingsType) is_account_password_input_settings_type() {}
+
 pub interface AccountPasswordSettingsType {
 	Object
 	is_account_password_settings_type()
 }
+
+pub struct UnknownAccountPasswordSettingsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAccountPasswordSettingsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAccountPasswordSettingsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAccountPasswordSettingsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown account.PasswordSettings#${u.constructor:08x}'
+}
+
+fn (u UnknownAccountPasswordSettingsType) is_account_password_settings_type() {}
 
 pub interface AccountPrivacyRulesType {
 	Object
 	is_account_privacy_rules_type()
 }
 
+pub struct UnknownAccountPrivacyRulesType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAccountPrivacyRulesType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAccountPrivacyRulesType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAccountPrivacyRulesType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown account.PrivacyRules#${u.constructor:08x}'
+}
+
+fn (u UnknownAccountPrivacyRulesType) is_account_privacy_rules_type() {}
+
 pub interface AccountResetPasswordResultType {
 	Object
 	is_account_reset_password_result_type()
 }
+
+pub struct UnknownAccountResetPasswordResultType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAccountResetPasswordResultType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAccountResetPasswordResultType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAccountResetPasswordResultType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown account.ResetPasswordResult#${u.constructor:08x}'
+}
+
+fn (u UnknownAccountResetPasswordResultType) is_account_reset_password_result_type() {}
 
 pub interface AccountResolvedBusinessChatLinksType {
 	Object
 	is_account_resolved_business_chat_links_type()
 }
 
+pub struct UnknownAccountResolvedBusinessChatLinksType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAccountResolvedBusinessChatLinksType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAccountResolvedBusinessChatLinksType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAccountResolvedBusinessChatLinksType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown account.ResolvedBusinessChatLinks#${u.constructor:08x}'
+}
+
+fn (u UnknownAccountResolvedBusinessChatLinksType) is_account_resolved_business_chat_links_type() {}
+
 pub interface AccountSavedMusicIdsType {
 	Object
 	is_account_saved_music_ids_type()
 }
+
+pub struct UnknownAccountSavedMusicIdsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAccountSavedMusicIdsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAccountSavedMusicIdsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAccountSavedMusicIdsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown account.SavedMusicIds#${u.constructor:08x}'
+}
+
+fn (u UnknownAccountSavedMusicIdsType) is_account_saved_music_ids_type() {}
 
 pub interface AccountSavedRingtoneType {
 	Object
 	is_account_saved_ringtone_type()
 }
 
+pub struct UnknownAccountSavedRingtoneType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAccountSavedRingtoneType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAccountSavedRingtoneType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAccountSavedRingtoneType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown account.SavedRingtone#${u.constructor:08x}'
+}
+
+fn (u UnknownAccountSavedRingtoneType) is_account_saved_ringtone_type() {}
+
 pub interface AccountSavedRingtonesType {
 	Object
 	is_account_saved_ringtones_type()
 }
+
+pub struct UnknownAccountSavedRingtonesType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAccountSavedRingtonesType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAccountSavedRingtonesType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAccountSavedRingtonesType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown account.SavedRingtones#${u.constructor:08x}'
+}
+
+fn (u UnknownAccountSavedRingtonesType) is_account_saved_ringtones_type() {}
 
 pub interface AccountSentEmailCodeType {
 	Object
 	is_account_sent_email_code_type()
 }
 
+pub struct UnknownAccountSentEmailCodeType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAccountSentEmailCodeType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAccountSentEmailCodeType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAccountSentEmailCodeType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown account.SentEmailCode#${u.constructor:08x}'
+}
+
+fn (u UnknownAccountSentEmailCodeType) is_account_sent_email_code_type() {}
+
 pub interface AccountTakeoutType {
 	Object
 	is_account_takeout_type()
 }
+
+pub struct UnknownAccountTakeoutType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAccountTakeoutType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAccountTakeoutType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAccountTakeoutType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown account.Takeout#${u.constructor:08x}'
+}
+
+fn (u UnknownAccountTakeoutType) is_account_takeout_type() {}
 
 pub interface AccountThemesType {
 	Object
 	is_account_themes_type()
 }
 
+pub struct UnknownAccountThemesType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAccountThemesType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAccountThemesType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAccountThemesType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown account.Themes#${u.constructor:08x}'
+}
+
+fn (u UnknownAccountThemesType) is_account_themes_type() {}
+
 pub interface AccountTmpPasswordType {
 	Object
 	is_account_tmp_password_type()
 }
+
+pub struct UnknownAccountTmpPasswordType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAccountTmpPasswordType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAccountTmpPasswordType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAccountTmpPasswordType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown account.TmpPassword#${u.constructor:08x}'
+}
+
+fn (u UnknownAccountTmpPasswordType) is_account_tmp_password_type() {}
 
 pub interface AccountWallPapersType {
 	Object
 	is_account_wall_papers_type()
 }
 
+pub struct UnknownAccountWallPapersType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAccountWallPapersType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAccountWallPapersType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAccountWallPapersType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown account.WallPapers#${u.constructor:08x}'
+}
+
+fn (u UnknownAccountWallPapersType) is_account_wall_papers_type() {}
+
 pub interface AccountWebAuthorizationsType {
 	Object
 	is_account_web_authorizations_type()
 }
+
+pub struct UnknownAccountWebAuthorizationsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAccountWebAuthorizationsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAccountWebAuthorizationsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAccountWebAuthorizationsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown account.WebAuthorizations#${u.constructor:08x}'
+}
+
+fn (u UnknownAccountWebAuthorizationsType) is_account_web_authorizations_type() {}
 
 pub interface AuthAuthorizationType {
 	Object
 	is_auth_authorization_type()
 }
 
+pub struct UnknownAuthAuthorizationType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAuthAuthorizationType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAuthAuthorizationType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAuthAuthorizationType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown auth.Authorization#${u.constructor:08x}'
+}
+
+fn (u UnknownAuthAuthorizationType) is_auth_authorization_type() {}
+
 pub interface AuthCodeTypeType {
 	Object
 	is_auth_code_type_type()
 }
+
+pub struct UnknownAuthCodeTypeType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAuthCodeTypeType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAuthCodeTypeType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAuthCodeTypeType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown auth.CodeType#${u.constructor:08x}'
+}
+
+fn (u UnknownAuthCodeTypeType) is_auth_code_type_type() {}
 
 pub interface AuthExportedAuthorizationType {
 	Object
 	is_auth_exported_authorization_type()
 }
 
+pub struct UnknownAuthExportedAuthorizationType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAuthExportedAuthorizationType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAuthExportedAuthorizationType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAuthExportedAuthorizationType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown auth.ExportedAuthorization#${u.constructor:08x}'
+}
+
+fn (u UnknownAuthExportedAuthorizationType) is_auth_exported_authorization_type() {}
+
 pub interface AuthLoggedOutType {
 	Object
 	is_auth_logged_out_type()
 }
+
+pub struct UnknownAuthLoggedOutType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAuthLoggedOutType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAuthLoggedOutType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAuthLoggedOutType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown auth.LoggedOut#${u.constructor:08x}'
+}
+
+fn (u UnknownAuthLoggedOutType) is_auth_logged_out_type() {}
 
 pub interface AuthLoginTokenType {
 	Object
 	is_auth_login_token_type()
 }
 
+pub struct UnknownAuthLoginTokenType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAuthLoginTokenType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAuthLoginTokenType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAuthLoginTokenType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown auth.LoginToken#${u.constructor:08x}'
+}
+
+fn (u UnknownAuthLoginTokenType) is_auth_login_token_type() {}
+
 pub interface AuthPasskeyLoginOptionsType {
 	Object
 	is_auth_passkey_login_options_type()
 }
+
+pub struct UnknownAuthPasskeyLoginOptionsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAuthPasskeyLoginOptionsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAuthPasskeyLoginOptionsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAuthPasskeyLoginOptionsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown auth.PasskeyLoginOptions#${u.constructor:08x}'
+}
+
+fn (u UnknownAuthPasskeyLoginOptionsType) is_auth_passkey_login_options_type() {}
 
 pub interface AuthPasswordRecoveryType {
 	Object
 	is_auth_password_recovery_type()
 }
 
+pub struct UnknownAuthPasswordRecoveryType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAuthPasswordRecoveryType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAuthPasswordRecoveryType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAuthPasswordRecoveryType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown auth.PasswordRecovery#${u.constructor:08x}'
+}
+
+fn (u UnknownAuthPasswordRecoveryType) is_auth_password_recovery_type() {}
+
 pub interface AuthSentCodeType {
 	Object
 	is_auth_sent_code_type()
 }
+
+pub struct UnknownAuthSentCodeType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAuthSentCodeType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAuthSentCodeType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAuthSentCodeType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown auth.SentCode#${u.constructor:08x}'
+}
+
+fn (u UnknownAuthSentCodeType) is_auth_sent_code_type() {}
 
 pub interface AuthSentCodeTypeType {
 	Object
 	is_auth_sent_code_type_type()
 }
 
+pub struct UnknownAuthSentCodeTypeType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownAuthSentCodeTypeType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownAuthSentCodeTypeType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownAuthSentCodeTypeType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown auth.SentCodeType#${u.constructor:08x}'
+}
+
+fn (u UnknownAuthSentCodeTypeType) is_auth_sent_code_type_type() {}
+
 pub interface BotsBotInfoType {
 	Object
 	is_bots_bot_info_type()
 }
+
+pub struct UnknownBotsBotInfoType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownBotsBotInfoType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownBotsBotInfoType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownBotsBotInfoType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown bots.BotInfo#${u.constructor:08x}'
+}
+
+fn (u UnknownBotsBotInfoType) is_bots_bot_info_type() {}
 
 pub interface BotsPopularAppBotsType {
 	Object
 	is_bots_popular_app_bots_type()
 }
 
+pub struct UnknownBotsPopularAppBotsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownBotsPopularAppBotsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownBotsPopularAppBotsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownBotsPopularAppBotsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown bots.PopularAppBots#${u.constructor:08x}'
+}
+
+fn (u UnknownBotsPopularAppBotsType) is_bots_popular_app_bots_type() {}
+
 pub interface BotsPreviewInfoType {
 	Object
 	is_bots_preview_info_type()
 }
+
+pub struct UnknownBotsPreviewInfoType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownBotsPreviewInfoType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownBotsPreviewInfoType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownBotsPreviewInfoType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown bots.PreviewInfo#${u.constructor:08x}'
+}
+
+fn (u UnknownBotsPreviewInfoType) is_bots_preview_info_type() {}
 
 pub interface ChannelsAdminLogResultsType {
 	Object
 	is_channels_admin_log_results_type()
 }
 
+pub struct UnknownChannelsAdminLogResultsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownChannelsAdminLogResultsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownChannelsAdminLogResultsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownChannelsAdminLogResultsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown channels.AdminLogResults#${u.constructor:08x}'
+}
+
+fn (u UnknownChannelsAdminLogResultsType) is_channels_admin_log_results_type() {}
+
 pub interface ChannelsChannelParticipantType {
 	Object
 	is_channels_channel_participant_type()
 }
+
+pub struct UnknownChannelsChannelParticipantType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownChannelsChannelParticipantType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownChannelsChannelParticipantType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownChannelsChannelParticipantType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown channels.ChannelParticipant#${u.constructor:08x}'
+}
+
+fn (u UnknownChannelsChannelParticipantType) is_channels_channel_participant_type() {}
 
 pub interface ChannelsChannelParticipantsType {
 	Object
 	is_channels_channel_participants_type()
 }
 
+pub struct UnknownChannelsChannelParticipantsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownChannelsChannelParticipantsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownChannelsChannelParticipantsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownChannelsChannelParticipantsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown channels.ChannelParticipants#${u.constructor:08x}'
+}
+
+fn (u UnknownChannelsChannelParticipantsType) is_channels_channel_participants_type() {}
+
 pub interface ChannelsSendAsPeersType {
 	Object
 	is_channels_send_as_peers_type()
 }
+
+pub struct UnknownChannelsSendAsPeersType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownChannelsSendAsPeersType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownChannelsSendAsPeersType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownChannelsSendAsPeersType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown channels.SendAsPeers#${u.constructor:08x}'
+}
+
+fn (u UnknownChannelsSendAsPeersType) is_channels_send_as_peers_type() {}
 
 pub interface ChannelsSponsoredMessageReportResultType {
 	Object
 	is_channels_sponsored_message_report_result_type()
 }
 
+pub struct UnknownChannelsSponsoredMessageReportResultType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownChannelsSponsoredMessageReportResultType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownChannelsSponsoredMessageReportResultType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownChannelsSponsoredMessageReportResultType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown channels.SponsoredMessageReportResult#${u.constructor:08x}'
+}
+
+fn (u UnknownChannelsSponsoredMessageReportResultType) is_channels_sponsored_message_report_result_type() {}
+
 pub interface ChatlistsChatlistInviteType {
 	Object
 	is_chatlists_chatlist_invite_type()
 }
+
+pub struct UnknownChatlistsChatlistInviteType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownChatlistsChatlistInviteType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownChatlistsChatlistInviteType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownChatlistsChatlistInviteType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown chatlists.ChatlistInvite#${u.constructor:08x}'
+}
+
+fn (u UnknownChatlistsChatlistInviteType) is_chatlists_chatlist_invite_type() {}
 
 pub interface ChatlistsChatlistUpdatesType {
 	Object
 	is_chatlists_chatlist_updates_type()
 }
 
+pub struct UnknownChatlistsChatlistUpdatesType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownChatlistsChatlistUpdatesType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownChatlistsChatlistUpdatesType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownChatlistsChatlistUpdatesType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown chatlists.ChatlistUpdates#${u.constructor:08x}'
+}
+
+fn (u UnknownChatlistsChatlistUpdatesType) is_chatlists_chatlist_updates_type() {}
+
 pub interface ChatlistsExportedChatlistInviteType {
 	Object
 	is_chatlists_exported_chatlist_invite_type()
 }
+
+pub struct UnknownChatlistsExportedChatlistInviteType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownChatlistsExportedChatlistInviteType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownChatlistsExportedChatlistInviteType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownChatlistsExportedChatlistInviteType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown chatlists.ExportedChatlistInvite#${u.constructor:08x}'
+}
+
+fn (u UnknownChatlistsExportedChatlistInviteType) is_chatlists_exported_chatlist_invite_type() {}
 
 pub interface ChatlistsExportedInvitesType {
 	Object
 	is_chatlists_exported_invites_type()
 }
 
+pub struct UnknownChatlistsExportedInvitesType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownChatlistsExportedInvitesType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownChatlistsExportedInvitesType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownChatlistsExportedInvitesType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown chatlists.ExportedInvites#${u.constructor:08x}'
+}
+
+fn (u UnknownChatlistsExportedInvitesType) is_chatlists_exported_invites_type() {}
+
 pub interface ContactsBlockedType {
 	Object
 	is_contacts_blocked_type()
 }
+
+pub struct UnknownContactsBlockedType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownContactsBlockedType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownContactsBlockedType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownContactsBlockedType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown contacts.Blocked#${u.constructor:08x}'
+}
+
+fn (u UnknownContactsBlockedType) is_contacts_blocked_type() {}
 
 pub interface ContactsContactBirthdaysType {
 	Object
 	is_contacts_contact_birthdays_type()
 }
 
+pub struct UnknownContactsContactBirthdaysType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownContactsContactBirthdaysType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownContactsContactBirthdaysType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownContactsContactBirthdaysType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown contacts.ContactBirthdays#${u.constructor:08x}'
+}
+
+fn (u UnknownContactsContactBirthdaysType) is_contacts_contact_birthdays_type() {}
+
 pub interface ContactsContactsType {
 	Object
 	is_contacts_contacts_type()
 }
+
+pub struct UnknownContactsContactsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownContactsContactsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownContactsContactsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownContactsContactsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown contacts.Contacts#${u.constructor:08x}'
+}
+
+fn (u UnknownContactsContactsType) is_contacts_contacts_type() {}
 
 pub interface ContactsFoundType {
 	Object
 	is_contacts_found_type()
 }
 
+pub struct UnknownContactsFoundType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownContactsFoundType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownContactsFoundType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownContactsFoundType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown contacts.Found#${u.constructor:08x}'
+}
+
+fn (u UnknownContactsFoundType) is_contacts_found_type() {}
+
 pub interface ContactsImportedContactsType {
 	Object
 	is_contacts_imported_contacts_type()
 }
+
+pub struct UnknownContactsImportedContactsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownContactsImportedContactsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownContactsImportedContactsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownContactsImportedContactsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown contacts.ImportedContacts#${u.constructor:08x}'
+}
+
+fn (u UnknownContactsImportedContactsType) is_contacts_imported_contacts_type() {}
 
 pub interface ContactsResolvedPeerType {
 	Object
 	is_contacts_resolved_peer_type()
 }
 
+pub struct UnknownContactsResolvedPeerType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownContactsResolvedPeerType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownContactsResolvedPeerType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownContactsResolvedPeerType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown contacts.ResolvedPeer#${u.constructor:08x}'
+}
+
+fn (u UnknownContactsResolvedPeerType) is_contacts_resolved_peer_type() {}
+
 pub interface ContactsSponsoredPeersType {
 	Object
 	is_contacts_sponsored_peers_type()
 }
+
+pub struct UnknownContactsSponsoredPeersType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownContactsSponsoredPeersType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownContactsSponsoredPeersType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownContactsSponsoredPeersType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown contacts.SponsoredPeers#${u.constructor:08x}'
+}
+
+fn (u UnknownContactsSponsoredPeersType) is_contacts_sponsored_peers_type() {}
 
 pub interface ContactsTopPeersType {
 	Object
 	is_contacts_top_peers_type()
 }
 
+pub struct UnknownContactsTopPeersType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownContactsTopPeersType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownContactsTopPeersType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownContactsTopPeersType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown contacts.TopPeers#${u.constructor:08x}'
+}
+
+fn (u UnknownContactsTopPeersType) is_contacts_top_peers_type() {}
+
 pub interface FragmentCollectibleInfoType {
 	Object
 	is_fragment_collectible_info_type()
 }
+
+pub struct UnknownFragmentCollectibleInfoType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownFragmentCollectibleInfoType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownFragmentCollectibleInfoType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownFragmentCollectibleInfoType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown fragment.CollectibleInfo#${u.constructor:08x}'
+}
+
+fn (u UnknownFragmentCollectibleInfoType) is_fragment_collectible_info_type() {}
 
 pub interface HelpAppConfigType {
 	Object
 	is_help_app_config_type()
 }
 
+pub struct UnknownHelpAppConfigType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownHelpAppConfigType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownHelpAppConfigType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownHelpAppConfigType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown help.AppConfig#${u.constructor:08x}'
+}
+
+fn (u UnknownHelpAppConfigType) is_help_app_config_type() {}
+
 pub interface HelpAppUpdateType {
 	Object
 	is_help_app_update_type()
 }
+
+pub struct UnknownHelpAppUpdateType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownHelpAppUpdateType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownHelpAppUpdateType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownHelpAppUpdateType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown help.AppUpdate#${u.constructor:08x}'
+}
+
+fn (u UnknownHelpAppUpdateType) is_help_app_update_type() {}
 
 pub interface HelpConfigSimpleType {
 	Object
 	is_help_config_simple_type()
 }
 
+pub struct UnknownHelpConfigSimpleType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownHelpConfigSimpleType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownHelpConfigSimpleType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownHelpConfigSimpleType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown help.ConfigSimple#${u.constructor:08x}'
+}
+
+fn (u UnknownHelpConfigSimpleType) is_help_config_simple_type() {}
+
 pub interface HelpCountriesListType {
 	Object
 	is_help_countries_list_type()
 }
+
+pub struct UnknownHelpCountriesListType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownHelpCountriesListType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownHelpCountriesListType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownHelpCountriesListType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown help.CountriesList#${u.constructor:08x}'
+}
+
+fn (u UnknownHelpCountriesListType) is_help_countries_list_type() {}
 
 pub interface HelpCountryType {
 	Object
 	is_help_country_type()
 }
 
+pub struct UnknownHelpCountryType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownHelpCountryType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownHelpCountryType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownHelpCountryType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown help.Country#${u.constructor:08x}'
+}
+
+fn (u UnknownHelpCountryType) is_help_country_type() {}
+
 pub interface HelpCountryCodeType {
 	Object
 	is_help_country_code_type()
 }
+
+pub struct UnknownHelpCountryCodeType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownHelpCountryCodeType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownHelpCountryCodeType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownHelpCountryCodeType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown help.CountryCode#${u.constructor:08x}'
+}
+
+fn (u UnknownHelpCountryCodeType) is_help_country_code_type() {}
 
 pub interface HelpDeepLinkInfoType {
 	Object
 	is_help_deep_link_info_type()
 }
 
+pub struct UnknownHelpDeepLinkInfoType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownHelpDeepLinkInfoType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownHelpDeepLinkInfoType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownHelpDeepLinkInfoType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown help.DeepLinkInfo#${u.constructor:08x}'
+}
+
+fn (u UnknownHelpDeepLinkInfoType) is_help_deep_link_info_type() {}
+
 pub interface HelpInviteTextType {
 	Object
 	is_help_invite_text_type()
 }
+
+pub struct UnknownHelpInviteTextType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownHelpInviteTextType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownHelpInviteTextType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownHelpInviteTextType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown help.InviteText#${u.constructor:08x}'
+}
+
+fn (u UnknownHelpInviteTextType) is_help_invite_text_type() {}
 
 pub interface HelpPassportConfigType {
 	Object
 	is_help_passport_config_type()
 }
 
+pub struct UnknownHelpPassportConfigType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownHelpPassportConfigType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownHelpPassportConfigType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownHelpPassportConfigType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown help.PassportConfig#${u.constructor:08x}'
+}
+
+fn (u UnknownHelpPassportConfigType) is_help_passport_config_type() {}
+
 pub interface HelpPeerColorOptionType {
 	Object
 	is_help_peer_color_option_type()
 }
+
+pub struct UnknownHelpPeerColorOptionType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownHelpPeerColorOptionType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownHelpPeerColorOptionType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownHelpPeerColorOptionType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown help.PeerColorOption#${u.constructor:08x}'
+}
+
+fn (u UnknownHelpPeerColorOptionType) is_help_peer_color_option_type() {}
 
 pub interface HelpPeerColorSetType {
 	Object
 	is_help_peer_color_set_type()
 }
 
+pub struct UnknownHelpPeerColorSetType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownHelpPeerColorSetType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownHelpPeerColorSetType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownHelpPeerColorSetType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown help.PeerColorSet#${u.constructor:08x}'
+}
+
+fn (u UnknownHelpPeerColorSetType) is_help_peer_color_set_type() {}
+
 pub interface HelpPeerColorsType {
 	Object
 	is_help_peer_colors_type()
 }
+
+pub struct UnknownHelpPeerColorsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownHelpPeerColorsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownHelpPeerColorsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownHelpPeerColorsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown help.PeerColors#${u.constructor:08x}'
+}
+
+fn (u UnknownHelpPeerColorsType) is_help_peer_colors_type() {}
 
 pub interface HelpPremiumPromoType {
 	Object
 	is_help_premium_promo_type()
 }
 
+pub struct UnknownHelpPremiumPromoType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownHelpPremiumPromoType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownHelpPremiumPromoType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownHelpPremiumPromoType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown help.PremiumPromo#${u.constructor:08x}'
+}
+
+fn (u UnknownHelpPremiumPromoType) is_help_premium_promo_type() {}
+
 pub interface HelpPromoDataType {
 	Object
 	is_help_promo_data_type()
 }
+
+pub struct UnknownHelpPromoDataType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownHelpPromoDataType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownHelpPromoDataType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownHelpPromoDataType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown help.PromoData#${u.constructor:08x}'
+}
+
+fn (u UnknownHelpPromoDataType) is_help_promo_data_type() {}
 
 pub interface HelpRecentMeUrlsType {
 	Object
 	is_help_recent_me_urls_type()
 }
 
+pub struct UnknownHelpRecentMeUrlsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownHelpRecentMeUrlsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownHelpRecentMeUrlsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownHelpRecentMeUrlsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown help.RecentMeUrls#${u.constructor:08x}'
+}
+
+fn (u UnknownHelpRecentMeUrlsType) is_help_recent_me_urls_type() {}
+
 pub interface HelpSupportType {
 	Object
 	is_help_support_type()
 }
+
+pub struct UnknownHelpSupportType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownHelpSupportType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownHelpSupportType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownHelpSupportType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown help.Support#${u.constructor:08x}'
+}
+
+fn (u UnknownHelpSupportType) is_help_support_type() {}
 
 pub interface HelpSupportNameType {
 	Object
 	is_help_support_name_type()
 }
 
+pub struct UnknownHelpSupportNameType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownHelpSupportNameType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownHelpSupportNameType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownHelpSupportNameType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown help.SupportName#${u.constructor:08x}'
+}
+
+fn (u UnknownHelpSupportNameType) is_help_support_name_type() {}
+
 pub interface HelpTermsOfServiceType {
 	Object
 	is_help_terms_of_service_type()
 }
+
+pub struct UnknownHelpTermsOfServiceType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownHelpTermsOfServiceType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownHelpTermsOfServiceType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownHelpTermsOfServiceType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown help.TermsOfService#${u.constructor:08x}'
+}
+
+fn (u UnknownHelpTermsOfServiceType) is_help_terms_of_service_type() {}
 
 pub interface HelpTermsOfServiceUpdateType {
 	Object
 	is_help_terms_of_service_update_type()
 }
 
+pub struct UnknownHelpTermsOfServiceUpdateType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownHelpTermsOfServiceUpdateType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownHelpTermsOfServiceUpdateType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownHelpTermsOfServiceUpdateType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown help.TermsOfServiceUpdate#${u.constructor:08x}'
+}
+
+fn (u UnknownHelpTermsOfServiceUpdateType) is_help_terms_of_service_update_type() {}
+
 pub interface HelpTimezonesListType {
 	Object
 	is_help_timezones_list_type()
 }
+
+pub struct UnknownHelpTimezonesListType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownHelpTimezonesListType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownHelpTimezonesListType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownHelpTimezonesListType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown help.TimezonesList#${u.constructor:08x}'
+}
+
+fn (u UnknownHelpTimezonesListType) is_help_timezones_list_type() {}
 
 pub interface HelpUserInfoType {
 	Object
 	is_help_user_info_type()
 }
 
+pub struct UnknownHelpUserInfoType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownHelpUserInfoType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownHelpUserInfoType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownHelpUserInfoType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown help.UserInfo#${u.constructor:08x}'
+}
+
+fn (u UnknownHelpUserInfoType) is_help_user_info_type() {}
+
 pub interface MessagesAffectedFoundMessagesType {
 	Object
 	is_messages_affected_found_messages_type()
 }
+
+pub struct UnknownMessagesAffectedFoundMessagesType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesAffectedFoundMessagesType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesAffectedFoundMessagesType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesAffectedFoundMessagesType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.AffectedFoundMessages#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesAffectedFoundMessagesType) is_messages_affected_found_messages_type() {}
 
 pub interface MessagesAffectedHistoryType {
 	Object
 	is_messages_affected_history_type()
 }
 
+pub struct UnknownMessagesAffectedHistoryType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesAffectedHistoryType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesAffectedHistoryType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesAffectedHistoryType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.AffectedHistory#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesAffectedHistoryType) is_messages_affected_history_type() {}
+
 pub interface MessagesAffectedMessagesType {
 	Object
 	is_messages_affected_messages_type()
 }
+
+pub struct UnknownMessagesAffectedMessagesType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesAffectedMessagesType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesAffectedMessagesType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesAffectedMessagesType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.AffectedMessages#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesAffectedMessagesType) is_messages_affected_messages_type() {}
 
 pub interface MessagesAllStickersType {
 	Object
 	is_messages_all_stickers_type()
 }
 
+pub struct UnknownMessagesAllStickersType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesAllStickersType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesAllStickersType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesAllStickersType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.AllStickers#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesAllStickersType) is_messages_all_stickers_type() {}
+
 pub interface MessagesArchivedStickersType {
 	Object
 	is_messages_archived_stickers_type()
 }
+
+pub struct UnknownMessagesArchivedStickersType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesArchivedStickersType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesArchivedStickersType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesArchivedStickersType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.ArchivedStickers#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesArchivedStickersType) is_messages_archived_stickers_type() {}
 
 pub interface MessagesAvailableEffectsType {
 	Object
 	is_messages_available_effects_type()
 }
 
+pub struct UnknownMessagesAvailableEffectsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesAvailableEffectsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesAvailableEffectsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesAvailableEffectsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.AvailableEffects#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesAvailableEffectsType) is_messages_available_effects_type() {}
+
 pub interface MessagesAvailableReactionsType {
 	Object
 	is_messages_available_reactions_type()
 }
+
+pub struct UnknownMessagesAvailableReactionsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesAvailableReactionsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesAvailableReactionsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesAvailableReactionsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.AvailableReactions#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesAvailableReactionsType) is_messages_available_reactions_type() {}
 
 pub interface MessagesBotAppType {
 	Object
 	is_messages_bot_app_type()
 }
 
+pub struct UnknownMessagesBotAppType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesBotAppType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesBotAppType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesBotAppType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.BotApp#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesBotAppType) is_messages_bot_app_type() {}
+
 pub interface MessagesBotCallbackAnswerType {
 	Object
 	is_messages_bot_callback_answer_type()
 }
+
+pub struct UnknownMessagesBotCallbackAnswerType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesBotCallbackAnswerType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesBotCallbackAnswerType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesBotCallbackAnswerType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.BotCallbackAnswer#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesBotCallbackAnswerType) is_messages_bot_callback_answer_type() {}
 
 pub interface MessagesBotPreparedInlineMessageType {
 	Object
 	is_messages_bot_prepared_inline_message_type()
 }
 
+pub struct UnknownMessagesBotPreparedInlineMessageType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesBotPreparedInlineMessageType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesBotPreparedInlineMessageType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesBotPreparedInlineMessageType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.BotPreparedInlineMessage#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesBotPreparedInlineMessageType) is_messages_bot_prepared_inline_message_type() {}
+
 pub interface MessagesBotResultsType {
 	Object
 	is_messages_bot_results_type()
 }
+
+pub struct UnknownMessagesBotResultsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesBotResultsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesBotResultsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesBotResultsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.BotResults#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesBotResultsType) is_messages_bot_results_type() {}
 
 pub interface MessagesChatAdminsWithInvitesType {
 	Object
 	is_messages_chat_admins_with_invites_type()
 }
 
+pub struct UnknownMessagesChatAdminsWithInvitesType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesChatAdminsWithInvitesType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesChatAdminsWithInvitesType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesChatAdminsWithInvitesType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.ChatAdminsWithInvites#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesChatAdminsWithInvitesType) is_messages_chat_admins_with_invites_type() {}
+
 pub interface MessagesChatFullType {
 	Object
 	is_messages_chat_full_type()
 }
+
+pub struct UnknownMessagesChatFullType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesChatFullType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesChatFullType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesChatFullType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.ChatFull#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesChatFullType) is_messages_chat_full_type() {}
 
 pub interface MessagesChatInviteImportersType {
 	Object
 	is_messages_chat_invite_importers_type()
 }
 
+pub struct UnknownMessagesChatInviteImportersType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesChatInviteImportersType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesChatInviteImportersType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesChatInviteImportersType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.ChatInviteImporters#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesChatInviteImportersType) is_messages_chat_invite_importers_type() {}
+
 pub interface MessagesChatsType {
 	Object
 	is_messages_chats_type()
 }
+
+pub struct UnknownMessagesChatsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesChatsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesChatsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesChatsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.Chats#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesChatsType) is_messages_chats_type() {}
 
 pub interface MessagesCheckedHistoryImportPeerType {
 	Object
 	is_messages_checked_history_import_peer_type()
 }
 
+pub struct UnknownMessagesCheckedHistoryImportPeerType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesCheckedHistoryImportPeerType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesCheckedHistoryImportPeerType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesCheckedHistoryImportPeerType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.CheckedHistoryImportPeer#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesCheckedHistoryImportPeerType) is_messages_checked_history_import_peer_type() {}
+
 pub interface MessagesDhConfigType {
 	Object
 	is_messages_dh_config_type()
 }
+
+pub struct UnknownMessagesDhConfigType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesDhConfigType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesDhConfigType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesDhConfigType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.DhConfig#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesDhConfigType) is_messages_dh_config_type() {}
 
 pub interface MessagesDialogFiltersType {
 	Object
 	is_messages_dialog_filters_type()
 }
 
+pub struct UnknownMessagesDialogFiltersType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesDialogFiltersType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesDialogFiltersType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesDialogFiltersType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.DialogFilters#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesDialogFiltersType) is_messages_dialog_filters_type() {}
+
 pub interface MessagesDialogsType {
 	Object
 	is_messages_dialogs_type()
 }
+
+pub struct UnknownMessagesDialogsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesDialogsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesDialogsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesDialogsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.Dialogs#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesDialogsType) is_messages_dialogs_type() {}
 
 pub interface MessagesDiscussionMessageType {
 	Object
 	is_messages_discussion_message_type()
 }
 
+pub struct UnknownMessagesDiscussionMessageType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesDiscussionMessageType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesDiscussionMessageType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesDiscussionMessageType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.DiscussionMessage#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesDiscussionMessageType) is_messages_discussion_message_type() {}
+
 pub interface MessagesEmojiGameInfoType {
 	Object
 	is_messages_emoji_game_info_type()
 }
+
+pub struct UnknownMessagesEmojiGameInfoType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesEmojiGameInfoType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesEmojiGameInfoType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesEmojiGameInfoType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.EmojiGameInfo#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesEmojiGameInfoType) is_messages_emoji_game_info_type() {}
 
 pub interface MessagesEmojiGameOutcomeType {
 	Object
 	is_messages_emoji_game_outcome_type()
 }
 
+pub struct UnknownMessagesEmojiGameOutcomeType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesEmojiGameOutcomeType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesEmojiGameOutcomeType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesEmojiGameOutcomeType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.EmojiGameOutcome#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesEmojiGameOutcomeType) is_messages_emoji_game_outcome_type() {}
+
 pub interface MessagesEmojiGroupsType {
 	Object
 	is_messages_emoji_groups_type()
 }
+
+pub struct UnknownMessagesEmojiGroupsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesEmojiGroupsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesEmojiGroupsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesEmojiGroupsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.EmojiGroups#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesEmojiGroupsType) is_messages_emoji_groups_type() {}
 
 pub interface MessagesExportedChatInviteType {
 	Object
 	is_messages_exported_chat_invite_type()
 }
 
+pub struct UnknownMessagesExportedChatInviteType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesExportedChatInviteType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesExportedChatInviteType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesExportedChatInviteType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.ExportedChatInvite#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesExportedChatInviteType) is_messages_exported_chat_invite_type() {}
+
 pub interface MessagesExportedChatInvitesType {
 	Object
 	is_messages_exported_chat_invites_type()
 }
+
+pub struct UnknownMessagesExportedChatInvitesType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesExportedChatInvitesType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesExportedChatInvitesType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesExportedChatInvitesType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.ExportedChatInvites#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesExportedChatInvitesType) is_messages_exported_chat_invites_type() {}
 
 pub interface MessagesFavedStickersType {
 	Object
 	is_messages_faved_stickers_type()
 }
 
+pub struct UnknownMessagesFavedStickersType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesFavedStickersType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesFavedStickersType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesFavedStickersType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.FavedStickers#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesFavedStickersType) is_messages_faved_stickers_type() {}
+
 pub interface MessagesFeaturedStickersType {
 	Object
 	is_messages_featured_stickers_type()
 }
+
+pub struct UnknownMessagesFeaturedStickersType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesFeaturedStickersType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesFeaturedStickersType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesFeaturedStickersType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.FeaturedStickers#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesFeaturedStickersType) is_messages_featured_stickers_type() {}
 
 pub interface MessagesForumTopicsType {
 	Object
 	is_messages_forum_topics_type()
 }
 
+pub struct UnknownMessagesForumTopicsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesForumTopicsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesForumTopicsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesForumTopicsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.ForumTopics#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesForumTopicsType) is_messages_forum_topics_type() {}
+
 pub interface MessagesFoundStickerSetsType {
 	Object
 	is_messages_found_sticker_sets_type()
 }
+
+pub struct UnknownMessagesFoundStickerSetsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesFoundStickerSetsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesFoundStickerSetsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesFoundStickerSetsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.FoundStickerSets#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesFoundStickerSetsType) is_messages_found_sticker_sets_type() {}
 
 pub interface MessagesFoundStickersType {
 	Object
 	is_messages_found_stickers_type()
 }
 
+pub struct UnknownMessagesFoundStickersType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesFoundStickersType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesFoundStickersType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesFoundStickersType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.FoundStickers#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesFoundStickersType) is_messages_found_stickers_type() {}
+
 pub interface MessagesHighScoresType {
 	Object
 	is_messages_high_scores_type()
 }
+
+pub struct UnknownMessagesHighScoresType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesHighScoresType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesHighScoresType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesHighScoresType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.HighScores#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesHighScoresType) is_messages_high_scores_type() {}
 
 pub interface MessagesHistoryImportType {
 	Object
 	is_messages_history_import_type()
 }
 
+pub struct UnknownMessagesHistoryImportType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesHistoryImportType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesHistoryImportType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesHistoryImportType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.HistoryImport#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesHistoryImportType) is_messages_history_import_type() {}
+
 pub interface MessagesHistoryImportParsedType {
 	Object
 	is_messages_history_import_parsed_type()
 }
+
+pub struct UnknownMessagesHistoryImportParsedType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesHistoryImportParsedType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesHistoryImportParsedType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesHistoryImportParsedType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.HistoryImportParsed#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesHistoryImportParsedType) is_messages_history_import_parsed_type() {}
 
 pub interface MessagesInactiveChatsType {
 	Object
 	is_messages_inactive_chats_type()
 }
 
+pub struct UnknownMessagesInactiveChatsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesInactiveChatsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesInactiveChatsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesInactiveChatsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.InactiveChats#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesInactiveChatsType) is_messages_inactive_chats_type() {}
+
 pub interface MessagesInvitedUsersType {
 	Object
 	is_messages_invited_users_type()
 }
+
+pub struct UnknownMessagesInvitedUsersType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesInvitedUsersType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesInvitedUsersType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesInvitedUsersType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.InvitedUsers#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesInvitedUsersType) is_messages_invited_users_type() {}
 
 pub interface MessagesMessageEditDataType {
 	Object
 	is_messages_message_edit_data_type()
 }
 
+pub struct UnknownMessagesMessageEditDataType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesMessageEditDataType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesMessageEditDataType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesMessageEditDataType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.MessageEditData#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesMessageEditDataType) is_messages_message_edit_data_type() {}
+
 pub interface MessagesMessageReactionsListType {
 	Object
 	is_messages_message_reactions_list_type()
 }
+
+pub struct UnknownMessagesMessageReactionsListType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesMessageReactionsListType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesMessageReactionsListType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesMessageReactionsListType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.MessageReactionsList#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesMessageReactionsListType) is_messages_message_reactions_list_type() {}
 
 pub interface MessagesMessageViewsType {
 	Object
 	is_messages_message_views_type()
 }
 
+pub struct UnknownMessagesMessageViewsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesMessageViewsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesMessageViewsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesMessageViewsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.MessageViews#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesMessageViewsType) is_messages_message_views_type() {}
+
 pub interface MessagesMessagesType {
 	Object
 	is_messages_messages_type()
 }
+
+pub struct UnknownMessagesMessagesType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesMessagesType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesMessagesType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesMessagesType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.Messages#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesMessagesType) is_messages_messages_type() {}
 
 pub interface MessagesMyStickersType {
 	Object
 	is_messages_my_stickers_type()
 }
 
+pub struct UnknownMessagesMyStickersType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesMyStickersType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesMyStickersType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesMyStickersType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.MyStickers#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesMyStickersType) is_messages_my_stickers_type() {}
+
 pub interface MessagesPeerDialogsType {
 	Object
 	is_messages_peer_dialogs_type()
 }
+
+pub struct UnknownMessagesPeerDialogsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesPeerDialogsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesPeerDialogsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesPeerDialogsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.PeerDialogs#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesPeerDialogsType) is_messages_peer_dialogs_type() {}
 
 pub interface MessagesPeerSettingsType {
 	Object
 	is_messages_peer_settings_type()
 }
 
+pub struct UnknownMessagesPeerSettingsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesPeerSettingsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesPeerSettingsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesPeerSettingsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.PeerSettings#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesPeerSettingsType) is_messages_peer_settings_type() {}
+
 pub interface MessagesPreparedInlineMessageType {
 	Object
 	is_messages_prepared_inline_message_type()
 }
+
+pub struct UnknownMessagesPreparedInlineMessageType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesPreparedInlineMessageType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesPreparedInlineMessageType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesPreparedInlineMessageType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.PreparedInlineMessage#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesPreparedInlineMessageType) is_messages_prepared_inline_message_type() {}
 
 pub interface MessagesQuickRepliesType {
 	Object
 	is_messages_quick_replies_type()
 }
 
+pub struct UnknownMessagesQuickRepliesType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesQuickRepliesType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesQuickRepliesType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesQuickRepliesType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.QuickReplies#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesQuickRepliesType) is_messages_quick_replies_type() {}
+
 pub interface MessagesReactionsType {
 	Object
 	is_messages_reactions_type()
 }
+
+pub struct UnknownMessagesReactionsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesReactionsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesReactionsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesReactionsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.Reactions#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesReactionsType) is_messages_reactions_type() {}
 
 pub interface MessagesRecentStickersType {
 	Object
 	is_messages_recent_stickers_type()
 }
 
+pub struct UnknownMessagesRecentStickersType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesRecentStickersType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesRecentStickersType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesRecentStickersType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.RecentStickers#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesRecentStickersType) is_messages_recent_stickers_type() {}
+
 pub interface MessagesSavedDialogsType {
 	Object
 	is_messages_saved_dialogs_type()
 }
+
+pub struct UnknownMessagesSavedDialogsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesSavedDialogsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesSavedDialogsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesSavedDialogsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.SavedDialogs#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesSavedDialogsType) is_messages_saved_dialogs_type() {}
 
 pub interface MessagesSavedGifsType {
 	Object
 	is_messages_saved_gifs_type()
 }
 
+pub struct UnknownMessagesSavedGifsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesSavedGifsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesSavedGifsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesSavedGifsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.SavedGifs#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesSavedGifsType) is_messages_saved_gifs_type() {}
+
 pub interface MessagesSavedReactionTagsType {
 	Object
 	is_messages_saved_reaction_tags_type()
 }
+
+pub struct UnknownMessagesSavedReactionTagsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesSavedReactionTagsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesSavedReactionTagsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesSavedReactionTagsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.SavedReactionTags#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesSavedReactionTagsType) is_messages_saved_reaction_tags_type() {}
 
 pub interface MessagesSearchCounterType {
 	Object
 	is_messages_search_counter_type()
 }
 
+pub struct UnknownMessagesSearchCounterType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesSearchCounterType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesSearchCounterType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesSearchCounterType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.SearchCounter#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesSearchCounterType) is_messages_search_counter_type() {}
+
 pub interface MessagesSearchResultsCalendarType {
 	Object
 	is_messages_search_results_calendar_type()
 }
+
+pub struct UnknownMessagesSearchResultsCalendarType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesSearchResultsCalendarType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesSearchResultsCalendarType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesSearchResultsCalendarType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.SearchResultsCalendar#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesSearchResultsCalendarType) is_messages_search_results_calendar_type() {}
 
 pub interface MessagesSearchResultsPositionsType {
 	Object
 	is_messages_search_results_positions_type()
 }
 
+pub struct UnknownMessagesSearchResultsPositionsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesSearchResultsPositionsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesSearchResultsPositionsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesSearchResultsPositionsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.SearchResultsPositions#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesSearchResultsPositionsType) is_messages_search_results_positions_type() {}
+
 pub interface MessagesSentEncryptedMessageType {
 	Object
 	is_messages_sent_encrypted_message_type()
 }
+
+pub struct UnknownMessagesSentEncryptedMessageType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesSentEncryptedMessageType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesSentEncryptedMessageType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesSentEncryptedMessageType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.SentEncryptedMessage#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesSentEncryptedMessageType) is_messages_sent_encrypted_message_type() {}
 
 pub interface MessagesSponsoredMessagesType {
 	Object
 	is_messages_sponsored_messages_type()
 }
 
+pub struct UnknownMessagesSponsoredMessagesType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesSponsoredMessagesType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesSponsoredMessagesType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesSponsoredMessagesType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.SponsoredMessages#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesSponsoredMessagesType) is_messages_sponsored_messages_type() {}
+
 pub interface MessagesStickerSetType {
 	Object
 	is_messages_sticker_set_type()
 }
+
+pub struct UnknownMessagesStickerSetType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesStickerSetType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesStickerSetType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesStickerSetType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.StickerSet#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesStickerSetType) is_messages_sticker_set_type() {}
 
 pub interface MessagesStickerSetInstallResultType {
 	Object
 	is_messages_sticker_set_install_result_type()
 }
 
+pub struct UnknownMessagesStickerSetInstallResultType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesStickerSetInstallResultType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesStickerSetInstallResultType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesStickerSetInstallResultType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.StickerSetInstallResult#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesStickerSetInstallResultType) is_messages_sticker_set_install_result_type() {}
+
 pub interface MessagesStickersType {
 	Object
 	is_messages_stickers_type()
 }
+
+pub struct UnknownMessagesStickersType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesStickersType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesStickersType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesStickersType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.Stickers#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesStickersType) is_messages_stickers_type() {}
 
 pub interface MessagesTranscribedAudioType {
 	Object
 	is_messages_transcribed_audio_type()
 }
 
+pub struct UnknownMessagesTranscribedAudioType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesTranscribedAudioType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesTranscribedAudioType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesTranscribedAudioType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.TranscribedAudio#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesTranscribedAudioType) is_messages_transcribed_audio_type() {}
+
 pub interface MessagesTranslatedTextType {
 	Object
 	is_messages_translated_text_type()
 }
+
+pub struct UnknownMessagesTranslatedTextType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesTranslatedTextType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesTranslatedTextType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesTranslatedTextType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.TranslatedText#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesTranslatedTextType) is_messages_translated_text_type() {}
 
 pub interface MessagesVotesListType {
 	Object
 	is_messages_votes_list_type()
 }
 
+pub struct UnknownMessagesVotesListType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesVotesListType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesVotesListType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesVotesListType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.VotesList#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesVotesListType) is_messages_votes_list_type() {}
+
 pub interface MessagesWebPageType {
 	Object
 	is_messages_web_page_type()
 }
+
+pub struct UnknownMessagesWebPageType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesWebPageType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesWebPageType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesWebPageType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.WebPage#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesWebPageType) is_messages_web_page_type() {}
 
 pub interface MessagesWebPagePreviewType {
 	Object
 	is_messages_web_page_preview_type()
 }
 
+pub struct UnknownMessagesWebPagePreviewType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownMessagesWebPagePreviewType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownMessagesWebPagePreviewType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownMessagesWebPagePreviewType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown messages.WebPagePreview#${u.constructor:08x}'
+}
+
+fn (u UnknownMessagesWebPagePreviewType) is_messages_web_page_preview_type() {}
+
 pub interface PaymentsBankCardDataType {
 	Object
 	is_payments_bank_card_data_type()
 }
+
+pub struct UnknownPaymentsBankCardDataType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaymentsBankCardDataType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaymentsBankCardDataType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaymentsBankCardDataType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown payments.BankCardData#${u.constructor:08x}'
+}
+
+fn (u UnknownPaymentsBankCardDataType) is_payments_bank_card_data_type() {}
 
 pub interface PaymentsCheckCanSendGiftResultType {
 	Object
 	is_payments_check_can_send_gift_result_type()
 }
 
+pub struct UnknownPaymentsCheckCanSendGiftResultType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaymentsCheckCanSendGiftResultType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaymentsCheckCanSendGiftResultType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaymentsCheckCanSendGiftResultType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown payments.CheckCanSendGiftResult#${u.constructor:08x}'
+}
+
+fn (u UnknownPaymentsCheckCanSendGiftResultType) is_payments_check_can_send_gift_result_type() {}
+
 pub interface PaymentsCheckedGiftCodeType {
 	Object
 	is_payments_checked_gift_code_type()
 }
+
+pub struct UnknownPaymentsCheckedGiftCodeType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaymentsCheckedGiftCodeType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaymentsCheckedGiftCodeType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaymentsCheckedGiftCodeType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown payments.CheckedGiftCode#${u.constructor:08x}'
+}
+
+fn (u UnknownPaymentsCheckedGiftCodeType) is_payments_checked_gift_code_type() {}
 
 pub interface PaymentsConnectedStarRefBotsType {
 	Object
 	is_payments_connected_star_ref_bots_type()
 }
 
+pub struct UnknownPaymentsConnectedStarRefBotsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaymentsConnectedStarRefBotsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaymentsConnectedStarRefBotsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaymentsConnectedStarRefBotsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown payments.ConnectedStarRefBots#${u.constructor:08x}'
+}
+
+fn (u UnknownPaymentsConnectedStarRefBotsType) is_payments_connected_star_ref_bots_type() {}
+
 pub interface PaymentsExportedInvoiceType {
 	Object
 	is_payments_exported_invoice_type()
 }
+
+pub struct UnknownPaymentsExportedInvoiceType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaymentsExportedInvoiceType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaymentsExportedInvoiceType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaymentsExportedInvoiceType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown payments.ExportedInvoice#${u.constructor:08x}'
+}
+
+fn (u UnknownPaymentsExportedInvoiceType) is_payments_exported_invoice_type() {}
 
 pub interface PaymentsGiveawayInfoType {
 	Object
 	is_payments_giveaway_info_type()
 }
 
+pub struct UnknownPaymentsGiveawayInfoType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaymentsGiveawayInfoType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaymentsGiveawayInfoType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaymentsGiveawayInfoType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown payments.GiveawayInfo#${u.constructor:08x}'
+}
+
+fn (u UnknownPaymentsGiveawayInfoType) is_payments_giveaway_info_type() {}
+
 pub interface PaymentsPaymentFormType {
 	Object
 	is_payments_payment_form_type()
 }
+
+pub struct UnknownPaymentsPaymentFormType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaymentsPaymentFormType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaymentsPaymentFormType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaymentsPaymentFormType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown payments.PaymentForm#${u.constructor:08x}'
+}
+
+fn (u UnknownPaymentsPaymentFormType) is_payments_payment_form_type() {}
 
 pub interface PaymentsPaymentReceiptType {
 	Object
 	is_payments_payment_receipt_type()
 }
 
+pub struct UnknownPaymentsPaymentReceiptType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaymentsPaymentReceiptType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaymentsPaymentReceiptType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaymentsPaymentReceiptType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown payments.PaymentReceipt#${u.constructor:08x}'
+}
+
+fn (u UnknownPaymentsPaymentReceiptType) is_payments_payment_receipt_type() {}
+
 pub interface PaymentsPaymentResultType {
 	Object
 	is_payments_payment_result_type()
 }
+
+pub struct UnknownPaymentsPaymentResultType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaymentsPaymentResultType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaymentsPaymentResultType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaymentsPaymentResultType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown payments.PaymentResult#${u.constructor:08x}'
+}
+
+fn (u UnknownPaymentsPaymentResultType) is_payments_payment_result_type() {}
 
 pub interface PaymentsResaleStarGiftsType {
 	Object
 	is_payments_resale_star_gifts_type()
 }
 
+pub struct UnknownPaymentsResaleStarGiftsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaymentsResaleStarGiftsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaymentsResaleStarGiftsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaymentsResaleStarGiftsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown payments.ResaleStarGifts#${u.constructor:08x}'
+}
+
+fn (u UnknownPaymentsResaleStarGiftsType) is_payments_resale_star_gifts_type() {}
+
 pub interface PaymentsSavedInfoType {
 	Object
 	is_payments_saved_info_type()
 }
+
+pub struct UnknownPaymentsSavedInfoType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaymentsSavedInfoType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaymentsSavedInfoType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaymentsSavedInfoType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown payments.SavedInfo#${u.constructor:08x}'
+}
+
+fn (u UnknownPaymentsSavedInfoType) is_payments_saved_info_type() {}
 
 pub interface PaymentsSavedStarGiftsType {
 	Object
 	is_payments_saved_star_gifts_type()
 }
 
+pub struct UnknownPaymentsSavedStarGiftsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaymentsSavedStarGiftsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaymentsSavedStarGiftsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaymentsSavedStarGiftsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown payments.SavedStarGifts#${u.constructor:08x}'
+}
+
+fn (u UnknownPaymentsSavedStarGiftsType) is_payments_saved_star_gifts_type() {}
+
 pub interface PaymentsStarGiftActiveAuctionsType {
 	Object
 	is_payments_star_gift_active_auctions_type()
 }
+
+pub struct UnknownPaymentsStarGiftActiveAuctionsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaymentsStarGiftActiveAuctionsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaymentsStarGiftActiveAuctionsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaymentsStarGiftActiveAuctionsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown payments.StarGiftActiveAuctions#${u.constructor:08x}'
+}
+
+fn (u UnknownPaymentsStarGiftActiveAuctionsType) is_payments_star_gift_active_auctions_type() {}
 
 pub interface PaymentsStarGiftAuctionAcquiredGiftsType {
 	Object
 	is_payments_star_gift_auction_acquired_gifts_type()
 }
 
+pub struct UnknownPaymentsStarGiftAuctionAcquiredGiftsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaymentsStarGiftAuctionAcquiredGiftsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaymentsStarGiftAuctionAcquiredGiftsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaymentsStarGiftAuctionAcquiredGiftsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown payments.StarGiftAuctionAcquiredGifts#${u.constructor:08x}'
+}
+
+fn (u UnknownPaymentsStarGiftAuctionAcquiredGiftsType) is_payments_star_gift_auction_acquired_gifts_type() {}
+
 pub interface PaymentsStarGiftAuctionStateType {
 	Object
 	is_payments_star_gift_auction_state_type()
 }
+
+pub struct UnknownPaymentsStarGiftAuctionStateType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaymentsStarGiftAuctionStateType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaymentsStarGiftAuctionStateType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaymentsStarGiftAuctionStateType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown payments.StarGiftAuctionState#${u.constructor:08x}'
+}
+
+fn (u UnknownPaymentsStarGiftAuctionStateType) is_payments_star_gift_auction_state_type() {}
 
 pub interface PaymentsStarGiftCollectionsType {
 	Object
 	is_payments_star_gift_collections_type()
 }
 
+pub struct UnknownPaymentsStarGiftCollectionsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaymentsStarGiftCollectionsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaymentsStarGiftCollectionsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaymentsStarGiftCollectionsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown payments.StarGiftCollections#${u.constructor:08x}'
+}
+
+fn (u UnknownPaymentsStarGiftCollectionsType) is_payments_star_gift_collections_type() {}
+
 pub interface PaymentsStarGiftUpgradeAttributesType {
 	Object
 	is_payments_star_gift_upgrade_attributes_type()
 }
+
+pub struct UnknownPaymentsStarGiftUpgradeAttributesType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaymentsStarGiftUpgradeAttributesType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaymentsStarGiftUpgradeAttributesType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaymentsStarGiftUpgradeAttributesType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown payments.StarGiftUpgradeAttributes#${u.constructor:08x}'
+}
+
+fn (u UnknownPaymentsStarGiftUpgradeAttributesType) is_payments_star_gift_upgrade_attributes_type() {}
 
 pub interface PaymentsStarGiftUpgradePreviewType {
 	Object
 	is_payments_star_gift_upgrade_preview_type()
 }
 
+pub struct UnknownPaymentsStarGiftUpgradePreviewType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaymentsStarGiftUpgradePreviewType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaymentsStarGiftUpgradePreviewType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaymentsStarGiftUpgradePreviewType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown payments.StarGiftUpgradePreview#${u.constructor:08x}'
+}
+
+fn (u UnknownPaymentsStarGiftUpgradePreviewType) is_payments_star_gift_upgrade_preview_type() {}
+
 pub interface PaymentsStarGiftWithdrawalUrlType {
 	Object
 	is_payments_star_gift_withdrawal_url_type()
 }
+
+pub struct UnknownPaymentsStarGiftWithdrawalUrlType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaymentsStarGiftWithdrawalUrlType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaymentsStarGiftWithdrawalUrlType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaymentsStarGiftWithdrawalUrlType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown payments.StarGiftWithdrawalUrl#${u.constructor:08x}'
+}
+
+fn (u UnknownPaymentsStarGiftWithdrawalUrlType) is_payments_star_gift_withdrawal_url_type() {}
 
 pub interface PaymentsStarGiftsType {
 	Object
 	is_payments_star_gifts_type()
 }
 
+pub struct UnknownPaymentsStarGiftsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaymentsStarGiftsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaymentsStarGiftsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaymentsStarGiftsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown payments.StarGifts#${u.constructor:08x}'
+}
+
+fn (u UnknownPaymentsStarGiftsType) is_payments_star_gifts_type() {}
+
 pub interface PaymentsStarsRevenueAdsAccountUrlType {
 	Object
 	is_payments_stars_revenue_ads_account_url_type()
 }
+
+pub struct UnknownPaymentsStarsRevenueAdsAccountUrlType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaymentsStarsRevenueAdsAccountUrlType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaymentsStarsRevenueAdsAccountUrlType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaymentsStarsRevenueAdsAccountUrlType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown payments.StarsRevenueAdsAccountUrl#${u.constructor:08x}'
+}
+
+fn (u UnknownPaymentsStarsRevenueAdsAccountUrlType) is_payments_stars_revenue_ads_account_url_type() {}
 
 pub interface PaymentsStarsRevenueStatsType {
 	Object
 	is_payments_stars_revenue_stats_type()
 }
 
+pub struct UnknownPaymentsStarsRevenueStatsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaymentsStarsRevenueStatsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaymentsStarsRevenueStatsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaymentsStarsRevenueStatsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown payments.StarsRevenueStats#${u.constructor:08x}'
+}
+
+fn (u UnknownPaymentsStarsRevenueStatsType) is_payments_stars_revenue_stats_type() {}
+
 pub interface PaymentsStarsRevenueWithdrawalUrlType {
 	Object
 	is_payments_stars_revenue_withdrawal_url_type()
 }
+
+pub struct UnknownPaymentsStarsRevenueWithdrawalUrlType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaymentsStarsRevenueWithdrawalUrlType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaymentsStarsRevenueWithdrawalUrlType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaymentsStarsRevenueWithdrawalUrlType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown payments.StarsRevenueWithdrawalUrl#${u.constructor:08x}'
+}
+
+fn (u UnknownPaymentsStarsRevenueWithdrawalUrlType) is_payments_stars_revenue_withdrawal_url_type() {}
 
 pub interface PaymentsStarsStatusType {
 	Object
 	is_payments_stars_status_type()
 }
 
+pub struct UnknownPaymentsStarsStatusType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaymentsStarsStatusType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaymentsStarsStatusType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaymentsStarsStatusType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown payments.StarsStatus#${u.constructor:08x}'
+}
+
+fn (u UnknownPaymentsStarsStatusType) is_payments_stars_status_type() {}
+
 pub interface PaymentsSuggestedStarRefBotsType {
 	Object
 	is_payments_suggested_star_ref_bots_type()
 }
+
+pub struct UnknownPaymentsSuggestedStarRefBotsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaymentsSuggestedStarRefBotsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaymentsSuggestedStarRefBotsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaymentsSuggestedStarRefBotsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown payments.SuggestedStarRefBots#${u.constructor:08x}'
+}
+
+fn (u UnknownPaymentsSuggestedStarRefBotsType) is_payments_suggested_star_ref_bots_type() {}
 
 pub interface PaymentsUniqueStarGiftType {
 	Object
 	is_payments_unique_star_gift_type()
 }
 
+pub struct UnknownPaymentsUniqueStarGiftType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaymentsUniqueStarGiftType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaymentsUniqueStarGiftType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaymentsUniqueStarGiftType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown payments.UniqueStarGift#${u.constructor:08x}'
+}
+
+fn (u UnknownPaymentsUniqueStarGiftType) is_payments_unique_star_gift_type() {}
+
 pub interface PaymentsUniqueStarGiftValueInfoType {
 	Object
 	is_payments_unique_star_gift_value_info_type()
 }
+
+pub struct UnknownPaymentsUniqueStarGiftValueInfoType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaymentsUniqueStarGiftValueInfoType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaymentsUniqueStarGiftValueInfoType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaymentsUniqueStarGiftValueInfoType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown payments.UniqueStarGiftValueInfo#${u.constructor:08x}'
+}
+
+fn (u UnknownPaymentsUniqueStarGiftValueInfoType) is_payments_unique_star_gift_value_info_type() {}
 
 pub interface PaymentsValidatedRequestedInfoType {
 	Object
 	is_payments_validated_requested_info_type()
 }
 
+pub struct UnknownPaymentsValidatedRequestedInfoType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPaymentsValidatedRequestedInfoType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPaymentsValidatedRequestedInfoType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPaymentsValidatedRequestedInfoType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown payments.ValidatedRequestedInfo#${u.constructor:08x}'
+}
+
+fn (u UnknownPaymentsValidatedRequestedInfoType) is_payments_validated_requested_info_type() {}
+
 pub interface PhoneExportedGroupCallInviteType {
 	Object
 	is_phone_exported_group_call_invite_type()
 }
+
+pub struct UnknownPhoneExportedGroupCallInviteType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPhoneExportedGroupCallInviteType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPhoneExportedGroupCallInviteType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPhoneExportedGroupCallInviteType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown phone.ExportedGroupCallInvite#${u.constructor:08x}'
+}
+
+fn (u UnknownPhoneExportedGroupCallInviteType) is_phone_exported_group_call_invite_type() {}
 
 pub interface PhoneGroupCallType {
 	Object
 	is_phone_group_call_type()
 }
 
+pub struct UnknownPhoneGroupCallType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPhoneGroupCallType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPhoneGroupCallType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPhoneGroupCallType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown phone.GroupCall#${u.constructor:08x}'
+}
+
+fn (u UnknownPhoneGroupCallType) is_phone_group_call_type() {}
+
 pub interface PhoneGroupCallStarsType {
 	Object
 	is_phone_group_call_stars_type()
 }
+
+pub struct UnknownPhoneGroupCallStarsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPhoneGroupCallStarsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPhoneGroupCallStarsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPhoneGroupCallStarsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown phone.GroupCallStars#${u.constructor:08x}'
+}
+
+fn (u UnknownPhoneGroupCallStarsType) is_phone_group_call_stars_type() {}
 
 pub interface PhoneGroupCallStreamChannelsType {
 	Object
 	is_phone_group_call_stream_channels_type()
 }
 
+pub struct UnknownPhoneGroupCallStreamChannelsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPhoneGroupCallStreamChannelsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPhoneGroupCallStreamChannelsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPhoneGroupCallStreamChannelsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown phone.GroupCallStreamChannels#${u.constructor:08x}'
+}
+
+fn (u UnknownPhoneGroupCallStreamChannelsType) is_phone_group_call_stream_channels_type() {}
+
 pub interface PhoneGroupCallStreamRtmpUrlType {
 	Object
 	is_phone_group_call_stream_rtmp_url_type()
 }
+
+pub struct UnknownPhoneGroupCallStreamRtmpUrlType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPhoneGroupCallStreamRtmpUrlType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPhoneGroupCallStreamRtmpUrlType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPhoneGroupCallStreamRtmpUrlType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown phone.GroupCallStreamRtmpUrl#${u.constructor:08x}'
+}
+
+fn (u UnknownPhoneGroupCallStreamRtmpUrlType) is_phone_group_call_stream_rtmp_url_type() {}
 
 pub interface PhoneGroupParticipantsType {
 	Object
 	is_phone_group_participants_type()
 }
 
+pub struct UnknownPhoneGroupParticipantsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPhoneGroupParticipantsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPhoneGroupParticipantsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPhoneGroupParticipantsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown phone.GroupParticipants#${u.constructor:08x}'
+}
+
+fn (u UnknownPhoneGroupParticipantsType) is_phone_group_participants_type() {}
+
 pub interface PhoneJoinAsPeersType {
 	Object
 	is_phone_join_as_peers_type()
 }
+
+pub struct UnknownPhoneJoinAsPeersType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPhoneJoinAsPeersType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPhoneJoinAsPeersType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPhoneJoinAsPeersType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown phone.JoinAsPeers#${u.constructor:08x}'
+}
+
+fn (u UnknownPhoneJoinAsPeersType) is_phone_join_as_peers_type() {}
 
 pub interface PhonePhoneCallType {
 	Object
 	is_phone_phone_call_type()
 }
 
+pub struct UnknownPhonePhoneCallType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPhonePhoneCallType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPhonePhoneCallType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPhonePhoneCallType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown phone.PhoneCall#${u.constructor:08x}'
+}
+
+fn (u UnknownPhonePhoneCallType) is_phone_phone_call_type() {}
+
 pub interface PhotosPhotoType {
 	Object
 	is_photos_photo_type()
 }
+
+pub struct UnknownPhotosPhotoType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPhotosPhotoType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPhotosPhotoType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPhotosPhotoType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown photos.Photo#${u.constructor:08x}'
+}
+
+fn (u UnknownPhotosPhotoType) is_photos_photo_type() {}
 
 pub interface PhotosPhotosType {
 	Object
 	is_photos_photos_type()
 }
 
+pub struct UnknownPhotosPhotosType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPhotosPhotosType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPhotosPhotosType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPhotosPhotosType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown photos.Photos#${u.constructor:08x}'
+}
+
+fn (u UnknownPhotosPhotosType) is_photos_photos_type() {}
+
 pub interface PremiumBoostsListType {
 	Object
 	is_premium_boosts_list_type()
 }
+
+pub struct UnknownPremiumBoostsListType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPremiumBoostsListType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPremiumBoostsListType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPremiumBoostsListType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown premium.BoostsList#${u.constructor:08x}'
+}
+
+fn (u UnknownPremiumBoostsListType) is_premium_boosts_list_type() {}
 
 pub interface PremiumBoostsStatusType {
 	Object
 	is_premium_boosts_status_type()
 }
 
+pub struct UnknownPremiumBoostsStatusType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPremiumBoostsStatusType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPremiumBoostsStatusType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPremiumBoostsStatusType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown premium.BoostsStatus#${u.constructor:08x}'
+}
+
+fn (u UnknownPremiumBoostsStatusType) is_premium_boosts_status_type() {}
+
 pub interface PremiumMyBoostsType {
 	Object
 	is_premium_my_boosts_type()
 }
+
+pub struct UnknownPremiumMyBoostsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownPremiumMyBoostsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownPremiumMyBoostsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownPremiumMyBoostsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown premium.MyBoosts#${u.constructor:08x}'
+}
+
+fn (u UnknownPremiumMyBoostsType) is_premium_my_boosts_type() {}
 
 pub interface SmsjobsEligibilityToJoinType {
 	Object
 	is_smsjobs_eligibility_to_join_type()
 }
 
+pub struct UnknownSmsjobsEligibilityToJoinType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownSmsjobsEligibilityToJoinType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownSmsjobsEligibilityToJoinType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownSmsjobsEligibilityToJoinType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown smsjobs.EligibilityToJoin#${u.constructor:08x}'
+}
+
+fn (u UnknownSmsjobsEligibilityToJoinType) is_smsjobs_eligibility_to_join_type() {}
+
 pub interface SmsjobsStatusType {
 	Object
 	is_smsjobs_status_type()
 }
+
+pub struct UnknownSmsjobsStatusType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownSmsjobsStatusType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownSmsjobsStatusType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownSmsjobsStatusType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown smsjobs.Status#${u.constructor:08x}'
+}
+
+fn (u UnknownSmsjobsStatusType) is_smsjobs_status_type() {}
 
 pub interface StatsBroadcastStatsType {
 	Object
 	is_stats_broadcast_stats_type()
 }
 
+pub struct UnknownStatsBroadcastStatsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStatsBroadcastStatsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStatsBroadcastStatsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStatsBroadcastStatsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown stats.BroadcastStats#${u.constructor:08x}'
+}
+
+fn (u UnknownStatsBroadcastStatsType) is_stats_broadcast_stats_type() {}
+
 pub interface StatsMegagroupStatsType {
 	Object
 	is_stats_megagroup_stats_type()
 }
+
+pub struct UnknownStatsMegagroupStatsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStatsMegagroupStatsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStatsMegagroupStatsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStatsMegagroupStatsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown stats.MegagroupStats#${u.constructor:08x}'
+}
+
+fn (u UnknownStatsMegagroupStatsType) is_stats_megagroup_stats_type() {}
 
 pub interface StatsMessageStatsType {
 	Object
 	is_stats_message_stats_type()
 }
 
+pub struct UnknownStatsMessageStatsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStatsMessageStatsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStatsMessageStatsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStatsMessageStatsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown stats.MessageStats#${u.constructor:08x}'
+}
+
+fn (u UnknownStatsMessageStatsType) is_stats_message_stats_type() {}
+
 pub interface StatsPublicForwardsType {
 	Object
 	is_stats_public_forwards_type()
 }
+
+pub struct UnknownStatsPublicForwardsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStatsPublicForwardsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStatsPublicForwardsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStatsPublicForwardsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown stats.PublicForwards#${u.constructor:08x}'
+}
+
+fn (u UnknownStatsPublicForwardsType) is_stats_public_forwards_type() {}
 
 pub interface StatsStoryStatsType {
 	Object
 	is_stats_story_stats_type()
 }
 
+pub struct UnknownStatsStoryStatsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStatsStoryStatsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStatsStoryStatsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStatsStoryStatsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown stats.StoryStats#${u.constructor:08x}'
+}
+
+fn (u UnknownStatsStoryStatsType) is_stats_story_stats_type() {}
+
 pub interface StickersSuggestedShortNameType {
 	Object
 	is_stickers_suggested_short_name_type()
 }
+
+pub struct UnknownStickersSuggestedShortNameType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStickersSuggestedShortNameType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStickersSuggestedShortNameType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStickersSuggestedShortNameType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown stickers.SuggestedShortName#${u.constructor:08x}'
+}
+
+fn (u UnknownStickersSuggestedShortNameType) is_stickers_suggested_short_name_type() {}
 
 pub interface StorageFileTypeType {
 	Object
 	is_storage_file_type_type()
 }
 
+pub struct UnknownStorageFileTypeType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStorageFileTypeType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStorageFileTypeType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStorageFileTypeType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown storage.FileType#${u.constructor:08x}'
+}
+
+fn (u UnknownStorageFileTypeType) is_storage_file_type_type() {}
+
 pub interface StoriesAlbumsType {
 	Object
 	is_stories_albums_type()
 }
+
+pub struct UnknownStoriesAlbumsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStoriesAlbumsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStoriesAlbumsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStoriesAlbumsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown stories.Albums#${u.constructor:08x}'
+}
+
+fn (u UnknownStoriesAlbumsType) is_stories_albums_type() {}
 
 pub interface StoriesAllStoriesType {
 	Object
 	is_stories_all_stories_type()
 }
 
+pub struct UnknownStoriesAllStoriesType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStoriesAllStoriesType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStoriesAllStoriesType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStoriesAllStoriesType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown stories.AllStories#${u.constructor:08x}'
+}
+
+fn (u UnknownStoriesAllStoriesType) is_stories_all_stories_type() {}
+
 pub interface StoriesCanSendStoryCountType {
 	Object
 	is_stories_can_send_story_count_type()
 }
+
+pub struct UnknownStoriesCanSendStoryCountType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStoriesCanSendStoryCountType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStoriesCanSendStoryCountType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStoriesCanSendStoryCountType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown stories.CanSendStoryCount#${u.constructor:08x}'
+}
+
+fn (u UnknownStoriesCanSendStoryCountType) is_stories_can_send_story_count_type() {}
 
 pub interface StoriesFoundStoriesType {
 	Object
 	is_stories_found_stories_type()
 }
 
+pub struct UnknownStoriesFoundStoriesType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStoriesFoundStoriesType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStoriesFoundStoriesType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStoriesFoundStoriesType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown stories.FoundStories#${u.constructor:08x}'
+}
+
+fn (u UnknownStoriesFoundStoriesType) is_stories_found_stories_type() {}
+
 pub interface StoriesPeerStoriesType {
 	Object
 	is_stories_peer_stories_type()
 }
+
+pub struct UnknownStoriesPeerStoriesType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStoriesPeerStoriesType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStoriesPeerStoriesType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStoriesPeerStoriesType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown stories.PeerStories#${u.constructor:08x}'
+}
+
+fn (u UnknownStoriesPeerStoriesType) is_stories_peer_stories_type() {}
 
 pub interface StoriesStoriesType {
 	Object
 	is_stories_stories_type()
 }
 
+pub struct UnknownStoriesStoriesType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStoriesStoriesType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStoriesStoriesType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStoriesStoriesType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown stories.Stories#${u.constructor:08x}'
+}
+
+fn (u UnknownStoriesStoriesType) is_stories_stories_type() {}
+
 pub interface StoriesStoryReactionsListType {
 	Object
 	is_stories_story_reactions_list_type()
 }
+
+pub struct UnknownStoriesStoryReactionsListType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStoriesStoryReactionsListType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStoriesStoryReactionsListType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStoriesStoryReactionsListType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown stories.StoryReactionsList#${u.constructor:08x}'
+}
+
+fn (u UnknownStoriesStoryReactionsListType) is_stories_story_reactions_list_type() {}
 
 pub interface StoriesStoryViewsType {
 	Object
 	is_stories_story_views_type()
 }
 
+pub struct UnknownStoriesStoryViewsType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStoriesStoryViewsType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStoriesStoryViewsType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStoriesStoryViewsType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown stories.StoryViews#${u.constructor:08x}'
+}
+
+fn (u UnknownStoriesStoryViewsType) is_stories_story_views_type() {}
+
 pub interface StoriesStoryViewsListType {
 	Object
 	is_stories_story_views_list_type()
 }
+
+pub struct UnknownStoriesStoryViewsListType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownStoriesStoryViewsListType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownStoriesStoryViewsListType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownStoriesStoryViewsListType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown stories.StoryViewsList#${u.constructor:08x}'
+}
+
+fn (u UnknownStoriesStoryViewsListType) is_stories_story_views_list_type() {}
 
 pub interface UpdatesChannelDifferenceType {
 	Object
 	is_updates_channel_difference_type()
 }
 
+pub struct UnknownUpdatesChannelDifferenceType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownUpdatesChannelDifferenceType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownUpdatesChannelDifferenceType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownUpdatesChannelDifferenceType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown updates.ChannelDifference#${u.constructor:08x}'
+}
+
+fn (u UnknownUpdatesChannelDifferenceType) is_updates_channel_difference_type() {}
+
 pub interface UpdatesDifferenceType {
 	Object
 	is_updates_difference_type()
 }
+
+pub struct UnknownUpdatesDifferenceType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownUpdatesDifferenceType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownUpdatesDifferenceType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownUpdatesDifferenceType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown updates.Difference#${u.constructor:08x}'
+}
+
+fn (u UnknownUpdatesDifferenceType) is_updates_difference_type() {}
 
 pub interface UpdatesStateType {
 	Object
 	is_updates_state_type()
 }
 
+pub struct UnknownUpdatesStateType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownUpdatesStateType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownUpdatesStateType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownUpdatesStateType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown updates.State#${u.constructor:08x}'
+}
+
+fn (u UnknownUpdatesStateType) is_updates_state_type() {}
+
 pub interface UploadCdnFileType {
 	Object
 	is_upload_cdn_file_type()
 }
+
+pub struct UnknownUploadCdnFileType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownUploadCdnFileType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownUploadCdnFileType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownUploadCdnFileType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown upload.CdnFile#${u.constructor:08x}'
+}
+
+fn (u UnknownUploadCdnFileType) is_upload_cdn_file_type() {}
 
 pub interface UploadFileType {
 	Object
 	is_upload_file_type()
 }
 
+pub struct UnknownUploadFileType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownUploadFileType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownUploadFileType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownUploadFileType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown upload.File#${u.constructor:08x}'
+}
+
+fn (u UnknownUploadFileType) is_upload_file_type() {}
+
 pub interface UploadWebFileType {
 	Object
 	is_upload_web_file_type()
 }
+
+pub struct UnknownUploadWebFileType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownUploadWebFileType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownUploadWebFileType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownUploadWebFileType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown upload.WebFile#${u.constructor:08x}'
+}
+
+fn (u UnknownUploadWebFileType) is_upload_web_file_type() {}
 
 pub interface UsersSavedMusicType {
 	Object
 	is_users_saved_music_type()
 }
 
+pub struct UnknownUsersSavedMusicType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownUsersSavedMusicType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownUsersSavedMusicType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownUsersSavedMusicType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown users.SavedMusic#${u.constructor:08x}'
+}
+
+fn (u UnknownUsersSavedMusicType) is_users_saved_music_type() {}
+
 pub interface UsersUserFullType {
 	Object
 	is_users_user_full_type()
 }
 
+pub struct UnknownUsersUserFullType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownUsersUserFullType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownUsersUserFullType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownUsersUserFullType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown users.UserFull#${u.constructor:08x}'
+}
+
+fn (u UnknownUsersUserFullType) is_users_user_full_type() {}
+
 pub interface UsersUsersType {
 	Object
 	is_users_users_type()
 }
+
+pub struct UnknownUsersUsersType {
+pub:
+	constructor u32
+	name        string
+	raw_payload []u8
+}
+
+pub fn (u UnknownUsersUsersType) encode() ![]u8 {
+	return UnknownObject{
+		constructor: u.constructor
+		name:        u.name
+		raw_payload: u.raw_payload
+	}.encode()
+}
+
+pub fn (u UnknownUsersUsersType) constructor_id() u32 {
+	return u.constructor
+}
+
+pub fn (u UnknownUsersUsersType) qualified_name() string {
+	if u.name.len > 0 {
+		return u.name
+	}
+	return 'unknown users.Users#${u.constructor:08x}'
+}
+
+fn (u UnknownUsersUsersType) is_users_users_type() {}
 
 pub struct ResPQ {
 pub:

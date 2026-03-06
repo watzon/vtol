@@ -58,4 +58,8 @@ When Telegram bumps layers:
 
 ## Unknown constructors
 
-Top-level unknown constructors decode into `tl.UnknownObject` and preserve the constructor ID plus raw payload bytes for round-tripping. Nested unknown constructor recovery still depends on regenerating against the newer layer.
+Top-level unknown constructors decode into `tl.UnknownObject` and preserve the constructor ID plus raw payload bytes for round-tripping.
+
+Typed union decoders also preserve unknown constructors by wrapping them in generated fallback types such as `tl.UnknownInputPeerType` or `tl.UnknownUserStatusType`, so result decoding and tail-position nested fields can survive a layer bump without an immediate regeneration.
+
+Unknown constructors still cannot be losslessly skipped in the middle of a larger object, because boxed TL objects do not carry a byte length on the wire. When that happens, regenerate against the newer layer before relying on fields that follow the unknown value.

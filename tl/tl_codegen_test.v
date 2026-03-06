@@ -72,13 +72,48 @@ fn test_decode_object_preserves_unknown_top_level_constructor() {
 	}
 }
 
-fn test_typed_decoders_reject_unknown_constructors() {
+fn test_typed_decoders_preserve_unknown_constructors() {
 	payload := [u8(0x78), 0x56, 0x34, 0x12]
-	_ := decode_input_peer_type(payload) or {
-		assert err.msg().contains('expected InputPeer')
-		return
+	decoded := decode_input_peer_type(payload) or { panic(err) }
+	match decoded {
+		UnknownInputPeerType {
+			assert decoded.constructor == u32(0x12345678)
+			assert decoded.raw_payload.len == 0
+			assert decoded.qualified_name() == 'unknown InputPeer#12345678'
+		}
+		else {
+			assert false
+		}
 	}
-	assert false
+}
+
+fn test_nested_unknown_constructors_round_trip_when_field_consumes_tail() {
+	mut payload := []u8{}
+	append_u32(mut payload, 0xe5bdf8de)
+	append_long(mut payload, i64(42))
+	append_u32(mut payload, 0x12345678)
+	payload << [u8(0xaa), 0xbb]
+
+	decoded := decode_object(payload) or { panic(err) }
+	match decoded {
+		UpdateUserStatus {
+			assert decoded.user_id == 42
+			match decoded.status {
+				UnknownUserStatusType {
+					assert decoded.status.constructor == u32(0x12345678)
+					assert decoded.status.raw_payload == [u8(0xaa), 0xbb]
+					reencoded := decoded.encode() or { panic(err) }
+					assert reencoded == payload
+				}
+				else {
+					assert false
+				}
+			}
+		}
+		else {
+			assert false
+		}
+	}
 }
 
 fn load_hex_fixture(name string) []u8 {

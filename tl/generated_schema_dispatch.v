@@ -7124,6 +7124,13 @@ fn decode_access_point_rule_type_from_decoder(mut decoder Decoder) !AccessPointR
 		AccessPointRule {
 			return object
 		}
+		UnknownObject {
+			return UnknownAccessPointRuleType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected AccessPointRule, got ' + object.qualified_name())
 		}
@@ -7144,6 +7151,13 @@ fn decode_account_days_t_t_l_type_from_decoder(mut decoder Decoder) !AccountDays
 	match object {
 		AccountDaysTTL {
 			return object
+		}
+		UnknownObject {
+			return UnknownAccountDaysTTLType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected AccountDaysTTL, got ' + object.qualified_name())
@@ -7166,6 +7180,13 @@ fn decode_attach_menu_bot_type_from_decoder(mut decoder Decoder) !AttachMenuBotT
 		AttachMenuBot {
 			return object
 		}
+		UnknownObject {
+			return UnknownAttachMenuBotType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected AttachMenuBot, got ' + object.qualified_name())
 		}
@@ -7187,6 +7208,13 @@ fn decode_attach_menu_bot_icon_type_from_decoder(mut decoder Decoder) !AttachMen
 		AttachMenuBotIcon {
 			return object
 		}
+		UnknownObject {
+			return UnknownAttachMenuBotIconType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected AttachMenuBotIcon, got ' + object.qualified_name())
 		}
@@ -7207,6 +7235,13 @@ fn decode_attach_menu_bot_icon_color_type_from_decoder(mut decoder Decoder) !Att
 	match object {
 		AttachMenuBotIconColor {
 			return object
+		}
+		UnknownObject {
+			return UnknownAttachMenuBotIconColorType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected AttachMenuBotIconColor, got ' + object.qualified_name())
@@ -7232,6 +7267,13 @@ fn decode_attach_menu_bots_type_from_decoder(mut decoder Decoder) !AttachMenuBot
 		AttachMenuBots {
 			return object
 		}
+		UnknownObject {
+			return UnknownAttachMenuBotsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected AttachMenuBots, got ' + object.qualified_name())
 		}
@@ -7252,6 +7294,13 @@ fn decode_attach_menu_bots_bot_type_from_decoder(mut decoder Decoder) !AttachMen
 	match object {
 		AttachMenuBotsBot {
 			return object
+		}
+		UnknownObject {
+			return UnknownAttachMenuBotsBotType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected AttachMenuBotsBot, got ' + object.qualified_name())
@@ -7286,6 +7335,13 @@ fn decode_attach_menu_peer_type_type_from_decoder(mut decoder Decoder) !AttachMe
 		AttachMenuPeerTypeBroadcast {
 			return object
 		}
+		UnknownObject {
+			return UnknownAttachMenuPeerTypeType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected AttachMenuPeerType, got ' + object.qualified_name())
 		}
@@ -7306,6 +7362,13 @@ fn decode_auction_bid_level_type_from_decoder(mut decoder Decoder) !AuctionBidLe
 	match object {
 		AuctionBidLevel {
 			return object
+		}
+		UnknownObject {
+			return UnknownAuctionBidLevelType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected AuctionBidLevel, got ' + object.qualified_name())
@@ -7328,6 +7391,13 @@ fn decode_authorization_type_from_decoder(mut decoder Decoder) !AuthorizationTyp
 		Authorization {
 			return object
 		}
+		UnknownObject {
+			return UnknownAuthorizationType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected Authorization, got ' + object.qualified_name())
 		}
@@ -7348,6 +7418,13 @@ fn decode_auto_download_settings_type_from_decoder(mut decoder Decoder) !AutoDow
 	match object {
 		AutoDownloadSettings {
 			return object
+		}
+		UnknownObject {
+			return UnknownAutoDownloadSettingsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected AutoDownloadSettings, got ' + object.qualified_name())
@@ -7370,6 +7447,13 @@ fn decode_auto_save_exception_type_from_decoder(mut decoder Decoder) !AutoSaveEx
 		AutoSaveException {
 			return object
 		}
+		UnknownObject {
+			return UnknownAutoSaveExceptionType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected AutoSaveException, got ' + object.qualified_name())
 		}
@@ -7390,6 +7474,13 @@ fn decode_auto_save_settings_type_from_decoder(mut decoder Decoder) !AutoSaveSet
 	match object {
 		AutoSaveSettings {
 			return object
+		}
+		UnknownObject {
+			return UnknownAutoSaveSettingsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected AutoSaveSettings, got ' + object.qualified_name())
@@ -7412,6 +7503,13 @@ fn decode_available_effect_type_from_decoder(mut decoder Decoder) !AvailableEffe
 		AvailableEffect {
 			return object
 		}
+		UnknownObject {
+			return UnknownAvailableEffectType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected AvailableEffect, got ' + object.qualified_name())
 		}
@@ -7432,6 +7530,13 @@ fn decode_available_reaction_type_from_decoder(mut decoder Decoder) !AvailableRe
 	match object {
 		AvailableReaction {
 			return object
+		}
+		UnknownObject {
+			return UnknownAvailableReactionType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected AvailableReaction, got ' + object.qualified_name())
@@ -7457,6 +7562,13 @@ fn decode_bad_msg_notification_type_from_decoder(mut decoder Decoder) !BadMsgNot
 		BadServerSalt {
 			return object
 		}
+		UnknownObject {
+			return UnknownBadMsgNotificationType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected BadMsgNotification, got ' + object.qualified_name())
 		}
@@ -7477,6 +7589,13 @@ fn decode_bank_card_open_url_type_from_decoder(mut decoder Decoder) !BankCardOpe
 	match object {
 		BankCardOpenUrl {
 			return object
+		}
+		UnknownObject {
+			return UnknownBankCardOpenUrlType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected BankCardOpenUrl, got ' + object.qualified_name())
@@ -7511,6 +7630,13 @@ fn decode_base_theme_type_from_decoder(mut decoder Decoder) !BaseThemeType {
 		BaseThemeArctic {
 			return object
 		}
+		UnknownObject {
+			return UnknownBaseThemeType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected BaseTheme, got ' + object.qualified_name())
 		}
@@ -7531,6 +7657,13 @@ fn decode_bind_auth_key_inner_type_from_decoder(mut decoder Decoder) !BindAuthKe
 	match object {
 		BindAuthKeyInner {
 			return object
+		}
+		UnknownObject {
+			return UnknownBindAuthKeyInnerType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected BindAuthKeyInner, got ' + object.qualified_name())
@@ -7553,6 +7686,13 @@ fn decode_birthday_type_from_decoder(mut decoder Decoder) !BirthdayType {
 		Birthday {
 			return object
 		}
+		UnknownObject {
+			return UnknownBirthdayType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected Birthday, got ' + object.qualified_name())
 		}
@@ -7573,6 +7713,13 @@ fn decode_boost_type_from_decoder(mut decoder Decoder) !BoostType {
 	match object {
 		Boost {
 			return object
+		}
+		UnknownObject {
+			return UnknownBoostType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected Boost, got ' + object.qualified_name())
@@ -7598,6 +7745,13 @@ fn decode_bot_app_type_from_decoder(mut decoder Decoder) !BotAppType {
 		BotApp {
 			return object
 		}
+		UnknownObject {
+			return UnknownBotAppType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected BotApp, got ' + object.qualified_name())
 		}
@@ -7618,6 +7772,13 @@ fn decode_bot_app_settings_type_from_decoder(mut decoder Decoder) !BotAppSetting
 	match object {
 		BotAppSettings {
 			return object
+		}
+		UnknownObject {
+			return UnknownBotAppSettingsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected BotAppSettings, got ' + object.qualified_name())
@@ -7640,6 +7801,13 @@ fn decode_bot_business_connection_type_from_decoder(mut decoder Decoder) !BotBus
 		BotBusinessConnection {
 			return object
 		}
+		UnknownObject {
+			return UnknownBotBusinessConnectionType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected BotBusinessConnection, got ' + object.qualified_name())
 		}
@@ -7660,6 +7828,13 @@ fn decode_bot_command_type_from_decoder(mut decoder Decoder) !BotCommandType {
 	match object {
 		BotCommand {
 			return object
+		}
+		UnknownObject {
+			return UnknownBotCommandType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected BotCommand, got ' + object.qualified_name())
@@ -7700,6 +7875,13 @@ fn decode_bot_command_scope_type_from_decoder(mut decoder Decoder) !BotCommandSc
 		BotCommandScopePeerUser {
 			return object
 		}
+		UnknownObject {
+			return UnknownBotCommandScopeType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected BotCommandScope, got ' + object.qualified_name())
 		}
@@ -7720,6 +7902,13 @@ fn decode_bot_info_type_from_decoder(mut decoder Decoder) !BotInfoType {
 	match object {
 		BotInfo {
 			return object
+		}
+		UnknownObject {
+			return UnknownBotInfoType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected BotInfo, got ' + object.qualified_name())
@@ -7760,6 +7949,13 @@ fn decode_bot_inline_message_type_from_decoder(mut decoder Decoder) !BotInlineMe
 		BotInlineMessageMediaWebPage {
 			return object
 		}
+		UnknownObject {
+			return UnknownBotInlineMessageType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected BotInlineMessage, got ' + object.qualified_name())
 		}
@@ -7783,6 +7979,13 @@ fn decode_bot_inline_result_type_from_decoder(mut decoder Decoder) !BotInlineRes
 		}
 		BotInlineMediaResult {
 			return object
+		}
+		UnknownObject {
+			return UnknownBotInlineResultType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected BotInlineResult, got ' + object.qualified_name())
@@ -7811,6 +8014,13 @@ fn decode_bot_menu_button_type_from_decoder(mut decoder Decoder) !BotMenuButtonT
 		BotMenuButton {
 			return object
 		}
+		UnknownObject {
+			return UnknownBotMenuButtonType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected BotMenuButton, got ' + object.qualified_name())
 		}
@@ -7831,6 +8041,13 @@ fn decode_bot_preview_media_type_from_decoder(mut decoder Decoder) !BotPreviewMe
 	match object {
 		BotPreviewMedia {
 			return object
+		}
+		UnknownObject {
+			return UnknownBotPreviewMediaType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected BotPreviewMedia, got ' + object.qualified_name())
@@ -7853,6 +8070,13 @@ fn decode_bot_verification_type_from_decoder(mut decoder Decoder) !BotVerificati
 		BotVerification {
 			return object
 		}
+		UnknownObject {
+			return UnknownBotVerificationType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected BotVerification, got ' + object.qualified_name())
 		}
@@ -7874,6 +8098,13 @@ fn decode_bot_verifier_settings_type_from_decoder(mut decoder Decoder) !BotVerif
 		BotVerifierSettings {
 			return object
 		}
+		UnknownObject {
+			return UnknownBotVerifierSettingsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected BotVerifierSettings, got ' + object.qualified_name())
 		}
@@ -7894,6 +8125,13 @@ fn decode_business_away_message_type_from_decoder(mut decoder Decoder) !Business
 	match object {
 		BusinessAwayMessage {
 			return object
+		}
+		UnknownObject {
+			return UnknownBusinessAwayMessageType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected BusinessAwayMessage, got ' + object.qualified_name())
@@ -7922,6 +8160,13 @@ fn decode_business_away_message_schedule_type_from_decoder(mut decoder Decoder) 
 		BusinessAwayMessageScheduleCustom {
 			return object
 		}
+		UnknownObject {
+			return UnknownBusinessAwayMessageScheduleType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected BusinessAwayMessageSchedule, got ' + object.qualified_name())
 		}
@@ -7942,6 +8187,13 @@ fn decode_business_bot_recipients_type_from_decoder(mut decoder Decoder) !Busine
 	match object {
 		BusinessBotRecipients {
 			return object
+		}
+		UnknownObject {
+			return UnknownBusinessBotRecipientsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected BusinessBotRecipients, got ' + object.qualified_name())
@@ -7964,6 +8216,13 @@ fn decode_business_bot_rights_type_from_decoder(mut decoder Decoder) !BusinessBo
 		BusinessBotRights {
 			return object
 		}
+		UnknownObject {
+			return UnknownBusinessBotRightsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected BusinessBotRights, got ' + object.qualified_name())
 		}
@@ -7984,6 +8243,13 @@ fn decode_business_chat_link_type_from_decoder(mut decoder Decoder) !BusinessCha
 	match object {
 		BusinessChatLink {
 			return object
+		}
+		UnknownObject {
+			return UnknownBusinessChatLinkType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected BusinessChatLink, got ' + object.qualified_name())
@@ -8006,6 +8272,13 @@ fn decode_business_greeting_message_type_from_decoder(mut decoder Decoder) !Busi
 		BusinessGreetingMessage {
 			return object
 		}
+		UnknownObject {
+			return UnknownBusinessGreetingMessageType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected BusinessGreetingMessage, got ' + object.qualified_name())
 		}
@@ -8026,6 +8299,13 @@ fn decode_business_intro_type_from_decoder(mut decoder Decoder) !BusinessIntroTy
 	match object {
 		BusinessIntro {
 			return object
+		}
+		UnknownObject {
+			return UnknownBusinessIntroType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected BusinessIntro, got ' + object.qualified_name())
@@ -8048,6 +8328,13 @@ fn decode_business_location_type_from_decoder(mut decoder Decoder) !BusinessLoca
 		BusinessLocation {
 			return object
 		}
+		UnknownObject {
+			return UnknownBusinessLocationType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected BusinessLocation, got ' + object.qualified_name())
 		}
@@ -8068,6 +8355,13 @@ fn decode_business_recipients_type_from_decoder(mut decoder Decoder) !BusinessRe
 	match object {
 		BusinessRecipients {
 			return object
+		}
+		UnknownObject {
+			return UnknownBusinessRecipientsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected BusinessRecipients, got ' + object.qualified_name())
@@ -8090,6 +8384,13 @@ fn decode_business_weekly_open_type_from_decoder(mut decoder Decoder) !BusinessW
 		BusinessWeeklyOpen {
 			return object
 		}
+		UnknownObject {
+			return UnknownBusinessWeeklyOpenType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected BusinessWeeklyOpen, got ' + object.qualified_name())
 		}
@@ -8110,6 +8411,13 @@ fn decode_business_work_hours_type_from_decoder(mut decoder Decoder) !BusinessWo
 	match object {
 		BusinessWorkHours {
 			return object
+		}
+		UnknownObject {
+			return UnknownBusinessWorkHoursType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected BusinessWorkHours, got ' + object.qualified_name())
@@ -8132,6 +8440,13 @@ fn decode_cdn_config_type_from_decoder(mut decoder Decoder) !CdnConfigType {
 		CdnConfig {
 			return object
 		}
+		UnknownObject {
+			return UnknownCdnConfigType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected CdnConfig, got ' + object.qualified_name())
 		}
@@ -8153,6 +8468,13 @@ fn decode_cdn_public_key_type_from_decoder(mut decoder Decoder) !CdnPublicKeyTyp
 		CdnPublicKey {
 			return object
 		}
+		UnknownObject {
+			return UnknownCdnPublicKeyType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected CdnPublicKey, got ' + object.qualified_name())
 		}
@@ -8173,6 +8495,13 @@ fn decode_channel_admin_log_event_type_from_decoder(mut decoder Decoder) !Channe
 	match object {
 		ChannelAdminLogEvent {
 			return object
+		}
+		UnknownObject {
+			return UnknownChannelAdminLogEventType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected ChannelAdminLogEvent, got ' + object.qualified_name())
@@ -8345,6 +8674,13 @@ fn decode_channel_admin_log_event_action_type_from_decoder(mut decoder Decoder) 
 		ChannelAdminLogEventActionToggleAutotranslation {
 			return object
 		}
+		UnknownObject {
+			return UnknownChannelAdminLogEventActionType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected ChannelAdminLogEventAction, got ' + object.qualified_name())
 		}
@@ -8365,6 +8701,13 @@ fn decode_channel_admin_log_events_filter_type_from_decoder(mut decoder Decoder)
 	match object {
 		ChannelAdminLogEventsFilter {
 			return object
+		}
+		UnknownObject {
+			return UnknownChannelAdminLogEventsFilterType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected ChannelAdminLogEventsFilter, got ' + object.qualified_name())
@@ -8390,6 +8733,13 @@ fn decode_channel_location_type_from_decoder(mut decoder Decoder) !ChannelLocati
 		ChannelLocation {
 			return object
 		}
+		UnknownObject {
+			return UnknownChannelLocationType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected ChannelLocation, got ' + object.qualified_name())
 		}
@@ -8413,6 +8763,13 @@ fn decode_channel_messages_filter_type_from_decoder(mut decoder Decoder) !Channe
 		}
 		ChannelMessagesFilter {
 			return object
+		}
+		UnknownObject {
+			return UnknownChannelMessagesFilterType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected ChannelMessagesFilter, got ' + object.qualified_name())
@@ -8449,6 +8806,13 @@ fn decode_channel_participant_type_from_decoder(mut decoder Decoder) !ChannelPar
 		}
 		ChannelParticipantLeft {
 			return object
+		}
+		UnknownObject {
+			return UnknownChannelParticipantType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected ChannelParticipant, got ' + object.qualified_name())
@@ -8492,6 +8856,13 @@ fn decode_channel_participants_filter_type_from_decoder(mut decoder Decoder) !Ch
 		ChannelParticipantsMentions {
 			return object
 		}
+		UnknownObject {
+			return UnknownChannelParticipantsFilterType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected ChannelParticipantsFilter, got ' + object.qualified_name())
 		}
@@ -8525,6 +8896,13 @@ fn decode_chat_type_from_decoder(mut decoder Decoder) !ChatType {
 		ChannelForbidden {
 			return object
 		}
+		UnknownObject {
+			return UnknownChatType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected Chat, got ' + object.qualified_name())
 		}
@@ -8545,6 +8923,13 @@ fn decode_chat_admin_rights_type_from_decoder(mut decoder Decoder) !ChatAdminRig
 	match object {
 		ChatAdminRights {
 			return object
+		}
+		UnknownObject {
+			return UnknownChatAdminRightsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected ChatAdminRights, got ' + object.qualified_name())
@@ -8567,6 +8952,13 @@ fn decode_chat_admin_with_invites_type_from_decoder(mut decoder Decoder) !ChatAd
 		ChatAdminWithInvites {
 			return object
 		}
+		UnknownObject {
+			return UnknownChatAdminWithInvitesType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected ChatAdminWithInvites, got ' + object.qualified_name())
 		}
@@ -8587,6 +8979,13 @@ fn decode_chat_banned_rights_type_from_decoder(mut decoder Decoder) !ChatBannedR
 	match object {
 		ChatBannedRights {
 			return object
+		}
+		UnknownObject {
+			return UnknownChatBannedRightsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected ChatBannedRights, got ' + object.qualified_name())
@@ -8611,6 +9010,13 @@ fn decode_chat_full_type_from_decoder(mut decoder Decoder) !ChatFullType {
 		}
 		ChannelFull {
 			return object
+		}
+		UnknownObject {
+			return UnknownChatFullType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected ChatFull, got ' + object.qualified_name())
@@ -8639,6 +9045,13 @@ fn decode_chat_invite_type_from_decoder(mut decoder Decoder) !ChatInviteType {
 		ChatInvitePeek {
 			return object
 		}
+		UnknownObject {
+			return UnknownChatInviteType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected ChatInvite, got ' + object.qualified_name())
 		}
@@ -8660,6 +9073,13 @@ fn decode_chat_invite_importer_type_from_decoder(mut decoder Decoder) !ChatInvit
 		ChatInviteImporter {
 			return object
 		}
+		UnknownObject {
+			return UnknownChatInviteImporterType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected ChatInviteImporter, got ' + object.qualified_name())
 		}
@@ -8680,6 +9100,13 @@ fn decode_chat_onlines_type_from_decoder(mut decoder Decoder) !ChatOnlinesType {
 	match object {
 		ChatOnlines {
 			return object
+		}
+		UnknownObject {
+			return UnknownChatOnlinesType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected ChatOnlines, got ' + object.qualified_name())
@@ -8708,6 +9135,13 @@ fn decode_chat_participant_type_from_decoder(mut decoder Decoder) !ChatParticipa
 		ChatParticipantAdmin {
 			return object
 		}
+		UnknownObject {
+			return UnknownChatParticipantType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected ChatParticipant, got ' + object.qualified_name())
 		}
@@ -8732,6 +9166,13 @@ fn decode_chat_participants_type_from_decoder(mut decoder Decoder) !ChatParticip
 		ChatParticipants {
 			return object
 		}
+		UnknownObject {
+			return UnknownChatParticipantsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected ChatParticipants, got ' + object.qualified_name())
 		}
@@ -8755,6 +9196,13 @@ fn decode_chat_photo_type_from_decoder(mut decoder Decoder) !ChatPhotoType {
 		}
 		ChatPhoto {
 			return object
+		}
+		UnknownObject {
+			return UnknownChatPhotoType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected ChatPhoto, got ' + object.qualified_name())
@@ -8783,6 +9231,13 @@ fn decode_chat_reactions_type_from_decoder(mut decoder Decoder) !ChatReactionsTy
 		ChatReactionsSome {
 			return object
 		}
+		UnknownObject {
+			return UnknownChatReactionsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected ChatReactions, got ' + object.qualified_name())
 		}
@@ -8807,6 +9262,13 @@ fn decode_chat_theme_type_from_decoder(mut decoder Decoder) !ChatThemeType {
 		ChatThemeUniqueGift {
 			return object
 		}
+		UnknownObject {
+			return UnknownChatThemeType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected ChatTheme, got ' + object.qualified_name())
 		}
@@ -8827,6 +9289,13 @@ fn decode_client_d_h_inner_data_type_from_decoder(mut decoder Decoder) !ClientDH
 	match object {
 		ClientDHInnerData {
 			return object
+		}
+		UnknownObject {
+			return UnknownClientDHInnerDataType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected Client_DH_Inner_Data, got ' + object.qualified_name())
@@ -8849,6 +9318,13 @@ fn decode_code_settings_type_from_decoder(mut decoder Decoder) !CodeSettingsType
 		CodeSettings {
 			return object
 		}
+		UnknownObject {
+			return UnknownCodeSettingsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected CodeSettings, got ' + object.qualified_name())
 		}
@@ -8869,6 +9345,13 @@ fn decode_config_type_from_decoder(mut decoder Decoder) !ConfigType {
 	match object {
 		Config {
 			return object
+		}
+		UnknownObject {
+			return UnknownConfigType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected Config, got ' + object.qualified_name())
@@ -8891,6 +9374,13 @@ fn decode_connected_bot_type_from_decoder(mut decoder Decoder) !ConnectedBotType
 		ConnectedBot {
 			return object
 		}
+		UnknownObject {
+			return UnknownConnectedBotType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected ConnectedBot, got ' + object.qualified_name())
 		}
@@ -8911,6 +9401,13 @@ fn decode_connected_bot_star_ref_type_from_decoder(mut decoder Decoder) !Connect
 	match object {
 		ConnectedBotStarRef {
 			return object
+		}
+		UnknownObject {
+			return UnknownConnectedBotStarRefType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected ConnectedBotStarRef, got ' + object.qualified_name())
@@ -8933,6 +9430,13 @@ fn decode_contact_type_from_decoder(mut decoder Decoder) !ContactType {
 		Contact {
 			return object
 		}
+		UnknownObject {
+			return UnknownContactType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected Contact, got ' + object.qualified_name())
 		}
@@ -8953,6 +9457,13 @@ fn decode_contact_birthday_type_from_decoder(mut decoder Decoder) !ContactBirthd
 	match object {
 		ContactBirthday {
 			return object
+		}
+		UnknownObject {
+			return UnknownContactBirthdayType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected ContactBirthday, got ' + object.qualified_name())
@@ -8975,6 +9486,13 @@ fn decode_contact_status_type_from_decoder(mut decoder Decoder) !ContactStatusTy
 		ContactStatus {
 			return object
 		}
+		UnknownObject {
+			return UnknownContactStatusType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected ContactStatus, got ' + object.qualified_name())
 		}
@@ -8995,6 +9513,13 @@ fn decode_data_j_s_o_n_type_from_decoder(mut decoder Decoder) !DataJSONType {
 	match object {
 		DataJSON {
 			return object
+		}
+		UnknownObject {
+			return UnknownDataJSONType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected DataJSON, got ' + object.qualified_name())
@@ -9017,6 +9542,13 @@ fn decode_dc_option_type_from_decoder(mut decoder Decoder) !DcOptionType {
 		DcOption {
 			return object
 		}
+		UnknownObject {
+			return UnknownDcOptionType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected DcOption, got ' + object.qualified_name())
 		}
@@ -9037,6 +9569,13 @@ fn decode_default_history_t_t_l_type_from_decoder(mut decoder Decoder) !DefaultH
 	match object {
 		DefaultHistoryTTL {
 			return object
+		}
+		UnknownObject {
+			return UnknownDefaultHistoryTTLType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected DefaultHistoryTTL, got ' + object.qualified_name())
@@ -9065,6 +9604,13 @@ fn decode_destroy_auth_key_res_type_from_decoder(mut decoder Decoder) !DestroyAu
 		DestroyAuthKeyFail {
 			return object
 		}
+		UnknownObject {
+			return UnknownDestroyAuthKeyResType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected DestroyAuthKeyRes, got ' + object.qualified_name())
 		}
@@ -9089,6 +9635,13 @@ fn decode_destroy_session_res_type_from_decoder(mut decoder Decoder) !DestroySes
 		DestroySessionNone {
 			return object
 		}
+		UnknownObject {
+			return UnknownDestroySessionResType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected DestroySessionRes, got ' + object.qualified_name())
 		}
@@ -9112,6 +9665,13 @@ fn decode_dialog_type_from_decoder(mut decoder Decoder) !DialogType {
 		}
 		DialogFolder {
 			return object
+		}
+		UnknownObject {
+			return UnknownDialogType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected Dialog, got ' + object.qualified_name())
@@ -9140,6 +9700,13 @@ fn decode_dialog_filter_type_from_decoder(mut decoder Decoder) !DialogFilterType
 		DialogFilterChatlist {
 			return object
 		}
+		UnknownObject {
+			return UnknownDialogFilterType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected DialogFilter, got ' + object.qualified_name())
 		}
@@ -9160,6 +9727,13 @@ fn decode_dialog_filter_suggested_type_from_decoder(mut decoder Decoder) !Dialog
 	match object {
 		DialogFilterSuggested {
 			return object
+		}
+		UnknownObject {
+			return UnknownDialogFilterSuggestedType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected DialogFilterSuggested, got ' + object.qualified_name())
@@ -9185,6 +9759,13 @@ fn decode_dialog_peer_type_from_decoder(mut decoder Decoder) !DialogPeerType {
 		DialogPeerFolder {
 			return object
 		}
+		UnknownObject {
+			return UnknownDialogPeerType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected DialogPeer, got ' + object.qualified_name())
 		}
@@ -9205,6 +9786,13 @@ fn decode_disallowed_gifts_settings_type_from_decoder(mut decoder Decoder) !Disa
 	match object {
 		DisallowedGiftsSettings {
 			return object
+		}
+		UnknownObject {
+			return UnknownDisallowedGiftsSettingsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected DisallowedGiftsSettings, got ' + object.qualified_name())
@@ -9229,6 +9817,13 @@ fn decode_document_type_from_decoder(mut decoder Decoder) !DocumentType {
 		}
 		Document {
 			return object
+		}
+		UnknownObject {
+			return UnknownDocumentType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected Document, got ' + object.qualified_name())
@@ -9272,6 +9867,13 @@ fn decode_document_attribute_type_from_decoder(mut decoder Decoder) !DocumentAtt
 		DocumentAttributeCustomEmoji {
 			return object
 		}
+		UnknownObject {
+			return UnknownDocumentAttributeType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected DocumentAttribute, got ' + object.qualified_name())
 		}
@@ -9295,6 +9897,13 @@ fn decode_draft_message_type_from_decoder(mut decoder Decoder) !DraftMessageType
 		}
 		DraftMessage {
 			return object
+		}
+		UnknownObject {
+			return UnknownDraftMessageType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected DraftMessage, got ' + object.qualified_name())
@@ -9323,6 +9932,13 @@ fn decode_email_verification_type_from_decoder(mut decoder Decoder) !EmailVerifi
 		EmailVerificationApple {
 			return object
 		}
+		UnknownObject {
+			return UnknownEmailVerificationType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected EmailVerification, got ' + object.qualified_name())
 		}
@@ -9349,6 +9965,13 @@ fn decode_email_verify_purpose_type_from_decoder(mut decoder Decoder) !EmailVeri
 		}
 		EmailVerifyPurposePassport {
 			return object
+		}
+		UnknownObject {
+			return UnknownEmailVerifyPurposeType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected EmailVerifyPurpose, got ' + object.qualified_name())
@@ -9377,6 +10000,13 @@ fn decode_emoji_group_type_from_decoder(mut decoder Decoder) !EmojiGroupType {
 		EmojiGroupPremium {
 			return object
 		}
+		UnknownObject {
+			return UnknownEmojiGroupType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected EmojiGroup, got ' + object.qualified_name())
 		}
@@ -9401,6 +10031,13 @@ fn decode_emoji_keyword_type_from_decoder(mut decoder Decoder) !EmojiKeywordType
 		EmojiKeywordDeleted {
 			return object
 		}
+		UnknownObject {
+			return UnknownEmojiKeywordType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected EmojiKeyword, got ' + object.qualified_name())
 		}
@@ -9422,6 +10059,13 @@ fn decode_emoji_keywords_difference_type_from_decoder(mut decoder Decoder) !Emoj
 		EmojiKeywordsDifference {
 			return object
 		}
+		UnknownObject {
+			return UnknownEmojiKeywordsDifferenceType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected EmojiKeywordsDifference, got ' + object.qualified_name())
 		}
@@ -9442,6 +10086,13 @@ fn decode_emoji_language_type_from_decoder(mut decoder Decoder) !EmojiLanguageTy
 	match object {
 		EmojiLanguage {
 			return object
+		}
+		UnknownObject {
+			return UnknownEmojiLanguageType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected EmojiLanguage, got ' + object.qualified_name())
@@ -9466,6 +10117,13 @@ fn decode_emoji_list_type_from_decoder(mut decoder Decoder) !EmojiListType {
 		}
 		EmojiList {
 			return object
+		}
+		UnknownObject {
+			return UnknownEmojiListType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected EmojiList, got ' + object.qualified_name())
@@ -9497,6 +10155,13 @@ fn decode_emoji_status_type_from_decoder(mut decoder Decoder) !EmojiStatusType {
 		InputEmojiStatusCollectible {
 			return object
 		}
+		UnknownObject {
+			return UnknownEmojiStatusType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected EmojiStatus, got ' + object.qualified_name())
 		}
@@ -9517,6 +10182,13 @@ fn decode_emoji_u_r_l_type_from_decoder(mut decoder Decoder) !EmojiURLType {
 	match object {
 		EmojiURL {
 			return object
+		}
+		UnknownObject {
+			return UnknownEmojiURLType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected EmojiURL, got ' + object.qualified_name())
@@ -9551,6 +10223,13 @@ fn decode_encrypted_chat_type_from_decoder(mut decoder Decoder) !EncryptedChatTy
 		EncryptedChatDiscarded {
 			return object
 		}
+		UnknownObject {
+			return UnknownEncryptedChatType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected EncryptedChat, got ' + object.qualified_name())
 		}
@@ -9574,6 +10253,13 @@ fn decode_encrypted_file_type_from_decoder(mut decoder Decoder) !EncryptedFileTy
 		}
 		EncryptedFile {
 			return object
+		}
+		UnknownObject {
+			return UnknownEncryptedFileType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected EncryptedFile, got ' + object.qualified_name())
@@ -9599,6 +10285,13 @@ fn decode_encrypted_message_type_from_decoder(mut decoder Decoder) !EncryptedMes
 		EncryptedMessageService {
 			return object
 		}
+		UnknownObject {
+			return UnknownEncryptedMessageType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected EncryptedMessage, got ' + object.qualified_name())
 		}
@@ -9619,6 +10312,13 @@ fn decode_error_type_from_decoder(mut decoder Decoder) !TlErrorType {
 	match object {
 		TlError {
 			return object
+		}
+		UnknownObject {
+			return UnknownTlErrorType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected Error, got ' + object.qualified_name())
@@ -9644,6 +10344,13 @@ fn decode_exported_chat_invite_type_from_decoder(mut decoder Decoder) !ExportedC
 		ChatInvitePublicJoinRequests {
 			return object
 		}
+		UnknownObject {
+			return UnknownExportedChatInviteType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected ExportedChatInvite, got ' + object.qualified_name())
 		}
@@ -9664,6 +10371,13 @@ fn decode_exported_chatlist_invite_type_from_decoder(mut decoder Decoder) !Expor
 	match object {
 		ExportedChatlistInvite {
 			return object
+		}
+		UnknownObject {
+			return UnknownExportedChatlistInviteType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected ExportedChatlistInvite, got ' + object.qualified_name())
@@ -9686,6 +10400,13 @@ fn decode_exported_contact_token_type_from_decoder(mut decoder Decoder) !Exporte
 		ExportedContactToken {
 			return object
 		}
+		UnknownObject {
+			return UnknownExportedContactTokenType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected ExportedContactToken, got ' + object.qualified_name())
 		}
@@ -9706,6 +10427,13 @@ fn decode_exported_message_link_type_from_decoder(mut decoder Decoder) !Exported
 	match object {
 		ExportedMessageLink {
 			return object
+		}
+		UnknownObject {
+			return UnknownExportedMessageLinkType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected ExportedMessageLink, got ' + object.qualified_name())
@@ -9728,6 +10456,13 @@ fn decode_exported_story_link_type_from_decoder(mut decoder Decoder) !ExportedSt
 		ExportedStoryLink {
 			return object
 		}
+		UnknownObject {
+			return UnknownExportedStoryLinkType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected ExportedStoryLink, got ' + object.qualified_name())
 		}
@@ -9748,6 +10483,13 @@ fn decode_fact_check_type_from_decoder(mut decoder Decoder) !FactCheckType {
 	match object {
 		FactCheck {
 			return object
+		}
+		UnknownObject {
+			return UnknownFactCheckType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected FactCheck, got ' + object.qualified_name())
@@ -9770,6 +10512,13 @@ fn decode_file_hash_type_from_decoder(mut decoder Decoder) !FileHashType {
 		FileHash {
 			return object
 		}
+		UnknownObject {
+			return UnknownFileHashType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected FileHash, got ' + object.qualified_name())
 		}
@@ -9791,6 +10540,13 @@ fn decode_folder_type_from_decoder(mut decoder Decoder) !FolderType {
 		Folder {
 			return object
 		}
+		UnknownObject {
+			return UnknownFolderType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected Folder, got ' + object.qualified_name())
 		}
@@ -9811,6 +10567,13 @@ fn decode_folder_peer_type_from_decoder(mut decoder Decoder) !FolderPeerType {
 	match object {
 		FolderPeer {
 			return object
+		}
+		UnknownObject {
+			return UnknownFolderPeerType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected FolderPeer, got ' + object.qualified_name())
@@ -9836,6 +10599,13 @@ fn decode_forum_topic_type_from_decoder(mut decoder Decoder) !ForumTopicType {
 		ForumTopic {
 			return object
 		}
+		UnknownObject {
+			return UnknownForumTopicType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected ForumTopic, got ' + object.qualified_name())
 		}
@@ -9856,6 +10626,13 @@ fn decode_found_story_type_from_decoder(mut decoder Decoder) !FoundStoryType {
 	match object {
 		FoundStory {
 			return object
+		}
+		UnknownObject {
+			return UnknownFoundStoryType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected FoundStory, got ' + object.qualified_name())
@@ -9878,6 +10655,13 @@ fn decode_future_salt_type_from_decoder(mut decoder Decoder) !FutureSaltType {
 		FutureSalt {
 			return object
 		}
+		UnknownObject {
+			return UnknownFutureSaltType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected FutureSalt, got ' + object.qualified_name())
 		}
@@ -9899,6 +10683,13 @@ fn decode_future_salts_type_from_decoder(mut decoder Decoder) !FutureSaltsType {
 		FutureSalts {
 			return object
 		}
+		UnknownObject {
+			return UnknownFutureSaltsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected FutureSalts, got ' + object.qualified_name())
 		}
@@ -9919,6 +10710,13 @@ fn decode_game_type_from_decoder(mut decoder Decoder) !GameType {
 	match object {
 		Game {
 			return object
+		}
+		UnknownObject {
+			return UnknownGameType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected Game, got ' + object.qualified_name())
@@ -9944,6 +10742,13 @@ fn decode_geo_point_type_from_decoder(mut decoder Decoder) !GeoPointType {
 		GeoPoint {
 			return object
 		}
+		UnknownObject {
+			return UnknownGeoPointType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected GeoPoint, got ' + object.qualified_name())
 		}
@@ -9965,6 +10770,13 @@ fn decode_geo_point_address_type_from_decoder(mut decoder Decoder) !GeoPointAddr
 		GeoPointAddress {
 			return object
 		}
+		UnknownObject {
+			return UnknownGeoPointAddressType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected GeoPointAddress, got ' + object.qualified_name())
 		}
@@ -9985,6 +10797,13 @@ fn decode_global_privacy_settings_type_from_decoder(mut decoder Decoder) !Global
 	match object {
 		GlobalPrivacySettings {
 			return object
+		}
+		UnknownObject {
+			return UnknownGlobalPrivacySettingsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected GlobalPrivacySettings, got ' + object.qualified_name())
@@ -10010,6 +10829,13 @@ fn decode_group_call_type_from_decoder(mut decoder Decoder) !GroupCallType {
 		GroupCall {
 			return object
 		}
+		UnknownObject {
+			return UnknownGroupCallType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected GroupCall, got ' + object.qualified_name())
 		}
@@ -10030,6 +10856,13 @@ fn decode_group_call_donor_type_from_decoder(mut decoder Decoder) !GroupCallDono
 	match object {
 		GroupCallDonor {
 			return object
+		}
+		UnknownObject {
+			return UnknownGroupCallDonorType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected GroupCallDonor, got ' + object.qualified_name())
@@ -10052,6 +10885,13 @@ fn decode_group_call_message_type_from_decoder(mut decoder Decoder) !GroupCallMe
 		GroupCallMessage {
 			return object
 		}
+		UnknownObject {
+			return UnknownGroupCallMessageType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected GroupCallMessage, got ' + object.qualified_name())
 		}
@@ -10072,6 +10912,13 @@ fn decode_group_call_participant_type_from_decoder(mut decoder Decoder) !GroupCa
 	match object {
 		GroupCallParticipant {
 			return object
+		}
+		UnknownObject {
+			return UnknownGroupCallParticipantType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected GroupCallParticipant, got ' + object.qualified_name())
@@ -10094,6 +10941,13 @@ fn decode_group_call_participant_video_type_from_decoder(mut decoder Decoder) !G
 		GroupCallParticipantVideo {
 			return object
 		}
+		UnknownObject {
+			return UnknownGroupCallParticipantVideoType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected GroupCallParticipantVideo, got ' + object.qualified_name())
 		}
@@ -10114,6 +10968,13 @@ fn decode_group_call_participant_video_source_group_type_from_decoder(mut decode
 	match object {
 		GroupCallParticipantVideoSourceGroup {
 			return object
+		}
+		UnknownObject {
+			return UnknownGroupCallParticipantVideoSourceGroupType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected GroupCallParticipantVideoSourceGroup, got ' +
@@ -10137,6 +10998,13 @@ fn decode_group_call_stream_channel_type_from_decoder(mut decoder Decoder) !Grou
 		GroupCallStreamChannel {
 			return object
 		}
+		UnknownObject {
+			return UnknownGroupCallStreamChannelType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected GroupCallStreamChannel, got ' + object.qualified_name())
 		}
@@ -10157,6 +11025,13 @@ fn decode_high_score_type_from_decoder(mut decoder Decoder) !HighScoreType {
 	match object {
 		HighScore {
 			return object
+		}
+		UnknownObject {
+			return UnknownHighScoreType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected HighScore, got ' + object.qualified_name())
@@ -10179,6 +11054,13 @@ fn decode_http_wait_type_from_decoder(mut decoder Decoder) !HttpWaitType {
 		HttpWait {
 			return object
 		}
+		UnknownObject {
+			return UnknownHttpWaitType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected HttpWait, got ' + object.qualified_name())
 		}
@@ -10199,6 +11081,13 @@ fn decode_imported_contact_type_from_decoder(mut decoder Decoder) !ImportedConta
 	match object {
 		ImportedContact {
 			return object
+		}
+		UnknownObject {
+			return UnknownImportedContactType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected ImportedContact, got ' + object.qualified_name())
@@ -10221,6 +11110,13 @@ fn decode_inline_bot_switch_p_m_type_from_decoder(mut decoder Decoder) !InlineBo
 		InlineBotSwitchPM {
 			return object
 		}
+		UnknownObject {
+			return UnknownInlineBotSwitchPMType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InlineBotSwitchPM, got ' + object.qualified_name())
 		}
@@ -10241,6 +11137,13 @@ fn decode_inline_bot_web_view_type_from_decoder(mut decoder Decoder) !InlineBotW
 	match object {
 		InlineBotWebView {
 			return object
+		}
+		UnknownObject {
+			return UnknownInlineBotWebViewType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected InlineBotWebView, got ' + object.qualified_name())
@@ -10278,6 +11181,13 @@ fn decode_inline_query_peer_type_type_from_decoder(mut decoder Decoder) !InlineQ
 		InlineQueryPeerTypeBotPM {
 			return object
 		}
+		UnknownObject {
+			return UnknownInlineQueryPeerTypeType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InlineQueryPeerType, got ' + object.qualified_name())
 		}
@@ -10298,6 +11208,13 @@ fn decode_input_app_event_type_from_decoder(mut decoder Decoder) !InputAppEventT
 	match object {
 		InputAppEvent {
 			return object
+		}
+		UnknownObject {
+			return UnknownInputAppEventType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected InputAppEvent, got ' + object.qualified_name())
@@ -10322,6 +11239,13 @@ fn decode_input_bot_app_type_from_decoder(mut decoder Decoder) !InputBotAppType 
 		}
 		InputBotAppShortName {
 			return object
+		}
+		UnknownObject {
+			return UnknownInputBotAppType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected InputBotApp, got ' + object.qualified_name())
@@ -10365,6 +11289,13 @@ fn decode_input_bot_inline_message_type_from_decoder(mut decoder Decoder) !Input
 		InputBotInlineMessageMediaWebPage {
 			return object
 		}
+		UnknownObject {
+			return UnknownInputBotInlineMessageType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InputBotInlineMessage, got ' + object.qualified_name())
 		}
@@ -10388,6 +11319,13 @@ fn decode_input_bot_inline_message_i_d_type_from_decoder(mut decoder Decoder) !I
 		}
 		InputBotInlineMessageID64 {
 			return object
+		}
+		UnknownObject {
+			return UnknownInputBotInlineMessageIDType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected InputBotInlineMessageID, got ' + object.qualified_name())
@@ -10419,6 +11357,13 @@ fn decode_input_bot_inline_result_type_from_decoder(mut decoder Decoder) !InputB
 		InputBotInlineResultGame {
 			return object
 		}
+		UnknownObject {
+			return UnknownInputBotInlineResultType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InputBotInlineResult, got ' + object.qualified_name())
 		}
@@ -10439,6 +11384,13 @@ fn decode_input_business_away_message_type_from_decoder(mut decoder Decoder) !In
 	match object {
 		InputBusinessAwayMessage {
 			return object
+		}
+		UnknownObject {
+			return UnknownInputBusinessAwayMessageType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected InputBusinessAwayMessage, got ' + object.qualified_name())
@@ -10461,6 +11413,13 @@ fn decode_input_business_bot_recipients_type_from_decoder(mut decoder Decoder) !
 		InputBusinessBotRecipients {
 			return object
 		}
+		UnknownObject {
+			return UnknownInputBusinessBotRecipientsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InputBusinessBotRecipients, got ' + object.qualified_name())
 		}
@@ -10481,6 +11440,13 @@ fn decode_input_business_chat_link_type_from_decoder(mut decoder Decoder) !Input
 	match object {
 		InputBusinessChatLink {
 			return object
+		}
+		UnknownObject {
+			return UnknownInputBusinessChatLinkType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected InputBusinessChatLink, got ' + object.qualified_name())
@@ -10503,6 +11469,13 @@ fn decode_input_business_greeting_message_type_from_decoder(mut decoder Decoder)
 		InputBusinessGreetingMessage {
 			return object
 		}
+		UnknownObject {
+			return UnknownInputBusinessGreetingMessageType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InputBusinessGreetingMessage, got ' + object.qualified_name())
 		}
@@ -10524,6 +11497,13 @@ fn decode_input_business_intro_type_from_decoder(mut decoder Decoder) !InputBusi
 		InputBusinessIntro {
 			return object
 		}
+		UnknownObject {
+			return UnknownInputBusinessIntroType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InputBusinessIntro, got ' + object.qualified_name())
 		}
@@ -10544,6 +11524,13 @@ fn decode_input_business_recipients_type_from_decoder(mut decoder Decoder) !Inpu
 	match object {
 		InputBusinessRecipients {
 			return object
+		}
+		UnknownObject {
+			return UnknownInputBusinessRecipientsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected InputBusinessRecipients, got ' + object.qualified_name())
@@ -10572,6 +11559,13 @@ fn decode_input_channel_type_from_decoder(mut decoder Decoder) !InputChannelType
 		InputChannelFromMessage {
 			return object
 		}
+		UnknownObject {
+			return UnknownInputChannelType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InputChannel, got ' + object.qualified_name())
 		}
@@ -10598,6 +11592,13 @@ fn decode_input_chat_photo_type_from_decoder(mut decoder Decoder) !InputChatPhot
 		}
 		InputChatPhoto {
 			return object
+		}
+		UnknownObject {
+			return UnknownInputChatPhotoType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected InputChatPhoto, got ' + object.qualified_name())
@@ -10626,6 +11627,13 @@ fn decode_input_chat_theme_type_from_decoder(mut decoder Decoder) !InputChatThem
 		InputChatThemeUniqueGift {
 			return object
 		}
+		UnknownObject {
+			return UnknownInputChatThemeType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InputChatTheme, got ' + object.qualified_name())
 		}
@@ -10646,6 +11654,13 @@ fn decode_input_chatlist_type_from_decoder(mut decoder Decoder) !InputChatlistTy
 	match object {
 		InputChatlistDialogFilter {
 			return object
+		}
+		UnknownObject {
+			return UnknownInputChatlistType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected InputChatlist, got ' + object.qualified_name())
@@ -10671,6 +11686,13 @@ fn decode_input_check_password_s_r_p_type_from_decoder(mut decoder Decoder) !Inp
 		InputCheckPasswordSRP {
 			return object
 		}
+		UnknownObject {
+			return UnknownInputCheckPasswordSRPType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InputCheckPasswordSRP, got ' + object.qualified_name())
 		}
@@ -10691,6 +11713,13 @@ fn decode_input_client_proxy_type_from_decoder(mut decoder Decoder) !InputClient
 	match object {
 		InputClientProxy {
 			return object
+		}
+		UnknownObject {
+			return UnknownInputClientProxyType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected InputClientProxy, got ' + object.qualified_name())
@@ -10716,6 +11745,13 @@ fn decode_input_collectible_type_from_decoder(mut decoder Decoder) !InputCollect
 		InputCollectiblePhone {
 			return object
 		}
+		UnknownObject {
+			return UnknownInputCollectibleType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InputCollectible, got ' + object.qualified_name())
 		}
@@ -10736,6 +11772,13 @@ fn decode_input_contact_type_from_decoder(mut decoder Decoder) !InputContactType
 	match object {
 		InputPhoneContact {
 			return object
+		}
+		UnknownObject {
+			return UnknownInputContactType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected InputContact, got ' + object.qualified_name())
@@ -10761,6 +11804,13 @@ fn decode_input_dialog_peer_type_from_decoder(mut decoder Decoder) !InputDialogP
 		InputDialogPeerFolder {
 			return object
 		}
+		UnknownObject {
+			return UnknownInputDialogPeerType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InputDialogPeer, got ' + object.qualified_name())
 		}
@@ -10785,6 +11835,13 @@ fn decode_input_document_type_from_decoder(mut decoder Decoder) !InputDocumentTy
 		InputDocument {
 			return object
 		}
+		UnknownObject {
+			return UnknownInputDocumentType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InputDocument, got ' + object.qualified_name())
 		}
@@ -10805,6 +11862,13 @@ fn decode_input_encrypted_chat_type_from_decoder(mut decoder Decoder) !InputEncr
 	match object {
 		InputEncryptedChat {
 			return object
+		}
+		UnknownObject {
+			return UnknownInputEncryptedChatType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected InputEncryptedChat, got ' + object.qualified_name())
@@ -10836,6 +11900,13 @@ fn decode_input_encrypted_file_type_from_decoder(mut decoder Decoder) !InputEncr
 		InputEncryptedFileBigUploaded {
 			return object
 		}
+		UnknownObject {
+			return UnknownInputEncryptedFileType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InputEncryptedFile, got ' + object.qualified_name())
 		}
@@ -10862,6 +11933,13 @@ fn decode_input_file_type_from_decoder(mut decoder Decoder) !InputFileType {
 		}
 		InputFileStoryDocument {
 			return object
+		}
+		UnknownObject {
+			return UnknownInputFileType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected InputFile, got ' + object.qualified_name())
@@ -10911,6 +11989,13 @@ fn decode_input_file_location_type_from_decoder(mut decoder Decoder) !InputFileL
 		InputGroupCallStream {
 			return object
 		}
+		UnknownObject {
+			return UnknownInputFileLocationType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InputFileLocation, got ' + object.qualified_name())
 		}
@@ -10931,6 +12016,13 @@ fn decode_input_folder_peer_type_from_decoder(mut decoder Decoder) !InputFolderP
 	match object {
 		InputFolderPeer {
 			return object
+		}
+		UnknownObject {
+			return UnknownInputFolderPeerType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected InputFolderPeer, got ' + object.qualified_name())
@@ -10956,6 +12048,13 @@ fn decode_input_game_type_from_decoder(mut decoder Decoder) !InputGameType {
 		InputGameShortName {
 			return object
 		}
+		UnknownObject {
+			return UnknownInputGameType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InputGame, got ' + object.qualified_name())
 		}
@@ -10979,6 +12078,13 @@ fn decode_input_geo_point_type_from_decoder(mut decoder Decoder) !InputGeoPointT
 		}
 		InputGeoPoint {
 			return object
+		}
+		UnknownObject {
+			return UnknownInputGeoPointType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected InputGeoPoint, got ' + object.qualified_name())
@@ -11006,6 +12112,13 @@ fn decode_input_group_call_type_from_decoder(mut decoder Decoder) !InputGroupCal
 		}
 		InputGroupCallInviteMessage {
 			return object
+		}
+		UnknownObject {
+			return UnknownInputGroupCallType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected InputGroupCall, got ' + object.qualified_name())
@@ -11069,6 +12182,13 @@ fn decode_input_invoice_type_from_decoder(mut decoder Decoder) !InputInvoiceType
 		}
 		InputInvoiceStarGiftAuctionBid {
 			return object
+		}
+		UnknownObject {
+			return UnknownInputInvoiceType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected InputInvoice, got ' + object.qualified_name())
@@ -11148,6 +12268,13 @@ fn decode_input_media_type_from_decoder(mut decoder Decoder) !InputMediaType {
 		InputMediaStakeDice {
 			return object
 		}
+		UnknownObject {
+			return UnknownInputMediaType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InputMedia, got ' + object.qualified_name())
 		}
@@ -11177,6 +12304,13 @@ fn decode_input_message_type_from_decoder(mut decoder Decoder) !InputMessageType
 		}
 		InputMessageCallbackQuery {
 			return object
+		}
+		UnknownObject {
+			return UnknownInputMessageType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected InputMessage, got ' + object.qualified_name())
@@ -11211,6 +12345,13 @@ fn decode_input_notify_peer_type_from_decoder(mut decoder Decoder) !InputNotifyP
 		InputNotifyForumTopic {
 			return object
 		}
+		UnknownObject {
+			return UnknownInputNotifyPeerType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InputNotifyPeer, got ' + object.qualified_name())
 		}
@@ -11235,6 +12376,13 @@ fn decode_input_passkey_credential_type_from_decoder(mut decoder Decoder) !Input
 		InputPasskeyCredentialFirebasePNV {
 			return object
 		}
+		UnknownObject {
+			return UnknownInputPasskeyCredentialType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InputPasskeyCredential, got ' + object.qualified_name())
 		}
@@ -11258,6 +12406,13 @@ fn decode_input_passkey_response_type_from_decoder(mut decoder Decoder) !InputPa
 		}
 		InputPasskeyResponseLogin {
 			return object
+		}
+		UnknownObject {
+			return UnknownInputPasskeyResponseType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected InputPasskeyResponse, got ' + object.qualified_name())
@@ -11288,6 +12443,13 @@ fn decode_input_payment_credentials_type_from_decoder(mut decoder Decoder) !Inpu
 		}
 		InputPaymentCredentialsGooglePay {
 			return object
+		}
+		UnknownObject {
+			return UnknownInputPaymentCredentialsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected InputPaymentCredentials, got ' + object.qualified_name())
@@ -11328,6 +12490,13 @@ fn decode_input_peer_type_from_decoder(mut decoder Decoder) !InputPeerType {
 		InputPeerChannelFromMessage {
 			return object
 		}
+		UnknownObject {
+			return UnknownInputPeerType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InputPeer, got ' + object.qualified_name())
 		}
@@ -11349,6 +12518,13 @@ fn decode_input_peer_notify_settings_type_from_decoder(mut decoder Decoder) !Inp
 		InputPeerNotifySettings {
 			return object
 		}
+		UnknownObject {
+			return UnknownInputPeerNotifySettingsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InputPeerNotifySettings, got ' + object.qualified_name())
 		}
@@ -11369,6 +12545,13 @@ fn decode_input_phone_call_type_from_decoder(mut decoder Decoder) !InputPhoneCal
 	match object {
 		InputPhoneCall {
 			return object
+		}
+		UnknownObject {
+			return UnknownInputPhoneCallType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected InputPhoneCall, got ' + object.qualified_name())
@@ -11393,6 +12576,13 @@ fn decode_input_photo_type_from_decoder(mut decoder Decoder) !InputPhotoType {
 		}
 		InputPhoto {
 			return object
+		}
+		UnknownObject {
+			return UnknownInputPhotoType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected InputPhoto, got ' + object.qualified_name())
@@ -11454,6 +12644,13 @@ fn decode_input_privacy_key_type_from_decoder(mut decoder Decoder) !InputPrivacy
 		InputPrivacyKeySavedMusic {
 			return object
 		}
+		UnknownObject {
+			return UnknownInputPrivacyKeyType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InputPrivacyKey, got ' + object.qualified_name())
 		}
@@ -11508,6 +12705,13 @@ fn decode_input_privacy_rule_type_from_decoder(mut decoder Decoder) !InputPrivac
 		InputPrivacyValueDisallowBots {
 			return object
 		}
+		UnknownObject {
+			return UnknownInputPrivacyRuleType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InputPrivacyRule, got ' + object.qualified_name())
 		}
@@ -11531,6 +12735,13 @@ fn decode_input_quick_reply_shortcut_type_from_decoder(mut decoder Decoder) !Inp
 		}
 		InputQuickReplyShortcutId {
 			return object
+		}
+		UnknownObject {
+			return UnknownInputQuickReplyShortcutType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected InputQuickReplyShortcut, got ' + object.qualified_name())
@@ -11559,6 +12770,13 @@ fn decode_input_reply_to_type_from_decoder(mut decoder Decoder) !InputReplyToTyp
 		InputReplyToMonoForum {
 			return object
 		}
+		UnknownObject {
+			return UnknownInputReplyToType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InputReplyTo, got ' + object.qualified_name())
 		}
@@ -11586,6 +12804,13 @@ fn decode_input_saved_star_gift_type_from_decoder(mut decoder Decoder) !InputSav
 		InputSavedStarGiftSlug {
 			return object
 		}
+		UnknownObject {
+			return UnknownInputSavedStarGiftType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InputSavedStarGift, got ' + object.qualified_name())
 		}
@@ -11610,6 +12835,13 @@ fn decode_input_secure_file_type_from_decoder(mut decoder Decoder) !InputSecureF
 		InputSecureFile {
 			return object
 		}
+		UnknownObject {
+			return UnknownInputSecureFileType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InputSecureFile, got ' + object.qualified_name())
 		}
@@ -11631,6 +12863,13 @@ fn decode_input_secure_value_type_from_decoder(mut decoder Decoder) !InputSecure
 		InputSecureValue {
 			return object
 		}
+		UnknownObject {
+			return UnknownInputSecureValueType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InputSecureValue, got ' + object.qualified_name())
 		}
@@ -11651,6 +12890,13 @@ fn decode_input_single_media_type_from_decoder(mut decoder Decoder) !InputSingle
 	match object {
 		InputSingleMedia {
 			return object
+		}
+		UnknownObject {
+			return UnknownInputSingleMediaType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected InputSingleMedia, got ' + object.qualified_name())
@@ -11676,6 +12922,13 @@ fn decode_input_star_gift_auction_type_from_decoder(mut decoder Decoder) !InputS
 		InputStarGiftAuctionSlug {
 			return object
 		}
+		UnknownObject {
+			return UnknownInputStarGiftAuctionType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InputStarGiftAuction, got ' + object.qualified_name())
 		}
@@ -11696,6 +12949,13 @@ fn decode_input_stars_transaction_type_from_decoder(mut decoder Decoder) !InputS
 	match object {
 		InputStarsTransaction {
 			return object
+		}
+		UnknownObject {
+			return UnknownInputStarsTransactionType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected InputStarsTransaction, got ' + object.qualified_name())
@@ -11751,6 +13011,13 @@ fn decode_input_sticker_set_type_from_decoder(mut decoder Decoder) !InputSticker
 		InputStickerSetTonGifts {
 			return object
 		}
+		UnknownObject {
+			return UnknownInputStickerSetType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InputStickerSet, got ' + object.qualified_name())
 		}
@@ -11771,6 +13038,13 @@ fn decode_input_sticker_set_item_type_from_decoder(mut decoder Decoder) !InputSt
 	match object {
 		InputStickerSetItem {
 			return object
+		}
+		UnknownObject {
+			return UnknownInputStickerSetItemType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected InputStickerSetItem, got ' + object.qualified_name())
@@ -11795,6 +13069,13 @@ fn decode_input_stickered_media_type_from_decoder(mut decoder Decoder) !InputSti
 		}
 		InputStickeredMediaDocument {
 			return object
+		}
+		UnknownObject {
+			return UnknownInputStickeredMediaType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected InputStickeredMedia, got ' + object.qualified_name())
@@ -11838,6 +13119,13 @@ fn decode_input_store_payment_purpose_type_from_decoder(mut decoder Decoder) !In
 		InputStorePaymentAuthCode {
 			return object
 		}
+		UnknownObject {
+			return UnknownInputStorePaymentPurposeType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InputStorePaymentPurpose, got ' + object.qualified_name())
 		}
@@ -11862,6 +13150,13 @@ fn decode_input_theme_type_from_decoder(mut decoder Decoder) !InputThemeType {
 		InputThemeSlug {
 			return object
 		}
+		UnknownObject {
+			return UnknownInputThemeType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InputTheme, got ' + object.qualified_name())
 		}
@@ -11882,6 +13177,13 @@ fn decode_input_theme_settings_type_from_decoder(mut decoder Decoder) !InputThem
 	match object {
 		InputThemeSettings {
 			return object
+		}
+		UnknownObject {
+			return UnknownInputThemeSettingsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected InputThemeSettings, got ' + object.qualified_name())
@@ -11913,6 +13215,13 @@ fn decode_input_user_type_from_decoder(mut decoder Decoder) !InputUserType {
 		InputUserFromMessage {
 			return object
 		}
+		UnknownObject {
+			return UnknownInputUserType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InputUser, got ' + object.qualified_name())
 		}
@@ -11940,6 +13249,13 @@ fn decode_input_wall_paper_type_from_decoder(mut decoder Decoder) !InputWallPape
 		InputWallPaperNoFile {
 			return object
 		}
+		UnknownObject {
+			return UnknownInputWallPaperType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InputWallPaper, got ' + object.qualified_name())
 		}
@@ -11960,6 +13276,13 @@ fn decode_input_web_document_type_from_decoder(mut decoder Decoder) !InputWebDoc
 	match object {
 		InputWebDocument {
 			return object
+		}
+		UnknownObject {
+			return UnknownInputWebDocumentType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected InputWebDocument, got ' + object.qualified_name())
@@ -11988,6 +13311,13 @@ fn decode_input_web_file_location_type_from_decoder(mut decoder Decoder) !InputW
 		InputWebFileAudioAlbumThumbLocation {
 			return object
 		}
+		UnknownObject {
+			return UnknownInputWebFileLocationType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected InputWebFileLocation, got ' + object.qualified_name())
 		}
@@ -12008,6 +13338,13 @@ fn decode_invoice_type_from_decoder(mut decoder Decoder) !InvoiceType {
 	match object {
 		Invoice {
 			return object
+		}
+		UnknownObject {
+			return UnknownInvoiceType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected Invoice, got ' + object.qualified_name())
@@ -12033,6 +13370,13 @@ fn decode_ip_port_type_from_decoder(mut decoder Decoder) !IpPortType {
 		IpPortSecret {
 			return object
 		}
+		UnknownObject {
+			return UnknownIpPortType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected IpPort, got ' + object.qualified_name())
 		}
@@ -12053,6 +13397,13 @@ fn decode_j_s_o_n_object_value_type_from_decoder(mut decoder Decoder) !JSONObjec
 	match object {
 		JsonObjectValue {
 			return object
+		}
+		UnknownObject {
+			return UnknownJSONObjectValueType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected JSONObjectValue, got ' + object.qualified_name())
@@ -12089,6 +13440,13 @@ fn decode_j_s_o_n_value_type_from_decoder(mut decoder Decoder) !JSONValueType {
 		}
 		JsonObject {
 			return object
+		}
+		UnknownObject {
+			return UnknownJSONValueType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected JSONValue, got ' + object.qualified_name())
@@ -12162,6 +13520,13 @@ fn decode_keyboard_button_type_from_decoder(mut decoder Decoder) !KeyboardButton
 		KeyboardButtonCopy {
 			return object
 		}
+		UnknownObject {
+			return UnknownKeyboardButtonType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected KeyboardButton, got ' + object.qualified_name())
 		}
@@ -12182,6 +13547,13 @@ fn decode_keyboard_button_row_type_from_decoder(mut decoder Decoder) !KeyboardBu
 	match object {
 		KeyboardButtonRow {
 			return object
+		}
+		UnknownObject {
+			return UnknownKeyboardButtonRowType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected KeyboardButtonRow, got ' + object.qualified_name())
@@ -12204,6 +13576,13 @@ fn decode_keyboard_button_style_type_from_decoder(mut decoder Decoder) !Keyboard
 		KeyboardButtonStyle {
 			return object
 		}
+		UnknownObject {
+			return UnknownKeyboardButtonStyleType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected KeyboardButtonStyle, got ' + object.qualified_name())
 		}
@@ -12224,6 +13603,13 @@ fn decode_labeled_price_type_from_decoder(mut decoder Decoder) !LabeledPriceType
 	match object {
 		LabeledPrice {
 			return object
+		}
+		UnknownObject {
+			return UnknownLabeledPriceType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected LabeledPrice, got ' + object.qualified_name())
@@ -12246,6 +13632,13 @@ fn decode_lang_pack_difference_type_from_decoder(mut decoder Decoder) !LangPackD
 		LangPackDifference {
 			return object
 		}
+		UnknownObject {
+			return UnknownLangPackDifferenceType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected LangPackDifference, got ' + object.qualified_name())
 		}
@@ -12266,6 +13659,13 @@ fn decode_lang_pack_language_type_from_decoder(mut decoder Decoder) !LangPackLan
 	match object {
 		LangPackLanguage {
 			return object
+		}
+		UnknownObject {
+			return UnknownLangPackLanguageType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected LangPackLanguage, got ' + object.qualified_name())
@@ -12294,6 +13694,13 @@ fn decode_lang_pack_string_type_from_decoder(mut decoder Decoder) !LangPackStrin
 		LangPackStringDeleted {
 			return object
 		}
+		UnknownObject {
+			return UnknownLangPackStringType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected LangPackString, got ' + object.qualified_name())
 		}
@@ -12314,6 +13721,13 @@ fn decode_mask_coords_type_from_decoder(mut decoder Decoder) !MaskCoordsType {
 	match object {
 		MaskCoords {
 			return object
+		}
+		UnknownObject {
+			return UnknownMaskCoordsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected MaskCoords, got ' + object.qualified_name())
@@ -12360,6 +13774,13 @@ fn decode_media_area_type_from_decoder(mut decoder Decoder) !MediaAreaType {
 		MediaAreaStarGift {
 			return object
 		}
+		UnknownObject {
+			return UnknownMediaAreaType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected MediaArea, got ' + object.qualified_name())
 		}
@@ -12380,6 +13801,13 @@ fn decode_media_area_coordinates_type_from_decoder(mut decoder Decoder) !MediaAr
 	match object {
 		MediaAreaCoordinates {
 			return object
+		}
+		UnknownObject {
+			return UnknownMediaAreaCoordinatesType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected MediaAreaCoordinates, got ' + object.qualified_name())
@@ -12407,6 +13835,13 @@ fn decode_message_type_from_decoder(mut decoder Decoder) !MessageType {
 		}
 		MessageService {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessageType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected Message, got ' + object.qualified_name())
@@ -12612,6 +14047,13 @@ fn decode_message_action_type_from_decoder(mut decoder Decoder) !MessageActionTy
 		MessageActionChangeCreator {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessageActionType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected MessageAction, got ' + object.qualified_name())
 		}
@@ -12693,6 +14135,13 @@ fn decode_message_entity_type_from_decoder(mut decoder Decoder) !MessageEntityTy
 		MessageEntityBlockquote {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessageEntityType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected MessageEntity, got ' + object.qualified_name())
 		}
@@ -12717,6 +14166,13 @@ fn decode_message_extended_media_type_from_decoder(mut decoder Decoder) !Message
 		MessageExtendedMedia {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessageExtendedMediaType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected MessageExtendedMedia, got ' + object.qualified_name())
 		}
@@ -12737,6 +14193,13 @@ fn decode_message_fwd_header_type_from_decoder(mut decoder Decoder) !MessageFwdH
 	match object {
 		MessageFwdHeader {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessageFwdHeaderType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected MessageFwdHeader, got ' + object.qualified_name())
@@ -12813,6 +14276,13 @@ fn decode_message_media_type_from_decoder(mut decoder Decoder) !MessageMediaType
 		MessageMediaVideoStream {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessageMediaType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected MessageMedia, got ' + object.qualified_name())
 		}
@@ -12833,6 +14303,13 @@ fn decode_message_peer_reaction_type_from_decoder(mut decoder Decoder) !MessageP
 	match object {
 		MessagePeerReaction {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessagePeerReactionType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected MessagePeerReaction, got ' + object.qualified_name())
@@ -12861,6 +14338,13 @@ fn decode_message_peer_vote_type_from_decoder(mut decoder Decoder) !MessagePeerV
 		MessagePeerVoteMultiple {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagePeerVoteType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected MessagePeerVote, got ' + object.qualified_name())
 		}
@@ -12881,6 +14365,13 @@ fn decode_message_range_type_from_decoder(mut decoder Decoder) !MessageRangeType
 	match object {
 		MessageRange {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessageRangeType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected MessageRange, got ' + object.qualified_name())
@@ -12903,6 +14394,13 @@ fn decode_message_reactions_type_from_decoder(mut decoder Decoder) !MessageReact
 		MessageReactions {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessageReactionsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected MessageReactions, got ' + object.qualified_name())
 		}
@@ -12924,6 +14422,13 @@ fn decode_message_reactor_type_from_decoder(mut decoder Decoder) !MessageReactor
 		MessageReactor {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessageReactorType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected MessageReactor, got ' + object.qualified_name())
 		}
@@ -12944,6 +14449,13 @@ fn decode_message_replies_type_from_decoder(mut decoder Decoder) !MessageReplies
 	match object {
 		MessageReplies {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessageRepliesType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected MessageReplies, got ' + object.qualified_name())
@@ -12969,6 +14481,13 @@ fn decode_message_reply_header_type_from_decoder(mut decoder Decoder) !MessageRe
 		MessageReplyStoryHeader {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessageReplyHeaderType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected MessageReplyHeader, got ' + object.qualified_name())
 		}
@@ -12990,6 +14509,13 @@ fn decode_message_report_option_type_from_decoder(mut decoder Decoder) !MessageR
 		MessageReportOption {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessageReportOptionType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected MessageReportOption, got ' + object.qualified_name())
 		}
@@ -13010,6 +14536,13 @@ fn decode_message_views_type_from_decoder(mut decoder Decoder) !MessageViewsType
 	match object {
 		MessageViews {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessageViewsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected MessageViews, got ' + object.qualified_name())
@@ -13080,6 +14613,13 @@ fn decode_messages_filter_type_from_decoder(mut decoder Decoder) !MessagesFilter
 		InputMessagesFilterPinned {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesFilterType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected MessagesFilter, got ' + object.qualified_name())
 		}
@@ -13100,6 +14640,13 @@ fn decode_missing_invitee_type_from_decoder(mut decoder Decoder) !MissingInvitee
 	match object {
 		MissingInvitee {
 			return object
+		}
+		UnknownObject {
+			return UnknownMissingInviteeType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected MissingInvitee, got ' + object.qualified_name())
@@ -13125,6 +14672,13 @@ fn decode_msg_detailed_info_type_from_decoder(mut decoder Decoder) !MsgDetailedI
 		MsgNewDetailedInfo {
 			return object
 		}
+		UnknownObject {
+			return UnknownMsgDetailedInfoType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected MsgDetailedInfo, got ' + object.qualified_name())
 		}
@@ -13145,6 +14699,13 @@ fn decode_msg_resend_req_type_from_decoder(mut decoder Decoder) !MsgResendReqTyp
 	match object {
 		MsgResendReq {
 			return object
+		}
+		UnknownObject {
+			return UnknownMsgResendReqType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected MsgResendReq, got ' + object.qualified_name())
@@ -13167,6 +14728,13 @@ fn decode_msgs_ack_type_from_decoder(mut decoder Decoder) !MsgsAckType {
 		MsgsAck {
 			return object
 		}
+		UnknownObject {
+			return UnknownMsgsAckType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected MsgsAck, got ' + object.qualified_name())
 		}
@@ -13187,6 +14755,13 @@ fn decode_msgs_all_info_type_from_decoder(mut decoder Decoder) !MsgsAllInfoType 
 	match object {
 		MsgsAllInfo {
 			return object
+		}
+		UnknownObject {
+			return UnknownMsgsAllInfoType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected MsgsAllInfo, got ' + object.qualified_name())
@@ -13209,6 +14784,13 @@ fn decode_msgs_state_info_type_from_decoder(mut decoder Decoder) !MsgsStateInfoT
 		MsgsStateInfo {
 			return object
 		}
+		UnknownObject {
+			return UnknownMsgsStateInfoType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected MsgsStateInfo, got ' + object.qualified_name())
 		}
@@ -13229,6 +14811,13 @@ fn decode_msgs_state_req_type_from_decoder(mut decoder Decoder) !MsgsStateReqTyp
 	match object {
 		MsgsStateReq {
 			return object
+		}
+		UnknownObject {
+			return UnknownMsgsStateReqType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected MsgsStateReq, got ' + object.qualified_name())
@@ -13251,6 +14840,13 @@ fn decode_my_boost_type_from_decoder(mut decoder Decoder) !MyBoostType {
 		MyBoost {
 			return object
 		}
+		UnknownObject {
+			return UnknownMyBoostType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected MyBoost, got ' + object.qualified_name())
 		}
@@ -13272,6 +14868,13 @@ fn decode_nearest_dc_type_from_decoder(mut decoder Decoder) !NearestDcType {
 		NearestDc {
 			return object
 		}
+		UnknownObject {
+			return UnknownNearestDcType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected NearestDc, got ' + object.qualified_name())
 		}
@@ -13292,6 +14895,13 @@ fn decode_new_session_type_from_decoder(mut decoder Decoder) !NewSessionType {
 	match object {
 		NewSessionCreated {
 			return object
+		}
+		UnknownObject {
+			return UnknownNewSessionType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected NewSession, got ' + object.qualified_name())
@@ -13322,6 +14932,13 @@ fn decode_notification_sound_type_from_decoder(mut decoder Decoder) !Notificatio
 		}
 		NotificationSoundRingtone {
 			return object
+		}
+		UnknownObject {
+			return UnknownNotificationSoundType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected NotificationSound, got ' + object.qualified_name())
@@ -13356,6 +14973,13 @@ fn decode_notify_peer_type_from_decoder(mut decoder Decoder) !NotifyPeerType {
 		NotifyForumTopic {
 			return object
 		}
+		UnknownObject {
+			return UnknownNotifyPeerType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected NotifyPeer, got ' + object.qualified_name())
 		}
@@ -13377,6 +15001,13 @@ fn decode_null_type_from_decoder(mut decoder Decoder) !NullType {
 		Null {
 			return object
 		}
+		UnknownObject {
+			return UnknownNullType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected Null, got ' + object.qualified_name())
 		}
@@ -13397,6 +15028,13 @@ fn decode_outbox_read_date_type_from_decoder(mut decoder Decoder) !OutboxReadDat
 	match object {
 		OutboxReadDate {
 			return object
+		}
+		UnknownObject {
+			return UnknownOutboxReadDateType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected OutboxReadDate, got ' + object.qualified_name())
@@ -13428,6 +15066,13 @@ fn decode_p_q_inner_data_type_from_decoder(mut decoder Decoder) !PQInnerDataType
 		PQInnerDataTempDc {
 			return object
 		}
+		UnknownObject {
+			return UnknownPQInnerDataType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected P_Q_inner_data, got ' + object.qualified_name())
 		}
@@ -13448,6 +15093,13 @@ fn decode_page_type_from_decoder(mut decoder Decoder) !PageType {
 	match object {
 		Page {
 			return object
+		}
+		UnknownObject {
+			return UnknownPageType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected Page, got ' + object.qualified_name())
@@ -13554,6 +15206,13 @@ fn decode_page_block_type_from_decoder(mut decoder Decoder) !PageBlockType {
 		PageBlockMap {
 			return object
 		}
+		UnknownObject {
+			return UnknownPageBlockType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected PageBlock, got ' + object.qualified_name())
 		}
@@ -13574,6 +15233,13 @@ fn decode_page_caption_type_from_decoder(mut decoder Decoder) !PageCaptionType {
 	match object {
 		PageCaption {
 			return object
+		}
+		UnknownObject {
+			return UnknownPageCaptionType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected PageCaption, got ' + object.qualified_name())
@@ -13599,6 +15265,13 @@ fn decode_page_list_item_type_from_decoder(mut decoder Decoder) !PageListItemTyp
 		PageListItemBlocks {
 			return object
 		}
+		UnknownObject {
+			return UnknownPageListItemType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected PageListItem, got ' + object.qualified_name())
 		}
@@ -13623,6 +15296,13 @@ fn decode_page_list_ordered_item_type_from_decoder(mut decoder Decoder) !PageLis
 		PageListOrderedItemBlocks {
 			return object
 		}
+		UnknownObject {
+			return UnknownPageListOrderedItemType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected PageListOrderedItem, got ' + object.qualified_name())
 		}
@@ -13643,6 +15323,13 @@ fn decode_page_related_article_type_from_decoder(mut decoder Decoder) !PageRelat
 	match object {
 		PageRelatedArticle {
 			return object
+		}
+		UnknownObject {
+			return UnknownPageRelatedArticleType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected PageRelatedArticle, got ' + object.qualified_name())
@@ -13665,6 +15352,13 @@ fn decode_page_table_cell_type_from_decoder(mut decoder Decoder) !PageTableCellT
 		PageTableCell {
 			return object
 		}
+		UnknownObject {
+			return UnknownPageTableCellType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected PageTableCell, got ' + object.qualified_name())
 		}
@@ -13685,6 +15379,13 @@ fn decode_page_table_row_type_from_decoder(mut decoder Decoder) !PageTableRowTyp
 	match object {
 		PageTableRow {
 			return object
+		}
+		UnknownObject {
+			return UnknownPageTableRowType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected PageTableRow, got ' + object.qualified_name())
@@ -13713,6 +15414,13 @@ fn decode_paid_reaction_privacy_type_from_decoder(mut decoder Decoder) !PaidReac
 		PaidReactionPrivacyPeer {
 			return object
 		}
+		UnknownObject {
+			return UnknownPaidReactionPrivacyType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected PaidReactionPrivacy, got ' + object.qualified_name())
 		}
@@ -13733,6 +15441,13 @@ fn decode_passkey_type_from_decoder(mut decoder Decoder) !PasskeyType {
 	match object {
 		Passkey {
 			return object
+		}
+		UnknownObject {
+			return UnknownPasskeyType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected Passkey, got ' + object.qualified_name())
@@ -13758,6 +15473,13 @@ fn decode_password_kdf_algo_type_from_decoder(mut decoder Decoder) !PasswordKdfA
 		PasswordKdfAlgoSHA256SHA256PBKDF2HMACSHA512iter100000SHA256ModPow {
 			return object
 		}
+		UnknownObject {
+			return UnknownPasswordKdfAlgoType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected PasswordKdfAlgo, got ' + object.qualified_name())
 		}
@@ -13778,6 +15500,13 @@ fn decode_payment_charge_type_from_decoder(mut decoder Decoder) !PaymentChargeTy
 	match object {
 		PaymentCharge {
 			return object
+		}
+		UnknownObject {
+			return UnknownPaymentChargeType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected PaymentCharge, got ' + object.qualified_name())
@@ -13800,6 +15529,13 @@ fn decode_payment_form_method_type_from_decoder(mut decoder Decoder) !PaymentFor
 		PaymentFormMethod {
 			return object
 		}
+		UnknownObject {
+			return UnknownPaymentFormMethodType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected PaymentFormMethod, got ' + object.qualified_name())
 		}
@@ -13821,6 +15557,13 @@ fn decode_payment_requested_info_type_from_decoder(mut decoder Decoder) !Payment
 		PaymentRequestedInfo {
 			return object
 		}
+		UnknownObject {
+			return UnknownPaymentRequestedInfoType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected PaymentRequestedInfo, got ' + object.qualified_name())
 		}
@@ -13841,6 +15584,13 @@ fn decode_payment_saved_credentials_type_from_decoder(mut decoder Decoder) !Paym
 	match object {
 		PaymentSavedCredentialsCard {
 			return object
+		}
+		UnknownObject {
+			return UnknownPaymentSavedCredentialsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected PaymentSavedCredentials, got ' + object.qualified_name())
@@ -13869,6 +15619,13 @@ fn decode_peer_type_from_decoder(mut decoder Decoder) !PeerType {
 		PeerChannel {
 			return object
 		}
+		UnknownObject {
+			return UnknownPeerType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected Peer, got ' + object.qualified_name())
 		}
@@ -13889,6 +15646,13 @@ fn decode_peer_blocked_type_from_decoder(mut decoder Decoder) !PeerBlockedType {
 	match object {
 		PeerBlocked {
 			return object
+		}
+		UnknownObject {
+			return UnknownPeerBlockedType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected PeerBlocked, got ' + object.qualified_name())
@@ -13917,6 +15681,13 @@ fn decode_peer_color_type_from_decoder(mut decoder Decoder) !PeerColorType {
 		InputPeerColorCollectible {
 			return object
 		}
+		UnknownObject {
+			return UnknownPeerColorType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected PeerColor, got ' + object.qualified_name())
 		}
@@ -13941,6 +15712,13 @@ fn decode_peer_located_type_from_decoder(mut decoder Decoder) !PeerLocatedType {
 		PeerSelfLocated {
 			return object
 		}
+		UnknownObject {
+			return UnknownPeerLocatedType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected PeerLocated, got ' + object.qualified_name())
 		}
@@ -13961,6 +15739,13 @@ fn decode_peer_notify_settings_type_from_decoder(mut decoder Decoder) !PeerNotif
 	match object {
 		PeerNotifySettings {
 			return object
+		}
+		UnknownObject {
+			return UnknownPeerNotifySettingsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected PeerNotifySettings, got ' + object.qualified_name())
@@ -13983,6 +15768,13 @@ fn decode_peer_settings_type_from_decoder(mut decoder Decoder) !PeerSettingsType
 		PeerSettings {
 			return object
 		}
+		UnknownObject {
+			return UnknownPeerSettingsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected PeerSettings, got ' + object.qualified_name())
 		}
@@ -14004,6 +15796,13 @@ fn decode_peer_stories_type_from_decoder(mut decoder Decoder) !PeerStoriesType {
 		PeerStories {
 			return object
 		}
+		UnknownObject {
+			return UnknownPeerStoriesType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected PeerStories, got ' + object.qualified_name())
 		}
@@ -14024,6 +15823,13 @@ fn decode_pending_suggestion_type_from_decoder(mut decoder Decoder) !PendingSugg
 	match object {
 		PendingSuggestion {
 			return object
+		}
+		UnknownObject {
+			return UnknownPendingSuggestionType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected PendingSuggestion, got ' + object.qualified_name())
@@ -14061,6 +15867,13 @@ fn decode_phone_call_type_from_decoder(mut decoder Decoder) !PhoneCallType {
 		PhoneCallDiscarded {
 			return object
 		}
+		UnknownObject {
+			return UnknownPhoneCallType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected PhoneCall, got ' + object.qualified_name())
 		}
@@ -14094,6 +15907,13 @@ fn decode_phone_call_discard_reason_type_from_decoder(mut decoder Decoder) !Phon
 		PhoneCallDiscardReasonMigrateConferenceCall {
 			return object
 		}
+		UnknownObject {
+			return UnknownPhoneCallDiscardReasonType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected PhoneCallDiscardReason, got ' + object.qualified_name())
 		}
@@ -14114,6 +15934,13 @@ fn decode_phone_call_protocol_type_from_decoder(mut decoder Decoder) !PhoneCallP
 	match object {
 		PhoneCallProtocol {
 			return object
+		}
+		UnknownObject {
+			return UnknownPhoneCallProtocolType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected PhoneCallProtocol, got ' + object.qualified_name())
@@ -14139,6 +15966,13 @@ fn decode_phone_connection_type_from_decoder(mut decoder Decoder) !PhoneConnecti
 		PhoneConnectionWebrtc {
 			return object
 		}
+		UnknownObject {
+			return UnknownPhoneConnectionType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected PhoneConnection, got ' + object.qualified_name())
 		}
@@ -14162,6 +15996,13 @@ fn decode_photo_type_from_decoder(mut decoder Decoder) !PhotoType {
 		}
 		Photo {
 			return object
+		}
+		UnknownObject {
+			return UnknownPhotoType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected Photo, got ' + object.qualified_name())
@@ -14199,6 +16040,13 @@ fn decode_photo_size_type_from_decoder(mut decoder Decoder) !PhotoSizeType {
 		PhotoPathSize {
 			return object
 		}
+		UnknownObject {
+			return UnknownPhotoSizeType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected PhotoSize, got ' + object.qualified_name())
 		}
@@ -14219,6 +16067,13 @@ fn decode_poll_type_from_decoder(mut decoder Decoder) !PollType {
 	match object {
 		Poll {
 			return object
+		}
+		UnknownObject {
+			return UnknownPollType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected Poll, got ' + object.qualified_name())
@@ -14241,6 +16096,13 @@ fn decode_poll_answer_type_from_decoder(mut decoder Decoder) !PollAnswerType {
 		PollAnswer {
 			return object
 		}
+		UnknownObject {
+			return UnknownPollAnswerType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected PollAnswer, got ' + object.qualified_name())
 		}
@@ -14261,6 +16123,13 @@ fn decode_poll_answer_voters_type_from_decoder(mut decoder Decoder) !PollAnswerV
 	match object {
 		PollAnswerVoters {
 			return object
+		}
+		UnknownObject {
+			return UnknownPollAnswerVotersType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected PollAnswerVoters, got ' + object.qualified_name())
@@ -14283,6 +16152,13 @@ fn decode_poll_results_type_from_decoder(mut decoder Decoder) !PollResultsType {
 		PollResults {
 			return object
 		}
+		UnknownObject {
+			return UnknownPollResultsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected PollResults, got ' + object.qualified_name())
 		}
@@ -14303,6 +16179,13 @@ fn decode_pong_type_from_decoder(mut decoder Decoder) !PongType {
 	match object {
 		Pong {
 			return object
+		}
+		UnknownObject {
+			return UnknownPongType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected Pong, got ' + object.qualified_name())
@@ -14325,6 +16208,13 @@ fn decode_popular_contact_type_from_decoder(mut decoder Decoder) !PopularContact
 		PopularContact {
 			return object
 		}
+		UnknownObject {
+			return UnknownPopularContactType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected PopularContact, got ' + object.qualified_name())
 		}
@@ -14345,6 +16235,13 @@ fn decode_post_address_type_from_decoder(mut decoder Decoder) !PostAddressType {
 	match object {
 		PostAddress {
 			return object
+		}
+		UnknownObject {
+			return UnknownPostAddressType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected PostAddress, got ' + object.qualified_name())
@@ -14370,6 +16267,13 @@ fn decode_post_interaction_counters_type_from_decoder(mut decoder Decoder) !Post
 		PostInteractionCountersStory {
 			return object
 		}
+		UnknownObject {
+			return UnknownPostInteractionCountersType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected PostInteractionCounters, got ' + object.qualified_name())
 		}
@@ -14391,6 +16295,13 @@ fn decode_premium_gift_code_option_type_from_decoder(mut decoder Decoder) !Premi
 		PremiumGiftCodeOption {
 			return object
 		}
+		UnknownObject {
+			return UnknownPremiumGiftCodeOptionType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected PremiumGiftCodeOption, got ' + object.qualified_name())
 		}
@@ -14411,6 +16322,13 @@ fn decode_premium_subscription_option_type_from_decoder(mut decoder Decoder) !Pr
 	match object {
 		PremiumSubscriptionOption {
 			return object
+		}
+		UnknownObject {
+			return UnknownPremiumSubscriptionOptionType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected PremiumSubscriptionOption, got ' + object.qualified_name())
@@ -14435,6 +16353,13 @@ fn decode_prepaid_giveaway_type_from_decoder(mut decoder Decoder) !PrepaidGiveaw
 		}
 		PrepaidStarsGiveaway {
 			return object
+		}
+		UnknownObject {
+			return UnknownPrepaidGiveawayType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected PrepaidGiveaway, got ' + object.qualified_name())
@@ -14496,6 +16421,13 @@ fn decode_privacy_key_type_from_decoder(mut decoder Decoder) !PrivacyKeyType {
 		PrivacyKeySavedMusic {
 			return object
 		}
+		UnknownObject {
+			return UnknownPrivacyKeyType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected PrivacyKey, got ' + object.qualified_name())
 		}
@@ -14550,6 +16482,13 @@ fn decode_privacy_rule_type_from_decoder(mut decoder Decoder) !PrivacyRuleType {
 		PrivacyValueDisallowBots {
 			return object
 		}
+		UnknownObject {
+			return UnknownPrivacyRuleType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected PrivacyRule, got ' + object.qualified_name())
 		}
@@ -14592,6 +16531,13 @@ fn decode_profile_tab_type_from_decoder(mut decoder Decoder) !ProfileTabType {
 		ProfileTabGifs {
 			return object
 		}
+		UnknownObject {
+			return UnknownProfileTabType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected ProfileTab, got ' + object.qualified_name())
 		}
@@ -14616,6 +16562,13 @@ fn decode_public_forward_type_from_decoder(mut decoder Decoder) !PublicForwardTy
 		PublicForwardStory {
 			return object
 		}
+		UnknownObject {
+			return UnknownPublicForwardType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected PublicForward, got ' + object.qualified_name())
 		}
@@ -14636,6 +16589,13 @@ fn decode_quick_reply_type_from_decoder(mut decoder Decoder) !QuickReplyType {
 	match object {
 		QuickReply {
 			return object
+		}
+		UnknownObject {
+			return UnknownQuickReplyType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected QuickReply, got ' + object.qualified_name())
@@ -14667,6 +16627,13 @@ fn decode_reaction_type_from_decoder(mut decoder Decoder) !ReactionType {
 		ReactionPaid {
 			return object
 		}
+		UnknownObject {
+			return UnknownReactionType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected Reaction, got ' + object.qualified_name())
 		}
@@ -14687,6 +16654,13 @@ fn decode_reaction_count_type_from_decoder(mut decoder Decoder) !ReactionCountTy
 	match object {
 		ReactionCount {
 			return object
+		}
+		UnknownObject {
+			return UnknownReactionCountType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected ReactionCount, got ' + object.qualified_name())
@@ -14712,6 +16686,13 @@ fn decode_reaction_notifications_from_type_from_decoder(mut decoder Decoder) !Re
 		ReactionNotificationsFromAll {
 			return object
 		}
+		UnknownObject {
+			return UnknownReactionNotificationsFromType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected ReactionNotificationsFrom, got ' + object.qualified_name())
 		}
@@ -14732,6 +16713,13 @@ fn decode_reactions_notify_settings_type_from_decoder(mut decoder Decoder) !Reac
 	match object {
 		ReactionsNotifySettings {
 			return object
+		}
+		UnknownObject {
+			return UnknownReactionsNotifySettingsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected ReactionsNotifySettings, got ' + object.qualified_name())
@@ -14754,6 +16742,13 @@ fn decode_read_participant_date_type_from_decoder(mut decoder Decoder) !ReadPart
 		ReadParticipantDate {
 			return object
 		}
+		UnknownObject {
+			return UnknownReadParticipantDateType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected ReadParticipantDate, got ' + object.qualified_name())
 		}
@@ -14774,6 +16769,13 @@ fn decode_received_notify_message_type_from_decoder(mut decoder Decoder) !Receiv
 	match object {
 		ReceivedNotifyMessage {
 			return object
+		}
+		UnknownObject {
+			return UnknownReceivedNotifyMessageType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected ReceivedNotifyMessage, got ' + object.qualified_name())
@@ -14808,6 +16810,13 @@ fn decode_recent_me_url_type_from_decoder(mut decoder Decoder) !RecentMeUrlType 
 		RecentMeUrlStickerSet {
 			return object
 		}
+		UnknownObject {
+			return UnknownRecentMeUrlType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected RecentMeUrl, got ' + object.qualified_name())
 		}
@@ -14828,6 +16837,13 @@ fn decode_recent_story_type_from_decoder(mut decoder Decoder) !RecentStoryType {
 	match object {
 		RecentStory {
 			return object
+		}
+		UnknownObject {
+			return UnknownRecentStoryType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected RecentStory, got ' + object.qualified_name())
@@ -14858,6 +16874,13 @@ fn decode_reply_markup_type_from_decoder(mut decoder Decoder) !ReplyMarkupType {
 		}
 		ReplyInlineMarkup {
 			return object
+		}
+		UnknownObject {
+			return UnknownReplyMarkupType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected ReplyMarkup, got ' + object.qualified_name())
@@ -14907,6 +16930,13 @@ fn decode_report_reason_type_from_decoder(mut decoder Decoder) !ReportReasonType
 		InputReportReasonPersonalDetails {
 			return object
 		}
+		UnknownObject {
+			return UnknownReportReasonType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected ReportReason, got ' + object.qualified_name())
 		}
@@ -14933,6 +16963,13 @@ fn decode_report_result_type_from_decoder(mut decoder Decoder) !ReportResultType
 		}
 		ReportResultReported {
 			return object
+		}
+		UnknownObject {
+			return UnknownReportResultType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected ReportResult, got ' + object.qualified_name())
@@ -14961,6 +16998,13 @@ fn decode_request_peer_type_type_from_decoder(mut decoder Decoder) !RequestPeerT
 		RequestPeerTypeBroadcast {
 			return object
 		}
+		UnknownObject {
+			return UnknownRequestPeerTypeType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected RequestPeerType, got ' + object.qualified_name())
 		}
@@ -14987,6 +17031,13 @@ fn decode_requested_peer_type_from_decoder(mut decoder Decoder) !RequestedPeerTy
 		}
 		RequestedPeerChannel {
 			return object
+		}
+		UnknownObject {
+			return UnknownRequestedPeerType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected RequestedPeer, got ' + object.qualified_name())
@@ -15015,6 +17066,13 @@ fn decode_requirement_to_contact_type_from_decoder(mut decoder Decoder) !Require
 		RequirementToContactPaidMessages {
 			return object
 		}
+		UnknownObject {
+			return UnknownRequirementToContactType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected RequirementToContact, got ' + object.qualified_name())
 		}
@@ -15036,6 +17094,13 @@ fn decode_res_p_q_type_from_decoder(mut decoder Decoder) !ResPQType {
 		ResPQ {
 			return object
 		}
+		UnknownObject {
+			return UnknownResPQType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected ResPQ, got ' + object.qualified_name())
 		}
@@ -15056,6 +17121,13 @@ fn decode_restriction_reason_type_from_decoder(mut decoder Decoder) !Restriction
 	match object {
 		RestrictionReason {
 			return object
+		}
+		UnknownObject {
+			return UnknownRestrictionReasonType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected RestrictionReason, got ' + object.qualified_name())
@@ -15123,6 +17195,13 @@ fn decode_rich_text_type_from_decoder(mut decoder Decoder) !RichTextType {
 		TextAnchor {
 			return object
 		}
+		UnknownObject {
+			return UnknownRichTextType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected RichText, got ' + object.qualified_name())
 		}
@@ -15150,6 +17229,13 @@ fn decode_rpc_drop_answer_type_from_decoder(mut decoder Decoder) !RpcDropAnswerT
 		RpcAnswerDropped {
 			return object
 		}
+		UnknownObject {
+			return UnknownRpcDropAnswerType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected RpcDropAnswer, got ' + object.qualified_name())
 		}
@@ -15171,6 +17257,13 @@ fn decode_rpc_error_type_from_decoder(mut decoder Decoder) !RpcErrorType {
 		RpcError {
 			return object
 		}
+		UnknownObject {
+			return UnknownRpcErrorType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected RpcError, got ' + object.qualified_name())
 		}
@@ -15191,6 +17284,13 @@ fn decode_saved_contact_type_from_decoder(mut decoder Decoder) !SavedContactType
 	match object {
 		SavedPhoneContact {
 			return object
+		}
+		UnknownObject {
+			return UnknownSavedContactType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected SavedContact, got ' + object.qualified_name())
@@ -15216,6 +17316,13 @@ fn decode_saved_dialog_type_from_decoder(mut decoder Decoder) !SavedDialogType {
 		MonoForumDialog {
 			return object
 		}
+		UnknownObject {
+			return UnknownSavedDialogType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected SavedDialog, got ' + object.qualified_name())
 		}
@@ -15236,6 +17343,13 @@ fn decode_saved_reaction_tag_type_from_decoder(mut decoder Decoder) !SavedReacti
 	match object {
 		SavedReactionTag {
 			return object
+		}
+		UnknownObject {
+			return UnknownSavedReactionTagType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected SavedReactionTag, got ' + object.qualified_name())
@@ -15258,6 +17372,13 @@ fn decode_saved_star_gift_type_from_decoder(mut decoder Decoder) !SavedStarGiftT
 		SavedStarGift {
 			return object
 		}
+		UnknownObject {
+			return UnknownSavedStarGiftType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected SavedStarGift, got ' + object.qualified_name())
 		}
@@ -15278,6 +17399,13 @@ fn decode_search_posts_flood_type_from_decoder(mut decoder Decoder) !SearchPosts
 	match object {
 		SearchPostsFlood {
 			return object
+		}
+		UnknownObject {
+			return UnknownSearchPostsFloodType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected SearchPostsFlood, got ' + object.qualified_name())
@@ -15300,6 +17428,13 @@ fn decode_search_results_calendar_period_type_from_decoder(mut decoder Decoder) 
 		SearchResultsCalendarPeriod {
 			return object
 		}
+		UnknownObject {
+			return UnknownSearchResultsCalendarPeriodType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected SearchResultsCalendarPeriod, got ' + object.qualified_name())
 		}
@@ -15320,6 +17455,13 @@ fn decode_search_results_position_type_from_decoder(mut decoder Decoder) !Search
 	match object {
 		SearchResultPosition {
 			return object
+		}
+		UnknownObject {
+			return UnknownSearchResultsPositionType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected SearchResultsPosition, got ' + object.qualified_name())
@@ -15342,6 +17484,13 @@ fn decode_secure_credentials_encrypted_type_from_decoder(mut decoder Decoder) !S
 		SecureCredentialsEncrypted {
 			return object
 		}
+		UnknownObject {
+			return UnknownSecureCredentialsEncryptedType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected SecureCredentialsEncrypted, got ' + object.qualified_name())
 		}
@@ -15362,6 +17511,13 @@ fn decode_secure_data_type_from_decoder(mut decoder Decoder) !SecureDataType {
 	match object {
 		SecureData {
 			return object
+		}
+		UnknownObject {
+			return UnknownSecureDataType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected SecureData, got ' + object.qualified_name())
@@ -15386,6 +17542,13 @@ fn decode_secure_file_type_from_decoder(mut decoder Decoder) !SecureFileType {
 		}
 		SecureFile {
 			return object
+		}
+		UnknownObject {
+			return UnknownSecureFileType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected SecureFile, got ' + object.qualified_name())
@@ -15414,6 +17577,13 @@ fn decode_secure_password_kdf_algo_type_from_decoder(mut decoder Decoder) !Secur
 		SecurePasswordKdfAlgoSHA512 {
 			return object
 		}
+		UnknownObject {
+			return UnknownSecurePasswordKdfAlgoType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected SecurePasswordKdfAlgo, got ' + object.qualified_name())
 		}
@@ -15437,6 +17607,13 @@ fn decode_secure_plain_data_type_from_decoder(mut decoder Decoder) !SecurePlainD
 		}
 		SecurePlainEmail {
 			return object
+		}
+		UnknownObject {
+			return UnknownSecurePlainDataType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected SecurePlainData, got ' + object.qualified_name())
@@ -15462,6 +17639,13 @@ fn decode_secure_required_type_type_from_decoder(mut decoder Decoder) !SecureReq
 		SecureRequiredTypeOneOf {
 			return object
 		}
+		UnknownObject {
+			return UnknownSecureRequiredTypeType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected SecureRequiredType, got ' + object.qualified_name())
 		}
@@ -15483,6 +17667,13 @@ fn decode_secure_secret_settings_type_from_decoder(mut decoder Decoder) !SecureS
 		SecureSecretSettings {
 			return object
 		}
+		UnknownObject {
+			return UnknownSecureSecretSettingsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected SecureSecretSettings, got ' + object.qualified_name())
 		}
@@ -15503,6 +17694,13 @@ fn decode_secure_value_type_from_decoder(mut decoder Decoder) !SecureValueType {
 	match object {
 		SecureValue {
 			return object
+		}
+		UnknownObject {
+			return UnknownSecureValueType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected SecureValue, got ' + object.qualified_name())
@@ -15549,6 +17747,13 @@ fn decode_secure_value_error_type_from_decoder(mut decoder Decoder) !SecureValue
 		SecureValueErrorTranslationFiles {
 			return object
 		}
+		UnknownObject {
+			return UnknownSecureValueErrorType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected SecureValueError, got ' + object.qualified_name())
 		}
@@ -15569,6 +17774,13 @@ fn decode_secure_value_hash_type_from_decoder(mut decoder Decoder) !SecureValueH
 	match object {
 		SecureValueHash {
 			return object
+		}
+		UnknownObject {
+			return UnknownSecureValueHashType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected SecureValueHash, got ' + object.qualified_name())
@@ -15627,6 +17839,13 @@ fn decode_secure_value_type_type_from_decoder(mut decoder Decoder) !SecureValueT
 		SecureValueTypeEmail {
 			return object
 		}
+		UnknownObject {
+			return UnknownSecureValueTypeType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected SecureValueType, got ' + object.qualified_name())
 		}
@@ -15647,6 +17866,13 @@ fn decode_send_as_peer_type_from_decoder(mut decoder Decoder) !SendAsPeerType {
 	match object {
 		SendAsPeer {
 			return object
+		}
+		UnknownObject {
+			return UnknownSendAsPeerType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected SendAsPeer, got ' + object.qualified_name())
@@ -15723,6 +17949,13 @@ fn decode_send_message_action_type_from_decoder(mut decoder Decoder) !SendMessag
 		SendMessageTextDraftAction {
 			return object
 		}
+		UnknownObject {
+			return UnknownSendMessageActionType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected SendMessageAction, got ' + object.qualified_name())
 		}
@@ -15747,6 +17980,13 @@ fn decode_server_d_h_params_type_from_decoder(mut decoder Decoder) !ServerDHPara
 		ServerDHParamsOk {
 			return object
 		}
+		UnknownObject {
+			return UnknownServerDHParamsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected Server_DH_Params, got ' + object.qualified_name())
 		}
@@ -15767,6 +18007,13 @@ fn decode_server_d_h_inner_data_type_from_decoder(mut decoder Decoder) !ServerDH
 	match object {
 		ServerDHInnerData {
 			return object
+		}
+		UnknownObject {
+			return UnknownServerDHInnerDataType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected Server_DH_inner_data, got ' + object.qualified_name())
@@ -15795,6 +18042,13 @@ fn decode_set_client_d_h_params_answer_type_from_decoder(mut decoder Decoder) !S
 		DhGenFail {
 			return object
 		}
+		UnknownObject {
+			return UnknownSetClientDHParamsAnswerType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected Set_client_DH_params_answer, got ' + object.qualified_name())
 		}
@@ -15815,6 +18069,13 @@ fn decode_shipping_option_type_from_decoder(mut decoder Decoder) !ShippingOption
 	match object {
 		ShippingOption {
 			return object
+		}
+		UnknownObject {
+			return UnknownShippingOptionType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected ShippingOption, got ' + object.qualified_name())
@@ -15837,6 +18098,13 @@ fn decode_sms_job_type_from_decoder(mut decoder Decoder) !SmsJobType {
 		SmsJob {
 			return object
 		}
+		UnknownObject {
+			return UnknownSmsJobType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected SmsJob, got ' + object.qualified_name())
 		}
@@ -15857,6 +18125,13 @@ fn decode_sponsored_message_type_from_decoder(mut decoder Decoder) !SponsoredMes
 	match object {
 		SponsoredMessage {
 			return object
+		}
+		UnknownObject {
+			return UnknownSponsoredMessageType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected SponsoredMessage, got ' + object.qualified_name())
@@ -15879,6 +18154,13 @@ fn decode_sponsored_message_report_option_type_from_decoder(mut decoder Decoder)
 		SponsoredMessageReportOption {
 			return object
 		}
+		UnknownObject {
+			return UnknownSponsoredMessageReportOptionType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected SponsoredMessageReportOption, got ' + object.qualified_name())
 		}
@@ -15899,6 +18181,13 @@ fn decode_sponsored_peer_type_from_decoder(mut decoder Decoder) !SponsoredPeerTy
 	match object {
 		SponsoredPeer {
 			return object
+		}
+		UnknownObject {
+			return UnknownSponsoredPeerType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected SponsoredPeer, got ' + object.qualified_name())
@@ -15924,6 +18213,13 @@ fn decode_star_gift_type_from_decoder(mut decoder Decoder) !StarGiftType {
 		StarGiftUnique {
 			return object
 		}
+		UnknownObject {
+			return UnknownStarGiftType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected StarGift, got ' + object.qualified_name())
 		}
@@ -15944,6 +18240,13 @@ fn decode_star_gift_active_auction_state_type_from_decoder(mut decoder Decoder) 
 	match object {
 		StarGiftActiveAuctionState {
 			return object
+		}
+		UnknownObject {
+			return UnknownStarGiftActiveAuctionStateType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected StarGiftActiveAuctionState, got ' + object.qualified_name())
@@ -15975,6 +18278,13 @@ fn decode_star_gift_attribute_type_from_decoder(mut decoder Decoder) !StarGiftAt
 		StarGiftAttributeOriginalDetails {
 			return object
 		}
+		UnknownObject {
+			return UnknownStarGiftAttributeType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected StarGiftAttribute, got ' + object.qualified_name())
 		}
@@ -15995,6 +18305,13 @@ fn decode_star_gift_attribute_counter_type_from_decoder(mut decoder Decoder) !St
 	match object {
 		StarGiftAttributeCounter {
 			return object
+		}
+		UnknownObject {
+			return UnknownStarGiftAttributeCounterType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected StarGiftAttributeCounter, got ' + object.qualified_name())
@@ -16022,6 +18339,13 @@ fn decode_star_gift_attribute_id_type_from_decoder(mut decoder Decoder) !StarGif
 		}
 		StarGiftAttributeIdBackdrop {
 			return object
+		}
+		UnknownObject {
+			return UnknownStarGiftAttributeIdType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected StarGiftAttributeId, got ' + object.qualified_name())
@@ -16056,6 +18380,13 @@ fn decode_star_gift_attribute_rarity_type_from_decoder(mut decoder Decoder) !Sta
 		StarGiftAttributeRarityLegendary {
 			return object
 		}
+		UnknownObject {
+			return UnknownStarGiftAttributeRarityType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected StarGiftAttributeRarity, got ' + object.qualified_name())
 		}
@@ -16076,6 +18407,13 @@ fn decode_star_gift_auction_acquired_gift_type_from_decoder(mut decoder Decoder)
 	match object {
 		StarGiftAuctionAcquiredGift {
 			return object
+		}
+		UnknownObject {
+			return UnknownStarGiftAuctionAcquiredGiftType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected StarGiftAuctionAcquiredGift, got ' + object.qualified_name())
@@ -16100,6 +18438,13 @@ fn decode_star_gift_auction_round_type_from_decoder(mut decoder Decoder) !StarGi
 		}
 		StarGiftAuctionRoundExtendable {
 			return object
+		}
+		UnknownObject {
+			return UnknownStarGiftAuctionRoundType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected StarGiftAuctionRound, got ' + object.qualified_name())
@@ -16128,6 +18473,13 @@ fn decode_star_gift_auction_state_type_from_decoder(mut decoder Decoder) !StarGi
 		StarGiftAuctionStateFinished {
 			return object
 		}
+		UnknownObject {
+			return UnknownStarGiftAuctionStateType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected StarGiftAuctionState, got ' + object.qualified_name())
 		}
@@ -16148,6 +18500,13 @@ fn decode_star_gift_auction_user_state_type_from_decoder(mut decoder Decoder) !S
 	match object {
 		StarGiftAuctionUserState {
 			return object
+		}
+		UnknownObject {
+			return UnknownStarGiftAuctionUserStateType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected StarGiftAuctionUserState, got ' + object.qualified_name())
@@ -16170,6 +18529,13 @@ fn decode_star_gift_background_type_from_decoder(mut decoder Decoder) !StarGiftB
 		StarGiftBackground {
 			return object
 		}
+		UnknownObject {
+			return UnknownStarGiftBackgroundType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected StarGiftBackground, got ' + object.qualified_name())
 		}
@@ -16190,6 +18556,13 @@ fn decode_star_gift_collection_type_from_decoder(mut decoder Decoder) !StarGiftC
 	match object {
 		StarGiftCollection {
 			return object
+		}
+		UnknownObject {
+			return UnknownStarGiftCollectionType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected StarGiftCollection, got ' + object.qualified_name())
@@ -16212,6 +18585,13 @@ fn decode_star_gift_upgrade_price_type_from_decoder(mut decoder Decoder) !StarGi
 		StarGiftUpgradePrice {
 			return object
 		}
+		UnknownObject {
+			return UnknownStarGiftUpgradePriceType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected StarGiftUpgradePrice, got ' + object.qualified_name())
 		}
@@ -16232,6 +18612,13 @@ fn decode_star_ref_program_type_from_decoder(mut decoder Decoder) !StarRefProgra
 	match object {
 		StarRefProgram {
 			return object
+		}
+		UnknownObject {
+			return UnknownStarRefProgramType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected StarRefProgram, got ' + object.qualified_name())
@@ -16257,6 +18644,13 @@ fn decode_stars_amount_type_from_decoder(mut decoder Decoder) !StarsAmountType {
 		StarsTonAmount {
 			return object
 		}
+		UnknownObject {
+			return UnknownStarsAmountType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected StarsAmount, got ' + object.qualified_name())
 		}
@@ -16277,6 +18671,13 @@ fn decode_stars_gift_option_type_from_decoder(mut decoder Decoder) !StarsGiftOpt
 	match object {
 		StarsGiftOption {
 			return object
+		}
+		UnknownObject {
+			return UnknownStarsGiftOptionType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected StarsGiftOption, got ' + object.qualified_name())
@@ -16299,6 +18700,13 @@ fn decode_stars_giveaway_option_type_from_decoder(mut decoder Decoder) !StarsGiv
 		StarsGiveawayOption {
 			return object
 		}
+		UnknownObject {
+			return UnknownStarsGiveawayOptionType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected StarsGiveawayOption, got ' + object.qualified_name())
 		}
@@ -16319,6 +18727,13 @@ fn decode_stars_giveaway_winners_option_type_from_decoder(mut decoder Decoder) !
 	match object {
 		StarsGiveawayWinnersOption {
 			return object
+		}
+		UnknownObject {
+			return UnknownStarsGiveawayWinnersOptionType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected StarsGiveawayWinnersOption, got ' + object.qualified_name())
@@ -16341,6 +18756,13 @@ fn decode_stars_rating_type_from_decoder(mut decoder Decoder) !StarsRatingType {
 		StarsRating {
 			return object
 		}
+		UnknownObject {
+			return UnknownStarsRatingType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected StarsRating, got ' + object.qualified_name())
 		}
@@ -16361,6 +18783,13 @@ fn decode_stars_revenue_status_type_from_decoder(mut decoder Decoder) !StarsReve
 	match object {
 		StarsRevenueStatus {
 			return object
+		}
+		UnknownObject {
+			return UnknownStarsRevenueStatusType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected StarsRevenueStatus, got ' + object.qualified_name())
@@ -16383,6 +18812,13 @@ fn decode_stars_subscription_type_from_decoder(mut decoder Decoder) !StarsSubscr
 		StarsSubscription {
 			return object
 		}
+		UnknownObject {
+			return UnknownStarsSubscriptionType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected StarsSubscription, got ' + object.qualified_name())
 		}
@@ -16403,6 +18839,13 @@ fn decode_stars_subscription_pricing_type_from_decoder(mut decoder Decoder) !Sta
 	match object {
 		StarsSubscriptionPricing {
 			return object
+		}
+		UnknownObject {
+			return UnknownStarsSubscriptionPricingType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected StarsSubscriptionPricing, got ' + object.qualified_name())
@@ -16425,6 +18868,13 @@ fn decode_stars_topup_option_type_from_decoder(mut decoder Decoder) !StarsTopupO
 		StarsTopupOption {
 			return object
 		}
+		UnknownObject {
+			return UnknownStarsTopupOptionType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected StarsTopupOption, got ' + object.qualified_name())
 		}
@@ -16445,6 +18895,13 @@ fn decode_stars_transaction_type_from_decoder(mut decoder Decoder) !StarsTransac
 	match object {
 		StarsTransaction {
 			return object
+		}
+		UnknownObject {
+			return UnknownStarsTransactionType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected StarsTransaction, got ' + object.qualified_name())
@@ -16488,6 +18945,13 @@ fn decode_stars_transaction_peer_type_from_decoder(mut decoder Decoder) !StarsTr
 		StarsTransactionPeerAPI {
 			return object
 		}
+		UnknownObject {
+			return UnknownStarsTransactionPeerType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected StarsTransactionPeer, got ' + object.qualified_name())
 		}
@@ -16509,6 +18973,13 @@ fn decode_stats_abs_value_and_prev_type_from_decoder(mut decoder Decoder) !Stats
 		StatsAbsValueAndPrev {
 			return object
 		}
+		UnknownObject {
+			return UnknownStatsAbsValueAndPrevType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected StatsAbsValueAndPrev, got ' + object.qualified_name())
 		}
@@ -16529,6 +19000,13 @@ fn decode_stats_date_range_days_type_from_decoder(mut decoder Decoder) !StatsDat
 	match object {
 		StatsDateRangeDays {
 			return object
+		}
+		UnknownObject {
+			return UnknownStatsDateRangeDaysType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected StatsDateRangeDays, got ' + object.qualified_name())
@@ -16557,6 +19035,13 @@ fn decode_stats_graph_type_from_decoder(mut decoder Decoder) !StatsGraphType {
 		StatsGraph {
 			return object
 		}
+		UnknownObject {
+			return UnknownStatsGraphType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected StatsGraph, got ' + object.qualified_name())
 		}
@@ -16577,6 +19062,13 @@ fn decode_stats_group_top_admin_type_from_decoder(mut decoder Decoder) !StatsGro
 	match object {
 		StatsGroupTopAdmin {
 			return object
+		}
+		UnknownObject {
+			return UnknownStatsGroupTopAdminType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected StatsGroupTopAdmin, got ' + object.qualified_name())
@@ -16599,6 +19091,13 @@ fn decode_stats_group_top_inviter_type_from_decoder(mut decoder Decoder) !StatsG
 		StatsGroupTopInviter {
 			return object
 		}
+		UnknownObject {
+			return UnknownStatsGroupTopInviterType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected StatsGroupTopInviter, got ' + object.qualified_name())
 		}
@@ -16619,6 +19118,13 @@ fn decode_stats_group_top_poster_type_from_decoder(mut decoder Decoder) !StatsGr
 	match object {
 		StatsGroupTopPoster {
 			return object
+		}
+		UnknownObject {
+			return UnknownStatsGroupTopPosterType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected StatsGroupTopPoster, got ' + object.qualified_name())
@@ -16641,6 +19147,13 @@ fn decode_stats_percent_value_type_from_decoder(mut decoder Decoder) !StatsPerce
 		StatsPercentValue {
 			return object
 		}
+		UnknownObject {
+			return UnknownStatsPercentValueType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected StatsPercentValue, got ' + object.qualified_name())
 		}
@@ -16661,6 +19174,13 @@ fn decode_stats_u_r_l_type_from_decoder(mut decoder Decoder) !StatsURLType {
 	match object {
 		StatsURL {
 			return object
+		}
+		UnknownObject {
+			return UnknownStatsURLType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected StatsURL, got ' + object.qualified_name())
@@ -16683,6 +19203,13 @@ fn decode_sticker_keyword_type_from_decoder(mut decoder Decoder) !StickerKeyword
 		StickerKeyword {
 			return object
 		}
+		UnknownObject {
+			return UnknownStickerKeywordType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected StickerKeyword, got ' + object.qualified_name())
 		}
@@ -16704,6 +19231,13 @@ fn decode_sticker_pack_type_from_decoder(mut decoder Decoder) !StickerPackType {
 		StickerPack {
 			return object
 		}
+		UnknownObject {
+			return UnknownStickerPackType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected StickerPack, got ' + object.qualified_name())
 		}
@@ -16724,6 +19258,13 @@ fn decode_sticker_set_type_from_decoder(mut decoder Decoder) !StickerSetType {
 	match object {
 		StickerSet {
 			return object
+		}
+		UnknownObject {
+			return UnknownStickerSetType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected StickerSet, got ' + object.qualified_name())
@@ -16755,6 +19296,13 @@ fn decode_sticker_set_covered_type_from_decoder(mut decoder Decoder) !StickerSet
 		StickerSetNoCovered {
 			return object
 		}
+		UnknownObject {
+			return UnknownStickerSetCoveredType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected StickerSetCovered, got ' + object.qualified_name())
 		}
@@ -16775,6 +19323,13 @@ fn decode_stories_stealth_mode_type_from_decoder(mut decoder Decoder) !StoriesSt
 	match object {
 		StoriesStealthMode {
 			return object
+		}
+		UnknownObject {
+			return UnknownStoriesStealthModeType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected StoriesStealthMode, got ' + object.qualified_name())
@@ -16797,6 +19352,13 @@ fn decode_story_album_type_from_decoder(mut decoder Decoder) !StoryAlbumType {
 		StoryAlbum {
 			return object
 		}
+		UnknownObject {
+			return UnknownStoryAlbumType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected StoryAlbum, got ' + object.qualified_name())
 		}
@@ -16817,6 +19379,13 @@ fn decode_story_fwd_header_type_from_decoder(mut decoder Decoder) !StoryFwdHeade
 	match object {
 		StoryFwdHeader {
 			return object
+		}
+		UnknownObject {
+			return UnknownStoryFwdHeaderType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected StoryFwdHeader, got ' + object.qualified_name())
@@ -16845,6 +19414,13 @@ fn decode_story_item_type_from_decoder(mut decoder Decoder) !StoryItemType {
 		StoryItem {
 			return object
 		}
+		UnknownObject {
+			return UnknownStoryItemType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected StoryItem, got ' + object.qualified_name())
 		}
@@ -16871,6 +19447,13 @@ fn decode_story_reaction_type_from_decoder(mut decoder Decoder) !StoryReactionTy
 		}
 		StoryReactionPublicRepost {
 			return object
+		}
+		UnknownObject {
+			return UnknownStoryReactionType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected StoryReaction, got ' + object.qualified_name())
@@ -16899,6 +19482,13 @@ fn decode_story_view_type_from_decoder(mut decoder Decoder) !StoryViewType {
 		StoryViewPublicRepost {
 			return object
 		}
+		UnknownObject {
+			return UnknownStoryViewType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected StoryView, got ' + object.qualified_name())
 		}
@@ -16919,6 +19509,13 @@ fn decode_story_views_type_from_decoder(mut decoder Decoder) !StoryViewsType {
 	match object {
 		StoryViews {
 			return object
+		}
+		UnknownObject {
+			return UnknownStoryViewsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected StoryViews, got ' + object.qualified_name())
@@ -16941,6 +19538,13 @@ fn decode_suggested_post_type_from_decoder(mut decoder Decoder) !SuggestedPostTy
 		SuggestedPost {
 			return object
 		}
+		UnknownObject {
+			return UnknownSuggestedPostType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected SuggestedPost, got ' + object.qualified_name())
 		}
@@ -16961,6 +19565,13 @@ fn decode_text_with_entities_type_from_decoder(mut decoder Decoder) !TextWithEnt
 	match object {
 		TextWithEntities {
 			return object
+		}
+		UnknownObject {
+			return UnknownTextWithEntitiesType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected TextWithEntities, got ' + object.qualified_name())
@@ -16983,6 +19594,13 @@ fn decode_theme_type_from_decoder(mut decoder Decoder) !ThemeType {
 		Theme {
 			return object
 		}
+		UnknownObject {
+			return UnknownThemeType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected Theme, got ' + object.qualified_name())
 		}
@@ -17004,6 +19622,13 @@ fn decode_theme_settings_type_from_decoder(mut decoder Decoder) !ThemeSettingsTy
 		ThemeSettings {
 			return object
 		}
+		UnknownObject {
+			return UnknownThemeSettingsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected ThemeSettings, got ' + object.qualified_name())
 		}
@@ -17024,6 +19649,13 @@ fn decode_timezone_type_from_decoder(mut decoder Decoder) !TimezoneType {
 	match object {
 		Timezone {
 			return object
+		}
+		UnknownObject {
+			return UnknownTimezoneType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected Timezone, got ' + object.qualified_name())
@@ -17064,6 +19696,13 @@ fn decode_tls_block_type_from_decoder(mut decoder Decoder) !TlsBlockType {
 		TlsBlockScope {
 			return object
 		}
+		UnknownObject {
+			return UnknownTlsBlockType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected TlsBlock, got ' + object.qualified_name())
 		}
@@ -17084,6 +19723,13 @@ fn decode_tls_client_hello_type_from_decoder(mut decoder Decoder) !TlsClientHell
 	match object {
 		TlsClientHello {
 			return object
+		}
+		UnknownObject {
+			return UnknownTlsClientHelloType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected TlsClientHello, got ' + object.qualified_name())
@@ -17106,6 +19752,13 @@ fn decode_todo_completion_type_from_decoder(mut decoder Decoder) !TodoCompletion
 		TodoCompletion {
 			return object
 		}
+		UnknownObject {
+			return UnknownTodoCompletionType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected TodoCompletion, got ' + object.qualified_name())
 		}
@@ -17126,6 +19779,13 @@ fn decode_todo_item_type_from_decoder(mut decoder Decoder) !TodoItemType {
 	match object {
 		TodoItem {
 			return object
+		}
+		UnknownObject {
+			return UnknownTodoItemType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected TodoItem, got ' + object.qualified_name())
@@ -17148,6 +19808,13 @@ fn decode_todo_list_type_from_decoder(mut decoder Decoder) !TodoListType {
 		TodoList {
 			return object
 		}
+		UnknownObject {
+			return UnknownTodoListType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected TodoList, got ' + object.qualified_name())
 		}
@@ -17168,6 +19835,13 @@ fn decode_top_peer_type_from_decoder(mut decoder Decoder) !TopPeerType {
 	match object {
 		TopPeer {
 			return object
+		}
+		UnknownObject {
+			return UnknownTopPeerType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected TopPeer, got ' + object.qualified_name())
@@ -17214,6 +19888,13 @@ fn decode_top_peer_category_type_from_decoder(mut decoder Decoder) !TopPeerCateg
 		TopPeerCategoryBotsApp {
 			return object
 		}
+		UnknownObject {
+			return UnknownTopPeerCategoryType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected TopPeerCategory, got ' + object.qualified_name())
 		}
@@ -17235,6 +19916,13 @@ fn decode_top_peer_category_peers_type_from_decoder(mut decoder Decoder) !TopPee
 		TopPeerCategoryPeers {
 			return object
 		}
+		UnknownObject {
+			return UnknownTopPeerCategoryPeersType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected TopPeerCategoryPeers, got ' + object.qualified_name())
 		}
@@ -17255,6 +19943,13 @@ fn decode_true_type_from_decoder(mut decoder Decoder) !TrueType {
 	match object {
 		True {
 			return object
+		}
+		UnknownObject {
+			return UnknownTrueType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected True, got ' + object.qualified_name())
@@ -17730,6 +20425,13 @@ fn decode_update_type_from_decoder(mut decoder Decoder) !UpdateType {
 		UpdateStarGiftCraftFail {
 			return object
 		}
+		UnknownObject {
+			return UnknownUpdateType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected Update, got ' + object.qualified_name())
 		}
@@ -17769,6 +20471,13 @@ fn decode_updates_type_from_decoder(mut decoder Decoder) !UpdatesType {
 		UpdateShortSentMessage {
 			return object
 		}
+		UnknownObject {
+			return UnknownUpdatesType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected Updates, got ' + object.qualified_name())
 		}
@@ -17796,6 +20505,13 @@ fn decode_url_auth_result_type_from_decoder(mut decoder Decoder) !UrlAuthResultT
 		UrlAuthResultDefault {
 			return object
 		}
+		UnknownObject {
+			return UnknownUrlAuthResultType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected UrlAuthResult, got ' + object.qualified_name())
 		}
@@ -17820,6 +20536,13 @@ fn decode_user_type_from_decoder(mut decoder Decoder) !UserType {
 		User {
 			return object
 		}
+		UnknownObject {
+			return UnknownUserType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected User, got ' + object.qualified_name())
 		}
@@ -17840,6 +20563,13 @@ fn decode_user_full_type_from_decoder(mut decoder Decoder) !UserFullType {
 	match object {
 		UserFull {
 			return object
+		}
+		UnknownObject {
+			return UnknownUserFullType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected UserFull, got ' + object.qualified_name())
@@ -17864,6 +20594,13 @@ fn decode_user_profile_photo_type_from_decoder(mut decoder Decoder) !UserProfile
 		}
 		UserProfilePhoto {
 			return object
+		}
+		UnknownObject {
+			return UnknownUserProfilePhotoType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected UserProfilePhoto, got ' + object.qualified_name())
@@ -17901,6 +20638,13 @@ fn decode_user_status_type_from_decoder(mut decoder Decoder) !UserStatusType {
 		UserStatusLastMonth {
 			return object
 		}
+		UnknownObject {
+			return UnknownUserStatusType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected UserStatus, got ' + object.qualified_name())
 		}
@@ -17921,6 +20665,13 @@ fn decode_username_type_from_decoder(mut decoder Decoder) !UsernameType {
 	match object {
 		Username {
 			return object
+		}
+		UnknownObject {
+			return UnknownUsernameType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected Username, got ' + object.qualified_name())
@@ -17949,6 +20700,13 @@ fn decode_video_size_type_from_decoder(mut decoder Decoder) !VideoSizeType {
 		VideoSizeStickerMarkup {
 			return object
 		}
+		UnknownObject {
+			return UnknownVideoSizeType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected VideoSize, got ' + object.qualified_name())
 		}
@@ -17973,6 +20731,13 @@ fn decode_wall_paper_type_from_decoder(mut decoder Decoder) !WallPaperType {
 		WallPaperNoFile {
 			return object
 		}
+		UnknownObject {
+			return UnknownWallPaperType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected WallPaper, got ' + object.qualified_name())
 		}
@@ -17994,6 +20759,13 @@ fn decode_wall_paper_settings_type_from_decoder(mut decoder Decoder) !WallPaperS
 		WallPaperSettings {
 			return object
 		}
+		UnknownObject {
+			return UnknownWallPaperSettingsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected WallPaperSettings, got ' + object.qualified_name())
 		}
@@ -18014,6 +20786,13 @@ fn decode_web_authorization_type_from_decoder(mut decoder Decoder) !WebAuthoriza
 	match object {
 		WebAuthorization {
 			return object
+		}
+		UnknownObject {
+			return UnknownWebAuthorizationType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected WebAuthorization, got ' + object.qualified_name())
@@ -18038,6 +20817,13 @@ fn decode_web_document_type_from_decoder(mut decoder Decoder) !WebDocumentType {
 		}
 		WebDocumentNoProxy {
 			return object
+		}
+		UnknownObject {
+			return UnknownWebDocumentType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected WebDocument, got ' + object.qualified_name())
@@ -18068,6 +20854,13 @@ fn decode_web_page_type_from_decoder(mut decoder Decoder) !WebPageType {
 		}
 		WebPageNotModified {
 			return object
+		}
+		UnknownObject {
+			return UnknownWebPageType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected WebPage, got ' + object.qualified_name())
@@ -18105,6 +20898,13 @@ fn decode_web_page_attribute_type_from_decoder(mut decoder Decoder) !WebPageAttr
 		WebPageAttributeStarGiftAuction {
 			return object
 		}
+		UnknownObject {
+			return UnknownWebPageAttributeType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected WebPageAttribute, got ' + object.qualified_name())
 		}
@@ -18125,6 +20925,13 @@ fn decode_web_view_message_sent_type_from_decoder(mut decoder Decoder) !WebViewM
 	match object {
 		WebViewMessageSent {
 			return object
+		}
+		UnknownObject {
+			return UnknownWebViewMessageSentType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected WebViewMessageSent, got ' + object.qualified_name())
@@ -18147,6 +20954,13 @@ fn decode_web_view_result_type_from_decoder(mut decoder Decoder) !WebViewResultT
 		WebViewResultUrl {
 			return object
 		}
+		UnknownObject {
+			return UnknownWebViewResultType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected WebViewResult, got ' + object.qualified_name())
 		}
@@ -18167,6 +20981,13 @@ fn decode_account_authorization_form_type_from_decoder(mut decoder Decoder) !Acc
 	match object {
 		AccountAuthorizationForm {
 			return object
+		}
+		UnknownObject {
+			return UnknownAccountAuthorizationFormType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected account.AuthorizationForm, got ' + object.qualified_name())
@@ -18189,6 +21010,13 @@ fn decode_account_authorizations_type_from_decoder(mut decoder Decoder) !Account
 		AccountAuthorizations {
 			return object
 		}
+		UnknownObject {
+			return UnknownAccountAuthorizationsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected account.Authorizations, got ' + object.qualified_name())
 		}
@@ -18209,6 +21037,13 @@ fn decode_account_auto_download_settings_type_from_decoder(mut decoder Decoder) 
 	match object {
 		AccountAutoDownloadSettings {
 			return object
+		}
+		UnknownObject {
+			return UnknownAccountAutoDownloadSettingsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected account.AutoDownloadSettings, got ' + object.qualified_name())
@@ -18231,6 +21066,13 @@ fn decode_account_auto_save_settings_type_from_decoder(mut decoder Decoder) !Acc
 		AccountAutoSaveSettings {
 			return object
 		}
+		UnknownObject {
+			return UnknownAccountAutoSaveSettingsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected account.AutoSaveSettings, got ' + object.qualified_name())
 		}
@@ -18251,6 +21093,13 @@ fn decode_account_business_chat_links_type_from_decoder(mut decoder Decoder) !Ac
 	match object {
 		AccountBusinessChatLinks {
 			return object
+		}
+		UnknownObject {
+			return UnknownAccountBusinessChatLinksType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected account.BusinessChatLinks, got ' + object.qualified_name())
@@ -18276,6 +21125,13 @@ fn decode_account_chat_themes_type_from_decoder(mut decoder Decoder) !AccountCha
 		AccountChatThemes {
 			return object
 		}
+		UnknownObject {
+			return UnknownAccountChatThemesType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected account.ChatThemes, got ' + object.qualified_name())
 		}
@@ -18297,6 +21153,13 @@ fn decode_account_connected_bots_type_from_decoder(mut decoder Decoder) !Account
 		AccountConnectedBots {
 			return object
 		}
+		UnknownObject {
+			return UnknownAccountConnectedBotsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected account.ConnectedBots, got ' + object.qualified_name())
 		}
@@ -18317,6 +21180,13 @@ fn decode_account_content_settings_type_from_decoder(mut decoder Decoder) !Accou
 	match object {
 		AccountContentSettings {
 			return object
+		}
+		UnknownObject {
+			return UnknownAccountContentSettingsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected account.ContentSettings, got ' + object.qualified_name())
@@ -18342,6 +21212,13 @@ fn decode_account_email_verified_type_from_decoder(mut decoder Decoder) !Account
 		AccountEmailVerifiedLogin {
 			return object
 		}
+		UnknownObject {
+			return UnknownAccountEmailVerifiedType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected account.EmailVerified, got ' + object.qualified_name())
 		}
@@ -18366,6 +21243,13 @@ fn decode_account_emoji_statuses_type_from_decoder(mut decoder Decoder) !Account
 		AccountEmojiStatuses {
 			return object
 		}
+		UnknownObject {
+			return UnknownAccountEmojiStatusesType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected account.EmojiStatuses, got ' + object.qualified_name())
 		}
@@ -18387,6 +21271,13 @@ fn decode_account_paid_messages_revenue_type_from_decoder(mut decoder Decoder) !
 		AccountPaidMessagesRevenue {
 			return object
 		}
+		UnknownObject {
+			return UnknownAccountPaidMessagesRevenueType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected account.PaidMessagesRevenue, got ' + object.qualified_name())
 		}
@@ -18407,6 +21298,13 @@ fn decode_account_passkey_registration_options_type_from_decoder(mut decoder Dec
 	match object {
 		AccountPasskeyRegistrationOptions {
 			return object
+		}
+		UnknownObject {
+			return UnknownAccountPasskeyRegistrationOptionsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected account.PasskeyRegistrationOptions, got ' +
@@ -18430,6 +21328,13 @@ fn decode_account_passkeys_type_from_decoder(mut decoder Decoder) !AccountPasske
 		AccountPasskeys {
 			return object
 		}
+		UnknownObject {
+			return UnknownAccountPasskeysType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected account.Passkeys, got ' + object.qualified_name())
 		}
@@ -18450,6 +21355,13 @@ fn decode_account_password_type_from_decoder(mut decoder Decoder) !AccountPasswo
 	match object {
 		AccountPassword {
 			return object
+		}
+		UnknownObject {
+			return UnknownAccountPasswordType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected account.Password, got ' + object.qualified_name())
@@ -18472,6 +21384,13 @@ fn decode_account_password_input_settings_type_from_decoder(mut decoder Decoder)
 		AccountPasswordInputSettings {
 			return object
 		}
+		UnknownObject {
+			return UnknownAccountPasswordInputSettingsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected account.PasswordInputSettings, got ' + object.qualified_name())
 		}
@@ -18493,6 +21412,13 @@ fn decode_account_password_settings_type_from_decoder(mut decoder Decoder) !Acco
 		AccountPasswordSettings {
 			return object
 		}
+		UnknownObject {
+			return UnknownAccountPasswordSettingsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected account.PasswordSettings, got ' + object.qualified_name())
 		}
@@ -18513,6 +21439,13 @@ fn decode_account_privacy_rules_type_from_decoder(mut decoder Decoder) !AccountP
 	match object {
 		AccountPrivacyRules {
 			return object
+		}
+		UnknownObject {
+			return UnknownAccountPrivacyRulesType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected account.PrivacyRules, got ' + object.qualified_name())
@@ -18541,6 +21474,13 @@ fn decode_account_reset_password_result_type_from_decoder(mut decoder Decoder) !
 		AccountResetPasswordOk {
 			return object
 		}
+		UnknownObject {
+			return UnknownAccountResetPasswordResultType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected account.ResetPasswordResult, got ' + object.qualified_name())
 		}
@@ -18561,6 +21501,13 @@ fn decode_account_resolved_business_chat_links_type_from_decoder(mut decoder Dec
 	match object {
 		AccountResolvedBusinessChatLinks {
 			return object
+		}
+		UnknownObject {
+			return UnknownAccountResolvedBusinessChatLinksType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected account.ResolvedBusinessChatLinks, got ' +
@@ -18587,6 +21534,13 @@ fn decode_account_saved_music_ids_type_from_decoder(mut decoder Decoder) !Accoun
 		AccountSavedMusicIds {
 			return object
 		}
+		UnknownObject {
+			return UnknownAccountSavedMusicIdsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected account.SavedMusicIds, got ' + object.qualified_name())
 		}
@@ -18610,6 +21564,13 @@ fn decode_account_saved_ringtone_type_from_decoder(mut decoder Decoder) !Account
 		}
 		AccountSavedRingtoneConverted {
 			return object
+		}
+		UnknownObject {
+			return UnknownAccountSavedRingtoneType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected account.SavedRingtone, got ' + object.qualified_name())
@@ -18635,6 +21596,13 @@ fn decode_account_saved_ringtones_type_from_decoder(mut decoder Decoder) !Accoun
 		AccountSavedRingtones {
 			return object
 		}
+		UnknownObject {
+			return UnknownAccountSavedRingtonesType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected account.SavedRingtones, got ' + object.qualified_name())
 		}
@@ -18656,6 +21624,13 @@ fn decode_account_sent_email_code_type_from_decoder(mut decoder Decoder) !Accoun
 		AccountSentEmailCode {
 			return object
 		}
+		UnknownObject {
+			return UnknownAccountSentEmailCodeType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected account.SentEmailCode, got ' + object.qualified_name())
 		}
@@ -18676,6 +21651,13 @@ fn decode_account_takeout_type_from_decoder(mut decoder Decoder) !AccountTakeout
 	match object {
 		AccountTakeout {
 			return object
+		}
+		UnknownObject {
+			return UnknownAccountTakeoutType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected account.Takeout, got ' + object.qualified_name())
@@ -18701,6 +21683,13 @@ fn decode_account_themes_type_from_decoder(mut decoder Decoder) !AccountThemesTy
 		AccountThemes {
 			return object
 		}
+		UnknownObject {
+			return UnknownAccountThemesType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected account.Themes, got ' + object.qualified_name())
 		}
@@ -18721,6 +21710,13 @@ fn decode_account_tmp_password_type_from_decoder(mut decoder Decoder) !AccountTm
 	match object {
 		AccountTmpPassword {
 			return object
+		}
+		UnknownObject {
+			return UnknownAccountTmpPasswordType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected account.TmpPassword, got ' + object.qualified_name())
@@ -18746,6 +21742,13 @@ fn decode_account_wall_papers_type_from_decoder(mut decoder Decoder) !AccountWal
 		AccountWallPapers {
 			return object
 		}
+		UnknownObject {
+			return UnknownAccountWallPapersType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected account.WallPapers, got ' + object.qualified_name())
 		}
@@ -18766,6 +21769,13 @@ fn decode_account_web_authorizations_type_from_decoder(mut decoder Decoder) !Acc
 	match object {
 		AccountWebAuthorizations {
 			return object
+		}
+		UnknownObject {
+			return UnknownAccountWebAuthorizationsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected account.WebAuthorizations, got ' + object.qualified_name())
@@ -18790,6 +21800,13 @@ fn decode_auth_authorization_type_from_decoder(mut decoder Decoder) !AuthAuthori
 		}
 		AuthAuthorizationSignUpRequired {
 			return object
+		}
+		UnknownObject {
+			return UnknownAuthAuthorizationType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected auth.Authorization, got ' + object.qualified_name())
@@ -18824,6 +21841,13 @@ fn decode_auth_code_type_type_from_decoder(mut decoder Decoder) !AuthCodeTypeTyp
 		AuthCodeTypeFragmentSms {
 			return object
 		}
+		UnknownObject {
+			return UnknownAuthCodeTypeType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected auth.CodeType, got ' + object.qualified_name())
 		}
@@ -18845,6 +21869,13 @@ fn decode_auth_exported_authorization_type_from_decoder(mut decoder Decoder) !Au
 		AuthExportedAuthorization {
 			return object
 		}
+		UnknownObject {
+			return UnknownAuthExportedAuthorizationType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected auth.ExportedAuthorization, got ' + object.qualified_name())
 		}
@@ -18865,6 +21896,13 @@ fn decode_auth_logged_out_type_from_decoder(mut decoder Decoder) !AuthLoggedOutT
 	match object {
 		AuthLoggedOut {
 			return object
+		}
+		UnknownObject {
+			return UnknownAuthLoggedOutType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected auth.LoggedOut, got ' + object.qualified_name())
@@ -18893,6 +21931,13 @@ fn decode_auth_login_token_type_from_decoder(mut decoder Decoder) !AuthLoginToke
 		AuthLoginTokenSuccess {
 			return object
 		}
+		UnknownObject {
+			return UnknownAuthLoginTokenType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected auth.LoginToken, got ' + object.qualified_name())
 		}
@@ -18914,6 +21959,13 @@ fn decode_auth_passkey_login_options_type_from_decoder(mut decoder Decoder) !Aut
 		AuthPasskeyLoginOptions {
 			return object
 		}
+		UnknownObject {
+			return UnknownAuthPasskeyLoginOptionsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected auth.PasskeyLoginOptions, got ' + object.qualified_name())
 		}
@@ -18934,6 +21986,13 @@ fn decode_auth_password_recovery_type_from_decoder(mut decoder Decoder) !AuthPas
 	match object {
 		AuthPasswordRecovery {
 			return object
+		}
+		UnknownObject {
+			return UnknownAuthPasswordRecoveryType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected auth.PasswordRecovery, got ' + object.qualified_name())
@@ -18961,6 +22020,13 @@ fn decode_auth_sent_code_type_from_decoder(mut decoder Decoder) !AuthSentCodeTyp
 		}
 		AuthSentCodePaymentRequired {
 			return object
+		}
+		UnknownObject {
+			return UnknownAuthSentCodeType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected auth.SentCode, got ' + object.qualified_name())
@@ -19013,6 +22079,13 @@ fn decode_auth_sent_code_type_type_from_decoder(mut decoder Decoder) !AuthSentCo
 		AuthSentCodeTypeSmsPhrase {
 			return object
 		}
+		UnknownObject {
+			return UnknownAuthSentCodeTypeType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected auth.SentCodeType, got ' + object.qualified_name())
 		}
@@ -19033,6 +22106,13 @@ fn decode_bots_bot_info_type_from_decoder(mut decoder Decoder) !BotsBotInfoType 
 	match object {
 		BotsBotInfo {
 			return object
+		}
+		UnknownObject {
+			return UnknownBotsBotInfoType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected bots.BotInfo, got ' + object.qualified_name())
@@ -19055,6 +22135,13 @@ fn decode_bots_popular_app_bots_type_from_decoder(mut decoder Decoder) !BotsPopu
 		BotsPopularAppBots {
 			return object
 		}
+		UnknownObject {
+			return UnknownBotsPopularAppBotsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected bots.PopularAppBots, got ' + object.qualified_name())
 		}
@@ -19075,6 +22162,13 @@ fn decode_bots_preview_info_type_from_decoder(mut decoder Decoder) !BotsPreviewI
 	match object {
 		BotsPreviewInfo {
 			return object
+		}
+		UnknownObject {
+			return UnknownBotsPreviewInfoType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected bots.PreviewInfo, got ' + object.qualified_name())
@@ -19097,6 +22191,13 @@ fn decode_channels_admin_log_results_type_from_decoder(mut decoder Decoder) !Cha
 		ChannelsAdminLogResults {
 			return object
 		}
+		UnknownObject {
+			return UnknownChannelsAdminLogResultsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected channels.AdminLogResults, got ' + object.qualified_name())
 		}
@@ -19117,6 +22218,13 @@ fn decode_channels_channel_participant_type_from_decoder(mut decoder Decoder) !C
 	match object {
 		ChannelsChannelParticipant {
 			return object
+		}
+		UnknownObject {
+			return UnknownChannelsChannelParticipantType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected channels.ChannelParticipant, got ' + object.qualified_name())
@@ -19142,6 +22250,13 @@ fn decode_channels_channel_participants_type_from_decoder(mut decoder Decoder) !
 		ChannelsChannelParticipantsNotModified {
 			return object
 		}
+		UnknownObject {
+			return UnknownChannelsChannelParticipantsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected channels.ChannelParticipants, got ' + object.qualified_name())
 		}
@@ -19162,6 +22277,13 @@ fn decode_channels_send_as_peers_type_from_decoder(mut decoder Decoder) !Channel
 	match object {
 		ChannelsSendAsPeers {
 			return object
+		}
+		UnknownObject {
+			return UnknownChannelsSendAsPeersType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected channels.SendAsPeers, got ' + object.qualified_name())
@@ -19190,6 +22312,13 @@ fn decode_channels_sponsored_message_report_result_type_from_decoder(mut decoder
 		ChannelsSponsoredMessageReportResultReported {
 			return object
 		}
+		UnknownObject {
+			return UnknownChannelsSponsoredMessageReportResultType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected channels.SponsoredMessageReportResult, got ' +
 				object.qualified_name())
@@ -19215,6 +22344,13 @@ fn decode_chatlists_chatlist_invite_type_from_decoder(mut decoder Decoder) !Chat
 		ChatlistsChatlistInvite {
 			return object
 		}
+		UnknownObject {
+			return UnknownChatlistsChatlistInviteType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected chatlists.ChatlistInvite, got ' + object.qualified_name())
 		}
@@ -19235,6 +22371,13 @@ fn decode_chatlists_chatlist_updates_type_from_decoder(mut decoder Decoder) !Cha
 	match object {
 		ChatlistsChatlistUpdates {
 			return object
+		}
+		UnknownObject {
+			return UnknownChatlistsChatlistUpdatesType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected chatlists.ChatlistUpdates, got ' + object.qualified_name())
@@ -19257,6 +22400,13 @@ fn decode_chatlists_exported_chatlist_invite_type_from_decoder(mut decoder Decod
 		ChatlistsExportedChatlistInvite {
 			return object
 		}
+		UnknownObject {
+			return UnknownChatlistsExportedChatlistInviteType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected chatlists.ExportedChatlistInvite, got ' + object.qualified_name())
 		}
@@ -19277,6 +22427,13 @@ fn decode_chatlists_exported_invites_type_from_decoder(mut decoder Decoder) !Cha
 	match object {
 		ChatlistsExportedInvites {
 			return object
+		}
+		UnknownObject {
+			return UnknownChatlistsExportedInvitesType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected chatlists.ExportedInvites, got ' + object.qualified_name())
@@ -19302,6 +22459,13 @@ fn decode_contacts_blocked_type_from_decoder(mut decoder Decoder) !ContactsBlock
 		ContactsBlockedSlice {
 			return object
 		}
+		UnknownObject {
+			return UnknownContactsBlockedType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected contacts.Blocked, got ' + object.qualified_name())
 		}
@@ -19322,6 +22486,13 @@ fn decode_contacts_contact_birthdays_type_from_decoder(mut decoder Decoder) !Con
 	match object {
 		ContactsContactBirthdays {
 			return object
+		}
+		UnknownObject {
+			return UnknownContactsContactBirthdaysType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected contacts.ContactBirthdays, got ' + object.qualified_name())
@@ -19347,6 +22518,13 @@ fn decode_contacts_contacts_type_from_decoder(mut decoder Decoder) !ContactsCont
 		ContactsContacts {
 			return object
 		}
+		UnknownObject {
+			return UnknownContactsContactsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected contacts.Contacts, got ' + object.qualified_name())
 		}
@@ -19367,6 +22545,13 @@ fn decode_contacts_found_type_from_decoder(mut decoder Decoder) !ContactsFoundTy
 	match object {
 		ContactsFound {
 			return object
+		}
+		UnknownObject {
+			return UnknownContactsFoundType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected contacts.Found, got ' + object.qualified_name())
@@ -19389,6 +22574,13 @@ fn decode_contacts_imported_contacts_type_from_decoder(mut decoder Decoder) !Con
 		ContactsImportedContacts {
 			return object
 		}
+		UnknownObject {
+			return UnknownContactsImportedContactsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected contacts.ImportedContacts, got ' + object.qualified_name())
 		}
@@ -19409,6 +22601,13 @@ fn decode_contacts_resolved_peer_type_from_decoder(mut decoder Decoder) !Contact
 	match object {
 		ContactsResolvedPeer {
 			return object
+		}
+		UnknownObject {
+			return UnknownContactsResolvedPeerType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected contacts.ResolvedPeer, got ' + object.qualified_name())
@@ -19433,6 +22632,13 @@ fn decode_contacts_sponsored_peers_type_from_decoder(mut decoder Decoder) !Conta
 		}
 		ContactsSponsoredPeers {
 			return object
+		}
+		UnknownObject {
+			return UnknownContactsSponsoredPeersType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected contacts.SponsoredPeers, got ' + object.qualified_name())
@@ -19461,6 +22667,13 @@ fn decode_contacts_top_peers_type_from_decoder(mut decoder Decoder) !ContactsTop
 		ContactsTopPeersDisabled {
 			return object
 		}
+		UnknownObject {
+			return UnknownContactsTopPeersType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected contacts.TopPeers, got ' + object.qualified_name())
 		}
@@ -19481,6 +22694,13 @@ fn decode_fragment_collectible_info_type_from_decoder(mut decoder Decoder) !Frag
 	match object {
 		FragmentCollectibleInfo {
 			return object
+		}
+		UnknownObject {
+			return UnknownFragmentCollectibleInfoType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected fragment.CollectibleInfo, got ' + object.qualified_name())
@@ -19506,6 +22726,13 @@ fn decode_help_app_config_type_from_decoder(mut decoder Decoder) !HelpAppConfigT
 		HelpAppConfig {
 			return object
 		}
+		UnknownObject {
+			return UnknownHelpAppConfigType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected help.AppConfig, got ' + object.qualified_name())
 		}
@@ -19530,6 +22757,13 @@ fn decode_help_app_update_type_from_decoder(mut decoder Decoder) !HelpAppUpdateT
 		HelpNoAppUpdate {
 			return object
 		}
+		UnknownObject {
+			return UnknownHelpAppUpdateType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected help.AppUpdate, got ' + object.qualified_name())
 		}
@@ -19550,6 +22784,13 @@ fn decode_help_config_simple_type_from_decoder(mut decoder Decoder) !HelpConfigS
 	match object {
 		HelpConfigSimple {
 			return object
+		}
+		UnknownObject {
+			return UnknownHelpConfigSimpleType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected help.ConfigSimple, got ' + object.qualified_name())
@@ -19575,6 +22816,13 @@ fn decode_help_countries_list_type_from_decoder(mut decoder Decoder) !HelpCountr
 		HelpCountriesList {
 			return object
 		}
+		UnknownObject {
+			return UnknownHelpCountriesListType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected help.CountriesList, got ' + object.qualified_name())
 		}
@@ -19596,6 +22844,13 @@ fn decode_help_country_type_from_decoder(mut decoder Decoder) !HelpCountryType {
 		HelpCountry {
 			return object
 		}
+		UnknownObject {
+			return UnknownHelpCountryType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected help.Country, got ' + object.qualified_name())
 		}
@@ -19616,6 +22871,13 @@ fn decode_help_country_code_type_from_decoder(mut decoder Decoder) !HelpCountryC
 	match object {
 		HelpCountryCode {
 			return object
+		}
+		UnknownObject {
+			return UnknownHelpCountryCodeType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected help.CountryCode, got ' + object.qualified_name())
@@ -19641,6 +22903,13 @@ fn decode_help_deep_link_info_type_from_decoder(mut decoder Decoder) !HelpDeepLi
 		HelpDeepLinkInfo {
 			return object
 		}
+		UnknownObject {
+			return UnknownHelpDeepLinkInfoType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected help.DeepLinkInfo, got ' + object.qualified_name())
 		}
@@ -19661,6 +22930,13 @@ fn decode_help_invite_text_type_from_decoder(mut decoder Decoder) !HelpInviteTex
 	match object {
 		HelpInviteText {
 			return object
+		}
+		UnknownObject {
+			return UnknownHelpInviteTextType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected help.InviteText, got ' + object.qualified_name())
@@ -19686,6 +22962,13 @@ fn decode_help_passport_config_type_from_decoder(mut decoder Decoder) !HelpPassp
 		HelpPassportConfig {
 			return object
 		}
+		UnknownObject {
+			return UnknownHelpPassportConfigType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected help.PassportConfig, got ' + object.qualified_name())
 		}
@@ -19706,6 +22989,13 @@ fn decode_help_peer_color_option_type_from_decoder(mut decoder Decoder) !HelpPee
 	match object {
 		HelpPeerColorOption {
 			return object
+		}
+		UnknownObject {
+			return UnknownHelpPeerColorOptionType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected help.PeerColorOption, got ' + object.qualified_name())
@@ -19731,6 +23021,13 @@ fn decode_help_peer_color_set_type_from_decoder(mut decoder Decoder) !HelpPeerCo
 		HelpPeerColorProfileSet {
 			return object
 		}
+		UnknownObject {
+			return UnknownHelpPeerColorSetType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected help.PeerColorSet, got ' + object.qualified_name())
 		}
@@ -19755,6 +23052,13 @@ fn decode_help_peer_colors_type_from_decoder(mut decoder Decoder) !HelpPeerColor
 		HelpPeerColors {
 			return object
 		}
+		UnknownObject {
+			return UnknownHelpPeerColorsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected help.PeerColors, got ' + object.qualified_name())
 		}
@@ -19775,6 +23079,13 @@ fn decode_help_premium_promo_type_from_decoder(mut decoder Decoder) !HelpPremium
 	match object {
 		HelpPremiumPromo {
 			return object
+		}
+		UnknownObject {
+			return UnknownHelpPremiumPromoType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected help.PremiumPromo, got ' + object.qualified_name())
@@ -19800,6 +23111,13 @@ fn decode_help_promo_data_type_from_decoder(mut decoder Decoder) !HelpPromoDataT
 		HelpPromoData {
 			return object
 		}
+		UnknownObject {
+			return UnknownHelpPromoDataType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected help.PromoData, got ' + object.qualified_name())
 		}
@@ -19820,6 +23138,13 @@ fn decode_help_recent_me_urls_type_from_decoder(mut decoder Decoder) !HelpRecent
 	match object {
 		HelpRecentMeUrls {
 			return object
+		}
+		UnknownObject {
+			return UnknownHelpRecentMeUrlsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected help.RecentMeUrls, got ' + object.qualified_name())
@@ -19842,6 +23167,13 @@ fn decode_help_support_type_from_decoder(mut decoder Decoder) !HelpSupportType {
 		HelpSupport {
 			return object
 		}
+		UnknownObject {
+			return UnknownHelpSupportType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected help.Support, got ' + object.qualified_name())
 		}
@@ -19863,6 +23195,13 @@ fn decode_help_support_name_type_from_decoder(mut decoder Decoder) !HelpSupportN
 		HelpSupportName {
 			return object
 		}
+		UnknownObject {
+			return UnknownHelpSupportNameType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected help.SupportName, got ' + object.qualified_name())
 		}
@@ -19883,6 +23222,13 @@ fn decode_help_terms_of_service_type_from_decoder(mut decoder Decoder) !HelpTerm
 	match object {
 		HelpTermsOfService {
 			return object
+		}
+		UnknownObject {
+			return UnknownHelpTermsOfServiceType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected help.TermsOfService, got ' + object.qualified_name())
@@ -19908,6 +23254,13 @@ fn decode_help_terms_of_service_update_type_from_decoder(mut decoder Decoder) !H
 		HelpTermsOfServiceUpdate {
 			return object
 		}
+		UnknownObject {
+			return UnknownHelpTermsOfServiceUpdateType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected help.TermsOfServiceUpdate, got ' + object.qualified_name())
 		}
@@ -19931,6 +23284,13 @@ fn decode_help_timezones_list_type_from_decoder(mut decoder Decoder) !HelpTimezo
 		}
 		HelpTimezonesList {
 			return object
+		}
+		UnknownObject {
+			return UnknownHelpTimezonesListType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected help.TimezonesList, got ' + object.qualified_name())
@@ -19956,6 +23316,13 @@ fn decode_help_user_info_type_from_decoder(mut decoder Decoder) !HelpUserInfoTyp
 		HelpUserInfo {
 			return object
 		}
+		UnknownObject {
+			return UnknownHelpUserInfoType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected help.UserInfo, got ' + object.qualified_name())
 		}
@@ -19976,6 +23343,13 @@ fn decode_messages_affected_found_messages_type_from_decoder(mut decoder Decoder
 	match object {
 		MessagesAffectedFoundMessages {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessagesAffectedFoundMessagesType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected messages.AffectedFoundMessages, got ' + object.qualified_name())
@@ -19998,6 +23372,13 @@ fn decode_messages_affected_history_type_from_decoder(mut decoder Decoder) !Mess
 		MessagesAffectedHistory {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesAffectedHistoryType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.AffectedHistory, got ' + object.qualified_name())
 		}
@@ -20018,6 +23399,13 @@ fn decode_messages_affected_messages_type_from_decoder(mut decoder Decoder) !Mes
 	match object {
 		MessagesAffectedMessages {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessagesAffectedMessagesType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected messages.AffectedMessages, got ' + object.qualified_name())
@@ -20043,6 +23431,13 @@ fn decode_messages_all_stickers_type_from_decoder(mut decoder Decoder) !Messages
 		MessagesAllStickers {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesAllStickersType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.AllStickers, got ' + object.qualified_name())
 		}
@@ -20063,6 +23458,13 @@ fn decode_messages_archived_stickers_type_from_decoder(mut decoder Decoder) !Mes
 	match object {
 		MessagesArchivedStickers {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessagesArchivedStickersType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected messages.ArchivedStickers, got ' + object.qualified_name())
@@ -20088,6 +23490,13 @@ fn decode_messages_available_effects_type_from_decoder(mut decoder Decoder) !Mes
 		MessagesAvailableEffects {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesAvailableEffectsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.AvailableEffects, got ' + object.qualified_name())
 		}
@@ -20112,6 +23521,13 @@ fn decode_messages_available_reactions_type_from_decoder(mut decoder Decoder) !M
 		MessagesAvailableReactions {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesAvailableReactionsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.AvailableReactions, got ' + object.qualified_name())
 		}
@@ -20132,6 +23548,13 @@ fn decode_messages_bot_app_type_from_decoder(mut decoder Decoder) !MessagesBotAp
 	match object {
 		MessagesBotApp {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessagesBotAppType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected messages.BotApp, got ' + object.qualified_name())
@@ -20154,6 +23577,13 @@ fn decode_messages_bot_callback_answer_type_from_decoder(mut decoder Decoder) !M
 		MessagesBotCallbackAnswer {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesBotCallbackAnswerType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.BotCallbackAnswer, got ' + object.qualified_name())
 		}
@@ -20174,6 +23604,13 @@ fn decode_messages_bot_prepared_inline_message_type_from_decoder(mut decoder Dec
 	match object {
 		MessagesBotPreparedInlineMessage {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessagesBotPreparedInlineMessageType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected messages.BotPreparedInlineMessage, got ' +
@@ -20197,6 +23634,13 @@ fn decode_messages_bot_results_type_from_decoder(mut decoder Decoder) !MessagesB
 		MessagesBotResults {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesBotResultsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.BotResults, got ' + object.qualified_name())
 		}
@@ -20217,6 +23661,13 @@ fn decode_messages_chat_admins_with_invites_type_from_decoder(mut decoder Decode
 	match object {
 		MessagesChatAdminsWithInvites {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessagesChatAdminsWithInvitesType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected messages.ChatAdminsWithInvites, got ' + object.qualified_name())
@@ -20239,6 +23690,13 @@ fn decode_messages_chat_full_type_from_decoder(mut decoder Decoder) !MessagesCha
 		MessagesChatFull {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesChatFullType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.ChatFull, got ' + object.qualified_name())
 		}
@@ -20259,6 +23717,13 @@ fn decode_messages_chat_invite_importers_type_from_decoder(mut decoder Decoder) 
 	match object {
 		MessagesChatInviteImporters {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessagesChatInviteImportersType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected messages.ChatInviteImporters, got ' + object.qualified_name())
@@ -20284,6 +23749,13 @@ fn decode_messages_chats_type_from_decoder(mut decoder Decoder) !MessagesChatsTy
 		MessagesChatsSlice {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesChatsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.Chats, got ' + object.qualified_name())
 		}
@@ -20304,6 +23776,13 @@ fn decode_messages_checked_history_import_peer_type_from_decoder(mut decoder Dec
 	match object {
 		MessagesCheckedHistoryImportPeer {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessagesCheckedHistoryImportPeerType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected messages.CheckedHistoryImportPeer, got ' +
@@ -20330,6 +23809,13 @@ fn decode_messages_dh_config_type_from_decoder(mut decoder Decoder) !MessagesDhC
 		MessagesDhConfig {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesDhConfigType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.DhConfig, got ' + object.qualified_name())
 		}
@@ -20350,6 +23836,13 @@ fn decode_messages_dialog_filters_type_from_decoder(mut decoder Decoder) !Messag
 	match object {
 		MessagesDialogFilters {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessagesDialogFiltersType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected messages.DialogFilters, got ' + object.qualified_name())
@@ -20378,6 +23871,13 @@ fn decode_messages_dialogs_type_from_decoder(mut decoder Decoder) !MessagesDialo
 		MessagesDialogsNotModified {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesDialogsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.Dialogs, got ' + object.qualified_name())
 		}
@@ -20398,6 +23898,13 @@ fn decode_messages_discussion_message_type_from_decoder(mut decoder Decoder) !Me
 	match object {
 		MessagesDiscussionMessage {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessagesDiscussionMessageType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected messages.DiscussionMessage, got ' + object.qualified_name())
@@ -20423,6 +23930,13 @@ fn decode_messages_emoji_game_info_type_from_decoder(mut decoder Decoder) !Messa
 		MessagesEmojiGameDiceInfo {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesEmojiGameInfoType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.EmojiGameInfo, got ' + object.qualified_name())
 		}
@@ -20443,6 +23957,13 @@ fn decode_messages_emoji_game_outcome_type_from_decoder(mut decoder Decoder) !Me
 	match object {
 		MessagesEmojiGameOutcome {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessagesEmojiGameOutcomeType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected messages.EmojiGameOutcome, got ' + object.qualified_name())
@@ -20468,6 +23989,13 @@ fn decode_messages_emoji_groups_type_from_decoder(mut decoder Decoder) !Messages
 		MessagesEmojiGroups {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesEmojiGroupsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.EmojiGroups, got ' + object.qualified_name())
 		}
@@ -20492,6 +24020,13 @@ fn decode_messages_exported_chat_invite_type_from_decoder(mut decoder Decoder) !
 		MessagesExportedChatInviteReplaced {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesExportedChatInviteType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.ExportedChatInvite, got ' + object.qualified_name())
 		}
@@ -20512,6 +24047,13 @@ fn decode_messages_exported_chat_invites_type_from_decoder(mut decoder Decoder) 
 	match object {
 		MessagesExportedChatInvites {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessagesExportedChatInvitesType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected messages.ExportedChatInvites, got ' + object.qualified_name())
@@ -20537,6 +24079,13 @@ fn decode_messages_faved_stickers_type_from_decoder(mut decoder Decoder) !Messag
 		MessagesFavedStickers {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesFavedStickersType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.FavedStickers, got ' + object.qualified_name())
 		}
@@ -20561,6 +24110,13 @@ fn decode_messages_featured_stickers_type_from_decoder(mut decoder Decoder) !Mes
 		MessagesFeaturedStickers {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesFeaturedStickersType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.FeaturedStickers, got ' + object.qualified_name())
 		}
@@ -20581,6 +24137,13 @@ fn decode_messages_forum_topics_type_from_decoder(mut decoder Decoder) !Messages
 	match object {
 		MessagesForumTopics {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessagesForumTopicsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected messages.ForumTopics, got ' + object.qualified_name())
@@ -20606,6 +24169,13 @@ fn decode_messages_found_sticker_sets_type_from_decoder(mut decoder Decoder) !Me
 		MessagesFoundStickerSets {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesFoundStickerSetsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.FoundStickerSets, got ' + object.qualified_name())
 		}
@@ -20630,6 +24200,13 @@ fn decode_messages_found_stickers_type_from_decoder(mut decoder Decoder) !Messag
 		MessagesFoundStickers {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesFoundStickersType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.FoundStickers, got ' + object.qualified_name())
 		}
@@ -20650,6 +24227,13 @@ fn decode_messages_high_scores_type_from_decoder(mut decoder Decoder) !MessagesH
 	match object {
 		MessagesHighScores {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessagesHighScoresType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected messages.HighScores, got ' + object.qualified_name())
@@ -20672,6 +24256,13 @@ fn decode_messages_history_import_type_from_decoder(mut decoder Decoder) !Messag
 		MessagesHistoryImport {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesHistoryImportType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.HistoryImport, got ' + object.qualified_name())
 		}
@@ -20692,6 +24283,13 @@ fn decode_messages_history_import_parsed_type_from_decoder(mut decoder Decoder) 
 	match object {
 		MessagesHistoryImportParsed {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessagesHistoryImportParsedType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected messages.HistoryImportParsed, got ' + object.qualified_name())
@@ -20714,6 +24312,13 @@ fn decode_messages_inactive_chats_type_from_decoder(mut decoder Decoder) !Messag
 		MessagesInactiveChats {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesInactiveChatsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.InactiveChats, got ' + object.qualified_name())
 		}
@@ -20734,6 +24339,13 @@ fn decode_messages_invited_users_type_from_decoder(mut decoder Decoder) !Message
 	match object {
 		MessagesInvitedUsers {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessagesInvitedUsersType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected messages.InvitedUsers, got ' + object.qualified_name())
@@ -20756,6 +24368,13 @@ fn decode_messages_message_edit_data_type_from_decoder(mut decoder Decoder) !Mes
 		MessagesMessageEditData {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesMessageEditDataType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.MessageEditData, got ' + object.qualified_name())
 		}
@@ -20777,6 +24396,13 @@ fn decode_messages_message_reactions_list_type_from_decoder(mut decoder Decoder)
 		MessagesMessageReactionsList {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesMessageReactionsListType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.MessageReactionsList, got ' + object.qualified_name())
 		}
@@ -20797,6 +24423,13 @@ fn decode_messages_message_views_type_from_decoder(mut decoder Decoder) !Message
 	match object {
 		MessagesMessageViews {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessagesMessageViewsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected messages.MessageViews, got ' + object.qualified_name())
@@ -20828,6 +24461,13 @@ fn decode_messages_messages_type_from_decoder(mut decoder Decoder) !MessagesMess
 		MessagesMessagesNotModified {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesMessagesType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.Messages, got ' + object.qualified_name())
 		}
@@ -20848,6 +24488,13 @@ fn decode_messages_my_stickers_type_from_decoder(mut decoder Decoder) !MessagesM
 	match object {
 		MessagesMyStickers {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessagesMyStickersType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected messages.MyStickers, got ' + object.qualified_name())
@@ -20870,6 +24517,13 @@ fn decode_messages_peer_dialogs_type_from_decoder(mut decoder Decoder) !Messages
 		MessagesPeerDialogs {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesPeerDialogsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.PeerDialogs, got ' + object.qualified_name())
 		}
@@ -20891,6 +24545,13 @@ fn decode_messages_peer_settings_type_from_decoder(mut decoder Decoder) !Message
 		MessagesPeerSettings {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesPeerSettingsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.PeerSettings, got ' + object.qualified_name())
 		}
@@ -20911,6 +24572,13 @@ fn decode_messages_prepared_inline_message_type_from_decoder(mut decoder Decoder
 	match object {
 		MessagesPreparedInlineMessage {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessagesPreparedInlineMessageType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected messages.PreparedInlineMessage, got ' + object.qualified_name())
@@ -20936,6 +24604,13 @@ fn decode_messages_quick_replies_type_from_decoder(mut decoder Decoder) !Message
 		MessagesQuickRepliesNotModified {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesQuickRepliesType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.QuickReplies, got ' + object.qualified_name())
 		}
@@ -20960,6 +24635,13 @@ fn decode_messages_reactions_type_from_decoder(mut decoder Decoder) !MessagesRea
 		MessagesReactions {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesReactionsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.Reactions, got ' + object.qualified_name())
 		}
@@ -20983,6 +24665,13 @@ fn decode_messages_recent_stickers_type_from_decoder(mut decoder Decoder) !Messa
 		}
 		MessagesRecentStickers {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessagesRecentStickersType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected messages.RecentStickers, got ' + object.qualified_name())
@@ -21011,6 +24700,13 @@ fn decode_messages_saved_dialogs_type_from_decoder(mut decoder Decoder) !Message
 		MessagesSavedDialogsNotModified {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesSavedDialogsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.SavedDialogs, got ' + object.qualified_name())
 		}
@@ -21034,6 +24730,13 @@ fn decode_messages_saved_gifs_type_from_decoder(mut decoder Decoder) !MessagesSa
 		}
 		MessagesSavedGifs {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessagesSavedGifsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected messages.SavedGifs, got ' + object.qualified_name())
@@ -21059,6 +24762,13 @@ fn decode_messages_saved_reaction_tags_type_from_decoder(mut decoder Decoder) !M
 		MessagesSavedReactionTags {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesSavedReactionTagsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.SavedReactionTags, got ' + object.qualified_name())
 		}
@@ -21079,6 +24789,13 @@ fn decode_messages_search_counter_type_from_decoder(mut decoder Decoder) !Messag
 	match object {
 		MessagesSearchCounter {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessagesSearchCounterType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected messages.SearchCounter, got ' + object.qualified_name())
@@ -21101,6 +24818,13 @@ fn decode_messages_search_results_calendar_type_from_decoder(mut decoder Decoder
 		MessagesSearchResultsCalendar {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesSearchResultsCalendarType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.SearchResultsCalendar, got ' + object.qualified_name())
 		}
@@ -21121,6 +24845,13 @@ fn decode_messages_search_results_positions_type_from_decoder(mut decoder Decode
 	match object {
 		MessagesSearchResultsPositions {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessagesSearchResultsPositionsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected messages.SearchResultsPositions, got ' + object.qualified_name())
@@ -21146,6 +24877,13 @@ fn decode_messages_sent_encrypted_message_type_from_decoder(mut decoder Decoder)
 		MessagesSentEncryptedFile {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesSentEncryptedMessageType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.SentEncryptedMessage, got ' + object.qualified_name())
 		}
@@ -21169,6 +24907,13 @@ fn decode_messages_sponsored_messages_type_from_decoder(mut decoder Decoder) !Me
 		}
 		MessagesSponsoredMessagesEmpty {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessagesSponsoredMessagesType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected messages.SponsoredMessages, got ' + object.qualified_name())
@@ -21194,6 +24939,13 @@ fn decode_messages_sticker_set_type_from_decoder(mut decoder Decoder) !MessagesS
 		MessagesStickerSetNotModified {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesStickerSetType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.StickerSet, got ' + object.qualified_name())
 		}
@@ -21217,6 +24969,13 @@ fn decode_messages_sticker_set_install_result_type_from_decoder(mut decoder Deco
 		}
 		MessagesStickerSetInstallResultArchive {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessagesStickerSetInstallResultType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected messages.StickerSetInstallResult, got ' + object.qualified_name())
@@ -21242,6 +25001,13 @@ fn decode_messages_stickers_type_from_decoder(mut decoder Decoder) !MessagesStic
 		MessagesStickers {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesStickersType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.Stickers, got ' + object.qualified_name())
 		}
@@ -21262,6 +25028,13 @@ fn decode_messages_transcribed_audio_type_from_decoder(mut decoder Decoder) !Mes
 	match object {
 		MessagesTranscribedAudio {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessagesTranscribedAudioType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected messages.TranscribedAudio, got ' + object.qualified_name())
@@ -21284,6 +25057,13 @@ fn decode_messages_translated_text_type_from_decoder(mut decoder Decoder) !Messa
 		MessagesTranslateResult {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesTranslatedTextType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.TranslatedText, got ' + object.qualified_name())
 		}
@@ -21304,6 +25084,13 @@ fn decode_messages_votes_list_type_from_decoder(mut decoder Decoder) !MessagesVo
 	match object {
 		MessagesVotesList {
 			return object
+		}
+		UnknownObject {
+			return UnknownMessagesVotesListType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected messages.VotesList, got ' + object.qualified_name())
@@ -21326,6 +25113,13 @@ fn decode_messages_web_page_type_from_decoder(mut decoder Decoder) !MessagesWebP
 		MessagesWebPage {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesWebPageType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.WebPage, got ' + object.qualified_name())
 		}
@@ -21347,6 +25141,13 @@ fn decode_messages_web_page_preview_type_from_decoder(mut decoder Decoder) !Mess
 		MessagesWebPagePreview {
 			return object
 		}
+		UnknownObject {
+			return UnknownMessagesWebPagePreviewType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected messages.WebPagePreview, got ' + object.qualified_name())
 		}
@@ -21367,6 +25168,13 @@ fn decode_payments_bank_card_data_type_from_decoder(mut decoder Decoder) !Paymen
 	match object {
 		PaymentsBankCardData {
 			return object
+		}
+		UnknownObject {
+			return UnknownPaymentsBankCardDataType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected payments.BankCardData, got ' + object.qualified_name())
@@ -21392,6 +25200,13 @@ fn decode_payments_check_can_send_gift_result_type_from_decoder(mut decoder Deco
 		PaymentsCheckCanSendGiftResultFail {
 			return object
 		}
+		UnknownObject {
+			return UnknownPaymentsCheckCanSendGiftResultType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected payments.CheckCanSendGiftResult, got ' + object.qualified_name())
 		}
@@ -21412,6 +25227,13 @@ fn decode_payments_checked_gift_code_type_from_decoder(mut decoder Decoder) !Pay
 	match object {
 		PaymentsCheckedGiftCode {
 			return object
+		}
+		UnknownObject {
+			return UnknownPaymentsCheckedGiftCodeType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected payments.CheckedGiftCode, got ' + object.qualified_name())
@@ -21434,6 +25256,13 @@ fn decode_payments_connected_star_ref_bots_type_from_decoder(mut decoder Decoder
 		PaymentsConnectedStarRefBots {
 			return object
 		}
+		UnknownObject {
+			return UnknownPaymentsConnectedStarRefBotsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected payments.ConnectedStarRefBots, got ' + object.qualified_name())
 		}
@@ -21454,6 +25283,13 @@ fn decode_payments_exported_invoice_type_from_decoder(mut decoder Decoder) !Paym
 	match object {
 		PaymentsExportedInvoice {
 			return object
+		}
+		UnknownObject {
+			return UnknownPaymentsExportedInvoiceType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected payments.ExportedInvoice, got ' + object.qualified_name())
@@ -21478,6 +25314,13 @@ fn decode_payments_giveaway_info_type_from_decoder(mut decoder Decoder) !Payment
 		}
 		PaymentsGiveawayInfoResults {
 			return object
+		}
+		UnknownObject {
+			return UnknownPaymentsGiveawayInfoType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected payments.GiveawayInfo, got ' + object.qualified_name())
@@ -21506,6 +25349,13 @@ fn decode_payments_payment_form_type_from_decoder(mut decoder Decoder) !Payments
 		PaymentsPaymentFormStarGift {
 			return object
 		}
+		UnknownObject {
+			return UnknownPaymentsPaymentFormType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected payments.PaymentForm, got ' + object.qualified_name())
 		}
@@ -21529,6 +25379,13 @@ fn decode_payments_payment_receipt_type_from_decoder(mut decoder Decoder) !Payme
 		}
 		PaymentsPaymentReceiptStars {
 			return object
+		}
+		UnknownObject {
+			return UnknownPaymentsPaymentReceiptType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected payments.PaymentReceipt, got ' + object.qualified_name())
@@ -21554,6 +25411,13 @@ fn decode_payments_payment_result_type_from_decoder(mut decoder Decoder) !Paymen
 		PaymentsPaymentVerificationNeeded {
 			return object
 		}
+		UnknownObject {
+			return UnknownPaymentsPaymentResultType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected payments.PaymentResult, got ' + object.qualified_name())
 		}
@@ -21574,6 +25438,13 @@ fn decode_payments_resale_star_gifts_type_from_decoder(mut decoder Decoder) !Pay
 	match object {
 		PaymentsResaleStarGifts {
 			return object
+		}
+		UnknownObject {
+			return UnknownPaymentsResaleStarGiftsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected payments.ResaleStarGifts, got ' + object.qualified_name())
@@ -21596,6 +25467,13 @@ fn decode_payments_saved_info_type_from_decoder(mut decoder Decoder) !PaymentsSa
 		PaymentsSavedInfo {
 			return object
 		}
+		UnknownObject {
+			return UnknownPaymentsSavedInfoType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected payments.SavedInfo, got ' + object.qualified_name())
 		}
@@ -21616,6 +25494,13 @@ fn decode_payments_saved_star_gifts_type_from_decoder(mut decoder Decoder) !Paym
 	match object {
 		PaymentsSavedStarGifts {
 			return object
+		}
+		UnknownObject {
+			return UnknownPaymentsSavedStarGiftsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected payments.SavedStarGifts, got ' + object.qualified_name())
@@ -21641,6 +25526,13 @@ fn decode_payments_star_gift_active_auctions_type_from_decoder(mut decoder Decod
 		PaymentsStarGiftActiveAuctions {
 			return object
 		}
+		UnknownObject {
+			return UnknownPaymentsStarGiftActiveAuctionsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected payments.StarGiftActiveAuctions, got ' + object.qualified_name())
 		}
@@ -21661,6 +25553,13 @@ fn decode_payments_star_gift_auction_acquired_gifts_type_from_decoder(mut decode
 	match object {
 		PaymentsStarGiftAuctionAcquiredGifts {
 			return object
+		}
+		UnknownObject {
+			return UnknownPaymentsStarGiftAuctionAcquiredGiftsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected payments.StarGiftAuctionAcquiredGifts, got ' +
@@ -21683,6 +25582,13 @@ fn decode_payments_star_gift_auction_state_type_from_decoder(mut decoder Decoder
 	match object {
 		PaymentsStarGiftAuctionState {
 			return object
+		}
+		UnknownObject {
+			return UnknownPaymentsStarGiftAuctionStateType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected payments.StarGiftAuctionState, got ' + object.qualified_name())
@@ -21708,6 +25614,13 @@ fn decode_payments_star_gift_collections_type_from_decoder(mut decoder Decoder) 
 		PaymentsStarGiftCollections {
 			return object
 		}
+		UnknownObject {
+			return UnknownPaymentsStarGiftCollectionsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected payments.StarGiftCollections, got ' + object.qualified_name())
 		}
@@ -21728,6 +25641,13 @@ fn decode_payments_star_gift_upgrade_attributes_type_from_decoder(mut decoder De
 	match object {
 		PaymentsStarGiftUpgradeAttributes {
 			return object
+		}
+		UnknownObject {
+			return UnknownPaymentsStarGiftUpgradeAttributesType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected payments.StarGiftUpgradeAttributes, got ' +
@@ -21751,6 +25671,13 @@ fn decode_payments_star_gift_upgrade_preview_type_from_decoder(mut decoder Decod
 		PaymentsStarGiftUpgradePreview {
 			return object
 		}
+		UnknownObject {
+			return UnknownPaymentsStarGiftUpgradePreviewType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected payments.StarGiftUpgradePreview, got ' + object.qualified_name())
 		}
@@ -21771,6 +25698,13 @@ fn decode_payments_star_gift_withdrawal_url_type_from_decoder(mut decoder Decode
 	match object {
 		PaymentsStarGiftWithdrawalUrl {
 			return object
+		}
+		UnknownObject {
+			return UnknownPaymentsStarGiftWithdrawalUrlType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected payments.StarGiftWithdrawalUrl, got ' + object.qualified_name())
@@ -21796,6 +25730,13 @@ fn decode_payments_star_gifts_type_from_decoder(mut decoder Decoder) !PaymentsSt
 		PaymentsStarGifts {
 			return object
 		}
+		UnknownObject {
+			return UnknownPaymentsStarGiftsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected payments.StarGifts, got ' + object.qualified_name())
 		}
@@ -21816,6 +25757,13 @@ fn decode_payments_stars_revenue_ads_account_url_type_from_decoder(mut decoder D
 	match object {
 		PaymentsStarsRevenueAdsAccountUrl {
 			return object
+		}
+		UnknownObject {
+			return UnknownPaymentsStarsRevenueAdsAccountUrlType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected payments.StarsRevenueAdsAccountUrl, got ' +
@@ -21839,6 +25787,13 @@ fn decode_payments_stars_revenue_stats_type_from_decoder(mut decoder Decoder) !P
 		PaymentsStarsRevenueStats {
 			return object
 		}
+		UnknownObject {
+			return UnknownPaymentsStarsRevenueStatsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected payments.StarsRevenueStats, got ' + object.qualified_name())
 		}
@@ -21859,6 +25814,13 @@ fn decode_payments_stars_revenue_withdrawal_url_type_from_decoder(mut decoder De
 	match object {
 		PaymentsStarsRevenueWithdrawalUrl {
 			return object
+		}
+		UnknownObject {
+			return UnknownPaymentsStarsRevenueWithdrawalUrlType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected payments.StarsRevenueWithdrawalUrl, got ' +
@@ -21882,6 +25844,13 @@ fn decode_payments_stars_status_type_from_decoder(mut decoder Decoder) !Payments
 		PaymentsStarsStatus {
 			return object
 		}
+		UnknownObject {
+			return UnknownPaymentsStarsStatusType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected payments.StarsStatus, got ' + object.qualified_name())
 		}
@@ -21902,6 +25871,13 @@ fn decode_payments_suggested_star_ref_bots_type_from_decoder(mut decoder Decoder
 	match object {
 		PaymentsSuggestedStarRefBots {
 			return object
+		}
+		UnknownObject {
+			return UnknownPaymentsSuggestedStarRefBotsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected payments.SuggestedStarRefBots, got ' + object.qualified_name())
@@ -21924,6 +25900,13 @@ fn decode_payments_unique_star_gift_type_from_decoder(mut decoder Decoder) !Paym
 		PaymentsUniqueStarGift {
 			return object
 		}
+		UnknownObject {
+			return UnknownPaymentsUniqueStarGiftType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected payments.UniqueStarGift, got ' + object.qualified_name())
 		}
@@ -21944,6 +25927,13 @@ fn decode_payments_unique_star_gift_value_info_type_from_decoder(mut decoder Dec
 	match object {
 		PaymentsUniqueStarGiftValueInfo {
 			return object
+		}
+		UnknownObject {
+			return UnknownPaymentsUniqueStarGiftValueInfoType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected payments.UniqueStarGiftValueInfo, got ' + object.qualified_name())
@@ -21966,6 +25956,13 @@ fn decode_payments_validated_requested_info_type_from_decoder(mut decoder Decode
 		PaymentsValidatedRequestedInfo {
 			return object
 		}
+		UnknownObject {
+			return UnknownPaymentsValidatedRequestedInfoType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected payments.ValidatedRequestedInfo, got ' + object.qualified_name())
 		}
@@ -21986,6 +25983,13 @@ fn decode_phone_exported_group_call_invite_type_from_decoder(mut decoder Decoder
 	match object {
 		PhoneExportedGroupCallInvite {
 			return object
+		}
+		UnknownObject {
+			return UnknownPhoneExportedGroupCallInviteType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected phone.ExportedGroupCallInvite, got ' + object.qualified_name())
@@ -22008,6 +26012,13 @@ fn decode_phone_group_call_type_from_decoder(mut decoder Decoder) !PhoneGroupCal
 		PhoneGroupCall {
 			return object
 		}
+		UnknownObject {
+			return UnknownPhoneGroupCallType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected phone.GroupCall, got ' + object.qualified_name())
 		}
@@ -22028,6 +26039,13 @@ fn decode_phone_group_call_stars_type_from_decoder(mut decoder Decoder) !PhoneGr
 	match object {
 		PhoneGroupCallStars {
 			return object
+		}
+		UnknownObject {
+			return UnknownPhoneGroupCallStarsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected phone.GroupCallStars, got ' + object.qualified_name())
@@ -22050,6 +26068,13 @@ fn decode_phone_group_call_stream_channels_type_from_decoder(mut decoder Decoder
 		PhoneGroupCallStreamChannels {
 			return object
 		}
+		UnknownObject {
+			return UnknownPhoneGroupCallStreamChannelsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected phone.GroupCallStreamChannels, got ' + object.qualified_name())
 		}
@@ -22070,6 +26095,13 @@ fn decode_phone_group_call_stream_rtmp_url_type_from_decoder(mut decoder Decoder
 	match object {
 		PhoneGroupCallStreamRtmpUrl {
 			return object
+		}
+		UnknownObject {
+			return UnknownPhoneGroupCallStreamRtmpUrlType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected phone.GroupCallStreamRtmpUrl, got ' + object.qualified_name())
@@ -22092,6 +26124,13 @@ fn decode_phone_group_participants_type_from_decoder(mut decoder Decoder) !Phone
 		PhoneGroupParticipants {
 			return object
 		}
+		UnknownObject {
+			return UnknownPhoneGroupParticipantsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected phone.GroupParticipants, got ' + object.qualified_name())
 		}
@@ -22112,6 +26151,13 @@ fn decode_phone_join_as_peers_type_from_decoder(mut decoder Decoder) !PhoneJoinA
 	match object {
 		PhoneJoinAsPeers {
 			return object
+		}
+		UnknownObject {
+			return UnknownPhoneJoinAsPeersType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected phone.JoinAsPeers, got ' + object.qualified_name())
@@ -22134,6 +26180,13 @@ fn decode_phone_phone_call_type_from_decoder(mut decoder Decoder) !PhonePhoneCal
 		PhonePhoneCall {
 			return object
 		}
+		UnknownObject {
+			return UnknownPhonePhoneCallType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected phone.PhoneCall, got ' + object.qualified_name())
 		}
@@ -22154,6 +26207,13 @@ fn decode_photos_photo_type_from_decoder(mut decoder Decoder) !PhotosPhotoType {
 	match object {
 		PhotosPhoto {
 			return object
+		}
+		UnknownObject {
+			return UnknownPhotosPhotoType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected photos.Photo, got ' + object.qualified_name())
@@ -22179,6 +26239,13 @@ fn decode_photos_photos_type_from_decoder(mut decoder Decoder) !PhotosPhotosType
 		PhotosPhotosSlice {
 			return object
 		}
+		UnknownObject {
+			return UnknownPhotosPhotosType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected photos.Photos, got ' + object.qualified_name())
 		}
@@ -22199,6 +26266,13 @@ fn decode_premium_boosts_list_type_from_decoder(mut decoder Decoder) !PremiumBoo
 	match object {
 		PremiumBoostsList {
 			return object
+		}
+		UnknownObject {
+			return UnknownPremiumBoostsListType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected premium.BoostsList, got ' + object.qualified_name())
@@ -22221,6 +26295,13 @@ fn decode_premium_boosts_status_type_from_decoder(mut decoder Decoder) !PremiumB
 		PremiumBoostsStatus {
 			return object
 		}
+		UnknownObject {
+			return UnknownPremiumBoostsStatusType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected premium.BoostsStatus, got ' + object.qualified_name())
 		}
@@ -22241,6 +26322,13 @@ fn decode_premium_my_boosts_type_from_decoder(mut decoder Decoder) !PremiumMyBoo
 	match object {
 		PremiumMyBoosts {
 			return object
+		}
+		UnknownObject {
+			return UnknownPremiumMyBoostsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected premium.MyBoosts, got ' + object.qualified_name())
@@ -22263,6 +26351,13 @@ fn decode_smsjobs_eligibility_to_join_type_from_decoder(mut decoder Decoder) !Sm
 		SmsjobsEligibleToJoin {
 			return object
 		}
+		UnknownObject {
+			return UnknownSmsjobsEligibilityToJoinType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected smsjobs.EligibilityToJoin, got ' + object.qualified_name())
 		}
@@ -22283,6 +26378,13 @@ fn decode_smsjobs_status_type_from_decoder(mut decoder Decoder) !SmsjobsStatusTy
 	match object {
 		SmsjobsStatus {
 			return object
+		}
+		UnknownObject {
+			return UnknownSmsjobsStatusType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected smsjobs.Status, got ' + object.qualified_name())
@@ -22305,6 +26407,13 @@ fn decode_stats_broadcast_stats_type_from_decoder(mut decoder Decoder) !StatsBro
 		StatsBroadcastStats {
 			return object
 		}
+		UnknownObject {
+			return UnknownStatsBroadcastStatsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected stats.BroadcastStats, got ' + object.qualified_name())
 		}
@@ -22325,6 +26434,13 @@ fn decode_stats_megagroup_stats_type_from_decoder(mut decoder Decoder) !StatsMeg
 	match object {
 		StatsMegagroupStats {
 			return object
+		}
+		UnknownObject {
+			return UnknownStatsMegagroupStatsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected stats.MegagroupStats, got ' + object.qualified_name())
@@ -22347,6 +26463,13 @@ fn decode_stats_message_stats_type_from_decoder(mut decoder Decoder) !StatsMessa
 		StatsMessageStats {
 			return object
 		}
+		UnknownObject {
+			return UnknownStatsMessageStatsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected stats.MessageStats, got ' + object.qualified_name())
 		}
@@ -22367,6 +26490,13 @@ fn decode_stats_public_forwards_type_from_decoder(mut decoder Decoder) !StatsPub
 	match object {
 		StatsPublicForwards {
 			return object
+		}
+		UnknownObject {
+			return UnknownStatsPublicForwardsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected stats.PublicForwards, got ' + object.qualified_name())
@@ -22389,6 +26519,13 @@ fn decode_stats_story_stats_type_from_decoder(mut decoder Decoder) !StatsStorySt
 		StatsStoryStats {
 			return object
 		}
+		UnknownObject {
+			return UnknownStatsStoryStatsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected stats.StoryStats, got ' + object.qualified_name())
 		}
@@ -22409,6 +26546,13 @@ fn decode_stickers_suggested_short_name_type_from_decoder(mut decoder Decoder) !
 	match object {
 		StickersSuggestedShortName {
 			return object
+		}
+		UnknownObject {
+			return UnknownStickersSuggestedShortNameType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected stickers.SuggestedShortName, got ' + object.qualified_name())
@@ -22458,6 +26602,13 @@ fn decode_storage_file_type_type_from_decoder(mut decoder Decoder) !StorageFileT
 		StorageFileWebp {
 			return object
 		}
+		UnknownObject {
+			return UnknownStorageFileTypeType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected storage.FileType, got ' + object.qualified_name())
 		}
@@ -22481,6 +26632,13 @@ fn decode_stories_albums_type_from_decoder(mut decoder Decoder) !StoriesAlbumsTy
 		}
 		StoriesAlbums {
 			return object
+		}
+		UnknownObject {
+			return UnknownStoriesAlbumsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected stories.Albums, got ' + object.qualified_name())
@@ -22506,6 +26664,13 @@ fn decode_stories_all_stories_type_from_decoder(mut decoder Decoder) !StoriesAll
 		StoriesAllStories {
 			return object
 		}
+		UnknownObject {
+			return UnknownStoriesAllStoriesType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected stories.AllStories, got ' + object.qualified_name())
 		}
@@ -22526,6 +26691,13 @@ fn decode_stories_can_send_story_count_type_from_decoder(mut decoder Decoder) !S
 	match object {
 		StoriesCanSendStoryCount {
 			return object
+		}
+		UnknownObject {
+			return UnknownStoriesCanSendStoryCountType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected stories.CanSendStoryCount, got ' + object.qualified_name())
@@ -22548,6 +26720,13 @@ fn decode_stories_found_stories_type_from_decoder(mut decoder Decoder) !StoriesF
 		StoriesFoundStories {
 			return object
 		}
+		UnknownObject {
+			return UnknownStoriesFoundStoriesType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected stories.FoundStories, got ' + object.qualified_name())
 		}
@@ -22568,6 +26747,13 @@ fn decode_stories_peer_stories_type_from_decoder(mut decoder Decoder) !StoriesPe
 	match object {
 		StoriesPeerStories {
 			return object
+		}
+		UnknownObject {
+			return UnknownStoriesPeerStoriesType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected stories.PeerStories, got ' + object.qualified_name())
@@ -22590,6 +26776,13 @@ fn decode_stories_stories_type_from_decoder(mut decoder Decoder) !StoriesStories
 		StoriesStories {
 			return object
 		}
+		UnknownObject {
+			return UnknownStoriesStoriesType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected stories.Stories, got ' + object.qualified_name())
 		}
@@ -22610,6 +26803,13 @@ fn decode_stories_story_reactions_list_type_from_decoder(mut decoder Decoder) !S
 	match object {
 		StoriesStoryReactionsList {
 			return object
+		}
+		UnknownObject {
+			return UnknownStoriesStoryReactionsListType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected stories.StoryReactionsList, got ' + object.qualified_name())
@@ -22632,6 +26832,13 @@ fn decode_stories_story_views_type_from_decoder(mut decoder Decoder) !StoriesSto
 		StoriesStoryViews {
 			return object
 		}
+		UnknownObject {
+			return UnknownStoriesStoryViewsType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected stories.StoryViews, got ' + object.qualified_name())
 		}
@@ -22652,6 +26859,13 @@ fn decode_stories_story_views_list_type_from_decoder(mut decoder Decoder) !Stori
 	match object {
 		StoriesStoryViewsList {
 			return object
+		}
+		UnknownObject {
+			return UnknownStoriesStoryViewsListType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected stories.StoryViewsList, got ' + object.qualified_name())
@@ -22679,6 +26893,13 @@ fn decode_updates_channel_difference_type_from_decoder(mut decoder Decoder) !Upd
 		}
 		UpdatesChannelDifference {
 			return object
+		}
+		UnknownObject {
+			return UnknownUpdatesChannelDifferenceType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected updates.ChannelDifference, got ' + object.qualified_name())
@@ -22710,6 +26931,13 @@ fn decode_updates_difference_type_from_decoder(mut decoder Decoder) !UpdatesDiff
 		UpdatesDifferenceTooLong {
 			return object
 		}
+		UnknownObject {
+			return UnknownUpdatesDifferenceType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected updates.Difference, got ' + object.qualified_name())
 		}
@@ -22730,6 +26958,13 @@ fn decode_updates_state_type_from_decoder(mut decoder Decoder) !UpdatesStateType
 	match object {
 		UpdatesState {
 			return object
+		}
+		UnknownObject {
+			return UnknownUpdatesStateType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected updates.State, got ' + object.qualified_name())
@@ -22755,6 +26990,13 @@ fn decode_upload_cdn_file_type_from_decoder(mut decoder Decoder) !UploadCdnFileT
 		UploadCdnFile {
 			return object
 		}
+		UnknownObject {
+			return UnknownUploadCdnFileType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected upload.CdnFile, got ' + object.qualified_name())
 		}
@@ -22779,6 +27021,13 @@ fn decode_upload_file_type_from_decoder(mut decoder Decoder) !UploadFileType {
 		UploadFileCdnRedirect {
 			return object
 		}
+		UnknownObject {
+			return UnknownUploadFileType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected upload.File, got ' + object.qualified_name())
 		}
@@ -22799,6 +27048,13 @@ fn decode_upload_web_file_type_from_decoder(mut decoder Decoder) !UploadWebFileT
 	match object {
 		UploadWebFile {
 			return object
+		}
+		UnknownObject {
+			return UnknownUploadWebFileType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected upload.WebFile, got ' + object.qualified_name())
@@ -22824,6 +27080,13 @@ fn decode_users_saved_music_type_from_decoder(mut decoder Decoder) !UsersSavedMu
 		UsersSavedMusic {
 			return object
 		}
+		UnknownObject {
+			return UnknownUsersSavedMusicType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
+		}
 		else {
 			return error('expected users.SavedMusic, got ' + object.qualified_name())
 		}
@@ -22844,6 +27107,13 @@ fn decode_users_user_full_type_from_decoder(mut decoder Decoder) !UsersUserFullT
 	match object {
 		UsersUserFull {
 			return object
+		}
+		UnknownObject {
+			return UnknownUsersUserFullType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected users.UserFull, got ' + object.qualified_name())
@@ -22868,6 +27138,13 @@ fn decode_users_users_type_from_decoder(mut decoder Decoder) !UsersUsersType {
 		}
 		UsersUsersSlice {
 			return object
+		}
+		UnknownObject {
+			return UnknownUsersUsersType{
+				constructor: object.constructor
+				name:        object.name
+				raw_payload: object.raw_payload
+			}
 		}
 		else {
 			return error('expected users.Users, got ' + object.qualified_name())

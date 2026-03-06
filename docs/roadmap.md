@@ -32,7 +32,7 @@ Status key:
 - [x] 2.2 Define a repeatable generation pipeline that fetches, normalizes, and snapshots schema inputs.
 - [x] 2.3 Generate constructors, functions, enums, flags, and sum-type-like unions into the `tl` module.
 - [x] 2.4 Generate serialization and deserialization code instead of hand-writing wire logic for API objects.
-- [ ] 2.5 Preserve unknown or future constructors gracefully so layer bumps are survivable.
+- [x] 2.5 Preserve unknown or future constructors gracefully so layer bumps are survivable.
 - [x] 2.6 Add golden fixture tests for generated binary encoding and decoding.
 - [x] 2.7 Add a compatibility process for upgrading Telegram layers without breaking session or request code.
 

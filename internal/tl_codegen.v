@@ -37,6 +37,7 @@ fn render_tl_types(doc TlDocument) string {
 		builder.writeln('\t${marker_method_name(result_type)}()')
 		builder.writeln('}')
 		builder.writeln('')
+		render_unknown_wrapper(mut builder, result_type)
 	}
 
 	for entry in doc.entries {
@@ -133,6 +134,13 @@ fn render_tl_dispatch(doc TlDocument, snapshot TlSnapshot) string {
 			builder.writeln('\t\t\treturn object')
 			builder.writeln('\t\t}')
 		}
+		builder.writeln('\t\tUnknownObject {')
+		builder.writeln('\t\t\treturn ${unknown_struct_name(result_type)}{')
+		builder.writeln('\t\t\t\tconstructor: object.constructor')
+		builder.writeln('\t\t\t\tname: object.name')
+		builder.writeln('\t\t\t\traw_payload: object.raw_payload')
+		builder.writeln('\t\t\t}')
+		builder.writeln('\t\t}')
 		builder.writeln('\t\telse {')
 		builder.writeln("\t\t\treturn error('expected ${result_type}, got ' + object.qualified_name())")
 		builder.writeln('\t\t}')
@@ -415,8 +423,44 @@ fn default_value_expr(tl_type string) string {
 	}
 }
 
+fn render_unknown_wrapper(mut builder strings.Builder, result_type string) {
+	name := unknown_struct_name(result_type)
+	builder.writeln('pub struct ${name} {')
+	builder.writeln('pub:')
+	builder.writeln('\tconstructor u32')
+	builder.writeln('\tname string')
+	builder.writeln('\traw_payload []u8')
+	builder.writeln('}')
+	builder.writeln('')
+	builder.writeln('pub fn (${receiver_name(name)} ${name}) encode() ![]u8 {')
+	builder.writeln('\treturn UnknownObject{')
+	builder.writeln('\t\tconstructor: ${receiver_name(name)}.constructor')
+	builder.writeln('\t\tname: ${receiver_name(name)}.name')
+	builder.writeln('\t\traw_payload: ${receiver_name(name)}.raw_payload')
+	builder.writeln('\t}.encode()')
+	builder.writeln('}')
+	builder.writeln('')
+	builder.writeln('pub fn (${receiver_name(name)} ${name}) constructor_id() u32 {')
+	builder.writeln('\treturn ${receiver_name(name)}.constructor')
+	builder.writeln('}')
+	builder.writeln('')
+	builder.writeln('pub fn (${receiver_name(name)} ${name}) qualified_name() string {')
+	builder.writeln('\tif ${receiver_name(name)}.name.len > 0 {')
+	builder.writeln('\t\treturn ${receiver_name(name)}.name')
+	builder.writeln('\t}')
+	builder.writeln("\treturn 'unknown ${result_type}#\${${receiver_name(name)}.constructor:08x}'")
+	builder.writeln('}')
+	builder.writeln('')
+	builder.writeln('fn (${receiver_name(name)} ${name}) ${marker_method_name(result_type)}() {}')
+	builder.writeln('')
+}
+
 fn result_interface_name(result_type string) string {
 	return '${safe_type_base(pascal_case(result_type))}Type'
+}
+
+fn unknown_struct_name(result_type string) string {
+	return 'Unknown${result_interface_name(result_type)}'
 }
 
 fn marker_method_name(result_type string) string {

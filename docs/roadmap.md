@@ -38,13 +38,13 @@ Status key:
 
 ## Phase 3: Binary codec and transport engine
 
-- [ ] 3.1 Implement primitive TL readers and writers with exact little-endian and padding behavior.
-- [ ] 3.2 Implement MTProto transport framing for abridged first, then intermediate/full if needed.
-- [ ] 3.3 Add TCP connection management with timeout, reconnect, and DC failover hooks.
-- [ ] 3.4 Add message ID, seqno, ack, and container handling.
-- [ ] 3.5 Add bad-message, bad-server-salt, and resend handling.
-- [ ] 3.6 Add clock-skew detection and correction strategy for message ID validity.
-- [ ] 3.7 Add transport-level observability for frame sizes, retries, and reconnect reasons.
+- [x] 3.1 Implement primitive TL readers and writers with exact little-endian and padding behavior.
+- [x] 3.2 Implement MTProto transport framing for abridged first, then intermediate/full if needed.
+- [x] 3.3 Add TCP connection management with timeout, reconnect, and DC failover hooks.
+- [x] 3.4 Add message ID, seqno, ack, and container handling.
+- [x] 3.5 Add bad-message, bad-server-salt, and resend handling.
+- [x] 3.6 Add clock-skew detection and correction strategy for message ID validity.
+- [x] 3.7 Add transport-level observability for frame sizes, retries, and reconnect reasons.
 
 ## Phase 4: Crypto abstraction and auth key exchange
 

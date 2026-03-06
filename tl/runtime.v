@@ -40,6 +40,10 @@ fn (mut d Decoder) read_exact(length int) ![]u8 {
 	return chunk
 }
 
+pub fn (mut d Decoder) read_raw(length int) ![]u8 {
+	return d.read_exact(length)!
+}
+
 pub fn (mut d Decoder) read_u32() !u32 {
 	chunk := d.read_exact(4)!
 	return u32(chunk[0]) | (u32(chunk[1]) << 8) | (u32(chunk[2]) << 16) | (u32(chunk[3]) << 24)

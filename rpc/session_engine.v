@@ -88,11 +88,12 @@ pub struct SessionEngine {
 pub:
 	config EngineConfig
 mut:
-	transport     transport.Engine
-	state         session.SessionState
-	current_dc_id int
-	backend       crypto.Backend
-	pending_calls map[i64]PendingCallState
+	transport       transport.Engine
+	state           session.SessionState
+	current_dc_id   int
+	backend         crypto.Backend
+	pending_calls   map[i64]PendingCallState
+	inbound_updates []tl.UpdatesType
 }
 
 pub fn new_session_engine(transport_engine transport.Engine, state session.SessionState, config EngineConfig) !SessionEngine {
@@ -127,12 +128,13 @@ pub fn new_session_engine(transport_engine transport.Engine, state session.Sessi
 	engine.state.server_salt = resolved_state.server_salt
 	engine.state.session_id = resolved_state.session_id
 	return SessionEngine{
-		config:        config
-		transport:     engine
-		state:         resolved_state
-		current_dc_id: resolved_state.dc_id
-		backend:       backend
-		pending_calls: map[i64]PendingCallState{}
+		config:          config
+		transport:       engine
+		state:           resolved_state
+		current_dc_id:   resolved_state.dc_id
+		backend:         backend
+		pending_calls:   map[i64]PendingCallState{}
+		inbound_updates: []tl.UpdatesType{}
 	}
 }
 
@@ -184,6 +186,22 @@ pub fn (mut e SessionEngine) reconnect() ! {
 	e.transport.state.session_id = saved.session_id
 	e.resend_in_flight()!
 	e.flush_acks()!
+}
+
+pub fn (mut e SessionEngine) pump_once() ! {
+	e.connect()!
+	e.flush_acks()!
+	e.receive_once()!
+	e.flush_acks()!
+}
+
+pub fn (mut e SessionEngine) drain_updates() []tl.UpdatesType {
+	if e.inbound_updates.len == 0 {
+		return []tl.UpdatesType{}
+	}
+	updates := e.inbound_updates.clone()
+	e.inbound_updates = []tl.UpdatesType{}
+	return updates
 }
 
 pub fn (mut e SessionEngine) begin_invoke(function tl.Function, options CallOptions) !PendingCall {
@@ -490,6 +508,27 @@ fn (mut e SessionEngine) handle_object(message transport.WireMessage, object tl.
 		}
 		tl.Pong {
 			e.transport.state.mark_acknowledged([object.msg_id])
+		}
+		tl.UpdateShort {
+			e.inbound_updates << object
+		}
+		tl.UpdateShortMessage {
+			e.inbound_updates << object
+		}
+		tl.UpdateShortChatMessage {
+			e.inbound_updates << object
+		}
+		tl.UpdateShortSentMessage {
+			e.inbound_updates << object
+		}
+		tl.Updates {
+			e.inbound_updates << object
+		}
+		tl.UpdatesCombined {
+			e.inbound_updates << object
+		}
+		tl.UpdatesTooLong {
+			e.inbound_updates << object
 		}
 		else {}
 	}

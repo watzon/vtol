@@ -8,6 +8,7 @@ import session
 import time
 import tl
 import transport
+import updates
 
 pub enum TransportMode {
 	abridged
@@ -127,6 +128,8 @@ mut:
 	connect() !
 	disconnect() !
 	invoke(function tl.Function, options rpc.CallOptions) !tl.Object
+	pump_once() !
+	drain_updates() []tl.UpdatesType
 }
 
 struct NullRuntime {}
@@ -145,6 +148,14 @@ fn (mut n NullRuntime) invoke(function tl.Function, options rpc.CallOptions) !tl
 	return error('client is not connected')
 }
 
+fn (mut n NullRuntime) pump_once() ! {
+	return error('client is not connected')
+}
+
+fn (mut n NullRuntime) drain_updates() []tl.UpdatesType {
+	return []tl.UpdatesType{}
+}
+
 fn (n NullRuntime) session_state() session.SessionState {
 	return session.SessionState{}
 }
@@ -152,6 +163,11 @@ fn (n NullRuntime) session_state() session.SessionState {
 struct SessionRuntime {
 mut:
 	engine rpc.SessionEngine
+}
+
+struct RuntimeDifferenceSource {
+mut:
+	runtime ClientRuntime
 }
 
 fn (mut r SessionRuntime) connect() ! {
@@ -170,8 +186,20 @@ fn (mut r SessionRuntime) invoke(function tl.Function, options rpc.CallOptions) 
 	return r.engine.invoke(function, options)!
 }
 
+fn (mut r SessionRuntime) pump_once() ! {
+	r.engine.pump_once()!
+}
+
+fn (mut r SessionRuntime) drain_updates() []tl.UpdatesType {
+	return r.engine.drain_updates()
+}
+
 fn (r SessionRuntime) session_state() session.SessionState {
 	return r.engine.session_state()
+}
+
+fn (mut s RuntimeDifferenceSource) invoke(function tl.Function, options rpc.CallOptions) !tl.Object {
+	return s.runtime.invoke(function, options)!
 }
 
 pub struct Client {
@@ -184,6 +212,7 @@ mut:
 	runtime_ready  bool
 	session_loaded bool
 	peer_cache     map[string]CachedPeer
+	update_manager updates.Manager
 }
 
 pub fn new_client(config ClientConfig) !Client {
@@ -193,9 +222,10 @@ pub fn new_client(config ClientConfig) !Client {
 pub fn new_client_with_store(config ClientConfig, store session.Store) !Client {
 	validate_client_config(config)!
 	return Client{
-		config:     config
-		store:      store
-		peer_cache: map[string]CachedPeer{}
+		config:         config
+		store:          store
+		peer_cache:     map[string]CachedPeer{}
+		update_manager: updates.new_manager(updates.ManagerConfig{})
 	}
 }
 
@@ -258,6 +288,10 @@ pub fn (mut c Client) disconnect() ! {
 		c.runtime.disconnect()!
 	}
 	c.state = .disconnected
+}
+
+pub fn (c Client) update_state() ?updates.StateVector {
+	return c.update_manager.current_state()
 }
 
 pub fn (mut c Client) invoke(function tl.Function) !tl.Object {
@@ -396,7 +430,14 @@ pub fn (mut c Client) send_message(peer tl.InputPeerType, message string) !tl.Up
 		suggested_post:                 tl.UnknownSuggestedPostType{}
 		has_suggested_post_value:       false
 	})!
-	return expect_updates(result)!
+	batch := expect_updates(result)!
+	if c.update_manager.is_initialized() {
+		mut source := RuntimeDifferenceSource{
+			runtime: c.runtime
+		}
+		c.update_manager.ingest(batch, mut source)!
+	}
+	return batch
 }
 
 pub fn (mut c Client) send_message_to_username(username string, message string) !tl.UpdatesType {
@@ -445,6 +486,49 @@ pub fn (mut c Client) resolve_username(username string) !ResolvedPeer {
 	entry := resolved_peer_from_contacts(resolved)!
 	c.cache_resolved_peer(entry)
 	return entry
+}
+
+pub fn (mut c Client) sync_update_state() !updates.StateVector {
+	c.connect()!
+	return c.ensure_update_state()!
+}
+
+pub fn (mut c Client) subscribe_updates(config updates.SubscriptionConfig) !updates.Subscription {
+	c.connect()!
+	c.ensure_update_state()!
+	return c.update_manager.subscribe(config)!
+}
+
+pub fn (mut c Client) apply_updates(batch tl.UpdatesType) ! {
+	c.connect()!
+	c.ensure_update_state()!
+	mut source := RuntimeDifferenceSource{
+		runtime: c.runtime
+	}
+	c.update_manager.ingest(batch, mut source)!
+}
+
+pub fn (mut c Client) pump_updates_once() ! {
+	c.connect()!
+	c.ensure_update_state()!
+	c.runtime.pump_once() or {
+		if !c.config.rpc_config.auto_reconnect {
+			return err
+		}
+		c.runtime.disconnect() or {}
+		c.runtime.connect()!
+		mut source := RuntimeDifferenceSource{
+			runtime: c.runtime
+		}
+		c.update_manager.recover(mut source)!
+		return
+	}
+	for batch in c.runtime.drain_updates() {
+		mut source := RuntimeDifferenceSource{
+			runtime: c.runtime
+		}
+		c.update_manager.ingest(batch, mut source)!
+	}
 }
 
 fn validate_client_config(config ClientConfig) ! {
@@ -496,6 +580,16 @@ fn (mut c Client) build_runtime() !(ClientRuntime, bool) {
 	return SessionRuntime{
 		engine: engine
 	}, true
+}
+
+fn (mut c Client) ensure_update_state() !updates.StateVector {
+	if state := c.update_manager.current_state() {
+		return state
+	}
+	mut source := RuntimeDifferenceSource{
+		runtime: c.runtime
+	}
+	return c.update_manager.bootstrap(mut source)!
 }
 
 fn (c Client) new_transport_engine() !transport.Engine {

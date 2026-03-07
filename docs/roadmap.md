@@ -76,12 +76,12 @@ Status key:
 
 ## Phase 7: Updates, state sync, and long-lived clients
 
-- [ ] 7.1 Implement update state tracking with `pts`, `qts`, `seq`, and date handling.
-- [ ] 7.2 Implement gap detection and `getDifference` recovery logic.
-- [ ] 7.3 Provide a subscription API for updates, with backpressure behavior defined explicitly.
-- [ ] 7.4 Separate update ingestion from user callbacks so slow consumers do not corrupt session state.
-- [ ] 7.5 Add reconnection and re-subscription behavior for long-running clients.
-- [ ] 7.6 Add integration tests for out-of-order, duplicated, and missed updates.
+- [x] 7.1 Implement update state tracking with `pts`, `qts`, `seq`, and date handling.
+- [x] 7.2 Implement gap detection and `getDifference` recovery logic.
+- [x] 7.3 Provide a subscription API for updates, with backpressure behavior defined explicitly.
+- [x] 7.4 Separate update ingestion from user callbacks so slow consumers do not corrupt session state.
+- [x] 7.5 Add reconnection and re-subscription behavior for long-running clients.
+- [x] 7.6 Add integration tests for out-of-order, duplicated, and missed updates.
 
 ## Phase 8: Media and large payload workflows
 

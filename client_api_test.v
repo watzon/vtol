@@ -4,16 +4,19 @@ import encoding.hex
 import rpc
 import session
 import tl
+import updates
 
 @[heap]
 struct FakeRuntimeState {
 mut:
 	connect_calls    int
 	disconnect_calls int
+	pump_calls       int
 	connected        bool
 	invocations      []string
 	functions        []tl.Function
 	responses        []tl.Object
+	update_batches   []tl.UpdatesType
 }
 
 struct FakeRuntime {
@@ -53,6 +56,19 @@ fn (mut f FakeRuntime) invoke(function tl.Function, options rpc.CallOptions) !tl
 	response := f.state.responses[0]
 	f.state.responses = f.state.responses[1..].clone()
 	return response
+}
+
+fn (mut f FakeRuntime) pump_once() ! {
+	f.state.pump_calls++
+}
+
+fn (mut f FakeRuntime) drain_updates() []tl.UpdatesType {
+	if f.state.update_batches.len == 0 {
+		return []tl.UpdatesType{}
+	}
+	batches := f.state.update_batches.clone()
+	f.state.update_batches = []tl.UpdatesType{}
+	return batches
 }
 
 fn test_client_connect_and_disconnect_use_runtime_state() {
@@ -316,6 +332,99 @@ fn test_core_wrappers_delegate_to_tl_methods() {
 	]
 }
 
+fn test_client_subscribe_and_pump_updates_tracks_state() {
+	mut state := &FakeRuntimeState{
+		responses:      [
+			tl.Object(tl.UpdatesState{
+				pts:          0
+				qts:          0
+				date:         100
+				seq:          0
+				unread_count: 0
+			}),
+		]
+		update_batches: [
+			tl.UpdatesType(tl.UpdateShortSentMessage{
+				id:              7
+				pts:             1
+				pts_count:       1
+				date:            101
+				media:           tl.UnknownMessageMediaType{}
+				has_media_value: false
+			}),
+		]
+	}
+	mut client := new_fake_client(state)
+
+	subscription := client.subscribe_updates(updates.SubscriptionConfig{
+		buffer_size: 1
+	}) or { panic(err) }
+	client.pump_updates_once() or { panic(err) }
+
+	event := receive_event(subscription) or { panic(err) }
+	assert event.kind == .live
+	assert state.pump_calls == 1
+
+	if current := client.update_state() {
+		assert current.pts == 1
+		assert current.date == 101
+	} else {
+		assert false
+	}
+}
+
+fn test_client_pump_updates_recovers_after_transport_failure() {
+	mut state := &FakeRuntimeState{
+		responses: [
+			tl.Object(tl.UpdatesState{
+				pts:          1
+				qts:          0
+				date:         100
+				seq:          0
+				unread_count: 0
+			}),
+			tl.Object(tl.UpdatesDifference{
+				new_messages:           []tl.MessageType{}
+				new_encrypted_messages: []tl.EncryptedMessageType{}
+				other_updates:          [
+					tl.UpdateType(tl.UpdateEditMessage{
+						message:   tl.UnknownMessageType{}
+						pts:       2
+						pts_count: 1
+					}),
+				]
+				chats:                  []tl.ChatType{}
+				users:                  []tl.UserType{}
+				state:                  tl.UpdatesState{
+					pts:          2
+					qts:          0
+					date:         101
+					seq:          0
+					unread_count: 0
+				}
+			}),
+		]
+	}
+	mut client := new_fake_client(state)
+	_ = client.subscribe_updates(updates.SubscriptionConfig{}) or { panic(err) }
+	state.connected = true
+	client.runtime = FailingPumpRuntime{
+		state: state
+	}
+
+	client.pump_updates_once() or { panic(err) }
+
+	assert state.disconnect_calls == 1
+	assert state.connect_calls == 2
+
+	if current := client.update_state() {
+		assert current.pts == 2
+		assert current.date == 101
+	} else {
+		assert false
+	}
+}
+
 fn new_fake_client(state &FakeRuntimeState) Client {
 	mut client := new_client(ClientConfig{
 		app_id:     1
@@ -333,6 +442,59 @@ fn new_fake_client(state &FakeRuntimeState) Client {
 	}
 	client.runtime_ready = true
 	return client
+}
+
+fn receive_event(subscription updates.Subscription) ?updates.Event {
+	select {
+		event := <-subscription.events {
+			return event
+		}
+		else {
+			return none
+		}
+	}
+	return none
+}
+
+struct FailingPumpRuntime {
+mut:
+	state &FakeRuntimeState
+}
+
+fn (f FailingPumpRuntime) is_connected() bool {
+	return f.state.connected
+}
+
+fn (f FailingPumpRuntime) session_state() session.SessionState {
+	return FakeRuntime{
+		state: f.state
+	}.session_state()
+}
+
+fn (mut f FailingPumpRuntime) connect() ! {
+	f.state.connect_calls++
+	f.state.connected = true
+}
+
+fn (mut f FailingPumpRuntime) disconnect() ! {
+	f.state.disconnect_calls++
+	f.state.connected = false
+}
+
+fn (mut f FailingPumpRuntime) invoke(function tl.Function, options rpc.CallOptions) !tl.Object {
+	mut runtime := FakeRuntime{
+		state: f.state
+	}
+	return runtime.invoke(function, options)
+}
+
+fn (mut f FailingPumpRuntime) pump_once() ! {
+	f.state.pump_calls++
+	return error('simulated transport failure')
+}
+
+fn (mut f FailingPumpRuntime) drain_updates() []tl.UpdatesType {
+	return []tl.UpdatesType{}
 }
 
 fn make_test_user(username string, id i64, access_hash i64) tl.User {

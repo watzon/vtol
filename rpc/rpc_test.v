@@ -257,6 +257,42 @@ fn test_rpc_result_with_gzip_payload_is_unwrapped() {
 	}
 }
 
+fn test_pump_once_collects_inbound_updates() {
+	state := make_test_session_state()
+	mut stream := &ScriptedStream{}
+	mut engine := new_test_rpc_engine(state, {
+		1: stream
+	})
+
+	stream.push_server_payload(server_payload(state, transport.WireMessage{
+		msg_id: server_message_id(1_000)
+		seq_no: 1
+		body:   tl.UpdateShortSentMessage{
+			id:              7
+			pts:             1
+			pts_count:       1
+			date:            123
+			media:           tl.UnknownMessageMediaType{}
+			has_media_value: false
+		}.encode() or { panic(err) }
+	}))
+
+	engine.pump_once() or { panic(err) }
+	inbound := engine.drain_updates()
+
+	assert inbound.len == 1
+	first := inbound[0]
+	match first {
+		tl.UpdateShortSentMessage {
+			assert first.pts == 1
+			assert first.date == 123
+		}
+		else {
+			assert false
+		}
+	}
+}
+
 fn make_test_session_state() session.SessionState {
 	auth_key := []u8{len: crypto.auth_key_size, init: u8((index * 17 + 3) % 251)}
 	auth_key_id := crypto.derive_auth_key_id(crypto.default_backend(), auth_key) or { panic(err) }

@@ -242,3 +242,14 @@ fn test_engine_failover_uses_next_endpoint() {
 	endpoint := engine.connect() or { panic(err) }
 	assert endpoint.id == 2
 }
+
+fn test_format_debug_tl_object_strips_interface_wrapper() {
+	object := tl.Object(tl.Ping{
+		ping_id: 42
+	})
+
+	formatted := format_debug_tl_object(object)
+	assert formatted.starts_with('tl.Ping{')
+	assert formatted.contains('ping_id: 42')
+	assert !formatted.starts_with('tl.Object(')
+}

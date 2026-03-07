@@ -375,7 +375,7 @@ pub fn (mut e Engine) receive_packet() !UnencryptedPacket {
 }
 
 pub fn (mut e Engine) invoke_unencrypted(function tl.Function) !tl.Object {
-	debug_unencrypted_mtproto('outgoing', function.qualified_name())
+	debug_unencrypted_mtproto_function('outgoing', function)
 	packet := UnencryptedPacket{
 		auth_key_id: 0
 		message_id:  e.state.next_message_id()
@@ -391,7 +391,7 @@ pub fn (mut e Engine) invoke_unencrypted(function tl.Function) !tl.Object {
 		eprintln('unencrypted response len=${response.body.len} hex=${response.body.hex()}')
 	}
 	object := tl.decode_object(response.body)!
-	debug_unencrypted_mtproto('incoming', object.qualified_name())
+	debug_unencrypted_mtproto_object('incoming', object)
 	return object
 }
 
@@ -800,11 +800,47 @@ fn debug_transport_payload(label string, payload []u8) {
 	eprintln('${label} len=${payload.len} hex=${hex_payload}')
 }
 
-fn debug_unencrypted_mtproto(direction string, name string) {
-	if os.getenv('VTOL_DEBUG_MTPROTO') != '1' {
+fn debug_object_logging_enabled() bool {
+	return os.getenv('VTOL_DEBUG_MTPROTO') == '1' || os.getenv('VTOL_DEBUG_TRANSPORT') == '1'
+}
+
+fn debug_unencrypted_mtproto_object(direction string, object tl.Object) {
+	if !debug_object_logging_enabled() {
 		return
 	}
-	eprintln('${direction} unencrypted mtproto object=${name}')
+	eprintln('${direction} unencrypted mtproto object=\n${indent_multiline(format_debug_tl_object(object),
+		'  ')}')
+}
+
+fn debug_unencrypted_mtproto_function(direction string, function tl.Function) {
+	if !debug_object_logging_enabled() {
+		return
+	}
+	eprintln('${direction} unencrypted mtproto object=\n${indent_multiline(format_debug_tl_function(function),
+		'  ')}')
+}
+
+fn format_debug_tl_object(object tl.Object) string {
+	raw := '${object}'
+	if raw.starts_with('tl.Object(') && raw.ends_with(')') && raw.len > 11 {
+		return raw[10..raw.len - 1]
+	}
+	return raw
+}
+
+fn format_debug_tl_function(function tl.Function) string {
+	raw := '${function}'
+	if raw.starts_with('tl.Function(') && raw.ends_with(')') && raw.len > 13 {
+		return raw[12..raw.len - 1]
+	}
+	return raw
+}
+
+fn indent_multiline(value string, indent string) string {
+	if value.len == 0 {
+		return indent
+	}
+	return indent + value.replace('\n', '\n' + indent)
 }
 
 fn write_all(mut stream Stream, data []u8) ! {

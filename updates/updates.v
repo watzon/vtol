@@ -416,19 +416,19 @@ fn apply_update_step(mut state StateVector, update tl.UpdateType) StepResult {
 			return apply_pts_step(mut state, update.pts, update.pts_count, 0)
 		}
 		tl.UpdateNewChannelMessage {
-			return apply_pts_step(mut state, update.pts, update.pts_count, 0)
+			return .ignored
 		}
 		tl.UpdateEditMessage {
 			return apply_pts_step(mut state, update.pts, update.pts_count, 0)
 		}
 		tl.UpdateEditChannelMessage {
-			return apply_pts_step(mut state, update.pts, update.pts_count, 0)
+			return .ignored
 		}
 		tl.UpdateDeleteMessages {
 			return apply_pts_step(mut state, update.pts, update.pts_count, 0)
 		}
 		tl.UpdateDeleteChannelMessages {
-			return apply_pts_step(mut state, update.pts, update.pts_count, 0)
+			return .ignored
 		}
 		tl.UpdateReadHistoryInbox {
 			return apply_pts_step(mut state, update.pts, update.pts_count, 0)
@@ -446,15 +446,12 @@ fn apply_update_step(mut state StateVector, update tl.UpdateType) StepResult {
 			return apply_pts_step(mut state, update.pts, update.pts_count, 0)
 		}
 		tl.UpdatePinnedChannelMessages {
-			return apply_pts_step(mut state, update.pts, update.pts_count, 0)
+			return .ignored
 		}
 		tl.UpdateFolderPeers {
 			return apply_pts_step(mut state, update.pts, update.pts_count, 0)
 		}
 		tl.UpdateChannelTooLong {
-			if update.pts > int(state.pts) {
-				return .gap
-			}
 			return .ignored
 		}
 		tl.UpdateNewEncryptedMessage {

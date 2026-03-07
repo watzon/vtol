@@ -938,52 +938,50 @@ fn default_rpc_error_action(rpc_error tl.RpcError, can_retry bool) MiddlewareAct
 }
 
 fn debug_mtproto_wire_message(direction string, message transport.WireMessage) {
-	if os.getenv('VTOL_DEBUG_MTPROTO') != '1' {
+	if !mtproto_payload_logging_enabled() {
 		return
 	}
-	object := tl.decode_mtproto_object(message.body) or {
-		eprintln('${direction} mtproto msg_id=${message.msg_id} seq=${message.seq_no} decode_error="${err.msg()}"')
-		return
-	}
-	eprintln('${direction} mtproto msg_id=${message.msg_id} seq=${message.seq_no} object=${describe_mtproto_object(object)}')
+	eprintln(format_mtproto_wire_message(direction, message))
 }
 
-fn describe_mtproto_object(object tl.Object) string {
-	match object {
-		tl.InvokeWithLayer {
-			return 'invokeWithLayer(layer=${object.layer}, query=${describe_mtproto_object(object.query)})'
+fn mtproto_payload_logging_enabled() bool {
+	return os.getenv('VTOL_DEBUG_MTPROTO') == '1' || os.getenv('VTOL_DEBUG_TRANSPORT') == '1'
+}
+
+fn format_mtproto_wire_message(direction string, message transport.WireMessage) string {
+	header := '${direction} mtproto msg_id=${message.msg_id} seq=${message.seq_no}'
+	if is_message_container(message.body) {
+		container := transport.decode_message_container(message.body) or {
+			return '${header} container_decode_error="${err.msg()}"'
 		}
-		tl.InitConnection {
-			return 'initConnection(api_id=${object.api_id}, query=${describe_mtproto_object(object.query)})'
+		mut lines := [
+			'${header} object=message_container count=${container.messages.len}',
+		]
+		for index, inner in container.messages {
+			lines << indent_multiline(format_mtproto_wire_message('${direction}[${index}]',
+				inner), '  ')
 		}
-		tl.RpcResult {
-			return 'rpc_result(req_msg_id=${object.req_msg_id}, result=${describe_mtproto_object(object.result)})'
-		}
-		tl.BadMsgNotification {
-			return 'bad_msg_notification(code=${object.error_code}, bad_msg_id=${object.bad_msg_id}, bad_seq=${object.bad_msg_seqno})'
-		}
-		tl.BadServerSalt {
-			return 'bad_server_salt(code=${object.error_code}, bad_msg_id=${object.bad_msg_id}, new_server_salt=${object.new_server_salt})'
-		}
-		tl.MsgsAck {
-			return 'msgs_ack(count=${object.msg_ids.len})'
-		}
-		tl.MsgResendReq {
-			return 'msg_resend_req(count=${object.msg_ids.len})'
-		}
-		tl.NewSessionCreated {
-			return 'new_session_created(first_msg_id=${object.first_msg_id}, server_salt=${object.server_salt})'
-		}
-		tl.GzipPacked {
-			return 'gzip_packed(${describe_mtproto_object(object.object)})'
-		}
-		tl.RpcError {
-			return 'rpc_error(code=${object.error_code}, message=${object.error_message})'
-		}
-		else {
-			return object.qualified_name()
-		}
+		return lines.join('\n')
 	}
+	object := tl.decode_mtproto_object(message.body) or {
+		return '${header} decode_error="${err.msg()}"'
+	}
+	return '${header} object=\n${indent_multiline(format_debug_tl_object(object), '  ')}'
+}
+
+fn format_debug_tl_object(object tl.Object) string {
+	raw := '${object}'
+	if raw.starts_with('tl.Object(') && raw.ends_with(')') && raw.len > 11 {
+		return raw[10..raw.len - 1]
+	}
+	return raw
+}
+
+fn indent_multiline(value string, indent string) string {
+	if value.len == 0 {
+		return indent
+	}
+	return indent + value.replace('\n', '\n' + indent)
 }
 
 fn parse_suffix_number(value string, prefix string) ?int {

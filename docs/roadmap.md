@@ -107,6 +107,6 @@ Status key:
 - [ ] 10.2 Add richer entity helpers, pagination utilities, and convenience iterators.
 - [ ] 10.3 Add robust dialog/history iteration and batched fetch helpers.
 - [ ] 10.4 Add reconnection, migration, and retry behavior that is transparent but inspectable.
-- [ ] 10.5 Add example applications that prove login, messaging, updates, downloads, and long-running sessions.
+- [x] 10.5 Add example applications that prove login, messaging, updates, downloads, and long-running sessions.
 - [ ] 10.6 Define a compatibility and upgrade process for future Telegram layer changes.
 - [ ] 10.7 Mark a `1.0` target only after generated API coverage, session stability, and update recovery are proven in integration testing.

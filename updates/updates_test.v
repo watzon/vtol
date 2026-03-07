@@ -198,6 +198,93 @@ fn test_subscription_drop_oldest_keeps_latest_event() {
 	assert receive_event(subscription) == none
 }
 
+fn test_manager_accepts_channel_updates_without_global_pts_recovery() {
+	mut source := FakeSource{
+		responses: [
+			tl.Object(tl.UpdatesState{
+				pts:          100
+				qts:          0
+				date:         100
+				seq:          1
+				unread_count: 0
+			}),
+		]
+	}
+	mut manager := new_manager(ManagerConfig{})
+	subscription := manager.subscribe(SubscriptionConfig{
+		buffer_size: 2
+	}) or { panic(err) }
+
+	manager.ingest(tl.UpdatesType(tl.Updates{
+		updates: [
+			tl.UpdateType(tl.UpdateNewChannelMessage{
+				message:   tl.UnknownMessageType{}
+				pts:       9000
+				pts_count: 1
+			}),
+		]
+		users:   []tl.UserType{}
+		chats:   []tl.ChatType{}
+		date:    200
+		seq:     2
+	}), mut source) or { panic(err) }
+
+	event := receive_event(subscription) or { panic(err) }
+	assert event.kind == .live
+	assert source.calls == ['updates.getState']
+
+	if state := manager.current_state() {
+		assert state.pts == 100
+		assert state.seq == 2
+		assert state.date == 200
+	} else {
+		assert false
+	}
+}
+
+fn test_manager_ignores_channel_too_long_without_forcing_global_difference() {
+	mut source := FakeSource{
+		responses: [
+			tl.Object(tl.UpdatesState{
+				pts:          50
+				qts:          0
+				date:         100
+				seq:          3
+				unread_count: 0
+			}),
+		]
+	}
+	mut manager := new_manager(ManagerConfig{})
+	subscription := manager.subscribe(SubscriptionConfig{
+		buffer_size: 2
+	}) or { panic(err) }
+
+	manager.ingest(tl.UpdatesType(tl.Updates{
+		updates: [
+			tl.UpdateType(tl.UpdateChannelTooLong{
+				channel_id: 77
+				pts:        1234
+			}),
+		]
+		users:   []tl.UserType{}
+		chats:   []tl.ChatType{}
+		date:    201
+		seq:     4
+	}), mut source) or { panic(err) }
+
+	event := receive_event(subscription) or { panic(err) }
+	assert event.kind == .live
+	assert source.calls == ['updates.getState']
+
+	if state := manager.current_state() {
+		assert state.pts == 50
+		assert state.seq == 4
+		assert state.date == 201
+	} else {
+		assert false
+	}
+}
+
 fn receive_event(subscription Subscription) ?Event {
 	select {
 		event := <-subscription.events {

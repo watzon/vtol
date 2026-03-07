@@ -421,6 +421,54 @@ fn test_debug_logger_records_request_result_and_retry() {
 	assert has_retry
 }
 
+fn test_format_mtproto_wire_message_renders_object_payload() {
+	message := transport.WireMessage{
+		msg_id: 123
+		seq_no: 1
+		body:   tl.Ping{
+			ping_id: 42
+		}.encode() or { panic(err) }
+	}
+
+	formatted := format_mtproto_wire_message('outgoing', message)
+	assert formatted.contains('outgoing mtproto msg_id=123 seq=1')
+	assert formatted.contains('tl.Ping{')
+	assert formatted.contains('ping_id: 42')
+}
+
+fn test_format_mtproto_wire_message_expands_message_container() {
+	container := transport.MessageContainer{
+		messages: [
+			transport.WireMessage{
+				msg_id: 10
+				seq_no: 1
+				body:   tl.Ping{
+					ping_id: 11
+				}.encode() or { panic(err) }
+			},
+			transport.WireMessage{
+				msg_id: 20
+				seq_no: 3
+				body:   tl.Ping{
+					ping_id: 22
+				}.encode() or { panic(err) }
+			},
+		]
+	}
+	message := transport.WireMessage{
+		msg_id: 999
+		seq_no: 0
+		body:   container.encode()
+	}
+
+	formatted := format_mtproto_wire_message('incoming', message)
+	assert formatted.contains('incoming mtproto msg_id=999 seq=0 object=message_container count=2')
+	assert formatted.contains('incoming[0] mtproto msg_id=10 seq=1')
+	assert formatted.contains('incoming[1] mtproto msg_id=20 seq=3')
+	assert formatted.contains('ping_id: 11')
+	assert formatted.contains('ping_id: 22')
+}
+
 fn make_test_session_state() session.SessionState {
 	auth_key := []u8{len: crypto.auth_key_size, init: u8((index * 17 + 3) % 251)}
 	auth_key_id := crypto.derive_auth_key_id(crypto.default_backend(), auth_key) or { panic(err) }

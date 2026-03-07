@@ -68,7 +68,7 @@ Status key:
 ## Phase 6: High-level client API
 
 - [x] 6.1 Design `vtol.Client` around explicit `connect`, `login`, `invoke`, and `disconnect` flows.
-- [ ] 6.2 Add sign-in flows for code-based login, 2FA password, and bot-token-compatible paths where MTProto supports them.
+- [x] 6.2 Add sign-in flows for code-based login, 2FA password, and bot-token-compatible paths where MTProto supports them.
 - [x] 6.3 Expose ergonomic wrappers for core account, dialog, chat, and messaging operations.
 - [x] 6.4 Add input entity resolution and cached peer handling.
 - [x] 6.5 Keep the high-level surface thin over generated TL methods to avoid drift from Telegram capabilities.

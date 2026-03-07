@@ -1,5 +1,6 @@
 module vtol
 
+import encoding.hex
 import rpc
 import session
 import tl
@@ -84,14 +85,16 @@ fn test_login_wrappers_delegate_to_generated_auth_methods() {
 				user: make_test_user('alice', 42, 77)
 			}),
 			tl.Object(tl.AccountPassword{
-				current_algo:           tl.UnknownPasswordKdfAlgoType{}
+				current_algo:           srp_password_algo()
 				new_algo:               tl.UnknownPasswordKdfAlgoType{}
 				new_secure_algo:        tl.UnknownSecurePasswordKdfAlgoType{}
 				secure_random:          []u8{}
-				has_password:           false
-				has_current_algo_value: false
-				has_srp_b_value:        false
-				has_srp_id_value:       false
+				has_password:           true
+				has_current_algo_value: true
+				srp_b:                  srp_b_bytes()
+				has_srp_b_value:        true
+				srp_id:                 77
+				has_srp_id_value:       true
 			}),
 			tl.Object(tl.AuthAuthorization{
 				user: make_test_user('alice', 42, 77)
@@ -140,17 +143,7 @@ fn test_login_wrappers_delegate_to_generated_auth_methods() {
 		}
 	}
 
-	password := client.get_password_challenge() or { panic(err) }
-	match password {
-		tl.AccountPassword {
-			assert !password.has_password
-		}
-		else {
-			assert false
-		}
-	}
-
-	_ = client.check_password(tl.UnknownInputCheckPasswordSRPType{}) or { panic(err) }
+	_ = client.sign_in_password('123123') or { panic(err) }
 	_ = client.login_bot('123:bot-token') or { panic(err) }
 
 	assert state.connect_calls == 1
@@ -161,6 +154,24 @@ fn test_login_wrappers_delegate_to_generated_auth_methods() {
 		'auth.checkPassword',
 		'auth.importBotAuthorization',
 	]
+
+	password_call := state.functions[3]
+	match password_call {
+		tl.AuthCheckPassword {
+			match password_call.password {
+				tl.InputCheckPasswordSRP {
+					assert password_call.password.a.len == 256
+					assert password_call.password.m1.len == 32
+				}
+				else {
+					assert false
+				}
+			}
+		}
+		else {
+			assert false
+		}
+	}
 
 	if peer := client.cached_input_peer('alice') {
 		match peer {
@@ -174,6 +185,24 @@ fn test_login_wrappers_delegate_to_generated_auth_methods() {
 	} else {
 		assert false
 	}
+}
+
+fn test_password_check_matches_reference_srp_vector() {
+	password_check := password_check_from_account_with_random('123123', tl.AccountPassword{
+		has_password:           true
+		current_algo:           srp_password_algo()
+		has_current_algo_value: true
+		srp_b:                  srp_b_bytes()
+		has_srp_b_value:        true
+		srp_id:                 99
+		has_srp_id_value:       true
+		new_algo:               tl.UnknownPasswordKdfAlgoType{}
+		new_secure_algo:        tl.UnknownSecurePasswordKdfAlgoType{}
+		secure_random:          []u8{}
+	}, srp_random_bytes()) or { panic(err) }
+
+	assert password_check.a == srp_expected_a_bytes()
+	assert hex.encode(password_check.m1).to_upper() == test_srp_expected_m1_hex
 }
 
 fn test_resolve_username_caches_peer_and_send_message_reuses_cache() {
@@ -326,4 +355,35 @@ fn make_test_user(username string, id i64, access_hash i64) tl.User {
 		profile_color:            tl.UnknownPeerColorType{}
 		has_profile_color_value:  false
 	}
+}
+
+const test_srp_expected_m1_hex = '999DF906BDA2C6CBB52F503406EBA2D0D0503ACE0CC302C38F13EE5010AD4051'
+
+fn srp_password_algo() tl.PasswordKdfAlgoSHA256SHA256PBKDF2HMACSHA512iter100000SHA256ModPow {
+	return tl.PasswordKdfAlgoSHA256SHA256PBKDF2HMACSHA512iter100000SHA256ModPow{
+		salt1: decode_hex('4D11FB6BEC38F9D2546BB0F61E4F1C99A1BC0DB8F0D5F35B1291B37B213123D7ED48F3C6794D495B')
+		salt2: decode_hex('A1B181AAFE88188680AE32860D60BB01')
+		g:     3
+		p:     decode_hex('C71CAEB9C6B1C9048E6C522F70F13F73980D40238E3E21C14934D037563D930F48198A0AA7C14058229493D22530F4DBFA336F6E0AC925139543AED44CCE7C3720FD51F69458705AC68CD4FE6B6B13ABDC9746512969328454F18FAF8C595F642477FE96BB2A941D5BCD1D4AC8CC49880708FA9B378E3C4F3A9060BEE67CF9A4A4A695811051907E162753B56B0F6B410DBA74D8A84B2A14B3144E0EF1284754FD17ED950D5965B4B9DD46582DB1178D169C6BC465B0D6FF9CA3928FEF5B9AE4E418FC15E83EBEA0F87FA9FF5EED70050DED2849F47BF959D956850CE929851F0D8115F635B105EE2E4E15D04B2454BF6F4FADF034B10403119CD8E3B92FCC5B')
+	}
+}
+
+fn srp_b_bytes() []u8 {
+	return decode_hex('9C52401A6A8084EC82F01C3725D3FB448BD2F0C909F9D97726EAC4B7A74172D952F02466BE6734FA274D2B7429E27397F10372D66B400B80A5C5AE3F28B17BF3105D7A2D2A885998CDC2DEFC208AEC217AB58859A9ABC2374AD93DC285F4B3FBCAFF4143D7888F2425BD2FB711B25609CEB21757D935B1EF2F042173AD0CE2FE0E474DAC53914BD25A8A9AED4AEA8953D55CB88621DB37B871EA0D04393AC0987F68094CCC9DE8239251375D8FFFD263316CD528C097B7BC9FB919FBEDB76C525DF3413C374EE076D97A1E6D352BB7CC80FD13651B04B32E2E48C5268150842CFD07CF855958B1B5EA9C36FDAD697FE3AEC8DCC6B1EFEC36874AF226204676CF')
+}
+
+fn srp_random_bytes() []u8 {
+	mut out := []u8{len: 256}
+	out[255] = 1
+	return out
+}
+
+fn srp_expected_a_bytes() []u8 {
+	mut out := []u8{len: 256}
+	out[255] = 3
+	return out
+}
+
+fn decode_hex(value string) []u8 {
+	return hex.decode(value) or { panic(err) }
 }

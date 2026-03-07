@@ -43,8 +43,14 @@ match authorization {
 
 Bot login is also available through `client.login_bot(token)`.
 
-Password-based 2FA is only partially wrapped today:
+If the account requires 2FA, the client can complete the SRP exchange directly:
+
+```v
+authorization := client.sign_in_password('correct horse battery staple') or { panic(err) }
+println(authorization.qualified_name())
+```
+
+The low-level pieces are still available if you need them:
 
 - `client.get_password_challenge()` fetches the SRP challenge.
 - `client.check_password(input_srp)` submits a precomputed `tl.InputCheckPasswordSRPType`.
-- The SRP derivation helper that turns a raw password string into that TL input is still pending, so roadmap item `6.2` remains open.

@@ -2,6 +2,7 @@ module vtol
 
 import auth
 import crypto
+import math.big
 import rpc
 import session
 import time
@@ -323,6 +324,12 @@ pub fn (mut c Client) check_password(password tl.InputCheckPasswordSRPType) !tl.
 	return authorization
 }
 
+pub fn (mut c Client) sign_in_password(password string) !tl.AuthAuthorizationType {
+	challenge := c.get_password_challenge()!
+	password_check := password_check_from_challenge(password, challenge)!
+	return c.check_password(password_check)!
+}
+
 pub fn (mut c Client) login_bot(bot_token string) !tl.AuthAuthorizationType {
 	result := c.invoke(tl.AuthImportBotAuthorization{
 		flags:          0
@@ -642,6 +649,88 @@ fn expect_auth_logged_out(object tl.Object) !tl.AuthLoggedOutType {
 	}
 }
 
+fn password_check_from_challenge(password string, challenge tl.AccountPasswordType) !tl.InputCheckPasswordSRP {
+	match challenge {
+		tl.AccountPassword {
+			return password_check_from_account(password, challenge)!
+		}
+		else {
+			return error('expected account.Password, got ${challenge.qualified_name()}')
+		}
+	}
+}
+
+fn password_check_from_account(password string, challenge tl.AccountPassword) !tl.InputCheckPasswordSRP {
+	random := crypto.default_backend().random_bytes(crypto.auth_key_size)!
+	return password_check_from_account_with_random(password, challenge, random)!
+}
+
+fn password_check_from_account_with_random(password string, challenge tl.AccountPassword, random []u8) !tl.InputCheckPasswordSRP {
+	if !challenge.has_password || !challenge.has_current_algo_value {
+		return error('account password challenge does not include SRP parameters')
+	}
+	if !challenge.has_srp_b_value || !challenge.has_srp_id_value {
+		return error('account password challenge is missing srp parameters')
+	}
+	if challenge.srp_b.len == 0 {
+		return error('account password challenge srp_B must not be empty')
+	}
+	if random.len == 0 {
+		return error('SRP random input must not be empty')
+	}
+	algo := match challenge.current_algo {
+		tl.PasswordKdfAlgoSHA256SHA256PBKDF2HMACSHA512iter100000SHA256ModPow {
+			challenge.current_algo
+		}
+		else {
+			return error('unsupported password KDF algorithm ${challenge.current_algo.qualified_name()}')
+		}
+	}
+	backend := crypto.default_backend()
+	p_bytes := crypto.left_pad(crypto.trim_leading_zero_bytes(algo.p), crypto.auth_key_size)!
+	g_bytes := crypto.left_pad([u8(algo.g)], crypto.auth_key_size)!
+	gb_bytes := crypto.left_pad(crypto.trim_leading_zero_bytes(challenge.srp_b), crypto.auth_key_size)!
+	p := big.integer_from_bytes(crypto.trim_leading_zero_bytes(p_bytes))
+	g := big.integer_from_int(algo.g)
+	mut a := big.integer_from_bytes(crypto.trim_leading_zero_bytes(random))
+	if a.signum == 0 {
+		a = big.one_int
+	}
+	ga := g.big_mod_pow(a, p)!
+	ga_raw, ga_sign := ga.bytes()
+	if ga_sign <= 0 {
+		return error('derived SRP A must be positive')
+	}
+	ga_bytes := crypto.left_pad(ga_raw, crypto.auth_key_size)!
+	crypto.validate_dh_group(algo.g, p_bytes, gb_bytes, gb_bytes)!
+	u := big.integer_from_bytes(sha256_concat(backend, ga_bytes, gb_bytes)!)
+	x := big.integer_from_bytes(password_kdf_hash(backend, password.bytes(), algo.salt1,
+		algo.salt2)!)
+	v := g.big_mod_pow(x, p)!
+	k := big.integer_from_bytes(sha256_concat(backend, p_bytes, g_bytes)!)
+	kv := (k * v).mod_euclid(p)
+	gb := big.integer_from_bytes(crypto.trim_leading_zero_bytes(challenge.srp_b))
+	exponent := a + (u * x)
+	sa := (gb - kv).mod_euclid(p).big_mod_pow(exponent, p)!
+	sa_raw, sa_sign := sa.bytes()
+	if sa_sign <= 0 {
+		return error('derived SRP shared secret must be positive')
+	}
+	sa_bytes := crypto.left_pad(sa_raw, crypto.auth_key_size)!
+	ka := backend.sha256(sa_bytes)!
+	hp := backend.sha256(p_bytes)!
+	hg := backend.sha256(g_bytes)!
+	hs1 := backend.sha256(algo.salt1)!
+	hs2 := backend.sha256(algo.salt2)!
+	xor_hp_hg := crypto.xor_bytes(hp, hg)!
+	m1 := sha256_concat(backend, xor_hp_hg, hs1, hs2, ga_bytes, gb_bytes, ka)!
+	return tl.InputCheckPasswordSRP{
+		srp_id: challenge.srp_id
+		a:      ga_bytes
+		m1:     m1
+	}
+}
+
 fn expect_account_password(object tl.Object) !tl.AccountPasswordType {
 	match object {
 		tl.AccountPassword {
@@ -885,4 +974,22 @@ fn normalize_cache_key(value string) string {
 		return value.to_lower()
 	}
 	return normalize_username(value)
+}
+
+fn password_kdf_hash(backend crypto.Backend, password []u8, salt1 []u8, salt2 []u8) ![]u8 {
+	primary := salted_sha256(backend, salted_sha256(backend, password, salt1)!, salt2)!
+	pbkdf2 := crypto.pbkdf2_hmac_sha512(primary, salt1, 100_000, 64)!
+	return salted_sha256(backend, pbkdf2, salt2)!
+}
+
+fn salted_sha256(backend crypto.Backend, data []u8, salt []u8) ![]u8 {
+	return sha256_concat(backend, salt, data, salt)!
+}
+
+fn sha256_concat(backend crypto.Backend, parts ...[]u8) ![]u8 {
+	mut input := []u8{}
+	for part in parts {
+		input << part
+	}
+	return backend.sha256(input)!
 }

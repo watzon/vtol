@@ -22,12 +22,18 @@ $if $pkgconfig('openssl') {
 	#flag darwin -L /opt/homebrew/opt/openssl/lib
 }
 
+#include <openssl/evp.h>
 #include <openssl/rand.h> # Please install OpenSSL development headers
 #include <openssl/sha.h>
+
+@[typedef]
+struct C.EVP_MD {}
 
 fn C.RAND_bytes(buf &u8, num int) int
 fn C.SHA1(data &u8, len usize, out &u8) &u8
 fn C.SHA256(data &u8, len usize, out &u8) &u8
+fn C.EVP_sha512() &C.EVP_MD
+fn C.PKCS5_PBKDF2_HMAC(pass voidptr, passlen int, salt &u8, saltlen int, iter int, digest &C.EVP_MD, keylen int, out &u8) int
 
 const openssl_success = 1
 
@@ -144,6 +150,31 @@ fn (backend OpenSSLBackend) aes_ige_crypt(data []u8, key []u8, iv []u8, encrypt 
 			iv_left = block.clone()
 			iv_right = plain_block.clone()
 		}
+	}
+	return out
+}
+
+pub fn pbkdf2_hmac_sha512(password []u8, salt []u8, iterations int, key_len int) ![]u8 {
+	if iterations <= 0 {
+		return error('PBKDF2 iterations must be greater than zero')
+	}
+	if key_len <= 0 {
+		return error('PBKDF2 key length must be greater than zero')
+	}
+	mut out := []u8{len: key_len}
+	mut empty_password := []u8{len: 1}
+	mut empty_salt := []u8{len: 1}
+	mut password_ptr := voidptr(empty_password.data)
+	if password.len > 0 {
+		password_ptr = voidptr(password.data)
+	}
+	mut salt_ptr := empty_salt.data
+	if salt.len > 0 {
+		salt_ptr = salt.data
+	}
+	if C.PKCS5_PBKDF2_HMAC(password_ptr, password.len, salt_ptr, salt.len, iterations,
+		C.EVP_sha512(), key_len, out.data) != openssl_success {
+		return error('openssl PKCS5_PBKDF2_HMAC failed')
 	}
 	return out
 }

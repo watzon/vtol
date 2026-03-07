@@ -4,7 +4,7 @@ VTOL is an MTProto library for V with a core-first architecture: build the proto
 
 ## Status
 
-The repository is still pre-`1.0`, but it is no longer just a scaffold. The core transport/auth/session/RPC layers have unit coverage, and the first thin `vtol.Client` API now covers connect, raw invoke, code login, bot login, peer resolution, and basic account/dialog/message helpers.
+The repository is still pre-`1.0`, but it is no longer just a scaffold. The core transport/auth/session/RPC layers have unit coverage, and the first thin `vtol.Client` API now covers connect, raw invoke, code login, 2FA password login, bot login, peer resolution, and basic account/dialog/message helpers.
 
 ## Goals
 

@@ -7,7 +7,7 @@ VTOL is an MTProto library for V. The public docs are organized around the commo
 VTOL is still pre-`1.0`, but the high-value client surface is already in place:
 
 - `Client.start()` for user or bot login
-- session persistence via `MemorySession`, `StringSession`, and `SQLiteSession`
+- session persistence via the built-in `vtol.session` backends: `MemorySession`, `StringSession`, and `SQLiteSession`
 - peer-like inputs for high-level client methods
 - message-oriented send helpers that return `SentMessage`
 - long-lived update handling with `on_new_message()` and recovery-aware pump loops

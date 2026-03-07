@@ -72,7 +72,7 @@ This is often the cleanest bridge between VTOL's ergonomic surface and a Telegra
 If you need per-call RPC options, use `invoke_with_options()`.
 
 ```v
-import rpc
+import vtol.rpc
 
 result := client.invoke_with_options(tl.HelpGetConfig{}, rpc.CallOptions{
 	timeout_ms: 20_000

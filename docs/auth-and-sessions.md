@@ -39,7 +39,7 @@ Use these when you need to own the login state machine yourself.
 
 ## Session Backends
 
-VTOL ships with three built-in session backends.
+VTOL ships with three built-in session backends under `vtol.session`. Most applications use them through VTOL's convenience constructors instead of instantiating the store directly.
 
 ### `MemorySession`
 
@@ -102,8 +102,8 @@ mut client := vtol.new_client_with_string_session(config, existing_session)!
 If you need to export the encoded value after login, work with the store directly:
 
 ```v
-import session
 import vtol
+import vtol.session
 
 mut store := session.new_string_session('')!
 mut client := vtol.new_client_with_store(config, store)!

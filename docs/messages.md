@@ -61,10 +61,14 @@ sent := client.send_text_with('telegram', 'quiet reply', vtol.SendOptions{
 	has_reply_to_message_id_value: true
 	silent:                        true
 	disable_link_preview:          true
+	schedule_date:                 1_893_456_000
+	has_schedule_date_value:       true
 })!
 ```
 
-Current stable options include:
+Telegram-style optional fields use explicit presence flags in the current API. Set the value and the matching `has_*_value` field together when you want VTOL to send that option.
+
+Current stable `SendOptions` fields include:
 
 - reply target
 - silent send
@@ -103,9 +107,9 @@ println(sent.id)
 - caption
 - MIME type
 - document attributes
-- reply target
+- reply target, using `reply_to_message_id` together with `has_reply_to_message_id_value`
 - silent send
-- scheduled send
+- scheduled send, using `schedule_date` together with `has_schedule_date_value`
 - spoiler and file/media flags where Telegram supports them
 
 ## Sending Photos
@@ -121,6 +125,8 @@ println(sent.id)
 ```
 
 `SendPhotoOptions` covers the photo-oriented version of the same idea, including caption, spoiler, TTL, reply, silent send, and scheduling.
+
+Like `SendOptions`, `SendPhotoOptions` uses explicit presence flags for optional Telegram fields. In particular, set `has_ttl_seconds_value: true` when you want `ttl_seconds` to be sent, and set the matching `has_*_value` flag for reply or scheduling.
 
 ## When You Need Raw Send Results
 

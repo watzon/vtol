@@ -4,7 +4,7 @@ VTOL is an MTProto library for V with a core-first architecture: build the proto
 
 ## Status
 
-The repository is in scaffold mode. The package layout, public placeholder types, CI, docs, and code-generation entrypoints are in place, but the MTProto implementation is not yet functional.
+The repository is still pre-`1.0`, but it is no longer just a scaffold. The core transport/auth/session/RPC layers have unit coverage, and the first thin `vtol.Client` API now covers connect, raw invoke, code login, bot login, peer resolution, and basic account/dialog/message helpers.
 
 ## Goals
 
@@ -22,7 +22,7 @@ The repository is in scaffold mode. The package layout, public placeholder types
 
 ## Project Layout
 
-- `vtol.v`: root package and initial public API placeholders
+- `vtol.v`: root package and the current high-level client surface
 - `config/`, `errors/`, `crypto/`, `transport/`, `tl/`, `auth/`, `session/`, `rpc/`, `updates/`, `media/`, `client/`: stable subsystem boundaries
 - `internal/`: implementation details that should not leak into the public API
 - `docs/`: architecture, MTProto notes, and roadmap

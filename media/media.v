@@ -1,5 +1,7 @@
 module media
 
+import crypto
+import crypto.aes as std_aes
 import crypto.md5 as std_md5
 import tl
 
@@ -92,6 +94,20 @@ pub:
 	file_hashes    []tl.FileHashType
 }
 
+pub enum FileReferenceKind {
+	document
+	photo
+}
+
+pub struct FileReference {
+pub:
+	kind           FileReferenceKind
+	id             i64
+	access_hash    i64
+	file_reference []u8
+	thumb_size     string
+}
+
 pub struct DownloadResult {
 pub:
 	bytes            []u8
@@ -130,6 +146,181 @@ mut:
 	chunks_completed int
 	complete         bool
 	reporter         ProgressReporter = NopProgressReporter{}
+}
+
+pub fn new_document_file_reference(id i64, access_hash i64, file_reference []u8, thumb_size string) FileReference {
+	return FileReference{
+		kind:           .document
+		id:             id
+		access_hash:    access_hash
+		file_reference: file_reference.clone()
+		thumb_size:     thumb_size
+	}
+}
+
+pub fn new_photo_file_reference(id i64, access_hash i64, file_reference []u8, thumb_size string) FileReference {
+	return FileReference{
+		kind:           .photo
+		id:             id
+		access_hash:    access_hash
+		file_reference: file_reference.clone()
+		thumb_size:     thumb_size
+	}
+}
+
+pub fn document_file_reference(document tl.Document, thumb_size string) FileReference {
+	return new_document_file_reference(document.id, document.access_hash, document.file_reference,
+		thumb_size)
+}
+
+pub fn photo_file_reference(photo tl.Photo, thumb_size string) FileReference {
+	return new_photo_file_reference(photo.id, photo.access_hash, photo.file_reference,
+		thumb_size)
+}
+
+pub fn (reference FileReference) input_location() tl.InputFileLocationType {
+	return match reference.kind {
+		.document {
+			tl.InputFileLocationType(tl.InputDocumentFileLocation{
+				id:             reference.id
+				access_hash:    reference.access_hash
+				file_reference: reference.file_reference.clone()
+				thumb_size:     reference.thumb_size
+			})
+		}
+		.photo {
+			tl.InputFileLocationType(tl.InputPhotoFileLocation{
+				id:             reference.id
+				access_hash:    reference.access_hash
+				file_reference: reference.file_reference.clone()
+				thumb_size:     reference.thumb_size
+			})
+		}
+	}
+}
+
+pub fn (reference FileReference) with_file_reference(file_reference []u8) FileReference {
+	return FileReference{
+		kind:           reference.kind
+		id:             reference.id
+		access_hash:    reference.access_hash
+		file_reference: file_reference.clone()
+		thumb_size:     reference.thumb_size
+	}
+}
+
+pub fn is_file_reference_error(message string) bool {
+	return file_reference_error_index(message) != none || message == 'FILE_REFERENCE_EXPIRED'
+		|| message == 'FILE_REFERENCE_INVALID'
+}
+
+pub fn file_reference_error_index(message string) ?int {
+	if message == 'FILE_REFERENCE_EXPIRED' || message == 'FILE_REFERENCE_INVALID' {
+		return 0
+	}
+	for suffix in ['_EXPIRED', '_INVALID'] {
+		prefix := 'FILE_REFERENCE_'
+		if !message.starts_with(prefix) || !message.ends_with(suffix) {
+			continue
+		}
+		index_text := message[prefix.len..message.len - suffix.len]
+		if index_text.len == 0 {
+			continue
+		}
+		index := index_text.int()
+		if index >= 0 {
+			return index
+		}
+	}
+	return none
+}
+
+pub fn merge_file_hashes(existing []tl.FileHashType, updates []tl.FileHashType) []tl.FileHashType {
+	mut merged := []tl.FileHashType{}
+	for hash in existing {
+		if !has_matching_file_hash(updates, hash) {
+			merged << hash
+		}
+	}
+	for hash in updates {
+		merged << hash
+	}
+	return merged
+}
+
+pub fn file_hash_at(hashes []tl.FileHashType, offset i64, limit int) ?tl.FileHash {
+	for hash in hashes {
+		match hash {
+			tl.FileHash {
+				if hash.offset == offset && hash.limit == limit {
+					return *hash
+				}
+			}
+			else {}
+		}
+	}
+	return none
+}
+
+pub fn verify_file_hash(bytes []u8, offset i64, hashes []tl.FileHashType) ! {
+	expected := file_hash_at(hashes, offset, bytes.len) or {
+		return error('missing file hash for offset ${offset} limit ${bytes.len}')
+	}
+	digest := crypto.default_backend().sha256(bytes)!
+	if digest != expected.hash {
+		return error('file hash mismatch at offset ${offset} limit ${bytes.len}')
+	}
+}
+
+pub fn decrypt_cdn_bytes(ciphertext []u8, key []u8, iv []u8, offset i64) ![]u8 {
+	if key.len != crypto.tmp_aes_key_size {
+		return error('cdn encryption key must be ${crypto.tmp_aes_key_size} bytes')
+	}
+	if iv.len != std_aes.block_size {
+		return error('cdn encryption iv must be ${std_aes.block_size} bytes')
+	}
+	if offset < 0 {
+		return error('cdn offset must not be negative')
+	}
+	if ciphertext.len == 0 {
+		return []u8{}
+	}
+	cipher := std_aes.new_cipher(key)
+	mut counter := cdn_counter_iv(iv, offset)!
+	mut keystream := []u8{len: std_aes.block_size}
+	mut out := []u8{len: ciphertext.len}
+	mut source_index := 0
+	skip := int(offset % i64(std_aes.block_size))
+	if skip > 0 {
+		cipher.encrypt(mut keystream, counter)
+		remaining := std_aes.block_size - skip
+		first_len := if ciphertext.len < remaining { ciphertext.len } else { remaining }
+		for inner in 0 .. first_len {
+			out[inner] = ciphertext[inner] ^ keystream[skip + inner]
+		}
+		source_index += first_len
+		increment_counter(mut counter)
+	}
+	for source_index < ciphertext.len {
+		cipher.encrypt(mut keystream, counter)
+		chunk_len := if ciphertext.len - source_index < std_aes.block_size {
+			ciphertext.len - source_index
+		} else {
+			std_aes.block_size
+		}
+		for inner in 0 .. chunk_len {
+			out[source_index + inner] = ciphertext[source_index + inner] ^ keystream[inner]
+		}
+		source_index += chunk_len
+		increment_counter(mut counter)
+	}
+	return out
+}
+
+pub fn decrypt_and_verify_cdn_bytes(ciphertext []u8, redirect CdnRedirect, offset i64) ![]u8 {
+	verify_file_hash(ciphertext, offset, redirect.file_hashes)!
+	return decrypt_cdn_bytes(ciphertext, redirect.encryption_key, redirect.encryption_iv,
+		offset)!
 }
 
 pub fn normalize_part_size(part_size int) !int {
@@ -341,4 +532,49 @@ pub fn (mut c DownloadCursor) accept_chunk(chunk_len int) !TransferProgress {
 	}
 	c.reporter.report(progress)
 	return progress
+}
+
+fn has_matching_file_hash(hashes []tl.FileHashType, candidate tl.FileHashType) bool {
+	match candidate {
+		tl.FileHash {
+			for hash in hashes {
+				match hash {
+					tl.FileHash {
+						if hash.offset == candidate.offset && hash.limit == candidate.limit {
+							return true
+						}
+					}
+					else {}
+				}
+			}
+		}
+		else {}
+	}
+	return false
+}
+
+fn cdn_counter_iv(iv []u8, offset i64) ![]u8 {
+	if offset < 0 {
+		return error('cdn offset must not be negative')
+	}
+	block_index := u64(offset / i64(std_aes.block_size))
+	if block_index > u64(u32(0xffffffff)) {
+		return error('cdn offset ${offset} exceeds supported ctr counter range')
+	}
+	mut counter := iv.clone()
+	counter[counter.len - 4] = u8((block_index >> 24) & 0xff)
+	counter[counter.len - 3] = u8((block_index >> 16) & 0xff)
+	counter[counter.len - 2] = u8((block_index >> 8) & 0xff)
+	counter[counter.len - 1] = u8(block_index & 0xff)
+	return counter
+}
+
+fn increment_counter(mut counter []u8) {
+	for reverse_index in 0 .. counter.len {
+		index := counter.len - 1 - reverse_index
+		counter[index]++
+		if counter[index] != 0 {
+			return
+		}
+	}
 }

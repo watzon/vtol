@@ -531,6 +531,38 @@ fn test_upload_file_bytes_resume_skips_uploaded_parts() {
 	}
 }
 
+fn test_upload_file_bytes_resume_uses_big_file_parts_for_large_transfers() {
+	payload := []u8{len: media.big_file_threshold + 4096, init: u8((index % 251) + 1)}
+	part_size := 512 * 1024
+	total_parts := (payload.len + part_size - 1) / part_size
+	mut state := &FakeRuntimeState{
+		responses: [
+			tl.Object(tl.BoolTrue{}),
+		]
+	}
+	mut client := new_fake_client(state)
+
+	uploaded := client.upload_file_bytes('video.mp4', payload, media.UploadOptions{
+		file_id:     77
+		part_size:   part_size
+		resume_part: total_parts - 1
+	}) or { panic(err) }
+
+	assert uploaded.is_big
+	assert state.invocations == ['upload.saveBigFilePart']
+	resume_call := state.functions[0]
+	match resume_call {
+		tl.UploadSaveBigFilePart {
+			assert resume_call.file_id == 77
+			assert resume_call.file_part == total_parts - 1
+			assert resume_call.file_total_parts == total_parts
+		}
+		else {
+			assert false
+		}
+	}
+}
+
 fn test_send_file_uploads_document_and_uses_messages_send_media() {
 	payload := []u8{len: 5000, init: u8((index % 251) + 1)}
 	mut state := &FakeRuntimeState{
@@ -741,6 +773,122 @@ fn test_download_file_returns_cdn_redirect_metadata() {
 	assert state.invocations == ['upload.getFile']
 }
 
+fn test_download_file_resumes_from_previous_offset_window() {
+	mut state := &FakeRuntimeState{
+		responses: [
+			tl.Object(tl.UploadFile{
+				type_value: tl.StorageFileUnknown{}
+				mtime:      0
+				bytes:      [u8(8), 9, 10]
+			}),
+		]
+	}
+	mut client := new_fake_client(state)
+
+	result := client.download_file(tl.InputDocumentFileLocation{
+		id:             17
+		access_hash:    21
+		file_reference: [u8(3), 2, 1]
+		thumb_size:     ''
+	}, media.DownloadOptions{
+		offset:    4096
+		max_bytes: 3
+		part_size: 4096
+	}) or { panic(err) }
+
+	assert result.completed
+	assert result.start_offset == 4096
+	assert result.end_offset == 4099
+	assert result.bytes == [u8(8), 9, 10]
+	download_call := state.functions[0]
+	match download_call {
+		tl.UploadGetFile {
+			assert download_call.offset == 4096
+			assert download_call.limit == 3
+		}
+		else {
+			assert false
+		}
+	}
+}
+
+fn test_download_file_reference_reuses_media_reference_wrapper() {
+	mut state := &FakeRuntimeState{
+		responses: [
+			tl.Object(tl.UploadFile{
+				type_value: tl.StorageFileUnknown{}
+				mtime:      0
+				bytes:      [u8(1), 2]
+			}),
+		]
+	}
+	mut client := new_fake_client(state)
+
+	result := client.download_file_reference(media.new_document_file_reference(55, 66,
+		[u8(7), 8], 'thumb'), media.DownloadOptions{
+		part_size: 4096
+	}) or { panic(err) }
+
+	assert result.bytes == [u8(1), 2]
+	download_call := state.functions[0]
+	match download_call {
+		tl.UploadGetFile {
+			match download_call.location {
+				tl.InputDocumentFileLocation {
+					assert download_call.location.id == 55
+					assert download_call.location.access_hash == 66
+					assert download_call.location.file_reference == [u8(7), 8]
+					assert download_call.location.thumb_size == 'thumb'
+				}
+				else {
+					assert false
+				}
+			}
+		}
+		else {
+			assert false
+		}
+	}
+}
+
+fn test_file_hash_client_helpers_decode_vector_responses() {
+	hashes := [
+		tl.FileHashType(tl.FileHash{
+			offset: 0
+			limit:  4096
+			hash:   [u8(1), 2, 3]
+		}),
+		tl.FileHashType(tl.FileHash{
+			offset: 4096
+			limit:  1024
+			hash:   [u8(4), 5, 6]
+		}),
+	]
+	mut state := &FakeRuntimeState{
+		responses: [
+			file_hash_vector_object(hashes),
+			file_hash_vector_object(hashes[1..]),
+			file_hash_vector_object(hashes[..1]),
+		]
+	}
+	mut client := new_fake_client(state)
+
+	file_hashes := client.get_file_hashes(tl.InputDocumentFileLocation{
+		id:             1
+		access_hash:    2
+		file_reference: [u8(3)]
+		thumb_size:     ''
+	}, 0) or { panic(err) }
+	cdn_hashes := client.get_cdn_file_hashes([u8(9), 9], 4096) or { panic(err) }
+	reuploaded := client.reupload_cdn_file([u8(9), 9], [u8(7), 7]) or { panic(err) }
+
+	assert file_hashes.len == 2
+	assert cdn_hashes.len == 1
+	assert reuploaded.len == 1
+	assert state.invocations == ['upload.getFileHashes', 'upload.getCdnFileHashes',
+		'upload.reuploadCdnFile']
+}
+
 fn new_fake_client(state &FakeRuntimeState) Client {
 	mut client := new_client(ClientConfig{
 		app_id:     1
@@ -864,4 +1012,16 @@ fn srp_expected_a_bytes() []u8 {
 
 fn decode_hex(value string) []u8 {
 	return hex.decode(value) or { panic(err) }
+}
+
+fn file_hash_vector_object(hashes []tl.FileHashType) tl.Object {
+	mut raw := []u8{}
+	tl.append_int(mut raw, hashes.len)
+	for hash in hashes {
+		raw << hash.encode() or { panic(err) }
+	}
+	return tl.Object(tl.UnknownObject{
+		constructor: tl.vector_constructor_id
+		raw_payload: raw
+	})
 }

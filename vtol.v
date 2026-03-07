@@ -616,21 +616,62 @@ pub fn (mut c Client) send_message_to_username(username string, message string) 
 }
 
 pub fn document_file_location(document tl.Document, thumb_size string) tl.InputFileLocationType {
-	return tl.InputDocumentFileLocation{
-		id:             document.id
-		access_hash:    document.access_hash
-		file_reference: document.file_reference.clone()
-		thumb_size:     thumb_size
-	}
+	return media.document_file_reference(document, thumb_size).input_location()
 }
 
 pub fn photo_file_location(photo tl.Photo, thumb_size string) tl.InputFileLocationType {
-	return tl.InputPhotoFileLocation{
-		id:             photo.id
-		access_hash:    photo.access_hash
-		file_reference: photo.file_reference.clone()
-		thumb_size:     thumb_size
+	return media.photo_file_reference(photo, thumb_size).input_location()
+}
+
+pub fn document_file_reference(document tl.Document, thumb_size string) media.FileReference {
+	return media.document_file_reference(document, thumb_size)
+}
+
+pub fn photo_file_reference(photo tl.Photo, thumb_size string) media.FileReference {
+	return media.photo_file_reference(photo, thumb_size)
+}
+
+pub fn (mut c Client) download_file_reference(reference media.FileReference, options media.DownloadOptions) !media.DownloadResult {
+	return c.download_file(reference.input_location(), options)!
+}
+
+pub fn (mut c Client) get_file_hashes(location tl.InputFileLocationType, offset i64) ![]tl.FileHashType {
+	if offset < 0 {
+		return error('file hash offset must not be negative')
 	}
+	result := c.invoke(tl.UploadGetFileHashes{
+		location: location
+		offset:   offset
+	})!
+	return expect_file_hashes(result)!
+}
+
+pub fn (mut c Client) get_cdn_file_hashes(file_token []u8, offset i64) ![]tl.FileHashType {
+	if file_token.len == 0 {
+		return error('cdn file token must not be empty')
+	}
+	if offset < 0 {
+		return error('cdn file hash offset must not be negative')
+	}
+	result := c.invoke(tl.UploadGetCdnFileHashes{
+		file_token: file_token.clone()
+		offset:     offset
+	})!
+	return expect_file_hashes(result)!
+}
+
+pub fn (mut c Client) reupload_cdn_file(file_token []u8, request_token []u8) ![]tl.FileHashType {
+	if file_token.len == 0 {
+		return error('cdn file token must not be empty')
+	}
+	if request_token.len == 0 {
+		return error('cdn request token must not be empty')
+	}
+	result := c.invoke(tl.UploadReuploadCdnFile{
+		file_token:    file_token.clone()
+		request_token: request_token.clone()
+	})!
+	return expect_file_hashes(result)!
 }
 
 pub fn (c Client) cached_input_peer(key string) ?tl.InputPeerType {
@@ -1192,6 +1233,47 @@ fn expect_contacts_resolved_peer(object tl.Object) !tl.ContactsResolvedPeer {
 		}
 		else {
 			return error('expected contacts.ResolvedPeer, got ${object.qualified_name()}')
+		}
+	}
+}
+
+fn expect_file_hashes(object tl.Object) ![]tl.FileHashType {
+	match object {
+		tl.UnknownObject {
+			if object.constructor != tl.vector_constructor_id {
+				return error('expected Vector<FileHash>, got ${object.qualified_name()}')
+			}
+			mut payload := object.encode()!
+			mut decoder := tl.new_decoder(payload)
+			count := decoder.read_vector_len()!
+			mut remaining := decoder.read_remaining()
+			mut hashes := []tl.FileHashType{cap: count}
+			for _ in 0 .. count {
+				item, consumed := tl.decode_object_prefix(remaining)!
+				match item {
+					tl.FileHash {
+						hashes << tl.FileHashType(item)
+					}
+					tl.UnknownObject {
+						hashes << tl.FileHashType(tl.UnknownFileHashType{
+							constructor: item.constructor
+							name:        item.name
+							raw_payload: item.raw_payload.clone()
+						})
+					}
+					else {
+						return error('expected FileHash, got ${item.qualified_name()}')
+					}
+				}
+				remaining = remaining[consumed..].clone()
+			}
+			if remaining.len != 0 {
+				return error('unexpected trailing bytes in Vector<FileHash>')
+			}
+			return hashes
+		}
+		else {
+			return error('expected Vector<FileHash>, got ${object.qualified_name()}')
 		}
 	}
 }

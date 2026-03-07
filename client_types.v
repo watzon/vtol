@@ -287,14 +287,18 @@ pub:
 
 pub type RawUpdateHandler = fn (event RawUpdateEvent) !
 
+pub type NewMessagePatternMatcher = fn (event NewMessageEvent) bool
+
 pub struct NewMessageHandlerConfig {
 pub:
-	chat          string
-	sender        string
-	incoming      bool
-	outgoing      bool
-	text          string
-	text_contains string
+	chat            string
+	sender          string
+	from_users      string
+	incoming        bool
+	outgoing        bool
+	forwards        ?bool = none
+	pattern         string
+	pattern_matcher NewMessagePatternMatcher = unsafe { nil }
 }
 
 pub struct NewMessageEvent {
@@ -305,6 +309,7 @@ pub:
 	text                 string
 	date                 int
 	outgoing             bool
+	forwarded            bool
 	chat                 EventPeer
 	sender               EventPeer
 	has_sender_value     bool

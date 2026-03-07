@@ -1,5 +1,6 @@
 module vtol
 
+import regex
 import tl
 import updates
 
@@ -8,8 +9,10 @@ struct RawUpdateHandlerState {
 }
 
 struct NewMessageHandlerState {
-	config  NewMessageHandlerConfig
-	handler NewMessageHandler
+	config            NewMessageHandlerConfig
+	handler           NewMessageHandler
+	pattern_regex     regex.RE
+	has_pattern_regex bool
 }
 
 struct MessageEventContext {
@@ -37,13 +40,28 @@ pub fn (mut c Client) on_new_message(handler NewMessageHandler) !int {
 
 pub fn (mut c Client) on_new_message_with_config(config NewMessageHandlerConfig, handler NewMessageHandler) !int {
 	c.ensure_event_subscription()!
+	normalized, pattern_regex, has_pattern_regex := normalize_new_message_handler_config(config)!
 	id := c.next_event_handler_id
 	c.next_event_handler_id++
 	c.new_message_handlers[id] = NewMessageHandlerState{
-		config:  normalize_new_message_handler_config(config)
-		handler: handler
+		config:            normalized
+		handler:           handler
+		pattern_regex:     pattern_regex
+		has_pattern_regex: has_pattern_regex
 	}
 	return id
+}
+
+pub fn (mut c Client) on_new_message_pattern(pattern string, handler NewMessageHandler) !int {
+	return c.on_new_message_with_config(NewMessageHandlerConfig{
+		pattern: pattern
+	}, handler)
+}
+
+pub fn (mut c Client) on_new_message_matcher(matcher NewMessagePatternMatcher, handler NewMessageHandler) !int {
+	return c.on_new_message_with_config(NewMessageHandlerConfig{
+		pattern_matcher: matcher
+	}, handler)
 }
 
 pub fn (mut c Client) remove_event_handler(id int) bool {
@@ -135,7 +153,7 @@ fn (c Client) dispatch_new_message_handlers(event updates.Event) ! {
 	items := new_message_events_from_manager_event(event, c.peer_cache)
 	for item in items {
 		for id, handler_state in c.new_message_handlers {
-			if !new_message_event_matches_config(item, handler_state.config) {
+			if !new_message_event_matches_config(item, handler_state) {
 				continue
 			}
 			handler_state.handler(item) or {
@@ -156,18 +174,29 @@ fn raw_update_event_from_manager_event(event updates.Event) RawUpdateEvent {
 	}
 }
 
-fn normalize_new_message_handler_config(config NewMessageHandlerConfig) NewMessageHandlerConfig {
-	return NewMessageHandlerConfig{
-		chat:          normalize_cache_key(config.chat)
-		sender:        normalize_cache_key(config.sender)
-		incoming:      config.incoming
-		outgoing:      config.outgoing
-		text:          config.text
-		text_contains: config.text_contains
+fn normalize_new_message_handler_config(config NewMessageHandlerConfig) !(NewMessageHandlerConfig, regex.RE, bool) {
+	mut pattern_regex := regex.RE{}
+	mut has_pattern_regex := false
+	if config.pattern.len > 0 {
+		pattern_regex = regex.regex_opt(config.pattern) or {
+			return error('invalid new-message pattern `${config.pattern}`: ${err}')
+		}
+		has_pattern_regex = true
 	}
+	return NewMessageHandlerConfig{
+		chat:            normalize_cache_key(config.chat)
+		sender:          normalize_cache_key(config.sender)
+		from_users:      normalize_cache_key(config.from_users)
+		incoming:        config.incoming
+		outgoing:        config.outgoing
+		forwards:        config.forwards
+		pattern:         config.pattern
+		pattern_matcher: config.pattern_matcher
+	}, pattern_regex, has_pattern_regex
 }
 
-fn new_message_event_matches_config(event NewMessageEvent, config NewMessageHandlerConfig) bool {
+fn new_message_event_matches_config(event NewMessageEvent, handler_state NewMessageHandlerState) bool {
+	config := handler_state.config
 	if config.chat.len > 0 && !event_peer_matches_filter(event.chat, config.chat) {
 		return false
 	}
@@ -179,6 +208,14 @@ fn new_message_event_matches_config(event NewMessageEvent, config NewMessageHand
 			return false
 		}
 	}
+	if config.from_users.len > 0 {
+		if !event.has_sender_value {
+			return false
+		}
+		if !event_peer_matches_filter(event.sender, config.from_users) {
+			return false
+		}
+	}
 	if config.incoming != config.outgoing {
 		if config.incoming && event.outgoing {
 			return false
@@ -187,10 +224,15 @@ fn new_message_event_matches_config(event NewMessageEvent, config NewMessageHand
 			return false
 		}
 	}
-	if config.text.len > 0 && event.text != config.text {
+	if wanted_forward := config.forwards {
+		if event.forwarded != wanted_forward {
+			return false
+		}
+	}
+	if handler_state.has_pattern_regex && !handler_state.pattern_regex.matches_string(event.text) {
 		return false
 	}
-	if config.text_contains.len > 0 && !event.text.contains(config.text_contains) {
+	if config.pattern_matcher != unsafe { nil } && !config.pattern_matcher(event) {
 		return false
 	}
 	return true
@@ -359,6 +401,7 @@ fn new_message_event_from_full_message(message tl.MessageType, users []tl.UserTy
 		text:                 data.text
 		date:                 data.date
 		outgoing:             data.outgoing
+		forwarded:            message_is_forwarded(data.message)
 		chat:                 chat
 		sender:               sender
 		has_sender_value:     has_sender
@@ -393,6 +436,7 @@ fn new_message_event_from_short_message(update tl.UpdateShortMessage, context Me
 		text:                 update.message
 		date:                 update.date
 		outgoing:             update.out
+		forwarded:            update.has_fwd_from_value
 		chat:                 chat
 		sender:               sender
 		has_sender_value:     has_sender
@@ -419,6 +463,7 @@ fn new_message_event_from_short_chat_message(update tl.UpdateShortChatMessage, c
 		text:                 update.message
 		date:                 update.date
 		outgoing:             update.out
+		forwarded:            update.has_fwd_from_value
 		chat:                 chat
 		sender:               sender
 		has_sender_value:     true
@@ -428,6 +473,17 @@ fn new_message_event_from_short_chat_message(update tl.UpdateShortChatMessage, c
 		has_batch_value:      context.has_batch_value
 		difference:           context.difference
 		has_difference_value: context.has_difference_value
+	}
+}
+
+fn message_is_forwarded(message tl.MessageType) bool {
+	return match message {
+		tl.Message {
+			message.has_fwd_from_value
+		}
+		else {
+			false
+		}
 	}
 }
 

@@ -1471,10 +1471,15 @@ fn test_on_new_message_emits_filtered_live_events() {
 	collector := &NewMessageEventCollector{}
 
 	_ = client.on_new_message_with_config(NewMessageHandlerConfig{
-		chat:          '@Alice'
-		sender:        'alice'
-		incoming:      true
-		text_contains: 'ping'
+		chat:            '@Alice'
+		sender:          'user:42'
+		from_users:      'alice'
+		incoming:        true
+		forwards:        false
+		pattern:         'ping from .*'
+		pattern_matcher: fn (event NewMessageEvent) bool {
+			return event.id == 41
+		}
 	}, fn [collector] (event NewMessageEvent) ! {
 		unsafe {
 			collector.events << event
@@ -1489,6 +1494,7 @@ fn test_on_new_message_emits_filtered_live_events() {
 	assert event.id == 41
 	assert event.text == 'ping from alice'
 	assert !event.outgoing
+	assert !event.forwarded
 	assert event.chat.key == 'user:42'
 	assert event.chat.username == 'alice'
 	assert event.sender.key == 'user:42'
@@ -1675,6 +1681,79 @@ fn test_event_handlers_follow_recovery_path() {
 	assert messages.events[0].text == 'missed hello'
 	assert messages.events[0].chat.key == 'user:42'
 	assert messages.events[0].has_difference_value
+}
+
+fn test_on_new_message_pattern_and_matcher_helpers_filter_forwarded_events() {
+	mut state := &FakeRuntimeState{
+		responses:      [
+			tl.Object(tl.UpdatesState{
+				pts:          0
+				qts:          0
+				date:         100
+				seq:          0
+				unread_count: 0
+			}),
+		]
+		update_batches: [
+			tl.UpdatesType(tl.UpdateShortMessage{
+				id:                 81
+				user_id:            42
+				message:            'hello from elsewhere'
+				pts:                1
+				pts_count:          1
+				date:               101
+				fwd_from:           tl.MessageFwdHeader{
+					date: 77
+				}
+				has_fwd_from_value: true
+			}),
+			tl.UpdatesType(tl.UpdateShortMessage{
+				id:        82
+				user_id:   42
+				message:   'plain hello'
+				pts:       2
+				pts_count: 1
+				date:      102
+			}),
+		]
+	}
+	mut client := new_fake_client(state)
+	forwarded := &NewMessageEventCollector{}
+	plain := &NewMessageEventCollector{}
+
+	_ = client.on_new_message_matcher(fn (event NewMessageEvent) bool {
+		return event.forwarded
+	}, fn [forwarded] (event NewMessageEvent) ! {
+		unsafe {
+			forwarded.events << event
+		}
+	}) or { panic(err) }
+	_ = client.on_new_message_pattern('^plain hello$', fn [plain] (event NewMessageEvent) ! {
+		unsafe {
+			plain.events << event
+		}
+	}) or { panic(err) }
+
+	client.pump_updates_once() or { panic(err) }
+
+	assert forwarded.events.len == 1
+	assert forwarded.events[0].id == 81
+	assert forwarded.events[0].forwarded
+
+	assert plain.events.len == 1
+	assert plain.events[0].id == 82
+	assert !plain.events[0].forwarded
+}
+
+fn test_on_new_message_pattern_rejects_invalid_regex() {
+	mut client := new_fake_client(&FakeRuntimeState{})
+
+	_ = client.on_new_message_pattern('[', fn (_ NewMessageEvent) ! {}) or {
+		assert err.msg().contains('invalid new-message pattern')
+		return
+	}
+
+	assert false
 }
 
 fn test_on_new_message_delivers_recovered_events_after_transport_reconnect() {

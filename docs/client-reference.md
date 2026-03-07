@@ -177,6 +177,14 @@ Default high-level message handler.
 
 Filtered message handler.
 
+### `on_new_message_pattern(pattern, handler)`
+
+Regex-filtered message handler.
+
+### `on_new_message_matcher(matcher, handler)`
+
+Predicate-filtered message handler.
+
 ### `on_raw_update(handler)`
 
 Lower-level handler for raw update batches and recovered differences.

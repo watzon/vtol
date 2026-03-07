@@ -100,6 +100,8 @@ defer {
 client.idle()!
 ```
 
+If you want Telethon-style filtering, VTOL also supports `on_new_message_with_config()` plus `on_new_message_pattern()` and `on_new_message_matcher()`.
+
 For the full flow, start with `docs/quick-start.md` and then continue to `docs/updates.md`.
 
 ## Docs

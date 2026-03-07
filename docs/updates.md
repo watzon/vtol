@@ -33,6 +33,7 @@ Useful fields include:
 - `text`
 - `date`
 - `outgoing`
+- `forwarded`
 - `chat`
 - `sender`
 - `kind`
@@ -48,7 +49,8 @@ Use `on_new_message_with_config()` when you want lightweight filtering in the cl
 handler_id := client.on_new_message_with_config(vtol.NewMessageHandlerConfig{
 	chat:          'me'
 	incoming:      true
-	text_contains: 'deploy'
+	forwards:      false
+	pattern:       '^/deploy(?:\\s|$)'
 }, fn (event vtol.NewMessageEvent) ! {
 	println('Matched: ${event.text}')
 })!
@@ -58,12 +60,36 @@ Available filters:
 
 - `chat`
 - `sender`
+- `from_users`
 - `incoming`
 - `outgoing`
-- exact `text`
-- `text_contains`
+- `forwards`
+- regex `pattern`
+- `pattern_matcher`
 
 The `chat` and `sender` filters use the same normalized key rules documented in `docs/peers.md`.
+
+`from_users` is a Telethon-style alias for sender filtering.
+
+`forwards` is tri-state:
+
+- unset: do not filter on forwarded status
+- `true`: only forwarded messages
+- `false`: only non-forwarded messages
+
+If you only need regex or predicate matching, VTOL also exposes convenience helpers:
+
+```v
+_ = client.on_new_message_pattern('[Hh]ello', fn (event vtol.NewMessageEvent) ! {
+	println('regex match: ${event.text}')
+})!
+
+_ = client.on_new_message_matcher(fn (event vtol.NewMessageEvent) bool {
+	return event.forwarded
+}, fn (event vtol.NewMessageEvent) ! {
+	println('forwarded message: ${event.text}')
+})!
+```
 
 ## Live vs Recovered Events
 

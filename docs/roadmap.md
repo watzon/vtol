@@ -58,12 +58,12 @@ Status key:
 
 ## Phase 5: Session engine and RPC pipeline
 
-- [ ] 5.1 Build the encrypted message packer/unpacker on top of the auth key.
-- [ ] 5.2 Implement request correlation, pending futures/promises equivalent, and timeout handling.
-- [ ] 5.3 Implement middleware points for retries, flood-wait handling, DC migration, and logging.
-- [ ] 5.4 Support gzip-packed payloads, containers, and automatic ack generation.
-- [ ] 5.5 Implement session restore from persisted storage without forcing re-auth.
-- [ ] 5.6 Add clean disconnect and reconnect semantics that preserve in-flight safety where possible.
+- [x] 5.1 Build the encrypted message packer/unpacker on top of the auth key.
+- [x] 5.2 Implement request correlation, pending futures/promises equivalent, and timeout handling.
+- [x] 5.3 Implement middleware points for retries, flood-wait handling, DC migration, and logging.
+- [x] 5.4 Support gzip-packed payloads, containers, and automatic ack generation.
+- [x] 5.5 Implement session restore from persisted storage without forcing re-auth.
+- [x] 5.6 Add clean disconnect and reconnect semantics that preserve in-flight safety where possible.
 
 ## Phase 6: High-level client API
 

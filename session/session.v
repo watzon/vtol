@@ -15,6 +15,7 @@ pub:
 }
 
 pub interface Store {
+mut:
 	load() !SessionState
 	save(state SessionState) !
 }

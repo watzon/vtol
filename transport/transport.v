@@ -256,6 +256,19 @@ pub fn (e Engine) current_endpoint() ?Endpoint {
 	return e.endpoints[e.endpoint_index]
 }
 
+pub fn (mut e Engine) select_endpoint(endpoint_id int) !Endpoint {
+	for index, endpoint in e.endpoints {
+		if endpoint.id == endpoint_id {
+			e.endpoint_index = index
+			if e.connected {
+				e.disconnect() or {}
+			}
+			return e.connect()!
+		}
+	}
+	return error('transport endpoint ${endpoint_id} is not configured')
+}
+
 pub fn (mut e Engine) connect() !Endpoint {
 	for offset in 0 .. e.endpoints.len {
 		index := (e.endpoint_index + offset) % e.endpoints.len

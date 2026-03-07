@@ -6,7 +6,7 @@ VTOL is an MTProto library for V with a core-first architecture: build the proto
 
 The repository is still pre-`1.0`, but it is no longer just a scaffold. The core transport/auth/session/RPC layers have unit coverage, and the first thin `vtol.Client` API now covers connect, raw invoke, code login, 2FA password login, bot login, peer resolution, basic account/dialog/message helpers, chunked upload/download flows, CDN redirect metadata and hash helpers, and long-lived update subscriptions with state recovery.
 
-Session persistence now ships with both in-memory and file-backed stores, RPC errors expose flood-wait metadata without discarding the underlying Telegram error payload, and the RPC engine can emit structured debug events for protocol troubleshooting.
+Session persistence now ships with Telethon-style `MemorySession`, `StringSession`, and `SQLiteSession` backends, RPC errors expose flood-wait metadata without discarding the underlying Telegram error payload, and the RPC engine can emit structured debug events for protocol troubleshooting.
 
 ## Goals
 
@@ -57,7 +57,16 @@ mut client := vtol.new_client_with_session_file(vtol.ClientConfig{
 			port: 443
 		},
 	]
-}, '/tmp/vtol.session.json')!
+}, '/tmp/vtol.session.sqlite')!
+```
+
+String sessions work the same way:
+
+```v
+mut store := session.new_string_session('')!
+mut client := vtol.new_client_with_store(config, store)!
+// ... authenticate, resolve peers, send requests ...
+println(store.encoded())
 ```
 
 For custom storage, pass any `session.Store` implementation to `vtol.new_client_with_store`.

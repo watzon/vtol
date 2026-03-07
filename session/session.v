@@ -1,13 +1,18 @@
 module session
 
+import db.sqlite
+import encoding.base64
 import encoding.hex
 import json
 import os
 import strconv
 import sync
+import tl
 
 const empty_store_message = 'session store is empty'
-const file_store_version = 2
+const sqlite_session_version = 1
+const string_session_version = 1
+const sqlite_magic_header = 'SQLite format 3'
 
 pub struct SessionState {
 pub:
@@ -23,24 +28,72 @@ pub:
 	created_at      i64
 }
 
+pub struct PeerRecord {
+pub:
+	cache_key  string
+	key        string
+	username   string
+	peer       tl.PeerType
+	input_peer tl.InputPeerType
+}
+
+pub struct SessionData {
+pub:
+	state SessionState
+	peers []PeerRecord
+}
+
 pub interface Store {
 mut:
-	load() !SessionState
-	save(state SessionState) !
+	load() !SessionData
+	save(data SessionData) !
 }
 
-pub struct MemoryStore {
+pub struct MemorySession {
 mut:
-	mu        sync.Mutex
-	has_state bool
-	state     SessionState
+	mu       sync.Mutex
+	has_data bool
+	data     SessionData
 }
 
-pub struct FileStore {
+pub struct StringSession {
+mut:
+	base  MemorySession
+	value string
+}
+
+pub struct SQLiteSession {
 pub:
 	path string
 mut:
 	mu sync.Mutex
+}
+
+struct SessionPayloadRecord {
+	version int
+	state   SessionStateRecord
+	peers   []PeerRecordPayload
+}
+
+struct SessionStateRecord {
+	dc_id           int
+	dc_address      string
+	dc_port         int
+	auth_key_hex    string
+	auth_key_id     string
+	server_salt     string
+	session_id      string
+	layer           int
+	schema_revision string
+	created_at      string
+}
+
+struct PeerRecordPayload {
+	cache_key      string
+	key            string
+	username       string
+	peer_hex       string
+	input_peer_hex string
 }
 
 struct FileStoreRecord {
@@ -69,47 +122,149 @@ struct LegacyFileStoreRecord {
 	created_at      i64
 }
 
-pub fn new_memory_store() &MemoryStore {
-	return &MemoryStore{}
+pub fn new_memory_session() &MemorySession {
+	return &MemorySession{}
 }
 
-pub fn new_file_store(path string) !&FileStore {
+pub fn new_string_session(value string) !&StringSession {
+	mut store := &StringSession{}
+	if value.len == 0 {
+		return store
+	}
+	data := decode_string_payload(value)!
+	store.base.save(data)!
+	store.value = encode_string_payload(data)!
+	return store
+}
+
+pub fn new_sqlite_session(path string) !&SQLiteSession {
 	if path.len == 0 {
 		return error('session store path must not be empty')
 	}
-	return &FileStore{
+	return &SQLiteSession{
 		path: path
 	}
 }
 
-pub fn (mut s MemoryStore) load() !SessionState {
+pub fn new_memory_store() &MemorySession {
+	return new_memory_session()
+}
+
+pub fn new_file_store(path string) !&SQLiteSession {
+	return new_sqlite_session(path)!
+}
+
+pub fn (mut s MemorySession) load() !SessionData {
 	s.mu.@lock()
 	defer {
 		s.mu.unlock()
 	}
-	if !s.has_state {
+	if !s.has_data {
 		return error(empty_store_message)
 	}
-	return SessionState{
-		dc_id:           s.state.dc_id
-		dc_address:      s.state.dc_address
-		dc_port:         s.state.dc_port
-		auth_key:        s.state.auth_key.clone()
-		auth_key_id:     s.state.auth_key_id
-		server_salt:     s.state.server_salt
-		session_id:      s.state.session_id
-		layer:           s.state.layer
-		schema_revision: s.state.schema_revision
-		created_at:      s.state.created_at
+	return clone_session_data(s.data)
+}
+
+pub fn (mut s MemorySession) save(data SessionData) ! {
+	s.mu.@lock()
+	defer {
+		s.mu.unlock()
+	}
+	s.data = clone_session_data(data)
+	s.has_data = true
+}
+
+pub fn (mut s StringSession) load() !SessionData {
+	return s.base.load()!
+}
+
+pub fn (mut s StringSession) save(data SessionData) ! {
+	s.base.save(data)!
+	s.value = encode_string_payload(data)!
+}
+
+pub fn (s StringSession) encoded() string {
+	return s.value
+}
+
+pub fn (s StringSession) string() string {
+	return s.value
+}
+
+pub fn (mut s SQLiteSession) load() !SessionData {
+	s.mu.@lock()
+	defer {
+		s.mu.unlock()
+	}
+	if !os.exists(s.path) {
+		return error(empty_store_message)
+	}
+	s.migrate_legacy_json_if_needed()!
+	mut db := s.open_db()!
+	defer {
+		db.close() or {}
+	}
+	ensure_sqlite_schema(mut db)!
+	return load_sqlite_session_data(mut db, s.path)!
+}
+
+pub fn (mut s SQLiteSession) save(data SessionData) ! {
+	s.mu.@lock()
+	defer {
+		s.mu.unlock()
+	}
+	s.migrate_legacy_json_if_needed()!
+	mut db := s.open_db()!
+	defer {
+		db.close() or {}
+	}
+	ensure_sqlite_schema(mut db)!
+	save_sqlite_session_data(mut db, clone_session_data(data), s.path)!
+}
+
+fn (s SQLiteSession) open_db() !sqlite.DB {
+	dir := os.dir(s.path)
+	if dir.len > 0 && dir != '.' {
+		os.mkdir_all(dir, mode: 0o700)!
+	}
+	mut db := sqlite.connect(s.path)!
+	db.busy_timeout(5_000)
+	return db
+}
+
+fn (s SQLiteSession) migrate_legacy_json_if_needed() ! {
+	if !os.exists(s.path) {
+		return
+	}
+	bytes := os.read_bytes(s.path) or { return err }
+	if bytes.len == 0 {
+		os.rm(s.path)!
+		return
+	}
+	if bytes.len >= sqlite_magic_header.len
+		&& bytes[..sqlite_magic_header.len].bytestr() == sqlite_magic_header {
+		return
+	}
+	content := bytes.bytestr()
+	data := session_data_from_legacy_json(content, s.path)!
+	os.rm(s.path)!
+	mut db := s.open_db()!
+	defer {
+		db.close() or {}
+	}
+	ensure_sqlite_schema(mut db)!
+	save_sqlite_session_data(mut db, data, s.path)!
+}
+
+fn clone_session_data(data SessionData) SessionData {
+	return SessionData{
+		state: clone_session_state(data.state)
+		peers: clone_peer_records(data.peers)
 	}
 }
 
-pub fn (mut s MemoryStore) save(state SessionState) ! {
-	s.mu.@lock()
-	defer {
-		s.mu.unlock()
-	}
-	s.state = SessionState{
+fn clone_session_state(state SessionState) SessionState {
+	return SessionState{
 		dc_id:           state.dc_id
 		dc_address:      state.dc_address
 		dc_port:         state.dc_port
@@ -121,66 +276,50 @@ pub fn (mut s MemoryStore) save(state SessionState) ! {
 		schema_revision: state.schema_revision
 		created_at:      state.created_at
 	}
-	s.has_state = true
 }
 
-pub fn (mut s FileStore) load() !SessionState {
-	s.mu.@lock()
-	defer {
-		s.mu.unlock()
+fn clone_peer_records(records []PeerRecord) []PeerRecord {
+	mut peers := []PeerRecord{cap: records.len}
+	for record in records {
+		peers << PeerRecord{
+			cache_key:  record.cache_key
+			key:        record.key
+			username:   record.username
+			peer:       record.peer
+			input_peer: record.input_peer
+		}
 	}
-	if !os.exists(s.path) {
+	return peers
+}
+
+fn encode_string_payload(data SessionData) !string {
+	payload := SessionPayloadRecord{
+		version: string_session_version
+		state:   session_state_record_from_state(data.state)
+		peers:   peer_payloads_from_records(data.peers)!
+	}
+	return base64.url_encode(json.encode(payload).bytes())
+}
+
+fn decode_string_payload(value string) !SessionData {
+	if value.len == 0 {
 		return error(empty_store_message)
 	}
-	content := os.read_file(s.path) or {
-		if !os.exists(s.path) {
-			return error(empty_store_message)
-		}
-		return err
+	decoded := base64.url_decode(value)
+	if decoded.len == 0 {
+		return error('invalid string session payload')
 	}
-	record := json.decode(FileStoreRecord, content) or {
-		legacy := json.decode(LegacyFileStoreRecord, content) or {
-			return error('invalid session store at ${s.path}: ${err.msg()}')
-		}
-		return session_state_from_legacy_record(legacy)
+	payload := json.decode(SessionPayloadRecord, decoded.bytestr()) or {
+		return error('invalid string session payload: ${err.msg()}')
 	}
-	if record.version == 1 {
-		legacy := json.decode(LegacyFileStoreRecord, content) or {
-			return error('invalid session store at ${s.path}: ${err.msg()}')
-		}
-		return session_state_from_legacy_record(legacy)
+	if payload.version != string_session_version {
+		return error('unsupported string session version ${payload.version}')
 	}
-	if record.version != file_store_version {
-		return error('unsupported session store version ${record.version}')
-	}
-	auth_key := hex.decode(record.auth_key_hex) or {
-		return error('invalid session store auth key: ${err.msg()}')
-	}
-	return SessionState{
-		dc_id:           record.dc_id
-		dc_address:      record.dc_address
-		dc_port:         record.dc_port
-		auth_key:        auth_key
-		auth_key_id:     parse_file_store_i64(s.path, 'auth_key_id', record.auth_key_id)!
-		server_salt:     parse_file_store_i64(s.path, 'server_salt', record.server_salt)!
-		session_id:      parse_file_store_i64(s.path, 'session_id', record.session_id)!
-		layer:           record.layer
-		schema_revision: record.schema_revision
-		created_at:      parse_file_store_i64(s.path, 'created_at', record.created_at)!
-	}
+	return session_data_from_payload_record(payload, 'string session')!
 }
 
-pub fn (mut s FileStore) save(state SessionState) ! {
-	s.mu.@lock()
-	defer {
-		s.mu.unlock()
-	}
-	dir := os.dir(s.path)
-	if dir.len > 0 && dir != '.' {
-		os.mkdir_all(dir, mode: 0o700)!
-	}
-	record := FileStoreRecord{
-		version:         file_store_version
+fn session_state_record_from_state(state SessionState) SessionStateRecord {
+	return SessionStateRecord{
 		dc_id:           state.dc_id
 		dc_address:      state.dc_address
 		dc_port:         state.dc_port
@@ -192,32 +331,100 @@ pub fn (mut s FileStore) save(state SessionState) ! {
 		schema_revision: state.schema_revision
 		created_at:      state.created_at.str()
 	}
-	tmp_path := s.path + '.tmp'
-	os.write_file(tmp_path, json.encode(record))!
-	$if !windows {
-		os.chmod(tmp_path, 0o600) or {}
+}
+
+fn session_state_from_record(source string, record SessionStateRecord) !SessionState {
+	auth_key := hex.decode(record.auth_key_hex) or {
+		return error('invalid session auth key for ${source}: ${err.msg()}')
 	}
-	os.mv(tmp_path, s.path, overwrite: true)!
-	$if !windows {
-		os.chmod(s.path, 0o600) or {}
+	return SessionState{
+		dc_id:           record.dc_id
+		dc_address:      record.dc_address
+		dc_port:         record.dc_port
+		auth_key:        auth_key
+		auth_key_id:     parse_i64_field(source, 'auth_key_id', record.auth_key_id)!
+		server_salt:     parse_i64_field(source, 'server_salt', record.server_salt)!
+		session_id:      parse_i64_field(source, 'session_id', record.session_id)!
+		layer:           record.layer
+		schema_revision: record.schema_revision
+		created_at:      parse_i64_field(source, 'created_at', record.created_at)!
 	}
 }
 
-fn parse_file_store_i64(path string, field_name string, value string) !i64 {
-	if value.len == 0 {
-		return error('invalid session store at ${path}: missing ${field_name}')
+fn peer_payloads_from_records(records []PeerRecord) ![]PeerRecordPayload {
+	mut payloads := []PeerRecordPayload{cap: records.len}
+	for record in records {
+		payloads << PeerRecordPayload{
+			cache_key:      record.cache_key
+			key:            record.key
+			username:       record.username
+			peer_hex:       hex.encode(record.peer.encode()!)
+			input_peer_hex: hex.encode(record.input_peer.encode()!)
+		}
 	}
-	return strconv.atoi64(value) or {
-		return error('invalid session store at ${path}: invalid ${field_name}')
+	return payloads
+}
+
+fn peer_record_from_payload(payload PeerRecordPayload) !PeerRecord {
+	peer_bytes := hex.decode(payload.peer_hex) or {
+		return error('invalid stored peer payload for ${payload.cache_key}: ${err.msg()}')
+	}
+	input_peer_bytes := hex.decode(payload.input_peer_hex) or {
+		return error('invalid stored input peer payload for ${payload.cache_key}: ${err.msg()}')
+	}
+	return PeerRecord{
+		cache_key:  payload.cache_key
+		key:        payload.key
+		username:   payload.username
+		peer:       tl.decode_peer_type(peer_bytes)!
+		input_peer: tl.decode_input_peer_type(input_peer_bytes)!
 	}
 }
 
-fn session_state_from_legacy_record(record LegacyFileStoreRecord) !SessionState {
+fn session_data_from_payload_record(payload SessionPayloadRecord, source string) !SessionData {
+	mut peers := []PeerRecord{cap: payload.peers.len}
+	for peer_payload in payload.peers {
+		peers << peer_record_from_payload(peer_payload)!
+	}
+	return SessionData{
+		state: session_state_from_record(source, payload.state)!
+		peers: peers
+	}
+}
+
+fn session_data_from_legacy_json(content string, path string) !SessionData {
+	record := json.decode(FileStoreRecord, content) or {
+		legacy := json.decode(LegacyFileStoreRecord, content) or {
+			return error('invalid legacy session store at ${path}: ${err.msg()}')
+		}
+		return SessionData{
+			state: session_state_from_legacy_record(legacy, path)!
+			peers: []PeerRecord{}
+		}
+	}
+	return SessionData{
+		state: session_state_from_record(path, SessionStateRecord{
+			dc_id:           record.dc_id
+			dc_address:      record.dc_address
+			dc_port:         record.dc_port
+			auth_key_hex:    record.auth_key_hex
+			auth_key_id:     record.auth_key_id
+			server_salt:     record.server_salt
+			session_id:      record.session_id
+			layer:           record.layer
+			schema_revision: record.schema_revision
+			created_at:      record.created_at
+		})!
+		peers: []PeerRecord{}
+	}
+}
+
+fn session_state_from_legacy_record(record LegacyFileStoreRecord, path string) !SessionState {
 	if record.version != 1 {
-		return error('unsupported session store version ${record.version}')
+		return error('unsupported session store version ${record.version} at ${path}')
 	}
 	auth_key := hex.decode(record.auth_key_hex) or {
-		return error('invalid session store auth key: ${err.msg()}')
+		return error('invalid session store auth key at ${path}: ${err.msg()}')
 	}
 	return SessionState{
 		dc_id:           record.dc_id
@@ -230,5 +437,111 @@ fn session_state_from_legacy_record(record LegacyFileStoreRecord) !SessionState 
 		layer:           record.layer
 		schema_revision: record.schema_revision
 		created_at:      record.created_at
+	}
+}
+
+fn ensure_sqlite_schema(mut db sqlite.DB) ! {
+	db.exec('create table if not exists meta (key text primary key, value text not null)')!
+	db.exec('create table if not exists session_state (singleton integer primary key, dc_id integer not null, dc_address text not null, dc_port integer not null, auth_key_hex text not null, auth_key_id text not null, server_salt text not null, session_id text not null, layer integer not null, schema_revision text not null, created_at text not null)')!
+	db.exec('create table if not exists peers (cache_key text primary key, key text not null, username text not null, peer_hex text not null, input_peer_hex text not null)')!
+	db.exec_param_many('insert or ignore into meta(key, value) values (?, ?)', [
+		'version',
+		sqlite_session_version.str(),
+	])!
+}
+
+fn load_sqlite_session_data(mut db sqlite.DB, path string) !SessionData {
+	state_rows := db.exec('select dc_id, dc_address, dc_port, auth_key_hex, auth_key_id, server_salt, session_id, layer, schema_revision, created_at from session_state where singleton = 1')!
+	if state_rows.len == 0 {
+		return error(empty_store_message)
+	}
+	state_row := state_rows[0]
+	if state_row.vals.len != 10 {
+		return error('invalid sqlite session state at ${path}')
+	}
+	state := session_state_from_record(path, SessionStateRecord{
+		dc_id:           state_row.vals[0].int()
+		dc_address:      state_row.vals[1]
+		dc_port:         state_row.vals[2].int()
+		auth_key_hex:    state_row.vals[3]
+		auth_key_id:     state_row.vals[4]
+		server_salt:     state_row.vals[5]
+		session_id:      state_row.vals[6]
+		layer:           state_row.vals[7].int()
+		schema_revision: state_row.vals[8]
+		created_at:      state_row.vals[9]
+	})!
+	peer_rows := db.exec('select cache_key, key, username, peer_hex, input_peer_hex from peers order by cache_key')!
+	mut peers := []PeerRecord{cap: peer_rows.len}
+	for row in peer_rows {
+		if row.vals.len != 5 {
+			return error('invalid sqlite session peer row at ${path}')
+		}
+		peers << peer_record_from_payload(PeerRecordPayload{
+			cache_key:      row.vals[0]
+			key:            row.vals[1]
+			username:       row.vals[2]
+			peer_hex:       row.vals[3]
+			input_peer_hex: row.vals[4]
+		})!
+	}
+	return SessionData{
+		state: state
+		peers: peers
+	}
+}
+
+fn save_sqlite_session_data(mut db sqlite.DB, data SessionData, path string) ! {
+	db.exec('begin immediate')!
+	state := session_state_record_from_state(data.state)
+	if _ := db.exec('delete from session_state') {
+	} else {
+		db.exec('rollback') or {}
+		return error('failed to reset sqlite session state at ${path}')
+	}
+	if _ := db.exec('delete from peers') {
+	} else {
+		db.exec('rollback') or {}
+		return error('failed to reset sqlite session peers at ${path}')
+	}
+	db.exec_param_many('insert into session_state(singleton, dc_id, dc_address, dc_port, auth_key_hex, auth_key_id, server_salt, session_id, layer, schema_revision, created_at) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+		[
+		'1',
+		state.dc_id.str(),
+		state.dc_address,
+		state.dc_port.str(),
+		state.auth_key_hex,
+		state.auth_key_id,
+		state.server_salt,
+		state.session_id,
+		state.layer.str(),
+		state.schema_revision,
+		state.created_at,
+	]) or {
+		db.exec('rollback') or {}
+		return err
+	}
+	for peer in peer_payloads_from_records(data.peers)! {
+		db.exec_param_many('insert into peers(cache_key, key, username, peer_hex, input_peer_hex) values (?, ?, ?, ?, ?)',
+			[
+			peer.cache_key,
+			peer.key,
+			peer.username,
+			peer.peer_hex,
+			peer.input_peer_hex,
+		]) or {
+			db.exec('rollback') or {}
+			return err
+		}
+	}
+	db.exec('commit')!
+}
+
+fn parse_i64_field(source string, field_name string, value string) !i64 {
+	if value.len == 0 {
+		return error('invalid session payload for ${source}: missing ${field_name}')
+	}
+	return strconv.atoi64(value) or {
+		return error('invalid session payload for ${source}: invalid ${field_name}')
 	}
 }

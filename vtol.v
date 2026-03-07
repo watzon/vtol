@@ -351,12 +351,16 @@ mut:
 }
 
 pub fn new_client(config ClientConfig) !Client {
-	return new_client_with_store(config, session.new_memory_store())
+	return new_client_with_store(config, session.new_memory_session())
+}
+
+pub fn new_client_with_sqlite_session(config ClientConfig, path string) !Client {
+	store := session.new_sqlite_session(path)!
+	return new_client_with_store(config, store)
 }
 
 pub fn new_client_with_session_file(config ClientConfig, path string) !Client {
-	store := session.new_file_store(path)!
-	return new_client_with_store(config, store)
+	return new_client_with_sqlite_session(config, path)
 }
 
 pub fn new_client_with_store(config ClientConfig, store session.Store) !Client {
@@ -430,6 +434,7 @@ pub fn (mut c Client) connect() ! {
 		c.session_loaded = session_loaded
 	}
 	c.runtime.connect()!
+	c.persist_session()!
 	c.state = .connected
 }
 
@@ -451,12 +456,14 @@ pub fn (mut c Client) invoke(function tl.Function) !tl.Object {
 pub fn (mut c Client) invoke_with_options(function tl.Function, options rpc.CallOptions) !tl.Object {
 	c.connect()!
 	request := c.wrap_client_invoke(function)
-	return c.runtime.invoke(request, c.normalized_call_options(options)) or {
+	result := c.runtime.invoke(request, c.normalized_call_options(options)) or {
 		if err is rpc.RpcError {
 			return IError(public_rpc_error_from_internal(err))
 		}
 		return err
 	}
+	c.persist_session()!
+	return result
 }
 
 fn (mut c Client) invoke_auth_with_migration(function tl.Function) !tl.Object {
@@ -494,7 +501,10 @@ fn (mut c Client) switch_auth_dc(dc_id int) ! {
 		is_media:     dc.is_media
 		padding_mode: c.config.padding_mode
 	}, mut c.store)!
-	c.store.save(session_state_with_endpoint(result.session_state(), dc))!
+	c.store.save(session.SessionData{
+		state: session_state_with_endpoint(result.session_state(), dc)
+		peers: c.stored_peer_records()
+	})!
 
 	runtime, _ := c.build_runtime()!
 	c.runtime = runtime
@@ -572,6 +582,7 @@ pub fn (mut c Client) send_login_code_with_settings(phone_number string, setting
 pub fn (mut c Client) sign_in_code(request LoginCodeRequest, code string) !tl.AuthAuthorizationType {
 	if request.authorization_now {
 		c.cache_authorization(request.authorization)
+		c.persist_session()!
 		return request.authorization
 	}
 	if request.phone_code_hash.len == 0 {
@@ -591,6 +602,7 @@ pub fn (mut c Client) sign_in_phone(phone_number string, phone_code_hash string,
 	}) or { return wrap_auth_error(err) }
 	authorization := expect_auth_authorization(result)!
 	c.cache_authorization(authorization)
+	c.persist_session()!
 	return authorization
 }
 
@@ -605,6 +617,7 @@ pub fn (mut c Client) check_password(password tl.InputCheckPasswordSRPType) !tl.
 	}) or { return wrap_auth_error(err) }
 	authorization := expect_auth_authorization(result)!
 	c.cache_authorization(authorization)
+	c.persist_session()!
 	return authorization
 }
 
@@ -680,6 +693,7 @@ pub fn (mut c Client) login_bot(bot_token string) !tl.AuthAuthorizationType {
 	}) or { return wrap_auth_error(err) }
 	authorization := expect_auth_authorization(result)!
 	c.cache_authorization(authorization)
+	c.persist_session()!
 	return authorization
 }
 
@@ -1019,6 +1033,7 @@ pub fn (mut c Client) resolve_username(username string) !ResolvedPeer {
 	resolved := expect_contacts_resolved_peer(result)!
 	entry := resolved_peer_from_contacts(resolved)!
 	c.cache_resolved_peer(entry)
+	c.persist_session()!
 	return entry
 }
 
@@ -1055,6 +1070,7 @@ pub fn (mut c Client) pump_updates_once() ! {
 			runtime: c.runtime
 		}
 		c.update_manager.recover(mut source)!
+		c.persist_session()!
 		return
 	}
 	for batch in c.runtime.drain_updates() {
@@ -1063,6 +1079,7 @@ pub fn (mut c Client) pump_updates_once() ! {
 		}
 		c.update_manager.ingest(batch, mut source)!
 	}
+	c.persist_session()!
 }
 
 fn validate_client_config(config ClientConfig) ! {
@@ -1090,7 +1107,7 @@ fn validate_client_config(config ClientConfig) ! {
 
 fn (mut c Client) build_runtime() !(ClientRuntime, bool) {
 	mut transport_engine := c.new_transport_engine()!
-	stored_state := c.store.load() or {
+	stored := c.store.load() or {
 		primary_dc := c.primary_dc() or {
 			return error('client config must define at least one dc option')
 		}
@@ -1101,13 +1118,18 @@ fn (mut c Client) build_runtime() !(ClientRuntime, bool) {
 			is_media:     primary_dc.is_media
 			padding_mode: c.config.padding_mode
 		}, mut c.store)!
-		c.store.save(session_state_with_endpoint(result.session_state(), primary_dc))!
+		c.store.save(session.SessionData{
+			state: session_state_with_endpoint(result.session_state(), primary_dc)
+			peers: c.stored_peer_records()
+		})!
 		mut engine := rpc.new_session_engine_from_store(transport_engine, mut c.store,
 			c.config.rpc_config)!
 		return SessionRuntime{
 			engine: engine
 		}, false
 	}
+	c.restore_peer_cache(stored.peers)
+	stored_state := stored.state
 	if stored_state.dc_id != 0 {
 		if c.dc_option_by_id(stored_state.dc_id) == none && stored_state.dc_address.len > 0
 			&& stored_state.dc_port > 0 {
@@ -1231,6 +1253,45 @@ fn (mut c Client) cache_user_aliases(user tl.UserType) {
 		}
 		else {}
 	}
+}
+
+fn (mut c Client) restore_peer_cache(records []session.PeerRecord) {
+	c.peer_cache = map[string]CachedPeer{}
+	for record in records {
+		c.peer_cache[record.cache_key] = CachedPeer{
+			key:        record.key
+			username:   record.username
+			input_peer: record.input_peer
+			peer:       record.peer
+		}
+	}
+}
+
+fn (c Client) stored_peer_records() []session.PeerRecord {
+	mut cache_keys := c.peer_cache.keys()
+	cache_keys.sort()
+	mut peers := []session.PeerRecord{cap: cache_keys.len}
+	for cache_key in cache_keys {
+		cached := c.peer_cache[cache_key]
+		peers << session.PeerRecord{
+			cache_key:  cache_key
+			key:        cached.key
+			username:   cached.username
+			peer:       cached.peer
+			input_peer: cached.input_peer
+		}
+	}
+	return peers
+}
+
+fn (mut c Client) persist_session() ! {
+	if !c.runtime_ready {
+		return
+	}
+	c.store.save(session.SessionData{
+		state: c.runtime.session_state()
+		peers: c.stored_peer_records()
+	})!
 }
 
 fn (mut c Client) send_media_request(peer tl.InputPeerType, media_value tl.InputMediaType, caption string) !tl.UpdatesType {

@@ -143,8 +143,8 @@ pub fn new_session_engine(transport_engine transport.Engine, state session.Sessi
 }
 
 pub fn new_session_engine_from_store(transport_engine transport.Engine, mut store session.Store, config EngineConfig) !SessionEngine {
-	state := store.load()!
-	return new_session_engine(transport_engine, state, config)!
+	data := store.load()!
+	return new_session_engine(transport_engine, data.state, config)!
 }
 
 pub fn (e SessionEngine) is_connected() bool {

@@ -112,7 +112,10 @@ fn test_default_rpc_error_action_does_not_auto_migrate() {
 fn test_begin_invoke_restores_session_from_store_and_correlates_rpc_result() {
 	state := make_test_session_state()
 	mut store := session.new_memory_store()
-	store.save(state) or { panic(err) }
+	store.save(session.SessionData{
+		state: state
+		peers: []session.PeerRecord{}
+	}) or { panic(err) }
 	mut stream := &ScriptedStream{}
 	mut engine := new_test_rpc_engine_from_store(mut store, {
 		1: stream

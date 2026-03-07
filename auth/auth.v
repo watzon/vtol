@@ -100,7 +100,10 @@ pub fn authenticate(mut engine transport.Engine, config ExchangeConfig) !Handsha
 
 pub fn authenticate_and_store(mut engine transport.Engine, config ExchangeConfig, mut store session.Store) !HandshakeResult {
 	result := authenticate(mut engine, config)!
-	store.save(result.session_state())!
+	store.save(session.SessionData{
+		state: result.session_state()
+		peers: []session.PeerRecord{}
+	})!
 	return result
 }
 

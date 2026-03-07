@@ -666,6 +666,66 @@ fn test_resolve_username_caches_peer_and_send_message_reuses_cache() {
 	}
 }
 
+fn test_build_runtime_restores_peer_cache_from_store() {
+	mut store := session.new_memory_session()
+	store.save(session.SessionData{
+		state: session.SessionState{
+			dc_id:           2
+			dc_address:      '149.154.167.50'
+			dc_port:         443
+			auth_key:        []u8{len: 256, init: u8(1)}
+			auth_key_id:     77
+			server_salt:     55
+			session_id:      99
+			layer:           201
+			schema_revision: 'test-layer'
+			created_at:      1_700_000_000
+		}
+		peers: [
+			session.PeerRecord{
+				cache_key:  'alice'
+				key:        'user:42'
+				username:   'alice'
+				peer:       tl.PeerUser{
+					user_id: 42
+				}
+				input_peer: tl.InputPeerUser{
+					user_id:     42
+					access_hash: 77
+				}
+			},
+		]
+	}) or { panic(err) }
+	mut client := new_client_with_store(ClientConfig{
+		app_id:     1
+		app_hash:   'test-hash'
+		dc_options: [
+			DcOption{
+				id:   2
+				host: '149.154.167.50'
+				port: 443
+			},
+		]
+	}, store) or { panic(err) }
+
+	runtime, restored := client.build_runtime() or { panic(err) }
+
+	assert restored
+	client.runtime = runtime
+	client.runtime_ready = true
+
+	peer := client.cached_input_peer('alice') or { panic('expected restored peer cache entry') }
+	match peer {
+		tl.InputPeerUser {
+			assert peer.user_id == 42
+			assert peer.access_hash == 77
+		}
+		else {
+			assert false
+		}
+	}
+}
+
 fn test_core_wrappers_delegate_to_tl_methods() {
 	mut state := &FakeRuntimeState{
 		responses: [

@@ -136,15 +136,20 @@ pub struct Client {
 pub:
 	config ClientConfig
 mut:
-	state          ClientState = .disconnected
-	dc_options     []DcOption
-	store          session.Store
-	debug_recorder rpc.DebugRecorder
-	runtime        ClientRuntime = NullRuntime{}
-	runtime_ready  bool
-	session_loaded bool
-	peer_cache     map[string]CachedPeer
-	update_manager updates.Manager
+	state                  ClientState = .disconnected
+	dc_options             []DcOption
+	store                  session.Store
+	debug_recorder         rpc.DebugRecorder
+	runtime                ClientRuntime = NullRuntime{}
+	runtime_ready          bool
+	session_loaded         bool
+	peer_cache             map[string]CachedPeer
+	update_manager         updates.Manager
+	event_subscription     updates.Subscription
+	has_event_subscription bool
+	next_event_handler_id  int = 1
+	raw_update_handlers    map[int]RawUpdateHandlerState  = map[int]RawUpdateHandlerState{}
+	new_message_handlers   map[int]NewMessageHandlerState = map[int]NewMessageHandlerState{}
 }
 
 pub fn new_client(config ClientConfig) !Client {

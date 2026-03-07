@@ -21,6 +21,7 @@ pub fn (mut c Client) apply_updates(batch tl.UpdatesType) ! {
 		runtime: c.runtime
 	}
 	c.update_manager.ingest(batch, mut source)!
+	c.dispatch_pending_event_handlers()!
 }
 
 pub fn (mut c Client) pump_updates_once() ! {
@@ -36,6 +37,7 @@ pub fn (mut c Client) pump_updates_once() ! {
 			runtime: c.runtime
 		}
 		c.update_manager.recover(mut source)!
+		c.dispatch_pending_event_handlers()!
 		c.persist_session()!
 		return
 	}
@@ -44,6 +46,7 @@ pub fn (mut c Client) pump_updates_once() ! {
 			runtime: c.runtime
 		}
 		c.update_manager.ingest(batch, mut source)!
+		c.dispatch_pending_event_handlers()!
 	}
 	c.persist_session()!
 }

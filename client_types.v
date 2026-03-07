@@ -5,6 +5,7 @@ import crypto
 import rpc
 import tl
 import transport
+import updates
 
 pub enum TransportMode {
 	abridged
@@ -223,6 +224,64 @@ pub:
 	entities           []tl.MessageEntityType
 	has_entities_value bool
 }
+
+pub struct EventPeer {
+pub:
+	key                  string
+	username             string
+	peer                 tl.PeerType
+	input_peer           tl.InputPeerType = tl.InputPeerEmpty{}
+	has_input_peer_value bool
+}
+
+pub struct RawUpdateEvent {
+pub:
+	kind                 updates.EventKind = .live
+	state                updates.StateVector
+	batch                tl.UpdatesType = tl.UpdatesTooLong{}
+	has_batch_value      bool
+	difference           tl.UpdatesDifferenceType = tl.UnknownUpdatesDifferenceType{}
+	has_difference_value bool
+}
+
+pub type RawUpdateHandler = fn (event RawUpdateEvent) !
+
+pub struct NewMessageHandlerConfig {
+pub:
+	chat          string
+	sender        string
+	incoming      bool
+	outgoing      bool
+	text          string
+	text_contains string
+}
+
+pub struct NewMessageEvent {
+pub:
+	kind                 updates.EventKind = .live
+	state                updates.StateVector
+	id                   int
+	text                 string
+	date                 int
+	outgoing             bool
+	chat                 EventPeer
+	sender               EventPeer
+	has_sender_value     bool
+	message              tl.MessageType = tl.UnknownMessageType{}
+	has_message_value    bool
+	media                tl.MessageMediaType = tl.UnknownMessageMediaType{}
+	has_media_value      bool
+	entities             []tl.MessageEntityType
+	has_entities_value   bool
+	update               tl.UpdateType = tl.UnknownUpdateType{}
+	has_update_value     bool
+	batch                tl.UpdatesType = tl.UpdatesTooLong{}
+	has_batch_value      bool
+	difference           tl.UpdatesDifferenceType = tl.UnknownUpdatesDifferenceType{}
+	has_difference_value bool
+}
+
+pub type NewMessageHandler = fn (event NewMessageEvent) !
 
 pub struct DialogPageOptions {
 pub:

@@ -312,11 +312,12 @@ fn (mut c Client) send_media_request_updates(peer tl.InputPeerType, media_value 
 
 fn (mut c Client) ingest_updates_result(result tl.Object) !tl.UpdatesType {
 	batch := expect_updates(result)!
-	if c.update_manager.is_initialized() {
+	if c.update_manager.is_initialized() || c.has_event_subscription {
 		mut source := RuntimeDifferenceSource{
 			runtime: c.runtime
 		}
 		c.update_manager.ingest(batch, mut source)!
+		c.dispatch_pending_event_handlers()!
 	}
 	return batch
 }

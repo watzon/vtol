@@ -136,11 +136,11 @@ The implementation order should be code-first. Rewrite the user-facing docs only
 
 ## Phase 12: Event and conversation ergonomics
 
-- [ ] 12.1 Add a typed event facade over `updates.Manager` so users can register handlers without manually draining subscription channels.
-- [ ] 12.2 Add a first high-level handler such as `on_new_message()` that exposes a VTOL message/event wrapper rather than raw update batches.
-- [ ] 12.3 Add basic event filters for peer/chat, sender, outgoing/incoming, and simple text matching without forcing users into raw TL inspection.
-- [ ] 12.4 Add `idle()` or `run_until_disconnected()` so long-lived clients do not require hand-written pump loops for the happy path.
-- [ ] 12.5 Ensure the handler layer composes with the existing update recovery logic instead of bypassing it.
+- [x] 12.1 Add a typed event facade over `updates.Manager` so users can register handlers without manually draining subscription channels.
+- [x] 12.2 Add a first high-level handler such as `on_new_message()` that exposes a VTOL message/event wrapper rather than raw update batches.
+- [x] 12.3 Add basic event filters for peer/chat, sender, outgoing/incoming, and simple text matching without forcing users into raw TL inspection.
+- [x] 12.4 Add `idle()` or `run_until_disconnected()` so long-lived clients do not require hand-written pump loops for the happy path.
+- [x] 12.5 Ensure the handler layer composes with the existing update recovery logic instead of bypassing it.
 - [ ] 12.6 Add a conversation helper that supports request-response flows like send, wait for reply, and wait for next message within a chat.
 - [ ] 12.7 Add tests that prove handler delivery, ordering, reconnect recovery, and backpressure behavior remain correct under the new facade.
 

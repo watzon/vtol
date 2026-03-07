@@ -10,15 +10,16 @@ import updates
 @[heap]
 struct FakeRuntimeState {
 mut:
-	connect_calls    int
-	disconnect_calls int
-	pump_calls       int
-	connected        bool
-	invocations      []string
-	functions        []tl.Function
-	responses        []tl.Object
-	errors           map[int]IError
-	update_batches   []tl.UpdatesType
+	connect_calls          int
+	disconnect_calls       int
+	pump_calls             int
+	disconnect_after_pumps int
+	connected              bool
+	invocations            []string
+	functions              []tl.Function
+	responses              []tl.Object
+	errors                 map[int]IError
+	update_batches         []tl.UpdatesType
 }
 
 struct FakeRuntime {
@@ -93,6 +94,9 @@ fn (mut e ErrorRuntime) invoke(function tl.Function, options rpc.CallOptions) !t
 
 fn (mut f FakeRuntime) pump_once() ! {
 	f.state.pump_calls++
+	if f.state.disconnect_after_pumps > 0 && f.state.pump_calls >= f.state.disconnect_after_pumps {
+		f.state.connected = false
+	}
 }
 
 fn (mut e ErrorRuntime) pump_once() ! {}
@@ -131,6 +135,18 @@ mut:
 struct MessageCollector {
 mut:
 	message_ids []int
+}
+
+@[heap]
+struct RawUpdateCollector {
+mut:
+	events []RawUpdateEvent
+}
+
+@[heap]
+struct NewMessageEventCollector {
+mut:
+	events []NewMessageEvent
 }
 
 fn (r RecordingProgressReporter) report(progress media.TransferProgress) {
@@ -1392,6 +1408,200 @@ fn test_client_pump_updates_recovers_after_transport_failure() {
 	} else {
 		assert false
 	}
+}
+
+fn test_on_new_message_emits_filtered_live_events() {
+	mut state := &FakeRuntimeState{
+		responses:      [
+			tl.Object(tl.UpdatesState{
+				pts:          0
+				qts:          0
+				date:         100
+				seq:          0
+				unread_count: 0
+			}),
+		]
+		update_batches: [
+			tl.UpdatesType(tl.Updates{
+				updates: [
+					tl.UpdateType(tl.UpdateNewMessage{
+						message:   tl.MessageType(tl.Message{
+							id:                41
+							peer_id:           tl.PeerUser{
+								user_id: 42
+							}
+							from_id:           tl.PeerUser{
+								user_id: 42
+							}
+							has_from_id_value: true
+							date:              101
+							message:           'ping from alice'
+							media:             tl.UnknownMessageMediaType{}
+							has_media_value:   false
+						})
+						pts:       1
+						pts_count: 1
+					}),
+					tl.UpdateType(tl.UpdateNewMessage{
+						message:   tl.MessageType(tl.Message{
+							out:             true
+							id:              42
+							peer_id:         tl.PeerUser{
+								user_id: 42
+							}
+							date:            102
+							message:         'pong from me'
+							media:           tl.UnknownMessageMediaType{}
+							has_media_value: false
+						})
+						pts:       2
+						pts_count: 1
+					}),
+				]
+				users:   [
+					tl.UserType(make_test_user('alice', 42, 77)),
+				]
+				chats:   []tl.ChatType{}
+				date:    102
+				seq:     1
+			}),
+		]
+	}
+	mut client := new_fake_client(state)
+	collector := &NewMessageEventCollector{}
+
+	_ = client.on_new_message_with_config(NewMessageHandlerConfig{
+		chat:          '@Alice'
+		sender:        'alice'
+		incoming:      true
+		text_contains: 'ping'
+	}, fn [collector] (event NewMessageEvent) ! {
+		unsafe {
+			collector.events << event
+		}
+	}) or { panic(err) }
+
+	client.pump_updates_once() or { panic(err) }
+
+	assert collector.events.len == 1
+	event := collector.events[0]
+	assert event.kind == .live
+	assert event.id == 41
+	assert event.text == 'ping from alice'
+	assert !event.outgoing
+	assert event.chat.key == 'user:42'
+	assert event.chat.username == 'alice'
+	assert event.sender.key == 'user:42'
+	assert event.has_sender_value
+	assert event.has_message_value
+	assert event.has_update_value
+	assert event.has_batch_value
+}
+
+fn test_event_handlers_follow_recovery_path() {
+	mut state := &FakeRuntimeState{
+		responses:      [
+			tl.Object(tl.UpdatesState{
+				pts:          0
+				qts:          0
+				date:         100
+				seq:          0
+				unread_count: 0
+			}),
+			tl.Object(tl.UpdatesDifference{
+				new_messages:           [
+					tl.MessageType(tl.Message{
+						id:                50
+						peer_id:           tl.PeerUser{
+							user_id: 42
+						}
+						from_id:           tl.PeerUser{
+							user_id: 42
+						}
+						has_from_id_value: true
+						date:              101
+						message:           'missed hello'
+						media:             tl.UnknownMessageMediaType{}
+						has_media_value:   false
+					}),
+				]
+				new_encrypted_messages: []tl.EncryptedMessageType{}
+				other_updates:          []tl.UpdateType{}
+				chats:                  []tl.ChatType{}
+				users:                  [
+					tl.UserType(make_test_user('alice', 42, 77)),
+				]
+				state:                  tl.UpdatesState{
+					pts:          1
+					qts:          0
+					date:         101
+					seq:          0
+					unread_count: 0
+				}
+			}),
+		]
+		update_batches: [
+			tl.UpdatesType(tl.UpdateShortSentMessage{
+				id:              99
+				pts:             2
+				pts_count:       1
+				date:            102
+				media:           tl.UnknownMessageMediaType{}
+				has_media_value: false
+			}),
+		]
+	}
+	mut client := new_fake_client(state)
+	raw := &RawUpdateCollector{}
+	messages := &NewMessageEventCollector{}
+
+	_ = client.on_raw_update(fn [raw] (event RawUpdateEvent) ! {
+		unsafe {
+			raw.events << event
+		}
+	}) or { panic(err) }
+	_ = client.on_new_message(fn [messages] (event NewMessageEvent) ! {
+		unsafe {
+			messages.events << event
+		}
+	}) or { panic(err) }
+
+	client.pump_updates_once() or { panic(err) }
+
+	assert raw.events.len == 2
+	assert raw.events[0].kind == .recovered
+	assert raw.events[0].has_difference_value
+	assert raw.events[1].kind == .live
+	assert raw.events[1].has_batch_value
+
+	assert messages.events.len == 1
+	assert messages.events[0].kind == .recovered
+	assert messages.events[0].id == 50
+	assert messages.events[0].text == 'missed hello'
+	assert messages.events[0].chat.key == 'user:42'
+	assert messages.events[0].has_difference_value
+}
+
+fn test_client_idle_runs_until_runtime_disconnects() {
+	mut state := &FakeRuntimeState{
+		disconnect_after_pumps: 1
+		responses:              [
+			tl.Object(tl.UpdatesState{
+				pts:          0
+				qts:          0
+				date:         100
+				seq:          0
+				unread_count: 0
+			}),
+		]
+	}
+	mut client := new_fake_client(state)
+
+	client.idle() or { panic(err) }
+
+	assert state.connect_calls == 1
+	assert state.pump_calls == 1
+	assert !client.is_connected()
 }
 
 fn test_client_exposes_bounded_rpc_debug_events() {

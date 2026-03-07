@@ -5,6 +5,19 @@ Status key:
 - `[x]` scaffolded or documented in the repository
 - `[ ]` not implemented yet
 
+## Current focus
+
+The original protocol-and-coverage roadmap is complete. The next roadmap should optimize for developer experience rather than raw MTProto capability.
+
+The comparison and rationale for the next phases live in `docs/dx-comparison.md`. In short, VTOL now needs to reduce how early the public API leaks raw TL concepts and make the common path look more like Telethon and mtcute:
+
+- chat-like peer inputs instead of requiring `tl.InputPeerType` early
+- message-oriented return values instead of raw `tl.UpdatesType` for common send flows
+- handler-oriented update APIs instead of only subscription channels and manual pump loops
+- task-oriented user docs instead of primarily contributor-oriented docs
+
+The implementation order should be code-first. Rewrite the user-facing docs only after the new DX abstractions are present and stable enough to document without immediate churn.
+
 ## Phase 0: Repo and package foundation
 
 - [x] 0.1 Replace the executable scaffold with a library scaffold by retiring `main.v` and making the root package `vtol`.
@@ -110,3 +123,44 @@ Status key:
 - [x] 10.5 Add example applications that prove login, messaging, updates, downloads, and long-running sessions.
 - [x] 10.6 Define a compatibility and upgrade process for future Telegram layer changes.
 - [x] 10.7 Mark a `1.0` target only after generated API coverage, session stability, and update recovery are proven in integration testing.
+
+## Phase 11: Peer and message ergonomics
+
+- [ ] 11.1 Define a public `PeerLike` input story that can represent usernames, `me`/`self`, cached entity keys, `ResolvedPeer`, and `tl.InputPeerType`.
+- [ ] 11.2 Add a normalization helper such as `resolve_peer_like()` and make high-level client methods use it consistently.
+- [ ] 11.3 Replace username-only convenience helpers with generic chat-like wrappers so `send_text`, `send_photo`, `send_file`, and history helpers accept the same peer contract.
+- [ ] 11.4 Add a thin VTOL-owned sent-message wrapper that captures the common message metadata users need without hiding raw updates.
+- [ ] 11.5 Make high-level send helpers return that sent-message wrapper while preserving access to the raw `tl.UpdatesType`.
+- [ ] 11.6 Add result normalization helpers for common message/update responses so users do not need to manually unpack TL unions for routine flows.
+- [ ] 11.7 Add item-level dialog and history iteration helpers in addition to page/batch helpers.
+
+## Phase 12: Event and conversation ergonomics
+
+- [ ] 12.1 Add a typed event facade over `updates.Manager` so users can register handlers without manually draining subscription channels.
+- [ ] 12.2 Add a first high-level handler such as `on_new_message()` that exposes a VTOL message/event wrapper rather than raw update batches.
+- [ ] 12.3 Add basic event filters for peer/chat, sender, outgoing/incoming, and simple text matching without forcing users into raw TL inspection.
+- [ ] 12.4 Add `idle()` or `run_until_disconnected()` so long-lived clients do not require hand-written pump loops for the happy path.
+- [ ] 12.5 Ensure the handler layer composes with the existing update recovery logic instead of bypassing it.
+- [ ] 12.6 Add a conversation helper that supports request-response flows like send, wait for reply, and wait for next message within a chat.
+- [ ] 12.7 Add tests that prove handler delivery, ordering, reconnect recovery, and backpressure behavior remain correct under the new facade.
+
+## Phase 13: Rich-text and common-flow polish
+
+- [ ] 13.1 Add a user-facing rich-text input model based on `{ text, entities }` rather than hard-coding formatting logic into the client core.
+- [ ] 13.2 Add optional markdown and HTML parsing helpers layered on top of that entity model.
+- [ ] 13.3 Expand high-level send options for common cases such as reply-to, silent send, scheduling, and link-preview control where Telegram semantics are stable enough.
+- [ ] 13.4 Shorten common constructor paths so session-file and string-session startup require less ceremony in the first example.
+- [ ] 13.5 Revisit examples so the primary examples use the new peer, message, and event abstractions rather than the lower-level flows.
+- [ ] 13.6 Re-audit the public API stability boundary after the DX pass and explicitly mark which new helper surfaces are intended to be stable for `1.0`.
+
+## Phase 14: Documentation and 1.0 readiness
+
+- [ ] 14.1 Rewrite the top-level README around the first-user journey: create client, start/login, send a message, receive updates, then discover advanced topics.
+- [ ] 14.2 Add `docs/quick-start.md` with a minimal end-to-end example for session restore, login, sending a message, and clean disconnect.
+- [ ] 14.3 Add `docs/auth-and-sessions.md` that explains `MemorySession`, `StringSession`, `SQLiteSession`, session safety, and restore semantics in user-facing terms.
+- [ ] 14.4 Add `docs/peers.md` that explains peer resolution, cached peers, usernames, `me`/`self`, and the finalized `PeerLike` contract.
+- [ ] 14.5 Add `docs/messages.md` that teaches common send/fetch flows through the new message-oriented surface before introducing raw TL unions.
+- [ ] 14.6 Add `docs/updates.md` that documents long-lived clients, update state, recovery, and the finalized high-level handler model.
+- [ ] 14.7 Add `docs/raw-api.md` that explicitly positions `Client.invoke()` as the escape hatch after high-level helpers, not the default starting point.
+- [ ] 14.8 Add a short `Client` quick reference doc listing the highest-value methods and their intended use.
+- [ ] 14.9 Mark `1.0` only after the docs, PeerLike/message/event ergonomics, and update-recovery invariants are all proven together.

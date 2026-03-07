@@ -86,6 +86,8 @@ For custom storage, pass any `session.Store` implementation to `vtol.new_client_
 
 The active implementation roadmap lives in `docs/roadmap.md`. The project remains pre-`1.0`, but generated TL coverage, session restore, and live update recovery are now enforced in tests, so the next milestone is API stabilization and cross-platform hardening rather than basic feature completeness.
 
+For the current Telethon/mtcute DX comparison and the recommended post-roadmap backlog, see `docs/dx-comparison.md`.
+
 ## Stability notes
 
 The current stable-vs-unstable boundary is documented in `docs/api-stability.md`.

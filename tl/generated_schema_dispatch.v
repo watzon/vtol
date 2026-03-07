@@ -32,6 +32,3831 @@ pub fn current_schema_snapshot() SchemaSnapshot {
 	}
 }
 
+pub fn current_function_registry() []FunctionInfo {
+	return [
+		FunctionInfo{
+			method_name: 'req_pq'
+			constructor_id: 0x60469778
+			result_type_name: 'ResPQ'
+		},
+		FunctionInfo{
+			method_name: 'req_pq_multi'
+			constructor_id: 0xbe7e8ef1
+			result_type_name: 'ResPQ'
+		},
+		FunctionInfo{
+			method_name: 'req_DH_params'
+			constructor_id: 0xd712e4be
+			result_type_name: 'Server_DH_Params'
+		},
+		FunctionInfo{
+			method_name: 'set_client_DH_params'
+			constructor_id: 0xf5045f1f
+			result_type_name: 'Set_client_DH_params_answer'
+		},
+		FunctionInfo{
+			method_name: 'destroy_auth_key'
+			constructor_id: 0xd1435160
+			result_type_name: 'DestroyAuthKeyRes'
+		},
+		FunctionInfo{
+			method_name: 'rpc_drop_answer'
+			constructor_id: 0x58e4a740
+			result_type_name: 'RpcDropAnswer'
+		},
+		FunctionInfo{
+			method_name: 'get_future_salts'
+			constructor_id: 0xb921bd04
+			result_type_name: 'FutureSalts'
+		},
+		FunctionInfo{
+			method_name: 'ping'
+			constructor_id: 0x7abe77ec
+			result_type_name: 'Pong'
+		},
+		FunctionInfo{
+			method_name: 'ping_delay_disconnect'
+			constructor_id: 0xf3427b8c
+			result_type_name: 'Pong'
+		},
+		FunctionInfo{
+			method_name: 'destroy_session'
+			constructor_id: 0xe7512126
+			result_type_name: 'DestroySessionRes'
+		},
+		FunctionInfo{
+			method_name: 'invokeAfterMsg'
+			constructor_id: 0xcb9f372d
+			result_type_name: 'X'
+		},
+		FunctionInfo{
+			method_name: 'invokeAfterMsgs'
+			constructor_id: 0x3dc4b4f0
+			result_type_name: 'X'
+		},
+		FunctionInfo{
+			method_name: 'initConnection'
+			constructor_id: 0xc1cd5ea9
+			result_type_name: 'X'
+		},
+		FunctionInfo{
+			method_name: 'invokeWithLayer'
+			constructor_id: 0xda9b0d0d
+			result_type_name: 'X'
+		},
+		FunctionInfo{
+			method_name: 'invokeWithoutUpdates'
+			constructor_id: 0xbf9459b7
+			result_type_name: 'X'
+		},
+		FunctionInfo{
+			method_name: 'invokeWithMessagesRange'
+			constructor_id: 0x365275f2
+			result_type_name: 'X'
+		},
+		FunctionInfo{
+			method_name: 'invokeWithTakeout'
+			constructor_id: 0xaca9fd2e
+			result_type_name: 'X'
+		},
+		FunctionInfo{
+			method_name: 'invokeWithBusinessConnection'
+			constructor_id: 0xdd289f8e
+			result_type_name: 'X'
+		},
+		FunctionInfo{
+			method_name: 'invokeWithGooglePlayIntegrity'
+			constructor_id: 0x1df92984
+			result_type_name: 'X'
+		},
+		FunctionInfo{
+			method_name: 'invokeWithApnsSecret'
+			constructor_id: 0x0dae54f8
+			result_type_name: 'X'
+		},
+		FunctionInfo{
+			method_name: 'invokeWithReCaptcha'
+			constructor_id: 0xadbb0f94
+			result_type_name: 'X'
+		},
+		FunctionInfo{
+			method_name: 'auth.sendCode'
+			constructor_id: 0xa677244f
+			result_type_name: 'auth.SentCode'
+		},
+		FunctionInfo{
+			method_name: 'auth.signUp'
+			constructor_id: 0xaac7b717
+			result_type_name: 'auth.Authorization'
+		},
+		FunctionInfo{
+			method_name: 'auth.signIn'
+			constructor_id: 0x8d52a951
+			result_type_name: 'auth.Authorization'
+		},
+		FunctionInfo{
+			method_name: 'auth.logOut'
+			constructor_id: 0x3e72ba19
+			result_type_name: 'auth.LoggedOut'
+		},
+		FunctionInfo{
+			method_name: 'auth.resetAuthorizations'
+			constructor_id: 0x9fab0d1a
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'auth.exportAuthorization'
+			constructor_id: 0xe5bfffcd
+			result_type_name: 'auth.ExportedAuthorization'
+		},
+		FunctionInfo{
+			method_name: 'auth.importAuthorization'
+			constructor_id: 0xa57a7dad
+			result_type_name: 'auth.Authorization'
+		},
+		FunctionInfo{
+			method_name: 'auth.bindTempAuthKey'
+			constructor_id: 0xcdd42a05
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'auth.importBotAuthorization'
+			constructor_id: 0x67a3ff2c
+			result_type_name: 'auth.Authorization'
+		},
+		FunctionInfo{
+			method_name: 'auth.checkPassword'
+			constructor_id: 0xd18b4d16
+			result_type_name: 'auth.Authorization'
+		},
+		FunctionInfo{
+			method_name: 'auth.requestPasswordRecovery'
+			constructor_id: 0xd897bc66
+			result_type_name: 'auth.PasswordRecovery'
+		},
+		FunctionInfo{
+			method_name: 'auth.recoverPassword'
+			constructor_id: 0x37096c70
+			result_type_name: 'auth.Authorization'
+		},
+		FunctionInfo{
+			method_name: 'auth.resendCode'
+			constructor_id: 0xcae47523
+			result_type_name: 'auth.SentCode'
+		},
+		FunctionInfo{
+			method_name: 'auth.cancelCode'
+			constructor_id: 0x1f040578
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'auth.dropTempAuthKeys'
+			constructor_id: 0x8e48a188
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'auth.exportLoginToken'
+			constructor_id: 0xb7e085fe
+			result_type_name: 'auth.LoginToken'
+		},
+		FunctionInfo{
+			method_name: 'auth.importLoginToken'
+			constructor_id: 0x95ac5ce4
+			result_type_name: 'auth.LoginToken'
+		},
+		FunctionInfo{
+			method_name: 'auth.acceptLoginToken'
+			constructor_id: 0xe894ad4d
+			result_type_name: 'Authorization'
+		},
+		FunctionInfo{
+			method_name: 'auth.checkRecoveryPassword'
+			constructor_id: 0x0d36bf79
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'auth.importWebTokenAuthorization'
+			constructor_id: 0x2db873a9
+			result_type_name: 'auth.Authorization'
+		},
+		FunctionInfo{
+			method_name: 'auth.requestFirebaseSms'
+			constructor_id: 0x8e39261e
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'auth.resetLoginEmail'
+			constructor_id: 0x7e960193
+			result_type_name: 'auth.SentCode'
+		},
+		FunctionInfo{
+			method_name: 'auth.reportMissingCode'
+			constructor_id: 0xcb9deff6
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'auth.checkPaidAuth'
+			constructor_id: 0x56e59f9c
+			result_type_name: 'auth.SentCode'
+		},
+		FunctionInfo{
+			method_name: 'auth.initPasskeyLogin'
+			constructor_id: 0x518ad0b7
+			result_type_name: 'auth.PasskeyLoginOptions'
+		},
+		FunctionInfo{
+			method_name: 'auth.finishPasskeyLogin'
+			constructor_id: 0x9857ad07
+			result_type_name: 'auth.Authorization'
+		},
+		FunctionInfo{
+			method_name: 'account.registerDevice'
+			constructor_id: 0xec86017a
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.unregisterDevice'
+			constructor_id: 0x6a0d3206
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.updateNotifySettings'
+			constructor_id: 0x84be5b93
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.getNotifySettings'
+			constructor_id: 0x12b3ad31
+			result_type_name: 'PeerNotifySettings'
+		},
+		FunctionInfo{
+			method_name: 'account.resetNotifySettings'
+			constructor_id: 0xdb7e1747
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.updateProfile'
+			constructor_id: 0x78515775
+			result_type_name: 'User'
+		},
+		FunctionInfo{
+			method_name: 'account.updateStatus'
+			constructor_id: 0x6628562c
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.getWallPapers'
+			constructor_id: 0x07967d36
+			result_type_name: 'account.WallPapers'
+		},
+		FunctionInfo{
+			method_name: 'account.reportPeer'
+			constructor_id: 0xc5ba3d86
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.checkUsername'
+			constructor_id: 0x2714d86c
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.updateUsername'
+			constructor_id: 0x3e0bdd7c
+			result_type_name: 'User'
+		},
+		FunctionInfo{
+			method_name: 'account.getPrivacy'
+			constructor_id: 0xdadbc950
+			result_type_name: 'account.PrivacyRules'
+		},
+		FunctionInfo{
+			method_name: 'account.setPrivacy'
+			constructor_id: 0xc9f81ce8
+			result_type_name: 'account.PrivacyRules'
+		},
+		FunctionInfo{
+			method_name: 'account.deleteAccount'
+			constructor_id: 0xa2c0cf74
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.getAccountTTL'
+			constructor_id: 0x08fc711d
+			result_type_name: 'AccountDaysTTL'
+		},
+		FunctionInfo{
+			method_name: 'account.setAccountTTL'
+			constructor_id: 0x2442485e
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.sendChangePhoneCode'
+			constructor_id: 0x82574ae5
+			result_type_name: 'auth.SentCode'
+		},
+		FunctionInfo{
+			method_name: 'account.changePhone'
+			constructor_id: 0x70c32edb
+			result_type_name: 'User'
+		},
+		FunctionInfo{
+			method_name: 'account.updateDeviceLocked'
+			constructor_id: 0x38df3532
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.getAuthorizations'
+			constructor_id: 0xe320c158
+			result_type_name: 'account.Authorizations'
+		},
+		FunctionInfo{
+			method_name: 'account.resetAuthorization'
+			constructor_id: 0xdf77f3bc
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.getPassword'
+			constructor_id: 0x548a30f5
+			result_type_name: 'account.Password'
+		},
+		FunctionInfo{
+			method_name: 'account.getPasswordSettings'
+			constructor_id: 0x9cd4eaf9
+			result_type_name: 'account.PasswordSettings'
+		},
+		FunctionInfo{
+			method_name: 'account.updatePasswordSettings'
+			constructor_id: 0xa59b102f
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.sendConfirmPhoneCode'
+			constructor_id: 0x1b3faa88
+			result_type_name: 'auth.SentCode'
+		},
+		FunctionInfo{
+			method_name: 'account.confirmPhone'
+			constructor_id: 0x5f2178c3
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.getTmpPassword'
+			constructor_id: 0x449e0b51
+			result_type_name: 'account.TmpPassword'
+		},
+		FunctionInfo{
+			method_name: 'account.getWebAuthorizations'
+			constructor_id: 0x182e6d6f
+			result_type_name: 'account.WebAuthorizations'
+		},
+		FunctionInfo{
+			method_name: 'account.resetWebAuthorization'
+			constructor_id: 0x2d01b9ef
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.resetWebAuthorizations'
+			constructor_id: 0x682d2594
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.getAllSecureValues'
+			constructor_id: 0xb288bc7d
+			result_type_name: 'Vector<SecureValue>'
+		},
+		FunctionInfo{
+			method_name: 'account.getSecureValue'
+			constructor_id: 0x73665bc2
+			result_type_name: 'Vector<SecureValue>'
+		},
+		FunctionInfo{
+			method_name: 'account.saveSecureValue'
+			constructor_id: 0x899fe31d
+			result_type_name: 'SecureValue'
+		},
+		FunctionInfo{
+			method_name: 'account.deleteSecureValue'
+			constructor_id: 0xb880bc4b
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.getAuthorizationForm'
+			constructor_id: 0xa929597a
+			result_type_name: 'account.AuthorizationForm'
+		},
+		FunctionInfo{
+			method_name: 'account.acceptAuthorization'
+			constructor_id: 0xf3ed4c73
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.sendVerifyPhoneCode'
+			constructor_id: 0xa5a356f9
+			result_type_name: 'auth.SentCode'
+		},
+		FunctionInfo{
+			method_name: 'account.verifyPhone'
+			constructor_id: 0x4dd3a7f6
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.sendVerifyEmailCode'
+			constructor_id: 0x98e037bb
+			result_type_name: 'account.SentEmailCode'
+		},
+		FunctionInfo{
+			method_name: 'account.verifyEmail'
+			constructor_id: 0x032da4cf
+			result_type_name: 'account.EmailVerified'
+		},
+		FunctionInfo{
+			method_name: 'account.initTakeoutSession'
+			constructor_id: 0x8ef3eab0
+			result_type_name: 'account.Takeout'
+		},
+		FunctionInfo{
+			method_name: 'account.finishTakeoutSession'
+			constructor_id: 0x1d2652ee
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.confirmPasswordEmail'
+			constructor_id: 0x8fdf1920
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.resendPasswordEmail'
+			constructor_id: 0x7a7f2a15
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.cancelPasswordEmail'
+			constructor_id: 0xc1cbd5b6
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.getContactSignUpNotification'
+			constructor_id: 0x9f07c728
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.setContactSignUpNotification'
+			constructor_id: 0xcff43f61
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.getNotifyExceptions'
+			constructor_id: 0x53577479
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'account.getWallPaper'
+			constructor_id: 0xfc8ddbea
+			result_type_name: 'WallPaper'
+		},
+		FunctionInfo{
+			method_name: 'account.uploadWallPaper'
+			constructor_id: 0xe39a8f03
+			result_type_name: 'WallPaper'
+		},
+		FunctionInfo{
+			method_name: 'account.saveWallPaper'
+			constructor_id: 0x6c5a5b37
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.installWallPaper'
+			constructor_id: 0xfeed5769
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.resetWallPapers'
+			constructor_id: 0xbb3b9804
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.getAutoDownloadSettings'
+			constructor_id: 0x56da0b3f
+			result_type_name: 'account.AutoDownloadSettings'
+		},
+		FunctionInfo{
+			method_name: 'account.saveAutoDownloadSettings'
+			constructor_id: 0x76f36233
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.uploadTheme'
+			constructor_id: 0x1c3db333
+			result_type_name: 'Document'
+		},
+		FunctionInfo{
+			method_name: 'account.createTheme'
+			constructor_id: 0x652e4400
+			result_type_name: 'Theme'
+		},
+		FunctionInfo{
+			method_name: 'account.updateTheme'
+			constructor_id: 0x2bf40ccc
+			result_type_name: 'Theme'
+		},
+		FunctionInfo{
+			method_name: 'account.saveTheme'
+			constructor_id: 0xf257106c
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.installTheme'
+			constructor_id: 0xc727bb3b
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.getTheme'
+			constructor_id: 0x3a5869ec
+			result_type_name: 'Theme'
+		},
+		FunctionInfo{
+			method_name: 'account.getThemes'
+			constructor_id: 0x7206e458
+			result_type_name: 'account.Themes'
+		},
+		FunctionInfo{
+			method_name: 'account.setContentSettings'
+			constructor_id: 0xb574b16b
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.getContentSettings'
+			constructor_id: 0x8b9b4dae
+			result_type_name: 'account.ContentSettings'
+		},
+		FunctionInfo{
+			method_name: 'account.getMultiWallPapers'
+			constructor_id: 0x65ad71dc
+			result_type_name: 'Vector<WallPaper>'
+		},
+		FunctionInfo{
+			method_name: 'account.getGlobalPrivacySettings'
+			constructor_id: 0xeb2b4cf6
+			result_type_name: 'GlobalPrivacySettings'
+		},
+		FunctionInfo{
+			method_name: 'account.setGlobalPrivacySettings'
+			constructor_id: 0x1edaaac2
+			result_type_name: 'GlobalPrivacySettings'
+		},
+		FunctionInfo{
+			method_name: 'account.reportProfilePhoto'
+			constructor_id: 0xfa8cc6f5
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.resetPassword'
+			constructor_id: 0x9308ce1b
+			result_type_name: 'account.ResetPasswordResult'
+		},
+		FunctionInfo{
+			method_name: 'account.declinePasswordReset'
+			constructor_id: 0x4c9409f6
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.getChatThemes'
+			constructor_id: 0xd638de89
+			result_type_name: 'account.Themes'
+		},
+		FunctionInfo{
+			method_name: 'account.setAuthorizationTTL'
+			constructor_id: 0xbf899aa0
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.changeAuthorizationSettings'
+			constructor_id: 0x40f48462
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.getSavedRingtones'
+			constructor_id: 0xe1902288
+			result_type_name: 'account.SavedRingtones'
+		},
+		FunctionInfo{
+			method_name: 'account.saveRingtone'
+			constructor_id: 0x3dea5b03
+			result_type_name: 'account.SavedRingtone'
+		},
+		FunctionInfo{
+			method_name: 'account.uploadRingtone'
+			constructor_id: 0x831a83a2
+			result_type_name: 'Document'
+		},
+		FunctionInfo{
+			method_name: 'account.updateEmojiStatus'
+			constructor_id: 0xfbd3de6b
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.getDefaultEmojiStatuses'
+			constructor_id: 0xd6753386
+			result_type_name: 'account.EmojiStatuses'
+		},
+		FunctionInfo{
+			method_name: 'account.getRecentEmojiStatuses'
+			constructor_id: 0x0f578105
+			result_type_name: 'account.EmojiStatuses'
+		},
+		FunctionInfo{
+			method_name: 'account.clearRecentEmojiStatuses'
+			constructor_id: 0x18201aae
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.reorderUsernames'
+			constructor_id: 0xef500eab
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.toggleUsername'
+			constructor_id: 0x58d6b376
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.getDefaultProfilePhotoEmojis'
+			constructor_id: 0xe2750328
+			result_type_name: 'EmojiList'
+		},
+		FunctionInfo{
+			method_name: 'account.getDefaultGroupPhotoEmojis'
+			constructor_id: 0x915860ae
+			result_type_name: 'EmojiList'
+		},
+		FunctionInfo{
+			method_name: 'account.getAutoSaveSettings'
+			constructor_id: 0xadcbbcda
+			result_type_name: 'account.AutoSaveSettings'
+		},
+		FunctionInfo{
+			method_name: 'account.saveAutoSaveSettings'
+			constructor_id: 0xd69b8361
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.deleteAutoSaveExceptions'
+			constructor_id: 0x53bc0020
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.invalidateSignInCodes'
+			constructor_id: 0xca8ae8ba
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.updateColor'
+			constructor_id: 0x684d214e
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.getDefaultBackgroundEmojis'
+			constructor_id: 0xa60ab9ce
+			result_type_name: 'EmojiList'
+		},
+		FunctionInfo{
+			method_name: 'account.getChannelDefaultEmojiStatuses'
+			constructor_id: 0x7727a7d5
+			result_type_name: 'account.EmojiStatuses'
+		},
+		FunctionInfo{
+			method_name: 'account.getChannelRestrictedStatusEmojis'
+			constructor_id: 0x35a9e0d5
+			result_type_name: 'EmojiList'
+		},
+		FunctionInfo{
+			method_name: 'account.updateBusinessWorkHours'
+			constructor_id: 0x4b00e066
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.updateBusinessLocation'
+			constructor_id: 0x9e6b131a
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.updateBusinessGreetingMessage'
+			constructor_id: 0x66cdafc4
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.updateBusinessAwayMessage'
+			constructor_id: 0xa26a7fa5
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.updateConnectedBot'
+			constructor_id: 0x66a08c7e
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'account.getConnectedBots'
+			constructor_id: 0x4ea4c80f
+			result_type_name: 'account.ConnectedBots'
+		},
+		FunctionInfo{
+			method_name: 'account.getBotBusinessConnection'
+			constructor_id: 0x76a86270
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'account.updateBusinessIntro'
+			constructor_id: 0xa614d034
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.toggleConnectedBotPaused'
+			constructor_id: 0x646e1097
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.disablePeerConnectedBot'
+			constructor_id: 0x5e437ed9
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.updateBirthday'
+			constructor_id: 0xcc6e0c11
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.createBusinessChatLink'
+			constructor_id: 0x8851e68e
+			result_type_name: 'BusinessChatLink'
+		},
+		FunctionInfo{
+			method_name: 'account.editBusinessChatLink'
+			constructor_id: 0x8c3410af
+			result_type_name: 'BusinessChatLink'
+		},
+		FunctionInfo{
+			method_name: 'account.deleteBusinessChatLink'
+			constructor_id: 0x60073674
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.getBusinessChatLinks'
+			constructor_id: 0x6f70dde1
+			result_type_name: 'account.BusinessChatLinks'
+		},
+		FunctionInfo{
+			method_name: 'account.resolveBusinessChatLink'
+			constructor_id: 0x5492e5ee
+			result_type_name: 'account.ResolvedBusinessChatLinks'
+		},
+		FunctionInfo{
+			method_name: 'account.updatePersonalChannel'
+			constructor_id: 0xd94305e0
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.toggleSponsoredMessages'
+			constructor_id: 0xb9d9a38d
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.getReactionsNotifySettings'
+			constructor_id: 0x06dd654c
+			result_type_name: 'ReactionsNotifySettings'
+		},
+		FunctionInfo{
+			method_name: 'account.setReactionsNotifySettings'
+			constructor_id: 0x316ce548
+			result_type_name: 'ReactionsNotifySettings'
+		},
+		FunctionInfo{
+			method_name: 'account.getCollectibleEmojiStatuses'
+			constructor_id: 0x2e7b4543
+			result_type_name: 'account.EmojiStatuses'
+		},
+		FunctionInfo{
+			method_name: 'account.getPaidMessagesRevenue'
+			constructor_id: 0x19ba4a67
+			result_type_name: 'account.PaidMessagesRevenue'
+		},
+		FunctionInfo{
+			method_name: 'account.toggleNoPaidMessagesException'
+			constructor_id: 0xfe2eda76
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.setMainProfileTab'
+			constructor_id: 0x5dee78b0
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.saveMusic'
+			constructor_id: 0xb26732a9
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'account.getSavedMusicIds'
+			constructor_id: 0xe09d5faf
+			result_type_name: 'account.SavedMusicIds'
+		},
+		FunctionInfo{
+			method_name: 'account.getUniqueGiftChatThemes'
+			constructor_id: 0xe42ce9c9
+			result_type_name: 'account.ChatThemes'
+		},
+		FunctionInfo{
+			method_name: 'account.initPasskeyRegistration'
+			constructor_id: 0x429547e8
+			result_type_name: 'account.PasskeyRegistrationOptions'
+		},
+		FunctionInfo{
+			method_name: 'account.registerPasskey'
+			constructor_id: 0x55b41fd6
+			result_type_name: 'Passkey'
+		},
+		FunctionInfo{
+			method_name: 'account.getPasskeys'
+			constructor_id: 0xea1f0c52
+			result_type_name: 'account.Passkeys'
+		},
+		FunctionInfo{
+			method_name: 'account.deletePasskey'
+			constructor_id: 0xf5b5563f
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'users.getUsers'
+			constructor_id: 0x0d91a548
+			result_type_name: 'Vector<User>'
+		},
+		FunctionInfo{
+			method_name: 'users.getFullUser'
+			constructor_id: 0xb60f5918
+			result_type_name: 'users.UserFull'
+		},
+		FunctionInfo{
+			method_name: 'users.setSecureValueErrors'
+			constructor_id: 0x90c894b5
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'users.getRequirementsToContact'
+			constructor_id: 0xd89a83a3
+			result_type_name: 'Vector<RequirementToContact>'
+		},
+		FunctionInfo{
+			method_name: 'users.getSavedMusic'
+			constructor_id: 0x788d7fe3
+			result_type_name: 'users.SavedMusic'
+		},
+		FunctionInfo{
+			method_name: 'users.getSavedMusicByID'
+			constructor_id: 0x7573a4e9
+			result_type_name: 'users.SavedMusic'
+		},
+		FunctionInfo{
+			method_name: 'users.suggestBirthday'
+			constructor_id: 0xfc533372
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'contacts.getContactIDs'
+			constructor_id: 0x7adc669d
+			result_type_name: 'Vector<int>'
+		},
+		FunctionInfo{
+			method_name: 'contacts.getStatuses'
+			constructor_id: 0xc4a353ee
+			result_type_name: 'Vector<ContactStatus>'
+		},
+		FunctionInfo{
+			method_name: 'contacts.getContacts'
+			constructor_id: 0x5dd69e12
+			result_type_name: 'contacts.Contacts'
+		},
+		FunctionInfo{
+			method_name: 'contacts.importContacts'
+			constructor_id: 0x2c800be5
+			result_type_name: 'contacts.ImportedContacts'
+		},
+		FunctionInfo{
+			method_name: 'contacts.deleteContacts'
+			constructor_id: 0x096a0e00
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'contacts.deleteByPhones'
+			constructor_id: 0x1013fd9e
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'contacts.block'
+			constructor_id: 0x2e2e8734
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'contacts.unblock'
+			constructor_id: 0xb550d328
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'contacts.getBlocked'
+			constructor_id: 0x9a868f80
+			result_type_name: 'contacts.Blocked'
+		},
+		FunctionInfo{
+			method_name: 'contacts.search'
+			constructor_id: 0x11f812d8
+			result_type_name: 'contacts.Found'
+		},
+		FunctionInfo{
+			method_name: 'contacts.resolveUsername'
+			constructor_id: 0x725afbbc
+			result_type_name: 'contacts.ResolvedPeer'
+		},
+		FunctionInfo{
+			method_name: 'contacts.getTopPeers'
+			constructor_id: 0x973478b6
+			result_type_name: 'contacts.TopPeers'
+		},
+		FunctionInfo{
+			method_name: 'contacts.resetTopPeerRating'
+			constructor_id: 0x1ae373ac
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'contacts.resetSaved'
+			constructor_id: 0x879537f1
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'contacts.getSaved'
+			constructor_id: 0x82f1e39f
+			result_type_name: 'Vector<SavedContact>'
+		},
+		FunctionInfo{
+			method_name: 'contacts.toggleTopPeers'
+			constructor_id: 0x8514bdda
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'contacts.addContact'
+			constructor_id: 0xd9ba2e54
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'contacts.acceptContact'
+			constructor_id: 0xf831a20f
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'contacts.getLocated'
+			constructor_id: 0xd348bc44
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'contacts.blockFromReplies'
+			constructor_id: 0x29a8962c
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'contacts.resolvePhone'
+			constructor_id: 0x8af94344
+			result_type_name: 'contacts.ResolvedPeer'
+		},
+		FunctionInfo{
+			method_name: 'contacts.exportContactToken'
+			constructor_id: 0xf8654027
+			result_type_name: 'ExportedContactToken'
+		},
+		FunctionInfo{
+			method_name: 'contacts.importContactToken'
+			constructor_id: 0x13005788
+			result_type_name: 'User'
+		},
+		FunctionInfo{
+			method_name: 'contacts.editCloseFriends'
+			constructor_id: 0xba6705f0
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'contacts.setBlocked'
+			constructor_id: 0x94c65c76
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'contacts.getBirthdays'
+			constructor_id: 0xdaeda864
+			result_type_name: 'contacts.ContactBirthdays'
+		},
+		FunctionInfo{
+			method_name: 'contacts.getSponsoredPeers'
+			constructor_id: 0xb6c8c393
+			result_type_name: 'contacts.SponsoredPeers'
+		},
+		FunctionInfo{
+			method_name: 'contacts.updateContactNote'
+			constructor_id: 0x139f63fb
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.getMessages'
+			constructor_id: 0x63c66506
+			result_type_name: 'messages.Messages'
+		},
+		FunctionInfo{
+			method_name: 'messages.getDialogs'
+			constructor_id: 0xa0f4cb4f
+			result_type_name: 'messages.Dialogs'
+		},
+		FunctionInfo{
+			method_name: 'messages.getHistory'
+			constructor_id: 0x4423e6c5
+			result_type_name: 'messages.Messages'
+		},
+		FunctionInfo{
+			method_name: 'messages.search'
+			constructor_id: 0x29ee847a
+			result_type_name: 'messages.Messages'
+		},
+		FunctionInfo{
+			method_name: 'messages.readHistory'
+			constructor_id: 0x0e306d3a
+			result_type_name: 'messages.AffectedMessages'
+		},
+		FunctionInfo{
+			method_name: 'messages.deleteHistory'
+			constructor_id: 0xb08f922a
+			result_type_name: 'messages.AffectedHistory'
+		},
+		FunctionInfo{
+			method_name: 'messages.deleteMessages'
+			constructor_id: 0xe58e95d2
+			result_type_name: 'messages.AffectedMessages'
+		},
+		FunctionInfo{
+			method_name: 'messages.receivedMessages'
+			constructor_id: 0x05a954c0
+			result_type_name: 'Vector<ReceivedNotifyMessage>'
+		},
+		FunctionInfo{
+			method_name: 'messages.setTyping'
+			constructor_id: 0x58943ee2
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.sendMessage'
+			constructor_id: 0x545cd15a
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.sendMedia'
+			constructor_id: 0x0330e77f
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.forwardMessages'
+			constructor_id: 0x13704a7c
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.reportSpam'
+			constructor_id: 0xcf1592db
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.getPeerSettings'
+			constructor_id: 0xefd9a6a2
+			result_type_name: 'messages.PeerSettings'
+		},
+		FunctionInfo{
+			method_name: 'messages.report'
+			constructor_id: 0xfc78af9b
+			result_type_name: 'ReportResult'
+		},
+		FunctionInfo{
+			method_name: 'messages.getChats'
+			constructor_id: 0x49e9528f
+			result_type_name: 'messages.Chats'
+		},
+		FunctionInfo{
+			method_name: 'messages.getFullChat'
+			constructor_id: 0xaeb00b34
+			result_type_name: 'messages.ChatFull'
+		},
+		FunctionInfo{
+			method_name: 'messages.editChatTitle'
+			constructor_id: 0x73783ffd
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.editChatPhoto'
+			constructor_id: 0x35ddd674
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.addChatUser'
+			constructor_id: 0xcbc6d107
+			result_type_name: 'messages.InvitedUsers'
+		},
+		FunctionInfo{
+			method_name: 'messages.deleteChatUser'
+			constructor_id: 0xa2185cab
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.createChat'
+			constructor_id: 0x92ceddd4
+			result_type_name: 'messages.InvitedUsers'
+		},
+		FunctionInfo{
+			method_name: 'messages.getDhConfig'
+			constructor_id: 0x26cf8950
+			result_type_name: 'messages.DhConfig'
+		},
+		FunctionInfo{
+			method_name: 'messages.requestEncryption'
+			constructor_id: 0xf64daf43
+			result_type_name: 'EncryptedChat'
+		},
+		FunctionInfo{
+			method_name: 'messages.acceptEncryption'
+			constructor_id: 0x3dbc0415
+			result_type_name: 'EncryptedChat'
+		},
+		FunctionInfo{
+			method_name: 'messages.discardEncryption'
+			constructor_id: 0xf393aea0
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.setEncryptedTyping'
+			constructor_id: 0x791451ed
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.readEncryptedHistory'
+			constructor_id: 0x7f4b690a
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.sendEncrypted'
+			constructor_id: 0x44fa7a15
+			result_type_name: 'messages.SentEncryptedMessage'
+		},
+		FunctionInfo{
+			method_name: 'messages.sendEncryptedFile'
+			constructor_id: 0x5559481d
+			result_type_name: 'messages.SentEncryptedMessage'
+		},
+		FunctionInfo{
+			method_name: 'messages.sendEncryptedService'
+			constructor_id: 0x32d439a4
+			result_type_name: 'messages.SentEncryptedMessage'
+		},
+		FunctionInfo{
+			method_name: 'messages.receivedQueue'
+			constructor_id: 0x55a5bb66
+			result_type_name: 'Vector<long>'
+		},
+		FunctionInfo{
+			method_name: 'messages.reportEncryptedSpam'
+			constructor_id: 0x4b0c8c0f
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.readMessageContents'
+			constructor_id: 0x36a73f77
+			result_type_name: 'messages.AffectedMessages'
+		},
+		FunctionInfo{
+			method_name: 'messages.getStickers'
+			constructor_id: 0xd5a5d3a1
+			result_type_name: 'messages.Stickers'
+		},
+		FunctionInfo{
+			method_name: 'messages.getAllStickers'
+			constructor_id: 0xb8a0a1a8
+			result_type_name: 'messages.AllStickers'
+		},
+		FunctionInfo{
+			method_name: 'messages.getWebPagePreview'
+			constructor_id: 0x570d6f6f
+			result_type_name: 'messages.WebPagePreview'
+		},
+		FunctionInfo{
+			method_name: 'messages.exportChatInvite'
+			constructor_id: 0xa455de90
+			result_type_name: 'ExportedChatInvite'
+		},
+		FunctionInfo{
+			method_name: 'messages.checkChatInvite'
+			constructor_id: 0x3eadb1bb
+			result_type_name: 'ChatInvite'
+		},
+		FunctionInfo{
+			method_name: 'messages.importChatInvite'
+			constructor_id: 0x6c50051c
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.getStickerSet'
+			constructor_id: 0xc8a0ec74
+			result_type_name: 'messages.StickerSet'
+		},
+		FunctionInfo{
+			method_name: 'messages.installStickerSet'
+			constructor_id: 0xc78fe460
+			result_type_name: 'messages.StickerSetInstallResult'
+		},
+		FunctionInfo{
+			method_name: 'messages.uninstallStickerSet'
+			constructor_id: 0xf96e55de
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.startBot'
+			constructor_id: 0xe6df7378
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.getMessagesViews'
+			constructor_id: 0x5784d3e1
+			result_type_name: 'messages.MessageViews'
+		},
+		FunctionInfo{
+			method_name: 'messages.editChatAdmin'
+			constructor_id: 0xa85bd1c2
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.migrateChat'
+			constructor_id: 0xa2875319
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.searchGlobal'
+			constructor_id: 0x4bc6589a
+			result_type_name: 'messages.Messages'
+		},
+		FunctionInfo{
+			method_name: 'messages.reorderStickerSets'
+			constructor_id: 0x78337739
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.getDocumentByHash'
+			constructor_id: 0xb1f2061f
+			result_type_name: 'Document'
+		},
+		FunctionInfo{
+			method_name: 'messages.getSavedGifs'
+			constructor_id: 0x5cf09635
+			result_type_name: 'messages.SavedGifs'
+		},
+		FunctionInfo{
+			method_name: 'messages.saveGif'
+			constructor_id: 0x327a30cb
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.getInlineBotResults'
+			constructor_id: 0x514e999d
+			result_type_name: 'messages.BotResults'
+		},
+		FunctionInfo{
+			method_name: 'messages.setInlineBotResults'
+			constructor_id: 0xbb12a419
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.sendInlineBotResult'
+			constructor_id: 0xc0cf7646
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.getMessageEditData'
+			constructor_id: 0xfda68d36
+			result_type_name: 'messages.MessageEditData'
+		},
+		FunctionInfo{
+			method_name: 'messages.editMessage'
+			constructor_id: 0x51e842e1
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.editInlineBotMessage'
+			constructor_id: 0x83557dba
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.getBotCallbackAnswer'
+			constructor_id: 0x9342ca07
+			result_type_name: 'messages.BotCallbackAnswer'
+		},
+		FunctionInfo{
+			method_name: 'messages.setBotCallbackAnswer'
+			constructor_id: 0xd58f130a
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.getPeerDialogs'
+			constructor_id: 0xe470bcfd
+			result_type_name: 'messages.PeerDialogs'
+		},
+		FunctionInfo{
+			method_name: 'messages.saveDraft'
+			constructor_id: 0x54ae308e
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.getAllDrafts'
+			constructor_id: 0x6a3f8d65
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.getFeaturedStickers'
+			constructor_id: 0x64780b14
+			result_type_name: 'messages.FeaturedStickers'
+		},
+		FunctionInfo{
+			method_name: 'messages.readFeaturedStickers'
+			constructor_id: 0x5b118126
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.getRecentStickers'
+			constructor_id: 0x9da9403b
+			result_type_name: 'messages.RecentStickers'
+		},
+		FunctionInfo{
+			method_name: 'messages.saveRecentSticker'
+			constructor_id: 0x392718f8
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.clearRecentStickers'
+			constructor_id: 0x8999602d
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.getArchivedStickers'
+			constructor_id: 0x57f17692
+			result_type_name: 'messages.ArchivedStickers'
+		},
+		FunctionInfo{
+			method_name: 'messages.getMaskStickers'
+			constructor_id: 0x640f82b8
+			result_type_name: 'messages.AllStickers'
+		},
+		FunctionInfo{
+			method_name: 'messages.getAttachedStickers'
+			constructor_id: 0xcc5b67cc
+			result_type_name: 'Vector<StickerSetCovered>'
+		},
+		FunctionInfo{
+			method_name: 'messages.setGameScore'
+			constructor_id: 0x8ef8ecc0
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.setInlineGameScore'
+			constructor_id: 0x15ad9f64
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.getGameHighScores'
+			constructor_id: 0xe822649d
+			result_type_name: 'messages.HighScores'
+		},
+		FunctionInfo{
+			method_name: 'messages.getInlineGameHighScores'
+			constructor_id: 0x0f635e1b
+			result_type_name: 'messages.HighScores'
+		},
+		FunctionInfo{
+			method_name: 'messages.getCommonChats'
+			constructor_id: 0xe40ca104
+			result_type_name: 'messages.Chats'
+		},
+		FunctionInfo{
+			method_name: 'messages.getWebPage'
+			constructor_id: 0x8d9692a3
+			result_type_name: 'messages.WebPage'
+		},
+		FunctionInfo{
+			method_name: 'messages.toggleDialogPin'
+			constructor_id: 0xa731e257
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.reorderPinnedDialogs'
+			constructor_id: 0x3b1adf37
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.getPinnedDialogs'
+			constructor_id: 0xd6b94df2
+			result_type_name: 'messages.PeerDialogs'
+		},
+		FunctionInfo{
+			method_name: 'messages.setBotShippingResults'
+			constructor_id: 0xe5f672fa
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.setBotPrecheckoutResults'
+			constructor_id: 0x09c2dd95
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.uploadMedia'
+			constructor_id: 0x14967978
+			result_type_name: 'MessageMedia'
+		},
+		FunctionInfo{
+			method_name: 'messages.sendScreenshotNotification'
+			constructor_id: 0xa1405817
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.getFavedStickers'
+			constructor_id: 0x04f1aaa9
+			result_type_name: 'messages.FavedStickers'
+		},
+		FunctionInfo{
+			method_name: 'messages.faveSticker'
+			constructor_id: 0xb9ffc55b
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.getUnreadMentions'
+			constructor_id: 0xf107e790
+			result_type_name: 'messages.Messages'
+		},
+		FunctionInfo{
+			method_name: 'messages.readMentions'
+			constructor_id: 0x36e5bf4d
+			result_type_name: 'messages.AffectedHistory'
+		},
+		FunctionInfo{
+			method_name: 'messages.getRecentLocations'
+			constructor_id: 0x702a40e0
+			result_type_name: 'messages.Messages'
+		},
+		FunctionInfo{
+			method_name: 'messages.sendMultiMedia'
+			constructor_id: 0x1bf89d74
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.uploadEncryptedFile'
+			constructor_id: 0x5057c497
+			result_type_name: 'EncryptedFile'
+		},
+		FunctionInfo{
+			method_name: 'messages.searchStickerSets'
+			constructor_id: 0x35705b8a
+			result_type_name: 'messages.FoundStickerSets'
+		},
+		FunctionInfo{
+			method_name: 'messages.getSplitRanges'
+			constructor_id: 0x1cff7e08
+			result_type_name: 'Vector<MessageRange>'
+		},
+		FunctionInfo{
+			method_name: 'messages.markDialogUnread'
+			constructor_id: 0x8c5006f8
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.getDialogUnreadMarks'
+			constructor_id: 0x21202222
+			result_type_name: 'Vector<DialogPeer>'
+		},
+		FunctionInfo{
+			method_name: 'messages.clearAllDrafts'
+			constructor_id: 0x7e58ee9c
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.updatePinnedMessage'
+			constructor_id: 0xd2aaf7ec
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.sendVote'
+			constructor_id: 0x10ea6184
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.getPollResults'
+			constructor_id: 0x73bb643b
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.getOnlines'
+			constructor_id: 0x6e2be050
+			result_type_name: 'ChatOnlines'
+		},
+		FunctionInfo{
+			method_name: 'messages.editChatAbout'
+			constructor_id: 0xdef60797
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.editChatDefaultBannedRights'
+			constructor_id: 0xa5866b41
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.getEmojiKeywords'
+			constructor_id: 0x35a0e062
+			result_type_name: 'EmojiKeywordsDifference'
+		},
+		FunctionInfo{
+			method_name: 'messages.getEmojiKeywordsDifference'
+			constructor_id: 0x1508b6af
+			result_type_name: 'EmojiKeywordsDifference'
+		},
+		FunctionInfo{
+			method_name: 'messages.getEmojiKeywordsLanguages'
+			constructor_id: 0x4e9963b2
+			result_type_name: 'Vector<EmojiLanguage>'
+		},
+		FunctionInfo{
+			method_name: 'messages.getEmojiURL'
+			constructor_id: 0xd5b10c26
+			result_type_name: 'EmojiURL'
+		},
+		FunctionInfo{
+			method_name: 'messages.getSearchCounters'
+			constructor_id: 0x1bbcf300
+			result_type_name: 'Vector<messages.SearchCounter>'
+		},
+		FunctionInfo{
+			method_name: 'messages.requestUrlAuth'
+			constructor_id: 0x198fb446
+			result_type_name: 'UrlAuthResult'
+		},
+		FunctionInfo{
+			method_name: 'messages.acceptUrlAuth'
+			constructor_id: 0xb12c7125
+			result_type_name: 'UrlAuthResult'
+		},
+		FunctionInfo{
+			method_name: 'messages.hidePeerSettingsBar'
+			constructor_id: 0x4facb138
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.getScheduledHistory'
+			constructor_id: 0xf516760b
+			result_type_name: 'messages.Messages'
+		},
+		FunctionInfo{
+			method_name: 'messages.getScheduledMessages'
+			constructor_id: 0xbdbb0464
+			result_type_name: 'messages.Messages'
+		},
+		FunctionInfo{
+			method_name: 'messages.sendScheduledMessages'
+			constructor_id: 0xbd38850a
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.deleteScheduledMessages'
+			constructor_id: 0x59ae2b16
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.getPollVotes'
+			constructor_id: 0xb86e380e
+			result_type_name: 'messages.VotesList'
+		},
+		FunctionInfo{
+			method_name: 'messages.toggleStickerSets'
+			constructor_id: 0xb5052fea
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.getDialogFilters'
+			constructor_id: 0xefd48c89
+			result_type_name: 'messages.DialogFilters'
+		},
+		FunctionInfo{
+			method_name: 'messages.getSuggestedDialogFilters'
+			constructor_id: 0xa29cd42c
+			result_type_name: 'Vector<DialogFilterSuggested>'
+		},
+		FunctionInfo{
+			method_name: 'messages.updateDialogFilter'
+			constructor_id: 0x1ad4a04a
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.updateDialogFiltersOrder'
+			constructor_id: 0xc563c1e4
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.getOldFeaturedStickers'
+			constructor_id: 0x7ed094a1
+			result_type_name: 'messages.FeaturedStickers'
+		},
+		FunctionInfo{
+			method_name: 'messages.getReplies'
+			constructor_id: 0x22ddd30c
+			result_type_name: 'messages.Messages'
+		},
+		FunctionInfo{
+			method_name: 'messages.getDiscussionMessage'
+			constructor_id: 0x446972fd
+			result_type_name: 'messages.DiscussionMessage'
+		},
+		FunctionInfo{
+			method_name: 'messages.readDiscussion'
+			constructor_id: 0xf731a9f4
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.unpinAllMessages'
+			constructor_id: 0x062dd747
+			result_type_name: 'messages.AffectedHistory'
+		},
+		FunctionInfo{
+			method_name: 'messages.deleteChat'
+			constructor_id: 0x5bd0ee50
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.deletePhoneCallHistory'
+			constructor_id: 0xf9cbe409
+			result_type_name: 'messages.AffectedFoundMessages'
+		},
+		FunctionInfo{
+			method_name: 'messages.checkHistoryImport'
+			constructor_id: 0x43fe19f3
+			result_type_name: 'messages.HistoryImportParsed'
+		},
+		FunctionInfo{
+			method_name: 'messages.initHistoryImport'
+			constructor_id: 0x34090c3b
+			result_type_name: 'messages.HistoryImport'
+		},
+		FunctionInfo{
+			method_name: 'messages.uploadImportedMedia'
+			constructor_id: 0x2a862092
+			result_type_name: 'MessageMedia'
+		},
+		FunctionInfo{
+			method_name: 'messages.startHistoryImport'
+			constructor_id: 0xb43df344
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.getExportedChatInvites'
+			constructor_id: 0xa2b5a3f6
+			result_type_name: 'messages.ExportedChatInvites'
+		},
+		FunctionInfo{
+			method_name: 'messages.getExportedChatInvite'
+			constructor_id: 0x73746f5c
+			result_type_name: 'messages.ExportedChatInvite'
+		},
+		FunctionInfo{
+			method_name: 'messages.editExportedChatInvite'
+			constructor_id: 0xbdca2f75
+			result_type_name: 'messages.ExportedChatInvite'
+		},
+		FunctionInfo{
+			method_name: 'messages.deleteRevokedExportedChatInvites'
+			constructor_id: 0x56987bd5
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.deleteExportedChatInvite'
+			constructor_id: 0xd464a42b
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.getAdminsWithInvites'
+			constructor_id: 0x3920e6ef
+			result_type_name: 'messages.ChatAdminsWithInvites'
+		},
+		FunctionInfo{
+			method_name: 'messages.getChatInviteImporters'
+			constructor_id: 0xdf04dd4e
+			result_type_name: 'messages.ChatInviteImporters'
+		},
+		FunctionInfo{
+			method_name: 'messages.setHistoryTTL'
+			constructor_id: 0xb80e5fe4
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.checkHistoryImportPeer'
+			constructor_id: 0x5dc60f03
+			result_type_name: 'messages.CheckedHistoryImportPeer'
+		},
+		FunctionInfo{
+			method_name: 'messages.setChatTheme'
+			constructor_id: 0x081202c9
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.getMessageReadParticipants'
+			constructor_id: 0x31c1c44f
+			result_type_name: 'Vector<ReadParticipantDate>'
+		},
+		FunctionInfo{
+			method_name: 'messages.getSearchResultsCalendar'
+			constructor_id: 0x6aa3f6bd
+			result_type_name: 'messages.SearchResultsCalendar'
+		},
+		FunctionInfo{
+			method_name: 'messages.getSearchResultsPositions'
+			constructor_id: 0x9c7f2f10
+			result_type_name: 'messages.SearchResultsPositions'
+		},
+		FunctionInfo{
+			method_name: 'messages.hideChatJoinRequest'
+			constructor_id: 0x7fe7e815
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.hideAllChatJoinRequests'
+			constructor_id: 0xe085f4ea
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.toggleNoForwards'
+			constructor_id: 0xb11eafa2
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.saveDefaultSendAs'
+			constructor_id: 0xccfddf96
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.sendReaction'
+			constructor_id: 0xd30d78d4
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.getMessagesReactions'
+			constructor_id: 0x8bba90e6
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.getMessageReactionsList'
+			constructor_id: 0x461b3f48
+			result_type_name: 'messages.MessageReactionsList'
+		},
+		FunctionInfo{
+			method_name: 'messages.setChatAvailableReactions'
+			constructor_id: 0x864b2581
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.getAvailableReactions'
+			constructor_id: 0x18dea0ac
+			result_type_name: 'messages.AvailableReactions'
+		},
+		FunctionInfo{
+			method_name: 'messages.setDefaultReaction'
+			constructor_id: 0x4f47a016
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.translateText'
+			constructor_id: 0x63183030
+			result_type_name: 'messages.TranslatedText'
+		},
+		FunctionInfo{
+			method_name: 'messages.getUnreadReactions'
+			constructor_id: 0xbd7f90ac
+			result_type_name: 'messages.Messages'
+		},
+		FunctionInfo{
+			method_name: 'messages.readReactions'
+			constructor_id: 0x9ec44f93
+			result_type_name: 'messages.AffectedHistory'
+		},
+		FunctionInfo{
+			method_name: 'messages.searchSentMedia'
+			constructor_id: 0x107e31a0
+			result_type_name: 'messages.Messages'
+		},
+		FunctionInfo{
+			method_name: 'messages.getAttachMenuBots'
+			constructor_id: 0x16fcc2cb
+			result_type_name: 'AttachMenuBots'
+		},
+		FunctionInfo{
+			method_name: 'messages.getAttachMenuBot'
+			constructor_id: 0x77216192
+			result_type_name: 'AttachMenuBotsBot'
+		},
+		FunctionInfo{
+			method_name: 'messages.toggleBotInAttachMenu'
+			constructor_id: 0x69f59d69
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.requestWebView'
+			constructor_id: 0x269dc2c1
+			result_type_name: 'WebViewResult'
+		},
+		FunctionInfo{
+			method_name: 'messages.prolongWebView'
+			constructor_id: 0xb0d81a83
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.requestSimpleWebView'
+			constructor_id: 0x413a3e73
+			result_type_name: 'WebViewResult'
+		},
+		FunctionInfo{
+			method_name: 'messages.sendWebViewResultMessage'
+			constructor_id: 0x0a4314f5
+			result_type_name: 'WebViewMessageSent'
+		},
+		FunctionInfo{
+			method_name: 'messages.sendWebViewData'
+			constructor_id: 0xdc0242c8
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.transcribeAudio'
+			constructor_id: 0x269e9a49
+			result_type_name: 'messages.TranscribedAudio'
+		},
+		FunctionInfo{
+			method_name: 'messages.rateTranscribedAudio'
+			constructor_id: 0x7f1d072f
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.getCustomEmojiDocuments'
+			constructor_id: 0xd9ab0f54
+			result_type_name: 'Vector<Document>'
+		},
+		FunctionInfo{
+			method_name: 'messages.getEmojiStickers'
+			constructor_id: 0xfbfca18f
+			result_type_name: 'messages.AllStickers'
+		},
+		FunctionInfo{
+			method_name: 'messages.getFeaturedEmojiStickers'
+			constructor_id: 0x0ecf6736
+			result_type_name: 'messages.FeaturedStickers'
+		},
+		FunctionInfo{
+			method_name: 'messages.reportReaction'
+			constructor_id: 0x3f64c076
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.getTopReactions'
+			constructor_id: 0xbb8125ba
+			result_type_name: 'messages.Reactions'
+		},
+		FunctionInfo{
+			method_name: 'messages.getRecentReactions'
+			constructor_id: 0x39461db2
+			result_type_name: 'messages.Reactions'
+		},
+		FunctionInfo{
+			method_name: 'messages.clearRecentReactions'
+			constructor_id: 0x9dfeefb4
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.getExtendedMedia'
+			constructor_id: 0x84f80814
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.setDefaultHistoryTTL'
+			constructor_id: 0x9eb51445
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.getDefaultHistoryTTL'
+			constructor_id: 0x658b7188
+			result_type_name: 'DefaultHistoryTTL'
+		},
+		FunctionInfo{
+			method_name: 'messages.sendBotRequestedPeer'
+			constructor_id: 0x91b2d060
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.getEmojiGroups'
+			constructor_id: 0x7488ce5b
+			result_type_name: 'messages.EmojiGroups'
+		},
+		FunctionInfo{
+			method_name: 'messages.getEmojiStatusGroups'
+			constructor_id: 0x2ecd56cd
+			result_type_name: 'messages.EmojiGroups'
+		},
+		FunctionInfo{
+			method_name: 'messages.getEmojiProfilePhotoGroups'
+			constructor_id: 0x21a548f3
+			result_type_name: 'messages.EmojiGroups'
+		},
+		FunctionInfo{
+			method_name: 'messages.searchCustomEmoji'
+			constructor_id: 0x2c11c0d7
+			result_type_name: 'EmojiList'
+		},
+		FunctionInfo{
+			method_name: 'messages.togglePeerTranslations'
+			constructor_id: 0xe47cb579
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.getBotApp'
+			constructor_id: 0x34fdc5c3
+			result_type_name: 'messages.BotApp'
+		},
+		FunctionInfo{
+			method_name: 'messages.requestAppWebView'
+			constructor_id: 0x53618bce
+			result_type_name: 'WebViewResult'
+		},
+		FunctionInfo{
+			method_name: 'messages.setChatWallPaper'
+			constructor_id: 0x8ffacae1
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.searchEmojiStickerSets'
+			constructor_id: 0x92b4494c
+			result_type_name: 'messages.FoundStickerSets'
+		},
+		FunctionInfo{
+			method_name: 'messages.getSavedDialogs'
+			constructor_id: 0x1e91fc99
+			result_type_name: 'messages.SavedDialogs'
+		},
+		FunctionInfo{
+			method_name: 'messages.getSavedHistory'
+			constructor_id: 0x998ab009
+			result_type_name: 'messages.Messages'
+		},
+		FunctionInfo{
+			method_name: 'messages.deleteSavedHistory'
+			constructor_id: 0x4dc5085f
+			result_type_name: 'messages.AffectedHistory'
+		},
+		FunctionInfo{
+			method_name: 'messages.getPinnedSavedDialogs'
+			constructor_id: 0xd63d94e0
+			result_type_name: 'messages.SavedDialogs'
+		},
+		FunctionInfo{
+			method_name: 'messages.toggleSavedDialogPin'
+			constructor_id: 0xac81bbde
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.reorderPinnedSavedDialogs'
+			constructor_id: 0x8b716587
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.getSavedReactionTags'
+			constructor_id: 0x3637e05b
+			result_type_name: 'messages.SavedReactionTags'
+		},
+		FunctionInfo{
+			method_name: 'messages.updateSavedReactionTag'
+			constructor_id: 0x60297dec
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.getDefaultTagReactions'
+			constructor_id: 0xbdf93428
+			result_type_name: 'messages.Reactions'
+		},
+		FunctionInfo{
+			method_name: 'messages.getOutboxReadDate'
+			constructor_id: 0x8c4bfe5d
+			result_type_name: 'OutboxReadDate'
+		},
+		FunctionInfo{
+			method_name: 'messages.getQuickReplies'
+			constructor_id: 0xd483f2a8
+			result_type_name: 'messages.QuickReplies'
+		},
+		FunctionInfo{
+			method_name: 'messages.reorderQuickReplies'
+			constructor_id: 0x60331907
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.checkQuickReplyShortcut'
+			constructor_id: 0xf1d0fbd3
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.editQuickReplyShortcut'
+			constructor_id: 0x5c003cef
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.deleteQuickReplyShortcut'
+			constructor_id: 0x3cc04740
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.getQuickReplyMessages'
+			constructor_id: 0x94a495c3
+			result_type_name: 'messages.Messages'
+		},
+		FunctionInfo{
+			method_name: 'messages.sendQuickReplyMessages'
+			constructor_id: 0x6c750de1
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.deleteQuickReplyMessages'
+			constructor_id: 0xe105e910
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.toggleDialogFilterTags'
+			constructor_id: 0xfd2dda49
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.getMyStickers'
+			constructor_id: 0xd0b5e1fc
+			result_type_name: 'messages.MyStickers'
+		},
+		FunctionInfo{
+			method_name: 'messages.getEmojiStickerGroups'
+			constructor_id: 0x1dd840f5
+			result_type_name: 'messages.EmojiGroups'
+		},
+		FunctionInfo{
+			method_name: 'messages.getAvailableEffects'
+			constructor_id: 0xdea20a39
+			result_type_name: 'messages.AvailableEffects'
+		},
+		FunctionInfo{
+			method_name: 'messages.editFactCheck'
+			constructor_id: 0x0589ee75
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.deleteFactCheck'
+			constructor_id: 0xd1da940c
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.getFactCheck'
+			constructor_id: 0xb9cdc5ee
+			result_type_name: 'Vector<FactCheck>'
+		},
+		FunctionInfo{
+			method_name: 'messages.requestMainWebView'
+			constructor_id: 0xc9e01e7b
+			result_type_name: 'WebViewResult'
+		},
+		FunctionInfo{
+			method_name: 'messages.sendPaidReaction'
+			constructor_id: 0x58bbcb50
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.togglePaidReactionPrivacy'
+			constructor_id: 0x435885b5
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.getPaidReactionPrivacy'
+			constructor_id: 0x472455aa
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.viewSponsoredMessage'
+			constructor_id: 0x269e3643
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.clickSponsoredMessage'
+			constructor_id: 0x8235057e
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.reportSponsoredMessage'
+			constructor_id: 0x12cbf0c4
+			result_type_name: 'channels.SponsoredMessageReportResult'
+		},
+		FunctionInfo{
+			method_name: 'messages.getSponsoredMessages'
+			constructor_id: 0x3d6ce850
+			result_type_name: 'messages.SponsoredMessages'
+		},
+		FunctionInfo{
+			method_name: 'messages.savePreparedInlineMessage'
+			constructor_id: 0xf21f7f2f
+			result_type_name: 'messages.BotPreparedInlineMessage'
+		},
+		FunctionInfo{
+			method_name: 'messages.getPreparedInlineMessage'
+			constructor_id: 0x857ebdb8
+			result_type_name: 'messages.PreparedInlineMessage'
+		},
+		FunctionInfo{
+			method_name: 'messages.searchStickers'
+			constructor_id: 0x29b1c66a
+			result_type_name: 'messages.FoundStickers'
+		},
+		FunctionInfo{
+			method_name: 'messages.reportMessagesDelivery'
+			constructor_id: 0x5a6d7395
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.getSavedDialogsByID'
+			constructor_id: 0x6f6f9c96
+			result_type_name: 'messages.SavedDialogs'
+		},
+		FunctionInfo{
+			method_name: 'messages.readSavedHistory'
+			constructor_id: 0xba4a3b5b
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'messages.toggleTodoCompleted'
+			constructor_id: 0xd3e03124
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.appendTodoList'
+			constructor_id: 0x21a61057
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.toggleSuggestedPostApproval'
+			constructor_id: 0x8107455c
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.getForumTopics'
+			constructor_id: 0x3ba47bff
+			result_type_name: 'messages.ForumTopics'
+		},
+		FunctionInfo{
+			method_name: 'messages.getForumTopicsByID'
+			constructor_id: 0xaf0a4a08
+			result_type_name: 'messages.ForumTopics'
+		},
+		FunctionInfo{
+			method_name: 'messages.editForumTopic'
+			constructor_id: 0xcecc1134
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.updatePinnedForumTopic'
+			constructor_id: 0x175df251
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.reorderPinnedForumTopics'
+			constructor_id: 0x0e7841f0
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.createForumTopic'
+			constructor_id: 0x2f98c3d5
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'messages.deleteTopicHistory'
+			constructor_id: 0xd2816f10
+			result_type_name: 'messages.AffectedHistory'
+		},
+		FunctionInfo{
+			method_name: 'messages.getEmojiGameInfo'
+			constructor_id: 0xfb7e8ca7
+			result_type_name: 'messages.EmojiGameInfo'
+		},
+		FunctionInfo{
+			method_name: 'messages.summarizeText'
+			constructor_id: 0x9d4104e2
+			result_type_name: 'TextWithEntities'
+		},
+		FunctionInfo{
+			method_name: 'updates.getState'
+			constructor_id: 0xedd4882a
+			result_type_name: 'updates.State'
+		},
+		FunctionInfo{
+			method_name: 'updates.getDifference'
+			constructor_id: 0x19c2f763
+			result_type_name: 'updates.Difference'
+		},
+		FunctionInfo{
+			method_name: 'updates.getChannelDifference'
+			constructor_id: 0x03173d78
+			result_type_name: 'updates.ChannelDifference'
+		},
+		FunctionInfo{
+			method_name: 'photos.updateProfilePhoto'
+			constructor_id: 0x09e82039
+			result_type_name: 'photos.Photo'
+		},
+		FunctionInfo{
+			method_name: 'photos.uploadProfilePhoto'
+			constructor_id: 0x0388a3b5
+			result_type_name: 'photos.Photo'
+		},
+		FunctionInfo{
+			method_name: 'photos.deletePhotos'
+			constructor_id: 0x87cf7f2f
+			result_type_name: 'Vector<long>'
+		},
+		FunctionInfo{
+			method_name: 'photos.getUserPhotos'
+			constructor_id: 0x91cd32a8
+			result_type_name: 'photos.Photos'
+		},
+		FunctionInfo{
+			method_name: 'photos.uploadContactProfilePhoto'
+			constructor_id: 0xe14c4a71
+			result_type_name: 'photos.Photo'
+		},
+		FunctionInfo{
+			method_name: 'upload.saveFilePart'
+			constructor_id: 0xb304a621
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'upload.getFile'
+			constructor_id: 0xbe5335be
+			result_type_name: 'upload.File'
+		},
+		FunctionInfo{
+			method_name: 'upload.saveBigFilePart'
+			constructor_id: 0xde7b673d
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'upload.getWebFile'
+			constructor_id: 0x24e6818d
+			result_type_name: 'upload.WebFile'
+		},
+		FunctionInfo{
+			method_name: 'upload.getCdnFile'
+			constructor_id: 0x395f69da
+			result_type_name: 'upload.CdnFile'
+		},
+		FunctionInfo{
+			method_name: 'upload.reuploadCdnFile'
+			constructor_id: 0x9b2754a8
+			result_type_name: 'Vector<FileHash>'
+		},
+		FunctionInfo{
+			method_name: 'upload.getCdnFileHashes'
+			constructor_id: 0x91dc3f31
+			result_type_name: 'Vector<FileHash>'
+		},
+		FunctionInfo{
+			method_name: 'upload.getFileHashes'
+			constructor_id: 0x9156982a
+			result_type_name: 'Vector<FileHash>'
+		},
+		FunctionInfo{
+			method_name: 'help.getConfig'
+			constructor_id: 0xc4f9186b
+			result_type_name: 'Config'
+		},
+		FunctionInfo{
+			method_name: 'help.getNearestDc'
+			constructor_id: 0x1fb33026
+			result_type_name: 'NearestDc'
+		},
+		FunctionInfo{
+			method_name: 'help.getAppUpdate'
+			constructor_id: 0x522d5a7d
+			result_type_name: 'help.AppUpdate'
+		},
+		FunctionInfo{
+			method_name: 'help.getInviteText'
+			constructor_id: 0x4d392343
+			result_type_name: 'help.InviteText'
+		},
+		FunctionInfo{
+			method_name: 'help.getSupport'
+			constructor_id: 0x9cdf08cd
+			result_type_name: 'help.Support'
+		},
+		FunctionInfo{
+			method_name: 'help.setBotUpdatesStatus'
+			constructor_id: 0xec22cfcd
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'help.getCdnConfig'
+			constructor_id: 0x52029342
+			result_type_name: 'CdnConfig'
+		},
+		FunctionInfo{
+			method_name: 'help.getRecentMeUrls'
+			constructor_id: 0x3dc0f114
+			result_type_name: 'help.RecentMeUrls'
+		},
+		FunctionInfo{
+			method_name: 'help.getTermsOfServiceUpdate'
+			constructor_id: 0x2ca51fd1
+			result_type_name: 'help.TermsOfServiceUpdate'
+		},
+		FunctionInfo{
+			method_name: 'help.acceptTermsOfService'
+			constructor_id: 0xee72f79a
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'help.getDeepLinkInfo'
+			constructor_id: 0x3fedc75f
+			result_type_name: 'help.DeepLinkInfo'
+		},
+		FunctionInfo{
+			method_name: 'help.getAppConfig'
+			constructor_id: 0x61e3f854
+			result_type_name: 'help.AppConfig'
+		},
+		FunctionInfo{
+			method_name: 'help.saveAppLog'
+			constructor_id: 0x6f02f748
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'help.getPassportConfig'
+			constructor_id: 0xc661ad08
+			result_type_name: 'help.PassportConfig'
+		},
+		FunctionInfo{
+			method_name: 'help.getSupportName'
+			constructor_id: 0xd360e72c
+			result_type_name: 'help.SupportName'
+		},
+		FunctionInfo{
+			method_name: 'help.getUserInfo'
+			constructor_id: 0x038a08d3
+			result_type_name: 'help.UserInfo'
+		},
+		FunctionInfo{
+			method_name: 'help.editUserInfo'
+			constructor_id: 0x66b91b70
+			result_type_name: 'help.UserInfo'
+		},
+		FunctionInfo{
+			method_name: 'help.getPromoData'
+			constructor_id: 0xc0977421
+			result_type_name: 'help.PromoData'
+		},
+		FunctionInfo{
+			method_name: 'help.hidePromoData'
+			constructor_id: 0x1e251c95
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'help.dismissSuggestion'
+			constructor_id: 0xf50dbaa1
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'help.getCountriesList'
+			constructor_id: 0x735787a8
+			result_type_name: 'help.CountriesList'
+		},
+		FunctionInfo{
+			method_name: 'help.getPremiumPromo'
+			constructor_id: 0xb81b93d4
+			result_type_name: 'help.PremiumPromo'
+		},
+		FunctionInfo{
+			method_name: 'help.getPeerColors'
+			constructor_id: 0xda80f42f
+			result_type_name: 'help.PeerColors'
+		},
+		FunctionInfo{
+			method_name: 'help.getPeerProfileColors'
+			constructor_id: 0xabcfa9fd
+			result_type_name: 'help.PeerColors'
+		},
+		FunctionInfo{
+			method_name: 'help.getTimezonesList'
+			constructor_id: 0x49b30240
+			result_type_name: 'help.TimezonesList'
+		},
+		FunctionInfo{
+			method_name: 'channels.readHistory'
+			constructor_id: 0xcc104937
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'channels.deleteMessages'
+			constructor_id: 0x84c1fd4e
+			result_type_name: 'messages.AffectedMessages'
+		},
+		FunctionInfo{
+			method_name: 'channels.reportSpam'
+			constructor_id: 0xf44a8315
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'channels.getMessages'
+			constructor_id: 0xad8c9a23
+			result_type_name: 'messages.Messages'
+		},
+		FunctionInfo{
+			method_name: 'channels.getParticipants'
+			constructor_id: 0x77ced9d0
+			result_type_name: 'channels.ChannelParticipants'
+		},
+		FunctionInfo{
+			method_name: 'channels.getParticipant'
+			constructor_id: 0xa0ab6cc6
+			result_type_name: 'channels.ChannelParticipant'
+		},
+		FunctionInfo{
+			method_name: 'channels.getChannels'
+			constructor_id: 0x0a7f6bbb
+			result_type_name: 'messages.Chats'
+		},
+		FunctionInfo{
+			method_name: 'channels.getFullChannel'
+			constructor_id: 0x08736a09
+			result_type_name: 'messages.ChatFull'
+		},
+		FunctionInfo{
+			method_name: 'channels.createChannel'
+			constructor_id: 0x91006707
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'channels.editAdmin'
+			constructor_id: 0xd33c8902
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'channels.editTitle'
+			constructor_id: 0x566decd0
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'channels.editPhoto'
+			constructor_id: 0xf12e57c9
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'channels.checkUsername'
+			constructor_id: 0x10e6bd2c
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'channels.updateUsername'
+			constructor_id: 0x3514b3de
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'channels.joinChannel'
+			constructor_id: 0x24b524c5
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'channels.leaveChannel'
+			constructor_id: 0xf836aa95
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'channels.inviteToChannel'
+			constructor_id: 0xc9e33d54
+			result_type_name: 'messages.InvitedUsers'
+		},
+		FunctionInfo{
+			method_name: 'channels.deleteChannel'
+			constructor_id: 0xc0111fe3
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'channels.exportMessageLink'
+			constructor_id: 0xe63fadeb
+			result_type_name: 'ExportedMessageLink'
+		},
+		FunctionInfo{
+			method_name: 'channels.toggleSignatures'
+			constructor_id: 0x418d549c
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'channels.getAdminedPublicChannels'
+			constructor_id: 0xf8b036af
+			result_type_name: 'messages.Chats'
+		},
+		FunctionInfo{
+			method_name: 'channels.editBanned'
+			constructor_id: 0x96e6cd81
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'channels.getAdminLog'
+			constructor_id: 0x33ddf480
+			result_type_name: 'channels.AdminLogResults'
+		},
+		FunctionInfo{
+			method_name: 'channels.setStickers'
+			constructor_id: 0xea8ca4f9
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'channels.readMessageContents'
+			constructor_id: 0xeab5dc38
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'channels.deleteHistory'
+			constructor_id: 0x9baa9647
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'channels.togglePreHistoryHidden'
+			constructor_id: 0xeabbb94c
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'channels.getLeftChannels'
+			constructor_id: 0x8341ecc0
+			result_type_name: 'messages.Chats'
+		},
+		FunctionInfo{
+			method_name: 'channels.getGroupsForDiscussion'
+			constructor_id: 0xf5dad378
+			result_type_name: 'messages.Chats'
+		},
+		FunctionInfo{
+			method_name: 'channels.setDiscussionGroup'
+			constructor_id: 0x40582bb2
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'channels.editCreator'
+			constructor_id: 0x8f38cd1f
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'channels.editLocation'
+			constructor_id: 0x58e63f6d
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'channels.toggleSlowMode'
+			constructor_id: 0xedd49ef0
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'channels.getInactiveChannels'
+			constructor_id: 0x11e831ee
+			result_type_name: 'messages.InactiveChats'
+		},
+		FunctionInfo{
+			method_name: 'channels.convertToGigagroup'
+			constructor_id: 0x0b290c69
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'channels.getSendAs'
+			constructor_id: 0xe785a43f
+			result_type_name: 'channels.SendAsPeers'
+		},
+		FunctionInfo{
+			method_name: 'channels.deleteParticipantHistory'
+			constructor_id: 0x367544db
+			result_type_name: 'messages.AffectedHistory'
+		},
+		FunctionInfo{
+			method_name: 'channels.toggleJoinToSend'
+			constructor_id: 0xe4cb9580
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'channels.toggleJoinRequest'
+			constructor_id: 0x4c2985b6
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'channels.reorderUsernames'
+			constructor_id: 0xb45ced1d
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'channels.toggleUsername'
+			constructor_id: 0x50f24105
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'channels.deactivateAllUsernames'
+			constructor_id: 0x0a245dd3
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'channels.toggleForum'
+			constructor_id: 0x3ff75734
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'channels.toggleAntiSpam'
+			constructor_id: 0x68f3e4eb
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'channels.reportAntiSpamFalsePositive'
+			constructor_id: 0xa850a693
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'channels.toggleParticipantsHidden'
+			constructor_id: 0x6a6e7854
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'channels.updateColor'
+			constructor_id: 0xd8aa3671
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'channels.toggleViewForumAsMessages'
+			constructor_id: 0x9738bb15
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'channels.getChannelRecommendations'
+			constructor_id: 0x25a71742
+			result_type_name: 'messages.Chats'
+		},
+		FunctionInfo{
+			method_name: 'channels.updateEmojiStatus'
+			constructor_id: 0xf0d3e6a8
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'channels.setBoostsToUnblockRestrictions'
+			constructor_id: 0xad399cee
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'channels.setEmojiStickers'
+			constructor_id: 0x3cd930b7
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'channels.restrictSponsoredMessages'
+			constructor_id: 0x9ae91519
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'channels.searchPosts'
+			constructor_id: 0xf2c4f24d
+			result_type_name: 'messages.Messages'
+		},
+		FunctionInfo{
+			method_name: 'channels.updatePaidMessagesPrice'
+			constructor_id: 0x4b12327b
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'channels.toggleAutotranslation'
+			constructor_id: 0x167fc0a1
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'channels.getMessageAuthor'
+			constructor_id: 0xece2a0e6
+			result_type_name: 'User'
+		},
+		FunctionInfo{
+			method_name: 'channels.checkSearchPostsFlood'
+			constructor_id: 0x22567115
+			result_type_name: 'SearchPostsFlood'
+		},
+		FunctionInfo{
+			method_name: 'channels.setMainProfileTab'
+			constructor_id: 0x3583fcb1
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'channels.getFutureCreatorAfterLeave'
+			constructor_id: 0xa00918af
+			result_type_name: 'User'
+		},
+		FunctionInfo{
+			method_name: 'bots.sendCustomRequest'
+			constructor_id: 0xaa2769ed
+			result_type_name: 'DataJSON'
+		},
+		FunctionInfo{
+			method_name: 'bots.answerWebhookJSONQuery'
+			constructor_id: 0xe6213f4d
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'bots.setBotCommands'
+			constructor_id: 0x0517165a
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'bots.resetBotCommands'
+			constructor_id: 0x3d8de0f9
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'bots.getBotCommands'
+			constructor_id: 0xe34c0dd6
+			result_type_name: 'Vector<BotCommand>'
+		},
+		FunctionInfo{
+			method_name: 'bots.setBotMenuButton'
+			constructor_id: 0x4504d54f
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'bots.getBotMenuButton'
+			constructor_id: 0x9c60eb28
+			result_type_name: 'BotMenuButton'
+		},
+		FunctionInfo{
+			method_name: 'bots.setBotBroadcastDefaultAdminRights'
+			constructor_id: 0x788464e1
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'bots.setBotGroupDefaultAdminRights'
+			constructor_id: 0x925ec9ea
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'bots.setBotInfo'
+			constructor_id: 0x10cf3123
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'bots.getBotInfo'
+			constructor_id: 0xdcd914fd
+			result_type_name: 'bots.BotInfo'
+		},
+		FunctionInfo{
+			method_name: 'bots.reorderUsernames'
+			constructor_id: 0x9709b1c2
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'bots.toggleUsername'
+			constructor_id: 0x053ca973
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'bots.canSendMessage'
+			constructor_id: 0x1359f4e6
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'bots.allowSendMessage'
+			constructor_id: 0xf132e3ef
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'bots.invokeWebViewCustomMethod'
+			constructor_id: 0x087fc5e7
+			result_type_name: 'DataJSON'
+		},
+		FunctionInfo{
+			method_name: 'bots.getPopularAppBots'
+			constructor_id: 0xc2510192
+			result_type_name: 'bots.PopularAppBots'
+		},
+		FunctionInfo{
+			method_name: 'bots.addPreviewMedia'
+			constructor_id: 0x17aeb75a
+			result_type_name: 'BotPreviewMedia'
+		},
+		FunctionInfo{
+			method_name: 'bots.editPreviewMedia'
+			constructor_id: 0x8525606f
+			result_type_name: 'BotPreviewMedia'
+		},
+		FunctionInfo{
+			method_name: 'bots.deletePreviewMedia'
+			constructor_id: 0x2d0135b3
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'bots.reorderPreviewMedias'
+			constructor_id: 0xb627f3aa
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'bots.getPreviewInfo'
+			constructor_id: 0x423ab3ad
+			result_type_name: 'bots.PreviewInfo'
+		},
+		FunctionInfo{
+			method_name: 'bots.getPreviewMedias'
+			constructor_id: 0xa2a5594d
+			result_type_name: 'Vector<BotPreviewMedia>'
+		},
+		FunctionInfo{
+			method_name: 'bots.updateUserEmojiStatus'
+			constructor_id: 0xed9f30c5
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'bots.toggleUserEmojiStatusPermission'
+			constructor_id: 0x06de6392
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'bots.checkDownloadFileParams'
+			constructor_id: 0x50077589
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'bots.getAdminedBots'
+			constructor_id: 0xb0711d83
+			result_type_name: 'Vector<User>'
+		},
+		FunctionInfo{
+			method_name: 'bots.updateStarRefProgram'
+			constructor_id: 0x778b5ab3
+			result_type_name: 'StarRefProgram'
+		},
+		FunctionInfo{
+			method_name: 'bots.setCustomVerification'
+			constructor_id: 0x8b89dfbd
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'bots.getBotRecommendations'
+			constructor_id: 0xa1b70815
+			result_type_name: 'users.Users'
+		},
+		FunctionInfo{
+			method_name: 'payments.getPaymentForm'
+			constructor_id: 0x37148dbb
+			result_type_name: 'payments.PaymentForm'
+		},
+		FunctionInfo{
+			method_name: 'payments.getPaymentReceipt'
+			constructor_id: 0x2478d1cc
+			result_type_name: 'payments.PaymentReceipt'
+		},
+		FunctionInfo{
+			method_name: 'payments.validateRequestedInfo'
+			constructor_id: 0xb6c8f12b
+			result_type_name: 'payments.ValidatedRequestedInfo'
+		},
+		FunctionInfo{
+			method_name: 'payments.sendPaymentForm'
+			constructor_id: 0x2d03522f
+			result_type_name: 'payments.PaymentResult'
+		},
+		FunctionInfo{
+			method_name: 'payments.getSavedInfo'
+			constructor_id: 0x227d824b
+			result_type_name: 'payments.SavedInfo'
+		},
+		FunctionInfo{
+			method_name: 'payments.clearSavedInfo'
+			constructor_id: 0xd83d70c1
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'payments.getBankCardData'
+			constructor_id: 0x2e79d779
+			result_type_name: 'payments.BankCardData'
+		},
+		FunctionInfo{
+			method_name: 'payments.exportInvoice'
+			constructor_id: 0x0f91b065
+			result_type_name: 'payments.ExportedInvoice'
+		},
+		FunctionInfo{
+			method_name: 'payments.assignAppStoreTransaction'
+			constructor_id: 0x80ed747d
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'payments.assignPlayMarketTransaction'
+			constructor_id: 0xdffd50d3
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'payments.getPremiumGiftCodeOptions'
+			constructor_id: 0x2757ba54
+			result_type_name: 'Vector<PremiumGiftCodeOption>'
+		},
+		FunctionInfo{
+			method_name: 'payments.checkGiftCode'
+			constructor_id: 0x8e51b4c1
+			result_type_name: 'payments.CheckedGiftCode'
+		},
+		FunctionInfo{
+			method_name: 'payments.applyGiftCode'
+			constructor_id: 0xf6e26854
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'payments.getGiveawayInfo'
+			constructor_id: 0xf4239425
+			result_type_name: 'payments.GiveawayInfo'
+		},
+		FunctionInfo{
+			method_name: 'payments.launchPrepaidGiveaway'
+			constructor_id: 0x5ff58f20
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'payments.getStarsTopupOptions'
+			constructor_id: 0xc00ec7d3
+			result_type_name: 'Vector<StarsTopupOption>'
+		},
+		FunctionInfo{
+			method_name: 'payments.getStarsStatus'
+			constructor_id: 0x4ea9b3bf
+			result_type_name: 'payments.StarsStatus'
+		},
+		FunctionInfo{
+			method_name: 'payments.getStarsTransactions'
+			constructor_id: 0x69da4557
+			result_type_name: 'payments.StarsStatus'
+		},
+		FunctionInfo{
+			method_name: 'payments.sendStarsForm'
+			constructor_id: 0x7998c914
+			result_type_name: 'payments.PaymentResult'
+		},
+		FunctionInfo{
+			method_name: 'payments.refundStarsCharge'
+			constructor_id: 0x25ae8f4a
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'payments.getStarsRevenueStats'
+			constructor_id: 0xd91ffad6
+			result_type_name: 'payments.StarsRevenueStats'
+		},
+		FunctionInfo{
+			method_name: 'payments.getStarsRevenueWithdrawalUrl'
+			constructor_id: 0x2433dc92
+			result_type_name: 'payments.StarsRevenueWithdrawalUrl'
+		},
+		FunctionInfo{
+			method_name: 'payments.getStarsRevenueAdsAccountUrl'
+			constructor_id: 0xd1d7efc5
+			result_type_name: 'payments.StarsRevenueAdsAccountUrl'
+		},
+		FunctionInfo{
+			method_name: 'payments.getStarsTransactionsByID'
+			constructor_id: 0x2dca16b8
+			result_type_name: 'payments.StarsStatus'
+		},
+		FunctionInfo{
+			method_name: 'payments.getStarsGiftOptions'
+			constructor_id: 0xd3c96bc8
+			result_type_name: 'Vector<StarsGiftOption>'
+		},
+		FunctionInfo{
+			method_name: 'payments.getStarsSubscriptions'
+			constructor_id: 0x032512c5
+			result_type_name: 'payments.StarsStatus'
+		},
+		FunctionInfo{
+			method_name: 'payments.changeStarsSubscription'
+			constructor_id: 0xc7770878
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'payments.fulfillStarsSubscription'
+			constructor_id: 0xcc5bebb3
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'payments.getStarsGiveawayOptions'
+			constructor_id: 0xbd1efd3e
+			result_type_name: 'Vector<StarsGiveawayOption>'
+		},
+		FunctionInfo{
+			method_name: 'payments.getStarGifts'
+			constructor_id: 0xc4563590
+			result_type_name: 'payments.StarGifts'
+		},
+		FunctionInfo{
+			method_name: 'payments.saveStarGift'
+			constructor_id: 0x2a2a697c
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'payments.convertStarGift'
+			constructor_id: 0x74bf076b
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'payments.botCancelStarsSubscription'
+			constructor_id: 0x6dfa0622
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'payments.getConnectedStarRefBots'
+			constructor_id: 0x5869a553
+			result_type_name: 'payments.ConnectedStarRefBots'
+		},
+		FunctionInfo{
+			method_name: 'payments.getConnectedStarRefBot'
+			constructor_id: 0xb7d998f0
+			result_type_name: 'payments.ConnectedStarRefBots'
+		},
+		FunctionInfo{
+			method_name: 'payments.getSuggestedStarRefBots'
+			constructor_id: 0x0d6b48f7
+			result_type_name: 'payments.SuggestedStarRefBots'
+		},
+		FunctionInfo{
+			method_name: 'payments.connectStarRefBot'
+			constructor_id: 0x7ed5348a
+			result_type_name: 'payments.ConnectedStarRefBots'
+		},
+		FunctionInfo{
+			method_name: 'payments.editConnectedStarRefBot'
+			constructor_id: 0xe4fca4a3
+			result_type_name: 'payments.ConnectedStarRefBots'
+		},
+		FunctionInfo{
+			method_name: 'payments.getStarGiftUpgradePreview'
+			constructor_id: 0x9c9abcb1
+			result_type_name: 'payments.StarGiftUpgradePreview'
+		},
+		FunctionInfo{
+			method_name: 'payments.upgradeStarGift'
+			constructor_id: 0xaed6e4f5
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'payments.transferStarGift'
+			constructor_id: 0x7f18176a
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'payments.getUniqueStarGift'
+			constructor_id: 0xa1974d72
+			result_type_name: 'payments.UniqueStarGift'
+		},
+		FunctionInfo{
+			method_name: 'payments.getSavedStarGifts'
+			constructor_id: 0xa319e569
+			result_type_name: 'payments.SavedStarGifts'
+		},
+		FunctionInfo{
+			method_name: 'payments.getSavedStarGift'
+			constructor_id: 0xb455a106
+			result_type_name: 'payments.SavedStarGifts'
+		},
+		FunctionInfo{
+			method_name: 'payments.getStarGiftWithdrawalUrl'
+			constructor_id: 0xd06e93a8
+			result_type_name: 'payments.StarGiftWithdrawalUrl'
+		},
+		FunctionInfo{
+			method_name: 'payments.toggleChatStarGiftNotifications'
+			constructor_id: 0x60eaefa1
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'payments.toggleStarGiftsPinnedToTop'
+			constructor_id: 0x1513e7b0
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'payments.canPurchaseStore'
+			constructor_id: 0x4fdc5ea7
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'payments.getResaleStarGifts'
+			constructor_id: 0x7a5fa236
+			result_type_name: 'payments.ResaleStarGifts'
+		},
+		FunctionInfo{
+			method_name: 'payments.updateStarGiftPrice'
+			constructor_id: 0xedbe6ccb
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'payments.createStarGiftCollection'
+			constructor_id: 0x1f4a0e87
+			result_type_name: 'StarGiftCollection'
+		},
+		FunctionInfo{
+			method_name: 'payments.updateStarGiftCollection'
+			constructor_id: 0x4fddbee7
+			result_type_name: 'StarGiftCollection'
+		},
+		FunctionInfo{
+			method_name: 'payments.reorderStarGiftCollections'
+			constructor_id: 0xc32af4cc
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'payments.deleteStarGiftCollection'
+			constructor_id: 0xad5648e8
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'payments.getStarGiftCollections'
+			constructor_id: 0x981b91dd
+			result_type_name: 'payments.StarGiftCollections'
+		},
+		FunctionInfo{
+			method_name: 'payments.getUniqueStarGiftValueInfo'
+			constructor_id: 0x4365af6b
+			result_type_name: 'payments.UniqueStarGiftValueInfo'
+		},
+		FunctionInfo{
+			method_name: 'payments.checkCanSendGift'
+			constructor_id: 0xc0c4edc9
+			result_type_name: 'payments.CheckCanSendGiftResult'
+		},
+		FunctionInfo{
+			method_name: 'payments.getStarGiftAuctionState'
+			constructor_id: 0x5c9ff4d6
+			result_type_name: 'payments.StarGiftAuctionState'
+		},
+		FunctionInfo{
+			method_name: 'payments.getStarGiftAuctionAcquiredGifts'
+			constructor_id: 0x6ba2cbec
+			result_type_name: 'payments.StarGiftAuctionAcquiredGifts'
+		},
+		FunctionInfo{
+			method_name: 'payments.getStarGiftActiveAuctions'
+			constructor_id: 0xa5d0514d
+			result_type_name: 'payments.StarGiftActiveAuctions'
+		},
+		FunctionInfo{
+			method_name: 'payments.resolveStarGiftOffer'
+			constructor_id: 0xe9ce781c
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'payments.sendStarGiftOffer'
+			constructor_id: 0x8fb86b41
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'payments.getStarGiftUpgradeAttributes'
+			constructor_id: 0x6d038b58
+			result_type_name: 'payments.StarGiftUpgradeAttributes'
+		},
+		FunctionInfo{
+			method_name: 'payments.getCraftStarGifts'
+			constructor_id: 0xfd05dd00
+			result_type_name: 'payments.SavedStarGifts'
+		},
+		FunctionInfo{
+			method_name: 'payments.craftStarGift'
+			constructor_id: 0xb0f9684f
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'stickers.createStickerSet'
+			constructor_id: 0x9021ab67
+			result_type_name: 'messages.StickerSet'
+		},
+		FunctionInfo{
+			method_name: 'stickers.removeStickerFromSet'
+			constructor_id: 0xf7760f51
+			result_type_name: 'messages.StickerSet'
+		},
+		FunctionInfo{
+			method_name: 'stickers.changeStickerPosition'
+			constructor_id: 0xffb6d4ca
+			result_type_name: 'messages.StickerSet'
+		},
+		FunctionInfo{
+			method_name: 'stickers.addStickerToSet'
+			constructor_id: 0x8653febe
+			result_type_name: 'messages.StickerSet'
+		},
+		FunctionInfo{
+			method_name: 'stickers.setStickerSetThumb'
+			constructor_id: 0xa76a5392
+			result_type_name: 'messages.StickerSet'
+		},
+		FunctionInfo{
+			method_name: 'stickers.checkShortName'
+			constructor_id: 0x284b3639
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'stickers.suggestShortName'
+			constructor_id: 0x4dafc503
+			result_type_name: 'stickers.SuggestedShortName'
+		},
+		FunctionInfo{
+			method_name: 'stickers.changeSticker'
+			constructor_id: 0xf5537ebc
+			result_type_name: 'messages.StickerSet'
+		},
+		FunctionInfo{
+			method_name: 'stickers.renameStickerSet'
+			constructor_id: 0x124b1c00
+			result_type_name: 'messages.StickerSet'
+		},
+		FunctionInfo{
+			method_name: 'stickers.deleteStickerSet'
+			constructor_id: 0x87704394
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'stickers.replaceSticker'
+			constructor_id: 0x4696459a
+			result_type_name: 'messages.StickerSet'
+		},
+		FunctionInfo{
+			method_name: 'phone.getCallConfig'
+			constructor_id: 0x55451fa9
+			result_type_name: 'DataJSON'
+		},
+		FunctionInfo{
+			method_name: 'phone.requestCall'
+			constructor_id: 0x42ff96ed
+			result_type_name: 'phone.PhoneCall'
+		},
+		FunctionInfo{
+			method_name: 'phone.acceptCall'
+			constructor_id: 0x3bd2b4a0
+			result_type_name: 'phone.PhoneCall'
+		},
+		FunctionInfo{
+			method_name: 'phone.confirmCall'
+			constructor_id: 0x2efe1722
+			result_type_name: 'phone.PhoneCall'
+		},
+		FunctionInfo{
+			method_name: 'phone.receivedCall'
+			constructor_id: 0x17d54f61
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'phone.discardCall'
+			constructor_id: 0xb2cbc1c0
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'phone.setCallRating'
+			constructor_id: 0x59ead627
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'phone.saveCallDebug'
+			constructor_id: 0x277add7e
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'phone.sendSignalingData'
+			constructor_id: 0xff7a9383
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'phone.createGroupCall'
+			constructor_id: 0x48cdc6d8
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'phone.joinGroupCall'
+			constructor_id: 0x8fb53057
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'phone.leaveGroupCall'
+			constructor_id: 0x500377f9
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'phone.inviteToGroupCall'
+			constructor_id: 0x7b393160
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'phone.discardGroupCall'
+			constructor_id: 0x7a777135
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'phone.toggleGroupCallSettings'
+			constructor_id: 0x974392f2
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'phone.getGroupCall'
+			constructor_id: 0x041845db
+			result_type_name: 'phone.GroupCall'
+		},
+		FunctionInfo{
+			method_name: 'phone.getGroupParticipants'
+			constructor_id: 0xc558d8ab
+			result_type_name: 'phone.GroupParticipants'
+		},
+		FunctionInfo{
+			method_name: 'phone.checkGroupCall'
+			constructor_id: 0xb59cf977
+			result_type_name: 'Vector<int>'
+		},
+		FunctionInfo{
+			method_name: 'phone.toggleGroupCallRecord'
+			constructor_id: 0xf128c708
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'phone.editGroupCallParticipant'
+			constructor_id: 0xa5273abf
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'phone.editGroupCallTitle'
+			constructor_id: 0x1ca6ac0a
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'phone.getGroupCallJoinAs'
+			constructor_id: 0xef7c213a
+			result_type_name: 'phone.JoinAsPeers'
+		},
+		FunctionInfo{
+			method_name: 'phone.exportGroupCallInvite'
+			constructor_id: 0xe6aa647f
+			result_type_name: 'phone.ExportedGroupCallInvite'
+		},
+		FunctionInfo{
+			method_name: 'phone.toggleGroupCallStartSubscription'
+			constructor_id: 0x219c34e6
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'phone.startScheduledGroupCall'
+			constructor_id: 0x5680e342
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'phone.saveDefaultGroupCallJoinAs'
+			constructor_id: 0x575e1f8c
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'phone.joinGroupCallPresentation'
+			constructor_id: 0xcbea6bc4
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'phone.leaveGroupCallPresentation'
+			constructor_id: 0x1c50d144
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'phone.getGroupCallStreamChannels'
+			constructor_id: 0x1ab21940
+			result_type_name: 'phone.GroupCallStreamChannels'
+		},
+		FunctionInfo{
+			method_name: 'phone.getGroupCallStreamRtmpUrl'
+			constructor_id: 0x5af4c73a
+			result_type_name: 'phone.GroupCallStreamRtmpUrl'
+		},
+		FunctionInfo{
+			method_name: 'phone.saveCallLog'
+			constructor_id: 0x41248786
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'phone.createConferenceCall'
+			constructor_id: 0x7d0444bb
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'phone.deleteConferenceCallParticipants'
+			constructor_id: 0x8ca60525
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'phone.sendConferenceCallBroadcast'
+			constructor_id: 0xc6701900
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'phone.inviteConferenceCallParticipant'
+			constructor_id: 0xbcf22685
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'phone.declineConferenceCallInvite'
+			constructor_id: 0x3c479971
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'phone.getGroupCallChainBlocks'
+			constructor_id: 0xee9f88a6
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'phone.sendGroupCallMessage'
+			constructor_id: 0xb1d11410
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'phone.sendGroupCallEncryptedMessage'
+			constructor_id: 0xe5afa56d
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'phone.deleteGroupCallMessages'
+			constructor_id: 0xf64f54f7
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'phone.deleteGroupCallParticipantMessages'
+			constructor_id: 0x1dbfeca0
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'phone.getGroupCallStars'
+			constructor_id: 0x6f636302
+			result_type_name: 'phone.GroupCallStars'
+		},
+		FunctionInfo{
+			method_name: 'phone.saveDefaultSendAs'
+			constructor_id: 0x4167add1
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'langpack.getLangPack'
+			constructor_id: 0xf2f2330a
+			result_type_name: 'LangPackDifference'
+		},
+		FunctionInfo{
+			method_name: 'langpack.getStrings'
+			constructor_id: 0xefea3803
+			result_type_name: 'Vector<LangPackString>'
+		},
+		FunctionInfo{
+			method_name: 'langpack.getDifference'
+			constructor_id: 0xcd984aa5
+			result_type_name: 'LangPackDifference'
+		},
+		FunctionInfo{
+			method_name: 'langpack.getLanguages'
+			constructor_id: 0x42c6978f
+			result_type_name: 'Vector<LangPackLanguage>'
+		},
+		FunctionInfo{
+			method_name: 'langpack.getLanguage'
+			constructor_id: 0x6a596502
+			result_type_name: 'LangPackLanguage'
+		},
+		FunctionInfo{
+			method_name: 'folders.editPeerFolders'
+			constructor_id: 0x6847d0ab
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'stats.getBroadcastStats'
+			constructor_id: 0xab42441a
+			result_type_name: 'stats.BroadcastStats'
+		},
+		FunctionInfo{
+			method_name: 'stats.loadAsyncGraph'
+			constructor_id: 0x621d5fa0
+			result_type_name: 'StatsGraph'
+		},
+		FunctionInfo{
+			method_name: 'stats.getMegagroupStats'
+			constructor_id: 0xdcdf8607
+			result_type_name: 'stats.MegagroupStats'
+		},
+		FunctionInfo{
+			method_name: 'stats.getMessagePublicForwards'
+			constructor_id: 0x5f150144
+			result_type_name: 'stats.PublicForwards'
+		},
+		FunctionInfo{
+			method_name: 'stats.getMessageStats'
+			constructor_id: 0xb6e0a3f5
+			result_type_name: 'stats.MessageStats'
+		},
+		FunctionInfo{
+			method_name: 'stats.getStoryStats'
+			constructor_id: 0x374fef40
+			result_type_name: 'stats.StoryStats'
+		},
+		FunctionInfo{
+			method_name: 'stats.getStoryPublicForwards'
+			constructor_id: 0xa6437ef6
+			result_type_name: 'stats.PublicForwards'
+		},
+		FunctionInfo{
+			method_name: 'chatlists.exportChatlistInvite'
+			constructor_id: 0x8472478e
+			result_type_name: 'chatlists.ExportedChatlistInvite'
+		},
+		FunctionInfo{
+			method_name: 'chatlists.deleteExportedInvite'
+			constructor_id: 0x719c5c5e
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'chatlists.editExportedInvite'
+			constructor_id: 0x653db63d
+			result_type_name: 'ExportedChatlistInvite'
+		},
+		FunctionInfo{
+			method_name: 'chatlists.getExportedInvites'
+			constructor_id: 0xce03da83
+			result_type_name: 'chatlists.ExportedInvites'
+		},
+		FunctionInfo{
+			method_name: 'chatlists.checkChatlistInvite'
+			constructor_id: 0x41c10fff
+			result_type_name: 'chatlists.ChatlistInvite'
+		},
+		FunctionInfo{
+			method_name: 'chatlists.joinChatlistInvite'
+			constructor_id: 0xa6b1e39a
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'chatlists.getChatlistUpdates'
+			constructor_id: 0x89419521
+			result_type_name: 'chatlists.ChatlistUpdates'
+		},
+		FunctionInfo{
+			method_name: 'chatlists.joinChatlistUpdates'
+			constructor_id: 0xe089f8f5
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'chatlists.hideChatlistUpdates'
+			constructor_id: 0x66e486fb
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'chatlists.getLeaveChatlistSuggestions'
+			constructor_id: 0xfdbcd714
+			result_type_name: 'Vector<Peer>'
+		},
+		FunctionInfo{
+			method_name: 'chatlists.leaveChatlist'
+			constructor_id: 0x74fae13a
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'stories.canSendStory'
+			constructor_id: 0x30eb63f0
+			result_type_name: 'stories.CanSendStoryCount'
+		},
+		FunctionInfo{
+			method_name: 'stories.sendStory'
+			constructor_id: 0x737fc2ec
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'stories.editStory'
+			constructor_id: 0xb583ba46
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'stories.deleteStories'
+			constructor_id: 0xae59db5f
+			result_type_name: 'Vector<int>'
+		},
+		FunctionInfo{
+			method_name: 'stories.togglePinned'
+			constructor_id: 0x9a75a1ef
+			result_type_name: 'Vector<int>'
+		},
+		FunctionInfo{
+			method_name: 'stories.getAllStories'
+			constructor_id: 0xeeb0d625
+			result_type_name: 'stories.AllStories'
+		},
+		FunctionInfo{
+			method_name: 'stories.getPinnedStories'
+			constructor_id: 0x5821a5dc
+			result_type_name: 'stories.Stories'
+		},
+		FunctionInfo{
+			method_name: 'stories.getStoriesArchive'
+			constructor_id: 0xb4352016
+			result_type_name: 'stories.Stories'
+		},
+		FunctionInfo{
+			method_name: 'stories.getStoriesByID'
+			constructor_id: 0x5774ca74
+			result_type_name: 'stories.Stories'
+		},
+		FunctionInfo{
+			method_name: 'stories.toggleAllStoriesHidden'
+			constructor_id: 0x7c2557c4
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'stories.readStories'
+			constructor_id: 0xa556dac8
+			result_type_name: 'Vector<int>'
+		},
+		FunctionInfo{
+			method_name: 'stories.incrementStoryViews'
+			constructor_id: 0xb2028afb
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'stories.getStoryViewsList'
+			constructor_id: 0x7ed23c57
+			result_type_name: 'stories.StoryViewsList'
+		},
+		FunctionInfo{
+			method_name: 'stories.getStoriesViews'
+			constructor_id: 0x28e16cc8
+			result_type_name: 'stories.StoryViews'
+		},
+		FunctionInfo{
+			method_name: 'stories.exportStoryLink'
+			constructor_id: 0x7b8def20
+			result_type_name: 'ExportedStoryLink'
+		},
+		FunctionInfo{
+			method_name: 'stories.report'
+			constructor_id: 0x19d8eb45
+			result_type_name: 'ReportResult'
+		},
+		FunctionInfo{
+			method_name: 'stories.activateStealthMode'
+			constructor_id: 0x57bbd166
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'stories.sendReaction'
+			constructor_id: 0x7fd736b2
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'stories.getPeerStories'
+			constructor_id: 0x2c4ada50
+			result_type_name: 'stories.PeerStories'
+		},
+		FunctionInfo{
+			method_name: 'stories.getAllReadPeerStories'
+			constructor_id: 0x9b5ae7f9
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'stories.getPeerMaxIDs'
+			constructor_id: 0x78499170
+			result_type_name: 'Vector<RecentStory>'
+		},
+		FunctionInfo{
+			method_name: 'stories.getChatsToSend'
+			constructor_id: 0xa56a8b60
+			result_type_name: 'messages.Chats'
+		},
+		FunctionInfo{
+			method_name: 'stories.togglePeerStoriesHidden'
+			constructor_id: 0xbd0415c4
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'stories.getStoryReactionsList'
+			constructor_id: 0xb9b2881f
+			result_type_name: 'stories.StoryReactionsList'
+		},
+		FunctionInfo{
+			method_name: 'stories.togglePinnedToTop'
+			constructor_id: 0x0b297e9b
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'stories.searchPosts'
+			constructor_id: 0xd1810907
+			result_type_name: 'stories.FoundStories'
+		},
+		FunctionInfo{
+			method_name: 'stories.createAlbum'
+			constructor_id: 0xa36396e5
+			result_type_name: 'StoryAlbum'
+		},
+		FunctionInfo{
+			method_name: 'stories.updateAlbum'
+			constructor_id: 0x5e5259b6
+			result_type_name: 'StoryAlbum'
+		},
+		FunctionInfo{
+			method_name: 'stories.reorderAlbums'
+			constructor_id: 0x8535fbd9
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'stories.deleteAlbum'
+			constructor_id: 0x8d3456d0
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'stories.getAlbums'
+			constructor_id: 0x25b3eac7
+			result_type_name: 'stories.Albums'
+		},
+		FunctionInfo{
+			method_name: 'stories.getAlbumStories'
+			constructor_id: 0xac806d61
+			result_type_name: 'stories.Stories'
+		},
+		FunctionInfo{
+			method_name: 'stories.startLive'
+			constructor_id: 0xd069ccde
+			result_type_name: 'Updates'
+		},
+		FunctionInfo{
+			method_name: 'premium.getBoostsList'
+			constructor_id: 0x60f67660
+			result_type_name: 'premium.BoostsList'
+		},
+		FunctionInfo{
+			method_name: 'premium.getMyBoosts'
+			constructor_id: 0x0be77b4a
+			result_type_name: 'premium.MyBoosts'
+		},
+		FunctionInfo{
+			method_name: 'premium.applyBoost'
+			constructor_id: 0x6b7da746
+			result_type_name: 'premium.MyBoosts'
+		},
+		FunctionInfo{
+			method_name: 'premium.getBoostsStatus'
+			constructor_id: 0x042f1f61
+			result_type_name: 'premium.BoostsStatus'
+		},
+		FunctionInfo{
+			method_name: 'premium.getUserBoosts'
+			constructor_id: 0x39854d1f
+			result_type_name: 'premium.BoostsList'
+		},
+		FunctionInfo{
+			method_name: 'smsjobs.isEligibleToJoin'
+			constructor_id: 0x0edc39d0
+			result_type_name: 'smsjobs.EligibilityToJoin'
+		},
+		FunctionInfo{
+			method_name: 'smsjobs.join'
+			constructor_id: 0xa74ece2d
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'smsjobs.leave'
+			constructor_id: 0x9898ad73
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'smsjobs.updateSettings'
+			constructor_id: 0x093fa0bf
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'smsjobs.getStatus'
+			constructor_id: 0x10a698e8
+			result_type_name: 'smsjobs.Status'
+		},
+		FunctionInfo{
+			method_name: 'smsjobs.getSmsJob'
+			constructor_id: 0x778d902f
+			result_type_name: 'SmsJob'
+		},
+		FunctionInfo{
+			method_name: 'smsjobs.finishJob'
+			constructor_id: 0x4f1ebf24
+			result_type_name: 'Bool'
+		},
+		FunctionInfo{
+			method_name: 'fragment.getCollectibleInfo'
+			constructor_id: 0xbe1e85ba
+			result_type_name: 'fragment.CollectibleInfo'
+		},
+	]
+}
+
 pub fn decode_object(data []u8) !Object {
 	mut decoder := new_decoder(data)
 	object := decode_object_from_decoder(mut decoder)!

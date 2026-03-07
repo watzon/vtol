@@ -8,6 +8,8 @@ The repository is still pre-`1.0`, but it is no longer just a scaffold. The core
 
 Session persistence now ships with Telethon-style `MemorySession`, `StringSession`, and `SQLiteSession` backends, RPC errors expose flood-wait metadata without discarding the underlying Telegram error payload, and the RPC engine can emit structured debug events for protocol troubleshooting.
 
+Generated TL coverage is now exposed as a public function registry via `tl.current_function_registry()`, and the repository verifies that registry against the pinned normalized schema in test runs.
+
 `vtol.Client` now keeps a bounded in-memory copy of those RPC debug events by default, so reconnects, retries, and DC migrations are inspectable through `client.rpc_debug_events()` without replacing the runtime logger. Set `ClientConfig.rpc_event_history_limit = 0` to disable the buffer or provide `ClientConfig.rpc_config.debug_logger` to forward events elsewhere as well.
 
 ## Goals
@@ -82,7 +84,7 @@ For custom storage, pass any `session.Store` implementation to `vtol.new_client_
 
 ## Roadmap
 
-The active implementation roadmap lives in `docs/roadmap.md`. The project should remain pre-`1.0` until TL generation, auth/session persistence, and update recovery are proven in integration tests.
+The active implementation roadmap lives in `docs/roadmap.md`. The project remains pre-`1.0`, but generated TL coverage, session restore, and live update recovery are now enforced in tests, so the next milestone is API stabilization and cross-platform hardening rather than basic feature completeness.
 
 ## Stability notes
 

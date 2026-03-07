@@ -2,6 +2,7 @@ module internal
 
 import os
 import time
+import tl
 
 fn test_verify_generated_tl_module_accepts_checked_in_outputs() {
 	root := repo_root()
@@ -15,6 +16,31 @@ fn test_verify_generated_tl_module_accepts_checked_in_outputs() {
 	assert summary.layer == snapshot.layer
 	assert summary.constructor_count == document.entries.filter(it.section == .types).len
 	assert summary.function_count == document.entries.filter(it.section == .functions).len
+}
+
+fn test_generated_function_registry_matches_normalized_schema() {
+	root := repo_root()
+	schema_dir := os.join_path(root, 'tl', 'schema')
+	snapshot := load_tl_snapshot(schema_dir) or { panic(err) }
+	document := parse_tl_document_from_path(snapshot.normalized_path) or { panic(err) }
+	expected := document.entries.filter(it.section == .functions)
+	registry := tl.current_function_registry()
+
+	assert registry.len == expected.len
+	assert registry.len == tl.current_layer_info().function_count
+
+	mut by_method := map[string]tl.FunctionInfo{}
+	for info in registry {
+		by_method[info.method_name] = info
+	}
+
+	for entry in expected {
+		info := by_method[entry.name] or {
+			panic('missing function registry entry for ${entry.name}')
+		}
+		assert info.constructor_id == entry.constructor
+		assert info.result_type_name == entry.result_type
+	}
 }
 
 fn test_verify_generated_tl_module_rejects_stale_outputs() {

@@ -12,6 +12,13 @@ pub interface Function {
 	result_type_name() string
 }
 
+pub struct FunctionInfo {
+pub:
+	method_name      string
+	constructor_id   u32
+	result_type_name string
+}
+
 pub struct LayerInfo {
 pub:
 	layer             int

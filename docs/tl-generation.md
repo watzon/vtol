@@ -43,9 +43,11 @@ v test .
 The generator emits:
 
 - `tl/generated_schema_types.v` with constructor and request structs plus object codecs
-- `tl/generated_schema_dispatch.v` with decode dispatch, typed union decoders, and layer metadata
+- `tl/generated_schema_dispatch.v` with decode dispatch, typed union decoders, layer metadata, and a generated `current_function_registry()`
 
 Generated union-like result families use V interfaces such as `InputPeerType`, `UserType`, and `UpdatesType`.
+
+`current_function_registry()` is the checked-in inventory of every generated TL request for the pinned layer. The test suite compares it against `tl/schema/normalized.tl`, so method coverage is enforced rather than inferred from code generation counts alone.
 
 ## Compatibility process
 

@@ -1906,6 +1906,84 @@ fn test_conversation_send_text_wait_for_reply_and_buffer_other_messages() {
 	}
 }
 
+fn test_send_text_with_rich_text_and_common_send_options() {
+	mut state := &FakeRuntimeState{
+		responses: [
+			tl.Object(tl.UpdateShortSentMessage{
+				id:                 11
+				pts:                1
+				pts_count:          1
+				date:               123
+				media:              tl.UnknownMessageMediaType{}
+				has_media_value:    false
+				entities:           []tl.MessageEntityType{}
+				has_entities_value: false
+			}),
+		]
+	}
+	mut client := new_fake_client(state)
+	message := parse_markdown('😀 **bold** [link](https://example.com)') or { panic(err) }
+
+	sent := client.send_text_with(tl.InputPeerSelf{}, message, SendOptions{
+		reply_to_message_id:           77
+		has_reply_to_message_id_value: true
+		silent:                        true
+		disable_link_preview:          true
+		schedule_date:                 1_700_000_000
+		has_schedule_date_value:       true
+	}) or { panic(err) }
+
+	assert sent.id == 11
+	assert sent.text == '😀 bold link'
+	assert state.invocations == ['messages.sendMessage']
+
+	send_call := state.functions[0]
+	match send_call {
+		tl.MessagesSendMessage {
+			assert send_call.message == '😀 bold link'
+			assert send_call.no_webpage
+			assert send_call.silent
+			assert send_call.has_reply_to_value
+			assert send_call.has_entities_value
+			assert send_call.has_schedule_date_value
+			assert send_call.schedule_date == 1_700_000_000
+			assert send_call.entities.len == 2
+			match send_call.reply_to {
+				tl.InputReplyToMessage {
+					assert send_call.reply_to.reply_to_msg_id == 77
+				}
+				else {
+					assert false
+				}
+			}
+			first_entity := send_call.entities[0]
+			match first_entity {
+				tl.MessageEntityBold {
+					assert first_entity.offset == 3
+					assert first_entity.length == 4
+				}
+				else {
+					assert false
+				}
+			}
+			second_entity := send_call.entities[1]
+			match second_entity {
+				tl.MessageEntityTextUrl {
+					assert second_entity.offset == 8
+					assert second_entity.length == 4
+					assert second_entity.url == 'https://example.com'
+				}
+				else {
+					assert false
+				}
+			}
+		}
+		else {
+			assert false
+		}
+	}
+}
+
 fn test_client_idle_runs_until_runtime_disconnects() {
 	mut state := &FakeRuntimeState{
 		disconnect_after_pumps: 1
@@ -2107,12 +2185,17 @@ fn test_send_file_uploads_document_and_uses_messages_send_media() {
 	}
 	mut client := new_fake_client(state)
 
-	_ = client.send_file(tl.InputPeerSelf{}, 'report.txt', payload, media.SendFileOptions{
-		upload:    media.UploadOptions{
+	_ = client.send_file(tl.InputPeerSelf{}, 'report.txt', payload, SendFileOptions{
+		upload:                        media.UploadOptions{
 			part_size: 4096
 		}
-		caption:   'quarterly report'
-		mime_type: 'text/plain'
+		caption:                       'quarterly report'
+		mime_type:                     'text/plain'
+		reply_to_message_id:           55
+		has_reply_to_message_id_value: true
+		silent:                        true
+		schedule_date:                 1_700_000_100
+		has_schedule_date_value:       true
 	}) or { panic(err) }
 
 	assert state.invocations == ['upload.saveFilePart', 'upload.saveFilePart', 'messages.sendMedia']
@@ -2120,6 +2203,18 @@ fn test_send_file_uploads_document_and_uses_messages_send_media() {
 	match send_media_call {
 		tl.MessagesSendMedia {
 			assert send_media_call.message == 'quarterly report'
+			assert send_media_call.silent
+			assert send_media_call.has_reply_to_value
+			assert send_media_call.has_schedule_date_value
+			assert send_media_call.schedule_date == 1_700_000_100
+			match send_media_call.reply_to {
+				tl.InputReplyToMessage {
+					assert send_media_call.reply_to.reply_to_msg_id == 55
+				}
+				else {
+					assert false
+				}
+			}
 			match send_media_call.media {
 				tl.InputMediaUploadedDocument {
 					assert send_media_call.media.mime_type == 'text/plain'
@@ -2164,7 +2259,7 @@ fn test_send_photo_uses_uploaded_photo_media() {
 	}
 	mut client := new_fake_client(state)
 
-	_ = client.send_photo(tl.InputPeerSelf{}, 'photo.jpg', payload, media.SendPhotoOptions{
+	_ = client.send_photo(tl.InputPeerSelf{}, 'photo.jpg', payload, SendPhotoOptions{
 		upload:                media.UploadOptions{
 			part_size: 4096
 		}

@@ -2,6 +2,7 @@ module vtol
 
 import auth
 import crypto
+import media
 import rpc
 import tl
 import transport
@@ -223,6 +224,46 @@ pub:
 	has_media_value    bool
 	entities           []tl.MessageEntityType
 	has_entities_value bool
+}
+
+pub struct SendOptions {
+pub:
+	reply_to_message_id           int
+	has_reply_to_message_id_value bool
+	silent                        bool
+	disable_link_preview          bool
+	schedule_date                 int
+	has_schedule_date_value       bool
+}
+
+pub struct SendFileOptions {
+pub:
+	upload                        media.UploadOptions
+	caption                       string
+	mime_type                     string = 'application/octet-stream'
+	attributes                    []tl.DocumentAttributeType
+	force_file                    bool = true
+	nosound_video                 bool
+	spoiler                       bool
+	reply_to_message_id           int
+	has_reply_to_message_id_value bool
+	silent                        bool
+	schedule_date                 int
+	has_schedule_date_value       bool
+}
+
+pub struct SendPhotoOptions {
+pub:
+	upload                        media.UploadOptions
+	caption                       string
+	spoiler                       bool
+	ttl_seconds                   int
+	has_ttl_seconds_value         bool
+	reply_to_message_id           int
+	has_reply_to_message_id_value bool
+	silent                        bool
+	schedule_date                 int
+	has_schedule_date_value       bool
 }
 
 pub struct EventPeer {

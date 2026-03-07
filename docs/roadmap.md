@@ -146,12 +146,12 @@ The implementation order should be code-first. Rewrite the user-facing docs only
 
 ## Phase 13: Rich-text and common-flow polish
 
-- [ ] 13.1 Add a user-facing rich-text input model based on `{ text, entities }` rather than hard-coding formatting logic into the client core.
-- [ ] 13.2 Add optional markdown and HTML parsing helpers layered on top of that entity model.
-- [ ] 13.3 Expand high-level send options for common cases such as reply-to, silent send, scheduling, and link-preview control where Telegram semantics are stable enough.
-- [ ] 13.4 Shorten common constructor paths so session-file and string-session startup require less ceremony in the first example.
-- [ ] 13.5 Revisit examples so the primary examples use the new peer, message, and event abstractions rather than the lower-level flows.
-- [ ] 13.6 Re-audit the public API stability boundary after the DX pass and explicitly mark which new helper surfaces are intended to be stable for `1.0`.
+- [x] 13.1 Add a user-facing rich-text input model based on `{ text, entities }` rather than hard-coding formatting logic into the client core.
+- [x] 13.2 Add optional markdown and HTML parsing helpers layered on top of that entity model.
+- [x] 13.3 Expand high-level send options for common cases such as reply-to, silent send, scheduling, and link-preview control where Telegram semantics are stable enough.
+- [x] 13.4 Shorten common constructor paths so session-file and string-session startup require less ceremony in the first example.
+- [x] 13.5 Revisit examples so the primary examples use the new peer, message, and event abstractions rather than the lower-level flows.
+- [x] 13.6 Re-audit the public API stability boundary after the DX pass and explicitly mark which new helper surfaces are intended to be stable for `1.0`.
 
 ## Phase 14: Documentation and 1.0 readiness
 

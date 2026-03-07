@@ -2,6 +2,8 @@
 
 Runnable message-send example that reuses the session created by `examples/auth_basic`.
 
+It sends through VTOL's peer-like and rich-text helpers: `VTOL_EXAMPLE_MESSAGE` is parsed as markdown when possible, then sent through the high-level `SentMessage` wrapper.
+
 ## Environment
 
 Required:
@@ -13,7 +15,7 @@ Optional:
 
 - `VTOL_EXAMPLE_SESSION_FILE` defaults to `.vtol.example.session.sqlite`
 - `VTOL_EXAMPLE_PEER` defaults to `me`
-- `VTOL_EXAMPLE_MESSAGE` defaults to `hello from VTOL`
+- `VTOL_EXAMPLE_MESSAGE` defaults to `*hello* from \`VTOL\``
 - `VTOL_EXAMPLE_DC_HOST` defaults to `149.154.167.50`
 - `VTOL_EXAMPLE_TEST_MODE=1` to target Telegram test mode
 
@@ -29,7 +31,7 @@ To send somewhere other than Saved Messages:
 
 ```bash
 export VTOL_EXAMPLE_PEER=telegram
-export VTOL_EXAMPLE_MESSAGE='hello from VTOL'
+export VTOL_EXAMPLE_MESSAGE='**hello** from VTOL'
 v run ./examples/send_message
 ```
 

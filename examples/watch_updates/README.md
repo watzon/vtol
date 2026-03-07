@@ -2,7 +2,7 @@
 
 Runnable long-lived session example that reuses the session created by `examples/auth_basic`.
 
-It subscribes to updates, pumps the session in a loop, prints live and recovered update batches, and demonstrates the reconnect-and-recover path already built into `vtol.Client`.
+It registers a high-level `client.on_new_message(...)` handler, prints VTOL message events, and relies on the existing reconnect-and-recover path under the hood.
 
 ## Environment
 

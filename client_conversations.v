@@ -35,12 +35,12 @@ pub fn (mut conversation Conversation) close() {
 	conversation.closed = true
 }
 
-pub fn (mut conversation Conversation) send_text(message string) !SentMessage {
+pub fn (mut conversation Conversation) send_text(message RichTextInput) !SentMessage {
 	mut client := conversation.client_ref()!
 	return client.send_text(conversation.peer, message)!
 }
 
-pub fn (mut conversation Conversation) send_message(message string) !SentMessage {
+pub fn (mut conversation Conversation) send_message(message RichTextInput) !SentMessage {
 	return conversation.send_text(message)!
 }
 

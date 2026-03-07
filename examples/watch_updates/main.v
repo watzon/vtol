@@ -1,11 +1,17 @@
 module main
 
 import time
+import vtol
 import vtol.example_support
-import vtol.updates
 
 const default_idle_notice_every = 30
 const default_pump_interval_ms = 250
+
+@[heap]
+struct MessageCounter {
+mut:
+	count int
+}
 
 fn main() {
 	run() or {
@@ -31,10 +37,21 @@ fn run() ! {
 	client.connect()!
 	example_support.require_restored_session(client, session_file)!
 
-	subscription := client.subscribe_updates(updates.SubscriptionConfig{
-		buffer_size: 64
-		drop_oldest: true
+	counter := &MessageCounter{}
+	handler_id := client.on_new_message(fn [counter] (event vtol.NewMessageEvent) ! {
+		sender := if event.has_sender_value && event.sender.key.len > 0 {
+			event.sender.key
+		} else {
+			'unknown-sender'
+		}
+		unsafe {
+			counter.count++
+		}
+		println('[${event.kind}] ${event.chat.key} <- ${sender}: ${event.text}')
 	})!
+	defer {
+		client.remove_event_handler(handler_id)
+	}
 	if state := client.update_state() {
 		println('watching updates from pts=${state.pts} qts=${state.qts} seq=${state.seq}')
 	}
@@ -42,28 +59,25 @@ fn run() ! {
 		println('running ${max_pumps} update pump cycle(s)')
 	} else {
 		println('watching updates until interrupted')
+		client.idle()!
+		return
 	}
 
 	mut cycles := 0
 	mut idle_cycles := 0
+	mut seen_messages := 0
 	for {
 		client.pump_updates_once()!
 		cycles++
-		mut drained := 0
-		for {
-			if event := example_support.receive_event(subscription) {
-				println(example_support.describe_event(event))
-				drained++
-				idle_cycles = 0
-				continue
-			}
-			break
-		}
-		if drained == 0 {
+		current_count := unsafe { counter.count }
+		if current_count > seen_messages {
+			seen_messages = current_count
+			idle_cycles = 0
+		} else {
 			idle_cycles++
-			if idle_cycles == 1 || idle_cycles % default_idle_notice_every == 0 {
-				println('no updates yet (cycle ${cycles})')
-			}
+		}
+		if idle_cycles > 0 && (idle_cycles == 1 || idle_cycles % default_idle_notice_every == 0) {
+			println('no matching message events yet (cycle ${cycles})')
 		}
 		if max_pumps > 0 && cycles >= max_pumps {
 			println('completed ${cycles} pump cycle(s)')

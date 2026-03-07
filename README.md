@@ -8,6 +8,8 @@ The repository is still pre-`1.0`, but it is no longer just a scaffold. The core
 
 Session persistence now ships with Telethon-style `MemorySession`, `StringSession`, and `SQLiteSession` backends, RPC errors expose flood-wait metadata without discarding the underlying Telegram error payload, and the RPC engine can emit structured debug events for protocol troubleshooting.
 
+The high-level client layer now accepts VTOL-owned rich-text inputs (`{ text, entities }`) plus optional markdown/HTML helpers, and exposes stable send-time affordances like reply target, silent send, scheduling, and link-preview control without forcing raw TL calls for the common path.
+
 Generated TL coverage is now exposed as a public function registry via `tl.current_function_registry()`, and the repository verifies that registry against the pinned normalized schema in test runs.
 
 `vtol.Client` now keeps a bounded in-memory copy of those RPC debug events by default, so reconnects, retries, and DC migrations are inspectable through `client.rpc_debug_events()` without replacing the runtime logger. Set `ClientConfig.rpc_event_history_limit = 0` to disable the buffer or provide `ClientConfig.rpc_config.debug_logger` to forward events elsewhere as well.
@@ -70,10 +72,8 @@ mut client := vtol.new_client_with_session_file(vtol.ClientConfig{
 String sessions work the same way:
 
 ```v
-mut store := session.new_string_session('')!
-mut client := vtol.new_client_with_store(config, store)!
-// ... authenticate, resolve peers, send requests ...
-println(store.encoded())
+mut client := vtol.new_client_with_string_session(config, existing_session)!
+// ... connect, authenticate if needed, send requests ...
 ```
 
 For custom storage, pass any `session.Store` implementation to `vtol.new_client_with_store`.

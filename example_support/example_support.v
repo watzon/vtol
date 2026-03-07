@@ -40,7 +40,7 @@ pub fn new_client_from_env(session_file string) !vtol.Client {
 	timeout_ms := env_int([
 		'VTOL_EXAMPLE_TIMEOUT_MS',
 	], default_timeout_ms)
-	return vtol.new_client_with_sqlite_session(vtol.ClientConfig{
+	return vtol.new_client_with_session_file(vtol.ClientConfig{
 		app_id:               app_id
 		app_hash:             app_hash
 		dc_options:           [

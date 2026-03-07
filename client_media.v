@@ -103,33 +103,54 @@ pub fn (mut c Client) download_file(location tl.InputFileLocationType, options m
 	}
 }
 
-pub fn (mut c Client) send_text[T](peer T, message string) !SentMessage {
-	resolved := c.resolve_peer_like(peer)!
-	batch := c.send_text_updates(resolved, message)!
-	return sent_message_from_updates(resolved, batch, message)!
+pub fn (mut c Client) send_text[T](peer T, message RichTextInput) !SentMessage {
+	return c.send_text_with(peer, message, SendOptions{})!
 }
 
-pub fn (mut c Client) send_message[T](peer T, message string) !SentMessage {
+pub fn (mut c Client) send_text_with[T](peer T, message RichTextInput, options SendOptions) !SentMessage {
+	resolved := c.resolve_peer_like(peer)!
+	text := rich_text_from_input(message)
+	batch := c.send_message_updates_with(resolved.input_peer, text, options)!
+	return sent_message_from_updates(resolved, batch, text.text)!
+}
+
+pub fn (mut c Client) send_message[T](peer T, message RichTextInput) !SentMessage {
 	return c.send_text(peer, message)!
 }
 
-pub fn (mut c Client) send_text_updates[T](peer T, message string) !tl.UpdatesType {
-	resolved := c.resolve_peer_like(peer)!
-	return c.send_message_updates(resolved.input_peer, message)!
+pub fn (mut c Client) send_text_updates[T](peer T, message RichTextInput) !tl.UpdatesType {
+	return c.send_text_updates_with(peer, message, SendOptions{})!
 }
 
-pub fn (mut c Client) send_message_updates(peer tl.InputPeerType, message string) !tl.UpdatesType {
-	if message.len == 0 {
+pub fn (mut c Client) send_text_updates_with[T](peer T, message RichTextInput, options SendOptions) !tl.UpdatesType {
+	resolved := c.resolve_peer_like(peer)!
+	return c.send_message_updates_with(resolved.input_peer, message, options)!
+}
+
+pub fn (mut c Client) send_message_updates(peer tl.InputPeerType, message RichTextInput) !tl.UpdatesType {
+	return c.send_message_updates_with(peer, message, SendOptions{})!
+}
+
+pub fn (mut c Client) send_message_updates_with(peer tl.InputPeerType, message RichTextInput, options SendOptions) !tl.UpdatesType {
+	text := rich_text_from_input(message)
+	if text.text.len == 0 {
 		return error('message must not be empty')
 	}
+	resolved_options := normalize_send_options(options)!
 	result := c.invoke(tl.MessagesSendMessage{
 		peer:                           peer
-		reply_to:                       tl.UnknownInputReplyToType{}
-		has_reply_to_value:             false
-		message:                        message
+		no_webpage:                     resolved_options.disable_link_preview
+		silent:                         resolved_options.silent
+		reply_to:                       resolved_options.reply_to
+		has_reply_to_value:             resolved_options.has_reply_to_value
+		message:                        text.text
 		random_id:                      c.random_id()!
 		reply_markup:                   tl.UnknownReplyMarkupType{}
 		has_reply_markup_value:         false
+		entities:                       text.entities.clone()
+		has_entities_value:             text.entities.len > 0
+		schedule_date:                  resolved_options.schedule_date
+		has_schedule_date_value:        resolved_options.has_schedule_date_value
 		send_as:                        tl.InputPeerEmpty{}
 		has_send_as_value:              false
 		quick_reply_shortcut:           tl.UnknownInputQuickReplyShortcutType{}
@@ -140,13 +161,13 @@ pub fn (mut c Client) send_message_updates(peer tl.InputPeerType, message string
 	return c.ingest_updates_result(result)!
 }
 
-pub fn (mut c Client) send_file[T](peer T, name string, data []u8, options media.SendFileOptions) !SentMessage {
+pub fn (mut c Client) send_file[T](peer T, name string, data []u8, options SendFileOptions) !SentMessage {
 	resolved := c.resolve_peer_like(peer)!
 	batch := c.send_file_updates(resolved, name, data, options)!
 	return sent_message_from_updates(resolved, batch, options.caption)!
 }
 
-pub fn (mut c Client) send_file_updates[T](peer T, name string, data []u8, options media.SendFileOptions) !tl.UpdatesType {
+pub fn (mut c Client) send_file_updates[T](peer T, name string, data []u8, options SendFileOptions) !tl.UpdatesType {
 	resolved := c.resolve_peer_like(peer)!
 	uploaded := c.upload_file_bytes(name, data, options.upload)!
 	mime_type := if options.mime_type.len > 0 {
@@ -168,10 +189,10 @@ pub fn (mut c Client) send_file_updates[T](peer T, name string, data []u8, optio
 		has_video_cover_value:     false
 		has_video_timestamp_value: false
 		has_ttl_seconds_value:     false
-	}, options.caption)
+	}, options.caption, file_send_options_to_send_options(options))
 }
 
-pub fn (mut c Client) send_file_path[T](peer T, path string, options media.SendFileOptions) !SentMessage {
+pub fn (mut c Client) send_file_path[T](peer T, path string, options SendFileOptions) !SentMessage {
 	if path.len == 0 {
 		return error('file path must not be empty')
 	}
@@ -183,17 +204,17 @@ pub fn (mut c Client) send_file_path[T](peer T, path string, options media.SendF
 	return c.send_file(peer, name, data, options)!
 }
 
-pub fn (mut c Client) send_file_to_username(username string, name string, data []u8, options media.SendFileOptions) !SentMessage {
+pub fn (mut c Client) send_file_to_username(username string, name string, data []u8, options SendFileOptions) !SentMessage {
 	return c.send_file(username, name, data, options)!
 }
 
-pub fn (mut c Client) send_photo[T](peer T, name string, data []u8, options media.SendPhotoOptions) !SentMessage {
+pub fn (mut c Client) send_photo[T](peer T, name string, data []u8, options SendPhotoOptions) !SentMessage {
 	resolved := c.resolve_peer_like(peer)!
 	batch := c.send_photo_updates(resolved, name, data, options)!
 	return sent_message_from_updates(resolved, batch, options.caption)!
 }
 
-pub fn (mut c Client) send_photo_updates[T](peer T, name string, data []u8, options media.SendPhotoOptions) !tl.UpdatesType {
+pub fn (mut c Client) send_photo_updates[T](peer T, name string, data []u8, options SendPhotoOptions) !tl.UpdatesType {
 	resolved := c.resolve_peer_like(peer)!
 	uploaded := c.upload_file_bytes(name, data, options.upload)!
 	return c.send_media_request_updates(resolved.input_peer, tl.InputMediaUploadedPhoto{
@@ -202,10 +223,10 @@ pub fn (mut c Client) send_photo_updates[T](peer T, name string, data []u8, opti
 		ttl_seconds:           options.ttl_seconds
 		has_stickers_value:    false
 		has_ttl_seconds_value: options.has_ttl_seconds_value
-	}, options.caption)
+	}, options.caption, photo_send_options_to_send_options(options))
 }
 
-pub fn (mut c Client) send_photo_path[T](peer T, path string, options media.SendPhotoOptions) !SentMessage {
+pub fn (mut c Client) send_photo_path[T](peer T, path string, options SendPhotoOptions) !SentMessage {
 	if path.len == 0 {
 		return error('photo path must not be empty')
 	}
@@ -217,7 +238,7 @@ pub fn (mut c Client) send_photo_path[T](peer T, path string, options media.Send
 	return c.send_photo(peer, name, data, options)!
 }
 
-pub fn (mut c Client) send_photo_to_username(username string, name string, data []u8, options media.SendPhotoOptions) !SentMessage {
+pub fn (mut c Client) send_photo_to_username(username string, name string, data []u8, options SendPhotoOptions) !SentMessage {
 	return c.send_photo(username, name, data, options)!
 }
 
@@ -284,19 +305,23 @@ pub fn (mut c Client) reupload_cdn_file(file_token []u8, request_token []u8) ![]
 	return expect_file_hashes(result)!
 }
 
-fn (mut c Client) send_media_request_updates(peer tl.InputPeerType, media_value tl.InputMediaType, caption string) !tl.UpdatesType {
+fn (mut c Client) send_media_request_updates(peer tl.InputPeerType, media_value tl.InputMediaType, caption RichTextInput, options SendOptions) !tl.UpdatesType {
+	text := rich_text_from_input(caption)
+	resolved_options := normalize_send_options(options)!
 	result := c.invoke(tl.MessagesSendMedia{
 		peer:                             peer
-		reply_to:                         tl.UnknownInputReplyToType{}
-		has_reply_to_value:               false
+		silent:                           resolved_options.silent
+		reply_to:                         resolved_options.reply_to
+		has_reply_to_value:               resolved_options.has_reply_to_value
 		media:                            media_value
-		message:                          caption
+		message:                          text.text
 		random_id:                        c.random_id()!
 		reply_markup:                     tl.UnknownReplyMarkupType{}
 		has_reply_markup_value:           false
-		entities:                         []tl.MessageEntityType{}
-		has_entities_value:               false
-		has_schedule_date_value:          false
+		entities:                         text.entities.clone()
+		has_entities_value:               text.entities.len > 0
+		schedule_date:                    resolved_options.schedule_date
+		has_schedule_date_value:          resolved_options.has_schedule_date_value
 		has_schedule_repeat_period_value: false
 		send_as:                          tl.InputPeerEmpty{}
 		has_send_as_value:                false
@@ -308,6 +333,60 @@ fn (mut c Client) send_media_request_updates(peer tl.InputPeerType, media_value 
 		has_suggested_post_value:         false
 	})!
 	return c.ingest_updates_result(result)!
+}
+
+struct NormalizedSendOptions {
+	reply_to                tl.InputReplyToType = tl.UnknownInputReplyToType{}
+	has_reply_to_value      bool
+	silent                  bool
+	disable_link_preview    bool
+	schedule_date           int
+	has_schedule_date_value bool
+}
+
+fn normalize_send_options(options SendOptions) !NormalizedSendOptions {
+	if options.has_reply_to_message_id_value && options.reply_to_message_id <= 0 {
+		return error('reply_to_message_id must be greater than zero')
+	}
+	if options.has_schedule_date_value && options.schedule_date <= 0 {
+		return error('schedule_date must be greater than zero')
+	}
+	return NormalizedSendOptions{
+		reply_to:                if options.has_reply_to_message_id_value {
+			tl.InputReplyToType(tl.InputReplyToMessage{
+				reply_to_msg_id:   options.reply_to_message_id
+				reply_to_peer_id:  tl.InputPeerType(tl.InputPeerEmpty{})
+				monoforum_peer_id: tl.InputPeerType(tl.InputPeerEmpty{})
+			})
+		} else {
+			tl.InputReplyToType(tl.UnknownInputReplyToType{})
+		}
+		has_reply_to_value:      options.has_reply_to_message_id_value
+		silent:                  options.silent
+		disable_link_preview:    options.disable_link_preview
+		schedule_date:           options.schedule_date
+		has_schedule_date_value: options.has_schedule_date_value
+	}
+}
+
+fn file_send_options_to_send_options(options SendFileOptions) SendOptions {
+	return SendOptions{
+		reply_to_message_id:           options.reply_to_message_id
+		has_reply_to_message_id_value: options.has_reply_to_message_id_value
+		silent:                        options.silent
+		schedule_date:                 options.schedule_date
+		has_schedule_date_value:       options.has_schedule_date_value
+	}
+}
+
+fn photo_send_options_to_send_options(options SendPhotoOptions) SendOptions {
+	return SendOptions{
+		reply_to_message_id:           options.reply_to_message_id
+		has_reply_to_message_id_value: options.has_reply_to_message_id_value
+		silent:                        options.silent
+		schedule_date:                 options.schedule_date
+		has_schedule_date_value:       options.has_schedule_date_value
+	}
 }
 
 fn (mut c Client) ingest_updates_result(result tl.Object) !tl.UpdatesType {

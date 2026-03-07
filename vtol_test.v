@@ -1,5 +1,7 @@
 module vtol
 
+import session
+
 fn test_new_client_validates_required_fields() {
 	_ := new_client(ClientConfig{}) or {
 		assert err.msg() == 'client config app_id must be greater than zero'
@@ -29,4 +31,38 @@ fn test_new_client_exposes_primary_dc() {
 	} else {
 		assert false
 	}
+}
+
+fn test_new_client_with_string_session_restores_encoded_state() {
+	mut store := session.new_string_session('') or { panic(err) }
+	store.save(session.SessionData{
+		state: session.SessionState{
+			dc_id:           2
+			dc_address:      '149.154.167.50'
+			dc_port:         443
+			auth_key:        []u8{len: 256, init: u8(1)}
+			auth_key_id:     77
+			server_salt:     55
+			session_id:      99
+			layer:           201
+			schema_revision: 'test-layer'
+			created_at:      1_700_000_000
+		}
+	}) or { panic(err) }
+
+	mut client := new_client_with_string_session(ClientConfig{
+		app_id:     1
+		app_hash:   'test-hash'
+		dc_options: [
+			DcOption{
+				id:   2
+				host: '149.154.167.50'
+				port: 443
+			},
+		]
+	}, store.encoded()) or { panic(err) }
+
+	_, restored := client.build_runtime() or { panic(err) }
+
+	assert restored
 }

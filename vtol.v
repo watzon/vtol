@@ -165,6 +165,11 @@ pub fn new_client_with_session_file(config ClientConfig, path string) !Client {
 	return new_client_with_sqlite_session(config, path)
 }
 
+pub fn new_client_with_string_session(config ClientConfig, value string) !Client {
+	store := session.new_string_session(value)!
+	return new_client_with_store(config, store)
+}
+
 pub fn new_client_with_store(config ClientConfig, store session.Store) !Client {
 	validate_client_config(config)!
 	return Client{

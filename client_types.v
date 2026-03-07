@@ -283,6 +283,16 @@ pub:
 
 pub type NewMessageHandler = fn (event NewMessageEvent) !
 
+pub struct Conversation {
+pub:
+	peer ResolvedPeer
+mut:
+	client           &Client = unsafe { nil }
+	subscription     updates.Subscription
+	pending_messages []NewMessageEvent
+	closed           bool
+}
+
 pub struct DialogPageOptions {
 pub:
 	limit               int = 50

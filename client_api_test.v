@@ -1498,6 +1498,101 @@ fn test_on_new_message_emits_filtered_live_events() {
 	assert event.has_batch_value
 }
 
+fn test_on_new_message_preserves_delivery_order() {
+	mut state := &FakeRuntimeState{
+		responses:      [
+			tl.Object(tl.UpdatesState{
+				pts:          0
+				qts:          0
+				date:         100
+				seq:          0
+				unread_count: 0
+			}),
+		]
+		update_batches: [
+			tl.UpdatesType(tl.Updates{
+				updates: [
+					tl.UpdateType(tl.UpdateNewMessage{
+						message:   tl.MessageType(tl.Message{
+							id:                61
+							peer_id:           tl.PeerUser{
+								user_id: 42
+							}
+							from_id:           tl.PeerUser{
+								user_id: 42
+							}
+							has_from_id_value: true
+							date:              101
+							message:           'first'
+							media:             tl.UnknownMessageMediaType{}
+							has_media_value:   false
+						})
+						pts:       1
+						pts_count: 1
+					}),
+					tl.UpdateType(tl.UpdateNewMessage{
+						message:   tl.MessageType(tl.Message{
+							id:                62
+							peer_id:           tl.PeerUser{
+								user_id: 42
+							}
+							from_id:           tl.PeerUser{
+								user_id: 42
+							}
+							has_from_id_value: true
+							date:              102
+							message:           'second'
+							media:             tl.UnknownMessageMediaType{}
+							has_media_value:   false
+						})
+						pts:       2
+						pts_count: 1
+					}),
+					tl.UpdateType(tl.UpdateNewMessage{
+						message:   tl.MessageType(tl.Message{
+							id:                63
+							peer_id:           tl.PeerUser{
+								user_id: 42
+							}
+							from_id:           tl.PeerUser{
+								user_id: 42
+							}
+							has_from_id_value: true
+							date:              103
+							message:           'third'
+							media:             tl.UnknownMessageMediaType{}
+							has_media_value:   false
+						})
+						pts:       3
+						pts_count: 1
+					}),
+				]
+				users:   [
+					tl.UserType(make_test_user('alice', 42, 77)),
+				]
+				chats:   []tl.ChatType{}
+				date:    103
+				seq:     1
+			}),
+		]
+	}
+	mut client := new_fake_client(state)
+	collector := &NewMessageEventCollector{}
+
+	_ = client.on_new_message(fn [collector] (event NewMessageEvent) ! {
+		unsafe {
+			collector.events << event
+		}
+	}) or { panic(err) }
+
+	client.pump_updates_once() or { panic(err) }
+
+	assert collector.events.len == 3
+	assert collector.events[0].id == 61
+	assert collector.events[1].id == 62
+	assert collector.events[2].id == 63
+}
+
 fn test_event_handlers_follow_recovery_path() {
 	mut state := &FakeRuntimeState{
 		responses:      [
@@ -1580,6 +1675,235 @@ fn test_event_handlers_follow_recovery_path() {
 	assert messages.events[0].text == 'missed hello'
 	assert messages.events[0].chat.key == 'user:42'
 	assert messages.events[0].has_difference_value
+}
+
+fn test_on_new_message_delivers_recovered_events_after_transport_reconnect() {
+	mut state := &FakeRuntimeState{
+		responses: [
+			tl.Object(tl.UpdatesState{
+				pts:          1
+				qts:          0
+				date:         100
+				seq:          0
+				unread_count: 0
+			}),
+			tl.Object(tl.UpdatesDifference{
+				new_messages:           [
+					tl.MessageType(tl.Message{
+						id:                70
+						peer_id:           tl.PeerUser{
+							user_id: 42
+						}
+						from_id:           tl.PeerUser{
+							user_id: 42
+						}
+						has_from_id_value: true
+						date:              101
+						message:           'recovered after reconnect'
+						media:             tl.UnknownMessageMediaType{}
+						has_media_value:   false
+					}),
+				]
+				new_encrypted_messages: []tl.EncryptedMessageType{}
+				other_updates:          []tl.UpdateType{}
+				chats:                  []tl.ChatType{}
+				users:                  [
+					tl.UserType(make_test_user('alice', 42, 77)),
+				]
+				state:                  tl.UpdatesState{
+					pts:          2
+					qts:          0
+					date:         101
+					seq:          0
+					unread_count: 0
+				}
+			}),
+		]
+		connected: true
+	}
+	mut client := new_fake_client(state)
+	client.runtime = FailingPumpRuntime{
+		state: state
+	}
+	collector := &NewMessageEventCollector{}
+
+	_ = client.on_new_message(fn [collector] (event NewMessageEvent) ! {
+		unsafe {
+			collector.events << event
+		}
+	}) or { panic(err) }
+
+	client.pump_updates_once() or { panic(err) }
+
+	assert state.disconnect_calls == 1
+	assert state.connect_calls == 2
+	assert collector.events.len == 1
+	assert collector.events[0].kind == .recovered
+	assert collector.events[0].id == 70
+	assert collector.events[0].text == 'recovered after reconnect'
+}
+
+fn test_on_new_message_handles_sustained_delivery_without_drops() {
+	mut state := &FakeRuntimeState{
+		responses: [
+			tl.Object(tl.UpdatesState{
+				pts:          0
+				qts:          0
+				date:         100
+				seq:          0
+				unread_count: 0
+			}),
+		]
+	}
+	mut client := new_fake_client(state)
+	collector := &NewMessageEventCollector{}
+
+	_ = client.on_new_message(fn [collector] (event NewMessageEvent) ! {
+		unsafe {
+			collector.events << event
+		}
+	}) or { panic(err) }
+
+	for index in 0 .. 300 {
+		client.apply_updates(tl.UpdatesType(tl.UpdateShortMessage{
+			id:                 index + 1
+			user_id:            42
+			message:            'message ${index + 1}'
+			pts:                index + 1
+			pts_count:          1
+			date:               101 + index
+			entities:           []tl.MessageEntityType{}
+			has_entities_value: false
+		})) or { panic(err) }
+	}
+
+	assert collector.events.len == 300
+	assert collector.events[0].id == 1
+	assert collector.events[299].id == 300
+	assert state.invocations == ['updates.getState']
+}
+
+fn test_conversation_send_text_wait_for_reply_and_buffer_other_messages() {
+	mut state := &FakeRuntimeState{
+		responses:      [
+			tl.Object(tl.UpdatesState{
+				pts:          0
+				qts:          0
+				date:         100
+				seq:          0
+				unread_count: 0
+			}),
+			tl.Object(tl.UpdateShortSentMessage{
+				id:              90
+				pts:             1
+				pts_count:       1
+				date:            101
+				media:           tl.UnknownMessageMediaType{}
+				has_media_value: false
+			}),
+		]
+		update_batches: [
+			tl.UpdatesType(tl.Updates{
+				updates: [
+					tl.UpdateType(tl.UpdateNewMessage{
+						message:   tl.MessageType(tl.Message{
+							id:                91
+							peer_id:           tl.PeerUser{
+								user_id: 42
+							}
+							from_id:           tl.PeerUser{
+								user_id: 42
+							}
+							has_from_id_value: true
+							date:              102
+							message:           'side chatter'
+							media:             tl.UnknownMessageMediaType{}
+							has_media_value:   false
+						})
+						pts:       2
+						pts_count: 1
+					}),
+					tl.UpdateType(tl.UpdateNewMessage{
+						message:   tl.MessageType(tl.Message{
+							id:                 92
+							peer_id:            tl.PeerUser{
+								user_id: 42
+							}
+							from_id:            tl.PeerUser{
+								user_id: 42
+							}
+							has_from_id_value:  true
+							reply_to:           tl.MessageReplyHeaderType(tl.MessageReplyHeader{
+								reply_to_msg_id:           90
+								has_reply_to_msg_id_value: true
+								reply_from:                tl.UnknownMessageFwdHeaderType{}
+								has_reply_from_value:      false
+								reply_media:               tl.UnknownMessageMediaType{}
+								has_reply_media_value:     false
+							})
+							has_reply_to_value: true
+							date:               103
+							message:            'answer'
+							media:              tl.UnknownMessageMediaType{}
+							has_media_value:    false
+						})
+						pts:       3
+						pts_count: 1
+					}),
+				]
+				users:   [
+					tl.UserType(make_test_user('alice', 42, 77)),
+				]
+				chats:   []tl.ChatType{}
+				date:    103
+				seq:     1
+			}),
+		]
+	}
+	mut client := new_fake_client(state)
+	mut conversation := client.conversation(ResolvedPeer{
+		key:        'user:42'
+		username:   'alice'
+		peer:       tl.PeerUser{
+			user_id: 42
+		}
+		input_peer: tl.InputPeerUser{
+			user_id:     42
+			access_hash: 77
+		}
+	}) or { panic(err) }
+	defer {
+		conversation.close()
+	}
+
+	sent := conversation.send_text('question') or { panic(err) }
+	reply := conversation.wait_for_reply(sent) or { panic(err) }
+	next := conversation.wait_for_message() or { panic(err) }
+
+	assert sent.id == 90
+	assert reply.id == 92
+	assert reply.text == 'answer'
+	assert next.id == 91
+	assert next.text == 'side chatter'
+	assert state.invocations == ['updates.getState', 'messages.sendMessage']
+
+	send_call := state.functions[1]
+	match send_call {
+		tl.MessagesSendMessage {
+			assert send_call.message == 'question'
+			match send_call.peer {
+				tl.InputPeerUser {
+					assert send_call.peer.user_id == 42
+				}
+				else {
+					assert false
+				}
+			}
+		}
+		else {
+			assert false
+		}
+	}
 }
 
 fn test_client_idle_runs_until_runtime_disconnects() {

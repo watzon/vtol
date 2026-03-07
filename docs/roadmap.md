@@ -141,8 +141,8 @@ The implementation order should be code-first. Rewrite the user-facing docs only
 - [x] 12.3 Add basic event filters for peer/chat, sender, outgoing/incoming, and simple text matching without forcing users into raw TL inspection.
 - [x] 12.4 Add `idle()` or `run_until_disconnected()` so long-lived clients do not require hand-written pump loops for the happy path.
 - [x] 12.5 Ensure the handler layer composes with the existing update recovery logic instead of bypassing it.
-- [ ] 12.6 Add a conversation helper that supports request-response flows like send, wait for reply, and wait for next message within a chat.
-- [ ] 12.7 Add tests that prove handler delivery, ordering, reconnect recovery, and backpressure behavior remain correct under the new facade.
+- [x] 12.6 Add a conversation helper that supports request-response flows like send, wait for reply, and wait for next message within a chat.
+- [x] 12.7 Add tests that prove handler delivery, ordering, reconnect recovery, and backpressure behavior remain correct under the new facade.
 
 ## Phase 13: Rich-text and common-flow polish
 

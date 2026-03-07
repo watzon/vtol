@@ -1110,6 +1110,47 @@ fn test_client_pump_updates_recovers_after_transport_failure() {
 	}
 }
 
+fn test_client_exposes_bounded_rpc_debug_events() {
+	mut client := Client{
+		config:         ClientConfig{
+			app_id:                  1
+			app_hash:                'test-hash'
+			rpc_event_history_limit: 2
+			dc_options:              [
+				DcOption{
+					id:   2
+					host: '149.154.167.50'
+					port: 443
+				},
+			]
+		}
+		debug_recorder: rpc.new_debug_recorder(rpc.DebugRecorderConfig{
+			capacity: 2
+		})
+		store:          session.new_memory_store()
+		peer_cache:     map[string]CachedPeer{}
+		update_manager: updates.new_manager(updates.ManagerConfig{})
+	}
+
+	client.debug_recorder.emit(rpc.DebugEvent{
+		kind: .retry_scheduled
+	})
+	client.debug_recorder.emit(rpc.DebugEvent{
+		kind: .dc_migration
+	})
+	client.debug_recorder.emit(rpc.DebugEvent{
+		kind: .reconnect_succeeded
+	})
+
+	events := client.rpc_debug_events()
+	assert events.len == 2
+	assert events[0].kind == .dc_migration
+	assert events[1].kind == .reconnect_succeeded
+
+	client.clear_rpc_debug_events()
+	assert client.rpc_debug_events().len == 0
+}
+
 fn test_upload_file_bytes_reports_progress_and_returns_input_file() {
 	payload := []u8{len: 5000, init: u8((index % 251) + 1)}
 	mut progress := &ProgressState{}

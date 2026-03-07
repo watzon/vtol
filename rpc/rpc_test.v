@@ -424,6 +424,105 @@ fn test_debug_logger_records_request_result_and_retry() {
 	assert has_retry
 }
 
+fn test_debug_recorder_keeps_recent_events_and_can_clear() {
+	mut recorder := new_debug_recorder(DebugRecorderConfig{
+		capacity: 2
+	})
+	recorder.emit(DebugEvent{
+		kind: .request_started
+	})
+	recorder.emit(DebugEvent{
+		kind: .retry_scheduled
+	})
+	recorder.emit(DebugEvent{
+		kind: .reconnect_succeeded
+	})
+
+	events := recorder.snapshot()
+	assert events.len == 2
+	assert events[0].kind == .retry_scheduled
+	assert events[1].kind == .reconnect_succeeded
+
+	recorder.clear()
+	assert recorder.snapshot().len == 0
+}
+
+fn test_reconnect_emits_reconnect_debug_events() {
+	state := make_test_session_state()
+	mut stream := &ScriptedStream{}
+	mut debug_state := &DebugEventState{}
+	mut engine := new_test_rpc_engine_with_config(state, {
+		1: stream
+	}, EngineConfig{
+		default_timeout_ms: 250
+		max_retry_attempts: 2
+		debug_logger:       RecordingDebugLogger{
+			state: debug_state
+		}
+	})
+
+	call := engine.begin_invoke(tl.Ping{
+		ping_id: 14
+	}, CallOptions{
+		timeout_ms: 250
+	}) or { panic(err) }
+	assert call.request_msg_id != 0
+
+	engine.reconnect() or { panic(err) }
+
+	mut has_started := false
+	mut has_succeeded := false
+	for event in debug_state.events {
+		if event.kind == .reconnect_started {
+			has_started = true
+		}
+		if event.kind == .reconnect_succeeded {
+			has_succeeded = true
+		}
+	}
+	assert has_started
+	assert has_succeeded
+}
+
+fn test_connect_updates_session_dc_after_failover() {
+	state := make_test_session_state()
+	mut first_stream := &ScriptedStream{}
+	mut second_stream := &ScriptedStream{}
+	mut engine := transport.new_engine(transport.EngineConfig{
+		endpoints: [
+			transport.Endpoint{
+				id:   1
+				host: '127.0.0.1'
+				port: 443
+			},
+			transport.Endpoint{
+				id:   2
+				host: '127.0.0.2'
+				port: 443
+			},
+		]
+		mode:      .intermediate
+		retry:     transport.RetryPolicy{
+			max_attempts: 1
+			backoff_ms:   0
+		}
+	}) or { panic(err) }
+	engine.set_dialer(FixedDialer{
+		streams: {
+			2: second_stream
+		}
+	})
+	mut session_engine := new_session_engine(engine, state, EngineConfig{
+		default_timeout_ms: 250
+		max_retry_attempts: 2
+	}) or { panic(err) }
+
+	session_engine.connect() or { panic(err) }
+
+	assert session_engine.session_state().dc_id == 2
+	_ = first_stream
+}
+
 fn test_format_mtproto_wire_message_renders_object_payload() {
 	message := transport.WireMessage{
 		msg_id: 123

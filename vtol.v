@@ -139,6 +139,7 @@ mut:
 	state          ClientState = .disconnected
 	dc_options     []DcOption
 	store          session.Store
+	debug_recorder rpc.DebugRecorder
 	runtime        ClientRuntime = NullRuntime{}
 	runtime_ready  bool
 	session_loaded bool
@@ -165,6 +166,7 @@ pub fn new_client_with_store(config ClientConfig, store session.Store) !Client {
 		config:         config
 		dc_options:     merge_dc_options(config.dc_options.clone(), default_dc_options(config.test_mode))
 		store:          store
+		debug_recorder: new_client_debug_recorder(config)
 		peer_cache:     map[string]CachedPeer{}
 		update_manager: updates.new_manager(updates.ManagerConfig{})
 	}
@@ -216,6 +218,14 @@ pub fn (c Client) session() ?Session {
 		schema_revision: state.schema_revision
 		created_at:      state.created_at
 	}
+}
+
+pub fn (c Client) rpc_debug_events() []rpc.DebugEvent {
+	return c.debug_recorder.snapshot()
+}
+
+pub fn (c Client) clear_rpc_debug_events() {
+	c.debug_recorder.clear()
 }
 
 pub fn (mut c Client) connect() ! {
@@ -400,7 +410,7 @@ fn (mut c Client) build_runtime() !(ClientRuntime, bool) {
 			peers: c.stored_peer_records()
 		})!
 		mut engine := rpc.new_session_engine_from_store(transport_engine, mut c.store,
-			c.config.rpc_config)!
+			c.runtime_rpc_config())!
 		return SessionRuntime{
 			engine: engine
 		}, false
@@ -420,7 +430,7 @@ fn (mut c Client) build_runtime() !(ClientRuntime, bool) {
 		}
 		transport_engine.select_endpoint(stored_state.dc_id)!
 	}
-	mut engine := rpc.new_session_engine(transport_engine, stored_state, c.config.rpc_config)!
+	mut engine := rpc.new_session_engine(transport_engine, stored_state, c.runtime_rpc_config())!
 	return SessionRuntime{
 		engine: engine
 	}, true
@@ -461,6 +471,17 @@ fn (c Client) normalized_call_options(options rpc.CallOptions) rpc.CallOptions {
 		return options
 	}
 	return c.config.default_call_options
+}
+
+fn (c Client) runtime_rpc_config() rpc.EngineConfig {
+	return rpc.EngineConfig{
+		default_timeout_ms: c.config.rpc_config.default_timeout_ms
+		max_retry_attempts: c.config.rpc_config.max_retry_attempts
+		auto_ack:           c.config.rpc_config.auto_ack
+		auto_reconnect:     c.config.rpc_config.auto_reconnect
+		middlewares:        c.config.rpc_config.middlewares
+		debug_logger:       c.debug_recorder
+	}
 }
 
 fn (mut c Client) random_id() !i64 {
@@ -594,4 +615,15 @@ fn session_state_with_endpoint(state session.SessionState, dc DcOption) session.
 		schema_revision: state.schema_revision
 		created_at:      state.created_at
 	}
+}
+
+fn new_client_debug_recorder(config ClientConfig) rpc.DebugRecorder {
+	return rpc.new_debug_recorder(rpc.DebugRecorderConfig{
+		capacity:   if config.rpc_event_history_limit >= 0 {
+			config.rpc_event_history_limit
+		} else {
+			0
+		}
+		downstream: config.rpc_config.debug_logger
+	})
 }

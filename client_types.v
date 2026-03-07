@@ -28,23 +28,24 @@ pub:
 
 pub struct ClientConfig {
 pub:
-	app_id               int
-	app_hash             string
-	device_model         string = 'vtol'
-	system_version       string = 'unknown'
-	app_version          string = '0.1.0'
-	system_lang_code     string = 'en'
-	lang_pack            string
-	lang_code            string        = 'en'
-	transport            TransportMode = .abridged
-	dc_options           []DcOption
-	public_keys          []crypto.PublicKey
-	transport_retry      transport.RetryPolicy = transport.RetryPolicy{}
-	transport_timeouts   transport.Timeouts    = transport.Timeouts{}
-	rpc_config           rpc.EngineConfig      = rpc.EngineConfig{}
-	default_call_options rpc.CallOptions       = rpc.CallOptions{}
-	test_mode            bool
-	padding_mode         auth.RsaPaddingMode = .auto
+	app_id                  int
+	app_hash                string
+	device_model            string = 'vtol'
+	system_version          string = 'unknown'
+	app_version             string = '0.1.0'
+	system_lang_code        string = 'en'
+	lang_pack               string
+	lang_code               string        = 'en'
+	transport               TransportMode = .abridged
+	dc_options              []DcOption
+	public_keys             []crypto.PublicKey
+	transport_retry         transport.RetryPolicy = transport.RetryPolicy{}
+	transport_timeouts      transport.Timeouts    = transport.Timeouts{}
+	rpc_config              rpc.EngineConfig      = rpc.EngineConfig{}
+	rpc_event_history_limit int                   = 64
+	default_call_options    rpc.CallOptions       = rpc.CallOptions{}
+	test_mode               bool
+	padding_mode            auth.RsaPaddingMode = .auto
 }
 
 pub struct Session {

@@ -183,7 +183,8 @@ pub fn (mut e SessionEngine) connect() ! {
 	if e.transport.is_connected() {
 		return
 	}
-	_ = e.transport.connect()!
+	endpoint := e.transport.connect()!
+	e.current_dc_id = endpoint.id
 }
 
 pub fn (mut e SessionEngine) disconnect() ! {
@@ -191,16 +192,27 @@ pub fn (mut e SessionEngine) disconnect() ! {
 }
 
 pub fn (mut e SessionEngine) reconnect() ! {
+	e.reconnect_with_reason('requested reconnect')!
+}
+
+fn (mut e SessionEngine) reconnect_with_reason(reason string) ! {
 	saved := e.session_state()
+	e.emit_reconnect_event(.reconnect_started, reason)
+	mut endpoint := transport.Endpoint{}
 	if e.transport.is_connected() {
-		_ = e.transport.reconnect(.requested)!
+		endpoint = e.transport.reconnect(.requested) or {
+			e.emit_reconnect_event(.reconnect_failed, err.msg())
+			return err
+		}
 	} else {
-		_ = e.transport.connect()!
+		endpoint = e.transport.connect() or {
+			e.emit_reconnect_event(.reconnect_failed, err.msg())
+			return err
+		}
 	}
-	e.transport.state.server_salt = saved.server_salt
-	e.transport.state.session_id = saved.session_id
-	e.resend_in_flight()!
-	e.flush_acks()!
+	e.current_dc_id = endpoint.id
+	e.restore_session_after_reconnect(saved)!
+	e.emit_reconnect_event(.reconnect_succeeded, reason)
 }
 
 pub fn (mut e SessionEngine) pump_once() ! {
@@ -906,11 +918,11 @@ fn (mut e SessionEngine) prepare_retry(action MiddlewareAction) ! {
 		return
 	}
 	if !e.transport.is_connected() {
-		e.connect()!
+		e.reconnect_with_reason('retry recovery')!
 		return
 	}
 	if e.config.auto_reconnect {
-		e.reconnect()!
+		e.reconnect_with_reason('retry recovery')!
 	}
 }
 
@@ -918,9 +930,15 @@ fn (mut e SessionEngine) apply_dc_migration(dc_id int) ! {
 	if dc_id == 0 {
 		return error('dc migration target must be non-zero')
 	}
-	_ = e.transport.select_endpoint(dc_id)!
-	e.current_dc_id = dc_id
-	e.reconnect()!
+	saved := e.session_state()
+	e.emit_reconnect_event(.reconnect_started, 'dc migration to ${dc_id}')
+	endpoint := e.transport.select_endpoint(dc_id) or {
+		e.emit_reconnect_event(.reconnect_failed, err.msg())
+		return err
+	}
+	e.current_dc_id = endpoint.id
+	e.restore_session_after_reconnect(saved)!
+	e.emit_reconnect_event(.reconnect_succeeded, 'dc migration to ${dc_id}')
 }
 
 fn default_rpc_error_action(rpc_error tl.RpcError, can_retry bool) MiddlewareAction {
@@ -935,6 +953,26 @@ fn default_rpc_error_action(rpc_error tl.RpcError, can_retry bool) MiddlewareAct
 	return MiddlewareAction{
 		kind: .fail
 	}
+}
+
+fn (mut e SessionEngine) restore_session_after_reconnect(saved session.SessionState) ! {
+	e.transport.state.server_salt = saved.server_salt
+	e.transport.state.session_id = saved.session_id
+	e.resend_in_flight()!
+	e.flush_acks()!
+}
+
+fn (e SessionEngine) emit_reconnect_event(kind DebugEventKind, message string) {
+	context := e.build_attempt_context('', 0, 0, 0)
+	e.emit_debug(DebugEvent{
+		timestamp_ms:      time.now().unix_milli()
+		kind:              kind
+		current_dc_id:     context.current_dc_id
+		current_host:      context.current_host
+		current_port:      context.current_port
+		current_is_media:  context.current_is_media
+		transport_message: message
+	})
 }
 
 fn debug_mtproto_wire_message(direction string, message transport.WireMessage) {

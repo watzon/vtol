@@ -10,6 +10,9 @@ pub enum DebugEventKind {
 	transport_error
 	retry_scheduled
 	dc_migration
+	reconnect_started
+	reconnect_succeeded
+	reconnect_failed
 }
 
 pub struct DebugEvent {
@@ -54,4 +57,65 @@ pub fn emit_env_debug(event DebugEvent) {
 		return
 	}
 	eprintln(json.encode(event))
+}
+
+@[heap]
+struct DebugRecorderState {
+mut:
+	events []DebugEvent
+}
+
+pub struct DebugRecorderConfig {
+pub:
+	capacity   int         = 64
+	downstream DebugLogger = NoopDebugLogger{}
+}
+
+pub struct DebugRecorder {
+pub:
+	capacity   int
+	downstream DebugLogger = NoopDebugLogger{}
+mut:
+	state &DebugRecorderState = unsafe { nil }
+}
+
+pub fn new_debug_recorder(config DebugRecorderConfig) DebugRecorder {
+	capacity := if config.capacity > 0 { config.capacity } else { 0 }
+	return DebugRecorder{
+		capacity:   capacity
+		downstream: config.downstream
+		state:      &DebugRecorderState{
+			events: []DebugEvent{cap: capacity}
+		}
+	}
+}
+
+pub fn (r DebugRecorder) emit(event DebugEvent) {
+	if !isnil(r.state) && r.capacity > 0 {
+		unsafe {
+			if r.state.events.len >= r.capacity {
+				r.state.events.delete(0)
+			}
+			r.state.events << event
+		}
+	}
+	r.downstream.emit(event)
+}
+
+pub fn (r DebugRecorder) snapshot() []DebugEvent {
+	if isnil(r.state) {
+		return []DebugEvent{}
+	}
+	unsafe {
+		return r.state.events.clone()
+	}
+}
+
+pub fn (r DebugRecorder) clear() {
+	if isnil(r.state) {
+		return
+	}
+	unsafe {
+		r.state.events = []DebugEvent{cap: r.capacity}
+	}
 }

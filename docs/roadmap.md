@@ -93,13 +93,13 @@ Status key:
 
 ## Phase 9: Reliability, packaging, and ecosystem fit
 
-- [ ] 9.1 Add session storage backends starting with file-based persistence, then optional pluggable stores.
-- [ ] 9.2 Add rate-limit and flood-wait ergonomics that preserve raw error access.
-- [ ] 9.3 Add structured debug logging suitable for protocol troubleshooting.
-- [ ] 9.4 Harden CI with integration suites gated behind credentials and fast deterministic unit suites by default.
-- [ ] 9.5 Prepare VPM-friendly packaging and release automation.
+- [x] 9.1 Add session storage backends starting with file-based persistence, then optional pluggable stores.
+- [x] 9.2 Add rate-limit and flood-wait ergonomics that preserve raw error access.
+- [x] 9.3 Add structured debug logging suitable for protocol troubleshooting.
+- [x] 9.4 Harden CI with integration suites gated behind credentials and fast deterministic unit suites by default.
+- [x] 9.5 Prepare VPM-friendly packaging and release automation.
 - [ ] 9.6 Add cross-platform validation for Windows only after crypto abstraction and socket behavior are stable.
-- [ ] 9.7 Publish API docs and architecture docs that clearly separate stable and unstable surfaces.
+- [x] 9.7 Publish API docs and architecture docs that clearly separate stable and unstable surfaces.
 
 ## Phase 10: Telethon-class completeness
 

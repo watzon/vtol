@@ -4,11 +4,10 @@ on:
   push:
     tags:
       - 'v*'
-  workflow_dispatch:
 
 jobs:
   verify:
-    name: Verify tagged build
+    name: Verify release tag
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,5 +24,19 @@ jobs:
       - name: Run tests
         run: v test .
 
-      - name: Package source archive
-        run: tar -czf vtol-source.tar.gz .
+      - name: Ensure tag matches v.mod version
+        run: |
+          VERSION="$(sed -n "s/.*version: '\\([^']*\\)'.*/\\1/p" v.mod)"
+          test "v${VERSION}" = "${GITHUB_REF_NAME}"
+
+      - name: Package release archives
+        run: |
+          git archive --format=tar.gz --output "vtol-${GITHUB_REF_NAME}.tar.gz" "${GITHUB_REF_NAME}"
+          git archive --format=zip --output "vtol-${GITHUB_REF_NAME}.zip" "${GITHUB_REF_NAME}"
+
+      - name: Publish GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            vtol-${{ github.ref_name }}.tar.gz
+            vtol-${{ github.ref_name }}.zip

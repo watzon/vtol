@@ -72,23 +72,52 @@ pub:
 }
 
 pub struct RpcError {
+	Error
 pub:
-	code    int
-	message string
+	rpc_code       int
+	message        string
+	raw            tl.RpcError
+	wait_seconds   int
+	premium_wait   bool
+	has_rate_limit bool
 }
 
 pub fn (e RpcError) msg() string {
-	return e.message
+	if e.has_rate_limit {
+		wait_kind := if e.premium_wait { 'premium flood wait' } else { 'flood wait' }
+		return 'rpc error ${e.rpc_code}: ${e.message} (${wait_kind} ${e.wait_seconds}s)'
+	}
+	return 'rpc error ${e.rpc_code}: ${e.message}'
+}
+
+pub fn (e RpcError) code() int {
+	return e.rpc_code
+}
+
+pub fn (e RpcError) is_rate_limited() bool {
+	return e.has_rate_limit
+}
+
+pub fn (e RpcError) retry_after_ms() int {
+	if !e.has_rate_limit {
+		return 0
+	}
+	return e.wait_seconds * 1_000
 }
 
 pub struct AuthError {
+	Error
 pub:
-	code    string
-	message string
+	auth_code string
+	message   string
 }
 
 pub fn (e AuthError) msg() string {
 	return e.message
+}
+
+pub fn (e AuthError) code() int {
+	return 0
 }
 
 pub struct LoginCodeRequest {
@@ -185,7 +214,19 @@ fn (r SessionRuntime) is_connected() bool {
 }
 
 fn (mut r SessionRuntime) invoke(function tl.Function, options rpc.CallOptions) !tl.Object {
-	return r.engine.invoke(function, options)!
+	return r.engine.invoke(function, options) or {
+		if err is rpc.RpcError {
+			return IError(RpcError{
+				rpc_code:       err.rpc_code
+				message:        err.message
+				raw:            err.raw
+				wait_seconds:   err.wait_seconds
+				premium_wait:   err.premium_wait
+				has_rate_limit: err.has_rate_limit
+			})
+		}
+		return err
+	}
 }
 
 fn (mut r SessionRuntime) pump_once() ! {
@@ -219,6 +260,11 @@ mut:
 
 pub fn new_client(config ClientConfig) !Client {
 	return new_client_with_store(config, session.new_memory_store())
+}
+
+pub fn new_client_with_session_file(config ClientConfig, path string) !Client {
+	store := session.new_file_store(path)!
+	return new_client_with_store(config, store)
 }
 
 pub fn new_client_with_store(config ClientConfig, store session.Store) !Client {
@@ -302,7 +348,19 @@ pub fn (mut c Client) invoke(function tl.Function) !tl.Object {
 
 pub fn (mut c Client) invoke_with_options(function tl.Function, options rpc.CallOptions) !tl.Object {
 	c.connect()!
-	return c.runtime.invoke(function, c.normalized_call_options(options))!
+	return c.runtime.invoke(function, c.normalized_call_options(options)) or {
+		if err is rpc.RpcError {
+			return IError(RpcError{
+				rpc_code:       err.rpc_code
+				message:        err.message
+				raw:            err.raw
+				wait_seconds:   err.wait_seconds
+				premium_wait:   err.premium_wait
+				has_rate_limit: err.has_rate_limit
+			})
+		}
+		return err
+	}
 }
 
 pub fn (mut c Client) send_login_code(phone_number string) !LoginCodeRequest {

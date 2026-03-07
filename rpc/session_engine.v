@@ -46,6 +46,7 @@ pub:
 	auto_ack           bool = true
 	auto_reconnect     bool = true
 	middlewares        []Middleware
+	debug_logger       DebugLogger = NoopDebugLogger{}
 }
 
 pub struct PendingCall {
@@ -210,17 +211,79 @@ pub fn (mut e SessionEngine) begin_invoke(function tl.Function, options CallOpti
 }
 
 pub fn (mut e SessionEngine) await_call(call PendingCall) !tl.Object {
+	context := e.pending_call_context(call)
 	outcome := e.await_call_outcome(call)!
 	if outcome.has_result {
+		e.emit_debug(DebugEvent{
+			timestamp_ms:     time.now().unix_milli()
+			kind:             .result_received
+			function_name:    context.function_name
+			request_msg_id:   context.request_msg_id
+			attempt:          context.attempt
+			timeout_ms:       context.timeout_ms
+			current_dc_id:    context.current_dc_id
+			current_host:     context.current_host
+			current_port:     context.current_port
+			current_is_media: context.current_is_media
+			object_name:      outcome.result.qualified_name()
+		})
 		return outcome.result
 	}
 	if outcome.has_rpc_error {
-		return error('rpc error ${outcome.rpc_error.error_code}: ${outcome.rpc_error.error_message}')
+		e.emit_debug(DebugEvent{
+			timestamp_ms:      time.now().unix_milli()
+			kind:              .rpc_error_received
+			function_name:     context.function_name
+			request_msg_id:    context.request_msg_id
+			attempt:           context.attempt
+			timeout_ms:        context.timeout_ms
+			current_dc_id:     context.current_dc_id
+			current_host:      context.current_host
+			current_port:      context.current_port
+			current_is_media:  context.current_is_media
+			rpc_error_code:    outcome.rpc_error.error_code
+			rpc_error_message: outcome.rpc_error.error_message
+		})
+		return IError(new_rpc_error(outcome.rpc_error))
 	}
 	if outcome.timed_out {
-		return error('rpc request ${call.request_msg_id} timed out after ${call.timeout_ms}ms')
+		e.emit_debug(DebugEvent{
+			timestamp_ms:      time.now().unix_milli()
+			kind:              .transport_error
+			function_name:     context.function_name
+			request_msg_id:    context.request_msg_id
+			attempt:           context.attempt
+			timeout_ms:        context.timeout_ms
+			current_dc_id:     context.current_dc_id
+			current_host:      context.current_host
+			current_port:      context.current_port
+			current_is_media:  context.current_is_media
+			transport_message: TimeoutError{
+				request_msg_id: call.request_msg_id
+				timeout_ms:     call.timeout_ms
+			}.msg()
+		})
+		return IError(TimeoutError{
+			request_msg_id: call.request_msg_id
+			timeout_ms:     call.timeout_ms
+		})
 	}
-	return error(outcome.transport_fail)
+	e.emit_debug(DebugEvent{
+		timestamp_ms:      time.now().unix_milli()
+		kind:              .transport_error
+		function_name:     context.function_name
+		request_msg_id:    context.request_msg_id
+		attempt:           context.attempt
+		timeout_ms:        context.timeout_ms
+		current_dc_id:     context.current_dc_id
+		current_host:      context.current_host
+		current_port:      context.current_port
+		current_is_media:  context.current_is_media
+		transport_message: outcome.transport_fail
+	})
+	return IError(TransportError{
+		message: outcome.transport_fail
+	})
 }
 
 pub fn (mut e SessionEngine) invoke(function tl.Function, options CallOptions) !tl.Object {
@@ -231,53 +294,171 @@ pub fn (mut e SessionEngine) invoke(function tl.Function, options CallOptions) !
 			attempt, normalized.timeout_ms)
 		outcome := e.await_call_outcome(call)!
 		if outcome.has_result {
+			e.emit_debug(DebugEvent{
+				timestamp_ms:     time.now().unix_milli()
+				kind:             .result_received
+				function_name:    context.function_name
+				request_msg_id:   context.request_msg_id
+				attempt:          context.attempt
+				timeout_ms:       context.timeout_ms
+				current_dc_id:    context.current_dc_id
+				current_host:     context.current_host
+				current_port:     context.current_port
+				current_is_media: context.current_is_media
+				object_name:      outcome.result.qualified_name()
+			})
 			action := e.apply_result_hooks(context, outcome.result)
 			if action.kind == .retry && normalized.can_retry
 				&& attempt < e.config.max_retry_attempts {
+				e.emit_debug(DebugEvent{
+					timestamp_ms:     time.now().unix_milli()
+					kind:             .retry_scheduled
+					function_name:    context.function_name
+					request_msg_id:   context.request_msg_id
+					attempt:          context.attempt
+					timeout_ms:       context.timeout_ms
+					current_dc_id:    context.current_dc_id
+					current_host:     context.current_host
+					current_port:     context.current_port
+					current_is_media: context.current_is_media
+					delay_ms:         action.delay_ms
+				})
 				e.prepare_retry(action)!
 				continue
 			}
 			if action.kind == .migrate_dc && attempt < e.config.max_retry_attempts {
+				e.emit_debug(DebugEvent{
+					timestamp_ms:     time.now().unix_milli()
+					kind:             .dc_migration
+					function_name:    context.function_name
+					request_msg_id:   context.request_msg_id
+					attempt:          context.attempt
+					timeout_ms:       context.timeout_ms
+					current_dc_id:    context.current_dc_id
+					current_host:     context.current_host
+					current_port:     context.current_port
+					current_is_media: context.current_is_media
+					target_dc_id:     action.dc_id
+				})
 				e.apply_dc_migration(action.dc_id)!
 				continue
 			}
 			return outcome.result
 		}
 		if outcome.has_rpc_error {
+			e.emit_debug(DebugEvent{
+				timestamp_ms:      time.now().unix_milli()
+				kind:              .rpc_error_received
+				function_name:     context.function_name
+				request_msg_id:    context.request_msg_id
+				attempt:           context.attempt
+				timeout_ms:        context.timeout_ms
+				current_dc_id:     context.current_dc_id
+				current_host:      context.current_host
+				current_port:      context.current_port
+				current_is_media:  context.current_is_media
+				rpc_error_code:    outcome.rpc_error.error_code
+				rpc_error_message: outcome.rpc_error.error_message
+			})
 			action := e.resolve_rpc_error_action(context, outcome.rpc_error, normalized.can_retry)
 			match action.kind {
 				.retry {
 					if !normalized.can_retry || attempt >= e.config.max_retry_attempts {
-						return error('rpc error ${outcome.rpc_error.error_code}: ${outcome.rpc_error.error_message}')
+						return IError(new_rpc_error(outcome.rpc_error))
 					}
+					e.emit_debug(DebugEvent{
+						timestamp_ms:     time.now().unix_milli()
+						kind:             .retry_scheduled
+						function_name:    context.function_name
+						request_msg_id:   context.request_msg_id
+						attempt:          context.attempt
+						timeout_ms:       context.timeout_ms
+						current_dc_id:    context.current_dc_id
+						current_host:     context.current_host
+						current_port:     context.current_port
+						current_is_media: context.current_is_media
+						delay_ms:         action.delay_ms
+					})
 					e.prepare_retry(action)!
 					continue
 				}
 				.migrate_dc {
 					if attempt >= e.config.max_retry_attempts {
-						return error('rpc error ${outcome.rpc_error.error_code}: ${outcome.rpc_error.error_message}')
+						return IError(new_rpc_error(outcome.rpc_error))
 					}
+					e.emit_debug(DebugEvent{
+						timestamp_ms:     time.now().unix_milli()
+						kind:             .dc_migration
+						function_name:    context.function_name
+						request_msg_id:   context.request_msg_id
+						attempt:          context.attempt
+						timeout_ms:       context.timeout_ms
+						current_dc_id:    context.current_dc_id
+						current_host:     context.current_host
+						current_port:     context.current_port
+						current_is_media: context.current_is_media
+						target_dc_id:     action.dc_id
+					})
 					e.apply_dc_migration(action.dc_id)!
 					continue
 				}
 				else {
-					return error('rpc error ${outcome.rpc_error.error_code}: ${outcome.rpc_error.error_message}')
+					return IError(new_rpc_error(outcome.rpc_error))
 				}
 			}
 		}
 		message := if outcome.timed_out {
-			'rpc request ${call.request_msg_id} timed out after ${call.timeout_ms}ms'
+			TimeoutError{
+				request_msg_id: call.request_msg_id
+				timeout_ms:     call.timeout_ms
+			}.msg()
 		} else {
 			outcome.transport_fail
 		}
+		e.emit_debug(DebugEvent{
+			timestamp_ms:      time.now().unix_milli()
+			kind:              .transport_error
+			function_name:     context.function_name
+			request_msg_id:    context.request_msg_id
+			attempt:           context.attempt
+			timeout_ms:        context.timeout_ms
+			current_dc_id:     context.current_dc_id
+			current_host:      context.current_host
+			current_port:      context.current_port
+			current_is_media:  context.current_is_media
+			transport_message: message
+		})
 		action := e.resolve_transport_error_action(context, message, normalized.can_retry)
 		if action.kind == .retry && normalized.can_retry && attempt < e.config.max_retry_attempts {
+			e.emit_debug(DebugEvent{
+				timestamp_ms:     time.now().unix_milli()
+				kind:             .retry_scheduled
+				function_name:    context.function_name
+				request_msg_id:   context.request_msg_id
+				attempt:          context.attempt
+				timeout_ms:       context.timeout_ms
+				current_dc_id:    context.current_dc_id
+				current_host:     context.current_host
+				current_port:     context.current_port
+				current_is_media: context.current_is_media
+				delay_ms:         action.delay_ms
+			})
 			e.prepare_retry(action)!
 			continue
 		}
-		return error(message)
+		if outcome.timed_out {
+			return IError(TimeoutError{
+				request_msg_id: call.request_msg_id
+				timeout_ms:     call.timeout_ms
+			})
+		}
+		return IError(TransportError{
+			message: message
+		})
 	}
-	return error('rpc invoke exhausted retry attempts')
+	return IError(TransportError{
+		message: 'rpc invoke exhausted retry attempts'
+	})
 }
 
 fn (mut e SessionEngine) start_call(function tl.Function, options CallOptions, attempt int, use_hooks bool) !PendingCall {
@@ -292,6 +473,19 @@ fn (mut e SessionEngine) start_call(function tl.Function, options CallOptions, a
 		function_name: function.method_name()
 		options:       options
 	}
+	e.emit_debug(DebugEvent{
+		timestamp_ms:     time.now().unix_milli()
+		kind:             .request_started
+		function_name:    context.function_name
+		request_msg_id:   context.request_msg_id
+		attempt:          context.attempt
+		timeout_ms:       context.timeout_ms
+		current_dc_id:    context.current_dc_id
+		current_host:     context.current_host
+		current_port:     context.current_port
+		current_is_media: context.current_is_media
+		object_name:      function.qualified_name()
+	})
 	e.send_wire_message(wire)!
 	return PendingCall{
 		request_msg_id: wire.msg_id
@@ -621,6 +815,15 @@ fn (e SessionEngine) build_attempt_context(function_name string, request_msg_id 
 	}
 }
 
+fn (e SessionEngine) pending_call_context(call PendingCall) AttemptContext {
+	if call.request_msg_id in e.pending_calls {
+		pending := e.pending_calls[call.request_msg_id]
+		return e.build_attempt_context(pending.function_name, call.request_msg_id, 1,
+			call.timeout_ms)
+	}
+	return e.build_attempt_context('', call.request_msg_id, 1, call.timeout_ms)
+}
+
 fn (e SessionEngine) run_before_send_hooks(context AttemptContext, function tl.Function) ! {
 	for middleware in e.config.middlewares {
 		middleware.before_send(context, function)!
@@ -668,6 +871,10 @@ fn (e SessionEngine) resolve_transport_error_action(context AttemptContext, mess
 	return action
 }
 
+fn (e SessionEngine) emit_debug(event DebugEvent) {
+	e.config.debug_logger.emit(event)
+}
+
 fn (mut e SessionEngine) prepare_retry(action MiddlewareAction) ! {
 	if action.delay_ms > 0 {
 		time.sleep(time.Duration(action.delay_ms) * time.millisecond)
@@ -695,28 +902,18 @@ fn (mut e SessionEngine) apply_dc_migration(dc_id int) ! {
 }
 
 fn default_rpc_error_action(rpc_error tl.RpcError, can_retry bool) MiddlewareAction {
-	if wait_seconds := parse_suffix_number(rpc_error.error_message, 'FLOOD_WAIT_') {
+	if info := rate_limit_info(rpc_error) {
 		if can_retry {
 			return MiddlewareAction{
 				kind:     .retry
-				delay_ms: wait_seconds * 1_000
+				delay_ms: info.wait_seconds * 1_000
 			}
 		}
 	}
-	if wait_seconds := parse_suffix_number(rpc_error.error_message, 'FLOOD_PREMIUM_WAIT_') {
-		if can_retry {
-			return MiddlewareAction{
-				kind:     .retry
-				delay_ms: wait_seconds * 1_000
-			}
-		}
-	}
-	for prefix in ['PHONE_MIGRATE_', 'NETWORK_MIGRATE_', 'USER_MIGRATE_', 'FILE_MIGRATE_'] {
-		if dc_id := parse_suffix_number(rpc_error.error_message, prefix) {
-			return MiddlewareAction{
-				kind:  .migrate_dc
-				dc_id: dc_id
-			}
+	if dc_id := migration_dc_id(rpc_error) {
+		return MiddlewareAction{
+			kind:  .migrate_dc
+			dc_id: dc_id
 		}
 	}
 	return MiddlewareAction{

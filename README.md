@@ -6,6 +6,8 @@ VTOL is an MTProto library for V with a core-first architecture: build the proto
 
 The repository is still pre-`1.0`, but it is no longer just a scaffold. The core transport/auth/session/RPC layers have unit coverage, and the first thin `vtol.Client` API now covers connect, raw invoke, code login, 2FA password login, bot login, peer resolution, basic account/dialog/message helpers, chunked upload/download flows, CDN redirect metadata and hash helpers, and long-lived update subscriptions with state recovery.
 
+Session persistence now ships with both in-memory and file-backed stores, RPC errors expose flood-wait metadata without discarding the underlying Telegram error payload, and the RPC engine can emit structured debug events for protocol troubleshooting.
+
 ## Goals
 
 - Provide a library-first V package named `vtol`
@@ -42,6 +44,32 @@ v test .
 
 The TL generation workflow and upgrade process are documented in `docs/tl-generation.md`.
 
+## Session persistence
+
+```v
+mut client := vtol.new_client_with_session_file(vtol.ClientConfig{
+	app_id:   12345
+	app_hash: '0123456789abcdef'
+	dc_options: [
+		vtol.DcOption{
+			id:   2
+			host: '149.154.167.50'
+			port: 443
+		},
+	]
+}, '/tmp/vtol.session.json')!
+```
+
+For custom storage, pass any `session.Store` implementation to `vtol.new_client_with_store`.
+
+## Debug logging
+
+`rpc.EngineConfig` accepts a structured `debug_logger`. Use `rpc.JsonLineDebugLogger{}` for JSON-lines protocol traces or provide a custom `rpc.DebugLogger` implementation.
+
 ## Roadmap
 
 The active implementation roadmap lives in `docs/roadmap.md`. The project should remain pre-`1.0` until TL generation, auth/session persistence, and update recovery are proven in integration tests.
+
+## Stability notes
+
+The current stable-vs-unstable boundary is documented in `docs/api-stability.md`.

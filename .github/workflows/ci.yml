@@ -9,7 +9,7 @@ on:
 
 jobs:
   validate:
-    name: Validate on ${{ matrix.os }}
+    name: Unit validation on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -31,3 +31,25 @@ jobs:
 
       - name: Run tests
         run: v test .
+
+  integration:
+    name: Credential-gated integration tests
+    runs-on: ubuntu-latest
+    if: ${{ secrets.VTOL_TEST_API_ID != '' && secrets.VTOL_TEST_API_HASH != '' && secrets.VTOL_TEST_BOT_TOKEN != '' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install V
+        run: |
+          git clone --depth 1 https://github.com/vlang/v /tmp/v
+          make -C /tmp/v
+          echo "/tmp/v" >> "$GITHUB_PATH"
+
+      - name: Run integration tests
+        env:
+          VTOL_TEST_API_ID: ${{ secrets.VTOL_TEST_API_ID }}
+          VTOL_TEST_API_HASH: ${{ secrets.VTOL_TEST_API_HASH }}
+          VTOL_TEST_BOT_TOKEN: ${{ secrets.VTOL_TEST_BOT_TOKEN }}
+          VTOL_TEST_DC_HOST: ${{ secrets.VTOL_TEST_DC_HOST }}
+          VTOL_TEST_MODE: ${{ secrets.VTOL_TEST_MODE }}
+        run: v test ./tests/integration

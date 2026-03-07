@@ -51,11 +51,30 @@ struct FixedDialer {
 	streams map[int]&ScriptedStream
 }
 
+@[heap]
+struct DebugEventState {
+mut:
+	events []DebugEvent
+}
+
+struct RecordingDebugLogger {
+mut:
+	state &DebugEventState
+}
+
+fn (r RecordingDebugLogger) emit(event DebugEvent) {
+	unsafe {
+		r.state.events << event
+	}
+}
+
 fn (d FixedDialer) dial(endpoint transport.Endpoint, timeouts transport.Timeouts) !transport.Stream {
 	if endpoint.id !in d.streams {
 		return error('no scripted stream configured for endpoint ${endpoint.id}')
 	}
-	return d.streams[endpoint.id]
+	return d.streams[endpoint.id] or {
+		return error('no scripted stream configured for endpoint ${endpoint.id}')
+	}
 }
 
 fn test_pack_and_unpack_encrypted_message_roundtrip() {
@@ -293,6 +312,105 @@ fn test_pump_once_collects_inbound_updates() {
 	}
 }
 
+fn test_invoke_returns_structured_rate_limit_error() {
+	state := make_test_session_state()
+	mut stream := &ScriptedStream{}
+	mut engine := new_test_rpc_engine(state, {
+		1: stream
+	})
+	call := engine.begin_invoke(tl.Ping{
+		ping_id: 3
+	}, CallOptions{
+		timeout_ms: 250
+		can_retry:  false
+	}) or { panic(err) }
+
+	stream.push_server_payload(server_payload(state, transport.WireMessage{
+		msg_id: server_message_id(1_000)
+		seq_no: 1
+		body:   tl.RpcResult{
+			req_msg_id: call.request_msg_id
+			result:     tl.RpcError{
+				error_code:    420
+				error_message: 'FLOOD_WAIT_9'
+			}
+		}.encode() or { panic(err) }
+	}))
+
+	engine.await_call(call) or {
+		if err is RpcError {
+			assert err.rpc_code == 420
+			assert err.has_rate_limit
+			assert err.wait_seconds == 9
+			assert err.retry_after_ms() == 9_000
+			assert err.raw.error_message == 'FLOOD_WAIT_9'
+			return
+		}
+		assert false
+	}
+	assert false
+}
+
+fn test_debug_logger_records_request_result_and_retry() {
+	state := make_test_session_state()
+	mut stream := &ScriptedStream{}
+	mut debug_state := &DebugEventState{}
+	mut engine := new_test_rpc_engine_with_config(state, {
+		1: stream
+	}, EngineConfig{
+		default_timeout_ms: 250
+		max_retry_attempts: 2
+		debug_logger:       RecordingDebugLogger{
+			state: debug_state
+		}
+	})
+
+	call := engine.begin_invoke(tl.Ping{
+		ping_id: 8
+	}, CallOptions{
+		timeout_ms: 250
+	}) or { panic(err) }
+	stream.push_server_payload(server_payload(state, transport.WireMessage{
+		msg_id: server_message_id(1_000)
+		seq_no: 1
+		body:   tl.RpcResult{
+			req_msg_id: call.request_msg_id
+			result:     tl.Pong{
+				msg_id:  call.request_msg_id
+				ping_id: 8
+			}
+		}.encode() or { panic(err) }
+	}))
+	_ = engine.await_call(call) or { panic(err) }
+
+	engine.invoke(tl.Ping{
+		ping_id: 9
+	}, CallOptions{
+		timeout_ms: 1
+		can_retry:  true
+	}) or {}
+
+	mut has_result := false
+	mut has_transport_error := false
+	mut has_retry := false
+	for event in debug_state.events {
+		if event.kind == .result_received {
+			has_result = true
+		}
+		if event.kind == .transport_error {
+			has_transport_error = true
+		}
+		if event.kind == .retry_scheduled {
+			has_retry = true
+		}
+	}
+	assert debug_state.events.len >= 4
+	assert debug_state.events[0].kind == .request_started
+	assert has_result
+	assert has_transport_error
+	assert has_retry
+}
+
 fn make_test_session_state() session.SessionState {
 	auth_key := []u8{len: crypto.auth_key_size, init: u8((index * 17 + 3) % 251)}
 	auth_key_id := crypto.derive_auth_key_id(crypto.default_backend(), auth_key) or { panic(err) }
@@ -310,6 +428,13 @@ fn make_test_session_state() session.SessionState {
 }
 
 fn new_test_rpc_engine(state session.SessionState, streams map[int]&ScriptedStream) SessionEngine {
+	return new_test_rpc_engine_with_config(state, streams, EngineConfig{
+		default_timeout_ms: 250
+		max_retry_attempts: 2
+	})
+}
+
+fn new_test_rpc_engine_with_config(state session.SessionState, streams map[int]&ScriptedStream, config EngineConfig) SessionEngine {
 	mut engine := transport.new_engine(transport.EngineConfig{
 		endpoints: [
 			transport.Endpoint{
@@ -327,10 +452,7 @@ fn new_test_rpc_engine(state session.SessionState, streams map[int]&ScriptedStre
 	engine.set_dialer(FixedDialer{
 		streams: streams.clone()
 	})
-	return new_session_engine(engine, state, EngineConfig{
-		default_timeout_ms: 250
-		max_retry_attempts: 2
-	}) or { panic(err) }
+	return new_session_engine(engine, state, config) or { panic(err) }
 }
 
 fn new_test_rpc_engine_from_store(mut store session.Store, streams map[int]&ScriptedStream) SessionEngine {

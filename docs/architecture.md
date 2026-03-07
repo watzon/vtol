@@ -48,3 +48,10 @@ The library is organized in a core-first sequence:
 
 - The package remains pre-`1.0` until session persistence, TL generation, and update recovery are production-grade.
 - CI should validate formatting and tests on macOS and Linux before widening platform support.
+- Credential-gated integration suites should live separately from the default deterministic `v test .` path.
+- Tagged releases should validate against `v.mod` versioning before publishing archives.
+
+## Stability mapping
+
+- `docs/api-stability.md` is the source of truth for which public surfaces are stable enough for downstream use.
+- `internal/`, generated helpers, and cross-platform packaging behavior remain explicitly unstable until called out there.

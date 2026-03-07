@@ -25,11 +25,26 @@ mut:
 	state &FakeRuntimeState
 }
 
+struct ErrorRuntime {}
+
 fn (f FakeRuntime) is_connected() bool {
 	return f.state.connected
 }
 
+fn (e ErrorRuntime) is_connected() bool {
+	return true
+}
+
 fn (f FakeRuntime) session_state() session.SessionState {
+	return session.SessionState{
+		dc_id:       2
+		session_id:  99
+		auth_key:    []u8{len: 256, init: u8(1)}
+		auth_key_id: 77
+	}
+}
+
+fn (e ErrorRuntime) session_state() session.SessionState {
 	return session.SessionState{
 		dc_id:       2
 		session_id:  99
@@ -43,10 +58,14 @@ fn (mut f FakeRuntime) connect() ! {
 	f.state.connected = true
 }
 
+fn (mut e ErrorRuntime) connect() ! {}
+
 fn (mut f FakeRuntime) disconnect() ! {
 	f.state.disconnect_calls++
 	f.state.connected = false
 }
+
+fn (mut e ErrorRuntime) disconnect() ! {}
 
 fn (mut f FakeRuntime) invoke(function tl.Function, options rpc.CallOptions) !tl.Object {
 	f.state.invocations << function.method_name()
@@ -59,9 +78,18 @@ fn (mut f FakeRuntime) invoke(function tl.Function, options rpc.CallOptions) !tl
 	return response
 }
 
+fn (mut e ErrorRuntime) invoke(function tl.Function, options rpc.CallOptions) !tl.Object {
+	return IError(rpc.new_rpc_error(tl.RpcError{
+		error_code:    420
+		error_message: 'FLOOD_WAIT_7'
+	}))
+}
+
 fn (mut f FakeRuntime) pump_once() ! {
 	f.state.pump_calls++
 }
+
+fn (mut e ErrorRuntime) pump_once() ! {}
 
 fn (mut f FakeRuntime) drain_updates() []tl.UpdatesType {
 	if f.state.update_batches.len == 0 {
@@ -70,6 +98,10 @@ fn (mut f FakeRuntime) drain_updates() []tl.UpdatesType {
 	batches := f.state.update_batches.clone()
 	f.state.update_batches = []tl.UpdatesType{}
 	return batches
+}
+
+fn (mut e ErrorRuntime) drain_updates() []tl.UpdatesType {
+	return []tl.UpdatesType{}
 }
 
 @[heap]
@@ -102,6 +134,43 @@ fn test_client_connect_and_disconnect_use_runtime_state() {
 	assert client.client_state() == .disconnected
 	assert state.disconnect_calls == 1
 	assert !client.is_connected()
+}
+
+fn test_client_wraps_rate_limit_errors_with_public_metadata() {
+	mut client := Client{
+		config:         ClientConfig{
+			app_id:     1
+			app_hash:   'test-hash'
+			dc_options: [
+				DcOption{
+					id:   2
+					host: '149.154.167.50'
+					port: 443
+				},
+			]
+		}
+		runtime:        ErrorRuntime{}
+		runtime_ready:  true
+		state:          .connected
+		store:          session.new_memory_store()
+		peer_cache:     map[string]CachedPeer{}
+		update_manager: updates.new_manager(updates.ManagerConfig{})
+	}
+
+	client.invoke(tl.Ping{
+		ping_id: 1
+	}) or {
+		if err is RpcError {
+			assert err.rpc_code == 420
+			assert err.is_rate_limited()
+			assert err.wait_seconds == 7
+			assert err.retry_after_ms() == 7_000
+			assert err.raw.error_message == 'FLOOD_WAIT_7'
+			return
+		}
+		assert false
+	}
+	assert false
 }
 
 fn test_login_wrappers_delegate_to_generated_auth_methods() {

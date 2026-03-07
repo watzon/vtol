@@ -132,6 +132,7 @@ fn (mut s RuntimeDifferenceSource) invoke(function tl.Function, options rpc.Call
 	return s.runtime.invoke(function, options)!
 }
 
+// Client manages authentication, transport state, peer caching, and update handling.
 pub struct Client {
 pub:
 	config ClientConfig
@@ -152,24 +153,29 @@ mut:
 	new_message_handlers   map[int]NewMessageHandlerState = map[int]NewMessageHandlerState{}
 }
 
+// new_client creates a client backed by an in-memory session store.
 pub fn new_client(config ClientConfig) !Client {
 	return new_client_with_store(config, session.new_memory_session())
 }
 
+// new_client_with_sqlite_session creates a client backed by a SQLite session file.
 pub fn new_client_with_sqlite_session(config ClientConfig, path string) !Client {
 	store := session.new_sqlite_session(path)!
 	return new_client_with_store(config, store)
 }
 
+// new_client_with_session_file is an alias for new_client_with_sqlite_session.
 pub fn new_client_with_session_file(config ClientConfig, path string) !Client {
 	return new_client_with_sqlite_session(config, path)
 }
 
+// new_client_with_string_session creates a client backed by an encoded string session.
 pub fn new_client_with_string_session(config ClientConfig, value string) !Client {
 	store := session.new_string_session(value)!
 	return new_client_with_store(config, store)
 }
 
+// new_client_with_store creates a client with a caller-provided session store.
 pub fn new_client_with_store(config ClientConfig, store session.Store) !Client {
 	validate_client_config(config)!
 	return Client{
@@ -182,18 +188,22 @@ pub fn new_client_with_store(config ClientConfig, store session.Store) !Client {
 	}
 }
 
+// client_state returns the current high-level lifecycle state for the client.
 pub fn (c Client) client_state() ClientState {
 	return c.state
 }
 
+// is_connected reports whether the client has an active MTProto session.
 pub fn (c Client) is_connected() bool {
 	return c.state == .connected && c.runtime_ready && c.runtime.is_connected()
 }
 
+// did_restore_session reports whether the current runtime was restored from persisted state.
 pub fn (c Client) did_restore_session() bool {
 	return c.session_loaded
 }
 
+// primary_dc returns the preferred datacenter after config merging.
 pub fn (c Client) primary_dc() ?DcOption {
 	if c.dc_options.len == 0 {
 		return none
@@ -210,6 +220,7 @@ fn (c Client) dc_option_by_id(dc_id int) ?DcOption {
 	return none
 }
 
+// session returns the active persisted session snapshot when one is available.
 pub fn (c Client) session() ?Session {
 	if !c.runtime_ready {
 		return none
@@ -230,14 +241,17 @@ pub fn (c Client) session() ?Session {
 	}
 }
 
+// rpc_debug_events returns the buffered RPC debug events captured by the client.
 pub fn (c Client) rpc_debug_events() []rpc.DebugEvent {
 	return c.debug_recorder.snapshot()
 }
 
+// clear_rpc_debug_events drops any buffered RPC debug events.
 pub fn (c Client) clear_rpc_debug_events() {
 	c.debug_recorder.clear()
 }
 
+// connect initializes the runtime if needed and opens the underlying transport session.
 pub fn (mut c Client) connect() ! {
 	if c.is_connected() {
 		return
@@ -254,6 +268,7 @@ pub fn (mut c Client) connect() ! {
 	c.state = .connected
 }
 
+// disconnect closes the underlying runtime connection without discarding the session store.
 pub fn (mut c Client) disconnect() ! {
 	if c.runtime_ready && c.runtime.is_connected() {
 		c.runtime.disconnect()!
@@ -261,14 +276,17 @@ pub fn (mut c Client) disconnect() ! {
 	c.state = .disconnected
 }
 
+// update_state returns the last known updates state vector when update sync has been initialized.
 pub fn (c Client) update_state() ?updates.StateVector {
 	return c.update_manager.current_state()
 }
 
+// invoke sends a raw TL function using the client's default RPC call options.
 pub fn (mut c Client) invoke(function tl.Function) !tl.Object {
 	return c.invoke_with_options(function, c.config.default_call_options)!
 }
 
+// invoke_with_options sends a raw TL function using explicit RPC call options.
 pub fn (mut c Client) invoke_with_options(function tl.Function, options rpc.CallOptions) !tl.Object {
 	c.connect()!
 	request := c.wrap_client_invoke(function)

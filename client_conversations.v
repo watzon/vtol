@@ -3,6 +3,7 @@ module vtol
 import tl
 import updates
 
+// conversation creates a scoped conversation helper bound to a peer-like target.
 pub fn (mut c Client) conversation[T](peer T) !Conversation {
 	c.connect()!
 	c.ensure_update_state()!
@@ -17,10 +18,12 @@ pub fn (mut c Client) conversation[T](peer T) !Conversation {
 	}
 }
 
+// is_closed reports whether the conversation subscription has been released.
 pub fn (conversation Conversation) is_closed() bool {
 	return conversation.closed
 }
 
+// close unsubscribes the conversation from updates and releases buffered state.
 pub fn (mut conversation Conversation) close() {
 	if conversation.closed {
 		return
@@ -35,15 +38,18 @@ pub fn (mut conversation Conversation) close() {
 	conversation.closed = true
 }
 
+// send_text sends a text message to the conversation peer.
 pub fn (mut conversation Conversation) send_text(message RichTextInput) !SentMessage {
 	mut client := conversation.client_ref()!
 	return client.send_text(conversation.peer, message)!
 }
 
+// send_message is an alias for send_text.
 pub fn (mut conversation Conversation) send_message(message RichTextInput) !SentMessage {
 	return conversation.send_text(message)!
 }
 
+// wait_for_message blocks until the next matching inbound message arrives.
 pub fn (mut conversation Conversation) wait_for_message() !NewMessageEvent {
 	mut client := conversation.client_ref()!
 	for {
@@ -63,6 +69,7 @@ pub fn (mut conversation Conversation) wait_for_message() !NewMessageEvent {
 	return error('conversation wait loop terminated unexpectedly')
 }
 
+// wait_for_reply blocks until a reply to message arrives in the conversation.
 pub fn (mut conversation Conversation) wait_for_reply(message SentMessage) !NewMessageEvent {
 	if message.id <= 0 {
 		return error('message id must be greater than zero')

@@ -1,5 +1,6 @@
 module config
 
+// LogConfig controls optional transport and wire logging.
 pub struct LogConfig {
 pub:
 	enabled  bool
@@ -7,6 +8,7 @@ pub:
 	redacted bool = true
 }
 
+// RetryConfig configures generic retry behavior for higher-level workflows.
 pub struct RetryConfig {
 pub:
 	max_attempts  int = 3

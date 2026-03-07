@@ -2,6 +2,7 @@ module vtol
 
 import tl
 
+// get_dialogs fetches a single page of dialogs and returns the raw Telegram response.
 pub fn (mut c Client) get_dialogs(limit int) !tl.MessagesDialogsType {
 	page := c.get_dialog_page(DialogPageOptions{
 		limit: limit
@@ -9,6 +10,7 @@ pub fn (mut c Client) get_dialogs(limit int) !tl.MessagesDialogsType {
 	return page.response
 }
 
+// get_dialog_page fetches and normalizes one page of dialogs.
 pub fn (mut c Client) get_dialog_page(options DialogPageOptions) !DialogPage {
 	normalized := normalize_dialog_page_options(options)
 	result := c.invoke(tl.MessagesGetDialogs{
@@ -26,6 +28,7 @@ pub fn (mut c Client) get_dialog_page(options DialogPageOptions) !DialogPage {
 	return dialog_page_from_response(normalized, response)!
 }
 
+// get_chats fetches chat records by numeric chat ids.
 pub fn (mut c Client) get_chats(chat_ids []i64) !tl.MessagesChatsType {
 	result := c.invoke(tl.MessagesGetChats{
 		id: chat_ids.clone()
@@ -33,6 +36,7 @@ pub fn (mut c Client) get_chats(chat_ids []i64) !tl.MessagesChatsType {
 	return expect_messages_chats(result)!
 }
 
+// get_history fetches a single page of history and returns the raw Telegram response.
 pub fn (mut c Client) get_history[T](peer T, limit int) !tl.MessagesMessagesType {
 	page := c.get_history_page(peer, HistoryPageOptions{
 		limit: limit
@@ -40,6 +44,7 @@ pub fn (mut c Client) get_history[T](peer T, limit int) !tl.MessagesMessagesType
 	return page.response
 }
 
+// get_history_page fetches and normalizes one page of message history.
 pub fn (mut c Client) get_history_page[T](peer T, options HistoryPageOptions) !HistoryPage {
 	resolved := c.resolve_peer_like(peer)!
 	normalized := normalize_history_page_options(options)
@@ -58,6 +63,7 @@ pub fn (mut c Client) get_history_page[T](peer T, options HistoryPageOptions) !H
 	return history_page_from_response(normalized, response)!
 }
 
+// each_dialog_page iterates dialog pages until the callback or options stop pagination.
 pub fn (mut c Client) each_dialog_page(options DialogPageOptions, callback DialogPageCallback) ! {
 	base := normalize_dialog_page_options(options)
 	mut current := base
@@ -97,6 +103,7 @@ pub fn (mut c Client) each_dialog_page(options DialogPageOptions, callback Dialo
 	}
 }
 
+// collect_dialogs paginates dialogs and returns a deduplicated aggregate batch.
 pub fn (mut c Client) collect_dialogs(options DialogPageOptions) !DialogBatch {
 	base := normalize_dialog_page_options(options)
 	mut current := base
@@ -144,6 +151,7 @@ pub fn (mut c Client) collect_dialogs(options DialogPageOptions) !DialogBatch {
 	return batch
 }
 
+// each_dialog iterates dialogs one item at a time across pages.
 pub fn (mut c Client) each_dialog(options DialogPageOptions, callback DialogCallback) ! {
 	base := normalize_dialog_page_options(options)
 	mut current := base
@@ -185,6 +193,7 @@ pub fn (mut c Client) each_dialog(options DialogPageOptions, callback DialogCall
 	}
 }
 
+// each_history_page iterates history pages until the callback or options stop pagination.
 pub fn (mut c Client) each_history_page[T](peer T, options HistoryPageOptions, callback HistoryPageCallback) ! {
 	base := normalize_history_page_options(options)
 	mut current := base
@@ -224,6 +233,7 @@ pub fn (mut c Client) each_history_page[T](peer T, options HistoryPageOptions, c
 	}
 }
 
+// each_history_message iterates history messages one item at a time across pages.
 pub fn (mut c Client) each_history_message[T](peer T, options HistoryPageOptions, callback HistoryMessageCallback) ! {
 	base := normalize_history_page_options(options)
 	mut current := base
@@ -265,6 +275,7 @@ pub fn (mut c Client) each_history_message[T](peer T, options HistoryPageOptions
 	}
 }
 
+// collect_history paginates message history and returns a deduplicated aggregate batch.
 pub fn (mut c Client) collect_history[T](peer T, options HistoryPageOptions) !HistoryBatch {
 	base := normalize_history_page_options(options)
 	mut current := base

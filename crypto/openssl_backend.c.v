@@ -37,10 +37,12 @@ fn C.PKCS5_PBKDF2_HMAC(pass voidptr, passlen int, salt &u8, saltlen int, iter in
 
 const openssl_success = 1
 
+// name returns the crypto backend name.
 pub fn (backend OpenSSLBackend) name() string {
 	return 'openssl'
 }
 
+// capabilities reports the features implemented by the OpenSSL backend.
 pub fn (backend OpenSSLBackend) capabilities() []Capability {
 	return [
 		Capability{
@@ -62,6 +64,7 @@ pub fn (backend OpenSSLBackend) capabilities() []Capability {
 	]
 }
 
+// random_bytes returns cryptographically secure random bytes from OpenSSL.
 pub fn (backend OpenSSLBackend) random_bytes(length int) ![]u8 {
 	if length < 0 {
 		return error('random byte length must not be negative')
@@ -76,6 +79,7 @@ pub fn (backend OpenSSLBackend) random_bytes(length int) ![]u8 {
 	return out
 }
 
+// sha1 hashes data with SHA-1 using OpenSSL.
 pub fn (backend OpenSSLBackend) sha1(data []u8) ![]u8 {
 	mut out := []u8{len: 20}
 	mut empty := []u8{len: 1}
@@ -91,6 +95,7 @@ pub fn (backend OpenSSLBackend) sha1(data []u8) ![]u8 {
 	return out
 }
 
+// sha256 hashes data with SHA-256 using OpenSSL.
 pub fn (backend OpenSSLBackend) sha256(data []u8) ![]u8 {
 	mut out := []u8{len: 32}
 	mut empty := []u8{len: 1}
@@ -106,10 +111,12 @@ pub fn (backend OpenSSLBackend) sha256(data []u8) ![]u8 {
 	return out
 }
 
+// aes_ige_encrypt encrypts data with AES-IGE using OpenSSL-compatible primitives.
 pub fn (backend OpenSSLBackend) aes_ige_encrypt(data []u8, key []u8, iv []u8) ![]u8 {
 	return backend.aes_ige_crypt(data, key, iv, true)
 }
 
+// aes_ige_decrypt decrypts data with AES-IGE using OpenSSL-compatible primitives.
 pub fn (backend OpenSSLBackend) aes_ige_decrypt(data []u8, key []u8, iv []u8) ![]u8 {
 	return backend.aes_ige_crypt(data, key, iv, false)
 }
@@ -154,6 +161,7 @@ fn (backend OpenSSLBackend) aes_ige_crypt(data []u8, key []u8, iv []u8, encrypt 
 	return out
 }
 
+// pbkdf2_hmac_sha512 derives a key using PBKDF2-HMAC-SHA512.
 pub fn pbkdf2_hmac_sha512(password []u8, salt []u8, iterations int, key_len int) ![]u8 {
 	if iterations <= 0 {
 		return error('PBKDF2 iterations must be greater than zero')

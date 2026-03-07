@@ -4,24 +4,36 @@ import encoding.hex
 import math.big
 import tl
 
+// auth_key_size is the MTProto auth key size in bytes.
 pub const auth_key_size = 256
+// msg_key_size is the MTProto message key size in bytes.
 pub const msg_key_size = 16
+// nonce_size is the standard MTProto nonce size in bytes.
 pub const nonce_size = 16
+// new_nonce_size is the MTProto new_nonce size in bytes.
 pub const new_nonce_size = 32
+// aes_block_size is the AES block size used by MTProto.
 pub const aes_block_size = 16
+// tmp_aes_key_size is the temporary AES key size used during auth.
 pub const tmp_aes_key_size = 32
+// tmp_aes_iv_size is the temporary AES IV size used during auth.
 pub const tmp_aes_iv_size = 32
+// rsa_payload_size is the RSA payload size used by Telegram auth keys.
 pub const rsa_payload_size = 256
+// rsa_inner_data_size is the maximum inner auth payload size before RSA padding.
 pub const rsa_inner_data_size = 192
 
+// telegram_safe_dh_prime_hex is Telegram's published safe prime for DH key exchange.
 pub const telegram_safe_dh_prime_hex = 'C71CAEB9C6B1C9048E6C522F70F13F73980D40238E3E21C14934D037563D930F48198A0AA7C14058229493D22530F4DBFA336F6E0AC925139543AED44CCE7C3720FD51F69458705AC68CD4FE6B6B13ABDC9746512969328454F18FAF8C595F642477FE96BB2A941D5BCD1D4AC8CC49880708FA9B378E3C4F3A9060BEE67CF9A4A4A695811051907E162753B56B0F6B410DBA74D8A84B2A14B3144E0EF1284754FD17ED950D5965B4B9DD46582DB1178D169C6BC465B0D6FF9CA3928FEF5B9AE4E418FC15E83EBEA0F87FA9FF5EED70050DED2849F47BF959D956850CE929851F0D8115F635B105EE2E4E15D04B2454BF6F4FADF034B10403119CD8E3B92FCC5B'
 
+// Capability reports whether the active backend supports a named feature.
 pub struct Capability {
 pub:
 	name      string
 	available bool
 }
 
+// PublicKey stores a Telegram RSA public key.
 pub struct PublicKey {
 pub:
 	fingerprint i64
@@ -29,18 +41,21 @@ pub:
 	exponent    []u8
 }
 
+// AesKeyIv stores a paired AES key and IV.
 pub struct AesKeyIv {
 pub:
 	key []u8
 	iv  []u8
 }
 
+// KeyMaterial stores the auth key and msg key used for encrypted messages.
 pub struct KeyMaterial {
 pub:
 	auth_key []u8
 	msg_key  []u8
 }
 
+// PQFactors stores a factored pq value returned by Telegram during auth.
 pub struct PQFactors {
 pub:
 	pq []u8
@@ -48,6 +63,7 @@ pub:
 	q  []u8
 }
 
+// Backend abstracts the crypto primitives VTOL needs.
 pub interface Backend {
 	name() string
 	capabilities() []Capability
@@ -94,14 +110,17 @@ struct PublicKeySpec {
 	exponent_hex string
 }
 
+// default_backend returns VTOL's default crypto backend.
 pub fn default_backend() Backend {
 	return OpenSSLBackend{}
 }
 
+// available_capabilities returns the capabilities reported by the default backend.
 pub fn available_capabilities() []Capability {
 	return default_backend().capabilities()
 }
 
+// default_public_keys returns the bundled Telegram production public keys.
 pub fn default_public_keys() []PublicKey {
 	mut keys := []PublicKey{cap: telegram_public_key_specs.len}
 	for spec in telegram_public_key_specs {
@@ -114,6 +133,7 @@ pub fn default_public_keys() []PublicKey {
 	return keys
 }
 
+// select_public_key selects the first supported public key from Telegram fingerprints.
 pub fn select_public_key(keys []PublicKey, fingerprints []i64) !PublicKey {
 	for fingerprint in fingerprints {
 		for key in keys {
@@ -125,6 +145,7 @@ pub fn select_public_key(keys []PublicKey, fingerprints []i64) !PublicKey {
 	return error('no supported public key fingerprint found')
 }
 
+// compute_public_key_fingerprint calculates Telegram's fingerprint for a public key.
 pub fn compute_public_key_fingerprint(backend Backend, key PublicKey) !i64 {
 	encoded := encode_public_key(key)
 	digest := backend.sha1(encoded)!
@@ -134,6 +155,7 @@ pub fn compute_public_key_fingerprint(backend Backend, key PublicKey) !i64 {
 	return bytes_to_i64_le(digest[digest.len - 8..])
 }
 
+// encode_public_key serializes a public key using Telegram's expected layout.
 pub fn encode_public_key(key PublicKey) []u8 {
 	mut out := []u8{}
 	tl.append_bytes(mut out, trim_leading_zero_bytes(key.modulus))
@@ -141,6 +163,7 @@ pub fn encode_public_key(key PublicKey) []u8 {
 	return out
 }
 
+// rsa_pad_v2 applies MTProto 2.0 RSA padding before encryption.
 pub fn rsa_pad_v2(data []u8, key PublicKey, backend Backend) ![]u8 {
 	if data.len > 144 {
 		return error('rsa inner data must not exceed 144 bytes')
@@ -177,6 +200,7 @@ pub fn rsa_pad_v2(data []u8, key PublicKey, backend Backend) ![]u8 {
 	return error('could not generate RSA-padded payload below modulus')
 }
 
+// rsa_pad_legacy applies Telegram's legacy RSA padding before encryption.
 pub fn rsa_pad_legacy(data []u8, key PublicKey, backend Backend) ![]u8 {
 	sha := backend.sha1(data)!
 	mut payload := sha.clone()
@@ -188,6 +212,7 @@ pub fn rsa_pad_legacy(data []u8, key PublicKey, backend Backend) ![]u8 {
 	return rsa_raw_encrypt(left_pad(payload, rsa_payload_size)!, key)!
 }
 
+// rsa_raw_encrypt encrypts a fixed-size payload with a Telegram RSA key.
 pub fn rsa_raw_encrypt(data []u8, key PublicKey) ![]u8 {
 	if data.len != rsa_payload_size {
 		return error('rsa raw input must be exactly 256 bytes')
@@ -206,6 +231,7 @@ pub fn rsa_raw_encrypt(data []u8, key PublicKey) ![]u8 {
 	return left_pad(encrypted_bytes, rsa_payload_size)
 }
 
+// factorize_pq factors Telegram's pq challenge into p and q.
 pub fn factorize_pq(pq []u8) !PQFactors {
 	value := bytes_to_u64_be(pq)!
 	if value < 2 {
@@ -224,6 +250,7 @@ pub fn factorize_pq(pq []u8) !PQFactors {
 	}
 }
 
+// derive_tmp_aes_key_iv derives the temporary AES key and IV used during auth.
 pub fn derive_tmp_aes_key_iv(backend Backend, new_nonce []u8, server_nonce []u8) !AesKeyIv {
 	if new_nonce.len != new_nonce_size {
 		return error('new nonce must be 32 bytes')
@@ -251,6 +278,7 @@ pub fn derive_tmp_aes_key_iv(backend Backend, new_nonce []u8, server_nonce []u8)
 	}
 }
 
+// derive_message_aes_key_iv derives the AES key and IV for encrypted messages.
 pub fn derive_message_aes_key_iv(backend Backend, auth_key []u8, msg_key []u8, outgoing bool) !AesKeyIv {
 	if auth_key.len != auth_key_size {
 		return error('auth key must be 256 bytes')
@@ -277,6 +305,7 @@ pub fn derive_message_aes_key_iv(backend Backend, auth_key []u8, msg_key []u8, o
 	}
 }
 
+// derive_auth_key_id derives the Telegram auth_key_id from an auth key.
 pub fn derive_auth_key_id(backend Backend, auth_key []u8) !i64 {
 	if auth_key.len != auth_key_size {
 		return error('auth key must be 256 bytes')
@@ -285,6 +314,7 @@ pub fn derive_auth_key_id(backend Backend, auth_key []u8) !i64 {
 	return bytes_to_i64_le(digest[digest.len - 8..])
 }
 
+// derive_auth_key_aux_hash derives the auxiliary hash used in auth flows.
 pub fn derive_auth_key_aux_hash(backend Backend, auth_key []u8) ![]u8 {
 	if auth_key.len != auth_key_size {
 		return error('auth key must be 256 bytes')
@@ -293,6 +323,7 @@ pub fn derive_auth_key_aux_hash(backend Backend, auth_key []u8) ![]u8 {
 	return digest[..8].clone()
 }
 
+// derive_new_nonce_hash derives the server verification hash for DH completion.
 pub fn derive_new_nonce_hash(backend Backend, new_nonce []u8, auth_key []u8, number u8) ![]u8 {
 	if new_nonce.len != new_nonce_size {
 		return error('new nonce must be 32 bytes')
@@ -305,6 +336,7 @@ pub fn derive_new_nonce_hash(backend Backend, new_nonce []u8, auth_key []u8, num
 	return digest[4..20].clone()
 }
 
+// derive_server_salt_bytes derives the raw server salt bytes from the exchanged nonces.
 pub fn derive_server_salt_bytes(new_nonce []u8, server_nonce []u8) ![]u8 {
 	if new_nonce.len != new_nonce_size {
 		return error('new nonce must be 32 bytes')
@@ -315,10 +347,12 @@ pub fn derive_server_salt_bytes(new_nonce []u8, server_nonce []u8) ![]u8 {
 	return xor_bytes(new_nonce[..8], server_nonce[..8])!
 }
 
+// derive_server_salt derives the server salt integer from the exchanged nonces.
 pub fn derive_server_salt(new_nonce []u8, server_nonce []u8) !i64 {
 	return bytes_to_i64_le(derive_server_salt_bytes(new_nonce, server_nonce)!)
 }
 
+// validate_dh_group validates the DH parameters returned during auth.
 pub fn validate_dh_group(g int, dh_prime []u8, g_a []u8, g_b []u8) ! {
 	expected_prime := telegram_safe_dh_prime_bytes()
 	if trim_leading_zero_bytes(dh_prime) != expected_prime {
@@ -335,20 +369,24 @@ pub fn validate_dh_group(g int, dh_prime []u8, g_a []u8, g_b []u8) ! {
 	validate_dh_value(g_b, 'g_b', one, prime_int, safety_range, upper_bound)!
 }
 
+// telegram_safe_dh_prime_bytes returns Telegram's safe DH prime as bytes.
 pub fn telegram_safe_dh_prime_bytes() []u8 {
 	return decode_hex_bytes(telegram_safe_dh_prime_hex) or { panic(err) }
 }
 
+// telegram_safe_dh_prime returns Telegram's safe DH prime as a big integer.
 pub fn telegram_safe_dh_prime() big.Integer {
 	return big.integer_from_bytes(telegram_safe_dh_prime_bytes())
 }
 
+// reverse_bytes returns a reversed copy of data.
 pub fn reverse_bytes(data []u8) []u8 {
 	mut reversed := data.clone()
 	reversed.reverse_in_place()
 	return reversed
 }
 
+// xor_bytes returns the byte-wise XOR of equally sized slices.
 pub fn xor_bytes(a []u8, b []u8) ![]u8 {
 	if a.len != b.len {
 		return error('xor inputs must have equal length')
@@ -360,6 +398,7 @@ pub fn xor_bytes(a []u8, b []u8) ![]u8 {
 	return out
 }
 
+// left_pad pads data with leading zero bytes up to target_len.
 pub fn left_pad(data []u8, target_len int) ![]u8 {
 	if data.len > target_len {
 		return error('cannot left-pad data longer than target length')
@@ -372,6 +411,7 @@ pub fn left_pad(data []u8, target_len int) ![]u8 {
 	return out
 }
 
+// trim_leading_zero_bytes removes leading zero bytes from data.
 pub fn trim_leading_zero_bytes(data []u8) []u8 {
 	for index, value in data {
 		if value != 0 {

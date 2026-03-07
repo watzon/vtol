@@ -3,6 +3,7 @@ module rpc
 import json
 import os
 
+// DebugEventKind classifies the debug events emitted by the RPC engine.
 pub enum DebugEventKind {
 	request_started
 	result_received
@@ -15,6 +16,7 @@ pub enum DebugEventKind {
 	reconnect_failed
 }
 
+// DebugEvent records one step in the lifecycle of an RPC call.
 pub struct DebugEvent {
 pub:
 	timestamp_ms      i64
@@ -35,23 +37,29 @@ pub:
 	target_dc_id      int
 }
 
+// DebugLogger receives emitted RPC debug events.
 pub interface DebugLogger {
 	emit(event DebugEvent)
 }
 
+// NoopDebugLogger discards emitted debug events.
 pub struct NoopDebugLogger {}
 
+// emit discards the debug event.
 pub fn (n NoopDebugLogger) emit(event DebugEvent) {}
 
+// JsonLineDebugLogger prints each debug event as a JSON line.
 pub struct JsonLineDebugLogger {
 pub:
 	prettify bool
 }
 
+// emit writes the debug event as JSON to stdout.
 pub fn (l JsonLineDebugLogger) emit(event DebugEvent) {
 	println(json.encode(event))
 }
 
+// emit_env_debug writes the event to stderr when VTOL_DEBUG_RPC=1.
 pub fn emit_env_debug(event DebugEvent) {
 	if os.getenv('VTOL_DEBUG_RPC') != '1' {
 		return
@@ -65,12 +73,14 @@ mut:
 	events []DebugEvent
 }
 
+// DebugRecorderConfig configures in-memory debug event buffering.
 pub struct DebugRecorderConfig {
 pub:
 	capacity   int         = 64
 	downstream DebugLogger = NoopDebugLogger{}
 }
 
+// DebugRecorder stores a bounded in-memory history of debug events.
 pub struct DebugRecorder {
 pub:
 	capacity   int
@@ -79,6 +89,7 @@ mut:
 	state &DebugRecorderState = unsafe { nil }
 }
 
+// new_debug_recorder creates a DebugRecorder with normalized capacity.
 pub fn new_debug_recorder(config DebugRecorderConfig) DebugRecorder {
 	capacity := if config.capacity > 0 { config.capacity } else { 0 }
 	return DebugRecorder{
@@ -90,6 +101,7 @@ pub fn new_debug_recorder(config DebugRecorderConfig) DebugRecorder {
 	}
 }
 
+// emit appends the event to the recorder and forwards it downstream.
 pub fn (r DebugRecorder) emit(event DebugEvent) {
 	if !isnil(r.state) && r.capacity > 0 {
 		unsafe {
@@ -102,6 +114,7 @@ pub fn (r DebugRecorder) emit(event DebugEvent) {
 	r.downstream.emit(event)
 }
 
+// snapshot returns a copy of the buffered debug events.
 pub fn (r DebugRecorder) snapshot() []DebugEvent {
 	if isnil(r.state) {
 		return []DebugEvent{}
@@ -111,6 +124,7 @@ pub fn (r DebugRecorder) snapshot() []DebugEvent {
 	}
 }
 
+// clear removes all buffered debug events.
 pub fn (r DebugRecorder) clear() {
 	if isnil(r.state) {
 		return

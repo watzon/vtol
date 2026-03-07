@@ -15,6 +15,7 @@ struct SentMessageData {
 	has_entities_value bool
 }
 
+// sent_message_from_updates normalizes a send-method updates result into a SentMessage.
 pub fn sent_message_from_updates(peer ResolvedPeer, batch tl.UpdatesType, fallback_text string) !SentMessage {
 	if short := short_sent_message_from_updates(batch, fallback_text) {
 		return SentMessage{
@@ -35,6 +36,7 @@ pub fn sent_message_from_updates(peer ResolvedPeer, batch tl.UpdatesType, fallba
 	return error('could not normalize sent message from ${batch.qualified_name()}')
 }
 
+// first_message_from_updates returns the first message contained in an updates payload.
 pub fn first_message_from_updates(batch tl.UpdatesType) ?tl.MessageType {
 	messages := messages_from_updates(batch)
 	if messages.len == 0 {
@@ -43,6 +45,7 @@ pub fn first_message_from_updates(batch tl.UpdatesType) ?tl.MessageType {
 	return messages[0]
 }
 
+// messages_from_updates extracts all message values from an updates payload.
 pub fn messages_from_updates(batch tl.UpdatesType) []tl.MessageType {
 	return match batch {
 		tl.UpdateShort {
@@ -64,6 +67,7 @@ pub fn messages_from_updates(batch tl.UpdatesType) []tl.MessageType {
 	}
 }
 
+// message_from_update extracts the message from a single update when one exists.
 pub fn message_from_update(update tl.UpdateType) ?tl.MessageType {
 	match update {
 		tl.UpdateNewMessage {

@@ -6,17 +6,23 @@ import os
 import time
 import tl
 
+// abridged_transport_marker is the client marker for abridged MTProto transport.
 pub const abridged_transport_marker = u8(0xef)
+// intermediate_transport_marker is the client marker for intermediate MTProto transport.
 pub const intermediate_transport_marker = u32(0xeeeeeeee)
+// full_transport_marker is the client marker for full MTProto transport.
 pub const full_transport_marker = u32(0xdddddddd)
+// msg_container_constructor_id is the TL constructor used for message containers.
 pub const msg_container_constructor_id = u32(0x73f1f8dc)
 
+// Mode selects the MTProto frame codec used on the transport connection.
 pub enum Mode {
 	abridged
 	intermediate
 	full
 }
 
+// EventKind classifies transport observer events.
 pub enum EventKind {
 	frame_sent
 	frame_received
@@ -30,6 +36,7 @@ pub enum EventKind {
 	clock_skew_adjusted
 }
 
+// DisconnectReason describes why a reconnect or disconnect occurred.
 pub enum DisconnectReason {
 	requested
 	remote_closed
@@ -39,6 +46,7 @@ pub enum DisconnectReason {
 	io_error
 }
 
+// Endpoint describes a Telegram transport endpoint.
 pub struct Endpoint {
 pub:
 	id       int
@@ -47,12 +55,14 @@ pub:
 	is_media bool
 }
 
+// RetryPolicy configures connection retry behavior.
 pub struct RetryPolicy {
 pub:
 	max_attempts int = 3
 	backoff_ms   int = 250
 }
 
+// Timeouts configures socket read, write, and connect time limits.
 pub struct Timeouts {
 pub:
 	connect_ms int = 5_000
@@ -60,6 +70,7 @@ pub:
 	write_ms   int = 15_000
 }
 
+// Event is emitted to transport observers as the engine changes state.
 pub struct Event {
 pub:
 	kind        EventKind
@@ -72,6 +83,7 @@ pub:
 	offset_ms   i64
 }
 
+// Observer receives transport events from an Engine.
 pub interface Observer {
 	emit(event Event)
 }
@@ -80,6 +92,7 @@ struct NoopObserver {}
 
 fn (n NoopObserver) emit(event Event) {}
 
+// Stream abstracts the byte stream used by the transport engine.
 pub interface Stream {
 mut:
 	read(mut []u8) !int
@@ -87,6 +100,7 @@ mut:
 	close() !
 }
 
+// Dialer establishes a Stream for a transport endpoint.
 pub interface Dialer {
 	dial(endpoint Endpoint, timeouts Timeouts) !Stream
 }
@@ -120,8 +134,10 @@ fn (mut s TcpStream) close() ! {
 	s.conn.close()!
 }
 
+// TcpDialer dials transport endpoints over TCP.
 pub struct TcpDialer {}
 
+// dial connects to endpoint over TCP and applies read and write timeouts.
 pub fn (d TcpDialer) dial(endpoint Endpoint, timeouts Timeouts) !Stream {
 	address := '${endpoint.host}:${endpoint.port}'
 	mut conn := net.dial_tcp(address)!
@@ -136,6 +152,7 @@ pub fn (d TcpDialer) dial(endpoint Endpoint, timeouts Timeouts) !Stream {
 	}
 }
 
+// WireMessage is an encoded MTProto message ready for encrypted packaging.
 pub struct WireMessage {
 pub:
 	msg_id i64
@@ -143,6 +160,7 @@ pub:
 	body   []u8
 }
 
+// PendingMessage tracks an outbound message awaiting acknowledgement.
 pub struct PendingMessage {
 pub:
 	message      WireMessage
@@ -152,6 +170,7 @@ mut:
 	resend_count int
 }
 
+// UnencryptedPacket is the packet format used before MTProto auth completes.
 pub struct UnencryptedPacket {
 pub:
 	auth_key_id i64
@@ -159,11 +178,13 @@ pub:
 	body        []u8
 }
 
+// MessageContainer bundles multiple wire messages into one transport payload.
 pub struct MessageContainer {
 pub:
 	messages []WireMessage
 }
 
+// MessageState tracks message ids, salts, and pending acknowledgements.
 pub struct MessageState {
 pub mut:
 	server_salt    i64
@@ -177,6 +198,7 @@ mut:
 	pending_acks          []i64
 }
 
+// EngineConfig configures a transport Engine.
 pub struct EngineConfig {
 pub:
 	endpoints []Endpoint
@@ -185,6 +207,7 @@ pub:
 	timeouts  Timeouts    = Timeouts{}
 }
 
+// Engine manages transport connections, framing, and message state.
 pub struct Engine {
 pub:
 	mode     Mode
@@ -202,6 +225,7 @@ pub mut:
 	state MessageState
 }
 
+// FrameCodec encodes and decodes frames for a specific MTProto transport mode.
 pub struct FrameCodec {
 pub:
 	mode Mode
@@ -210,12 +234,14 @@ mut:
 	full_send_seq_no    int
 }
 
+// new_frame_codec creates a frame codec for mode.
 pub fn new_frame_codec(mode Mode) FrameCodec {
 	return FrameCodec{
 		mode: mode
 	}
 }
 
+// new_message_state creates message state for a session id.
 pub fn new_message_state(session_id i64) MessageState {
 	return MessageState{
 		session_id: session_id
@@ -223,6 +249,7 @@ pub fn new_message_state(session_id i64) MessageState {
 	}
 }
 
+// new_engine creates a transport engine with validated configuration.
 pub fn new_engine(config EngineConfig) !Engine {
 	if config.endpoints.len == 0 {
 		return error('transport engine requires at least one endpoint')
@@ -237,18 +264,22 @@ pub fn new_engine(config EngineConfig) !Engine {
 	}
 }
 
+// set_dialer overrides how the engine opens network streams.
 pub fn (mut e Engine) set_dialer(dialer Dialer) {
 	e.dialer = dialer
 }
 
+// set_observer installs a transport observer for engine events.
 pub fn (mut e Engine) set_observer(observer Observer) {
 	e.observer = observer
 }
 
+// is_connected reports whether the engine currently holds an open stream.
 pub fn (e Engine) is_connected() bool {
 	return e.connected
 }
 
+// current_endpoint returns the active endpoint when one is selected.
 pub fn (e Engine) current_endpoint() ?Endpoint {
 	if e.endpoints.len == 0 {
 		return none
@@ -256,6 +287,7 @@ pub fn (e Engine) current_endpoint() ?Endpoint {
 	return e.endpoints[e.endpoint_index]
 }
 
+// select_endpoint switches the active endpoint and reconnects if needed.
 pub fn (mut e Engine) select_endpoint(endpoint_id int) !Endpoint {
 	for index, endpoint in e.endpoints {
 		if endpoint.id == endpoint_id {
@@ -269,6 +301,7 @@ pub fn (mut e Engine) select_endpoint(endpoint_id int) !Endpoint {
 	return error('transport endpoint ${endpoint_id} is not configured')
 }
 
+// connect dials the configured endpoints using the retry policy.
 pub fn (mut e Engine) connect() !Endpoint {
 	for offset in 0 .. e.endpoints.len {
 		index := (e.endpoint_index + offset) % e.endpoints.len
@@ -311,6 +344,7 @@ pub fn (mut e Engine) connect() !Endpoint {
 	return error('transport engine could not connect to any configured endpoint')
 }
 
+// reconnect disconnects and re-establishes the transport connection.
 pub fn (mut e Engine) reconnect(reason DisconnectReason) !Endpoint {
 	if e.connected {
 		e.disconnect() or {}
@@ -318,6 +352,7 @@ pub fn (mut e Engine) reconnect(reason DisconnectReason) !Endpoint {
 	return e.connect() or { return error('transport reconnect failed: ${reason}') }
 }
 
+// disconnect closes the current transport stream.
 pub fn (mut e Engine) disconnect() ! {
 	if !e.connected {
 		return
@@ -327,6 +362,7 @@ pub fn (mut e Engine) disconnect() ! {
 	e.stream = NullStream{}
 }
 
+// send_frame encodes and writes a raw transport frame payload.
 pub fn (mut e Engine) send_frame(payload []u8) ! {
 	if !e.connected {
 		return error('transport engine is not connected')
@@ -342,6 +378,7 @@ pub fn (mut e Engine) send_frame(payload []u8) ! {
 	})
 }
 
+// receive_frame reads and decodes the next raw transport frame payload.
 pub fn (mut e Engine) receive_frame() ![]u8 {
 	if !e.connected {
 		return error('transport engine is not connected')
@@ -357,10 +394,12 @@ pub fn (mut e Engine) receive_frame() ![]u8 {
 	return payload
 }
 
+// send_packet encodes and sends an unencrypted MTProto packet.
 pub fn (mut e Engine) send_packet(packet UnencryptedPacket) ! {
 	e.send_frame(packet.encode())!
 }
 
+// receive_packet reads and decodes the next unencrypted MTProto packet.
 pub fn (mut e Engine) receive_packet() !UnencryptedPacket {
 	payload := e.receive_frame()!
 	if os.getenv('VTOL_DEBUG_TRANSPORT') == '1' {
@@ -374,6 +413,7 @@ pub fn (mut e Engine) receive_packet() !UnencryptedPacket {
 	return decode_unencrypted_packet(payload)!
 }
 
+// invoke_unencrypted sends a TL function before auth and decodes the response object.
 pub fn (mut e Engine) invoke_unencrypted(function tl.Function) !tl.Object {
 	debug_unencrypted_mtproto_function('outgoing', function)
 	packet := UnencryptedPacket{
@@ -395,10 +435,12 @@ pub fn (mut e Engine) invoke_unencrypted(function tl.Function) !tl.Object {
 	return object
 }
 
+// requires_ack reports whether the wire message is content related.
 pub fn (m WireMessage) requires_ack() bool {
 	return (m.seq_no % 2) == 1
 }
 
+// encode serializes the wire message body.
 pub fn (m WireMessage) encode() []u8 {
 	mut out := []u8{}
 	tl.append_long(mut out, m.msg_id)
@@ -408,6 +450,7 @@ pub fn (m WireMessage) encode() []u8 {
 	return out
 }
 
+// decode_wire_message decodes a serialized WireMessage.
 pub fn decode_wire_message(data []u8) !WireMessage {
 	mut decoder := tl.new_decoder(data)
 	msg_id := decoder.read_long()!
@@ -427,6 +470,7 @@ pub fn decode_wire_message(data []u8) !WireMessage {
 	}
 }
 
+// encode serializes the unencrypted packet.
 pub fn (p UnencryptedPacket) encode() []u8 {
 	mut out := []u8{}
 	tl.append_long(mut out, p.auth_key_id)
@@ -436,6 +480,7 @@ pub fn (p UnencryptedPacket) encode() []u8 {
 	return out
 }
 
+// decode_unencrypted_packet decodes a serialized UnencryptedPacket.
 pub fn decode_unencrypted_packet(data []u8) !UnencryptedPacket {
 	mut decoder := tl.new_decoder(data)
 	auth_key_id := decoder.read_long()!
@@ -455,6 +500,7 @@ pub fn decode_unencrypted_packet(data []u8) !UnencryptedPacket {
 	}
 }
 
+// encode serializes the message container.
 pub fn (c MessageContainer) encode() []u8 {
 	mut out := []u8{}
 	tl.append_u32(mut out, msg_container_constructor_id)
@@ -465,6 +511,7 @@ pub fn (c MessageContainer) encode() []u8 {
 	return out
 }
 
+// decode_message_container decodes a serialized message container.
 pub fn decode_message_container(data []u8) !MessageContainer {
 	mut decoder := tl.new_decoder(data)
 	constructor := decoder.read_u32()!
@@ -498,6 +545,7 @@ pub fn decode_message_container(data []u8) !MessageContainer {
 	}
 }
 
+// unix_milli_from_message_id converts a Telegram message id into Unix milliseconds.
 pub fn unix_milli_from_message_id(message_id i64) i64 {
 	raw := u64(message_id)
 	seconds := raw >> 32
@@ -506,6 +554,7 @@ pub fn unix_milli_from_message_id(message_id i64) i64 {
 	return i64(seconds * u64(1000) + millis)
 }
 
+// message_id_from_unix_milli derives a Telegram message id from Unix milliseconds.
 pub fn message_id_from_unix_milli(unix_ms i64) i64 {
 	seconds := u64(unix_ms / 1000)
 	millis := u64(unix_ms % 1000)
@@ -514,6 +563,7 @@ pub fn message_id_from_unix_milli(unix_ms i64) i64 {
 	return message_id
 }
 
+// next_message_id generates the next monotonic outbound message id.
 pub fn (mut s MessageState) next_message_id() i64 {
 	now_ms := time.now().unix_milli() + s.time_offset_ms
 	mut next := message_id_from_unix_milli(now_ms)
@@ -524,6 +574,7 @@ pub fn (mut s MessageState) next_message_id() i64 {
 	return next
 }
 
+// observe_server_message updates clock skew state from a server message id.
 pub fn (mut s MessageState) observe_server_message(message_id i64) i64 {
 	s.last_server_msg_id = message_id
 	server_ms := unix_milli_from_message_id(message_id)
@@ -532,6 +583,7 @@ pub fn (mut s MessageState) observe_server_message(message_id i64) i64 {
 	return offset_ms
 }
 
+// record_outbound assigns ids, sequence numbers, and pending state to an outbound body.
 pub fn (mut s MessageState) record_outbound(body []u8, content_related bool, requires_ack bool) WireMessage {
 	seq_no := if content_related {
 		value := s.content_related_count * 2 + 1
@@ -555,10 +607,12 @@ pub fn (mut s MessageState) record_outbound(body []u8, content_related bool, req
 	return message
 }
 
+// build_object_message encodes a TL object and records it as an outbound wire message.
 pub fn (mut s MessageState) build_object_message(object tl.Object, content_related bool, requires_ack bool) !WireMessage {
 	return s.record_outbound(object.encode()!, content_related, requires_ack)
 }
 
+// mark_acknowledged removes pending messages that were acknowledged.
 pub fn (mut s MessageState) mark_acknowledged(message_ids []i64) int {
 	mut acked := 0
 	for message_id in message_ids {
@@ -570,22 +624,26 @@ pub fn (mut s MessageState) mark_acknowledged(message_ids []i64) int {
 	return acked
 }
 
+// pending_count returns the number of outbound messages awaiting acknowledgement.
 pub fn (s MessageState) pending_count() int {
 	return s.pending.len
 }
 
+// queue_ack schedules a message id to be acknowledged on the next send.
 pub fn (mut s MessageState) queue_ack(message_id i64) {
 	if message_id !in s.pending_acks {
 		s.pending_acks << message_id
 	}
 }
 
+// drain_ack_ids returns and clears queued acknowledgement ids.
 pub fn (mut s MessageState) drain_ack_ids() []i64 {
 	acked := s.pending_acks.clone()
 	s.pending_acks = []i64{}
 	return acked
 }
 
+// resend_pending returns the existing pending wire message for retransmission.
 pub fn (mut s MessageState) resend_pending(message_id i64) ?WireMessage {
 	if message_id !in s.pending {
 		return none
@@ -596,6 +654,7 @@ pub fn (mut s MessageState) resend_pending(message_id i64) ?WireMessage {
 	return pending.message
 }
 
+// regenerate_pending rebuilds a pending message with a fresh message id.
 pub fn (mut s MessageState) regenerate_pending(message_id i64) ?WireMessage {
 	if message_id !in s.pending {
 		return none
@@ -605,6 +664,7 @@ pub fn (mut s MessageState) regenerate_pending(message_id i64) ?WireMessage {
 	return s.record_outbound(pending.message.body, pending.message.requires_ack(), pending.requires_ack)
 }
 
+// resend_all_pending returns all pending messages in message-id order.
 pub fn (mut s MessageState) resend_all_pending() []WireMessage {
 	mut messages := []WireMessage{}
 	for message_id in s.pending.keys() {
@@ -616,10 +676,12 @@ pub fn (mut s MessageState) resend_all_pending() []WireMessage {
 	return messages
 }
 
+// apply_new_session updates message state from a new_session_created event.
 pub fn (mut s MessageState) apply_new_session(created tl.NewSessionCreated) {
 	s.server_salt = created.server_salt
 }
 
+// apply_bad_server_salt updates the salt and regenerates the failed message when possible.
 pub fn (mut s MessageState) apply_bad_server_salt(event tl.BadServerSalt) []WireMessage {
 	s.server_salt = event.new_server_salt
 	if resend := s.regenerate_pending(event.bad_msg_id) {
@@ -628,6 +690,7 @@ pub fn (mut s MessageState) apply_bad_server_salt(event tl.BadServerSalt) []Wire
 	return []WireMessage{}
 }
 
+// apply_bad_msg_notification updates skew state and regenerates retryable messages.
 pub fn (mut s MessageState) apply_bad_msg_notification(event tl.BadMsgNotification) []WireMessage {
 	match event.error_code {
 		16 {
@@ -657,6 +720,7 @@ pub fn (mut s MessageState) apply_bad_msg_notification(event tl.BadMsgNotificati
 	return []WireMessage{}
 }
 
+// encode_frame encodes payload using the codec's configured transport mode.
 pub fn (mut c FrameCodec) encode_frame(payload []u8) ![]u8 {
 	match c.mode {
 		.abridged { return c.encode_abridged_frame(payload)! }
@@ -665,6 +729,7 @@ pub fn (mut c FrameCodec) encode_frame(payload []u8) ![]u8 {
 	}
 }
 
+// read_frame reads and decodes one frame from stream using the codec's mode.
 pub fn (mut c FrameCodec) read_frame(mut stream Stream) ![]u8 {
 	match c.mode {
 		.abridged { return c.read_abridged_frame(mut stream)! }

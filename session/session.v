@@ -14,6 +14,7 @@ const sqlite_session_version = 1
 const string_session_version = 1
 const sqlite_magic_header = 'SQLite format 3'
 
+// SessionState stores the MTProto authorization state persisted for a client.
 pub struct SessionState {
 pub:
 	dc_id           int
@@ -28,6 +29,7 @@ pub:
 	created_at      i64
 }
 
+// PeerRecord stores a cached peer entry persisted alongside session state.
 pub struct PeerRecord {
 pub:
 	cache_key  string
@@ -37,18 +39,21 @@ pub:
 	input_peer tl.InputPeerType
 }
 
+// SessionData bundles the persisted session state and peer cache.
 pub struct SessionData {
 pub:
 	state SessionState
 	peers []PeerRecord
 }
 
+// Store persists and restores SessionData.
 pub interface Store {
 mut:
 	load() !SessionData
 	save(data SessionData) !
 }
 
+// MemorySession keeps session data in process memory only.
 pub struct MemorySession {
 mut:
 	mu       sync.Mutex
@@ -56,12 +61,14 @@ mut:
 	data     SessionData
 }
 
+// StringSession persists session data as an encoded string payload.
 pub struct StringSession {
 mut:
 	base  MemorySession
 	value string
 }
 
+// SQLiteSession persists session data in a SQLite database file.
 pub struct SQLiteSession {
 pub:
 	path string
@@ -122,10 +129,12 @@ struct LegacyFileStoreRecord {
 	created_at      i64
 }
 
+// new_memory_session creates an empty in-memory session store.
 pub fn new_memory_session() &MemorySession {
 	return &MemorySession{}
 }
 
+// new_string_session creates a string-backed session store from an optional encoded payload.
 pub fn new_string_session(value string) !&StringSession {
 	mut store := &StringSession{}
 	if value.len == 0 {
@@ -137,6 +146,7 @@ pub fn new_string_session(value string) !&StringSession {
 	return store
 }
 
+// new_sqlite_session creates a SQLite-backed session store.
 pub fn new_sqlite_session(path string) !&SQLiteSession {
 	if path.len == 0 {
 		return error('session store path must not be empty')
@@ -146,14 +156,17 @@ pub fn new_sqlite_session(path string) !&SQLiteSession {
 	}
 }
 
+// new_memory_store is an alias for new_memory_session.
 pub fn new_memory_store() &MemorySession {
 	return new_memory_session()
 }
 
+// new_file_store is an alias for new_sqlite_session.
 pub fn new_file_store(path string) !&SQLiteSession {
 	return new_sqlite_session(path)!
 }
 
+// load restores session data from memory.
 pub fn (mut s MemorySession) load() !SessionData {
 	s.mu.@lock()
 	defer {
@@ -165,6 +178,7 @@ pub fn (mut s MemorySession) load() !SessionData {
 	return clone_session_data(s.data)
 }
 
+// save persists session data into memory.
 pub fn (mut s MemorySession) save(data SessionData) ! {
 	s.mu.@lock()
 	defer {
@@ -174,23 +188,28 @@ pub fn (mut s MemorySession) save(data SessionData) ! {
 	s.has_data = true
 }
 
+// load restores session data from the encoded string session.
 pub fn (mut s StringSession) load() !SessionData {
 	return s.base.load()!
 }
 
+// save persists session data into the encoded string session.
 pub fn (mut s StringSession) save(data SessionData) ! {
 	s.base.save(data)!
 	s.value = encode_string_payload(data)!
 }
 
+// encoded returns the current encoded string payload.
 pub fn (s StringSession) encoded() string {
 	return s.value
 }
 
+// string returns the encoded payload so StringSession satisfies string interpolation naturally.
 pub fn (s StringSession) string() string {
 	return s.value
 }
 
+// load restores session data from the SQLite database file.
 pub fn (mut s SQLiteSession) load() !SessionData {
 	s.mu.@lock()
 	defer {
@@ -208,6 +227,7 @@ pub fn (mut s SQLiteSession) load() !SessionData {
 	return load_sqlite_session_data(mut db, s.path)!
 }
 
+// save persists session data into the SQLite database file.
 pub fn (mut s SQLiteSession) save(data SessionData) ! {
 	s.mu.@lock()
 	defer {

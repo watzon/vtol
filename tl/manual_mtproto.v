@@ -2,9 +2,12 @@ module tl
 
 import compress.gzip
 
+// rpc_result_constructor_id is the MTProto constructor id for rpc_result.
 pub const rpc_result_constructor_id = u32(0xf35c6d01)
+// gzip_packed_constructor_id is the MTProto constructor id for gzip_packed.
 pub const gzip_packed_constructor_id = u32(0x3072cfa1)
 
+// RpcResult wraps a raw MTProto rpc_result container.
 pub struct RpcResult {
 pub:
 	req_msg_id i64
@@ -12,14 +15,17 @@ pub:
 	raw_result []u8
 }
 
+// constructor_id returns the rpc_result constructor id.
 pub fn (r RpcResult) constructor_id() u32 {
 	return rpc_result_constructor_id
 }
 
+// qualified_name returns the MTProto object name.
 pub fn (r RpcResult) qualified_name() string {
 	return 'rpc_result'
 }
 
+// encode serializes the rpc_result container.
 pub fn (r RpcResult) encode() ![]u8 {
 	mut out := []u8{}
 	append_u32(mut out, rpc_result_constructor_id)
@@ -32,6 +38,7 @@ pub fn (r RpcResult) encode() ![]u8 {
 	return out
 }
 
+// GzipPacked wraps a gzip_packed MTProto container.
 pub struct GzipPacked {
 pub:
 	packed_data []u8
@@ -39,14 +46,17 @@ pub:
 	raw_payload []u8
 }
 
+// constructor_id returns the gzip_packed constructor id.
 pub fn (g GzipPacked) constructor_id() u32 {
 	return gzip_packed_constructor_id
 }
 
+// qualified_name returns the MTProto object name.
 pub fn (g GzipPacked) qualified_name() string {
 	return 'gzip_packed'
 }
 
+// encode serializes the gzip_packed container.
 pub fn (g GzipPacked) encode() ![]u8 {
 	mut out := []u8{}
 	append_u32(mut out, gzip_packed_constructor_id)
@@ -63,6 +73,7 @@ pub fn (g GzipPacked) encode() ![]u8 {
 	return out
 }
 
+// decode_mtproto_object decodes one MTProto-level object from data.
 pub fn decode_mtproto_object(data []u8) !Object {
 	mut decoder := new_decoder(data)
 	object := decode_mtproto_object_from_decoder(mut decoder)!
@@ -72,6 +83,7 @@ pub fn decode_mtproto_object(data []u8) !Object {
 	return object
 }
 
+// decode_mtproto_object_prefix decodes one MTProto-level object and returns consumed bytes.
 pub fn decode_mtproto_object_prefix(data []u8) !(Object, int) {
 	mut decoder := new_decoder(data)
 	object := decode_mtproto_object_from_decoder(mut decoder)!

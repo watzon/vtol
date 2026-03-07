@@ -1,5 +1,6 @@
 module errors
 
+// Kind classifies top-level VTOL error categories.
 pub enum Kind {
 	transport
 	auth
@@ -9,6 +10,7 @@ pub enum Kind {
 	media
 }
 
+// Info stores structured error metadata for surfaced VTOL failures.
 pub struct Info {
 pub:
 	kind    Kind

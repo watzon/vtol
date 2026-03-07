@@ -4,6 +4,7 @@ import media
 import os
 import tl
 
+// upload_file_bytes uploads an in-memory payload and returns the resulting Telegram input file.
 pub fn (mut c Client) upload_file_bytes(name string, data []u8, options media.UploadOptions) !media.UploadedFile {
 	c.connect()!
 	file_id := if options.file_id != 0 {
@@ -41,6 +42,7 @@ pub fn (mut c Client) upload_file_bytes(name string, data []u8, options media.Up
 	return plan.uploaded_file()
 }
 
+// upload_file_path reads and uploads a local file path.
 pub fn (mut c Client) upload_file_path(path string, options media.UploadOptions) !media.UploadedFile {
 	if path.len == 0 {
 		return error('upload path must not be empty')
@@ -53,6 +55,7 @@ pub fn (mut c Client) upload_file_path(path string, options media.UploadOptions)
 	return c.upload_file_bytes(name, data, options)!
 }
 
+// download_file downloads bytes for a Telegram file location.
 pub fn (mut c Client) download_file(location tl.InputFileLocationType, options media.DownloadOptions) !media.DownloadResult {
 	c.connect()!
 	mut cursor := media.new_download_cursor(options)!
@@ -103,10 +106,12 @@ pub fn (mut c Client) download_file(location tl.InputFileLocationType, options m
 	}
 }
 
+// send_text sends a text message to a peer-like target and returns a normalized SentMessage.
 pub fn (mut c Client) send_text[T](peer T, message RichTextInput) !SentMessage {
 	return c.send_text_with(peer, message, SendOptions{})!
 }
 
+// send_text_with sends a text message using explicit send options.
 pub fn (mut c Client) send_text_with[T](peer T, message RichTextInput, options SendOptions) !SentMessage {
 	resolved := c.resolve_peer_like(peer)!
 	text := rich_text_from_input(message)
@@ -114,23 +119,28 @@ pub fn (mut c Client) send_text_with[T](peer T, message RichTextInput, options S
 	return sent_message_from_updates(resolved, batch, text.text)!
 }
 
+// send_message is an alias for send_text.
 pub fn (mut c Client) send_message[T](peer T, message RichTextInput) !SentMessage {
 	return c.send_text(peer, message)!
 }
 
+// send_text_updates sends a text message and returns the raw updates payload.
 pub fn (mut c Client) send_text_updates[T](peer T, message RichTextInput) !tl.UpdatesType {
 	return c.send_text_updates_with(peer, message, SendOptions{})!
 }
 
+// send_text_updates_with sends a text message and returns the raw updates payload with explicit options.
 pub fn (mut c Client) send_text_updates_with[T](peer T, message RichTextInput, options SendOptions) !tl.UpdatesType {
 	resolved := c.resolve_peer_like(peer)!
 	return c.send_message_updates_with(resolved.input_peer, message, options)!
 }
 
+// send_message_updates sends a text message to a resolved input peer and returns the raw updates payload.
 pub fn (mut c Client) send_message_updates(peer tl.InputPeerType, message RichTextInput) !tl.UpdatesType {
 	return c.send_message_updates_with(peer, message, SendOptions{})!
 }
 
+// send_message_updates_with sends a text message to a resolved input peer with explicit options.
 pub fn (mut c Client) send_message_updates_with(peer tl.InputPeerType, message RichTextInput, options SendOptions) !tl.UpdatesType {
 	text := rich_text_from_input(message)
 	if text.text.len == 0 {
@@ -161,12 +171,14 @@ pub fn (mut c Client) send_message_updates_with(peer tl.InputPeerType, message R
 	return c.ingest_updates_result(result)!
 }
 
+// send_file uploads and sends a document to a peer-like target.
 pub fn (mut c Client) send_file[T](peer T, name string, data []u8, options SendFileOptions) !SentMessage {
 	resolved := c.resolve_peer_like(peer)!
 	batch := c.send_file_updates(resolved, name, data, options)!
 	return sent_message_from_updates(resolved, batch, options.caption)!
 }
 
+// send_file_updates uploads and sends a document and returns the raw updates payload.
 pub fn (mut c Client) send_file_updates[T](peer T, name string, data []u8, options SendFileOptions) !tl.UpdatesType {
 	resolved := c.resolve_peer_like(peer)!
 	uploaded := c.upload_file_bytes(name, data, options.upload)!
@@ -192,6 +204,7 @@ pub fn (mut c Client) send_file_updates[T](peer T, name string, data []u8, optio
 	}, options.caption, file_send_options_to_send_options(options))
 }
 
+// send_file_path reads, uploads, and sends a document from disk.
 pub fn (mut c Client) send_file_path[T](peer T, path string, options SendFileOptions) !SentMessage {
 	if path.len == 0 {
 		return error('file path must not be empty')
@@ -204,16 +217,19 @@ pub fn (mut c Client) send_file_path[T](peer T, path string, options SendFileOpt
 	return c.send_file(peer, name, data, options)!
 }
 
+// send_file_to_username is a convenience wrapper around send_file for usernames.
 pub fn (mut c Client) send_file_to_username(username string, name string, data []u8, options SendFileOptions) !SentMessage {
 	return c.send_file(username, name, data, options)!
 }
 
+// send_photo uploads and sends a photo to a peer-like target.
 pub fn (mut c Client) send_photo[T](peer T, name string, data []u8, options SendPhotoOptions) !SentMessage {
 	resolved := c.resolve_peer_like(peer)!
 	batch := c.send_photo_updates(resolved, name, data, options)!
 	return sent_message_from_updates(resolved, batch, options.caption)!
 }
 
+// send_photo_updates uploads and sends a photo and returns the raw updates payload.
 pub fn (mut c Client) send_photo_updates[T](peer T, name string, data []u8, options SendPhotoOptions) !tl.UpdatesType {
 	resolved := c.resolve_peer_like(peer)!
 	uploaded := c.upload_file_bytes(name, data, options.upload)!
@@ -226,6 +242,7 @@ pub fn (mut c Client) send_photo_updates[T](peer T, name string, data []u8, opti
 	}, options.caption, photo_send_options_to_send_options(options))
 }
 
+// send_photo_path reads, uploads, and sends a photo from disk.
 pub fn (mut c Client) send_photo_path[T](peer T, path string, options SendPhotoOptions) !SentMessage {
 	if path.len == 0 {
 		return error('photo path must not be empty')
@@ -238,34 +255,42 @@ pub fn (mut c Client) send_photo_path[T](peer T, path string, options SendPhotoO
 	return c.send_photo(peer, name, data, options)!
 }
 
+// send_photo_to_username is a convenience wrapper around send_photo for usernames.
 pub fn (mut c Client) send_photo_to_username(username string, name string, data []u8, options SendPhotoOptions) !SentMessage {
 	return c.send_photo(username, name, data, options)!
 }
 
+// send_message_to_username is a convenience wrapper around send_message for usernames.
 pub fn (mut c Client) send_message_to_username(username string, message string) !SentMessage {
 	return c.send_message(username, message)!
 }
 
+// document_file_location converts a document into an input file location.
 pub fn document_file_location(document tl.Document, thumb_size string) tl.InputFileLocationType {
 	return media.document_file_reference(document, thumb_size).input_location()
 }
 
+// photo_file_location converts a photo into an input file location.
 pub fn photo_file_location(photo tl.Photo, thumb_size string) tl.InputFileLocationType {
 	return media.photo_file_reference(photo, thumb_size).input_location()
 }
 
+// document_file_reference builds a reusable file reference from a document.
 pub fn document_file_reference(document tl.Document, thumb_size string) media.FileReference {
 	return media.document_file_reference(document, thumb_size)
 }
 
+// photo_file_reference builds a reusable file reference from a photo.
 pub fn photo_file_reference(photo tl.Photo, thumb_size string) media.FileReference {
 	return media.photo_file_reference(photo, thumb_size)
 }
 
+// download_file_reference downloads a file using a reusable FileReference.
 pub fn (mut c Client) download_file_reference(reference media.FileReference, options media.DownloadOptions) !media.DownloadResult {
 	return c.download_file(reference.input_location(), options)!
 }
 
+// get_file_hashes fetches integrity hashes for a file location at the given offset.
 pub fn (mut c Client) get_file_hashes(location tl.InputFileLocationType, offset i64) ![]tl.FileHashType {
 	if offset < 0 {
 		return error('file hash offset must not be negative')
@@ -277,6 +302,7 @@ pub fn (mut c Client) get_file_hashes(location tl.InputFileLocationType, offset 
 	return expect_file_hashes(result)!
 }
 
+// get_cdn_file_hashes fetches integrity hashes for a CDN download token.
 pub fn (mut c Client) get_cdn_file_hashes(file_token []u8, offset i64) ![]tl.FileHashType {
 	if file_token.len == 0 {
 		return error('cdn file token must not be empty')
@@ -291,6 +317,7 @@ pub fn (mut c Client) get_cdn_file_hashes(file_token []u8, offset i64) ![]tl.Fil
 	return expect_file_hashes(result)!
 }
 
+// reupload_cdn_file refreshes expired CDN download hashes.
 pub fn (mut c Client) reupload_cdn_file(file_token []u8, request_token []u8) ![]tl.FileHashType {
 	if file_token.len == 0 {
 		return error('cdn file token must not be empty')

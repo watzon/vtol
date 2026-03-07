@@ -3,6 +3,7 @@ module updates
 import rpc
 import tl
 
+// StateVector tracks Telegram's updates synchronization cursors.
 pub struct StateVector {
 pub mut:
 	pts  i64
@@ -11,17 +12,20 @@ pub mut:
 	date int
 }
 
+// SubscriptionConfig configures update subscription buffering.
 pub struct SubscriptionConfig {
 pub:
 	buffer_size int = 64
 	drop_oldest bool
 }
 
+// EventKind distinguishes live updates from recovered differences.
 pub enum EventKind {
 	live
 	recovered
 }
 
+// Event is emitted to update subscriptions for live or recovered update traffic.
 pub struct Event {
 pub:
 	kind       EventKind                = .live
@@ -30,6 +34,7 @@ pub:
 	state      StateVector
 }
 
+// Subscription exposes a channel of update events from a Manager.
 pub struct Subscription {
 pub:
 	id     int
@@ -37,11 +42,13 @@ pub:
 	config SubscriptionConfig
 }
 
+// ManagerConfig configures recovery behavior for a Manager.
 pub struct ManagerConfig {
 pub:
 	recovery_timeout_ms int = 10_000
 }
 
+// DifferenceSource fetches updates state and differences on behalf of a Manager.
 pub interface DifferenceSource {
 mut:
 	invoke(function tl.Function, options rpc.CallOptions) !tl.Object
@@ -64,6 +71,7 @@ struct BatchDecision {
 	state   StateVector
 }
 
+// Manager tracks update state, applies batches, and fans events out to subscriptions.
 pub struct Manager {
 pub:
 	config ManagerConfig
@@ -74,6 +82,7 @@ mut:
 	subscriptions        map[int]SubscriptionState
 }
 
+// new_manager creates an updates Manager with normalized configuration.
 pub fn new_manager(config ManagerConfig) Manager {
 	return Manager{
 		config:        ManagerConfig{
@@ -87,10 +96,12 @@ pub fn new_manager(config ManagerConfig) Manager {
 	}
 }
 
+// is_initialized reports whether the manager has an initial updates state.
 pub fn (m Manager) is_initialized() bool {
 	return m.initialized
 }
 
+// current_state returns the current updates state vector when initialized.
 pub fn (m Manager) current_state() ?StateVector {
 	if !m.initialized {
 		return none
@@ -98,12 +109,14 @@ pub fn (m Manager) current_state() ?StateVector {
 	return m.state
 }
 
+// seed initializes the manager with a caller-provided state vector.
 pub fn (mut m Manager) seed(state StateVector) StateVector {
 	m.state = normalize_state_vector(state)
 	m.initialized = true
 	return m.state
 }
 
+// bootstrap fetches the current updates state from Telegram and seeds the manager.
 pub fn (mut m Manager) bootstrap(mut source DifferenceSource) !StateVector {
 	result := source.invoke(tl.UpdatesGetState{}, rpc.CallOptions{
 		timeout_ms: m.config.recovery_timeout_ms
@@ -112,6 +125,7 @@ pub fn (mut m Manager) bootstrap(mut source DifferenceSource) !StateVector {
 	return m.seed(state)
 }
 
+// subscribe registers a new update subscription.
 pub fn (mut m Manager) subscribe(config SubscriptionConfig) !Subscription {
 	normalized := normalize_subscription_config(config)
 	id := m.next_subscription_id
@@ -128,12 +142,14 @@ pub fn (mut m Manager) subscribe(config SubscriptionConfig) !Subscription {
 	}
 }
 
+// unsubscribe removes a previously registered subscription.
 pub fn (mut m Manager) unsubscribe(id int) {
 	if id in m.subscriptions {
 		m.subscriptions.delete(id)
 	}
 }
 
+// ingest applies a live updates batch and recovers gaps when necessary.
 pub fn (mut m Manager) ingest(batch tl.UpdatesType, mut source DifferenceSource) ! {
 	if !m.initialized {
 		m.bootstrap(mut source)!
@@ -141,6 +157,7 @@ pub fn (mut m Manager) ingest(batch tl.UpdatesType, mut source DifferenceSource)
 	m.apply_batch(batch, mut source)!
 }
 
+// recover explicitly requests getDifference recovery using the current state.
 pub fn (mut m Manager) recover(mut source DifferenceSource) ! {
 	if !m.initialized {
 		m.bootstrap(mut source)!
@@ -149,6 +166,7 @@ pub fn (mut m Manager) recover(mut source DifferenceSource) ! {
 	m.recover_difference(mut source)!
 }
 
+// state_vector_from_updates_state converts a TL updates.State into a StateVector.
 pub fn state_vector_from_updates_state(state tl.UpdatesStateType) !StateVector {
 	match state {
 		tl.UpdatesState {

@@ -8,18 +8,21 @@ import tl
 import transport
 import updates
 
+// TransportMode selects the MTProto transport framing used by the client.
 pub enum TransportMode {
 	abridged
 	intermediate
 	full
 }
 
+// ClientState describes the high-level connection state of a Client.
 pub enum ClientState {
 	disconnected
 	connecting
 	connected
 }
 
+// DcOption describes a Telegram datacenter endpoint.
 pub struct DcOption {
 pub:
 	id       int
@@ -28,6 +31,7 @@ pub:
 	is_media bool
 }
 
+// ClientConfig configures the high-level VTOL client.
 pub struct ClientConfig {
 pub:
 	app_id                  int
@@ -50,6 +54,7 @@ pub:
 	padding_mode            auth.RsaPaddingMode = .auto
 }
 
+// Session is the exported view of the active MTProto authorization state.
 pub struct Session {
 pub:
 	dc_id           int
@@ -62,12 +67,14 @@ pub:
 	created_at      i64
 }
 
+// Update is a lightweight named update payload.
 pub struct Update {
 pub:
 	name    string
 	payload []u8
 }
 
+// RpcError wraps a Telegram RPC error in the public vtol module.
 pub struct RpcError {
 	Error
 pub:
@@ -79,6 +86,7 @@ pub:
 	has_rate_limit bool
 }
 
+// msg returns a human-readable error string.
 pub fn (e RpcError) msg() string {
 	if e.has_rate_limit {
 		wait_kind := if e.premium_wait { 'premium flood wait' } else { 'flood wait' }
@@ -87,14 +95,17 @@ pub fn (e RpcError) msg() string {
 	return 'rpc error ${e.rpc_code}: ${e.message}'
 }
 
+// code returns the Telegram RPC error code.
 pub fn (e RpcError) code() int {
 	return e.rpc_code
 }
 
+// is_rate_limited reports whether the error carries flood-wait metadata.
 pub fn (e RpcError) is_rate_limited() bool {
 	return e.has_rate_limit
 }
 
+// retry_after_ms returns the flood-wait delay in milliseconds when present.
 pub fn (e RpcError) retry_after_ms() int {
 	if !e.has_rate_limit {
 		return 0
@@ -102,14 +113,17 @@ pub fn (e RpcError) retry_after_ms() int {
 	return e.wait_seconds * 1_000
 }
 
+// is reports whether the Telegram error message matches name exactly.
 pub fn (e RpcError) is(name string) bool {
 	return e.message == name
 }
 
+// migration_dc_id returns the target datacenter for migrate errors.
 pub fn (e RpcError) migration_dc_id() ?int {
 	return rpc.migration_dc_id(e.raw)
 }
 
+// AuthErrorKind classifies common Telegram authentication failures.
 pub enum AuthErrorKind {
 	unknown
 	password_required
@@ -122,6 +136,7 @@ pub enum AuthErrorKind {
 	bot_token_invalid
 }
 
+// AuthError wraps authentication-specific failures surfaced by start and sign-in helpers.
 pub struct AuthError {
 	Error
 pub:
@@ -131,34 +146,42 @@ pub:
 	raw       RpcError
 }
 
+// msg returns a human-readable authentication error.
 pub fn (e AuthError) msg() string {
 	return e.message
 }
 
+// code returns the underlying Telegram RPC code when available.
 pub fn (e AuthError) code() int {
 	return e.raw.rpc_code
 }
 
+// is reports whether the underlying Telegram auth code matches name.
 pub fn (e AuthError) is(name string) bool {
 	return e.auth_code == name
 }
 
+// requires_password reports whether the account needs a 2FA password.
 pub fn (e AuthError) requires_password() bool {
 	return e.kind == .password_required
 }
 
+// is_code_invalid reports whether the supplied login code was rejected.
 pub fn (e AuthError) is_code_invalid() bool {
 	return e.kind == .code_invalid
 }
 
+// is_code_expired reports whether the current login code has expired.
 pub fn (e AuthError) is_code_expired() bool {
 	return e.kind == .code_expired
 }
 
+// is_password_invalid reports whether the supplied 2FA password was rejected.
 pub fn (e AuthError) is_password_invalid() bool {
 	return e.kind == .password_invalid
 }
 
+// LoginCodeRequest holds the state needed to complete a phone-number sign-in flow.
 pub struct LoginCodeRequest {
 pub:
 	phone_number      string
@@ -168,6 +191,7 @@ pub:
 	authorization_now bool
 }
 
+// AuthPromptKind identifies which authentication prompt needs more user input.
 pub enum AuthPromptKind {
 	phone_number
 	bot_token
@@ -175,18 +199,25 @@ pub enum AuthPromptKind {
 	password
 }
 
+// PhoneCallback resolves a phone number during interactive login.
 pub type PhoneCallback = fn () !string
 
+// BotTokenCallback resolves a bot token during interactive login.
 pub type BotTokenCallback = fn () !string
 
+// CodeCallback resolves a login code for a LoginCodeRequest.
 pub type CodeCallback = fn (request LoginCodeRequest) !string
 
+// PasswordCallback resolves a 2FA password during interactive login.
 pub type PasswordCallback = fn () !string
 
+// CodeSentCallback observes that Telegram accepted and sent a login code.
 pub type CodeSentCallback = fn (request LoginCodeRequest)
 
+// InvalidAuthCallback observes recoverable authentication failures during start.
 pub type InvalidAuthCallback = fn (kind AuthPromptKind, err AuthError)
 
+// StartOptions configures the interactive login flow used by Client.start.
 pub struct StartOptions {
 pub:
 	phone_number          PhoneCallback       = unsafe { nil }
@@ -200,6 +231,7 @@ pub:
 	}
 }
 
+// ResolvedPeer is the normalized peer handle used by high-level client helpers.
 pub struct ResolvedPeer {
 pub:
 	key        string
@@ -210,6 +242,7 @@ pub:
 	chats      []tl.ChatType
 }
 
+// SentMessage is the normalized result returned by high-level send helpers.
 pub struct SentMessage {
 pub:
 	id                 int
@@ -226,6 +259,7 @@ pub:
 	has_entities_value bool
 }
 
+// SendOptions configures text-message send helpers.
 pub struct SendOptions {
 pub:
 	reply_to_message_id           int
@@ -236,6 +270,7 @@ pub:
 	has_schedule_date_value       bool
 }
 
+// SendFileOptions configures document upload and send helpers.
 pub struct SendFileOptions {
 pub:
 	upload                        media.UploadOptions
@@ -252,6 +287,7 @@ pub:
 	has_schedule_date_value       bool
 }
 
+// SendPhotoOptions configures photo upload and send helpers.
 pub struct SendPhotoOptions {
 pub:
 	upload                        media.UploadOptions
@@ -266,6 +302,7 @@ pub:
 	has_schedule_date_value       bool
 }
 
+// EventPeer describes a peer attached to an emitted update event.
 pub struct EventPeer {
 pub:
 	key                  string
@@ -275,6 +312,7 @@ pub:
 	has_input_peer_value bool
 }
 
+// RawUpdateEvent exposes a live or recovered updates payload from the update manager.
 pub struct RawUpdateEvent {
 pub:
 	kind                 updates.EventKind = .live
@@ -285,10 +323,13 @@ pub:
 	has_difference_value bool
 }
 
+// RawUpdateHandler handles a raw update event emitted by the client.
 pub type RawUpdateHandler = fn (event RawUpdateEvent) !
 
+// NewMessagePatternMatcher performs custom filtering for new-message handlers.
 pub type NewMessagePatternMatcher = fn (event NewMessageEvent) bool
 
+// NewMessageHandlerConfig filters events delivered to on_new_message_with_config.
 pub struct NewMessageHandlerConfig {
 pub:
 	chat            string
@@ -301,6 +342,7 @@ pub:
 	pattern_matcher NewMessagePatternMatcher = unsafe { nil }
 }
 
+// NewMessageEvent is the normalized high-level event delivered to message handlers.
 pub struct NewMessageEvent {
 pub:
 	kind                 updates.EventKind = .live
@@ -327,8 +369,10 @@ pub:
 	has_difference_value bool
 }
 
+// NewMessageHandler handles a normalized new-message event.
 pub type NewMessageHandler = fn (event NewMessageEvent) !
 
+// Conversation tracks a scoped dialog subscription for request-reply style flows.
 pub struct Conversation {
 pub:
 	peer ResolvedPeer
@@ -339,6 +383,7 @@ mut:
 	closed           bool
 }
 
+// DialogPageOptions configures paginated dialog listing helpers.
 pub struct DialogPageOptions {
 pub:
 	limit               int = 50
@@ -353,6 +398,7 @@ pub:
 	max_items           int
 }
 
+// DialogPage holds a single normalized page returned by get_dialog_page.
 pub struct DialogPage {
 pub:
 	response     tl.MessagesDialogsType
@@ -365,6 +411,7 @@ pub:
 	next_options DialogPageOptions
 }
 
+// DialogBatch aggregates multiple dialog pages into a deduplicated result.
 pub struct DialogBatch {
 pub mut:
 	pages    []DialogPage
@@ -374,6 +421,7 @@ pub mut:
 	users    []tl.UserType
 }
 
+// HistoryPageOptions configures paginated history listing helpers.
 pub struct HistoryPageOptions {
 pub:
 	limit       int = 50
@@ -387,6 +435,7 @@ pub:
 	max_items   int
 }
 
+// HistoryPage holds a single normalized page returned by get_history_page.
 pub struct HistoryPage {
 pub:
 	response     tl.MessagesMessagesType
@@ -399,6 +448,7 @@ pub:
 	next_options HistoryPageOptions
 }
 
+// HistoryBatch aggregates multiple history pages into a deduplicated result.
 pub struct HistoryBatch {
 pub mut:
 	pages    []HistoryPage
@@ -408,10 +458,14 @@ pub mut:
 	users    []tl.UserType
 }
 
+// DialogPageCallback handles a page emitted by each_dialog_page.
 pub type DialogPageCallback = fn (page DialogPage) !
 
+// HistoryPageCallback handles a page emitted by each_history_page.
 pub type HistoryPageCallback = fn (page HistoryPage) !
 
+// DialogCallback handles a single dialog emitted by each_dialog.
 pub type DialogCallback = fn (dialog tl.DialogType) !
 
+// HistoryMessageCallback handles a single history message emitted by each_history_message.
 pub type HistoryMessageCallback = fn (message tl.MessageType) !

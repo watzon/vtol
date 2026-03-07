@@ -2,6 +2,7 @@ module vtol
 
 import tl
 
+// cached_input_peer returns a cached input peer without performing network resolution.
 pub fn (c Client) cached_input_peer(key string) ?tl.InputPeerType {
 	cache_key := normalize_cache_key(key)
 	if cache_key in c.peer_cache {
@@ -10,6 +11,7 @@ pub fn (c Client) cached_input_peer(key string) ?tl.InputPeerType {
 	return none
 }
 
+// cached_peer returns a cached ResolvedPeer without performing network resolution.
 pub fn (c Client) cached_peer(key string) ?ResolvedPeer {
 	cache_key := normalize_cache_key(key)
 	if cache_key == 'me' || cache_key == 'self' {
@@ -26,11 +28,13 @@ pub fn (c Client) cached_peer(key string) ?ResolvedPeer {
 	return none
 }
 
+// resolve_input_peer resolves a cache key or username into an input peer.
 pub fn (mut c Client) resolve_input_peer(key string) !tl.InputPeerType {
 	resolved := c.resolve_peer(key)!
 	return resolved.input_peer
 }
 
+// resolve_peer_like normalizes supported peer-like inputs into a ResolvedPeer.
 pub fn (mut c Client) resolve_peer_like[T](peer T) !ResolvedPeer {
 	$if T is string {
 		return c.resolve_peer(peer)!
@@ -69,6 +73,7 @@ pub fn (mut c Client) resolve_peer_like[T](peer T) !ResolvedPeer {
 	}
 }
 
+// resolve_peer resolves a cache key or username into a ResolvedPeer.
 pub fn (mut c Client) resolve_peer(key string) !ResolvedPeer {
 	cache_key := normalize_cache_key(key)
 	if cached := c.cached_peer(cache_key) {
@@ -80,6 +85,7 @@ pub fn (mut c Client) resolve_peer(key string) !ResolvedPeer {
 	return c.resolve_username(cache_key)!
 }
 
+// resolve_username resolves a Telegram username and caches the result for later reuse.
 pub fn (mut c Client) resolve_username(username string) !ResolvedPeer {
 	normalized := normalize_username(username)
 	if normalized.len == 0 {

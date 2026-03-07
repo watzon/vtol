@@ -3,12 +3,14 @@ module vtol
 import encoding.html
 import tl
 
+// RichText stores message text plus Telegram formatting entities.
 pub struct RichText {
 pub:
 	text     string
 	entities []tl.MessageEntityType
 }
 
+// RichTextInput accepts VTOL rich text, plain strings, or TL TextWithEntities values.
 pub type RichTextInput = RichText | string | tl.TextWithEntities
 
 enum RichEntityKind {
@@ -43,12 +45,14 @@ struct MarkdownLink {
 	next_index int
 }
 
+// plain_text wraps a plain string in a RichText value with no entities.
 pub fn plain_text(text string) RichText {
 	return RichText{
 		text: text
 	}
 }
 
+// rich_text builds a RichText value from explicit text and entities.
 pub fn rich_text(text string, entities []tl.MessageEntityType) RichText {
 	return RichText{
 		text:     text
@@ -56,6 +60,7 @@ pub fn rich_text(text string, entities []tl.MessageEntityType) RichText {
 	}
 }
 
+// rich_text_from_tl converts a TL TextWithEntities value into RichText.
 pub fn rich_text_from_tl(value tl.TextWithEntities) RichText {
 	return RichText{
 		text:     value.text
@@ -63,6 +68,7 @@ pub fn rich_text_from_tl(value tl.TextWithEntities) RichText {
 	}
 }
 
+// to_tl converts RichText into the TL TextWithEntities representation.
 pub fn (value RichText) to_tl() tl.TextWithEntities {
 	return tl.TextWithEntities{
 		text:     value.text
@@ -70,10 +76,12 @@ pub fn (value RichText) to_tl() tl.TextWithEntities {
 	}
 }
 
+// has_entities reports whether the RichText contains any formatting entities.
 pub fn (value RichText) has_entities() bool {
 	return value.entities.len > 0
 }
 
+// parse_markdown parses VTOL's supported Telegram markdown subset into RichText.
 pub fn parse_markdown(input string) !RichText {
 	mut builder := RichTextBuilder{}
 	mut stack := []OpenRichEntity{}
@@ -127,6 +135,7 @@ pub fn parse_markdown(input string) !RichText {
 	return builder.finish()
 }
 
+// parse_html parses VTOL's supported Telegram HTML subset into RichText.
 pub fn parse_html(input string) !RichText {
 	mut builder := RichTextBuilder{}
 	mut stack := []OpenRichEntity{}

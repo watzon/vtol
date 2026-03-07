@@ -24,6 +24,7 @@ struct MessageEventContext {
 	has_difference_value bool
 }
 
+// on_raw_update registers a handler for raw live and recovered update payloads.
 pub fn (mut c Client) on_raw_update(handler RawUpdateHandler) !int {
 	c.ensure_event_subscription()!
 	id := c.next_event_handler_id
@@ -34,10 +35,12 @@ pub fn (mut c Client) on_raw_update(handler RawUpdateHandler) !int {
 	return id
 }
 
+// on_new_message registers a handler for normalized new-message events.
 pub fn (mut c Client) on_new_message(handler NewMessageHandler) !int {
 	return c.on_new_message_with_config(NewMessageHandlerConfig{}, handler)
 }
 
+// on_new_message_with_config registers a filtered handler for normalized new-message events.
 pub fn (mut c Client) on_new_message_with_config(config NewMessageHandlerConfig, handler NewMessageHandler) !int {
 	c.ensure_event_subscription()!
 	normalized, pattern_regex, has_pattern_regex := normalize_new_message_handler_config(config)!
@@ -52,18 +55,21 @@ pub fn (mut c Client) on_new_message_with_config(config NewMessageHandlerConfig,
 	return id
 }
 
+// on_new_message_pattern registers a regex-filtered new-message handler.
 pub fn (mut c Client) on_new_message_pattern(pattern string, handler NewMessageHandler) !int {
 	return c.on_new_message_with_config(NewMessageHandlerConfig{
 		pattern: pattern
 	}, handler)
 }
 
+// on_new_message_matcher registers a custom predicate-filtered new-message handler.
 pub fn (mut c Client) on_new_message_matcher(matcher NewMessagePatternMatcher, handler NewMessageHandler) !int {
 	return c.on_new_message_with_config(NewMessageHandlerConfig{
 		pattern_matcher: matcher
 	}, handler)
 }
 
+// remove_event_handler unregisters a raw or normalized event handler by id.
 pub fn (mut c Client) remove_event_handler(id int) bool {
 	mut removed := false
 	if id in c.raw_update_handlers {
@@ -78,6 +84,7 @@ pub fn (mut c Client) remove_event_handler(id int) bool {
 	return removed
 }
 
+// idle continuously pumps updates until the client disconnects.
 pub fn (mut c Client) idle() ! {
 	c.connect()!
 	for c.is_connected() {
@@ -85,6 +92,7 @@ pub fn (mut c Client) idle() ! {
 	}
 }
 
+// run_until_disconnected is an alias for idle.
 pub fn (mut c Client) run_until_disconnected() ! {
 	c.idle()!
 }

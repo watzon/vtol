@@ -5,12 +5,14 @@ import math.big
 import rpc
 import tl
 
+// send_login_code requests a login code using VTOL's default Telegram code settings.
 pub fn (mut c Client) send_login_code(phone_number string) !LoginCodeRequest {
 	return c.send_login_code_with_settings(phone_number, tl.CodeSettings{
 		allow_app_hash: true
 	})
 }
 
+// send_login_code_with_settings requests a login code using explicit Telegram code settings.
 pub fn (mut c Client) send_login_code_with_settings(phone_number string, settings tl.CodeSettingsType) !LoginCodeRequest {
 	result := c.invoke_auth_with_migration(tl.AuthSendCode{
 		phone_number: phone_number
@@ -21,6 +23,7 @@ pub fn (mut c Client) send_login_code_with_settings(phone_number string, setting
 	return login_code_request_from_object(phone_number, result)!
 }
 
+// sign_in_code completes a login-code request and persists the resulting authorization.
 pub fn (mut c Client) sign_in_code(request LoginCodeRequest, code string) !tl.AuthAuthorizationType {
 	if request.authorization_now {
 		c.cache_authorization(request.authorization)
@@ -33,6 +36,7 @@ pub fn (mut c Client) sign_in_code(request LoginCodeRequest, code string) !tl.Au
 	return c.sign_in_phone(request.phone_number, request.phone_code_hash, code)!
 }
 
+// sign_in_phone signs in with an explicit phone number, code hash, and code.
 pub fn (mut c Client) sign_in_phone(phone_number string, phone_code_hash string, code string) !tl.AuthAuthorizationType {
 	result := c.invoke_auth_with_migration(tl.AuthSignIn{
 		phone_number:                 phone_number
@@ -48,11 +52,13 @@ pub fn (mut c Client) sign_in_phone(phone_number string, phone_code_hash string,
 	return authorization
 }
 
+// get_password_challenge fetches the SRP challenge required for 2FA password login.
 pub fn (mut c Client) get_password_challenge() !tl.AccountPasswordType {
 	result := c.invoke_auth_with_migration(tl.AccountGetPassword{})!
 	return expect_account_password(result)!
 }
 
+// check_password submits a prepared SRP password payload and persists the authorization.
 pub fn (mut c Client) check_password(password tl.InputCheckPasswordSRPType) !tl.AuthAuthorizationType {
 	result := c.invoke_auth_with_migration(tl.AuthCheckPassword{
 		password: password
@@ -63,12 +69,14 @@ pub fn (mut c Client) check_password(password tl.InputCheckPasswordSRPType) !tl.
 	return authorization
 }
 
+// sign_in_password derives the SRP proof for password-based login.
 pub fn (mut c Client) sign_in_password(password string) !tl.AuthAuthorizationType {
 	challenge := c.get_password_challenge()!
 	password_check := password_check_from_challenge(password, challenge)!
 	return c.check_password(password_check)!
 }
 
+// complete_login signs in with a code and optionally falls back to password login.
 pub fn (mut c Client) complete_login(request LoginCodeRequest, code string, password string) !tl.AuthAuthorizationType {
 	return c.sign_in_code(request, code) or {
 		if err is AuthError && err.requires_password() && password.len > 0 {
@@ -78,6 +86,7 @@ pub fn (mut c Client) complete_login(request LoginCodeRequest, code string, pass
 	}
 }
 
+// start restores an existing session or runs the interactive user or bot login flow.
 pub fn (mut c Client) start(options StartOptions) !tl.UsersUserFullType {
 	c.connect()!
 	if c.did_restore_session() {
@@ -122,10 +131,12 @@ pub fn (mut c Client) start(options StartOptions) !tl.UsersUserFullType {
 	return error('unreachable')
 }
 
+// interactive_login is an alias for start.
 pub fn (mut c Client) interactive_login(options StartOptions) !tl.UsersUserFullType {
 	return c.start(options)!
 }
 
+// login_bot authenticates a bot token and persists the resulting authorization.
 pub fn (mut c Client) login_bot(bot_token string) !tl.AuthAuthorizationType {
 	result := c.invoke_auth_with_migration(tl.AuthImportBotAuthorization{
 		flags:          0
@@ -139,11 +150,13 @@ pub fn (mut c Client) login_bot(bot_token string) !tl.AuthAuthorizationType {
 	return authorization
 }
 
+// log_out invalidates the current Telegram authorization.
 pub fn (mut c Client) log_out() !tl.AuthLoggedOutType {
 	result := c.invoke(tl.AuthLogOut{})!
 	return expect_auth_logged_out(result)!
 }
 
+// get_me fetches the full Telegram user record for the current authorization.
 pub fn (mut c Client) get_me() !tl.UsersUserFullType {
 	result := c.invoke(tl.UsersGetFullUser{
 		id: tl.InputUserSelf{}

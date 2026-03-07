@@ -7,6 +7,7 @@ import time
 import tl
 import transport
 
+// HandshakeState tracks progress through the unauthenticated MTProto key exchange.
 pub enum HandshakeState {
 	idle
 	waiting_pq
@@ -16,12 +17,14 @@ pub enum HandshakeState {
 	failed
 }
 
+// RsaPaddingMode selects which RSA padding variant to use during auth.
 pub enum RsaPaddingMode {
 	auto
 	mtproto2
 	legacy
 }
 
+// AuthKeyMeta summarizes the metadata associated with an authenticated key.
 pub struct AuthKeyMeta {
 pub:
 	dc_id           int
@@ -32,6 +35,7 @@ pub:
 	created_at      i64
 }
 
+// ExchangeConfig configures a one-time MTProto authentication exchange.
 pub struct ExchangeConfig {
 pub:
 	dc_id        int
@@ -44,6 +48,7 @@ pub:
 	padding_mode RsaPaddingMode = .auto
 }
 
+// HandshakeResult contains the authorization material produced by a handshake.
 pub struct HandshakeResult {
 pub:
 	dc_id               int
@@ -57,6 +62,7 @@ pub:
 	time_offset_seconds int
 }
 
+// Sender abstracts the unencrypted function transport used during handshake.
 pub interface Sender {
 mut:
 	invoke(function tl.Function) !tl.Object
@@ -71,6 +77,7 @@ fn (mut s EngineSender) invoke(function tl.Function) !tl.Object {
 	return s.engine.invoke_unencrypted(function)!
 }
 
+// authenticate performs the MTProto auth handshake over a transport engine.
 pub fn authenticate(mut engine transport.Engine, config ExchangeConfig) !HandshakeResult {
 	modes := match config.padding_mode {
 		.auto { [RsaPaddingMode.mtproto2, .legacy] }
@@ -98,6 +105,7 @@ pub fn authenticate(mut engine transport.Engine, config ExchangeConfig) !Handsha
 	return last_error
 }
 
+// authenticate_and_store performs the handshake and persists the resulting session state.
 pub fn authenticate_and_store(mut engine transport.Engine, config ExchangeConfig, mut store session.Store) !HandshakeResult {
 	result := authenticate(mut engine, config)!
 	store.save(session.SessionData{
@@ -107,6 +115,7 @@ pub fn authenticate_and_store(mut engine transport.Engine, config ExchangeConfig
 	return result
 }
 
+// exchange performs the MTProto auth handshake using a caller-provided Sender.
 pub fn exchange(mut sender Sender, config ExchangeConfig) !HandshakeResult {
 	mode := if config.padding_mode == .legacy {
 		RsaPaddingMode.legacy
@@ -280,6 +289,7 @@ fn exchange_with_padding(mut sender Sender, config ExchangeConfig, padding_mode 
 	}
 }
 
+// meta returns the metadata-only view of the handshake result.
 pub fn (r HandshakeResult) meta() AuthKeyMeta {
 	return AuthKeyMeta{
 		dc_id:           r.dc_id
@@ -291,6 +301,7 @@ pub fn (r HandshakeResult) meta() AuthKeyMeta {
 	}
 }
 
+// session_state converts the handshake result into a persistable session.SessionState.
 pub fn (r HandshakeResult) session_state() session.SessionState {
 	return session.SessionState{
 		dc_id:           r.dc_id

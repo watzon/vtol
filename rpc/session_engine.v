@@ -7,6 +7,7 @@ import time
 import tl
 import transport
 
+// MiddlewareActionKind describes how middleware wants the RPC engine to proceed.
 pub enum MiddlewareActionKind {
 	proceed
 	retry
@@ -14,6 +15,7 @@ pub enum MiddlewareActionKind {
 	migrate_dc
 }
 
+// MiddlewareAction is returned by middleware hooks after a call outcome.
 pub struct MiddlewareAction {
 pub:
 	kind     MiddlewareActionKind = .proceed
@@ -21,6 +23,7 @@ pub:
 	dc_id    int
 }
 
+// AttemptContext describes one RPC attempt as seen by middleware and debug logging.
 pub struct AttemptContext {
 pub:
 	function_name    string
@@ -33,6 +36,7 @@ pub:
 	current_is_media bool
 }
 
+// Middleware hooks into RPC attempt lifecycles for retries, migrations, and logging.
 pub interface Middleware {
 	before_send(context AttemptContext, function tl.Function) !
 	after_result(context AttemptContext, result tl.Object) MiddlewareAction
@@ -40,6 +44,7 @@ pub interface Middleware {
 	after_transport_error(context AttemptContext, message string) MiddlewareAction
 }
 
+// EngineConfig configures the encrypted RPC session engine.
 pub struct EngineConfig {
 pub:
 	default_timeout_ms int  = 10_000
@@ -50,6 +55,7 @@ pub:
 	debug_logger       DebugLogger = NoopDebugLogger{}
 }
 
+// PendingCall tracks an in-flight RPC request started with begin_invoke.
 pub struct PendingCall {
 pub:
 	request_msg_id i64
@@ -57,6 +63,7 @@ pub:
 	deadline_at_ms i64
 }
 
+// EncryptedMessage is the decoded MTProto encrypted message envelope.
 pub struct EncryptedMessage {
 pub:
 	server_salt i64
@@ -86,6 +93,7 @@ struct CallOutcome {
 	timed_out      bool
 }
 
+// SessionEngine runs encrypted MTProto RPC calls on top of a transport engine.
 pub struct SessionEngine {
 pub:
 	config EngineConfig
@@ -98,6 +106,7 @@ mut:
 	inbound_updates []tl.UpdatesType
 }
 
+// new_session_engine creates a SessionEngine from transport state and persisted session state.
 pub fn new_session_engine(transport_engine transport.Engine, state session.SessionState, config EngineConfig) !SessionEngine {
 	if state.auth_key.len != crypto.auth_key_size {
 		return error('session state auth key must be ${crypto.auth_key_size} bytes')
@@ -142,19 +151,23 @@ pub fn new_session_engine(transport_engine transport.Engine, state session.Sessi
 	}
 }
 
+// new_session_engine_from_store creates a SessionEngine from a persisted session store.
 pub fn new_session_engine_from_store(transport_engine transport.Engine, mut store session.Store, config EngineConfig) !SessionEngine {
 	data := store.load()!
 	return new_session_engine(transport_engine, data.state, config)!
 }
 
+// is_connected reports whether the underlying transport is connected.
 pub fn (e SessionEngine) is_connected() bool {
 	return e.transport.is_connected()
 }
 
+// pending_count returns the number of in-flight RPC calls.
 pub fn (e SessionEngine) pending_count() int {
 	return e.pending_calls.len
 }
 
+// session_state returns the current persistable session state snapshot.
 pub fn (e SessionEngine) session_state() session.SessionState {
 	current_endpoint := e.transport.current_endpoint() or { transport.Endpoint{} }
 	return session.SessionState{
@@ -179,6 +192,7 @@ pub fn (e SessionEngine) session_state() session.SessionState {
 	}
 }
 
+// connect opens the underlying transport connection.
 pub fn (mut e SessionEngine) connect() ! {
 	if e.transport.is_connected() {
 		return
@@ -187,10 +201,12 @@ pub fn (mut e SessionEngine) connect() ! {
 	e.current_dc_id = endpoint.id
 }
 
+// disconnect closes the underlying transport connection.
 pub fn (mut e SessionEngine) disconnect() ! {
 	e.transport.disconnect()!
 }
 
+// reconnect forces a reconnect and restores encrypted session state.
 pub fn (mut e SessionEngine) reconnect() ! {
 	e.reconnect_with_reason('requested reconnect')!
 }
@@ -215,6 +231,7 @@ fn (mut e SessionEngine) reconnect_with_reason(reason string) ! {
 	e.emit_reconnect_event(.reconnect_succeeded, reason)
 }
 
+// pump_once flushes acknowledgements and processes one transport receive cycle.
 pub fn (mut e SessionEngine) pump_once() ! {
 	e.connect()!
 	e.flush_acks()!
@@ -222,6 +239,7 @@ pub fn (mut e SessionEngine) pump_once() ! {
 	e.flush_acks()!
 }
 
+// drain_updates returns and clears any updates accumulated while pumping the engine.
 pub fn (mut e SessionEngine) drain_updates() []tl.UpdatesType {
 	if e.inbound_updates.len == 0 {
 		return []tl.UpdatesType{}
@@ -231,11 +249,13 @@ pub fn (mut e SessionEngine) drain_updates() []tl.UpdatesType {
 	return updates
 }
 
+// begin_invoke starts an RPC request and returns a handle that can be awaited later.
 pub fn (mut e SessionEngine) begin_invoke(function tl.Function, options CallOptions) !PendingCall {
 	normalized := e.normalized_options(options)
 	return e.start_call(function, normalized, 1, false)!
 }
 
+// await_call waits for a PendingCall to complete and normalizes its error surface.
 pub fn (mut e SessionEngine) await_call(call PendingCall) !tl.Object {
 	context := e.pending_call_context(call)
 	outcome := e.await_call_outcome(call)!
@@ -312,6 +332,7 @@ pub fn (mut e SessionEngine) await_call(call PendingCall) !tl.Object {
 	})
 }
 
+// invoke performs a full RPC call with middleware, retries, and timeout handling.
 pub fn (mut e SessionEngine) invoke(function tl.Function, options CallOptions) !tl.Object {
 	normalized := e.normalized_options(options)
 	for attempt in 1 .. e.config.max_retry_attempts + 1 {
@@ -520,6 +541,7 @@ fn (mut e SessionEngine) start_call(function tl.Function, options CallOptions, a
 	}
 }
 
+// pack_encrypted_message encrypts a wire message using the given session state.
 pub fn pack_encrypted_message(state session.SessionState, message transport.WireMessage) ![]u8 {
 	if state.auth_key.len != crypto.auth_key_size {
 		return error('session state auth key must be ${crypto.auth_key_size} bytes')
@@ -556,6 +578,7 @@ fn pack_encrypted_message_with_direction(state session.SessionState, message tra
 	return out
 }
 
+// unpack_encrypted_message decrypts an encrypted MTProto payload using the given session state.
 pub fn unpack_encrypted_message(state session.SessionState, payload []u8) !EncryptedMessage {
 	if state.auth_key.len != crypto.auth_key_size {
 		return error('session state auth key must be ${crypto.auth_key_size} bytes')

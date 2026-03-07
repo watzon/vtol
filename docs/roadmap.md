@@ -126,13 +126,13 @@ The implementation order should be code-first. Rewrite the user-facing docs only
 
 ## Phase 11: Peer and message ergonomics
 
-- [ ] 11.1 Define a public `PeerLike` input story that can represent usernames, `me`/`self`, cached entity keys, `ResolvedPeer`, and `tl.InputPeerType`.
-- [ ] 11.2 Add a normalization helper such as `resolve_peer_like()` and make high-level client methods use it consistently.
-- [ ] 11.3 Replace username-only convenience helpers with generic chat-like wrappers so `send_text`, `send_photo`, `send_file`, and history helpers accept the same peer contract.
-- [ ] 11.4 Add a thin VTOL-owned sent-message wrapper that captures the common message metadata users need without hiding raw updates.
-- [ ] 11.5 Make high-level send helpers return that sent-message wrapper while preserving access to the raw `tl.UpdatesType`.
-- [ ] 11.6 Add result normalization helpers for common message/update responses so users do not need to manually unpack TL unions for routine flows.
-- [ ] 11.7 Add item-level dialog and history iteration helpers in addition to page/batch helpers.
+- [x] 11.1 Define a public `PeerLike` input story that can represent usernames, `me`/`self`, cached entity keys, `ResolvedPeer`, and `tl.InputPeerType`.
+- [x] 11.2 Add a normalization helper such as `resolve_peer_like()` and make high-level client methods use it consistently.
+- [x] 11.3 Replace username-only convenience helpers with generic chat-like wrappers so `send_text`, `send_photo`, `send_file`, and history helpers accept the same peer contract.
+- [x] 11.4 Add a thin VTOL-owned sent-message wrapper that captures the common message metadata users need without hiding raw updates.
+- [x] 11.5 Make high-level send helpers return that sent-message wrapper while preserving access to the raw `tl.UpdatesType`.
+- [x] 11.6 Add result normalization helpers for common message/update responses so users do not need to manually unpack TL unions for routine flows.
+- [x] 11.7 Add item-level dialog and history iteration helpers in addition to page/batch helpers.
 
 ## Phase 12: Event and conversation ergonomics
 

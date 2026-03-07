@@ -31,6 +31,44 @@ pub fn (mut c Client) resolve_input_peer(key string) !tl.InputPeerType {
 	return resolved.input_peer
 }
 
+pub fn (mut c Client) resolve_peer_like[T](peer T) !ResolvedPeer {
+	$if T is string {
+		return c.resolve_peer(peer)!
+	} $else $if T is ResolvedPeer {
+		return peer
+	} $else $if T is tl.InputPeerEmpty {
+		return resolved_peer_from_input_peer(tl.InputPeerType(peer), c.peer_cache) or {
+			return error('unsupported input peer')
+		}
+	} $else $if T is tl.InputPeerSelf {
+		return resolved_peer_from_input_peer(tl.InputPeerType(peer), c.peer_cache) or {
+			return error('unsupported input peer')
+		}
+	} $else $if T is tl.InputPeerChat {
+		return resolved_peer_from_input_peer(tl.InputPeerType(peer), c.peer_cache) or {
+			return error('unsupported input peer')
+		}
+	} $else $if T is tl.InputPeerUser {
+		return resolved_peer_from_input_peer(tl.InputPeerType(peer), c.peer_cache) or {
+			return error('unsupported input peer')
+		}
+	} $else $if T is tl.InputPeerChannel {
+		return resolved_peer_from_input_peer(tl.InputPeerType(peer), c.peer_cache) or {
+			return error('unsupported input peer')
+		}
+	} $else $if T is tl.InputPeerUserFromMessage {
+		return resolved_peer_from_input_peer(tl.InputPeerType(peer), c.peer_cache) or {
+			return error('unsupported input peer')
+		}
+	} $else $if T is tl.InputPeerChannelFromMessage {
+		return resolved_peer_from_input_peer(tl.InputPeerType(peer), c.peer_cache) or {
+			return error('unsupported input peer')
+		}
+	} $else {
+		return error('unsupported peer reference')
+	}
+}
+
 pub fn (mut c Client) resolve_peer(key string) !ResolvedPeer {
 	cache_key := normalize_cache_key(key)
 	if cached := c.cached_peer(cache_key) {
@@ -263,6 +301,98 @@ fn resolved_peer_from_cached(cached CachedPeer) ResolvedPeer {
 		username:   cached.username
 		peer:       cached.peer
 		input_peer: cached.input_peer
+	}
+}
+
+fn resolved_peer_from_input_peer(input_peer tl.InputPeerType, cache map[string]CachedPeer) ?ResolvedPeer {
+	if cache_key := cache_key_from_input_peer(input_peer) {
+		if cache_key in cache {
+			return resolved_peer_from_cached(cache[cache_key])
+		}
+	}
+	match input_peer {
+		tl.InputPeerSelf {
+			return ResolvedPeer{
+				key:        'me'
+				username:   'me'
+				peer:       tl.PeerUser{}
+				input_peer: tl.InputPeerSelf{}
+			}
+		}
+		tl.InputPeerUser {
+			return ResolvedPeer{
+				key:        'user:${input_peer.user_id}'
+				peer:       tl.PeerUser{
+					user_id: input_peer.user_id
+				}
+				input_peer: input_peer
+			}
+		}
+		tl.InputPeerChat {
+			return ResolvedPeer{
+				key:        'chat:${input_peer.chat_id}'
+				peer:       tl.PeerChat{
+					chat_id: input_peer.chat_id
+				}
+				input_peer: input_peer
+			}
+		}
+		tl.InputPeerChannel {
+			return ResolvedPeer{
+				key:        'channel:${input_peer.channel_id}'
+				peer:       tl.PeerChannel{
+					channel_id: input_peer.channel_id
+				}
+				input_peer: input_peer
+			}
+		}
+		tl.InputPeerUserFromMessage {
+			return ResolvedPeer{
+				key:        'user:${input_peer.user_id}'
+				peer:       tl.PeerUser{
+					user_id: input_peer.user_id
+				}
+				input_peer: input_peer
+			}
+		}
+		tl.InputPeerChannelFromMessage {
+			return ResolvedPeer{
+				key:        'channel:${input_peer.channel_id}'
+				peer:       tl.PeerChannel{
+					channel_id: input_peer.channel_id
+				}
+				input_peer: input_peer
+			}
+		}
+		else {
+			return none
+		}
+	}
+}
+
+fn cache_key_from_input_peer(input_peer tl.InputPeerType) ?string {
+	match input_peer {
+		tl.InputPeerSelf {
+			return 'me'
+		}
+		tl.InputPeerUser {
+			return 'user:${input_peer.user_id}'
+		}
+		tl.InputPeerChat {
+			return 'chat:${input_peer.chat_id}'
+		}
+		tl.InputPeerChannel {
+			return 'channel:${input_peer.channel_id}'
+		}
+		tl.InputPeerUserFromMessage {
+			return 'user:${input_peer.user_id}'
+		}
+		tl.InputPeerChannelFromMessage {
+			return 'channel:${input_peer.channel_id}'
+		}
+		else {
+			return none
+		}
 	}
 }
 

@@ -208,6 +208,22 @@ pub:
 	chats      []tl.ChatType
 }
 
+pub struct SentMessage {
+pub:
+	id                 int
+	peer               ResolvedPeer
+	text               string
+	date               int
+	outgoing           bool = true
+	updates            tl.UpdatesType
+	message            tl.MessageType = tl.UnknownMessageType{}
+	has_message_value  bool
+	media              tl.MessageMediaType = tl.UnknownMessageMediaType{}
+	has_media_value    bool
+	entities           []tl.MessageEntityType
+	has_entities_value bool
+}
+
 pub struct DialogPageOptions {
 pub:
 	limit               int = 50
@@ -280,3 +296,7 @@ pub mut:
 pub type DialogPageCallback = fn (page DialogPage) !
 
 pub type HistoryPageCallback = fn (page HistoryPage) !
+
+pub type DialogCallback = fn (dialog tl.DialogType) !
+
+pub type HistoryMessageCallback = fn (message tl.MessageType) !

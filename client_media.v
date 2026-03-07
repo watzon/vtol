@@ -103,7 +103,22 @@ pub fn (mut c Client) download_file(location tl.InputFileLocationType, options m
 	}
 }
 
-pub fn (mut c Client) send_message(peer tl.InputPeerType, message string) !tl.UpdatesType {
+pub fn (mut c Client) send_text[T](peer T, message string) !SentMessage {
+	resolved := c.resolve_peer_like(peer)!
+	batch := c.send_text_updates(resolved, message)!
+	return sent_message_from_updates(resolved, batch, message)!
+}
+
+pub fn (mut c Client) send_message[T](peer T, message string) !SentMessage {
+	return c.send_text(peer, message)!
+}
+
+pub fn (mut c Client) send_text_updates[T](peer T, message string) !tl.UpdatesType {
+	resolved := c.resolve_peer_like(peer)!
+	return c.send_message_updates(resolved.input_peer, message)!
+}
+
+pub fn (mut c Client) send_message_updates(peer tl.InputPeerType, message string) !tl.UpdatesType {
 	if message.len == 0 {
 		return error('message must not be empty')
 	}
@@ -122,24 +137,24 @@ pub fn (mut c Client) send_message(peer tl.InputPeerType, message string) !tl.Up
 		suggested_post:                 tl.UnknownSuggestedPostType{}
 		has_suggested_post_value:       false
 	})!
-	batch := expect_updates(result)!
-	if c.update_manager.is_initialized() {
-		mut source := RuntimeDifferenceSource{
-			runtime: c.runtime
-		}
-		c.update_manager.ingest(batch, mut source)!
-	}
-	return batch
+	return c.ingest_updates_result(result)!
 }
 
-pub fn (mut c Client) send_file(peer tl.InputPeerType, name string, data []u8, options media.SendFileOptions) !tl.UpdatesType {
+pub fn (mut c Client) send_file[T](peer T, name string, data []u8, options media.SendFileOptions) !SentMessage {
+	resolved := c.resolve_peer_like(peer)!
+	batch := c.send_file_updates(resolved, name, data, options)!
+	return sent_message_from_updates(resolved, batch, options.caption)!
+}
+
+pub fn (mut c Client) send_file_updates[T](peer T, name string, data []u8, options media.SendFileOptions) !tl.UpdatesType {
+	resolved := c.resolve_peer_like(peer)!
 	uploaded := c.upload_file_bytes(name, data, options.upload)!
 	mime_type := if options.mime_type.len > 0 {
 		options.mime_type
 	} else {
 		'application/octet-stream'
 	}
-	return c.send_media_request(peer, tl.InputMediaUploadedDocument{
+	return c.send_media_request_updates(resolved.input_peer, tl.InputMediaUploadedDocument{
 		nosound_video:             options.nosound_video
 		force_file:                options.force_file
 		spoiler:                   options.spoiler
@@ -156,7 +171,7 @@ pub fn (mut c Client) send_file(peer tl.InputPeerType, name string, data []u8, o
 	}, options.caption)
 }
 
-pub fn (mut c Client) send_file_path(peer tl.InputPeerType, path string, options media.SendFileOptions) !tl.UpdatesType {
+pub fn (mut c Client) send_file_path[T](peer T, path string, options media.SendFileOptions) !SentMessage {
 	if path.len == 0 {
 		return error('file path must not be empty')
 	}
@@ -168,14 +183,20 @@ pub fn (mut c Client) send_file_path(peer tl.InputPeerType, path string, options
 	return c.send_file(peer, name, data, options)!
 }
 
-pub fn (mut c Client) send_file_to_username(username string, name string, data []u8, options media.SendFileOptions) !tl.UpdatesType {
-	peer := c.resolve_input_peer(username)!
-	return c.send_file(peer, name, data, options)!
+pub fn (mut c Client) send_file_to_username(username string, name string, data []u8, options media.SendFileOptions) !SentMessage {
+	return c.send_file(username, name, data, options)!
 }
 
-pub fn (mut c Client) send_photo(peer tl.InputPeerType, name string, data []u8, options media.SendPhotoOptions) !tl.UpdatesType {
+pub fn (mut c Client) send_photo[T](peer T, name string, data []u8, options media.SendPhotoOptions) !SentMessage {
+	resolved := c.resolve_peer_like(peer)!
+	batch := c.send_photo_updates(resolved, name, data, options)!
+	return sent_message_from_updates(resolved, batch, options.caption)!
+}
+
+pub fn (mut c Client) send_photo_updates[T](peer T, name string, data []u8, options media.SendPhotoOptions) !tl.UpdatesType {
+	resolved := c.resolve_peer_like(peer)!
 	uploaded := c.upload_file_bytes(name, data, options.upload)!
-	return c.send_media_request(peer, tl.InputMediaUploadedPhoto{
+	return c.send_media_request_updates(resolved.input_peer, tl.InputMediaUploadedPhoto{
 		spoiler:               options.spoiler
 		file:                  uploaded.input_file
 		ttl_seconds:           options.ttl_seconds
@@ -184,7 +205,7 @@ pub fn (mut c Client) send_photo(peer tl.InputPeerType, name string, data []u8, 
 	}, options.caption)
 }
 
-pub fn (mut c Client) send_photo_path(peer tl.InputPeerType, path string, options media.SendPhotoOptions) !tl.UpdatesType {
+pub fn (mut c Client) send_photo_path[T](peer T, path string, options media.SendPhotoOptions) !SentMessage {
 	if path.len == 0 {
 		return error('photo path must not be empty')
 	}
@@ -196,14 +217,12 @@ pub fn (mut c Client) send_photo_path(peer tl.InputPeerType, path string, option
 	return c.send_photo(peer, name, data, options)!
 }
 
-pub fn (mut c Client) send_photo_to_username(username string, name string, data []u8, options media.SendPhotoOptions) !tl.UpdatesType {
-	peer := c.resolve_input_peer(username)!
-	return c.send_photo(peer, name, data, options)!
+pub fn (mut c Client) send_photo_to_username(username string, name string, data []u8, options media.SendPhotoOptions) !SentMessage {
+	return c.send_photo(username, name, data, options)!
 }
 
-pub fn (mut c Client) send_message_to_username(username string, message string) !tl.UpdatesType {
-	peer := c.resolve_input_peer(username)!
-	return c.send_message(peer, message)!
+pub fn (mut c Client) send_message_to_username(username string, message string) !SentMessage {
+	return c.send_message(username, message)!
 }
 
 pub fn document_file_location(document tl.Document, thumb_size string) tl.InputFileLocationType {
@@ -265,7 +284,7 @@ pub fn (mut c Client) reupload_cdn_file(file_token []u8, request_token []u8) ![]
 	return expect_file_hashes(result)!
 }
 
-fn (mut c Client) send_media_request(peer tl.InputPeerType, media_value tl.InputMediaType, caption string) !tl.UpdatesType {
+fn (mut c Client) send_media_request_updates(peer tl.InputPeerType, media_value tl.InputMediaType, caption string) !tl.UpdatesType {
 	result := c.invoke(tl.MessagesSendMedia{
 		peer:                             peer
 		reply_to:                         tl.UnknownInputReplyToType{}
@@ -288,6 +307,10 @@ fn (mut c Client) send_media_request(peer tl.InputPeerType, media_value tl.Input
 		suggested_post:                   tl.UnknownSuggestedPostType{}
 		has_suggested_post_value:         false
 	})!
+	return c.ingest_updates_result(result)!
+}
+
+fn (mut c Client) ingest_updates_result(result tl.Object) !tl.UpdatesType {
 	batch := expect_updates(result)!
 	if c.update_manager.is_initialized() {
 		mut source := RuntimeDifferenceSource{

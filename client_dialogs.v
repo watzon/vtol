@@ -33,17 +33,18 @@ pub fn (mut c Client) get_chats(chat_ids []i64) !tl.MessagesChatsType {
 	return expect_messages_chats(result)!
 }
 
-pub fn (mut c Client) get_history(peer tl.InputPeerType, limit int) !tl.MessagesMessagesType {
+pub fn (mut c Client) get_history[T](peer T, limit int) !tl.MessagesMessagesType {
 	page := c.get_history_page(peer, HistoryPageOptions{
 		limit: limit
 	})!
 	return page.response
 }
 
-pub fn (mut c Client) get_history_page(peer tl.InputPeerType, options HistoryPageOptions) !HistoryPage {
+pub fn (mut c Client) get_history_page[T](peer T, options HistoryPageOptions) !HistoryPage {
+	resolved := c.resolve_peer_like(peer)!
 	normalized := normalize_history_page_options(options)
 	result := c.invoke(tl.MessagesGetHistory{
-		peer:        peer
+		peer:        resolved.input_peer
 		offset_id:   normalized.offset_id
 		offset_date: normalized.offset_date
 		add_offset:  normalized.add_offset
@@ -143,7 +144,48 @@ pub fn (mut c Client) collect_dialogs(options DialogPageOptions) !DialogBatch {
 	return batch
 }
 
-pub fn (mut c Client) each_history_page(peer tl.InputPeerType, options HistoryPageOptions, callback HistoryPageCallback) ! {
+pub fn (mut c Client) each_dialog(options DialogPageOptions, callback DialogCallback) ! {
+	base := normalize_dialog_page_options(options)
+	mut current := base
+	mut page_count := 0
+	mut item_count := 0
+	for {
+		if base.max_pages > 0 && page_count >= base.max_pages {
+			return
+		}
+		if base.max_items > 0 && item_count >= base.max_items {
+			return
+		}
+		mut request := current
+		if base.max_items > 0 {
+			remaining := base.max_items - item_count
+			if remaining <= 0 {
+				return
+			}
+			if remaining < request.limit {
+				request = DialogPageOptions{
+					...current
+					limit: remaining
+				}
+			}
+		}
+		page := c.get_dialog_page(request)!
+		if page.dialogs.len == 0 {
+			return
+		}
+		for dialog in page.dialogs {
+			callback(dialog)!
+		}
+		page_count++
+		item_count += page.dialogs.len
+		if !page.has_more {
+			return
+		}
+		current = page.next_options
+	}
+}
+
+pub fn (mut c Client) each_history_page[T](peer T, options HistoryPageOptions, callback HistoryPageCallback) ! {
 	base := normalize_history_page_options(options)
 	mut current := base
 	mut page_count := 0
@@ -182,7 +224,48 @@ pub fn (mut c Client) each_history_page(peer tl.InputPeerType, options HistoryPa
 	}
 }
 
-pub fn (mut c Client) collect_history(peer tl.InputPeerType, options HistoryPageOptions) !HistoryBatch {
+pub fn (mut c Client) each_history_message[T](peer T, options HistoryPageOptions, callback HistoryMessageCallback) ! {
+	base := normalize_history_page_options(options)
+	mut current := base
+	mut page_count := 0
+	mut item_count := 0
+	for {
+		if base.max_pages > 0 && page_count >= base.max_pages {
+			return
+		}
+		if base.max_items > 0 && item_count >= base.max_items {
+			return
+		}
+		mut request := current
+		if base.max_items > 0 {
+			remaining := base.max_items - item_count
+			if remaining <= 0 {
+				return
+			}
+			if remaining < request.limit {
+				request = HistoryPageOptions{
+					...current
+					limit: remaining
+				}
+			}
+		}
+		page := c.get_history_page(peer, request)!
+		if page.messages.len == 0 {
+			return
+		}
+		for message in page.messages {
+			callback(message)!
+		}
+		page_count++
+		item_count += page.messages.len
+		if !page.has_more {
+			return
+		}
+		current = page.next_options
+	}
+}
+
+pub fn (mut c Client) collect_history[T](peer T, options HistoryPageOptions) !HistoryBatch {
 	base := normalize_history_page_options(options)
 	mut current := base
 	mut page_count := 0

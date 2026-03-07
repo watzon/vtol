@@ -121,6 +121,18 @@ mut:
 	state &ProgressState
 }
 
+@[heap]
+struct DialogCollector {
+mut:
+	peer_ids []i64
+}
+
+@[heap]
+struct MessageCollector {
+mut:
+	message_ids []int
+}
+
 fn (r RecordingProgressReporter) report(progress media.TransferProgress) {
 	unsafe {
 		r.state.events << progress
@@ -639,12 +651,16 @@ fn test_resolve_username_caches_peer_and_send_message_reuses_cache() {
 		}
 	}
 
-	_ = client.send_message_to_username('alice', 'hello from cache') or { panic(err) }
+	sent_message := client.send_message_to_username('alice', 'hello from cache') or { panic(err) }
 
 	assert state.invocations == [
 		'contacts.resolveUsername',
 		'messages.sendMessage',
 	]
+	assert sent_message.id == 7
+	assert sent_message.text == 'hello from cache'
+	assert sent_message.peer.key == 'user:42'
+	assert sent_message.updates.qualified_name() == 'updateShortSentMessage'
 
 	sent := state.functions[1]
 	match sent {
@@ -806,6 +822,37 @@ fn test_resolve_peer_supports_cached_keys_and_self_aliases() {
 	assert state.invocations == ['contacts.resolveUsername']
 }
 
+fn test_resolve_peer_like_accepts_strings_cached_keys_and_input_peers() {
+	mut state := &FakeRuntimeState{
+		responses: [
+			tl.Object(tl.ContactsResolvedPeer{
+				peer:  tl.PeerUser{
+					user_id: 42
+				}
+				users: [
+					tl.UserType(make_test_user('alice', 42, 77)),
+				]
+				chats: []tl.ChatType{}
+			}),
+		]
+	}
+	mut client := new_fake_client(state)
+
+	by_name := client.resolve_peer_like('@Alice') or { panic(err) }
+	by_key := client.resolve_peer_like('user:42') or { panic(err) }
+	by_input := client.resolve_peer_like(tl.InputPeerUser{
+		user_id:     42
+		access_hash: 77
+	}) or { panic(err) }
+	by_self := client.resolve_peer_like(tl.InputPeerSelf{}) or { panic(err) }
+
+	assert by_name.key == 'user:42'
+	assert by_key.username == 'alice'
+	assert by_input.key == 'user:42'
+	assert by_self.key == 'me'
+	assert state.invocations == ['contacts.resolveUsername']
+}
+
 fn test_collect_dialogs_paginates_and_caches_page_peers() {
 	first_user := make_test_user('alice', 42, 77)
 	second_user := make_test_user('bob', 43, 88)
@@ -865,6 +912,12 @@ fn test_collect_dialogs_paginates_and_caches_page_peers() {
 				users:    [
 					tl.UserType(second_user),
 				]
+			}),
+			tl.Object(tl.MessagesDialogs{
+				dialogs:  []tl.DialogType{}
+				messages: []tl.MessageType{}
+				chats:    []tl.ChatType{}
+				users:    []tl.UserType{}
 			}),
 		]
 	}
@@ -936,6 +989,102 @@ fn test_collect_dialogs_paginates_and_caches_page_peers() {
 	}
 }
 
+fn test_each_dialog_iterates_items_across_pages() {
+	first_user := make_test_user('alice', 42, 77)
+	second_user := make_test_user('bob', 43, 88)
+	mut state := &FakeRuntimeState{
+		responses: [
+			tl.Object(tl.MessagesDialogsSlice{
+				count:    2
+				dialogs:  [
+					tl.DialogType(tl.Dialog{
+						peer:            tl.PeerUser{
+							user_id: 42
+						}
+						top_message:     100
+						notify_settings: tl.PeerNotifySettings{}
+					}),
+				]
+				messages: [
+					tl.MessageType(tl.Message{
+						id:              100
+						peer_id:         tl.PeerUser{
+							user_id: 42
+						}
+						date:            1_700_000_100
+						message:         'first'
+						media:           tl.UnknownMessageMediaType{}
+						has_media_value: false
+					}),
+				]
+				chats:    []tl.ChatType{}
+				users:    [
+					tl.UserType(first_user),
+				]
+			}),
+			tl.Object(tl.MessagesDialogs{
+				dialogs:  [
+					tl.DialogType(tl.Dialog{
+						peer:            tl.PeerUser{
+							user_id: 43
+						}
+						top_message:     90
+						notify_settings: tl.PeerNotifySettings{}
+					}),
+				]
+				messages: [
+					tl.MessageType(tl.Message{
+						id:              90
+						peer_id:         tl.PeerUser{
+							user_id: 43
+						}
+						date:            1_700_000_090
+						message:         'second'
+						media:           tl.UnknownMessageMediaType{}
+						has_media_value: false
+					}),
+				]
+				chats:    []tl.ChatType{}
+				users:    [
+					tl.UserType(second_user),
+				]
+			}),
+			tl.Object(tl.MessagesDialogs{
+				dialogs:  []tl.DialogType{}
+				messages: []tl.MessageType{}
+				chats:    []tl.ChatType{}
+				users:    []tl.UserType{}
+			}),
+		]
+	}
+	mut client := new_fake_client(state)
+	collector := &DialogCollector{}
+
+	client.each_dialog(DialogPageOptions{
+		limit: 1
+	}, fn [collector] (dialog tl.DialogType) ! {
+		match dialog {
+			tl.Dialog {
+				match dialog.peer {
+					tl.PeerUser {
+						unsafe {
+							collector.peer_ids << dialog.peer.user_id
+						}
+					}
+					else {
+						return error('expected user dialog')
+					}
+				}
+			}
+			else {
+				return error('expected dialog')
+			}
+		}
+	}) or { panic(err) }
+
+	assert collector.peer_ids == [i64(42), 43]
+}
+
 fn test_collect_history_paginates_and_deduplicates_pages() {
 	mut state := &FakeRuntimeState{
 		responses: [
@@ -978,6 +1127,12 @@ fn test_collect_history_paginates_and_deduplicates_pages() {
 					tl.UserType(make_test_user('alice', 42, 77)),
 				]
 			}),
+			tl.Object(tl.MessagesMessages{
+				messages: []tl.MessageType{}
+				topics:   []tl.ForumTopicType{}
+				chats:    []tl.ChatType{}
+				users:    []tl.UserType{}
+			}),
 		]
 	}
 	mut client := new_fake_client(state)
@@ -1010,6 +1165,135 @@ fn test_collect_history_paginates_and_deduplicates_pages() {
 			assert second_call.limit == 1
 			assert second_call.offset_id == 100
 			assert second_call.offset_date == 1_700_000_100
+		}
+		else {
+			assert false
+		}
+	}
+}
+
+fn test_each_history_message_accepts_peer_like_and_iterates_messages() {
+	mut state := &FakeRuntimeState{
+		responses: [
+			tl.Object(tl.ContactsResolvedPeer{
+				peer:  tl.PeerUser{
+					user_id: 42
+				}
+				users: [
+					tl.UserType(make_test_user('alice', 42, 77)),
+				]
+				chats: []tl.ChatType{}
+			}),
+			tl.Object(tl.MessagesMessages{
+				messages: [
+					tl.MessageType(tl.Message{
+						id:              100
+						peer_id:         tl.PeerUser{
+							user_id: 42
+						}
+						date:            1_700_000_100
+						message:         'first'
+						media:           tl.UnknownMessageMediaType{}
+						has_media_value: false
+					}),
+					tl.MessageType(tl.Message{
+						id:              99
+						peer_id:         tl.PeerUser{
+							user_id: 42
+						}
+						date:            1_700_000_099
+						message:         'second'
+						media:           tl.UnknownMessageMediaType{}
+						has_media_value: false
+					}),
+				]
+				topics:   []tl.ForumTopicType{}
+				chats:    []tl.ChatType{}
+				users:    [
+					tl.UserType(make_test_user('alice', 42, 77)),
+				]
+			}),
+			tl.Object(tl.MessagesMessages{
+				messages: []tl.MessageType{}
+				topics:   []tl.ForumTopicType{}
+				chats:    []tl.ChatType{}
+				users:    []tl.UserType{}
+			}),
+		]
+	}
+	mut client := new_fake_client(state)
+	collector := &MessageCollector{}
+
+	client.each_history_message('@alice', HistoryPageOptions{
+		limit: 2
+	}, fn [collector] (message tl.MessageType) ! {
+		match message {
+			tl.Message {
+				unsafe {
+					collector.message_ids << message.id
+				}
+			}
+			else {
+				return error('expected message')
+			}
+		}
+	}) or { panic(err) }
+
+	assert collector.message_ids == [100, 99]
+	assert state.invocations == ['contacts.resolveUsername', 'messages.getHistory',
+		'messages.getHistory']
+}
+
+fn test_send_message_returns_sent_message_from_full_updates() {
+	mut state := &FakeRuntimeState{
+		responses: [
+			tl.Object(tl.Updates{
+				updates: [
+					tl.UpdateType(tl.UpdateNewMessage{
+						message:   tl.MessageType(tl.Message{
+							id:              11
+							out:             true
+							peer_id:         tl.PeerUser{
+								user_id: 42
+							}
+							date:            456
+							message:         'hello world'
+							media:           tl.UnknownMessageMediaType{}
+							has_media_value: false
+						})
+						pts:       1
+						pts_count: 1
+					}),
+				]
+				users:   [
+					tl.UserType(make_test_user('alice', 42, 77)),
+				]
+				chats:   []tl.ChatType{}
+				date:    456
+				seq:     1
+			}),
+		]
+	}
+	mut client := new_fake_client(state)
+
+	sent := client.send_message(ResolvedPeer{
+		key:        'user:42'
+		username:   'alice'
+		peer:       tl.PeerUser{
+			user_id: 42
+		}
+		input_peer: tl.InputPeerUser{
+			user_id:     42
+			access_hash: 77
+		}
+	}, 'hello world') or { panic(err) }
+
+	assert sent.id == 11
+	assert sent.text == 'hello world'
+	assert sent.has_message_value
+	match sent.message {
+		tl.Message {
+			assert sent.message.id == 11
 		}
 		else {
 			assert false

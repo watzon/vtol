@@ -26,8 +26,7 @@ fn run() ! {
 	client.connect()!
 	example_support.require_restored_session(client, session_file)!
 
-	peer := client.resolve_input_peer(peer_key)!
-	batch := client.send_message(peer, message)!
+	sent := client.send_message(peer_key, message)!
 	println('sent message to ${peer_key}: ${message}')
-	println(example_support.describe_updates(batch))
+	println(example_support.describe_updates(sent.updates))
 }

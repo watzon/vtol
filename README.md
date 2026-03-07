@@ -24,12 +24,14 @@ Session persistence now ships with Telethon-style `MemorySession`, `StringSessio
 
 ## Project Layout
 
-- `vtol.v`: root package and the current high-level client surface
+- Root `vtol` package: split across `vtol.v` plus focused `client_*.v` files
+- `vtol.v`: client/runtime core, session persistence wiring, transport setup, and shared helpers
+- `client_types.v`, `client_auth.v`, `client_dialogs.v`, `client_media.v`, `client_peers.v`, `client_updates.v`: public client surface grouped by concern without changing the `vtol` import path
 - `config/`, `errors/`, `crypto/`, `transport/`, `tl/`, `auth/`, `session/`, `rpc/`, `updates/`, `media/`, `client/`: stable subsystem boundaries
 - `internal/`: implementation details that should not leak into the public API
 - `docs/`: architecture, MTProto notes, and roadmap
 - `scripts/`: schema acquisition and TL generation entrypoints
-- `examples/`: future usage samples
+- `examples/`: runnable usage samples
 - `tests/`: fixtures, vectors, and integration suites
 
 ## Development

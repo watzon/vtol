@@ -6,7 +6,7 @@ VTOL remains pre-`1.0`. The package is usable for experimentation, but only a sm
 
 - Module boundaries: `crypto -> transport -> auth/session -> rpc -> client/media/updates`
 - Generated TL objects staying in `tl` instead of being re-modeled in the root package
-- Session persistence via `session.Store`, `session.MemoryStore`, and `session.FileStore`
+- Session persistence via `session.Store`, `session.MemorySession`, `session.StringSession`, and `session.SQLiteSession`
 - Thin client entrypoints such as `connect`, `disconnect`, `invoke`, login flows, upload/download helpers, and update subscription APIs
 - Structured RPC error metadata exposed through `rpc.RpcError` and the root `vtol.RpcError`
 

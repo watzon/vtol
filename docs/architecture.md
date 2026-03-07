@@ -17,7 +17,7 @@ The library is organized in a core-first sequence:
 
 ## Module ownership
 
-- `vtol`: small public surface and top-level domain types
+- `vtol`: small public surface and top-level domain types, implemented across `vtol.v` and focused `client_*.v` companion files in the repository root
 - `config`: logging, retry, and future runtime configuration definitions
 - `errors`: shared error taxonomy categories
 - `crypto`: crypto capabilities and key-material abstractions
@@ -34,6 +34,7 @@ The library is organized in a core-first sequence:
 ## Public API policy
 
 - Keep the root package intentionally small.
+- Split the root package across focused same-module files when the public client surface grows, rather than collapsing unrelated concerns back into one file.
 - Only promote types to `vtol` when they are stable enough to represent long-term library concepts.
 - Keep generated TL types in `tl`.
 - Keep protocol implementation details in subsystem modules or `internal/`.

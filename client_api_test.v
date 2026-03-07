@@ -17,6 +17,7 @@ mut:
 	invocations      []string
 	functions        []tl.Function
 	responses        []tl.Object
+	errors           map[int]IError
 	update_batches   []tl.UpdatesType
 }
 
@@ -68,10 +69,15 @@ fn (mut f FakeRuntime) disconnect() ! {
 fn (mut e ErrorRuntime) disconnect() ! {}
 
 fn (mut f FakeRuntime) invoke(function tl.Function, options rpc.CallOptions) !tl.Object {
-	f.state.invocations << function.method_name()
-	f.state.functions << function
+	leaf_function := unwrap_client_function(function)
+	invocation_index := f.state.invocations.len
+	f.state.invocations << leaf_function.method_name()
+	f.state.functions << leaf_function
+	if invocation_index in f.state.errors {
+		return f.state.errors[invocation_index]
+	}
 	if f.state.responses.len == 0 {
-		return error('no fake response queued for ${function.method_name()}')
+		return error('no fake response queued for ${leaf_function.method_name()}')
 	}
 	response := f.state.responses[0]
 	f.state.responses = f.state.responses[1..].clone()
@@ -171,6 +177,54 @@ fn test_client_wraps_rate_limit_errors_with_public_metadata() {
 		assert false
 	}
 	assert false
+}
+
+fn test_refresh_dc_options_discovers_additional_endpoints() {
+	mut state := &FakeRuntimeState{
+		responses: [
+			tl.Object(tl.Config{
+				test_mode:         false
+				this_dc:           2
+				reactions_default: tl.UnknownReactionType{}
+				dc_options:        [
+					tl.DcOption{
+						id:         1
+						ip_address: '149.154.175.50'
+						port:       443
+					},
+					tl.DcOption{
+						id:         2
+						ip_address: '149.154.167.51'
+						port:       443
+					},
+					tl.DcOption{
+						id:         3
+						ip_address: '149.154.175.100'
+						port:       443
+						media_only: true
+					},
+				]
+			}),
+		]
+	}
+	mut client := new_fake_client(state)
+
+	client.refresh_dc_options() or { panic(err) }
+
+	assert state.invocations == ['help.getConfig']
+	assert client.dc_options.len == 5
+
+	dc1 := client.dc_option_by_id(1) or { panic('missing dc 1') }
+	assert dc1.host == '149.154.175.50'
+	assert dc1.port == 443
+	assert !dc1.is_media
+
+	dc2 := client.dc_option_by_id(2) or { panic('missing dc 2') }
+	assert dc2.host == '149.154.167.50'
+
+	dc3 := client.dc_option_by_id(3) or { panic('missing dc 3') }
+	assert dc3.host == '149.154.175.100'
+	assert !dc3.is_media
 }
 
 fn test_login_wrappers_delegate_to_generated_auth_methods() {
@@ -288,6 +342,237 @@ fn test_login_wrappers_delegate_to_generated_auth_methods() {
 	} else {
 		assert false
 	}
+}
+
+fn test_sign_in_code_wraps_password_required_as_auth_error() {
+	mut state := &FakeRuntimeState{
+		responses: [
+			tl.Object(tl.AuthSentCode{
+				type_value:          tl.AuthSentCodeTypeApp{
+					length: 6
+				}
+				next_type:           tl.UnknownAuthCodeTypeType{}
+				has_next_type_value: false
+				phone_code_hash:     'code-hash'
+			}),
+		]
+		errors:    {
+			1: IError(RpcError{
+				rpc_code: 401
+				message:  'SESSION_PASSWORD_NEEDED'
+				raw:      tl.RpcError{
+					error_code:    401
+					error_message: 'SESSION_PASSWORD_NEEDED'
+				}
+			})
+		}
+	}
+	mut client := new_fake_client(state)
+
+	request := client.send_login_code('+15551234567') or { panic(err) }
+	client.sign_in_code(request, '123456') or {
+		if err is AuthError {
+			assert err.kind == .password_required
+			assert err.requires_password()
+			assert err.auth_code == 'SESSION_PASSWORD_NEEDED'
+			assert err.raw.is('SESSION_PASSWORD_NEEDED')
+			return
+		}
+		assert false
+	}
+	assert false
+}
+
+fn test_complete_login_uses_password_when_required() {
+	mut state := &FakeRuntimeState{
+		responses: [
+			tl.Object(tl.AuthSentCode{
+				type_value:          tl.AuthSentCodeTypeApp{
+					length: 6
+				}
+				next_type:           tl.UnknownAuthCodeTypeType{}
+				has_next_type_value: false
+				phone_code_hash:     'code-hash'
+			}),
+			tl.Object(tl.AccountPassword{
+				current_algo:           srp_password_algo()
+				new_algo:               tl.UnknownPasswordKdfAlgoType{}
+				new_secure_algo:        tl.UnknownSecurePasswordKdfAlgoType{}
+				secure_random:          []u8{}
+				has_password:           true
+				has_current_algo_value: true
+				srp_b:                  srp_b_bytes()
+				has_srp_b_value:        true
+				srp_id:                 77
+				has_srp_id_value:       true
+			}),
+			tl.Object(tl.AuthAuthorization{
+				user: make_test_user('alice', 42, 77)
+			}),
+		]
+		errors:    {
+			1: IError(RpcError{
+				rpc_code: 401
+				message:  'SESSION_PASSWORD_NEEDED'
+				raw:      tl.RpcError{
+					error_code:    401
+					error_message: 'SESSION_PASSWORD_NEEDED'
+				}
+			})
+		}
+	}
+	mut client := new_fake_client(state)
+
+	request := client.send_login_code('+15551234567') or { panic(err) }
+	authorization := client.complete_login(request, '123456', '123123') or { panic(err) }
+
+	match authorization {
+		tl.AuthAuthorization {
+			match authorization.user {
+				tl.User {
+					assert authorization.user.id == 42
+				}
+				else {
+					assert false
+				}
+			}
+		}
+		else {
+			assert false
+		}
+	}
+
+	assert state.invocations == [
+		'auth.sendCode',
+		'auth.signIn',
+		'account.getPassword',
+		'auth.checkPassword',
+	]
+}
+
+fn test_start_uses_callbacks_for_phone_code_and_password() {
+	mut state := &FakeRuntimeState{
+		responses: [
+			tl.Object(tl.AuthSentCode{
+				type_value:          tl.AuthSentCodeTypeApp{
+					length: 6
+				}
+				next_type:           tl.UnknownAuthCodeTypeType{}
+				has_next_type_value: false
+				phone_code_hash:     'code-hash'
+			}),
+			tl.Object(tl.AccountPassword{
+				current_algo:           srp_password_algo()
+				new_algo:               tl.UnknownPasswordKdfAlgoType{}
+				new_secure_algo:        tl.UnknownSecurePasswordKdfAlgoType{}
+				secure_random:          []u8{}
+				has_password:           true
+				has_current_algo_value: true
+				srp_b:                  srp_b_bytes()
+				has_srp_b_value:        true
+				srp_id:                 77
+				has_srp_id_value:       true
+			}),
+			tl.Object(tl.AuthAuthorization{
+				user: make_test_user('alice', 42, 77)
+			}),
+			tl.Object(tl.UsersUserFull{
+				full_user: tl.UnknownUserFullType{}
+				chats:     []tl.ChatType{}
+				users:     [
+					tl.UserType(make_test_user('alice', 42, 77)),
+				]
+			}),
+		]
+		errors:    {
+			1: IError(RpcError{
+				rpc_code: 401
+				message:  'SESSION_PASSWORD_NEEDED'
+				raw:      tl.RpcError{
+					error_code:    401
+					error_message: 'SESSION_PASSWORD_NEEDED'
+				}
+			})
+		}
+	}
+	mut client := new_fake_client(state)
+
+	me := client.start(StartOptions{
+		phone_number: start_test_phone
+		code:         start_test_code
+		password:     start_test_password
+	}) or { panic(err) }
+
+	match me {
+		tl.UsersUserFull {
+			assert me.users.len == 1
+		}
+		else {
+			assert false
+		}
+	}
+
+	assert state.invocations == [
+		'auth.sendCode',
+		'auth.signIn',
+		'account.getPassword',
+		'auth.checkPassword',
+		'users.getFullUser',
+	]
+}
+
+fn test_start_uses_bot_token_when_phone_is_missing() {
+	mut state := &FakeRuntimeState{
+		responses: [
+			tl.Object(tl.AuthAuthorization{
+				user: tl.User{
+					bot:                      true
+					id:                       99
+					access_hash:              88
+					has_access_hash_value:    true
+					photo:                    tl.UnknownUserProfilePhotoType{}
+					has_photo_value:          false
+					status:                   tl.UnknownUserStatusType{}
+					has_status_value:         false
+					emoji_status:             tl.UnknownEmojiStatusType{}
+					has_emoji_status_value:   false
+					stories_max_id:           tl.UnknownRecentStoryType{}
+					has_stories_max_id_value: false
+					color:                    tl.UnknownPeerColorType{}
+					has_color_value:          false
+					profile_color:            tl.UnknownPeerColorType{}
+					has_profile_color_value:  false
+				}
+			}),
+			tl.Object(tl.UsersUserFull{
+				full_user: tl.UnknownUserFullType{}
+				chats:     []tl.ChatType{}
+				users:     [
+					tl.UserType(make_test_user('bot', 99, 88)),
+				]
+			}),
+		]
+	}
+	mut client := new_fake_client(state)
+
+	me := client.start(StartOptions{
+		phone_number: start_test_empty_phone
+		bot_token:    start_test_bot_token
+	}) or { panic(err) }
+
+	match me {
+		tl.UsersUserFull {
+			assert me.users.len == 1
+		}
+		else {
+			assert false
+		}
+	}
+
+	assert state.invocations == [
+		'auth.importBotAuthorization',
+		'users.getFullUser',
+	]
 }
 
 fn test_password_check_matches_reference_srp_vector() {
@@ -977,6 +1262,26 @@ fn new_fake_client(state &FakeRuntimeState) Client {
 	return client
 }
 
+fn unwrap_client_function(function tl.Function) tl.Function {
+	match function {
+		tl.InvokeWithLayer {
+			match function.query {
+				tl.InitConnection {
+					match function.query.query {
+						FunctionObjectAdapter {
+							return function.query.query.function
+						}
+						else {}
+					}
+				}
+				else {}
+			}
+		}
+		else {}
+	}
+	return function
+}
+
 fn receive_event(subscription updates.Subscription) ?updates.Event {
 	select {
 		event := <-subscription.events {
@@ -987,6 +1292,26 @@ fn receive_event(subscription updates.Subscription) ?updates.Event {
 		}
 	}
 	return none
+}
+
+fn start_test_phone() !string {
+	return '+15551234567'
+}
+
+fn start_test_empty_phone() !string {
+	return ''
+}
+
+fn start_test_bot_token() !string {
+	return '123:bot-token'
+}
+
+fn start_test_code(request LoginCodeRequest) !string {
+	return '123456'
+}
+
+fn start_test_password() !string {
+	return '123123'
 }
 
 struct FailingPumpRuntime {

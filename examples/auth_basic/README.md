@@ -1,56 +1,70 @@
 # auth_basic
 
-The high-level client now supports the explicit `connect -> login -> disconnect` flow without hiding the underlying TL methods.
+Runnable login example that creates or reuses a session file.
 
-```v
-import tl
-import vtol
+It uses `client.start(vtol.StartOptions{ ... })`, where the auth inputs are callback providers for phone number, bot token, login code, and password.
 
-mut client := vtol.new_client(vtol.ClientConfig{
-	app_id:   12345
-	app_hash: 'your-app-hash'
-	dc_options: [
-		vtol.DcOption{
-			id:   2
-			host: '149.154.167.50'
-			port: 443
-		},
-	]
-}) or {
-	panic(err)
-}
+## Environment
 
-client.connect() or { panic(err) }
-defer {
-	client.disconnect() or {}
-}
+Required:
 
-request := client.send_login_code('+15551234567') or { panic(err) }
-authorization := client.sign_in_code(request, '123456') or { panic(err) }
+- `VTOL_EXAMPLE_API_ID`
+- `VTOL_EXAMPLE_API_HASH`
 
-match authorization {
-	tl.AuthAuthorization {
-		println('signed in as ${authorization.user.qualified_name()}')
-	}
-	tl.AuthAuthorizationSignUpRequired {
-		println('sign-up is required before the account can continue')
-	}
-	else {
-		println('unexpected auth result: ${authorization.qualified_name()}')
-	}
-}
+Phone login:
+
+- `VTOL_EXAMPLE_PHONE_NUMBER`
+- optional `VTOL_EXAMPLE_LOGIN_CODE`
+- optional `VTOL_EXAMPLE_PASSWORD`
+
+Bot login:
+
+- `VTOL_EXAMPLE_BOT_TOKEN`
+
+Optional:
+
+- `VTOL_EXAMPLE_SESSION_FILE` defaults to `.vtol.example.session.json`
+- `VTOL_EXAMPLE_DC_HOST` defaults to `149.154.167.50` for the initial connection; the client discovers additional Telegram DCs automatically
+- `VTOL_EXAMPLE_TIMEOUT_MS` defaults to `30000`
+- `VTOL_DEBUG_RPC=1` to print RPC request/result/error lines to stderr
+- `VTOL_DEBUG_MTPROTO=1` to print decoded MTProto messages to stderr
+- `VTOL_EXAMPLE_TEST_MODE=1` to target Telegram test mode
+
+For lower-level transport hex dumps, the library also honors `VTOL_DEBUG_TRANSPORT=1`.
+
+## One-time setup
+
+These examples live under `./examples`, so V needs to be able to resolve `import vtol`.
+
+If this checkout is not already installed as a V module, symlink it once:
+
+```bash
+mkdir -p ~/.vmodules
+ln -sfn "$PWD" ~/.vmodules/vtol
 ```
 
-Bot login is also available through `client.login_bot(token)`.
+## Run
 
-If the account requires 2FA, the client can complete the SRP exchange directly:
+User login:
 
-```v
-authorization := client.sign_in_password('correct horse battery staple') or { panic(err) }
-println(authorization.qualified_name())
+```bash
+export VTOL_EXAMPLE_API_ID=12345
+export VTOL_EXAMPLE_API_HASH=your-app-hash
+export VTOL_EXAMPLE_PHONE_NUMBER=+15551234567
+export VTOL_DEBUG_RPC=1
+export VTOL_DEBUG_MTPROTO=1
+v run ./examples/auth_basic
 ```
 
-The low-level pieces are still available if you need them:
+The program uses env-aware callbacks: each auth prompt reads the matching `VTOL_EXAMPLE_*` variable first and falls back to interactive input when it is unset.
 
-- `client.get_password_challenge()` fetches the SRP challenge.
-- `client.check_password(input_srp)` submits a precomputed `tl.InputCheckPasswordSRPType`.
+Bot login:
+
+```bash
+export VTOL_EXAMPLE_API_ID=12345
+export VTOL_EXAMPLE_API_HASH=your-app-hash
+export VTOL_EXAMPLE_BOT_TOKEN=123456:telegram-bot-token
+v run ./examples/auth_basic
+```
+
+Successful runs write a reusable session file, which the other examples consume.

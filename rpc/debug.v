@@ -1,6 +1,7 @@
 module rpc
 
 import json
+import os
 
 pub enum DebugEventKind {
 	request_started
@@ -46,4 +47,11 @@ pub:
 
 pub fn (l JsonLineDebugLogger) emit(event DebugEvent) {
 	println(json.encode(event))
+}
+
+pub fn emit_env_debug(event DebugEvent) {
+	if os.getenv('VTOL_DEBUG_RPC') != '1' {
+		return
+	}
+	eprintln(json.encode(event))
 }

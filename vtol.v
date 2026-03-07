@@ -105,11 +105,33 @@ pub fn (e RpcError) retry_after_ms() int {
 	return e.wait_seconds * 1_000
 }
 
+pub fn (e RpcError) is(name string) bool {
+	return e.message == name
+}
+
+pub fn (e RpcError) migration_dc_id() ?int {
+	return rpc.migration_dc_id(e.raw)
+}
+
+pub enum AuthErrorKind {
+	unknown
+	password_required
+	code_invalid
+	code_expired
+	phone_number_invalid
+	code_hash_invalid
+	code_empty
+	password_invalid
+	bot_token_invalid
+}
+
 pub struct AuthError {
 	Error
 pub:
+	kind      AuthErrorKind = .unknown
 	auth_code string
 	message   string
+	raw       RpcError
 }
 
 pub fn (e AuthError) msg() string {
@@ -117,7 +139,27 @@ pub fn (e AuthError) msg() string {
 }
 
 pub fn (e AuthError) code() int {
-	return 0
+	return e.raw.rpc_code
+}
+
+pub fn (e AuthError) is(name string) bool {
+	return e.auth_code == name
+}
+
+pub fn (e AuthError) requires_password() bool {
+	return e.kind == .password_required
+}
+
+pub fn (e AuthError) is_code_invalid() bool {
+	return e.kind == .code_invalid
+}
+
+pub fn (e AuthError) is_code_expired() bool {
+	return e.kind == .code_expired
+}
+
+pub fn (e AuthError) is_password_invalid() bool {
+	return e.kind == .password_invalid
 }
 
 pub struct LoginCodeRequest {
@@ -127,6 +169,38 @@ pub:
 	sent_code         tl.AuthSentCodeType
 	authorization     tl.AuthAuthorizationType = tl.UnknownAuthAuthorizationType{}
 	authorization_now bool
+}
+
+pub enum AuthPromptKind {
+	phone_number
+	bot_token
+	code
+	password
+}
+
+pub type PhoneCallback = fn () !string
+
+pub type BotTokenCallback = fn () !string
+
+pub type CodeCallback = fn (request LoginCodeRequest) !string
+
+pub type PasswordCallback = fn () !string
+
+pub type CodeSentCallback = fn (request LoginCodeRequest)
+
+pub type InvalidAuthCallback = fn (kind AuthPromptKind, err AuthError)
+
+pub struct StartOptions {
+pub:
+	phone_number          PhoneCallback       = unsafe { nil }
+	bot_token             BotTokenCallback    = unsafe { nil }
+	code                  CodeCallback        = unsafe { nil }
+	password              PasswordCallback    = unsafe { nil }
+	code_sent_callback    CodeSentCallback    = unsafe { nil }
+	invalid_auth_callback InvalidAuthCallback = unsafe { nil }
+	code_settings         tl.CodeSettingsType = tl.CodeSettings{
+		allow_app_hash: true
+	}
 }
 
 pub struct ResolvedPeer {
@@ -150,6 +224,30 @@ struct ChannelHandle {
 	id          i64
 	access_hash i64
 	username    string
+}
+
+struct FunctionObjectAdapter {
+	function tl.Function
+}
+
+fn (a FunctionObjectAdapter) encode() ![]u8 {
+	return a.function.encode()!
+}
+
+fn (a FunctionObjectAdapter) constructor_id() u32 {
+	return a.function.constructor_id()
+}
+
+fn (a FunctionObjectAdapter) qualified_name() string {
+	return a.function.qualified_name()
+}
+
+fn (a FunctionObjectAdapter) method_name() string {
+	return a.function.method_name()
+}
+
+fn (a FunctionObjectAdapter) result_type_name() string {
+	return a.function.result_type_name()
 }
 
 interface ClientRuntime {
@@ -216,14 +314,7 @@ fn (r SessionRuntime) is_connected() bool {
 fn (mut r SessionRuntime) invoke(function tl.Function, options rpc.CallOptions) !tl.Object {
 	return r.engine.invoke(function, options) or {
 		if err is rpc.RpcError {
-			return IError(RpcError{
-				rpc_code:       err.rpc_code
-				message:        err.message
-				raw:            err.raw
-				wait_seconds:   err.wait_seconds
-				premium_wait:   err.premium_wait
-				has_rate_limit: err.has_rate_limit
-			})
+			return IError(public_rpc_error_from_internal(err))
 		}
 		return err
 	}
@@ -250,6 +341,7 @@ pub:
 	config ClientConfig
 mut:
 	state          ClientState = .disconnected
+	dc_options     []DcOption
 	store          session.Store
 	runtime        ClientRuntime = NullRuntime{}
 	runtime_ready  bool
@@ -271,6 +363,7 @@ pub fn new_client_with_store(config ClientConfig, store session.Store) !Client {
 	validate_client_config(config)!
 	return Client{
 		config:         config
+		dc_options:     merge_dc_options(config.dc_options.clone(), default_dc_options(config.test_mode))
 		store:          store
 		peer_cache:     map[string]CachedPeer{}
 		update_manager: updates.new_manager(updates.ManagerConfig{})
@@ -290,10 +383,19 @@ pub fn (c Client) did_restore_session() bool {
 }
 
 pub fn (c Client) primary_dc() ?DcOption {
-	if c.config.dc_options.len == 0 {
+	if c.dc_options.len == 0 {
 		return none
 	}
-	return c.config.dc_options[0]
+	return c.dc_options[0]
+}
+
+fn (c Client) dc_option_by_id(dc_id int) ?DcOption {
+	for dc in c.dc_options {
+		if dc.id == dc_id {
+			return dc
+		}
+	}
+	return none
 }
 
 pub fn (c Client) session() ?Session {
@@ -348,18 +450,106 @@ pub fn (mut c Client) invoke(function tl.Function) !tl.Object {
 
 pub fn (mut c Client) invoke_with_options(function tl.Function, options rpc.CallOptions) !tl.Object {
 	c.connect()!
-	return c.runtime.invoke(function, c.normalized_call_options(options)) or {
+	request := c.wrap_client_invoke(function)
+	return c.runtime.invoke(request, c.normalized_call_options(options)) or {
 		if err is rpc.RpcError {
-			return IError(RpcError{
-				rpc_code:       err.rpc_code
-				message:        err.message
-				raw:            err.raw
-				wait_seconds:   err.wait_seconds
-				premium_wait:   err.premium_wait
-				has_rate_limit: err.has_rate_limit
-			})
+			return IError(public_rpc_error_from_internal(err))
 		}
 		return err
+	}
+}
+
+fn (mut c Client) invoke_auth_with_migration(function tl.Function) !tl.Object {
+	result := c.invoke(function) or {
+		if err is RpcError {
+			if dc_id := err.migration_dc_id() {
+				c.switch_auth_dc(dc_id)!
+				return c.invoke(function)
+			}
+		}
+		return err
+	}
+	return result
+}
+
+fn (mut c Client) switch_auth_dc(dc_id int) ! {
+	if dc_id == 0 {
+		return error('auth dc migration target must be non-zero')
+	}
+	dc := c.ensure_dc_option(dc_id)!
+	if c.runtime_ready && c.runtime.is_connected() {
+		c.runtime.disconnect() or {}
+	}
+	c.state = .disconnected
+	c.runtime = NullRuntime{}
+	c.runtime_ready = false
+	c.session_loaded = false
+
+	mut transport_engine := c.new_transport_engine()!
+	_ = transport_engine.select_endpoint(dc.id)!
+	result := auth.authenticate_and_store(mut transport_engine, auth.ExchangeConfig{
+		dc_id:        dc.id
+		public_keys:  c.config.public_keys.clone()
+		test_mode:    c.config.test_mode
+		is_media:     dc.is_media
+		padding_mode: c.config.padding_mode
+	}, mut c.store)!
+	c.store.save(session_state_with_endpoint(result.session_state(), dc))!
+
+	runtime, _ := c.build_runtime()!
+	c.runtime = runtime
+	c.runtime_ready = true
+	c.session_loaded = false
+	c.runtime.connect()!
+	c.state = .connected
+}
+
+fn (mut c Client) ensure_dc_option(dc_id int) !DcOption {
+	if dc := c.dc_option_by_id(dc_id) {
+		return dc
+	}
+	c.refresh_dc_options()!
+	if dc := c.dc_option_by_id(dc_id) {
+		return dc
+	}
+	return error('transport endpoint ${dc_id} is not configured')
+}
+
+fn (mut c Client) refresh_dc_options() ! {
+	result := c.invoke(tl.HelpGetConfig{})!
+	config := expect_config(result)!
+	discovered := dc_options_from_config(config)
+	c.dc_options = merge_dc_options(c.dc_options, discovered)
+}
+
+fn (c Client) wrap_client_invoke(function tl.Function) tl.Function {
+	match function {
+		tl.InitConnection {
+			return function
+		}
+		tl.InvokeWithLayer {
+			return function
+		}
+		else {}
+	}
+	return tl.InvokeWithLayer{
+		layer: tl.current_layer_info().layer
+		query: tl.InitConnection{
+			api_id:           c.config.app_id
+			device_model:     c.config.device_model
+			system_version:   c.config.system_version
+			app_version:      c.config.app_version
+			system_lang_code: c.config.system_lang_code
+			lang_pack:        c.config.lang_pack
+			lang_code:        c.config.lang_code
+			proxy:            tl.UnknownInputClientProxyType{}
+			has_proxy_value:  false
+			params:           tl.UnknownJSONValueType{}
+			has_params_value: false
+			query:            FunctionObjectAdapter{
+				function: function
+			}
+		}
 	}
 }
 
@@ -370,12 +560,12 @@ pub fn (mut c Client) send_login_code(phone_number string) !LoginCodeRequest {
 }
 
 pub fn (mut c Client) send_login_code_with_settings(phone_number string, settings tl.CodeSettingsType) !LoginCodeRequest {
-	result := c.invoke(tl.AuthSendCode{
+	result := c.invoke_auth_with_migration(tl.AuthSendCode{
 		phone_number: phone_number
 		api_id:       c.config.app_id
 		api_hash:     c.config.app_hash
 		settings:     settings
-	})!
+	}) or { return wrap_auth_error(err) }
 	return login_code_request_from_object(phone_number, result)!
 }
 
@@ -391,28 +581,28 @@ pub fn (mut c Client) sign_in_code(request LoginCodeRequest, code string) !tl.Au
 }
 
 pub fn (mut c Client) sign_in_phone(phone_number string, phone_code_hash string, code string) !tl.AuthAuthorizationType {
-	result := c.invoke(tl.AuthSignIn{
+	result := c.invoke_auth_with_migration(tl.AuthSignIn{
 		phone_number:                 phone_number
 		phone_code_hash:              phone_code_hash
 		phone_code:                   code
 		has_phone_code_value:         true
 		email_verification:           tl.UnknownEmailVerificationType{}
 		has_email_verification_value: false
-	})!
+	}) or { return wrap_auth_error(err) }
 	authorization := expect_auth_authorization(result)!
 	c.cache_authorization(authorization)
 	return authorization
 }
 
 pub fn (mut c Client) get_password_challenge() !tl.AccountPasswordType {
-	result := c.invoke(tl.AccountGetPassword{})!
+	result := c.invoke_auth_with_migration(tl.AccountGetPassword{})!
 	return expect_account_password(result)!
 }
 
 pub fn (mut c Client) check_password(password tl.InputCheckPasswordSRPType) !tl.AuthAuthorizationType {
-	result := c.invoke(tl.AuthCheckPassword{
+	result := c.invoke_auth_with_migration(tl.AuthCheckPassword{
 		password: password
-	})!
+	}) or { return wrap_auth_error(err) }
 	authorization := expect_auth_authorization(result)!
 	c.cache_authorization(authorization)
 	return authorization
@@ -424,13 +614,70 @@ pub fn (mut c Client) sign_in_password(password string) !tl.AuthAuthorizationTyp
 	return c.check_password(password_check)!
 }
 
+pub fn (mut c Client) complete_login(request LoginCodeRequest, code string, password string) !tl.AuthAuthorizationType {
+	return c.sign_in_code(request, code) or {
+		if err is AuthError && err.requires_password() && password.len > 0 {
+			return c.sign_in_password(password)
+		}
+		return err
+	}
+}
+
+pub fn (mut c Client) start(options StartOptions) !tl.UsersUserFullType {
+	c.connect()!
+	if c.did_restore_session() {
+		return c.get_me()!
+	}
+	phone_number, bot_token := resolve_start_identity(options)!
+	if bot_token.len > 0 {
+		_ = c.login_bot(bot_token)!
+		return c.get_me()!
+	}
+	mut request := c.send_login_code_with_settings(phone_number, options.code_settings)!
+	if options.code_sent_callback != unsafe { nil } {
+		options.code_sent_callback(request)
+	}
+	for {
+		code := resolve_start_code(options, request)!
+		if _ := c.complete_login(request, code, '') {
+			return c.get_me()!
+		} else {
+			if err is AuthError {
+				if err.requires_password() {
+					if options.password == unsafe { nil } {
+						return IError(err)
+					}
+					_ = c.start_password_flow(options)!
+					return c.get_me()!
+				}
+				if can_retry_start_code(options, err) {
+					options.invalid_auth_callback(AuthPromptKind.code, err)
+					if err.is_code_expired() || err.kind == .code_hash_invalid {
+						request = c.send_login_code_with_settings(phone_number, options.code_settings)!
+						if options.code_sent_callback != unsafe { nil } {
+							options.code_sent_callback(request)
+						}
+					}
+					continue
+				}
+			}
+			return err
+		}
+	}
+	return error('unreachable')
+}
+
+pub fn (mut c Client) interactive_login(options StartOptions) !tl.UsersUserFullType {
+	return c.start(options)!
+}
+
 pub fn (mut c Client) login_bot(bot_token string) !tl.AuthAuthorizationType {
-	result := c.invoke(tl.AuthImportBotAuthorization{
+	result := c.invoke_auth_with_migration(tl.AuthImportBotAuthorization{
 		flags:          0
 		api_id:         c.config.app_id
 		api_hash:       c.config.app_hash
 		bot_auth_token: bot_token
-	})!
+	}) or { return wrap_auth_error(err) }
 	authorization := expect_auth_authorization(result)!
 	c.cache_authorization(authorization)
 	return authorization
@@ -847,13 +1094,14 @@ fn (mut c Client) build_runtime() !(ClientRuntime, bool) {
 		primary_dc := c.primary_dc() or {
 			return error('client config must define at least one dc option')
 		}
-		_ = auth.authenticate_and_store(mut transport_engine, auth.ExchangeConfig{
+		result := auth.authenticate_and_store(mut transport_engine, auth.ExchangeConfig{
 			dc_id:        primary_dc.id
 			public_keys:  c.config.public_keys.clone()
 			test_mode:    c.config.test_mode
 			is_media:     primary_dc.is_media
 			padding_mode: c.config.padding_mode
 		}, mut c.store)!
+		c.store.save(session_state_with_endpoint(result.session_state(), primary_dc))!
 		mut engine := rpc.new_session_engine_from_store(transport_engine, mut c.store,
 			c.config.rpc_config)!
 		return SessionRuntime{
@@ -861,6 +1109,16 @@ fn (mut c Client) build_runtime() !(ClientRuntime, bool) {
 		}, false
 	}
 	if stored_state.dc_id != 0 {
+		if c.dc_option_by_id(stored_state.dc_id) == none && stored_state.dc_address.len > 0
+			&& stored_state.dc_port > 0 {
+			c.dc_options = merge_dc_options(c.dc_options, [
+				DcOption{
+					id:   stored_state.dc_id
+					host: stored_state.dc_address
+					port: stored_state.dc_port
+				},
+			])
+		}
 		transport_engine.select_endpoint(stored_state.dc_id)!
 	}
 	mut engine := rpc.new_session_engine(transport_engine, stored_state, c.config.rpc_config)!
@@ -889,8 +1147,8 @@ fn (c Client) new_transport_engine() !transport.Engine {
 }
 
 fn (c Client) transport_endpoints() []transport.Endpoint {
-	mut endpoints := []transport.Endpoint{cap: c.config.dc_options.len}
-	for dc in c.config.dc_options {
+	mut endpoints := []transport.Endpoint{cap: c.dc_options.len}
+	for dc in c.dc_options {
 		endpoints << transport.Endpoint{
 			id:       dc.id
 			host:     dc.host
@@ -1029,6 +1287,133 @@ fn document_attributes_with_filename(file_name string, attributes []tl.DocumentA
 		return with_filename
 	}
 	return resolved
+}
+
+fn public_rpc_error_from_internal(err rpc.RpcError) RpcError {
+	return RpcError{
+		rpc_code:       err.rpc_code
+		message:        err.message
+		raw:            err.raw
+		wait_seconds:   err.wait_seconds
+		premium_wait:   err.premium_wait
+		has_rate_limit: err.has_rate_limit
+	}
+}
+
+fn auth_error_kind(code string) AuthErrorKind {
+	return match code {
+		'SESSION_PASSWORD_NEEDED' { .password_required }
+		'PHONE_CODE_INVALID', 'CODE_INVALID' { .code_invalid }
+		'PHONE_CODE_EXPIRED' { .code_expired }
+		'PHONE_NUMBER_INVALID' { .phone_number_invalid }
+		'PHONE_CODE_HASH_EMPTY', 'PHONE_CODE_HASH_INVALID' { .code_hash_invalid }
+		'PHONE_CODE_EMPTY' { .code_empty }
+		'PASSWORD_HASH_INVALID' { .password_invalid }
+		'BOT_TOKEN_INVALID' { .bot_token_invalid }
+		else { .unknown }
+	}
+}
+
+fn auth_error_message(kind AuthErrorKind, code string) string {
+	return match kind {
+		.password_required { 'account requires a 2FA password' }
+		.code_invalid { 'login code is invalid' }
+		.code_expired { 'login code has expired' }
+		.phone_number_invalid { 'phone number is invalid' }
+		.code_hash_invalid { 'login code request is invalid or expired' }
+		.code_empty { 'login code must not be empty' }
+		.password_invalid { '2FA password is invalid' }
+		.bot_token_invalid { 'bot token is invalid' }
+		else { 'telegram auth failed: ${code}' }
+	}
+}
+
+fn auth_error_from_rpc(err RpcError) ?AuthError {
+	kind := auth_error_kind(err.message)
+	if kind == .unknown {
+		return none
+	}
+	return AuthError{
+		kind:      kind
+		auth_code: err.message
+		message:   auth_error_message(kind, err.message)
+		raw:       err
+	}
+}
+
+fn wrap_auth_error(err IError) IError {
+	if err is AuthError {
+		return err
+	}
+	if err is RpcError {
+		if auth_err := auth_error_from_rpc(err) {
+			return IError(auth_err)
+		}
+	}
+	return err
+}
+
+fn resolve_start_identity(options StartOptions) !(string, string) {
+	mut phone_number := ''
+	if options.phone_number != unsafe { nil } {
+		phone_number = options.phone_number()!.trim_space()
+	}
+	if phone_number.len > 0 {
+		return phone_number, ''
+	}
+	mut bot_token := ''
+	if options.bot_token != unsafe { nil } {
+		bot_token = options.bot_token()!.trim_space()
+	}
+	if bot_token.len > 0 {
+		return '', bot_token
+	}
+	return error('start options must provide a phone_number or bot_token callback that returns a value')
+}
+
+fn resolve_start_code(options StartOptions, request LoginCodeRequest) !string {
+	if options.code == unsafe { nil } {
+		return error('start options must provide a code callback')
+	}
+	code := options.code(request)!.trim_space()
+	if code.len == 0 {
+		return error('login code must not be empty')
+	}
+	return code
+}
+
+fn resolve_start_password(options StartOptions) !string {
+	if options.password == unsafe { nil } {
+		return error('start options must provide a password callback')
+	}
+	password := options.password()!.trim_space()
+	if password.len == 0 {
+		return error('2FA password must not be empty')
+	}
+	return password
+}
+
+fn can_retry_start_code(options StartOptions, err AuthError) bool {
+	return options.code != unsafe { nil } && options.invalid_auth_callback != unsafe { nil }
+		&& (err.is_code_invalid() || err.is_code_expired()
+		|| err.kind == .code_hash_invalid)
+}
+
+fn (mut c Client) start_password_flow(options StartOptions) !tl.AuthAuthorizationType {
+	for {
+		password := resolve_start_password(options)!
+		if authorization := c.sign_in_password(password) {
+			return authorization
+		} else {
+			if err is AuthError && options.invalid_auth_callback != unsafe { nil }
+				&& err.is_password_invalid() {
+				options.invalid_auth_callback(AuthPromptKind.password, err)
+				continue
+			}
+			return err
+		}
+	}
+	return error('unreachable')
 }
 
 fn login_code_request_from_object(phone_number string, object tl.Object) !LoginCodeRequest {
@@ -1179,6 +1564,17 @@ fn expect_account_password(object tl.Object) !tl.AccountPasswordType {
 	}
 }
 
+fn expect_config(object tl.Object) !tl.Config {
+	match object {
+		tl.Config {
+			return *object
+		}
+		else {
+			return error('expected config, got ${object.qualified_name()}')
+		}
+	}
+}
+
 fn expect_users_user_full(object tl.Object) !tl.UsersUserFullType {
 	match object {
 		tl.UsersUserFull {
@@ -1267,6 +1663,91 @@ fn expect_updates(object tl.Object) !tl.UpdatesType {
 		else {
 			return error('expected Updates, got ${object.qualified_name()}')
 		}
+	}
+}
+
+fn dc_options_from_config(config tl.Config) []DcOption {
+	mut options := []DcOption{}
+	for option in config.dc_options {
+		match option {
+			tl.DcOption {
+				if option.cdn || option.tcpo_only || option.ip_address.len == 0 || option.port <= 0 {
+					continue
+				}
+				options << DcOption{
+					id:       option.id
+					host:     option.ip_address
+					port:     option.port
+					is_media: option.media_only
+				}
+			}
+			else {}
+		}
+	}
+	return options
+}
+
+fn merge_dc_options(existing []DcOption, discovered []DcOption) []DcOption {
+	mut merged := existing.clone()
+	mut known_ids := map[int]bool{}
+	for dc in merged {
+		known_ids[dc.id] = true
+	}
+	for dc in discovered {
+		if dc.id in known_ids {
+			continue
+		}
+		merged << dc
+		known_ids[dc.id] = true
+	}
+	return merged
+}
+
+fn default_dc_options(test_mode bool) []DcOption {
+	if test_mode {
+		return []DcOption{}
+	}
+	return [
+		DcOption{
+			id:   1
+			host: '149.154.175.50'
+			port: 443
+		},
+		DcOption{
+			id:   2
+			host: '149.154.167.51'
+			port: 443
+		},
+		DcOption{
+			id:   3
+			host: '149.154.175.100'
+			port: 443
+		},
+		DcOption{
+			id:   4
+			host: '149.154.167.91'
+			port: 443
+		},
+		DcOption{
+			id:   5
+			host: '149.154.171.5'
+			port: 443
+		},
+	]
+}
+
+fn session_state_with_endpoint(state session.SessionState, dc DcOption) session.SessionState {
+	return session.SessionState{
+		dc_id:           state.dc_id
+		dc_address:      dc.host
+		dc_port:         dc.port
+		auth_key:        state.auth_key.clone()
+		auth_key_id:     state.auth_key_id
+		server_salt:     state.server_salt
+		session_id:      state.session_id
+		layer:           state.layer
+		schema_revision: state.schema_revision
+		created_at:      state.created_at
 	}
 }
 

@@ -331,6 +331,7 @@ pub fn (mut e Engine) send_frame(payload []u8) ! {
 	if !e.connected {
 		return error('transport engine is not connected')
 	}
+	debug_transport_payload('outgoing frame', payload)
 	frame := e.codec.encode_frame(payload)!
 	write_all(mut e.stream, frame)!
 	endpoint_id := if endpoint := e.current_endpoint() { endpoint.id } else { 0 }
@@ -346,6 +347,7 @@ pub fn (mut e Engine) receive_frame() ![]u8 {
 		return error('transport engine is not connected')
 	}
 	payload := e.codec.read_frame(mut e.stream)!
+	debug_transport_payload('incoming frame', payload)
 	endpoint_id := if endpoint := e.current_endpoint() { endpoint.id } else { 0 }
 	e.observer.emit(Event{
 		kind:        .frame_received
@@ -373,6 +375,7 @@ pub fn (mut e Engine) receive_packet() !UnencryptedPacket {
 }
 
 pub fn (mut e Engine) invoke_unencrypted(function tl.Function) !tl.Object {
+	debug_unencrypted_mtproto('outgoing', function.qualified_name())
 	packet := UnencryptedPacket{
 		auth_key_id: 0
 		message_id:  e.state.next_message_id()
@@ -387,7 +390,9 @@ pub fn (mut e Engine) invoke_unencrypted(function tl.Function) !tl.Object {
 	if os.getenv('VTOL_DEBUG_TRANSPORT') == '1' {
 		eprintln('unencrypted response len=${response.body.len} hex=${response.body.hex()}')
 	}
-	return tl.decode_object(response.body)!
+	object := tl.decode_object(response.body)!
+	debug_unencrypted_mtproto('incoming', object.qualified_name())
+	return object
 }
 
 pub fn (m WireMessage) requires_ack() bool {
@@ -494,11 +499,17 @@ pub fn decode_message_container(data []u8) !MessageContainer {
 }
 
 pub fn unix_milli_from_message_id(message_id i64) i64 {
-	return i64((u64(message_id) * u64(1000)) >> 32)
+	raw := u64(message_id)
+	seconds := raw >> 32
+	fraction := raw & u64(0xffffffff)
+	millis := (fraction * u64(1000)) >> 32
+	return i64(seconds * u64(1000) + millis)
 }
 
 pub fn message_id_from_unix_milli(unix_ms i64) i64 {
-	mut message_id := i64((u64(unix_ms) << 32) / u64(1000))
+	seconds := u64(unix_ms / 1000)
+	millis := u64(unix_ms % 1000)
+	mut message_id := i64((seconds << 32) | ((millis << 32) / u64(1000)))
 	message_id &= i64(~u64(3))
 	return message_id
 }
@@ -585,6 +596,15 @@ pub fn (mut s MessageState) resend_pending(message_id i64) ?WireMessage {
 	return pending.message
 }
 
+pub fn (mut s MessageState) regenerate_pending(message_id i64) ?WireMessage {
+	if message_id !in s.pending {
+		return none
+	}
+	pending := s.pending[message_id]
+	s.pending.delete(message_id)
+	return s.record_outbound(pending.message.body, pending.message.requires_ack(), pending.requires_ack)
+}
+
 pub fn (mut s MessageState) resend_all_pending() []WireMessage {
 	mut messages := []WireMessage{}
 	for message_id in s.pending.keys() {
@@ -602,7 +622,7 @@ pub fn (mut s MessageState) apply_new_session(created tl.NewSessionCreated) {
 
 pub fn (mut s MessageState) apply_bad_server_salt(event tl.BadServerSalt) []WireMessage {
 	s.server_salt = event.new_server_salt
-	if resend := s.resend_pending(event.bad_msg_id) {
+	if resend := s.regenerate_pending(event.bad_msg_id) {
 		return [resend]
 	}
 	return []WireMessage{}
@@ -628,7 +648,7 @@ pub fn (mut s MessageState) apply_bad_msg_notification(event tl.BadMsgNotificati
 	}
 	match event.error_code {
 		16, 17, 32, 33, 34, 35, 48 {
-			if resend := s.resend_pending(event.bad_msg_id) {
+			if resend := s.regenerate_pending(event.bad_msg_id) {
 				return [resend]
 			}
 		}
@@ -766,6 +786,25 @@ fn read_exact(mut stream Stream, length int) ![]u8 {
 		read_total += read_now
 	}
 	return buf
+}
+
+fn debug_transport_payload(label string, payload []u8) {
+	if os.getenv('VTOL_DEBUG_TRANSPORT') != '1' {
+		return
+	}
+	hex_payload := payload.hex()
+	if hex_payload.len > 256 {
+		eprintln('${label} len=${payload.len} hex=${hex_payload[..256]}...')
+		return
+	}
+	eprintln('${label} len=${payload.len} hex=${hex_payload}')
+}
+
+fn debug_unencrypted_mtproto(direction string, name string) {
+	if os.getenv('VTOL_DEBUG_MTPROTO') != '1' {
+		return
+	}
+	eprintln('${direction} unencrypted mtproto object=${name}')
 }
 
 fn write_all(mut stream Stream, data []u8) ! {

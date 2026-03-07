@@ -99,6 +99,16 @@ fn test_pack_and_unpack_encrypted_message_roundtrip() {
 	assert decoded.padding.len >= 12
 }
 
+fn test_default_rpc_error_action_does_not_auto_migrate() {
+	action := default_rpc_error_action(tl.RpcError{
+		error_code:    303
+		error_message: 'PHONE_MIGRATE_1'
+	}, true)
+
+	assert action.kind == .fail
+	assert action.dc_id == 0
+}
+
 fn test_begin_invoke_restores_session_from_store_and_correlates_rpc_result() {
 	state := make_test_session_state()
 	mut store := session.new_memory_store()

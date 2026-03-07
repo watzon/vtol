@@ -1,6 +1,7 @@
 module rpc
 
 import crypto
+import os
 import session
 import time
 import tl
@@ -113,6 +114,8 @@ pub fn new_session_engine(transport_engine transport.Engine, state session.Sessi
 	backend := crypto.default_backend()
 	resolved_state := session.SessionState{
 		dc_id:           state.dc_id
+		dc_address:      state.dc_address
+		dc_port:         state.dc_port
 		auth_key:        state.auth_key.clone()
 		auth_key_id:     if state.auth_key_id != 0 {
 			state.auth_key_id
@@ -153,8 +156,19 @@ pub fn (e SessionEngine) pending_count() int {
 }
 
 pub fn (e SessionEngine) session_state() session.SessionState {
+	current_endpoint := e.transport.current_endpoint() or { transport.Endpoint{} }
 	return session.SessionState{
 		dc_id:           e.current_dc_id
+		dc_address:      if current_endpoint.host.len > 0 {
+			current_endpoint.host
+		} else {
+			e.state.dc_address
+		}
+		dc_port:         if current_endpoint.port > 0 {
+			current_endpoint.port
+		} else {
+			e.state.dc_port
+		}
 		auth_key:        e.state.auth_key.clone()
 		auth_key_id:     e.state.auth_key_id
 		server_salt:     e.transport.state.server_salt
@@ -647,6 +661,11 @@ fn (mut e SessionEngine) drop_call(request_msg_id i64) {
 
 fn (mut e SessionEngine) receive_once() ! {
 	payload := e.transport.receive_frame()!
+	if payload.len == 4 {
+		mut decoder := tl.new_decoder(payload)
+		code := decoder.read_int()!
+		return error('encrypted transport error ${code}')
+	}
 	incoming := unpack_encrypted_message(e.session_state(), payload)!
 	e.transport.state.server_salt = incoming.server_salt
 	e.transport.state.observe_server_message(incoming.message.msg_id)
@@ -654,6 +673,7 @@ fn (mut e SessionEngine) receive_once() ! {
 }
 
 fn (mut e SessionEngine) handle_wire_message(message transport.WireMessage) ! {
+	debug_mtproto_wire_message('incoming', message)
 	if is_message_container(message.body) {
 		container := transport.decode_message_container(message.body)!
 		for inner in container.messages {
@@ -772,6 +792,7 @@ fn (mut e SessionEngine) send_resend_messages(messages []transport.WireMessage) 
 }
 
 fn (mut e SessionEngine) send_wire_message(message transport.WireMessage) ! {
+	debug_mtproto_wire_message('outgoing', message)
 	payload := pack_encrypted_message(e.session_state(), message)!
 	e.transport.send_frame(payload)!
 }
@@ -873,6 +894,7 @@ fn (e SessionEngine) resolve_transport_error_action(context AttemptContext, mess
 
 fn (e SessionEngine) emit_debug(event DebugEvent) {
 	e.config.debug_logger.emit(event)
+	emit_env_debug(event)
 }
 
 fn (mut e SessionEngine) prepare_retry(action MiddlewareAction) ! {
@@ -910,14 +932,57 @@ fn default_rpc_error_action(rpc_error tl.RpcError, can_retry bool) MiddlewareAct
 			}
 		}
 	}
-	if dc_id := migration_dc_id(rpc_error) {
-		return MiddlewareAction{
-			kind:  .migrate_dc
-			dc_id: dc_id
-		}
-	}
 	return MiddlewareAction{
 		kind: .fail
+	}
+}
+
+fn debug_mtproto_wire_message(direction string, message transport.WireMessage) {
+	if os.getenv('VTOL_DEBUG_MTPROTO') != '1' {
+		return
+	}
+	object := tl.decode_mtproto_object(message.body) or {
+		eprintln('${direction} mtproto msg_id=${message.msg_id} seq=${message.seq_no} decode_error="${err.msg()}"')
+		return
+	}
+	eprintln('${direction} mtproto msg_id=${message.msg_id} seq=${message.seq_no} object=${describe_mtproto_object(object)}')
+}
+
+fn describe_mtproto_object(object tl.Object) string {
+	match object {
+		tl.InvokeWithLayer {
+			return 'invokeWithLayer(layer=${object.layer}, query=${describe_mtproto_object(object.query)})'
+		}
+		tl.InitConnection {
+			return 'initConnection(api_id=${object.api_id}, query=${describe_mtproto_object(object.query)})'
+		}
+		tl.RpcResult {
+			return 'rpc_result(req_msg_id=${object.req_msg_id}, result=${describe_mtproto_object(object.result)})'
+		}
+		tl.BadMsgNotification {
+			return 'bad_msg_notification(code=${object.error_code}, bad_msg_id=${object.bad_msg_id}, bad_seq=${object.bad_msg_seqno})'
+		}
+		tl.BadServerSalt {
+			return 'bad_server_salt(code=${object.error_code}, bad_msg_id=${object.bad_msg_id}, new_server_salt=${object.new_server_salt})'
+		}
+		tl.MsgsAck {
+			return 'msgs_ack(count=${object.msg_ids.len})'
+		}
+		tl.MsgResendReq {
+			return 'msg_resend_req(count=${object.msg_ids.len})'
+		}
+		tl.NewSessionCreated {
+			return 'new_session_created(first_msg_id=${object.first_msg_id}, server_salt=${object.server_salt})'
+		}
+		tl.GzipPacked {
+			return 'gzip_packed(${describe_mtproto_object(object.object)})'
+		}
+		tl.RpcError {
+			return 'rpc_error(code=${object.error_code}, message=${object.error_message})'
+		}
+		else {
+			return object.qualified_name()
+		}
 	}
 }
 

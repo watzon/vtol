@@ -3,14 +3,17 @@ module session
 import encoding.hex
 import json
 import os
+import strconv
 import sync
 
 const empty_store_message = 'session store is empty'
-const file_store_version = 1
+const file_store_version = 2
 
 pub struct SessionState {
 pub:
 	dc_id           int
+	dc_address      string
+	dc_port         int
 	auth_key        []u8
 	auth_key_id     i64
 	server_salt     i64
@@ -41,6 +44,20 @@ mut:
 }
 
 struct FileStoreRecord {
+	version         int
+	dc_id           int
+	dc_address      string
+	dc_port         int
+	auth_key_hex    string
+	auth_key_id     string
+	server_salt     string
+	session_id      string
+	layer           int
+	schema_revision string
+	created_at      string
+}
+
+struct LegacyFileStoreRecord {
 	version         int
 	dc_id           int
 	auth_key_hex    string
@@ -75,6 +92,8 @@ pub fn (mut s MemoryStore) load() !SessionState {
 	}
 	return SessionState{
 		dc_id:           s.state.dc_id
+		dc_address:      s.state.dc_address
+		dc_port:         s.state.dc_port
 		auth_key:        s.state.auth_key.clone()
 		auth_key_id:     s.state.auth_key_id
 		server_salt:     s.state.server_salt
@@ -92,6 +111,8 @@ pub fn (mut s MemoryStore) save(state SessionState) ! {
 	}
 	s.state = SessionState{
 		dc_id:           state.dc_id
+		dc_address:      state.dc_address
+		dc_port:         state.dc_port
 		auth_key:        state.auth_key.clone()
 		auth_key_id:     state.auth_key_id
 		server_salt:     state.server_salt
@@ -118,7 +139,16 @@ pub fn (mut s FileStore) load() !SessionState {
 		return err
 	}
 	record := json.decode(FileStoreRecord, content) or {
-		return error('invalid session store at ${s.path}: ${err.msg()}')
+		legacy := json.decode(LegacyFileStoreRecord, content) or {
+			return error('invalid session store at ${s.path}: ${err.msg()}')
+		}
+		return session_state_from_legacy_record(legacy)
+	}
+	if record.version == 1 {
+		legacy := json.decode(LegacyFileStoreRecord, content) or {
+			return error('invalid session store at ${s.path}: ${err.msg()}')
+		}
+		return session_state_from_legacy_record(legacy)
 	}
 	if record.version != file_store_version {
 		return error('unsupported session store version ${record.version}')
@@ -128,13 +158,15 @@ pub fn (mut s FileStore) load() !SessionState {
 	}
 	return SessionState{
 		dc_id:           record.dc_id
+		dc_address:      record.dc_address
+		dc_port:         record.dc_port
 		auth_key:        auth_key
-		auth_key_id:     record.auth_key_id
-		server_salt:     record.server_salt
-		session_id:      record.session_id
+		auth_key_id:     parse_file_store_i64(s.path, 'auth_key_id', record.auth_key_id)!
+		server_salt:     parse_file_store_i64(s.path, 'server_salt', record.server_salt)!
+		session_id:      parse_file_store_i64(s.path, 'session_id', record.session_id)!
 		layer:           record.layer
 		schema_revision: record.schema_revision
-		created_at:      record.created_at
+		created_at:      parse_file_store_i64(s.path, 'created_at', record.created_at)!
 	}
 }
 
@@ -150,13 +182,15 @@ pub fn (mut s FileStore) save(state SessionState) ! {
 	record := FileStoreRecord{
 		version:         file_store_version
 		dc_id:           state.dc_id
+		dc_address:      state.dc_address
+		dc_port:         state.dc_port
 		auth_key_hex:    hex.encode(state.auth_key)
-		auth_key_id:     state.auth_key_id
-		server_salt:     state.server_salt
-		session_id:      state.session_id
+		auth_key_id:     state.auth_key_id.str()
+		server_salt:     state.server_salt.str()
+		session_id:      state.session_id.str()
 		layer:           state.layer
 		schema_revision: state.schema_revision
-		created_at:      state.created_at
+		created_at:      state.created_at.str()
 	}
 	tmp_path := s.path + '.tmp'
 	os.write_file(tmp_path, json.encode(record))!
@@ -166,5 +200,35 @@ pub fn (mut s FileStore) save(state SessionState) ! {
 	os.mv(tmp_path, s.path, overwrite: true)!
 	$if !windows {
 		os.chmod(s.path, 0o600) or {}
+	}
+}
+
+fn parse_file_store_i64(path string, field_name string, value string) !i64 {
+	if value.len == 0 {
+		return error('invalid session store at ${path}: missing ${field_name}')
+	}
+	return strconv.atoi64(value) or {
+		return error('invalid session store at ${path}: invalid ${field_name}')
+	}
+}
+
+fn session_state_from_legacy_record(record LegacyFileStoreRecord) !SessionState {
+	if record.version != 1 {
+		return error('unsupported session store version ${record.version}')
+	}
+	auth_key := hex.decode(record.auth_key_hex) or {
+		return error('invalid session store auth key: ${err.msg()}')
+	}
+	return SessionState{
+		dc_id:           record.dc_id
+		dc_address:      ''
+		dc_port:         0
+		auth_key:        auth_key
+		auth_key_id:     record.auth_key_id
+		server_salt:     record.server_salt
+		session_id:      record.session_id
+		layer:           record.layer
+		schema_revision: record.schema_revision
+		created_at:      record.created_at
 	}
 }

@@ -1,41 +1,38 @@
 # send_message
 
-The client keeps the high-level API thin over generated TL methods while still handling peer resolution and caching.
+Runnable message-send example that reuses the session created by `examples/auth_basic`.
 
-```v
-import tl
-import vtol
+## Environment
 
-mut client := vtol.new_client(vtol.ClientConfig{
-	app_id:   12345
-	app_hash: 'your-app-hash'
-	dc_options: [
-		vtol.DcOption{
-			id:   2
-			host: '149.154.167.50'
-			port: 443
-		},
-	]
-}) or {
-	panic(err)
-}
+Required:
 
-client.connect() or { panic(err) }
-defer {
-	client.disconnect() or {}
-}
+- `VTOL_EXAMPLE_API_ID` or `VTOL_TEST_API_ID`
+- `VTOL_EXAMPLE_API_HASH` or `VTOL_TEST_API_HASH`
 
-peer := client.resolve_input_peer('telegram') or { panic(err) }
-updates := client.send_message(peer, 'hello from VTOL') or { panic(err) }
+Optional:
 
-match updates {
-	tl.UpdateShortSentMessage {
-		println('sent message id ${updates.id}')
-	}
-	else {
-		println('server returned ${updates.qualified_name()}')
-	}
-}
+- `VTOL_EXAMPLE_SESSION_FILE` defaults to `.vtol.example.session.json`
+- `VTOL_EXAMPLE_PEER` defaults to `me`
+- `VTOL_EXAMPLE_MESSAGE` defaults to `hello from VTOL`
+- `VTOL_EXAMPLE_DC_HOST` defaults to `149.154.167.50`
+- `VTOL_EXAMPLE_TEST_MODE=1` to target Telegram test mode
+
+## Run
+
+```bash
+export VTOL_EXAMPLE_API_ID=12345
+export VTOL_EXAMPLE_API_HASH=your-app-hash
+v run ./examples/send_message
 ```
 
-If you prefer a single call, `client.send_message_to_username('telegram', 'hello from VTOL')` uses the same cache-backed resolution path.
+To send somewhere other than Saved Messages:
+
+```bash
+export VTOL_EXAMPLE_PEER=telegram
+export VTOL_EXAMPLE_MESSAGE='hello from VTOL'
+v run ./examples/send_message
+```
+
+This example assumes the repo is available as `~/.vmodules/vtol` or otherwise resolvable via V's module path.
+
+The example fails fast if no session file was restored, so run `examples/auth_basic` first.

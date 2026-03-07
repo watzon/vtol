@@ -182,7 +182,34 @@ fn test_message_state_resends_bad_messages_and_salt_updates() {
 
 	assert state.server_salt == 55
 	assert resends.len == 1
-	assert resends[0].msg_id == message.msg_id
+	assert resends[0].msg_id != message.msg_id
+	assert resends[0].seq_no != message.seq_no
+	assert resends[0].body == message.body
+}
+
+fn test_message_state_regenerates_bad_msg_notifications() {
+	mut state := new_message_state(0)
+	message := state.record_outbound([u8(9), 9, 9, 9], true, true)
+
+	resends := state.apply_bad_msg_notification(tl.BadMsgNotification{
+		bad_msg_id:    message.msg_id
+		bad_msg_seqno: message.seq_no
+		error_code:    16
+	})
+
+	assert resends.len == 1
+	assert resends[0].msg_id != message.msg_id
+	assert resends[0].seq_no != message.seq_no
+	assert resends[0].body == message.body
+}
+
+fn test_message_id_conversion_roundtrips_large_timestamps() {
+	unix_ms := i64(1_700_000_000_000)
+	message_id := message_id_from_unix_milli(unix_ms)
+
+	assert message_id > i64(1_000_000_000_000_000_000)
+	assert message_id % 4 == 0
+	assert unix_milli_from_message_id(message_id) == unix_ms
 }
 
 fn test_engine_failover_uses_next_endpoint() {

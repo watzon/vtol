@@ -11,7 +11,7 @@ Required:
 
 Optional:
 
-- `VTOL_EXAMPLE_SESSION_FILE` defaults to `.vtol.example.session.json`
+- `VTOL_EXAMPLE_SESSION_FILE` defaults to `.vtol.example.session.sqlite`
 - `VTOL_EXAMPLE_PEER` defaults to `me`
 - `VTOL_EXAMPLE_MESSAGE` defaults to `hello from VTOL`
 - `VTOL_EXAMPLE_DC_HOST` defaults to `149.154.167.50`

@@ -23,7 +23,7 @@ Bot login:
 
 Optional:
 
-- `VTOL_EXAMPLE_SESSION_FILE` defaults to `.vtol.example.session.json`
+- `VTOL_EXAMPLE_SESSION_FILE` defaults to `.vtol.example.session.sqlite`
 - `VTOL_EXAMPLE_DC_HOST` defaults to `149.154.167.50` for the initial connection; the client discovers additional Telegram DCs automatically
 - `VTOL_EXAMPLE_TIMEOUT_MS` defaults to `30000`
 - `VTOL_DEBUG_RPC=1` to print RPC request/result/error lines to stderr
@@ -67,4 +67,4 @@ export VTOL_EXAMPLE_BOT_TOKEN=123456:telegram-bot-token
 v run ./examples/auth_basic
 ```
 
-Successful runs write a reusable session file, which the other examples consume.
+Successful runs write a reusable SQLite session file, which the other examples consume.

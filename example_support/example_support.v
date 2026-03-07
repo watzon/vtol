@@ -8,7 +8,7 @@ import vtol.tl
 import vtol.updates
 
 pub const default_dc_host = '149.154.167.50'
-pub const default_session_file = '.vtol.example.session.json'
+pub const default_session_file = '.vtol.example.session.sqlite'
 pub const default_timeout_ms = 30_000
 
 pub struct DownloadTarget {
@@ -40,7 +40,7 @@ pub fn new_client_from_env(session_file string) !vtol.Client {
 	timeout_ms := env_int([
 		'VTOL_EXAMPLE_TIMEOUT_MS',
 	], default_timeout_ms)
-	return vtol.new_client_with_session_file(vtol.ClientConfig{
+	return vtol.new_client_with_sqlite_session(vtol.ClientConfig{
 		app_id:               app_id
 		app_hash:             app_hash
 		dc_options:           [

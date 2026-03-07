@@ -13,7 +13,7 @@ Required:
 
 Optional:
 
-- `VTOL_EXAMPLE_SESSION_FILE` defaults to `.vtol.example.session.json`
+- `VTOL_EXAMPLE_SESSION_FILE` defaults to `.vtol.example.session.sqlite`
 - `VTOL_EXAMPLE_DC_HOST` defaults to `149.154.167.50`
 - `VTOL_EXAMPLE_TIMEOUT_MS` defaults to `30000`
 - `VTOL_EXAMPLE_PUMP_INTERVAL_MS` defaults to `250`

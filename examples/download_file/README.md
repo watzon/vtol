@@ -13,7 +13,7 @@ Required:
 
 Optional:
 
-- `VTOL_EXAMPLE_SESSION_FILE` defaults to `.vtol.example.session.json`
+- `VTOL_EXAMPLE_SESSION_FILE` defaults to `.vtol.example.session.sqlite`
 - `VTOL_EXAMPLE_PEER` defaults to `me`
 - `VTOL_EXAMPLE_HISTORY_LIMIT` defaults to `50`
 - `VTOL_EXAMPLE_OUTPUT` to override the output path

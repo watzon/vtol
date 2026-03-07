@@ -1,6 +1,7 @@
 module vtol
 
 import encoding.hex
+import media
 import rpc
 import session
 import tl
@@ -69,6 +70,23 @@ fn (mut f FakeRuntime) drain_updates() []tl.UpdatesType {
 	batches := f.state.update_batches.clone()
 	f.state.update_batches = []tl.UpdatesType{}
 	return batches
+}
+
+@[heap]
+struct ProgressState {
+mut:
+	events []media.TransferProgress
+}
+
+struct RecordingProgressReporter {
+mut:
+	state &ProgressState
+}
+
+fn (r RecordingProgressReporter) report(progress media.TransferProgress) {
+	unsafe {
+		r.state.events << progress
+	}
 }
 
 fn test_client_connect_and_disconnect_use_runtime_state() {
@@ -423,6 +441,304 @@ fn test_client_pump_updates_recovers_after_transport_failure() {
 	} else {
 		assert false
 	}
+}
+
+fn test_upload_file_bytes_reports_progress_and_returns_input_file() {
+	payload := []u8{len: 5000, init: u8((index % 251) + 1)}
+	mut progress := &ProgressState{}
+	mut state := &FakeRuntimeState{
+		responses: [
+			tl.Object(tl.BoolTrue{}),
+			tl.Object(tl.BoolTrue{}),
+		]
+	}
+	mut client := new_fake_client(state)
+
+	uploaded := client.upload_file_bytes('hello.txt', payload, media.UploadOptions{
+		part_size: 4096
+		reporter:  RecordingProgressReporter{
+			state: progress
+		}
+	}) or { panic(err) }
+
+	assert state.invocations == ['upload.saveFilePart', 'upload.saveFilePart']
+	assert progress.events.len == 3
+	assert progress.events[0].transferred == 0
+	assert progress.events[1].transferred == 4096
+	assert progress.events[2].transferred == u64(payload.len)
+	assert uploaded.total_parts == 2
+	assert uploaded.part_size == 4096
+	match uploaded.input_file {
+		tl.InputFile {
+			assert uploaded.input_file.name == 'hello.txt'
+			assert uploaded.input_file.parts == 2
+			assert uploaded.input_file.md5_checksum.len == 32
+		}
+		else {
+			assert false
+		}
+	}
+
+	first_upload_call := state.functions[0]
+	match first_upload_call {
+		tl.UploadSaveFilePart {
+			assert first_upload_call.file_part == 0
+			assert first_upload_call.bytes.len == 4096
+		}
+		else {
+			assert false
+		}
+	}
+
+	second_upload_call := state.functions[1]
+	match second_upload_call {
+		tl.UploadSaveFilePart {
+			assert second_upload_call.file_part == 1
+			assert second_upload_call.bytes.len == 904
+		}
+		else {
+			assert false
+		}
+	}
+}
+
+fn test_upload_file_bytes_resume_skips_uploaded_parts() {
+	payload := []u8{len: 5000, init: u8((index % 251) + 1)}
+	mut state := &FakeRuntimeState{
+		responses: [
+			tl.Object(tl.BoolTrue{}),
+		]
+	}
+	mut client := new_fake_client(state)
+
+	uploaded := client.upload_file_bytes('resume.bin', payload, media.UploadOptions{
+		part_size:   4096
+		resume_part: 1
+		file_id:     42
+	}) or { panic(err) }
+
+	assert state.invocations == ['upload.saveFilePart']
+	assert uploaded.resume_part == 1
+	assert uploaded.file_id == 42
+	resume_call := state.functions[0]
+	match resume_call {
+		tl.UploadSaveFilePart {
+			assert resume_call.file_part == 1
+		}
+		else {
+			assert false
+		}
+	}
+}
+
+fn test_send_file_uploads_document_and_uses_messages_send_media() {
+	payload := []u8{len: 5000, init: u8((index % 251) + 1)}
+	mut state := &FakeRuntimeState{
+		responses: [
+			tl.Object(tl.BoolTrue{}),
+			tl.Object(tl.BoolTrue{}),
+			tl.Object(tl.UpdateShortSentMessage{
+				id:              9
+				pts:             1
+				pts_count:       1
+				date:            123
+				media:           tl.UnknownMessageMediaType{}
+				has_media_value: false
+			}),
+		]
+	}
+	mut client := new_fake_client(state)
+
+	_ = client.send_file(tl.InputPeerSelf{}, 'report.txt', payload, media.SendFileOptions{
+		upload:    media.UploadOptions{
+			part_size: 4096
+		}
+		caption:   'quarterly report'
+		mime_type: 'text/plain'
+	}) or { panic(err) }
+
+	assert state.invocations == ['upload.saveFilePart', 'upload.saveFilePart', 'messages.sendMedia']
+	send_media_call := state.functions[2]
+	match send_media_call {
+		tl.MessagesSendMedia {
+			assert send_media_call.message == 'quarterly report'
+			match send_media_call.media {
+				tl.InputMediaUploadedDocument {
+					assert send_media_call.media.mime_type == 'text/plain'
+					assert send_media_call.media.force_file
+					assert send_media_call.media.attributes.len == 1
+					first_attribute := send_media_call.media.attributes[0]
+					match first_attribute {
+						tl.DocumentAttributeFilename {
+							assert first_attribute.file_name == 'report.txt'
+						}
+						else {
+							assert false
+						}
+					}
+				}
+				else {
+					assert false
+				}
+			}
+		}
+		else {
+			assert false
+		}
+	}
+}
+
+fn test_send_photo_uses_uploaded_photo_media() {
+	payload := []u8{len: 5000, init: u8((index % 251) + 1)}
+	mut state := &FakeRuntimeState{
+		responses: [
+			tl.Object(tl.BoolTrue{}),
+			tl.Object(tl.BoolTrue{}),
+			tl.Object(tl.UpdateShortSentMessage{
+				id:              10
+				pts:             1
+				pts_count:       1
+				date:            123
+				media:           tl.UnknownMessageMediaType{}
+				has_media_value: false
+			}),
+		]
+	}
+	mut client := new_fake_client(state)
+
+	_ = client.send_photo(tl.InputPeerSelf{}, 'photo.jpg', payload, media.SendPhotoOptions{
+		upload:                media.UploadOptions{
+			part_size: 4096
+		}
+		caption:               'cover'
+		spoiler:               true
+		ttl_seconds:           60
+		has_ttl_seconds_value: true
+	}) or { panic(err) }
+
+	assert state.invocations == ['upload.saveFilePart', 'upload.saveFilePart', 'messages.sendMedia']
+	send_photo_call := state.functions[2]
+	match send_photo_call {
+		tl.MessagesSendMedia {
+			match send_photo_call.media {
+				tl.InputMediaUploadedPhoto {
+					assert send_photo_call.message == 'cover'
+					assert send_photo_call.media.spoiler
+					assert send_photo_call.media.ttl_seconds == 60
+					assert send_photo_call.media.has_ttl_seconds_value
+				}
+				else {
+					assert false
+				}
+			}
+		}
+		else {
+			assert false
+		}
+	}
+}
+
+fn test_download_file_collects_chunks_with_resume_progress() {
+	mut progress := &ProgressState{}
+	first_chunk := []u8{len: 4096, init: u8((index % 251) + 1)}
+	mut state := &FakeRuntimeState{
+		responses: [
+			tl.Object(tl.UploadFile{
+				type_value: tl.StorageFileUnknown{}
+				mtime:      0
+				bytes:      first_chunk
+			}),
+			tl.Object(tl.UploadFile{
+				type_value: tl.StorageFileUnknown{}
+				mtime:      0
+				bytes:      [u8(5)]
+			}),
+		]
+	}
+	mut client := new_fake_client(state)
+
+	result := client.download_file(tl.InputDocumentFileLocation{
+		id:             7
+		access_hash:    9
+		file_reference: [u8(1), 2]
+		thumb_size:     ''
+	}, media.DownloadOptions{
+		part_size: 4096
+		reporter:  RecordingProgressReporter{
+			state: progress
+		}
+	}) or { panic(err) }
+
+	assert result.completed
+	assert !result.has_cdn_redirect
+	assert result.bytes.len == 4097
+	assert result.bytes[..4] == first_chunk[..4]
+	assert result.bytes[4096] == u8(5)
+	assert result.start_offset == 0
+	assert result.end_offset == 4097
+	assert progress.events.len == 2
+	assert progress.events[0].transferred == 4096
+	assert progress.events[1].transferred == 4097
+	assert state.invocations == ['upload.getFile', 'upload.getFile']
+
+	first_download_call := state.functions[0]
+	match first_download_call {
+		tl.UploadGetFile {
+			assert first_download_call.offset == 0
+			assert first_download_call.limit == 4096
+		}
+		else {
+			assert false
+		}
+	}
+
+	second_download_call := state.functions[1]
+	match second_download_call {
+		tl.UploadGetFile {
+			assert second_download_call.offset == 4096
+			assert second_download_call.limit == 4096
+		}
+		else {
+			assert false
+		}
+	}
+}
+
+fn test_download_file_returns_cdn_redirect_metadata() {
+	mut state := &FakeRuntimeState{
+		responses: [
+			tl.Object(tl.UploadFileCdnRedirect{
+				dc_id:          5
+				file_token:     [u8(1), 2, 3]
+				encryption_key: [u8(4), 5]
+				encryption_iv:  [u8(6), 7]
+				file_hashes:    [
+					tl.FileHashType(tl.FileHash{
+						offset: 0
+						limit:  4096
+						hash:   [u8(9)]
+					}),
+				]
+			}),
+		]
+	}
+	mut client := new_fake_client(state)
+
+	result := client.download_file(tl.InputPhotoFileLocation{
+		id:             8
+		access_hash:    10
+		file_reference: [u8(3), 4]
+		thumb_size:     'm'
+	}, media.DownloadOptions{
+		part_size: 4096
+	}) or { panic(err) }
+
+	assert !result.completed
+	assert result.has_cdn_redirect
+	assert result.cdn_redirect.dc_id == 5
+	assert result.cdn_redirect.file_token == [u8(1), 2, 3]
+	assert result.cdn_redirect.file_hashes.len == 1
+	assert state.invocations == ['upload.getFile']
 }
 
 fn new_fake_client(state &FakeRuntimeState) Client {

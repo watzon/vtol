@@ -85,10 +85,10 @@ Status key:
 
 ## Phase 8: Media and large payload workflows
 
-- [ ] 8.1 Implement upload and download abstractions for files and media parts.
-- [ ] 8.2 Support chunked transfer, resume, and progress reporting.
+- [x] 8.1 Implement upload and download abstractions for files and media parts.
+- [x] 8.2 Support chunked transfer, resume, and progress reporting.
 - [ ] 8.3 Add CDN and file-reference handling where required by Telegram semantics.
-- [ ] 8.4 Add message send helpers for text, files, photos, and common media flows.
+- [x] 8.4 Add message send helpers for text, files, photos, and common media flows.
 - [ ] 8.5 Add large-file integration tests and failure recovery for interrupted transfers.
 
 ## Phase 9: Reliability, packaging, and ecosystem fit

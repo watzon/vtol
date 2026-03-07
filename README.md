@@ -18,7 +18,7 @@ VTOL is still pre-`1.0`, but the high-value client surface is already in place:
 The examples assume this checkout is available as `vtol` in your V module path:
 
 ```bash
-v install watzon/vtol
+v install watzon.vtol
 ```
 
 Or for local development:

@@ -104,8 +104,8 @@ Status key:
 ## Phase 10: Telethon-class completeness
 
 - [ ] 10.1 Expand generated method coverage to the full supported Telegram layer.
-- [ ] 10.2 Add richer entity helpers, pagination utilities, and convenience iterators.
-- [ ] 10.3 Add robust dialog/history iteration and batched fetch helpers.
+- [x] 10.2 Add richer entity helpers, pagination utilities, and convenience iterators.
+- [x] 10.3 Add robust dialog/history iteration and batched fetch helpers.
 - [ ] 10.4 Add reconnection, migration, and retry behavior that is transparent but inspectable.
 - [x] 10.5 Add example applications that prove login, messaging, updates, downloads, and long-running sessions.
 - [ ] 10.6 Define a compatibility and upgrade process for future Telegram layer changes.

@@ -764,6 +764,259 @@ fn test_core_wrappers_delegate_to_tl_methods() {
 	]
 }
 
+fn test_resolve_peer_supports_cached_keys_and_self_aliases() {
+	mut state := &FakeRuntimeState{
+		responses: [
+			tl.Object(tl.ContactsResolvedPeer{
+				peer:  tl.PeerUser{
+					user_id: 42
+				}
+				users: [
+					tl.UserType(make_test_user('alice', 42, 77)),
+				]
+				chats: []tl.ChatType{}
+			}),
+		]
+	}
+	mut client := new_fake_client(state)
+
+	resolved := client.resolve_peer('@Alice') or { panic(err) }
+	cached := client.resolve_peer('user:42') or { panic(err) }
+	me := client.resolve_peer('self') or { panic(err) }
+
+	assert resolved.key == 'user:42'
+	assert cached.username == 'alice'
+	match cached.input_peer {
+		tl.InputPeerUser {
+			assert cached.input_peer.user_id == 42
+			assert cached.input_peer.access_hash == 77
+		}
+		else {
+			assert false
+		}
+	}
+	match me.input_peer {
+		tl.InputPeerSelf {
+			assert true
+		}
+		else {
+			assert false
+		}
+	}
+	assert state.invocations == ['contacts.resolveUsername']
+}
+
+fn test_collect_dialogs_paginates_and_caches_page_peers() {
+	first_user := make_test_user('alice', 42, 77)
+	second_user := make_test_user('bob', 43, 88)
+	mut state := &FakeRuntimeState{
+		responses: [
+			tl.Object(tl.MessagesDialogsSlice{
+				count:    2
+				dialogs:  [
+					tl.DialogType(tl.Dialog{
+						peer:            tl.PeerUser{
+							user_id: 42
+						}
+						top_message:     100
+						notify_settings: tl.PeerNotifySettings{}
+					}),
+				]
+				messages: [
+					tl.MessageType(tl.Message{
+						id:              100
+						peer_id:         tl.PeerUser{
+							user_id: 42
+						}
+						date:            1_700_000_100
+						message:         'first'
+						media:           tl.UnknownMessageMediaType{}
+						has_media_value: false
+					}),
+				]
+				chats:    []tl.ChatType{}
+				users:    [
+					tl.UserType(first_user),
+				]
+			}),
+			tl.Object(tl.MessagesDialogs{
+				dialogs:  [
+					tl.DialogType(tl.Dialog{
+						peer:            tl.PeerUser{
+							user_id: 43
+						}
+						top_message:     90
+						notify_settings: tl.PeerNotifySettings{}
+					}),
+				]
+				messages: [
+					tl.MessageType(tl.Message{
+						id:              90
+						peer_id:         tl.PeerUser{
+							user_id: 43
+						}
+						date:            1_700_000_090
+						message:         'second'
+						media:           tl.UnknownMessageMediaType{}
+						has_media_value: false
+					}),
+				]
+				chats:    []tl.ChatType{}
+				users:    [
+					tl.UserType(second_user),
+				]
+			}),
+		]
+	}
+	mut client := new_fake_client(state)
+
+	batch := client.collect_dialogs(DialogPageOptions{
+		limit:     1
+		max_pages: 2
+	}) or { panic(err) }
+
+	assert batch.pages.len == 2
+	assert batch.dialogs.len == 2
+	assert batch.messages.len == 2
+	assert state.invocations == ['messages.getDialogs', 'messages.getDialogs']
+
+	first_call := state.functions[0]
+	match first_call {
+		tl.MessagesGetDialogs {
+			assert first_call.limit == 1
+			assert first_call.offset_id == 0
+			assert first_call.offset_date == 0
+			match first_call.offset_peer {
+				tl.InputPeerEmpty {
+					assert true
+				}
+				else {
+					assert false
+				}
+			}
+		}
+		else {
+			assert false
+		}
+	}
+
+	second_call := state.functions[1]
+	match second_call {
+		tl.MessagesGetDialogs {
+			assert second_call.limit == 1
+			assert second_call.offset_id == 100
+			assert second_call.offset_date == 1_700_000_100
+			match second_call.offset_peer {
+				tl.InputPeerUser {
+					assert second_call.offset_peer.user_id == 42
+					assert second_call.offset_peer.access_hash == 77
+				}
+				else {
+					assert false
+				}
+			}
+		}
+		else {
+			assert false
+		}
+	}
+
+	if cached := client.cached_peer('user:43') {
+		match cached.input_peer {
+			tl.InputPeerUser {
+				assert cached.input_peer.user_id == 43
+				assert cached.input_peer.access_hash == 88
+			}
+			else {
+				assert false
+			}
+		}
+	} else {
+		assert false
+	}
+}
+
+fn test_collect_history_paginates_and_deduplicates_pages() {
+	mut state := &FakeRuntimeState{
+		responses: [
+			tl.Object(tl.MessagesMessagesSlice{
+				count:    2
+				messages: [
+					tl.MessageType(tl.Message{
+						id:              100
+						peer_id:         tl.PeerUser{
+							user_id: 42
+						}
+						date:            1_700_000_100
+						message:         'first'
+						media:           tl.UnknownMessageMediaType{}
+						has_media_value: false
+					}),
+				]
+				topics:   []tl.ForumTopicType{}
+				chats:    []tl.ChatType{}
+				users:    [
+					tl.UserType(make_test_user('alice', 42, 77)),
+				]
+			}),
+			tl.Object(tl.MessagesMessages{
+				messages: [
+					tl.MessageType(tl.Message{
+						id:              90
+						peer_id:         tl.PeerUser{
+							user_id: 42
+						}
+						date:            1_700_000_090
+						message:         'second'
+						media:           tl.UnknownMessageMediaType{}
+						has_media_value: false
+					}),
+				]
+				topics:   []tl.ForumTopicType{}
+				chats:    []tl.ChatType{}
+				users:    [
+					tl.UserType(make_test_user('alice', 42, 77)),
+				]
+			}),
+		]
+	}
+	mut client := new_fake_client(state)
+
+	batch := client.collect_history(tl.InputPeerSelf{}, HistoryPageOptions{
+		limit:     1
+		max_pages: 2
+	}) or { panic(err) }
+
+	assert batch.pages.len == 2
+	assert batch.messages.len == 2
+	assert batch.users.len == 1
+	assert state.invocations == ['messages.getHistory', 'messages.getHistory']
+
+	first_call := state.functions[0]
+	match first_call {
+		tl.MessagesGetHistory {
+			assert first_call.limit == 1
+			assert first_call.offset_id == 0
+			assert first_call.offset_date == 0
+		}
+		else {
+			assert false
+		}
+	}
+
+	second_call := state.functions[1]
+	match second_call {
+		tl.MessagesGetHistory {
+			assert second_call.limit == 1
+			assert second_call.offset_id == 100
+			assert second_call.offset_date == 1_700_000_100
+		}
+		else {
+			assert false
+		}
+	}
+}
+
 fn test_client_subscribe_and_pump_updates_tracks_state() {
 	mut state := &FakeRuntimeState{
 		responses:      [

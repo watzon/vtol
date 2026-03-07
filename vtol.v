@@ -36,11 +36,14 @@ pub:
 
 pub struct Session {
 pub:
-	dc_id       int
-	auth_key    []u8
-	server_salt i64
-	session_id  i64
-	layer       int
+	dc_id           int
+	auth_key        []u8
+	auth_key_id     i64
+	server_salt     i64
+	session_id      i64
+	layer           int
+	schema_revision string
+	created_at      i64
 }
 
 pub struct Update {

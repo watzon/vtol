@@ -48,13 +48,13 @@ Status key:
 
 ## Phase 4: Crypto abstraction and auth key exchange
 
-- [ ] 4.1 Create a crypto abstraction module with C-backed implementations hidden behind V interfaces.
-- [ ] 4.2 Implement required primitives for MTProto 2.0 handshake and message encryption.
-- [ ] 4.3 Implement nonce handling and temporary state for the auth key exchange flow.
-- [ ] 4.4 Implement the full authorization handshake against Telegram DCs.
-- [ ] 4.5 Derive and persist auth keys, server salt, session IDs, and layer metadata.
-- [ ] 4.6 Add cryptographic vector tests where official or community-known vectors exist.
-- [ ] 4.7 Add negative-path tests for invalid nonces, mismatched hashes, and replay-like conditions.
+- [x] 4.1 Create a crypto abstraction module with C-backed implementations hidden behind V interfaces.
+- [x] 4.2 Implement required primitives for MTProto 2.0 handshake and message encryption.
+- [x] 4.3 Implement nonce handling and temporary state for the auth key exchange flow.
+- [x] 4.4 Implement the full authorization handshake against Telegram DCs.
+- [x] 4.5 Derive and persist auth keys, server salt, session IDs, and layer metadata.
+- [x] 4.6 Add cryptographic vector tests where official or community-known vectors exist.
+- [x] 4.7 Add negative-path tests for invalid nonces, mismatched hashes, and replay-like conditions.
 
 ## Phase 5: Session engine and RPC pipeline
 

@@ -2,6 +2,7 @@ module transport
 
 import hash.crc32
 import net
+import os
 import time
 import tl
 
@@ -244,6 +245,10 @@ pub fn (mut e Engine) set_observer(observer Observer) {
 	e.observer = observer
 }
 
+pub fn (e Engine) is_connected() bool {
+	return e.connected
+}
+
 pub fn (e Engine) current_endpoint() ?Endpoint {
 	if e.endpoints.len == 0 {
 		return none
@@ -343,7 +348,33 @@ pub fn (mut e Engine) send_packet(packet UnencryptedPacket) ! {
 
 pub fn (mut e Engine) receive_packet() !UnencryptedPacket {
 	payload := e.receive_frame()!
+	if os.getenv('VTOL_DEBUG_TRANSPORT') == '1' {
+		eprintln('unencrypted frame len=${payload.len} hex=${payload.hex()}')
+	}
+	if payload.len == 4 {
+		mut decoder := tl.new_decoder(payload)
+		code := decoder.read_int()!
+		return error('unencrypted transport error ${code}')
+	}
 	return decode_unencrypted_packet(payload)!
+}
+
+pub fn (mut e Engine) invoke_unencrypted(function tl.Function) !tl.Object {
+	packet := UnencryptedPacket{
+		auth_key_id: 0
+		message_id:  e.state.next_message_id()
+		body:        function.encode()!
+	}
+	e.send_packet(packet)!
+	response := e.receive_packet()!
+	e.state.observe_server_message(response.message_id)
+	if response.auth_key_id != 0 {
+		return error('expected an unencrypted response packet')
+	}
+	if os.getenv('VTOL_DEBUG_TRANSPORT') == '1' {
+		eprintln('unencrypted response len=${response.body.len} hex=${response.body.hex()}')
+	}
+	return tl.decode_object(response.body)!
 }
 
 pub fn (m WireMessage) requires_ack() bool {

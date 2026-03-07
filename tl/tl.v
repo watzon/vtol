@@ -60,3 +60,9 @@ pub fn (o UnknownObject) qualified_name() string {
 	}
 	return 'unknown#${o.constructor:08x}'
 }
+
+pub fn decode_object_prefix(data []u8) !(Object, int) {
+	mut decoder := new_decoder(data)
+	object := decode_object_from_decoder(mut decoder)!
+	return object, decoder.offset
+}

@@ -3,30 +3,30 @@ module tl
 
 pub fn current_layer_info() LayerInfo {
 	return LayerInfo{
-		layer:             222
-		schema_revision:   'telethon-v1-layer-222-mtproto-203df276-api-77968bd2'
+		layer: 222
+		schema_revision: 'telethon-v1-layer-222-mtproto-203df276-api-77968bd2'
 		constructor_count: 1588
-		function_count:    764
+		function_count: 764
 	}
 }
 
 pub fn current_schema_snapshot() SchemaSnapshot {
 	return SchemaSnapshot{
-		layer:           222
+		layer: 222
 		schema_revision: 'telethon-v1-layer-222-mtproto-203df276-api-77968bd2'
 		normalized_path: '/Users/watzon/Projects/personal/vtol/tl/schema/normalized.tl'
-		sources:         [
+		sources: [
 			SchemaSource{
-				name:         'mtproto'
+				name: 'mtproto'
 				download_url: 'https://raw.githubusercontent.com/LonamiWebs/Telethon/v1/telethon_generator/data/mtproto.tl'
-				blob_sha:     '203df27607df6ed99c14e1494936324f1385e678'
-				raw_path:     '/Users/watzon/Projects/personal/vtol/tl/schema/raw/mtproto.tl'
+				blob_sha: '203df27607df6ed99c14e1494936324f1385e678'
+				raw_path: '/Users/watzon/Projects/personal/vtol/tl/schema/raw/mtproto.tl'
 			},
 			SchemaSource{
-				name:         'api'
+				name: 'api'
 				download_url: 'https://raw.githubusercontent.com/LonamiWebs/Telethon/v1/telethon_generator/data/api.tl'
-				blob_sha:     '77968bd224470f5fbef4e3fc8d761d0dd7f3315b'
-				raw_path:     '/Users/watzon/Projects/personal/vtol/tl/schema/raw/api.tl'
+				blob_sha: '77968bd224470f5fbef4e3fc8d761d0dd7f3315b'
+				raw_path: '/Users/watzon/Projects/personal/vtol/tl/schema/raw/api.tl'
 			},
 		]
 	}
@@ -7127,7 +7127,7 @@ fn decode_access_point_rule_type_from_decoder(mut decoder Decoder) !AccessPointR
 		UnknownObject {
 			return UnknownAccessPointRuleType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -7155,7 +7155,7 @@ fn decode_account_days_t_t_l_type_from_decoder(mut decoder Decoder) !AccountDays
 		UnknownObject {
 			return UnknownAccountDaysTTLType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -7183,7 +7183,7 @@ fn decode_attach_menu_bot_type_from_decoder(mut decoder Decoder) !AttachMenuBotT
 		UnknownObject {
 			return UnknownAttachMenuBotType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -7211,7 +7211,7 @@ fn decode_attach_menu_bot_icon_type_from_decoder(mut decoder Decoder) !AttachMen
 		UnknownObject {
 			return UnknownAttachMenuBotIconType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -7239,7 +7239,7 @@ fn decode_attach_menu_bot_icon_color_type_from_decoder(mut decoder Decoder) !Att
 		UnknownObject {
 			return UnknownAttachMenuBotIconColorType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -7270,7 +7270,7 @@ fn decode_attach_menu_bots_type_from_decoder(mut decoder Decoder) !AttachMenuBot
 		UnknownObject {
 			return UnknownAttachMenuBotsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -7298,7 +7298,7 @@ fn decode_attach_menu_bots_bot_type_from_decoder(mut decoder Decoder) !AttachMen
 		UnknownObject {
 			return UnknownAttachMenuBotsBotType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -7338,7 +7338,7 @@ fn decode_attach_menu_peer_type_type_from_decoder(mut decoder Decoder) !AttachMe
 		UnknownObject {
 			return UnknownAttachMenuPeerTypeType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -7366,7 +7366,7 @@ fn decode_auction_bid_level_type_from_decoder(mut decoder Decoder) !AuctionBidLe
 		UnknownObject {
 			return UnknownAuctionBidLevelType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -7394,7 +7394,7 @@ fn decode_authorization_type_from_decoder(mut decoder Decoder) !AuthorizationTyp
 		UnknownObject {
 			return UnknownAuthorizationType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -7422,7 +7422,7 @@ fn decode_auto_download_settings_type_from_decoder(mut decoder Decoder) !AutoDow
 		UnknownObject {
 			return UnknownAutoDownloadSettingsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -7450,7 +7450,7 @@ fn decode_auto_save_exception_type_from_decoder(mut decoder Decoder) !AutoSaveEx
 		UnknownObject {
 			return UnknownAutoSaveExceptionType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -7478,7 +7478,7 @@ fn decode_auto_save_settings_type_from_decoder(mut decoder Decoder) !AutoSaveSet
 		UnknownObject {
 			return UnknownAutoSaveSettingsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -7506,7 +7506,7 @@ fn decode_available_effect_type_from_decoder(mut decoder Decoder) !AvailableEffe
 		UnknownObject {
 			return UnknownAvailableEffectType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -7534,7 +7534,7 @@ fn decode_available_reaction_type_from_decoder(mut decoder Decoder) !AvailableRe
 		UnknownObject {
 			return UnknownAvailableReactionType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -7565,7 +7565,7 @@ fn decode_bad_msg_notification_type_from_decoder(mut decoder Decoder) !BadMsgNot
 		UnknownObject {
 			return UnknownBadMsgNotificationType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -7593,7 +7593,7 @@ fn decode_bank_card_open_url_type_from_decoder(mut decoder Decoder) !BankCardOpe
 		UnknownObject {
 			return UnknownBankCardOpenUrlType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -7633,7 +7633,7 @@ fn decode_base_theme_type_from_decoder(mut decoder Decoder) !BaseThemeType {
 		UnknownObject {
 			return UnknownBaseThemeType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -7661,7 +7661,7 @@ fn decode_bind_auth_key_inner_type_from_decoder(mut decoder Decoder) !BindAuthKe
 		UnknownObject {
 			return UnknownBindAuthKeyInnerType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -7689,7 +7689,7 @@ fn decode_birthday_type_from_decoder(mut decoder Decoder) !BirthdayType {
 		UnknownObject {
 			return UnknownBirthdayType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -7717,7 +7717,7 @@ fn decode_boost_type_from_decoder(mut decoder Decoder) !BoostType {
 		UnknownObject {
 			return UnknownBoostType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -7748,7 +7748,7 @@ fn decode_bot_app_type_from_decoder(mut decoder Decoder) !BotAppType {
 		UnknownObject {
 			return UnknownBotAppType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -7776,7 +7776,7 @@ fn decode_bot_app_settings_type_from_decoder(mut decoder Decoder) !BotAppSetting
 		UnknownObject {
 			return UnknownBotAppSettingsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -7804,7 +7804,7 @@ fn decode_bot_business_connection_type_from_decoder(mut decoder Decoder) !BotBus
 		UnknownObject {
 			return UnknownBotBusinessConnectionType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -7832,7 +7832,7 @@ fn decode_bot_command_type_from_decoder(mut decoder Decoder) !BotCommandType {
 		UnknownObject {
 			return UnknownBotCommandType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -7878,7 +7878,7 @@ fn decode_bot_command_scope_type_from_decoder(mut decoder Decoder) !BotCommandSc
 		UnknownObject {
 			return UnknownBotCommandScopeType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -7906,7 +7906,7 @@ fn decode_bot_info_type_from_decoder(mut decoder Decoder) !BotInfoType {
 		UnknownObject {
 			return UnknownBotInfoType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -7952,7 +7952,7 @@ fn decode_bot_inline_message_type_from_decoder(mut decoder Decoder) !BotInlineMe
 		UnknownObject {
 			return UnknownBotInlineMessageType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -7983,7 +7983,7 @@ fn decode_bot_inline_result_type_from_decoder(mut decoder Decoder) !BotInlineRes
 		UnknownObject {
 			return UnknownBotInlineResultType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -8017,7 +8017,7 @@ fn decode_bot_menu_button_type_from_decoder(mut decoder Decoder) !BotMenuButtonT
 		UnknownObject {
 			return UnknownBotMenuButtonType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -8045,7 +8045,7 @@ fn decode_bot_preview_media_type_from_decoder(mut decoder Decoder) !BotPreviewMe
 		UnknownObject {
 			return UnknownBotPreviewMediaType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -8073,7 +8073,7 @@ fn decode_bot_verification_type_from_decoder(mut decoder Decoder) !BotVerificati
 		UnknownObject {
 			return UnknownBotVerificationType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -8101,7 +8101,7 @@ fn decode_bot_verifier_settings_type_from_decoder(mut decoder Decoder) !BotVerif
 		UnknownObject {
 			return UnknownBotVerifierSettingsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -8129,7 +8129,7 @@ fn decode_business_away_message_type_from_decoder(mut decoder Decoder) !Business
 		UnknownObject {
 			return UnknownBusinessAwayMessageType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -8163,7 +8163,7 @@ fn decode_business_away_message_schedule_type_from_decoder(mut decoder Decoder) 
 		UnknownObject {
 			return UnknownBusinessAwayMessageScheduleType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -8191,7 +8191,7 @@ fn decode_business_bot_recipients_type_from_decoder(mut decoder Decoder) !Busine
 		UnknownObject {
 			return UnknownBusinessBotRecipientsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -8219,7 +8219,7 @@ fn decode_business_bot_rights_type_from_decoder(mut decoder Decoder) !BusinessBo
 		UnknownObject {
 			return UnknownBusinessBotRightsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -8247,7 +8247,7 @@ fn decode_business_chat_link_type_from_decoder(mut decoder Decoder) !BusinessCha
 		UnknownObject {
 			return UnknownBusinessChatLinkType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -8275,7 +8275,7 @@ fn decode_business_greeting_message_type_from_decoder(mut decoder Decoder) !Busi
 		UnknownObject {
 			return UnknownBusinessGreetingMessageType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -8303,7 +8303,7 @@ fn decode_business_intro_type_from_decoder(mut decoder Decoder) !BusinessIntroTy
 		UnknownObject {
 			return UnknownBusinessIntroType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -8331,7 +8331,7 @@ fn decode_business_location_type_from_decoder(mut decoder Decoder) !BusinessLoca
 		UnknownObject {
 			return UnknownBusinessLocationType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -8359,7 +8359,7 @@ fn decode_business_recipients_type_from_decoder(mut decoder Decoder) !BusinessRe
 		UnknownObject {
 			return UnknownBusinessRecipientsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -8387,7 +8387,7 @@ fn decode_business_weekly_open_type_from_decoder(mut decoder Decoder) !BusinessW
 		UnknownObject {
 			return UnknownBusinessWeeklyOpenType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -8415,7 +8415,7 @@ fn decode_business_work_hours_type_from_decoder(mut decoder Decoder) !BusinessWo
 		UnknownObject {
 			return UnknownBusinessWorkHoursType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -8443,7 +8443,7 @@ fn decode_cdn_config_type_from_decoder(mut decoder Decoder) !CdnConfigType {
 		UnknownObject {
 			return UnknownCdnConfigType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -8471,7 +8471,7 @@ fn decode_cdn_public_key_type_from_decoder(mut decoder Decoder) !CdnPublicKeyTyp
 		UnknownObject {
 			return UnknownCdnPublicKeyType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -8499,7 +8499,7 @@ fn decode_channel_admin_log_event_type_from_decoder(mut decoder Decoder) !Channe
 		UnknownObject {
 			return UnknownChannelAdminLogEventType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -8677,7 +8677,7 @@ fn decode_channel_admin_log_event_action_type_from_decoder(mut decoder Decoder) 
 		UnknownObject {
 			return UnknownChannelAdminLogEventActionType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -8705,7 +8705,7 @@ fn decode_channel_admin_log_events_filter_type_from_decoder(mut decoder Decoder)
 		UnknownObject {
 			return UnknownChannelAdminLogEventsFilterType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -8736,7 +8736,7 @@ fn decode_channel_location_type_from_decoder(mut decoder Decoder) !ChannelLocati
 		UnknownObject {
 			return UnknownChannelLocationType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -8767,7 +8767,7 @@ fn decode_channel_messages_filter_type_from_decoder(mut decoder Decoder) !Channe
 		UnknownObject {
 			return UnknownChannelMessagesFilterType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -8810,7 +8810,7 @@ fn decode_channel_participant_type_from_decoder(mut decoder Decoder) !ChannelPar
 		UnknownObject {
 			return UnknownChannelParticipantType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -8859,7 +8859,7 @@ fn decode_channel_participants_filter_type_from_decoder(mut decoder Decoder) !Ch
 		UnknownObject {
 			return UnknownChannelParticipantsFilterType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -8899,7 +8899,7 @@ fn decode_chat_type_from_decoder(mut decoder Decoder) !ChatType {
 		UnknownObject {
 			return UnknownChatType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -8927,7 +8927,7 @@ fn decode_chat_admin_rights_type_from_decoder(mut decoder Decoder) !ChatAdminRig
 		UnknownObject {
 			return UnknownChatAdminRightsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -8955,7 +8955,7 @@ fn decode_chat_admin_with_invites_type_from_decoder(mut decoder Decoder) !ChatAd
 		UnknownObject {
 			return UnknownChatAdminWithInvitesType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -8983,7 +8983,7 @@ fn decode_chat_banned_rights_type_from_decoder(mut decoder Decoder) !ChatBannedR
 		UnknownObject {
 			return UnknownChatBannedRightsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -9014,7 +9014,7 @@ fn decode_chat_full_type_from_decoder(mut decoder Decoder) !ChatFullType {
 		UnknownObject {
 			return UnknownChatFullType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -9048,7 +9048,7 @@ fn decode_chat_invite_type_from_decoder(mut decoder Decoder) !ChatInviteType {
 		UnknownObject {
 			return UnknownChatInviteType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -9076,7 +9076,7 @@ fn decode_chat_invite_importer_type_from_decoder(mut decoder Decoder) !ChatInvit
 		UnknownObject {
 			return UnknownChatInviteImporterType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -9104,7 +9104,7 @@ fn decode_chat_onlines_type_from_decoder(mut decoder Decoder) !ChatOnlinesType {
 		UnknownObject {
 			return UnknownChatOnlinesType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -9138,7 +9138,7 @@ fn decode_chat_participant_type_from_decoder(mut decoder Decoder) !ChatParticipa
 		UnknownObject {
 			return UnknownChatParticipantType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -9169,7 +9169,7 @@ fn decode_chat_participants_type_from_decoder(mut decoder Decoder) !ChatParticip
 		UnknownObject {
 			return UnknownChatParticipantsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -9200,7 +9200,7 @@ fn decode_chat_photo_type_from_decoder(mut decoder Decoder) !ChatPhotoType {
 		UnknownObject {
 			return UnknownChatPhotoType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -9234,7 +9234,7 @@ fn decode_chat_reactions_type_from_decoder(mut decoder Decoder) !ChatReactionsTy
 		UnknownObject {
 			return UnknownChatReactionsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -9265,7 +9265,7 @@ fn decode_chat_theme_type_from_decoder(mut decoder Decoder) !ChatThemeType {
 		UnknownObject {
 			return UnknownChatThemeType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -9293,7 +9293,7 @@ fn decode_client_d_h_inner_data_type_from_decoder(mut decoder Decoder) !ClientDH
 		UnknownObject {
 			return UnknownClientDHInnerDataType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -9321,7 +9321,7 @@ fn decode_code_settings_type_from_decoder(mut decoder Decoder) !CodeSettingsType
 		UnknownObject {
 			return UnknownCodeSettingsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -9349,7 +9349,7 @@ fn decode_config_type_from_decoder(mut decoder Decoder) !ConfigType {
 		UnknownObject {
 			return UnknownConfigType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -9377,7 +9377,7 @@ fn decode_connected_bot_type_from_decoder(mut decoder Decoder) !ConnectedBotType
 		UnknownObject {
 			return UnknownConnectedBotType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -9405,7 +9405,7 @@ fn decode_connected_bot_star_ref_type_from_decoder(mut decoder Decoder) !Connect
 		UnknownObject {
 			return UnknownConnectedBotStarRefType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -9433,7 +9433,7 @@ fn decode_contact_type_from_decoder(mut decoder Decoder) !ContactType {
 		UnknownObject {
 			return UnknownContactType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -9461,7 +9461,7 @@ fn decode_contact_birthday_type_from_decoder(mut decoder Decoder) !ContactBirthd
 		UnknownObject {
 			return UnknownContactBirthdayType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -9489,7 +9489,7 @@ fn decode_contact_status_type_from_decoder(mut decoder Decoder) !ContactStatusTy
 		UnknownObject {
 			return UnknownContactStatusType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -9517,7 +9517,7 @@ fn decode_data_j_s_o_n_type_from_decoder(mut decoder Decoder) !DataJSONType {
 		UnknownObject {
 			return UnknownDataJSONType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -9545,7 +9545,7 @@ fn decode_dc_option_type_from_decoder(mut decoder Decoder) !DcOptionType {
 		UnknownObject {
 			return UnknownDcOptionType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -9573,7 +9573,7 @@ fn decode_default_history_t_t_l_type_from_decoder(mut decoder Decoder) !DefaultH
 		UnknownObject {
 			return UnknownDefaultHistoryTTLType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -9607,7 +9607,7 @@ fn decode_destroy_auth_key_res_type_from_decoder(mut decoder Decoder) !DestroyAu
 		UnknownObject {
 			return UnknownDestroyAuthKeyResType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -9638,7 +9638,7 @@ fn decode_destroy_session_res_type_from_decoder(mut decoder Decoder) !DestroySes
 		UnknownObject {
 			return UnknownDestroySessionResType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -9669,7 +9669,7 @@ fn decode_dialog_type_from_decoder(mut decoder Decoder) !DialogType {
 		UnknownObject {
 			return UnknownDialogType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -9703,7 +9703,7 @@ fn decode_dialog_filter_type_from_decoder(mut decoder Decoder) !DialogFilterType
 		UnknownObject {
 			return UnknownDialogFilterType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -9731,7 +9731,7 @@ fn decode_dialog_filter_suggested_type_from_decoder(mut decoder Decoder) !Dialog
 		UnknownObject {
 			return UnknownDialogFilterSuggestedType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -9762,7 +9762,7 @@ fn decode_dialog_peer_type_from_decoder(mut decoder Decoder) !DialogPeerType {
 		UnknownObject {
 			return UnknownDialogPeerType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -9790,7 +9790,7 @@ fn decode_disallowed_gifts_settings_type_from_decoder(mut decoder Decoder) !Disa
 		UnknownObject {
 			return UnknownDisallowedGiftsSettingsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -9821,7 +9821,7 @@ fn decode_document_type_from_decoder(mut decoder Decoder) !DocumentType {
 		UnknownObject {
 			return UnknownDocumentType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -9870,7 +9870,7 @@ fn decode_document_attribute_type_from_decoder(mut decoder Decoder) !DocumentAtt
 		UnknownObject {
 			return UnknownDocumentAttributeType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -9901,7 +9901,7 @@ fn decode_draft_message_type_from_decoder(mut decoder Decoder) !DraftMessageType
 		UnknownObject {
 			return UnknownDraftMessageType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -9935,7 +9935,7 @@ fn decode_email_verification_type_from_decoder(mut decoder Decoder) !EmailVerifi
 		UnknownObject {
 			return UnknownEmailVerificationType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -9969,7 +9969,7 @@ fn decode_email_verify_purpose_type_from_decoder(mut decoder Decoder) !EmailVeri
 		UnknownObject {
 			return UnknownEmailVerifyPurposeType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10003,7 +10003,7 @@ fn decode_emoji_group_type_from_decoder(mut decoder Decoder) !EmojiGroupType {
 		UnknownObject {
 			return UnknownEmojiGroupType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10034,7 +10034,7 @@ fn decode_emoji_keyword_type_from_decoder(mut decoder Decoder) !EmojiKeywordType
 		UnknownObject {
 			return UnknownEmojiKeywordType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10062,7 +10062,7 @@ fn decode_emoji_keywords_difference_type_from_decoder(mut decoder Decoder) !Emoj
 		UnknownObject {
 			return UnknownEmojiKeywordsDifferenceType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10090,7 +10090,7 @@ fn decode_emoji_language_type_from_decoder(mut decoder Decoder) !EmojiLanguageTy
 		UnknownObject {
 			return UnknownEmojiLanguageType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10121,7 +10121,7 @@ fn decode_emoji_list_type_from_decoder(mut decoder Decoder) !EmojiListType {
 		UnknownObject {
 			return UnknownEmojiListType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10158,7 +10158,7 @@ fn decode_emoji_status_type_from_decoder(mut decoder Decoder) !EmojiStatusType {
 		UnknownObject {
 			return UnknownEmojiStatusType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10186,7 +10186,7 @@ fn decode_emoji_u_r_l_type_from_decoder(mut decoder Decoder) !EmojiURLType {
 		UnknownObject {
 			return UnknownEmojiURLType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10226,7 +10226,7 @@ fn decode_encrypted_chat_type_from_decoder(mut decoder Decoder) !EncryptedChatTy
 		UnknownObject {
 			return UnknownEncryptedChatType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10257,7 +10257,7 @@ fn decode_encrypted_file_type_from_decoder(mut decoder Decoder) !EncryptedFileTy
 		UnknownObject {
 			return UnknownEncryptedFileType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10288,7 +10288,7 @@ fn decode_encrypted_message_type_from_decoder(mut decoder Decoder) !EncryptedMes
 		UnknownObject {
 			return UnknownEncryptedMessageType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10316,7 +10316,7 @@ fn decode_error_type_from_decoder(mut decoder Decoder) !TlErrorType {
 		UnknownObject {
 			return UnknownTlErrorType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10347,7 +10347,7 @@ fn decode_exported_chat_invite_type_from_decoder(mut decoder Decoder) !ExportedC
 		UnknownObject {
 			return UnknownExportedChatInviteType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10375,7 +10375,7 @@ fn decode_exported_chatlist_invite_type_from_decoder(mut decoder Decoder) !Expor
 		UnknownObject {
 			return UnknownExportedChatlistInviteType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10403,7 +10403,7 @@ fn decode_exported_contact_token_type_from_decoder(mut decoder Decoder) !Exporte
 		UnknownObject {
 			return UnknownExportedContactTokenType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10431,7 +10431,7 @@ fn decode_exported_message_link_type_from_decoder(mut decoder Decoder) !Exported
 		UnknownObject {
 			return UnknownExportedMessageLinkType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10459,7 +10459,7 @@ fn decode_exported_story_link_type_from_decoder(mut decoder Decoder) !ExportedSt
 		UnknownObject {
 			return UnknownExportedStoryLinkType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10487,7 +10487,7 @@ fn decode_fact_check_type_from_decoder(mut decoder Decoder) !FactCheckType {
 		UnknownObject {
 			return UnknownFactCheckType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10515,7 +10515,7 @@ fn decode_file_hash_type_from_decoder(mut decoder Decoder) !FileHashType {
 		UnknownObject {
 			return UnknownFileHashType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10543,7 +10543,7 @@ fn decode_folder_type_from_decoder(mut decoder Decoder) !FolderType {
 		UnknownObject {
 			return UnknownFolderType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10571,7 +10571,7 @@ fn decode_folder_peer_type_from_decoder(mut decoder Decoder) !FolderPeerType {
 		UnknownObject {
 			return UnknownFolderPeerType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10602,7 +10602,7 @@ fn decode_forum_topic_type_from_decoder(mut decoder Decoder) !ForumTopicType {
 		UnknownObject {
 			return UnknownForumTopicType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10630,7 +10630,7 @@ fn decode_found_story_type_from_decoder(mut decoder Decoder) !FoundStoryType {
 		UnknownObject {
 			return UnknownFoundStoryType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10658,7 +10658,7 @@ fn decode_future_salt_type_from_decoder(mut decoder Decoder) !FutureSaltType {
 		UnknownObject {
 			return UnknownFutureSaltType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10686,7 +10686,7 @@ fn decode_future_salts_type_from_decoder(mut decoder Decoder) !FutureSaltsType {
 		UnknownObject {
 			return UnknownFutureSaltsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10714,7 +10714,7 @@ fn decode_game_type_from_decoder(mut decoder Decoder) !GameType {
 		UnknownObject {
 			return UnknownGameType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10745,7 +10745,7 @@ fn decode_geo_point_type_from_decoder(mut decoder Decoder) !GeoPointType {
 		UnknownObject {
 			return UnknownGeoPointType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10773,7 +10773,7 @@ fn decode_geo_point_address_type_from_decoder(mut decoder Decoder) !GeoPointAddr
 		UnknownObject {
 			return UnknownGeoPointAddressType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10801,7 +10801,7 @@ fn decode_global_privacy_settings_type_from_decoder(mut decoder Decoder) !Global
 		UnknownObject {
 			return UnknownGlobalPrivacySettingsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10832,7 +10832,7 @@ fn decode_group_call_type_from_decoder(mut decoder Decoder) !GroupCallType {
 		UnknownObject {
 			return UnknownGroupCallType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10860,7 +10860,7 @@ fn decode_group_call_donor_type_from_decoder(mut decoder Decoder) !GroupCallDono
 		UnknownObject {
 			return UnknownGroupCallDonorType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10888,7 +10888,7 @@ fn decode_group_call_message_type_from_decoder(mut decoder Decoder) !GroupCallMe
 		UnknownObject {
 			return UnknownGroupCallMessageType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10916,7 +10916,7 @@ fn decode_group_call_participant_type_from_decoder(mut decoder Decoder) !GroupCa
 		UnknownObject {
 			return UnknownGroupCallParticipantType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10944,7 +10944,7 @@ fn decode_group_call_participant_video_type_from_decoder(mut decoder Decoder) !G
 		UnknownObject {
 			return UnknownGroupCallParticipantVideoType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10972,13 +10972,12 @@ fn decode_group_call_participant_video_source_group_type_from_decoder(mut decode
 		UnknownObject {
 			return UnknownGroupCallParticipantVideoSourceGroupType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
 		else {
-			return error('expected GroupCallParticipantVideoSourceGroup, got ' +
-				object.qualified_name())
+			return error('expected GroupCallParticipantVideoSourceGroup, got ' + object.qualified_name())
 		}
 	}
 }
@@ -11001,7 +11000,7 @@ fn decode_group_call_stream_channel_type_from_decoder(mut decoder Decoder) !Grou
 		UnknownObject {
 			return UnknownGroupCallStreamChannelType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11029,7 +11028,7 @@ fn decode_high_score_type_from_decoder(mut decoder Decoder) !HighScoreType {
 		UnknownObject {
 			return UnknownHighScoreType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11057,7 +11056,7 @@ fn decode_http_wait_type_from_decoder(mut decoder Decoder) !HttpWaitType {
 		UnknownObject {
 			return UnknownHttpWaitType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11085,7 +11084,7 @@ fn decode_imported_contact_type_from_decoder(mut decoder Decoder) !ImportedConta
 		UnknownObject {
 			return UnknownImportedContactType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11113,7 +11112,7 @@ fn decode_inline_bot_switch_p_m_type_from_decoder(mut decoder Decoder) !InlineBo
 		UnknownObject {
 			return UnknownInlineBotSwitchPMType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11141,7 +11140,7 @@ fn decode_inline_bot_web_view_type_from_decoder(mut decoder Decoder) !InlineBotW
 		UnknownObject {
 			return UnknownInlineBotWebViewType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11184,7 +11183,7 @@ fn decode_inline_query_peer_type_type_from_decoder(mut decoder Decoder) !InlineQ
 		UnknownObject {
 			return UnknownInlineQueryPeerTypeType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11212,7 +11211,7 @@ fn decode_input_app_event_type_from_decoder(mut decoder Decoder) !InputAppEventT
 		UnknownObject {
 			return UnknownInputAppEventType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11243,7 +11242,7 @@ fn decode_input_bot_app_type_from_decoder(mut decoder Decoder) !InputBotAppType 
 		UnknownObject {
 			return UnknownInputBotAppType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11292,7 +11291,7 @@ fn decode_input_bot_inline_message_type_from_decoder(mut decoder Decoder) !Input
 		UnknownObject {
 			return UnknownInputBotInlineMessageType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11323,7 +11322,7 @@ fn decode_input_bot_inline_message_i_d_type_from_decoder(mut decoder Decoder) !I
 		UnknownObject {
 			return UnknownInputBotInlineMessageIDType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11360,7 +11359,7 @@ fn decode_input_bot_inline_result_type_from_decoder(mut decoder Decoder) !InputB
 		UnknownObject {
 			return UnknownInputBotInlineResultType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11388,7 +11387,7 @@ fn decode_input_business_away_message_type_from_decoder(mut decoder Decoder) !In
 		UnknownObject {
 			return UnknownInputBusinessAwayMessageType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11416,7 +11415,7 @@ fn decode_input_business_bot_recipients_type_from_decoder(mut decoder Decoder) !
 		UnknownObject {
 			return UnknownInputBusinessBotRecipientsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11444,7 +11443,7 @@ fn decode_input_business_chat_link_type_from_decoder(mut decoder Decoder) !Input
 		UnknownObject {
 			return UnknownInputBusinessChatLinkType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11472,7 +11471,7 @@ fn decode_input_business_greeting_message_type_from_decoder(mut decoder Decoder)
 		UnknownObject {
 			return UnknownInputBusinessGreetingMessageType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11500,7 +11499,7 @@ fn decode_input_business_intro_type_from_decoder(mut decoder Decoder) !InputBusi
 		UnknownObject {
 			return UnknownInputBusinessIntroType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11528,7 +11527,7 @@ fn decode_input_business_recipients_type_from_decoder(mut decoder Decoder) !Inpu
 		UnknownObject {
 			return UnknownInputBusinessRecipientsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11562,7 +11561,7 @@ fn decode_input_channel_type_from_decoder(mut decoder Decoder) !InputChannelType
 		UnknownObject {
 			return UnknownInputChannelType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11596,7 +11595,7 @@ fn decode_input_chat_photo_type_from_decoder(mut decoder Decoder) !InputChatPhot
 		UnknownObject {
 			return UnknownInputChatPhotoType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11630,7 +11629,7 @@ fn decode_input_chat_theme_type_from_decoder(mut decoder Decoder) !InputChatThem
 		UnknownObject {
 			return UnknownInputChatThemeType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11658,7 +11657,7 @@ fn decode_input_chatlist_type_from_decoder(mut decoder Decoder) !InputChatlistTy
 		UnknownObject {
 			return UnknownInputChatlistType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11689,7 +11688,7 @@ fn decode_input_check_password_s_r_p_type_from_decoder(mut decoder Decoder) !Inp
 		UnknownObject {
 			return UnknownInputCheckPasswordSRPType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11717,7 +11716,7 @@ fn decode_input_client_proxy_type_from_decoder(mut decoder Decoder) !InputClient
 		UnknownObject {
 			return UnknownInputClientProxyType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11748,7 +11747,7 @@ fn decode_input_collectible_type_from_decoder(mut decoder Decoder) !InputCollect
 		UnknownObject {
 			return UnknownInputCollectibleType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11776,7 +11775,7 @@ fn decode_input_contact_type_from_decoder(mut decoder Decoder) !InputContactType
 		UnknownObject {
 			return UnknownInputContactType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11807,7 +11806,7 @@ fn decode_input_dialog_peer_type_from_decoder(mut decoder Decoder) !InputDialogP
 		UnknownObject {
 			return UnknownInputDialogPeerType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11838,7 +11837,7 @@ fn decode_input_document_type_from_decoder(mut decoder Decoder) !InputDocumentTy
 		UnknownObject {
 			return UnknownInputDocumentType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11866,7 +11865,7 @@ fn decode_input_encrypted_chat_type_from_decoder(mut decoder Decoder) !InputEncr
 		UnknownObject {
 			return UnknownInputEncryptedChatType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11903,7 +11902,7 @@ fn decode_input_encrypted_file_type_from_decoder(mut decoder Decoder) !InputEncr
 		UnknownObject {
 			return UnknownInputEncryptedFileType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11937,7 +11936,7 @@ fn decode_input_file_type_from_decoder(mut decoder Decoder) !InputFileType {
 		UnknownObject {
 			return UnknownInputFileType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11992,7 +11991,7 @@ fn decode_input_file_location_type_from_decoder(mut decoder Decoder) !InputFileL
 		UnknownObject {
 			return UnknownInputFileLocationType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12020,7 +12019,7 @@ fn decode_input_folder_peer_type_from_decoder(mut decoder Decoder) !InputFolderP
 		UnknownObject {
 			return UnknownInputFolderPeerType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12051,7 +12050,7 @@ fn decode_input_game_type_from_decoder(mut decoder Decoder) !InputGameType {
 		UnknownObject {
 			return UnknownInputGameType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12082,7 +12081,7 @@ fn decode_input_geo_point_type_from_decoder(mut decoder Decoder) !InputGeoPointT
 		UnknownObject {
 			return UnknownInputGeoPointType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12116,7 +12115,7 @@ fn decode_input_group_call_type_from_decoder(mut decoder Decoder) !InputGroupCal
 		UnknownObject {
 			return UnknownInputGroupCallType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12186,7 +12185,7 @@ fn decode_input_invoice_type_from_decoder(mut decoder Decoder) !InputInvoiceType
 		UnknownObject {
 			return UnknownInputInvoiceType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12271,7 +12270,7 @@ fn decode_input_media_type_from_decoder(mut decoder Decoder) !InputMediaType {
 		UnknownObject {
 			return UnknownInputMediaType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12308,7 +12307,7 @@ fn decode_input_message_type_from_decoder(mut decoder Decoder) !InputMessageType
 		UnknownObject {
 			return UnknownInputMessageType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12348,7 +12347,7 @@ fn decode_input_notify_peer_type_from_decoder(mut decoder Decoder) !InputNotifyP
 		UnknownObject {
 			return UnknownInputNotifyPeerType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12379,7 +12378,7 @@ fn decode_input_passkey_credential_type_from_decoder(mut decoder Decoder) !Input
 		UnknownObject {
 			return UnknownInputPasskeyCredentialType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12410,7 +12409,7 @@ fn decode_input_passkey_response_type_from_decoder(mut decoder Decoder) !InputPa
 		UnknownObject {
 			return UnknownInputPasskeyResponseType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12447,7 +12446,7 @@ fn decode_input_payment_credentials_type_from_decoder(mut decoder Decoder) !Inpu
 		UnknownObject {
 			return UnknownInputPaymentCredentialsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12493,7 +12492,7 @@ fn decode_input_peer_type_from_decoder(mut decoder Decoder) !InputPeerType {
 		UnknownObject {
 			return UnknownInputPeerType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12521,7 +12520,7 @@ fn decode_input_peer_notify_settings_type_from_decoder(mut decoder Decoder) !Inp
 		UnknownObject {
 			return UnknownInputPeerNotifySettingsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12549,7 +12548,7 @@ fn decode_input_phone_call_type_from_decoder(mut decoder Decoder) !InputPhoneCal
 		UnknownObject {
 			return UnknownInputPhoneCallType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12580,7 +12579,7 @@ fn decode_input_photo_type_from_decoder(mut decoder Decoder) !InputPhotoType {
 		UnknownObject {
 			return UnknownInputPhotoType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12647,7 +12646,7 @@ fn decode_input_privacy_key_type_from_decoder(mut decoder Decoder) !InputPrivacy
 		UnknownObject {
 			return UnknownInputPrivacyKeyType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12708,7 +12707,7 @@ fn decode_input_privacy_rule_type_from_decoder(mut decoder Decoder) !InputPrivac
 		UnknownObject {
 			return UnknownInputPrivacyRuleType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12739,7 +12738,7 @@ fn decode_input_quick_reply_shortcut_type_from_decoder(mut decoder Decoder) !Inp
 		UnknownObject {
 			return UnknownInputQuickReplyShortcutType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12773,7 +12772,7 @@ fn decode_input_reply_to_type_from_decoder(mut decoder Decoder) !InputReplyToTyp
 		UnknownObject {
 			return UnknownInputReplyToType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12807,7 +12806,7 @@ fn decode_input_saved_star_gift_type_from_decoder(mut decoder Decoder) !InputSav
 		UnknownObject {
 			return UnknownInputSavedStarGiftType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12838,7 +12837,7 @@ fn decode_input_secure_file_type_from_decoder(mut decoder Decoder) !InputSecureF
 		UnknownObject {
 			return UnknownInputSecureFileType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12866,7 +12865,7 @@ fn decode_input_secure_value_type_from_decoder(mut decoder Decoder) !InputSecure
 		UnknownObject {
 			return UnknownInputSecureValueType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12894,7 +12893,7 @@ fn decode_input_single_media_type_from_decoder(mut decoder Decoder) !InputSingle
 		UnknownObject {
 			return UnknownInputSingleMediaType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12925,7 +12924,7 @@ fn decode_input_star_gift_auction_type_from_decoder(mut decoder Decoder) !InputS
 		UnknownObject {
 			return UnknownInputStarGiftAuctionType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12953,7 +12952,7 @@ fn decode_input_stars_transaction_type_from_decoder(mut decoder Decoder) !InputS
 		UnknownObject {
 			return UnknownInputStarsTransactionType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13014,7 +13013,7 @@ fn decode_input_sticker_set_type_from_decoder(mut decoder Decoder) !InputSticker
 		UnknownObject {
 			return UnknownInputStickerSetType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13042,7 +13041,7 @@ fn decode_input_sticker_set_item_type_from_decoder(mut decoder Decoder) !InputSt
 		UnknownObject {
 			return UnknownInputStickerSetItemType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13073,7 +13072,7 @@ fn decode_input_stickered_media_type_from_decoder(mut decoder Decoder) !InputSti
 		UnknownObject {
 			return UnknownInputStickeredMediaType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13122,7 +13121,7 @@ fn decode_input_store_payment_purpose_type_from_decoder(mut decoder Decoder) !In
 		UnknownObject {
 			return UnknownInputStorePaymentPurposeType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13153,7 +13152,7 @@ fn decode_input_theme_type_from_decoder(mut decoder Decoder) !InputThemeType {
 		UnknownObject {
 			return UnknownInputThemeType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13181,7 +13180,7 @@ fn decode_input_theme_settings_type_from_decoder(mut decoder Decoder) !InputThem
 		UnknownObject {
 			return UnknownInputThemeSettingsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13218,7 +13217,7 @@ fn decode_input_user_type_from_decoder(mut decoder Decoder) !InputUserType {
 		UnknownObject {
 			return UnknownInputUserType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13252,7 +13251,7 @@ fn decode_input_wall_paper_type_from_decoder(mut decoder Decoder) !InputWallPape
 		UnknownObject {
 			return UnknownInputWallPaperType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13280,7 +13279,7 @@ fn decode_input_web_document_type_from_decoder(mut decoder Decoder) !InputWebDoc
 		UnknownObject {
 			return UnknownInputWebDocumentType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13314,7 +13313,7 @@ fn decode_input_web_file_location_type_from_decoder(mut decoder Decoder) !InputW
 		UnknownObject {
 			return UnknownInputWebFileLocationType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13342,7 +13341,7 @@ fn decode_invoice_type_from_decoder(mut decoder Decoder) !InvoiceType {
 		UnknownObject {
 			return UnknownInvoiceType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13373,7 +13372,7 @@ fn decode_ip_port_type_from_decoder(mut decoder Decoder) !IpPortType {
 		UnknownObject {
 			return UnknownIpPortType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13401,7 +13400,7 @@ fn decode_j_s_o_n_object_value_type_from_decoder(mut decoder Decoder) !JSONObjec
 		UnknownObject {
 			return UnknownJSONObjectValueType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13444,7 +13443,7 @@ fn decode_j_s_o_n_value_type_from_decoder(mut decoder Decoder) !JSONValueType {
 		UnknownObject {
 			return UnknownJSONValueType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13523,7 +13522,7 @@ fn decode_keyboard_button_type_from_decoder(mut decoder Decoder) !KeyboardButton
 		UnknownObject {
 			return UnknownKeyboardButtonType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13551,7 +13550,7 @@ fn decode_keyboard_button_row_type_from_decoder(mut decoder Decoder) !KeyboardBu
 		UnknownObject {
 			return UnknownKeyboardButtonRowType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13579,7 +13578,7 @@ fn decode_keyboard_button_style_type_from_decoder(mut decoder Decoder) !Keyboard
 		UnknownObject {
 			return UnknownKeyboardButtonStyleType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13607,7 +13606,7 @@ fn decode_labeled_price_type_from_decoder(mut decoder Decoder) !LabeledPriceType
 		UnknownObject {
 			return UnknownLabeledPriceType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13635,7 +13634,7 @@ fn decode_lang_pack_difference_type_from_decoder(mut decoder Decoder) !LangPackD
 		UnknownObject {
 			return UnknownLangPackDifferenceType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13663,7 +13662,7 @@ fn decode_lang_pack_language_type_from_decoder(mut decoder Decoder) !LangPackLan
 		UnknownObject {
 			return UnknownLangPackLanguageType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13697,7 +13696,7 @@ fn decode_lang_pack_string_type_from_decoder(mut decoder Decoder) !LangPackStrin
 		UnknownObject {
 			return UnknownLangPackStringType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13725,7 +13724,7 @@ fn decode_mask_coords_type_from_decoder(mut decoder Decoder) !MaskCoordsType {
 		UnknownObject {
 			return UnknownMaskCoordsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13777,7 +13776,7 @@ fn decode_media_area_type_from_decoder(mut decoder Decoder) !MediaAreaType {
 		UnknownObject {
 			return UnknownMediaAreaType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13805,7 +13804,7 @@ fn decode_media_area_coordinates_type_from_decoder(mut decoder Decoder) !MediaAr
 		UnknownObject {
 			return UnknownMediaAreaCoordinatesType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13839,7 +13838,7 @@ fn decode_message_type_from_decoder(mut decoder Decoder) !MessageType {
 		UnknownObject {
 			return UnknownMessageType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14050,7 +14049,7 @@ fn decode_message_action_type_from_decoder(mut decoder Decoder) !MessageActionTy
 		UnknownObject {
 			return UnknownMessageActionType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14138,7 +14137,7 @@ fn decode_message_entity_type_from_decoder(mut decoder Decoder) !MessageEntityTy
 		UnknownObject {
 			return UnknownMessageEntityType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14169,7 +14168,7 @@ fn decode_message_extended_media_type_from_decoder(mut decoder Decoder) !Message
 		UnknownObject {
 			return UnknownMessageExtendedMediaType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14197,7 +14196,7 @@ fn decode_message_fwd_header_type_from_decoder(mut decoder Decoder) !MessageFwdH
 		UnknownObject {
 			return UnknownMessageFwdHeaderType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14279,7 +14278,7 @@ fn decode_message_media_type_from_decoder(mut decoder Decoder) !MessageMediaType
 		UnknownObject {
 			return UnknownMessageMediaType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14307,7 +14306,7 @@ fn decode_message_peer_reaction_type_from_decoder(mut decoder Decoder) !MessageP
 		UnknownObject {
 			return UnknownMessagePeerReactionType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14341,7 +14340,7 @@ fn decode_message_peer_vote_type_from_decoder(mut decoder Decoder) !MessagePeerV
 		UnknownObject {
 			return UnknownMessagePeerVoteType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14369,7 +14368,7 @@ fn decode_message_range_type_from_decoder(mut decoder Decoder) !MessageRangeType
 		UnknownObject {
 			return UnknownMessageRangeType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14397,7 +14396,7 @@ fn decode_message_reactions_type_from_decoder(mut decoder Decoder) !MessageReact
 		UnknownObject {
 			return UnknownMessageReactionsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14425,7 +14424,7 @@ fn decode_message_reactor_type_from_decoder(mut decoder Decoder) !MessageReactor
 		UnknownObject {
 			return UnknownMessageReactorType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14453,7 +14452,7 @@ fn decode_message_replies_type_from_decoder(mut decoder Decoder) !MessageReplies
 		UnknownObject {
 			return UnknownMessageRepliesType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14484,7 +14483,7 @@ fn decode_message_reply_header_type_from_decoder(mut decoder Decoder) !MessageRe
 		UnknownObject {
 			return UnknownMessageReplyHeaderType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14512,7 +14511,7 @@ fn decode_message_report_option_type_from_decoder(mut decoder Decoder) !MessageR
 		UnknownObject {
 			return UnknownMessageReportOptionType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14540,7 +14539,7 @@ fn decode_message_views_type_from_decoder(mut decoder Decoder) !MessageViewsType
 		UnknownObject {
 			return UnknownMessageViewsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14616,7 +14615,7 @@ fn decode_messages_filter_type_from_decoder(mut decoder Decoder) !MessagesFilter
 		UnknownObject {
 			return UnknownMessagesFilterType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14644,7 +14643,7 @@ fn decode_missing_invitee_type_from_decoder(mut decoder Decoder) !MissingInvitee
 		UnknownObject {
 			return UnknownMissingInviteeType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14675,7 +14674,7 @@ fn decode_msg_detailed_info_type_from_decoder(mut decoder Decoder) !MsgDetailedI
 		UnknownObject {
 			return UnknownMsgDetailedInfoType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14703,7 +14702,7 @@ fn decode_msg_resend_req_type_from_decoder(mut decoder Decoder) !MsgResendReqTyp
 		UnknownObject {
 			return UnknownMsgResendReqType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14731,7 +14730,7 @@ fn decode_msgs_ack_type_from_decoder(mut decoder Decoder) !MsgsAckType {
 		UnknownObject {
 			return UnknownMsgsAckType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14759,7 +14758,7 @@ fn decode_msgs_all_info_type_from_decoder(mut decoder Decoder) !MsgsAllInfoType 
 		UnknownObject {
 			return UnknownMsgsAllInfoType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14787,7 +14786,7 @@ fn decode_msgs_state_info_type_from_decoder(mut decoder Decoder) !MsgsStateInfoT
 		UnknownObject {
 			return UnknownMsgsStateInfoType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14815,7 +14814,7 @@ fn decode_msgs_state_req_type_from_decoder(mut decoder Decoder) !MsgsStateReqTyp
 		UnknownObject {
 			return UnknownMsgsStateReqType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14843,7 +14842,7 @@ fn decode_my_boost_type_from_decoder(mut decoder Decoder) !MyBoostType {
 		UnknownObject {
 			return UnknownMyBoostType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14871,7 +14870,7 @@ fn decode_nearest_dc_type_from_decoder(mut decoder Decoder) !NearestDcType {
 		UnknownObject {
 			return UnknownNearestDcType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14899,7 +14898,7 @@ fn decode_new_session_type_from_decoder(mut decoder Decoder) !NewSessionType {
 		UnknownObject {
 			return UnknownNewSessionType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14936,7 +14935,7 @@ fn decode_notification_sound_type_from_decoder(mut decoder Decoder) !Notificatio
 		UnknownObject {
 			return UnknownNotificationSoundType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14976,7 +14975,7 @@ fn decode_notify_peer_type_from_decoder(mut decoder Decoder) !NotifyPeerType {
 		UnknownObject {
 			return UnknownNotifyPeerType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15004,7 +15003,7 @@ fn decode_null_type_from_decoder(mut decoder Decoder) !NullType {
 		UnknownObject {
 			return UnknownNullType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15032,7 +15031,7 @@ fn decode_outbox_read_date_type_from_decoder(mut decoder Decoder) !OutboxReadDat
 		UnknownObject {
 			return UnknownOutboxReadDateType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15069,7 +15068,7 @@ fn decode_p_q_inner_data_type_from_decoder(mut decoder Decoder) !PQInnerDataType
 		UnknownObject {
 			return UnknownPQInnerDataType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15097,7 +15096,7 @@ fn decode_page_type_from_decoder(mut decoder Decoder) !PageType {
 		UnknownObject {
 			return UnknownPageType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15209,7 +15208,7 @@ fn decode_page_block_type_from_decoder(mut decoder Decoder) !PageBlockType {
 		UnknownObject {
 			return UnknownPageBlockType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15237,7 +15236,7 @@ fn decode_page_caption_type_from_decoder(mut decoder Decoder) !PageCaptionType {
 		UnknownObject {
 			return UnknownPageCaptionType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15268,7 +15267,7 @@ fn decode_page_list_item_type_from_decoder(mut decoder Decoder) !PageListItemTyp
 		UnknownObject {
 			return UnknownPageListItemType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15299,7 +15298,7 @@ fn decode_page_list_ordered_item_type_from_decoder(mut decoder Decoder) !PageLis
 		UnknownObject {
 			return UnknownPageListOrderedItemType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15327,7 +15326,7 @@ fn decode_page_related_article_type_from_decoder(mut decoder Decoder) !PageRelat
 		UnknownObject {
 			return UnknownPageRelatedArticleType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15355,7 +15354,7 @@ fn decode_page_table_cell_type_from_decoder(mut decoder Decoder) !PageTableCellT
 		UnknownObject {
 			return UnknownPageTableCellType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15383,7 +15382,7 @@ fn decode_page_table_row_type_from_decoder(mut decoder Decoder) !PageTableRowTyp
 		UnknownObject {
 			return UnknownPageTableRowType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15417,7 +15416,7 @@ fn decode_paid_reaction_privacy_type_from_decoder(mut decoder Decoder) !PaidReac
 		UnknownObject {
 			return UnknownPaidReactionPrivacyType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15445,7 +15444,7 @@ fn decode_passkey_type_from_decoder(mut decoder Decoder) !PasskeyType {
 		UnknownObject {
 			return UnknownPasskeyType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15476,7 +15475,7 @@ fn decode_password_kdf_algo_type_from_decoder(mut decoder Decoder) !PasswordKdfA
 		UnknownObject {
 			return UnknownPasswordKdfAlgoType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15504,7 +15503,7 @@ fn decode_payment_charge_type_from_decoder(mut decoder Decoder) !PaymentChargeTy
 		UnknownObject {
 			return UnknownPaymentChargeType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15532,7 +15531,7 @@ fn decode_payment_form_method_type_from_decoder(mut decoder Decoder) !PaymentFor
 		UnknownObject {
 			return UnknownPaymentFormMethodType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15560,7 +15559,7 @@ fn decode_payment_requested_info_type_from_decoder(mut decoder Decoder) !Payment
 		UnknownObject {
 			return UnknownPaymentRequestedInfoType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15588,7 +15587,7 @@ fn decode_payment_saved_credentials_type_from_decoder(mut decoder Decoder) !Paym
 		UnknownObject {
 			return UnknownPaymentSavedCredentialsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15622,7 +15621,7 @@ fn decode_peer_type_from_decoder(mut decoder Decoder) !PeerType {
 		UnknownObject {
 			return UnknownPeerType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15650,7 +15649,7 @@ fn decode_peer_blocked_type_from_decoder(mut decoder Decoder) !PeerBlockedType {
 		UnknownObject {
 			return UnknownPeerBlockedType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15684,7 +15683,7 @@ fn decode_peer_color_type_from_decoder(mut decoder Decoder) !PeerColorType {
 		UnknownObject {
 			return UnknownPeerColorType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15715,7 +15714,7 @@ fn decode_peer_located_type_from_decoder(mut decoder Decoder) !PeerLocatedType {
 		UnknownObject {
 			return UnknownPeerLocatedType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15743,7 +15742,7 @@ fn decode_peer_notify_settings_type_from_decoder(mut decoder Decoder) !PeerNotif
 		UnknownObject {
 			return UnknownPeerNotifySettingsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15771,7 +15770,7 @@ fn decode_peer_settings_type_from_decoder(mut decoder Decoder) !PeerSettingsType
 		UnknownObject {
 			return UnknownPeerSettingsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15799,7 +15798,7 @@ fn decode_peer_stories_type_from_decoder(mut decoder Decoder) !PeerStoriesType {
 		UnknownObject {
 			return UnknownPeerStoriesType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15827,7 +15826,7 @@ fn decode_pending_suggestion_type_from_decoder(mut decoder Decoder) !PendingSugg
 		UnknownObject {
 			return UnknownPendingSuggestionType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15870,7 +15869,7 @@ fn decode_phone_call_type_from_decoder(mut decoder Decoder) !PhoneCallType {
 		UnknownObject {
 			return UnknownPhoneCallType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15910,7 +15909,7 @@ fn decode_phone_call_discard_reason_type_from_decoder(mut decoder Decoder) !Phon
 		UnknownObject {
 			return UnknownPhoneCallDiscardReasonType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15938,7 +15937,7 @@ fn decode_phone_call_protocol_type_from_decoder(mut decoder Decoder) !PhoneCallP
 		UnknownObject {
 			return UnknownPhoneCallProtocolType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15969,7 +15968,7 @@ fn decode_phone_connection_type_from_decoder(mut decoder Decoder) !PhoneConnecti
 		UnknownObject {
 			return UnknownPhoneConnectionType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16000,7 +15999,7 @@ fn decode_photo_type_from_decoder(mut decoder Decoder) !PhotoType {
 		UnknownObject {
 			return UnknownPhotoType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16043,7 +16042,7 @@ fn decode_photo_size_type_from_decoder(mut decoder Decoder) !PhotoSizeType {
 		UnknownObject {
 			return UnknownPhotoSizeType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16071,7 +16070,7 @@ fn decode_poll_type_from_decoder(mut decoder Decoder) !PollType {
 		UnknownObject {
 			return UnknownPollType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16099,7 +16098,7 @@ fn decode_poll_answer_type_from_decoder(mut decoder Decoder) !PollAnswerType {
 		UnknownObject {
 			return UnknownPollAnswerType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16127,7 +16126,7 @@ fn decode_poll_answer_voters_type_from_decoder(mut decoder Decoder) !PollAnswerV
 		UnknownObject {
 			return UnknownPollAnswerVotersType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16155,7 +16154,7 @@ fn decode_poll_results_type_from_decoder(mut decoder Decoder) !PollResultsType {
 		UnknownObject {
 			return UnknownPollResultsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16183,7 +16182,7 @@ fn decode_pong_type_from_decoder(mut decoder Decoder) !PongType {
 		UnknownObject {
 			return UnknownPongType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16211,7 +16210,7 @@ fn decode_popular_contact_type_from_decoder(mut decoder Decoder) !PopularContact
 		UnknownObject {
 			return UnknownPopularContactType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16239,7 +16238,7 @@ fn decode_post_address_type_from_decoder(mut decoder Decoder) !PostAddressType {
 		UnknownObject {
 			return UnknownPostAddressType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16270,7 +16269,7 @@ fn decode_post_interaction_counters_type_from_decoder(mut decoder Decoder) !Post
 		UnknownObject {
 			return UnknownPostInteractionCountersType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16298,7 +16297,7 @@ fn decode_premium_gift_code_option_type_from_decoder(mut decoder Decoder) !Premi
 		UnknownObject {
 			return UnknownPremiumGiftCodeOptionType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16326,7 +16325,7 @@ fn decode_premium_subscription_option_type_from_decoder(mut decoder Decoder) !Pr
 		UnknownObject {
 			return UnknownPremiumSubscriptionOptionType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16357,7 +16356,7 @@ fn decode_prepaid_giveaway_type_from_decoder(mut decoder Decoder) !PrepaidGiveaw
 		UnknownObject {
 			return UnknownPrepaidGiveawayType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16424,7 +16423,7 @@ fn decode_privacy_key_type_from_decoder(mut decoder Decoder) !PrivacyKeyType {
 		UnknownObject {
 			return UnknownPrivacyKeyType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16485,7 +16484,7 @@ fn decode_privacy_rule_type_from_decoder(mut decoder Decoder) !PrivacyRuleType {
 		UnknownObject {
 			return UnknownPrivacyRuleType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16534,7 +16533,7 @@ fn decode_profile_tab_type_from_decoder(mut decoder Decoder) !ProfileTabType {
 		UnknownObject {
 			return UnknownProfileTabType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16565,7 +16564,7 @@ fn decode_public_forward_type_from_decoder(mut decoder Decoder) !PublicForwardTy
 		UnknownObject {
 			return UnknownPublicForwardType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16593,7 +16592,7 @@ fn decode_quick_reply_type_from_decoder(mut decoder Decoder) !QuickReplyType {
 		UnknownObject {
 			return UnknownQuickReplyType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16630,7 +16629,7 @@ fn decode_reaction_type_from_decoder(mut decoder Decoder) !ReactionType {
 		UnknownObject {
 			return UnknownReactionType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16658,7 +16657,7 @@ fn decode_reaction_count_type_from_decoder(mut decoder Decoder) !ReactionCountTy
 		UnknownObject {
 			return UnknownReactionCountType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16689,7 +16688,7 @@ fn decode_reaction_notifications_from_type_from_decoder(mut decoder Decoder) !Re
 		UnknownObject {
 			return UnknownReactionNotificationsFromType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16717,7 +16716,7 @@ fn decode_reactions_notify_settings_type_from_decoder(mut decoder Decoder) !Reac
 		UnknownObject {
 			return UnknownReactionsNotifySettingsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16745,7 +16744,7 @@ fn decode_read_participant_date_type_from_decoder(mut decoder Decoder) !ReadPart
 		UnknownObject {
 			return UnknownReadParticipantDateType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16773,7 +16772,7 @@ fn decode_received_notify_message_type_from_decoder(mut decoder Decoder) !Receiv
 		UnknownObject {
 			return UnknownReceivedNotifyMessageType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16813,7 +16812,7 @@ fn decode_recent_me_url_type_from_decoder(mut decoder Decoder) !RecentMeUrlType 
 		UnknownObject {
 			return UnknownRecentMeUrlType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16841,7 +16840,7 @@ fn decode_recent_story_type_from_decoder(mut decoder Decoder) !RecentStoryType {
 		UnknownObject {
 			return UnknownRecentStoryType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16878,7 +16877,7 @@ fn decode_reply_markup_type_from_decoder(mut decoder Decoder) !ReplyMarkupType {
 		UnknownObject {
 			return UnknownReplyMarkupType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16933,7 +16932,7 @@ fn decode_report_reason_type_from_decoder(mut decoder Decoder) !ReportReasonType
 		UnknownObject {
 			return UnknownReportReasonType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16967,7 +16966,7 @@ fn decode_report_result_type_from_decoder(mut decoder Decoder) !ReportResultType
 		UnknownObject {
 			return UnknownReportResultType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17001,7 +17000,7 @@ fn decode_request_peer_type_type_from_decoder(mut decoder Decoder) !RequestPeerT
 		UnknownObject {
 			return UnknownRequestPeerTypeType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17035,7 +17034,7 @@ fn decode_requested_peer_type_from_decoder(mut decoder Decoder) !RequestedPeerTy
 		UnknownObject {
 			return UnknownRequestedPeerType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17069,7 +17068,7 @@ fn decode_requirement_to_contact_type_from_decoder(mut decoder Decoder) !Require
 		UnknownObject {
 			return UnknownRequirementToContactType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17097,7 +17096,7 @@ fn decode_res_p_q_type_from_decoder(mut decoder Decoder) !ResPQType {
 		UnknownObject {
 			return UnknownResPQType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17125,7 +17124,7 @@ fn decode_restriction_reason_type_from_decoder(mut decoder Decoder) !Restriction
 		UnknownObject {
 			return UnknownRestrictionReasonType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17198,7 +17197,7 @@ fn decode_rich_text_type_from_decoder(mut decoder Decoder) !RichTextType {
 		UnknownObject {
 			return UnknownRichTextType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17232,7 +17231,7 @@ fn decode_rpc_drop_answer_type_from_decoder(mut decoder Decoder) !RpcDropAnswerT
 		UnknownObject {
 			return UnknownRpcDropAnswerType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17260,7 +17259,7 @@ fn decode_rpc_error_type_from_decoder(mut decoder Decoder) !RpcErrorType {
 		UnknownObject {
 			return UnknownRpcErrorType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17288,7 +17287,7 @@ fn decode_saved_contact_type_from_decoder(mut decoder Decoder) !SavedContactType
 		UnknownObject {
 			return UnknownSavedContactType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17319,7 +17318,7 @@ fn decode_saved_dialog_type_from_decoder(mut decoder Decoder) !SavedDialogType {
 		UnknownObject {
 			return UnknownSavedDialogType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17347,7 +17346,7 @@ fn decode_saved_reaction_tag_type_from_decoder(mut decoder Decoder) !SavedReacti
 		UnknownObject {
 			return UnknownSavedReactionTagType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17375,7 +17374,7 @@ fn decode_saved_star_gift_type_from_decoder(mut decoder Decoder) !SavedStarGiftT
 		UnknownObject {
 			return UnknownSavedStarGiftType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17403,7 +17402,7 @@ fn decode_search_posts_flood_type_from_decoder(mut decoder Decoder) !SearchPosts
 		UnknownObject {
 			return UnknownSearchPostsFloodType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17431,7 +17430,7 @@ fn decode_search_results_calendar_period_type_from_decoder(mut decoder Decoder) 
 		UnknownObject {
 			return UnknownSearchResultsCalendarPeriodType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17459,7 +17458,7 @@ fn decode_search_results_position_type_from_decoder(mut decoder Decoder) !Search
 		UnknownObject {
 			return UnknownSearchResultsPositionType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17487,7 +17486,7 @@ fn decode_secure_credentials_encrypted_type_from_decoder(mut decoder Decoder) !S
 		UnknownObject {
 			return UnknownSecureCredentialsEncryptedType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17515,7 +17514,7 @@ fn decode_secure_data_type_from_decoder(mut decoder Decoder) !SecureDataType {
 		UnknownObject {
 			return UnknownSecureDataType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17546,7 +17545,7 @@ fn decode_secure_file_type_from_decoder(mut decoder Decoder) !SecureFileType {
 		UnknownObject {
 			return UnknownSecureFileType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17580,7 +17579,7 @@ fn decode_secure_password_kdf_algo_type_from_decoder(mut decoder Decoder) !Secur
 		UnknownObject {
 			return UnknownSecurePasswordKdfAlgoType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17611,7 +17610,7 @@ fn decode_secure_plain_data_type_from_decoder(mut decoder Decoder) !SecurePlainD
 		UnknownObject {
 			return UnknownSecurePlainDataType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17642,7 +17641,7 @@ fn decode_secure_required_type_type_from_decoder(mut decoder Decoder) !SecureReq
 		UnknownObject {
 			return UnknownSecureRequiredTypeType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17670,7 +17669,7 @@ fn decode_secure_secret_settings_type_from_decoder(mut decoder Decoder) !SecureS
 		UnknownObject {
 			return UnknownSecureSecretSettingsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17698,7 +17697,7 @@ fn decode_secure_value_type_from_decoder(mut decoder Decoder) !SecureValueType {
 		UnknownObject {
 			return UnknownSecureValueType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17750,7 +17749,7 @@ fn decode_secure_value_error_type_from_decoder(mut decoder Decoder) !SecureValue
 		UnknownObject {
 			return UnknownSecureValueErrorType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17778,7 +17777,7 @@ fn decode_secure_value_hash_type_from_decoder(mut decoder Decoder) !SecureValueH
 		UnknownObject {
 			return UnknownSecureValueHashType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17842,7 +17841,7 @@ fn decode_secure_value_type_type_from_decoder(mut decoder Decoder) !SecureValueT
 		UnknownObject {
 			return UnknownSecureValueTypeType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17870,7 +17869,7 @@ fn decode_send_as_peer_type_from_decoder(mut decoder Decoder) !SendAsPeerType {
 		UnknownObject {
 			return UnknownSendAsPeerType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17952,7 +17951,7 @@ fn decode_send_message_action_type_from_decoder(mut decoder Decoder) !SendMessag
 		UnknownObject {
 			return UnknownSendMessageActionType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17983,7 +17982,7 @@ fn decode_server_d_h_params_type_from_decoder(mut decoder Decoder) !ServerDHPara
 		UnknownObject {
 			return UnknownServerDHParamsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18011,7 +18010,7 @@ fn decode_server_d_h_inner_data_type_from_decoder(mut decoder Decoder) !ServerDH
 		UnknownObject {
 			return UnknownServerDHInnerDataType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18045,7 +18044,7 @@ fn decode_set_client_d_h_params_answer_type_from_decoder(mut decoder Decoder) !S
 		UnknownObject {
 			return UnknownSetClientDHParamsAnswerType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18073,7 +18072,7 @@ fn decode_shipping_option_type_from_decoder(mut decoder Decoder) !ShippingOption
 		UnknownObject {
 			return UnknownShippingOptionType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18101,7 +18100,7 @@ fn decode_sms_job_type_from_decoder(mut decoder Decoder) !SmsJobType {
 		UnknownObject {
 			return UnknownSmsJobType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18129,7 +18128,7 @@ fn decode_sponsored_message_type_from_decoder(mut decoder Decoder) !SponsoredMes
 		UnknownObject {
 			return UnknownSponsoredMessageType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18157,7 +18156,7 @@ fn decode_sponsored_message_report_option_type_from_decoder(mut decoder Decoder)
 		UnknownObject {
 			return UnknownSponsoredMessageReportOptionType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18185,7 +18184,7 @@ fn decode_sponsored_peer_type_from_decoder(mut decoder Decoder) !SponsoredPeerTy
 		UnknownObject {
 			return UnknownSponsoredPeerType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18216,7 +18215,7 @@ fn decode_star_gift_type_from_decoder(mut decoder Decoder) !StarGiftType {
 		UnknownObject {
 			return UnknownStarGiftType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18244,7 +18243,7 @@ fn decode_star_gift_active_auction_state_type_from_decoder(mut decoder Decoder) 
 		UnknownObject {
 			return UnknownStarGiftActiveAuctionStateType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18281,7 +18280,7 @@ fn decode_star_gift_attribute_type_from_decoder(mut decoder Decoder) !StarGiftAt
 		UnknownObject {
 			return UnknownStarGiftAttributeType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18309,7 +18308,7 @@ fn decode_star_gift_attribute_counter_type_from_decoder(mut decoder Decoder) !St
 		UnknownObject {
 			return UnknownStarGiftAttributeCounterType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18343,7 +18342,7 @@ fn decode_star_gift_attribute_id_type_from_decoder(mut decoder Decoder) !StarGif
 		UnknownObject {
 			return UnknownStarGiftAttributeIdType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18383,7 +18382,7 @@ fn decode_star_gift_attribute_rarity_type_from_decoder(mut decoder Decoder) !Sta
 		UnknownObject {
 			return UnknownStarGiftAttributeRarityType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18411,7 +18410,7 @@ fn decode_star_gift_auction_acquired_gift_type_from_decoder(mut decoder Decoder)
 		UnknownObject {
 			return UnknownStarGiftAuctionAcquiredGiftType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18442,7 +18441,7 @@ fn decode_star_gift_auction_round_type_from_decoder(mut decoder Decoder) !StarGi
 		UnknownObject {
 			return UnknownStarGiftAuctionRoundType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18476,7 +18475,7 @@ fn decode_star_gift_auction_state_type_from_decoder(mut decoder Decoder) !StarGi
 		UnknownObject {
 			return UnknownStarGiftAuctionStateType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18504,7 +18503,7 @@ fn decode_star_gift_auction_user_state_type_from_decoder(mut decoder Decoder) !S
 		UnknownObject {
 			return UnknownStarGiftAuctionUserStateType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18532,7 +18531,7 @@ fn decode_star_gift_background_type_from_decoder(mut decoder Decoder) !StarGiftB
 		UnknownObject {
 			return UnknownStarGiftBackgroundType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18560,7 +18559,7 @@ fn decode_star_gift_collection_type_from_decoder(mut decoder Decoder) !StarGiftC
 		UnknownObject {
 			return UnknownStarGiftCollectionType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18588,7 +18587,7 @@ fn decode_star_gift_upgrade_price_type_from_decoder(mut decoder Decoder) !StarGi
 		UnknownObject {
 			return UnknownStarGiftUpgradePriceType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18616,7 +18615,7 @@ fn decode_star_ref_program_type_from_decoder(mut decoder Decoder) !StarRefProgra
 		UnknownObject {
 			return UnknownStarRefProgramType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18647,7 +18646,7 @@ fn decode_stars_amount_type_from_decoder(mut decoder Decoder) !StarsAmountType {
 		UnknownObject {
 			return UnknownStarsAmountType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18675,7 +18674,7 @@ fn decode_stars_gift_option_type_from_decoder(mut decoder Decoder) !StarsGiftOpt
 		UnknownObject {
 			return UnknownStarsGiftOptionType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18703,7 +18702,7 @@ fn decode_stars_giveaway_option_type_from_decoder(mut decoder Decoder) !StarsGiv
 		UnknownObject {
 			return UnknownStarsGiveawayOptionType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18731,7 +18730,7 @@ fn decode_stars_giveaway_winners_option_type_from_decoder(mut decoder Decoder) !
 		UnknownObject {
 			return UnknownStarsGiveawayWinnersOptionType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18759,7 +18758,7 @@ fn decode_stars_rating_type_from_decoder(mut decoder Decoder) !StarsRatingType {
 		UnknownObject {
 			return UnknownStarsRatingType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18787,7 +18786,7 @@ fn decode_stars_revenue_status_type_from_decoder(mut decoder Decoder) !StarsReve
 		UnknownObject {
 			return UnknownStarsRevenueStatusType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18815,7 +18814,7 @@ fn decode_stars_subscription_type_from_decoder(mut decoder Decoder) !StarsSubscr
 		UnknownObject {
 			return UnknownStarsSubscriptionType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18843,7 +18842,7 @@ fn decode_stars_subscription_pricing_type_from_decoder(mut decoder Decoder) !Sta
 		UnknownObject {
 			return UnknownStarsSubscriptionPricingType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18871,7 +18870,7 @@ fn decode_stars_topup_option_type_from_decoder(mut decoder Decoder) !StarsTopupO
 		UnknownObject {
 			return UnknownStarsTopupOptionType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18899,7 +18898,7 @@ fn decode_stars_transaction_type_from_decoder(mut decoder Decoder) !StarsTransac
 		UnknownObject {
 			return UnknownStarsTransactionType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18948,7 +18947,7 @@ fn decode_stars_transaction_peer_type_from_decoder(mut decoder Decoder) !StarsTr
 		UnknownObject {
 			return UnknownStarsTransactionPeerType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18976,7 +18975,7 @@ fn decode_stats_abs_value_and_prev_type_from_decoder(mut decoder Decoder) !Stats
 		UnknownObject {
 			return UnknownStatsAbsValueAndPrevType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19004,7 +19003,7 @@ fn decode_stats_date_range_days_type_from_decoder(mut decoder Decoder) !StatsDat
 		UnknownObject {
 			return UnknownStatsDateRangeDaysType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19038,7 +19037,7 @@ fn decode_stats_graph_type_from_decoder(mut decoder Decoder) !StatsGraphType {
 		UnknownObject {
 			return UnknownStatsGraphType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19066,7 +19065,7 @@ fn decode_stats_group_top_admin_type_from_decoder(mut decoder Decoder) !StatsGro
 		UnknownObject {
 			return UnknownStatsGroupTopAdminType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19094,7 +19093,7 @@ fn decode_stats_group_top_inviter_type_from_decoder(mut decoder Decoder) !StatsG
 		UnknownObject {
 			return UnknownStatsGroupTopInviterType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19122,7 +19121,7 @@ fn decode_stats_group_top_poster_type_from_decoder(mut decoder Decoder) !StatsGr
 		UnknownObject {
 			return UnknownStatsGroupTopPosterType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19150,7 +19149,7 @@ fn decode_stats_percent_value_type_from_decoder(mut decoder Decoder) !StatsPerce
 		UnknownObject {
 			return UnknownStatsPercentValueType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19178,7 +19177,7 @@ fn decode_stats_u_r_l_type_from_decoder(mut decoder Decoder) !StatsURLType {
 		UnknownObject {
 			return UnknownStatsURLType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19206,7 +19205,7 @@ fn decode_sticker_keyword_type_from_decoder(mut decoder Decoder) !StickerKeyword
 		UnknownObject {
 			return UnknownStickerKeywordType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19234,7 +19233,7 @@ fn decode_sticker_pack_type_from_decoder(mut decoder Decoder) !StickerPackType {
 		UnknownObject {
 			return UnknownStickerPackType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19262,7 +19261,7 @@ fn decode_sticker_set_type_from_decoder(mut decoder Decoder) !StickerSetType {
 		UnknownObject {
 			return UnknownStickerSetType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19299,7 +19298,7 @@ fn decode_sticker_set_covered_type_from_decoder(mut decoder Decoder) !StickerSet
 		UnknownObject {
 			return UnknownStickerSetCoveredType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19327,7 +19326,7 @@ fn decode_stories_stealth_mode_type_from_decoder(mut decoder Decoder) !StoriesSt
 		UnknownObject {
 			return UnknownStoriesStealthModeType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19355,7 +19354,7 @@ fn decode_story_album_type_from_decoder(mut decoder Decoder) !StoryAlbumType {
 		UnknownObject {
 			return UnknownStoryAlbumType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19383,7 +19382,7 @@ fn decode_story_fwd_header_type_from_decoder(mut decoder Decoder) !StoryFwdHeade
 		UnknownObject {
 			return UnknownStoryFwdHeaderType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19417,7 +19416,7 @@ fn decode_story_item_type_from_decoder(mut decoder Decoder) !StoryItemType {
 		UnknownObject {
 			return UnknownStoryItemType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19451,7 +19450,7 @@ fn decode_story_reaction_type_from_decoder(mut decoder Decoder) !StoryReactionTy
 		UnknownObject {
 			return UnknownStoryReactionType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19485,7 +19484,7 @@ fn decode_story_view_type_from_decoder(mut decoder Decoder) !StoryViewType {
 		UnknownObject {
 			return UnknownStoryViewType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19513,7 +19512,7 @@ fn decode_story_views_type_from_decoder(mut decoder Decoder) !StoryViewsType {
 		UnknownObject {
 			return UnknownStoryViewsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19541,7 +19540,7 @@ fn decode_suggested_post_type_from_decoder(mut decoder Decoder) !SuggestedPostTy
 		UnknownObject {
 			return UnknownSuggestedPostType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19569,7 +19568,7 @@ fn decode_text_with_entities_type_from_decoder(mut decoder Decoder) !TextWithEnt
 		UnknownObject {
 			return UnknownTextWithEntitiesType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19597,7 +19596,7 @@ fn decode_theme_type_from_decoder(mut decoder Decoder) !ThemeType {
 		UnknownObject {
 			return UnknownThemeType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19625,7 +19624,7 @@ fn decode_theme_settings_type_from_decoder(mut decoder Decoder) !ThemeSettingsTy
 		UnknownObject {
 			return UnknownThemeSettingsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19653,7 +19652,7 @@ fn decode_timezone_type_from_decoder(mut decoder Decoder) !TimezoneType {
 		UnknownObject {
 			return UnknownTimezoneType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19699,7 +19698,7 @@ fn decode_tls_block_type_from_decoder(mut decoder Decoder) !TlsBlockType {
 		UnknownObject {
 			return UnknownTlsBlockType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19727,7 +19726,7 @@ fn decode_tls_client_hello_type_from_decoder(mut decoder Decoder) !TlsClientHell
 		UnknownObject {
 			return UnknownTlsClientHelloType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19755,7 +19754,7 @@ fn decode_todo_completion_type_from_decoder(mut decoder Decoder) !TodoCompletion
 		UnknownObject {
 			return UnknownTodoCompletionType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19783,7 +19782,7 @@ fn decode_todo_item_type_from_decoder(mut decoder Decoder) !TodoItemType {
 		UnknownObject {
 			return UnknownTodoItemType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19811,7 +19810,7 @@ fn decode_todo_list_type_from_decoder(mut decoder Decoder) !TodoListType {
 		UnknownObject {
 			return UnknownTodoListType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19839,7 +19838,7 @@ fn decode_top_peer_type_from_decoder(mut decoder Decoder) !TopPeerType {
 		UnknownObject {
 			return UnknownTopPeerType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19891,7 +19890,7 @@ fn decode_top_peer_category_type_from_decoder(mut decoder Decoder) !TopPeerCateg
 		UnknownObject {
 			return UnknownTopPeerCategoryType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19919,7 +19918,7 @@ fn decode_top_peer_category_peers_type_from_decoder(mut decoder Decoder) !TopPee
 		UnknownObject {
 			return UnknownTopPeerCategoryPeersType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19947,7 +19946,7 @@ fn decode_true_type_from_decoder(mut decoder Decoder) !TrueType {
 		UnknownObject {
 			return UnknownTrueType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20428,7 +20427,7 @@ fn decode_update_type_from_decoder(mut decoder Decoder) !UpdateType {
 		UnknownObject {
 			return UnknownUpdateType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20474,7 +20473,7 @@ fn decode_updates_type_from_decoder(mut decoder Decoder) !UpdatesType {
 		UnknownObject {
 			return UnknownUpdatesType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20508,7 +20507,7 @@ fn decode_url_auth_result_type_from_decoder(mut decoder Decoder) !UrlAuthResultT
 		UnknownObject {
 			return UnknownUrlAuthResultType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20539,7 +20538,7 @@ fn decode_user_type_from_decoder(mut decoder Decoder) !UserType {
 		UnknownObject {
 			return UnknownUserType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20567,7 +20566,7 @@ fn decode_user_full_type_from_decoder(mut decoder Decoder) !UserFullType {
 		UnknownObject {
 			return UnknownUserFullType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20598,7 +20597,7 @@ fn decode_user_profile_photo_type_from_decoder(mut decoder Decoder) !UserProfile
 		UnknownObject {
 			return UnknownUserProfilePhotoType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20641,7 +20640,7 @@ fn decode_user_status_type_from_decoder(mut decoder Decoder) !UserStatusType {
 		UnknownObject {
 			return UnknownUserStatusType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20669,7 +20668,7 @@ fn decode_username_type_from_decoder(mut decoder Decoder) !UsernameType {
 		UnknownObject {
 			return UnknownUsernameType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20703,7 +20702,7 @@ fn decode_video_size_type_from_decoder(mut decoder Decoder) !VideoSizeType {
 		UnknownObject {
 			return UnknownVideoSizeType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20734,7 +20733,7 @@ fn decode_wall_paper_type_from_decoder(mut decoder Decoder) !WallPaperType {
 		UnknownObject {
 			return UnknownWallPaperType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20762,7 +20761,7 @@ fn decode_wall_paper_settings_type_from_decoder(mut decoder Decoder) !WallPaperS
 		UnknownObject {
 			return UnknownWallPaperSettingsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20790,7 +20789,7 @@ fn decode_web_authorization_type_from_decoder(mut decoder Decoder) !WebAuthoriza
 		UnknownObject {
 			return UnknownWebAuthorizationType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20821,7 +20820,7 @@ fn decode_web_document_type_from_decoder(mut decoder Decoder) !WebDocumentType {
 		UnknownObject {
 			return UnknownWebDocumentType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20858,7 +20857,7 @@ fn decode_web_page_type_from_decoder(mut decoder Decoder) !WebPageType {
 		UnknownObject {
 			return UnknownWebPageType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20901,7 +20900,7 @@ fn decode_web_page_attribute_type_from_decoder(mut decoder Decoder) !WebPageAttr
 		UnknownObject {
 			return UnknownWebPageAttributeType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20929,7 +20928,7 @@ fn decode_web_view_message_sent_type_from_decoder(mut decoder Decoder) !WebViewM
 		UnknownObject {
 			return UnknownWebViewMessageSentType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20957,7 +20956,7 @@ fn decode_web_view_result_type_from_decoder(mut decoder Decoder) !WebViewResultT
 		UnknownObject {
 			return UnknownWebViewResultType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20985,7 +20984,7 @@ fn decode_account_authorization_form_type_from_decoder(mut decoder Decoder) !Acc
 		UnknownObject {
 			return UnknownAccountAuthorizationFormType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21013,7 +21012,7 @@ fn decode_account_authorizations_type_from_decoder(mut decoder Decoder) !Account
 		UnknownObject {
 			return UnknownAccountAuthorizationsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21041,7 +21040,7 @@ fn decode_account_auto_download_settings_type_from_decoder(mut decoder Decoder) 
 		UnknownObject {
 			return UnknownAccountAutoDownloadSettingsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21069,7 +21068,7 @@ fn decode_account_auto_save_settings_type_from_decoder(mut decoder Decoder) !Acc
 		UnknownObject {
 			return UnknownAccountAutoSaveSettingsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21097,7 +21096,7 @@ fn decode_account_business_chat_links_type_from_decoder(mut decoder Decoder) !Ac
 		UnknownObject {
 			return UnknownAccountBusinessChatLinksType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21128,7 +21127,7 @@ fn decode_account_chat_themes_type_from_decoder(mut decoder Decoder) !AccountCha
 		UnknownObject {
 			return UnknownAccountChatThemesType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21156,7 +21155,7 @@ fn decode_account_connected_bots_type_from_decoder(mut decoder Decoder) !Account
 		UnknownObject {
 			return UnknownAccountConnectedBotsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21184,7 +21183,7 @@ fn decode_account_content_settings_type_from_decoder(mut decoder Decoder) !Accou
 		UnknownObject {
 			return UnknownAccountContentSettingsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21215,7 +21214,7 @@ fn decode_account_email_verified_type_from_decoder(mut decoder Decoder) !Account
 		UnknownObject {
 			return UnknownAccountEmailVerifiedType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21246,7 +21245,7 @@ fn decode_account_emoji_statuses_type_from_decoder(mut decoder Decoder) !Account
 		UnknownObject {
 			return UnknownAccountEmojiStatusesType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21274,7 +21273,7 @@ fn decode_account_paid_messages_revenue_type_from_decoder(mut decoder Decoder) !
 		UnknownObject {
 			return UnknownAccountPaidMessagesRevenueType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21302,13 +21301,12 @@ fn decode_account_passkey_registration_options_type_from_decoder(mut decoder Dec
 		UnknownObject {
 			return UnknownAccountPasskeyRegistrationOptionsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
 		else {
-			return error('expected account.PasskeyRegistrationOptions, got ' +
-				object.qualified_name())
+			return error('expected account.PasskeyRegistrationOptions, got ' + object.qualified_name())
 		}
 	}
 }
@@ -21331,7 +21329,7 @@ fn decode_account_passkeys_type_from_decoder(mut decoder Decoder) !AccountPasske
 		UnknownObject {
 			return UnknownAccountPasskeysType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21359,7 +21357,7 @@ fn decode_account_password_type_from_decoder(mut decoder Decoder) !AccountPasswo
 		UnknownObject {
 			return UnknownAccountPasswordType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21387,7 +21385,7 @@ fn decode_account_password_input_settings_type_from_decoder(mut decoder Decoder)
 		UnknownObject {
 			return UnknownAccountPasswordInputSettingsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21415,7 +21413,7 @@ fn decode_account_password_settings_type_from_decoder(mut decoder Decoder) !Acco
 		UnknownObject {
 			return UnknownAccountPasswordSettingsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21443,7 +21441,7 @@ fn decode_account_privacy_rules_type_from_decoder(mut decoder Decoder) !AccountP
 		UnknownObject {
 			return UnknownAccountPrivacyRulesType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21477,7 +21475,7 @@ fn decode_account_reset_password_result_type_from_decoder(mut decoder Decoder) !
 		UnknownObject {
 			return UnknownAccountResetPasswordResultType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21505,13 +21503,12 @@ fn decode_account_resolved_business_chat_links_type_from_decoder(mut decoder Dec
 		UnknownObject {
 			return UnknownAccountResolvedBusinessChatLinksType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
 		else {
-			return error('expected account.ResolvedBusinessChatLinks, got ' +
-				object.qualified_name())
+			return error('expected account.ResolvedBusinessChatLinks, got ' + object.qualified_name())
 		}
 	}
 }
@@ -21537,7 +21534,7 @@ fn decode_account_saved_music_ids_type_from_decoder(mut decoder Decoder) !Accoun
 		UnknownObject {
 			return UnknownAccountSavedMusicIdsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21568,7 +21565,7 @@ fn decode_account_saved_ringtone_type_from_decoder(mut decoder Decoder) !Account
 		UnknownObject {
 			return UnknownAccountSavedRingtoneType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21599,7 +21596,7 @@ fn decode_account_saved_ringtones_type_from_decoder(mut decoder Decoder) !Accoun
 		UnknownObject {
 			return UnknownAccountSavedRingtonesType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21627,7 +21624,7 @@ fn decode_account_sent_email_code_type_from_decoder(mut decoder Decoder) !Accoun
 		UnknownObject {
 			return UnknownAccountSentEmailCodeType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21655,7 +21652,7 @@ fn decode_account_takeout_type_from_decoder(mut decoder Decoder) !AccountTakeout
 		UnknownObject {
 			return UnknownAccountTakeoutType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21686,7 +21683,7 @@ fn decode_account_themes_type_from_decoder(mut decoder Decoder) !AccountThemesTy
 		UnknownObject {
 			return UnknownAccountThemesType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21714,7 +21711,7 @@ fn decode_account_tmp_password_type_from_decoder(mut decoder Decoder) !AccountTm
 		UnknownObject {
 			return UnknownAccountTmpPasswordType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21745,7 +21742,7 @@ fn decode_account_wall_papers_type_from_decoder(mut decoder Decoder) !AccountWal
 		UnknownObject {
 			return UnknownAccountWallPapersType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21773,7 +21770,7 @@ fn decode_account_web_authorizations_type_from_decoder(mut decoder Decoder) !Acc
 		UnknownObject {
 			return UnknownAccountWebAuthorizationsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21804,7 +21801,7 @@ fn decode_auth_authorization_type_from_decoder(mut decoder Decoder) !AuthAuthori
 		UnknownObject {
 			return UnknownAuthAuthorizationType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21844,7 +21841,7 @@ fn decode_auth_code_type_type_from_decoder(mut decoder Decoder) !AuthCodeTypeTyp
 		UnknownObject {
 			return UnknownAuthCodeTypeType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21872,7 +21869,7 @@ fn decode_auth_exported_authorization_type_from_decoder(mut decoder Decoder) !Au
 		UnknownObject {
 			return UnknownAuthExportedAuthorizationType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21900,7 +21897,7 @@ fn decode_auth_logged_out_type_from_decoder(mut decoder Decoder) !AuthLoggedOutT
 		UnknownObject {
 			return UnknownAuthLoggedOutType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21934,7 +21931,7 @@ fn decode_auth_login_token_type_from_decoder(mut decoder Decoder) !AuthLoginToke
 		UnknownObject {
 			return UnknownAuthLoginTokenType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21962,7 +21959,7 @@ fn decode_auth_passkey_login_options_type_from_decoder(mut decoder Decoder) !Aut
 		UnknownObject {
 			return UnknownAuthPasskeyLoginOptionsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21990,7 +21987,7 @@ fn decode_auth_password_recovery_type_from_decoder(mut decoder Decoder) !AuthPas
 		UnknownObject {
 			return UnknownAuthPasswordRecoveryType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22024,7 +22021,7 @@ fn decode_auth_sent_code_type_from_decoder(mut decoder Decoder) !AuthSentCodeTyp
 		UnknownObject {
 			return UnknownAuthSentCodeType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22082,7 +22079,7 @@ fn decode_auth_sent_code_type_type_from_decoder(mut decoder Decoder) !AuthSentCo
 		UnknownObject {
 			return UnknownAuthSentCodeTypeType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22110,7 +22107,7 @@ fn decode_bots_bot_info_type_from_decoder(mut decoder Decoder) !BotsBotInfoType 
 		UnknownObject {
 			return UnknownBotsBotInfoType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22138,7 +22135,7 @@ fn decode_bots_popular_app_bots_type_from_decoder(mut decoder Decoder) !BotsPopu
 		UnknownObject {
 			return UnknownBotsPopularAppBotsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22166,7 +22163,7 @@ fn decode_bots_preview_info_type_from_decoder(mut decoder Decoder) !BotsPreviewI
 		UnknownObject {
 			return UnknownBotsPreviewInfoType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22194,7 +22191,7 @@ fn decode_channels_admin_log_results_type_from_decoder(mut decoder Decoder) !Cha
 		UnknownObject {
 			return UnknownChannelsAdminLogResultsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22222,7 +22219,7 @@ fn decode_channels_channel_participant_type_from_decoder(mut decoder Decoder) !C
 		UnknownObject {
 			return UnknownChannelsChannelParticipantType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22253,7 +22250,7 @@ fn decode_channels_channel_participants_type_from_decoder(mut decoder Decoder) !
 		UnknownObject {
 			return UnknownChannelsChannelParticipantsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22281,7 +22278,7 @@ fn decode_channels_send_as_peers_type_from_decoder(mut decoder Decoder) !Channel
 		UnknownObject {
 			return UnknownChannelsSendAsPeersType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22315,13 +22312,12 @@ fn decode_channels_sponsored_message_report_result_type_from_decoder(mut decoder
 		UnknownObject {
 			return UnknownChannelsSponsoredMessageReportResultType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
 		else {
-			return error('expected channels.SponsoredMessageReportResult, got ' +
-				object.qualified_name())
+			return error('expected channels.SponsoredMessageReportResult, got ' + object.qualified_name())
 		}
 	}
 }
@@ -22347,7 +22343,7 @@ fn decode_chatlists_chatlist_invite_type_from_decoder(mut decoder Decoder) !Chat
 		UnknownObject {
 			return UnknownChatlistsChatlistInviteType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22375,7 +22371,7 @@ fn decode_chatlists_chatlist_updates_type_from_decoder(mut decoder Decoder) !Cha
 		UnknownObject {
 			return UnknownChatlistsChatlistUpdatesType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22403,7 +22399,7 @@ fn decode_chatlists_exported_chatlist_invite_type_from_decoder(mut decoder Decod
 		UnknownObject {
 			return UnknownChatlistsExportedChatlistInviteType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22431,7 +22427,7 @@ fn decode_chatlists_exported_invites_type_from_decoder(mut decoder Decoder) !Cha
 		UnknownObject {
 			return UnknownChatlistsExportedInvitesType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22462,7 +22458,7 @@ fn decode_contacts_blocked_type_from_decoder(mut decoder Decoder) !ContactsBlock
 		UnknownObject {
 			return UnknownContactsBlockedType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22490,7 +22486,7 @@ fn decode_contacts_contact_birthdays_type_from_decoder(mut decoder Decoder) !Con
 		UnknownObject {
 			return UnknownContactsContactBirthdaysType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22521,7 +22517,7 @@ fn decode_contacts_contacts_type_from_decoder(mut decoder Decoder) !ContactsCont
 		UnknownObject {
 			return UnknownContactsContactsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22549,7 +22545,7 @@ fn decode_contacts_found_type_from_decoder(mut decoder Decoder) !ContactsFoundTy
 		UnknownObject {
 			return UnknownContactsFoundType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22577,7 +22573,7 @@ fn decode_contacts_imported_contacts_type_from_decoder(mut decoder Decoder) !Con
 		UnknownObject {
 			return UnknownContactsImportedContactsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22605,7 +22601,7 @@ fn decode_contacts_resolved_peer_type_from_decoder(mut decoder Decoder) !Contact
 		UnknownObject {
 			return UnknownContactsResolvedPeerType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22636,7 +22632,7 @@ fn decode_contacts_sponsored_peers_type_from_decoder(mut decoder Decoder) !Conta
 		UnknownObject {
 			return UnknownContactsSponsoredPeersType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22670,7 +22666,7 @@ fn decode_contacts_top_peers_type_from_decoder(mut decoder Decoder) !ContactsTop
 		UnknownObject {
 			return UnknownContactsTopPeersType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22698,7 +22694,7 @@ fn decode_fragment_collectible_info_type_from_decoder(mut decoder Decoder) !Frag
 		UnknownObject {
 			return UnknownFragmentCollectibleInfoType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22729,7 +22725,7 @@ fn decode_help_app_config_type_from_decoder(mut decoder Decoder) !HelpAppConfigT
 		UnknownObject {
 			return UnknownHelpAppConfigType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22760,7 +22756,7 @@ fn decode_help_app_update_type_from_decoder(mut decoder Decoder) !HelpAppUpdateT
 		UnknownObject {
 			return UnknownHelpAppUpdateType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22788,7 +22784,7 @@ fn decode_help_config_simple_type_from_decoder(mut decoder Decoder) !HelpConfigS
 		UnknownObject {
 			return UnknownHelpConfigSimpleType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22819,7 +22815,7 @@ fn decode_help_countries_list_type_from_decoder(mut decoder Decoder) !HelpCountr
 		UnknownObject {
 			return UnknownHelpCountriesListType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22847,7 +22843,7 @@ fn decode_help_country_type_from_decoder(mut decoder Decoder) !HelpCountryType {
 		UnknownObject {
 			return UnknownHelpCountryType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22875,7 +22871,7 @@ fn decode_help_country_code_type_from_decoder(mut decoder Decoder) !HelpCountryC
 		UnknownObject {
 			return UnknownHelpCountryCodeType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22906,7 +22902,7 @@ fn decode_help_deep_link_info_type_from_decoder(mut decoder Decoder) !HelpDeepLi
 		UnknownObject {
 			return UnknownHelpDeepLinkInfoType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22934,7 +22930,7 @@ fn decode_help_invite_text_type_from_decoder(mut decoder Decoder) !HelpInviteTex
 		UnknownObject {
 			return UnknownHelpInviteTextType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22965,7 +22961,7 @@ fn decode_help_passport_config_type_from_decoder(mut decoder Decoder) !HelpPassp
 		UnknownObject {
 			return UnknownHelpPassportConfigType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22993,7 +22989,7 @@ fn decode_help_peer_color_option_type_from_decoder(mut decoder Decoder) !HelpPee
 		UnknownObject {
 			return UnknownHelpPeerColorOptionType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23024,7 +23020,7 @@ fn decode_help_peer_color_set_type_from_decoder(mut decoder Decoder) !HelpPeerCo
 		UnknownObject {
 			return UnknownHelpPeerColorSetType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23055,7 +23051,7 @@ fn decode_help_peer_colors_type_from_decoder(mut decoder Decoder) !HelpPeerColor
 		UnknownObject {
 			return UnknownHelpPeerColorsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23083,7 +23079,7 @@ fn decode_help_premium_promo_type_from_decoder(mut decoder Decoder) !HelpPremium
 		UnknownObject {
 			return UnknownHelpPremiumPromoType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23114,7 +23110,7 @@ fn decode_help_promo_data_type_from_decoder(mut decoder Decoder) !HelpPromoDataT
 		UnknownObject {
 			return UnknownHelpPromoDataType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23142,7 +23138,7 @@ fn decode_help_recent_me_urls_type_from_decoder(mut decoder Decoder) !HelpRecent
 		UnknownObject {
 			return UnknownHelpRecentMeUrlsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23170,7 +23166,7 @@ fn decode_help_support_type_from_decoder(mut decoder Decoder) !HelpSupportType {
 		UnknownObject {
 			return UnknownHelpSupportType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23198,7 +23194,7 @@ fn decode_help_support_name_type_from_decoder(mut decoder Decoder) !HelpSupportN
 		UnknownObject {
 			return UnknownHelpSupportNameType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23226,7 +23222,7 @@ fn decode_help_terms_of_service_type_from_decoder(mut decoder Decoder) !HelpTerm
 		UnknownObject {
 			return UnknownHelpTermsOfServiceType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23257,7 +23253,7 @@ fn decode_help_terms_of_service_update_type_from_decoder(mut decoder Decoder) !H
 		UnknownObject {
 			return UnknownHelpTermsOfServiceUpdateType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23288,7 +23284,7 @@ fn decode_help_timezones_list_type_from_decoder(mut decoder Decoder) !HelpTimezo
 		UnknownObject {
 			return UnknownHelpTimezonesListType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23319,7 +23315,7 @@ fn decode_help_user_info_type_from_decoder(mut decoder Decoder) !HelpUserInfoTyp
 		UnknownObject {
 			return UnknownHelpUserInfoType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23347,7 +23343,7 @@ fn decode_messages_affected_found_messages_type_from_decoder(mut decoder Decoder
 		UnknownObject {
 			return UnknownMessagesAffectedFoundMessagesType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23375,7 +23371,7 @@ fn decode_messages_affected_history_type_from_decoder(mut decoder Decoder) !Mess
 		UnknownObject {
 			return UnknownMessagesAffectedHistoryType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23403,7 +23399,7 @@ fn decode_messages_affected_messages_type_from_decoder(mut decoder Decoder) !Mes
 		UnknownObject {
 			return UnknownMessagesAffectedMessagesType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23434,7 +23430,7 @@ fn decode_messages_all_stickers_type_from_decoder(mut decoder Decoder) !Messages
 		UnknownObject {
 			return UnknownMessagesAllStickersType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23462,7 +23458,7 @@ fn decode_messages_archived_stickers_type_from_decoder(mut decoder Decoder) !Mes
 		UnknownObject {
 			return UnknownMessagesArchivedStickersType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23493,7 +23489,7 @@ fn decode_messages_available_effects_type_from_decoder(mut decoder Decoder) !Mes
 		UnknownObject {
 			return UnknownMessagesAvailableEffectsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23524,7 +23520,7 @@ fn decode_messages_available_reactions_type_from_decoder(mut decoder Decoder) !M
 		UnknownObject {
 			return UnknownMessagesAvailableReactionsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23552,7 +23548,7 @@ fn decode_messages_bot_app_type_from_decoder(mut decoder Decoder) !MessagesBotAp
 		UnknownObject {
 			return UnknownMessagesBotAppType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23580,7 +23576,7 @@ fn decode_messages_bot_callback_answer_type_from_decoder(mut decoder Decoder) !M
 		UnknownObject {
 			return UnknownMessagesBotCallbackAnswerType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23608,13 +23604,12 @@ fn decode_messages_bot_prepared_inline_message_type_from_decoder(mut decoder Dec
 		UnknownObject {
 			return UnknownMessagesBotPreparedInlineMessageType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
 		else {
-			return error('expected messages.BotPreparedInlineMessage, got ' +
-				object.qualified_name())
+			return error('expected messages.BotPreparedInlineMessage, got ' + object.qualified_name())
 		}
 	}
 }
@@ -23637,7 +23632,7 @@ fn decode_messages_bot_results_type_from_decoder(mut decoder Decoder) !MessagesB
 		UnknownObject {
 			return UnknownMessagesBotResultsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23665,7 +23660,7 @@ fn decode_messages_chat_admins_with_invites_type_from_decoder(mut decoder Decode
 		UnknownObject {
 			return UnknownMessagesChatAdminsWithInvitesType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23693,7 +23688,7 @@ fn decode_messages_chat_full_type_from_decoder(mut decoder Decoder) !MessagesCha
 		UnknownObject {
 			return UnknownMessagesChatFullType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23721,7 +23716,7 @@ fn decode_messages_chat_invite_importers_type_from_decoder(mut decoder Decoder) 
 		UnknownObject {
 			return UnknownMessagesChatInviteImportersType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23752,7 +23747,7 @@ fn decode_messages_chats_type_from_decoder(mut decoder Decoder) !MessagesChatsTy
 		UnknownObject {
 			return UnknownMessagesChatsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23780,13 +23775,12 @@ fn decode_messages_checked_history_import_peer_type_from_decoder(mut decoder Dec
 		UnknownObject {
 			return UnknownMessagesCheckedHistoryImportPeerType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
 		else {
-			return error('expected messages.CheckedHistoryImportPeer, got ' +
-				object.qualified_name())
+			return error('expected messages.CheckedHistoryImportPeer, got ' + object.qualified_name())
 		}
 	}
 }
@@ -23812,7 +23806,7 @@ fn decode_messages_dh_config_type_from_decoder(mut decoder Decoder) !MessagesDhC
 		UnknownObject {
 			return UnknownMessagesDhConfigType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23840,7 +23834,7 @@ fn decode_messages_dialog_filters_type_from_decoder(mut decoder Decoder) !Messag
 		UnknownObject {
 			return UnknownMessagesDialogFiltersType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23874,7 +23868,7 @@ fn decode_messages_dialogs_type_from_decoder(mut decoder Decoder) !MessagesDialo
 		UnknownObject {
 			return UnknownMessagesDialogsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23902,7 +23896,7 @@ fn decode_messages_discussion_message_type_from_decoder(mut decoder Decoder) !Me
 		UnknownObject {
 			return UnknownMessagesDiscussionMessageType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23933,7 +23927,7 @@ fn decode_messages_emoji_game_info_type_from_decoder(mut decoder Decoder) !Messa
 		UnknownObject {
 			return UnknownMessagesEmojiGameInfoType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23961,7 +23955,7 @@ fn decode_messages_emoji_game_outcome_type_from_decoder(mut decoder Decoder) !Me
 		UnknownObject {
 			return UnknownMessagesEmojiGameOutcomeType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23992,7 +23986,7 @@ fn decode_messages_emoji_groups_type_from_decoder(mut decoder Decoder) !Messages
 		UnknownObject {
 			return UnknownMessagesEmojiGroupsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24023,7 +24017,7 @@ fn decode_messages_exported_chat_invite_type_from_decoder(mut decoder Decoder) !
 		UnknownObject {
 			return UnknownMessagesExportedChatInviteType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24051,7 +24045,7 @@ fn decode_messages_exported_chat_invites_type_from_decoder(mut decoder Decoder) 
 		UnknownObject {
 			return UnknownMessagesExportedChatInvitesType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24082,7 +24076,7 @@ fn decode_messages_faved_stickers_type_from_decoder(mut decoder Decoder) !Messag
 		UnknownObject {
 			return UnknownMessagesFavedStickersType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24113,7 +24107,7 @@ fn decode_messages_featured_stickers_type_from_decoder(mut decoder Decoder) !Mes
 		UnknownObject {
 			return UnknownMessagesFeaturedStickersType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24141,7 +24135,7 @@ fn decode_messages_forum_topics_type_from_decoder(mut decoder Decoder) !Messages
 		UnknownObject {
 			return UnknownMessagesForumTopicsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24172,7 +24166,7 @@ fn decode_messages_found_sticker_sets_type_from_decoder(mut decoder Decoder) !Me
 		UnknownObject {
 			return UnknownMessagesFoundStickerSetsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24203,7 +24197,7 @@ fn decode_messages_found_stickers_type_from_decoder(mut decoder Decoder) !Messag
 		UnknownObject {
 			return UnknownMessagesFoundStickersType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24231,7 +24225,7 @@ fn decode_messages_high_scores_type_from_decoder(mut decoder Decoder) !MessagesH
 		UnknownObject {
 			return UnknownMessagesHighScoresType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24259,7 +24253,7 @@ fn decode_messages_history_import_type_from_decoder(mut decoder Decoder) !Messag
 		UnknownObject {
 			return UnknownMessagesHistoryImportType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24287,7 +24281,7 @@ fn decode_messages_history_import_parsed_type_from_decoder(mut decoder Decoder) 
 		UnknownObject {
 			return UnknownMessagesHistoryImportParsedType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24315,7 +24309,7 @@ fn decode_messages_inactive_chats_type_from_decoder(mut decoder Decoder) !Messag
 		UnknownObject {
 			return UnknownMessagesInactiveChatsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24343,7 +24337,7 @@ fn decode_messages_invited_users_type_from_decoder(mut decoder Decoder) !Message
 		UnknownObject {
 			return UnknownMessagesInvitedUsersType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24371,7 +24365,7 @@ fn decode_messages_message_edit_data_type_from_decoder(mut decoder Decoder) !Mes
 		UnknownObject {
 			return UnknownMessagesMessageEditDataType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24399,7 +24393,7 @@ fn decode_messages_message_reactions_list_type_from_decoder(mut decoder Decoder)
 		UnknownObject {
 			return UnknownMessagesMessageReactionsListType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24427,7 +24421,7 @@ fn decode_messages_message_views_type_from_decoder(mut decoder Decoder) !Message
 		UnknownObject {
 			return UnknownMessagesMessageViewsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24464,7 +24458,7 @@ fn decode_messages_messages_type_from_decoder(mut decoder Decoder) !MessagesMess
 		UnknownObject {
 			return UnknownMessagesMessagesType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24492,7 +24486,7 @@ fn decode_messages_my_stickers_type_from_decoder(mut decoder Decoder) !MessagesM
 		UnknownObject {
 			return UnknownMessagesMyStickersType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24520,7 +24514,7 @@ fn decode_messages_peer_dialogs_type_from_decoder(mut decoder Decoder) !Messages
 		UnknownObject {
 			return UnknownMessagesPeerDialogsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24548,7 +24542,7 @@ fn decode_messages_peer_settings_type_from_decoder(mut decoder Decoder) !Message
 		UnknownObject {
 			return UnknownMessagesPeerSettingsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24576,7 +24570,7 @@ fn decode_messages_prepared_inline_message_type_from_decoder(mut decoder Decoder
 		UnknownObject {
 			return UnknownMessagesPreparedInlineMessageType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24607,7 +24601,7 @@ fn decode_messages_quick_replies_type_from_decoder(mut decoder Decoder) !Message
 		UnknownObject {
 			return UnknownMessagesQuickRepliesType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24638,7 +24632,7 @@ fn decode_messages_reactions_type_from_decoder(mut decoder Decoder) !MessagesRea
 		UnknownObject {
 			return UnknownMessagesReactionsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24669,7 +24663,7 @@ fn decode_messages_recent_stickers_type_from_decoder(mut decoder Decoder) !Messa
 		UnknownObject {
 			return UnknownMessagesRecentStickersType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24703,7 +24697,7 @@ fn decode_messages_saved_dialogs_type_from_decoder(mut decoder Decoder) !Message
 		UnknownObject {
 			return UnknownMessagesSavedDialogsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24734,7 +24728,7 @@ fn decode_messages_saved_gifs_type_from_decoder(mut decoder Decoder) !MessagesSa
 		UnknownObject {
 			return UnknownMessagesSavedGifsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24765,7 +24759,7 @@ fn decode_messages_saved_reaction_tags_type_from_decoder(mut decoder Decoder) !M
 		UnknownObject {
 			return UnknownMessagesSavedReactionTagsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24793,7 +24787,7 @@ fn decode_messages_search_counter_type_from_decoder(mut decoder Decoder) !Messag
 		UnknownObject {
 			return UnknownMessagesSearchCounterType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24821,7 +24815,7 @@ fn decode_messages_search_results_calendar_type_from_decoder(mut decoder Decoder
 		UnknownObject {
 			return UnknownMessagesSearchResultsCalendarType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24849,7 +24843,7 @@ fn decode_messages_search_results_positions_type_from_decoder(mut decoder Decode
 		UnknownObject {
 			return UnknownMessagesSearchResultsPositionsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24880,7 +24874,7 @@ fn decode_messages_sent_encrypted_message_type_from_decoder(mut decoder Decoder)
 		UnknownObject {
 			return UnknownMessagesSentEncryptedMessageType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24911,7 +24905,7 @@ fn decode_messages_sponsored_messages_type_from_decoder(mut decoder Decoder) !Me
 		UnknownObject {
 			return UnknownMessagesSponsoredMessagesType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24942,7 +24936,7 @@ fn decode_messages_sticker_set_type_from_decoder(mut decoder Decoder) !MessagesS
 		UnknownObject {
 			return UnknownMessagesStickerSetType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24973,7 +24967,7 @@ fn decode_messages_sticker_set_install_result_type_from_decoder(mut decoder Deco
 		UnknownObject {
 			return UnknownMessagesStickerSetInstallResultType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25004,7 +24998,7 @@ fn decode_messages_stickers_type_from_decoder(mut decoder Decoder) !MessagesStic
 		UnknownObject {
 			return UnknownMessagesStickersType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25032,7 +25026,7 @@ fn decode_messages_transcribed_audio_type_from_decoder(mut decoder Decoder) !Mes
 		UnknownObject {
 			return UnknownMessagesTranscribedAudioType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25060,7 +25054,7 @@ fn decode_messages_translated_text_type_from_decoder(mut decoder Decoder) !Messa
 		UnknownObject {
 			return UnknownMessagesTranslatedTextType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25088,7 +25082,7 @@ fn decode_messages_votes_list_type_from_decoder(mut decoder Decoder) !MessagesVo
 		UnknownObject {
 			return UnknownMessagesVotesListType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25116,7 +25110,7 @@ fn decode_messages_web_page_type_from_decoder(mut decoder Decoder) !MessagesWebP
 		UnknownObject {
 			return UnknownMessagesWebPageType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25144,7 +25138,7 @@ fn decode_messages_web_page_preview_type_from_decoder(mut decoder Decoder) !Mess
 		UnknownObject {
 			return UnknownMessagesWebPagePreviewType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25172,7 +25166,7 @@ fn decode_payments_bank_card_data_type_from_decoder(mut decoder Decoder) !Paymen
 		UnknownObject {
 			return UnknownPaymentsBankCardDataType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25203,7 +25197,7 @@ fn decode_payments_check_can_send_gift_result_type_from_decoder(mut decoder Deco
 		UnknownObject {
 			return UnknownPaymentsCheckCanSendGiftResultType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25231,7 +25225,7 @@ fn decode_payments_checked_gift_code_type_from_decoder(mut decoder Decoder) !Pay
 		UnknownObject {
 			return UnknownPaymentsCheckedGiftCodeType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25259,7 +25253,7 @@ fn decode_payments_connected_star_ref_bots_type_from_decoder(mut decoder Decoder
 		UnknownObject {
 			return UnknownPaymentsConnectedStarRefBotsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25287,7 +25281,7 @@ fn decode_payments_exported_invoice_type_from_decoder(mut decoder Decoder) !Paym
 		UnknownObject {
 			return UnknownPaymentsExportedInvoiceType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25318,7 +25312,7 @@ fn decode_payments_giveaway_info_type_from_decoder(mut decoder Decoder) !Payment
 		UnknownObject {
 			return UnknownPaymentsGiveawayInfoType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25352,7 +25346,7 @@ fn decode_payments_payment_form_type_from_decoder(mut decoder Decoder) !Payments
 		UnknownObject {
 			return UnknownPaymentsPaymentFormType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25383,7 +25377,7 @@ fn decode_payments_payment_receipt_type_from_decoder(mut decoder Decoder) !Payme
 		UnknownObject {
 			return UnknownPaymentsPaymentReceiptType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25414,7 +25408,7 @@ fn decode_payments_payment_result_type_from_decoder(mut decoder Decoder) !Paymen
 		UnknownObject {
 			return UnknownPaymentsPaymentResultType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25442,7 +25436,7 @@ fn decode_payments_resale_star_gifts_type_from_decoder(mut decoder Decoder) !Pay
 		UnknownObject {
 			return UnknownPaymentsResaleStarGiftsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25470,7 +25464,7 @@ fn decode_payments_saved_info_type_from_decoder(mut decoder Decoder) !PaymentsSa
 		UnknownObject {
 			return UnknownPaymentsSavedInfoType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25498,7 +25492,7 @@ fn decode_payments_saved_star_gifts_type_from_decoder(mut decoder Decoder) !Paym
 		UnknownObject {
 			return UnknownPaymentsSavedStarGiftsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25529,7 +25523,7 @@ fn decode_payments_star_gift_active_auctions_type_from_decoder(mut decoder Decod
 		UnknownObject {
 			return UnknownPaymentsStarGiftActiveAuctionsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25557,13 +25551,12 @@ fn decode_payments_star_gift_auction_acquired_gifts_type_from_decoder(mut decode
 		UnknownObject {
 			return UnknownPaymentsStarGiftAuctionAcquiredGiftsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
 		else {
-			return error('expected payments.StarGiftAuctionAcquiredGifts, got ' +
-				object.qualified_name())
+			return error('expected payments.StarGiftAuctionAcquiredGifts, got ' + object.qualified_name())
 		}
 	}
 }
@@ -25586,7 +25579,7 @@ fn decode_payments_star_gift_auction_state_type_from_decoder(mut decoder Decoder
 		UnknownObject {
 			return UnknownPaymentsStarGiftAuctionStateType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25617,7 +25610,7 @@ fn decode_payments_star_gift_collections_type_from_decoder(mut decoder Decoder) 
 		UnknownObject {
 			return UnknownPaymentsStarGiftCollectionsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25645,13 +25638,12 @@ fn decode_payments_star_gift_upgrade_attributes_type_from_decoder(mut decoder De
 		UnknownObject {
 			return UnknownPaymentsStarGiftUpgradeAttributesType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
 		else {
-			return error('expected payments.StarGiftUpgradeAttributes, got ' +
-				object.qualified_name())
+			return error('expected payments.StarGiftUpgradeAttributes, got ' + object.qualified_name())
 		}
 	}
 }
@@ -25674,7 +25666,7 @@ fn decode_payments_star_gift_upgrade_preview_type_from_decoder(mut decoder Decod
 		UnknownObject {
 			return UnknownPaymentsStarGiftUpgradePreviewType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25702,7 +25694,7 @@ fn decode_payments_star_gift_withdrawal_url_type_from_decoder(mut decoder Decode
 		UnknownObject {
 			return UnknownPaymentsStarGiftWithdrawalUrlType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25733,7 +25725,7 @@ fn decode_payments_star_gifts_type_from_decoder(mut decoder Decoder) !PaymentsSt
 		UnknownObject {
 			return UnknownPaymentsStarGiftsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25761,13 +25753,12 @@ fn decode_payments_stars_revenue_ads_account_url_type_from_decoder(mut decoder D
 		UnknownObject {
 			return UnknownPaymentsStarsRevenueAdsAccountUrlType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
 		else {
-			return error('expected payments.StarsRevenueAdsAccountUrl, got ' +
-				object.qualified_name())
+			return error('expected payments.StarsRevenueAdsAccountUrl, got ' + object.qualified_name())
 		}
 	}
 }
@@ -25790,7 +25781,7 @@ fn decode_payments_stars_revenue_stats_type_from_decoder(mut decoder Decoder) !P
 		UnknownObject {
 			return UnknownPaymentsStarsRevenueStatsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25818,13 +25809,12 @@ fn decode_payments_stars_revenue_withdrawal_url_type_from_decoder(mut decoder De
 		UnknownObject {
 			return UnknownPaymentsStarsRevenueWithdrawalUrlType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
 		else {
-			return error('expected payments.StarsRevenueWithdrawalUrl, got ' +
-				object.qualified_name())
+			return error('expected payments.StarsRevenueWithdrawalUrl, got ' + object.qualified_name())
 		}
 	}
 }
@@ -25847,7 +25837,7 @@ fn decode_payments_stars_status_type_from_decoder(mut decoder Decoder) !Payments
 		UnknownObject {
 			return UnknownPaymentsStarsStatusType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25875,7 +25865,7 @@ fn decode_payments_suggested_star_ref_bots_type_from_decoder(mut decoder Decoder
 		UnknownObject {
 			return UnknownPaymentsSuggestedStarRefBotsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25903,7 +25893,7 @@ fn decode_payments_unique_star_gift_type_from_decoder(mut decoder Decoder) !Paym
 		UnknownObject {
 			return UnknownPaymentsUniqueStarGiftType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25931,7 +25921,7 @@ fn decode_payments_unique_star_gift_value_info_type_from_decoder(mut decoder Dec
 		UnknownObject {
 			return UnknownPaymentsUniqueStarGiftValueInfoType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25959,7 +25949,7 @@ fn decode_payments_validated_requested_info_type_from_decoder(mut decoder Decode
 		UnknownObject {
 			return UnknownPaymentsValidatedRequestedInfoType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25987,7 +25977,7 @@ fn decode_phone_exported_group_call_invite_type_from_decoder(mut decoder Decoder
 		UnknownObject {
 			return UnknownPhoneExportedGroupCallInviteType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26015,7 +26005,7 @@ fn decode_phone_group_call_type_from_decoder(mut decoder Decoder) !PhoneGroupCal
 		UnknownObject {
 			return UnknownPhoneGroupCallType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26043,7 +26033,7 @@ fn decode_phone_group_call_stars_type_from_decoder(mut decoder Decoder) !PhoneGr
 		UnknownObject {
 			return UnknownPhoneGroupCallStarsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26071,7 +26061,7 @@ fn decode_phone_group_call_stream_channels_type_from_decoder(mut decoder Decoder
 		UnknownObject {
 			return UnknownPhoneGroupCallStreamChannelsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26099,7 +26089,7 @@ fn decode_phone_group_call_stream_rtmp_url_type_from_decoder(mut decoder Decoder
 		UnknownObject {
 			return UnknownPhoneGroupCallStreamRtmpUrlType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26127,7 +26117,7 @@ fn decode_phone_group_participants_type_from_decoder(mut decoder Decoder) !Phone
 		UnknownObject {
 			return UnknownPhoneGroupParticipantsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26155,7 +26145,7 @@ fn decode_phone_join_as_peers_type_from_decoder(mut decoder Decoder) !PhoneJoinA
 		UnknownObject {
 			return UnknownPhoneJoinAsPeersType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26183,7 +26173,7 @@ fn decode_phone_phone_call_type_from_decoder(mut decoder Decoder) !PhonePhoneCal
 		UnknownObject {
 			return UnknownPhonePhoneCallType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26211,7 +26201,7 @@ fn decode_photos_photo_type_from_decoder(mut decoder Decoder) !PhotosPhotoType {
 		UnknownObject {
 			return UnknownPhotosPhotoType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26242,7 +26232,7 @@ fn decode_photos_photos_type_from_decoder(mut decoder Decoder) !PhotosPhotosType
 		UnknownObject {
 			return UnknownPhotosPhotosType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26270,7 +26260,7 @@ fn decode_premium_boosts_list_type_from_decoder(mut decoder Decoder) !PremiumBoo
 		UnknownObject {
 			return UnknownPremiumBoostsListType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26298,7 +26288,7 @@ fn decode_premium_boosts_status_type_from_decoder(mut decoder Decoder) !PremiumB
 		UnknownObject {
 			return UnknownPremiumBoostsStatusType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26326,7 +26316,7 @@ fn decode_premium_my_boosts_type_from_decoder(mut decoder Decoder) !PremiumMyBoo
 		UnknownObject {
 			return UnknownPremiumMyBoostsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26354,7 +26344,7 @@ fn decode_smsjobs_eligibility_to_join_type_from_decoder(mut decoder Decoder) !Sm
 		UnknownObject {
 			return UnknownSmsjobsEligibilityToJoinType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26382,7 +26372,7 @@ fn decode_smsjobs_status_type_from_decoder(mut decoder Decoder) !SmsjobsStatusTy
 		UnknownObject {
 			return UnknownSmsjobsStatusType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26410,7 +26400,7 @@ fn decode_stats_broadcast_stats_type_from_decoder(mut decoder Decoder) !StatsBro
 		UnknownObject {
 			return UnknownStatsBroadcastStatsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26438,7 +26428,7 @@ fn decode_stats_megagroup_stats_type_from_decoder(mut decoder Decoder) !StatsMeg
 		UnknownObject {
 			return UnknownStatsMegagroupStatsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26466,7 +26456,7 @@ fn decode_stats_message_stats_type_from_decoder(mut decoder Decoder) !StatsMessa
 		UnknownObject {
 			return UnknownStatsMessageStatsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26494,7 +26484,7 @@ fn decode_stats_public_forwards_type_from_decoder(mut decoder Decoder) !StatsPub
 		UnknownObject {
 			return UnknownStatsPublicForwardsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26522,7 +26512,7 @@ fn decode_stats_story_stats_type_from_decoder(mut decoder Decoder) !StatsStorySt
 		UnknownObject {
 			return UnknownStatsStoryStatsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26550,7 +26540,7 @@ fn decode_stickers_suggested_short_name_type_from_decoder(mut decoder Decoder) !
 		UnknownObject {
 			return UnknownStickersSuggestedShortNameType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26605,7 +26595,7 @@ fn decode_storage_file_type_type_from_decoder(mut decoder Decoder) !StorageFileT
 		UnknownObject {
 			return UnknownStorageFileTypeType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26636,7 +26626,7 @@ fn decode_stories_albums_type_from_decoder(mut decoder Decoder) !StoriesAlbumsTy
 		UnknownObject {
 			return UnknownStoriesAlbumsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26667,7 +26657,7 @@ fn decode_stories_all_stories_type_from_decoder(mut decoder Decoder) !StoriesAll
 		UnknownObject {
 			return UnknownStoriesAllStoriesType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26695,7 +26685,7 @@ fn decode_stories_can_send_story_count_type_from_decoder(mut decoder Decoder) !S
 		UnknownObject {
 			return UnknownStoriesCanSendStoryCountType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26723,7 +26713,7 @@ fn decode_stories_found_stories_type_from_decoder(mut decoder Decoder) !StoriesF
 		UnknownObject {
 			return UnknownStoriesFoundStoriesType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26751,7 +26741,7 @@ fn decode_stories_peer_stories_type_from_decoder(mut decoder Decoder) !StoriesPe
 		UnknownObject {
 			return UnknownStoriesPeerStoriesType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26779,7 +26769,7 @@ fn decode_stories_stories_type_from_decoder(mut decoder Decoder) !StoriesStories
 		UnknownObject {
 			return UnknownStoriesStoriesType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26807,7 +26797,7 @@ fn decode_stories_story_reactions_list_type_from_decoder(mut decoder Decoder) !S
 		UnknownObject {
 			return UnknownStoriesStoryReactionsListType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26835,7 +26825,7 @@ fn decode_stories_story_views_type_from_decoder(mut decoder Decoder) !StoriesSto
 		UnknownObject {
 			return UnknownStoriesStoryViewsType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26863,7 +26853,7 @@ fn decode_stories_story_views_list_type_from_decoder(mut decoder Decoder) !Stori
 		UnknownObject {
 			return UnknownStoriesStoryViewsListType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26897,7 +26887,7 @@ fn decode_updates_channel_difference_type_from_decoder(mut decoder Decoder) !Upd
 		UnknownObject {
 			return UnknownUpdatesChannelDifferenceType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26934,7 +26924,7 @@ fn decode_updates_difference_type_from_decoder(mut decoder Decoder) !UpdatesDiff
 		UnknownObject {
 			return UnknownUpdatesDifferenceType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26962,7 +26952,7 @@ fn decode_updates_state_type_from_decoder(mut decoder Decoder) !UpdatesStateType
 		UnknownObject {
 			return UnknownUpdatesStateType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26993,7 +26983,7 @@ fn decode_upload_cdn_file_type_from_decoder(mut decoder Decoder) !UploadCdnFileT
 		UnknownObject {
 			return UnknownUploadCdnFileType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27024,7 +27014,7 @@ fn decode_upload_file_type_from_decoder(mut decoder Decoder) !UploadFileType {
 		UnknownObject {
 			return UnknownUploadFileType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27052,7 +27042,7 @@ fn decode_upload_web_file_type_from_decoder(mut decoder Decoder) !UploadWebFileT
 		UnknownObject {
 			return UnknownUploadWebFileType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27083,7 +27073,7 @@ fn decode_users_saved_music_type_from_decoder(mut decoder Decoder) !UsersSavedMu
 		UnknownObject {
 			return UnknownUsersSavedMusicType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27111,7 +27101,7 @@ fn decode_users_user_full_type_from_decoder(mut decoder Decoder) !UsersUserFullT
 		UnknownObject {
 			return UnknownUsersUserFullType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27142,7 +27132,7 @@ fn decode_users_users_type_from_decoder(mut decoder Decoder) !UsersUsersType {
 		UnknownObject {
 			return UnknownUsersUsersType{
 				constructor: object.constructor
-				name:        object.name
+				name: object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -29452,3 +29442,4 @@ pub fn decode_function(data []u8) !Function {
 		}
 	}
 }
+

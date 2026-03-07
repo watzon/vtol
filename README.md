@@ -41,6 +41,7 @@ Session persistence now ships with Telethon-style `MemorySession`, `StringSessio
 ```bash
 v run scripts/fetch_schemas.vsh
 v run scripts/gen_tl.vsh
+v run scripts/check_tl_schema.vsh
 v fmt -w .
 v fmt -verify .
 v test .

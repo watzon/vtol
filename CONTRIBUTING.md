@@ -10,6 +10,7 @@
 ## Commands
 
 ```bash
+v run scripts/check_tl_schema.vsh
 v fmt -w .
 v test .
 ```

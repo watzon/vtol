@@ -29,6 +29,9 @@ jobs:
       - name: Verify formatting
         run: v fmt -verify .
 
+      - name: Verify TL schema checkout
+        run: v run scripts/check_tl_schema.vsh
+
       - name: Run tests
         run: v test .
 

@@ -33,6 +33,7 @@ v run scripts/gen_tl.vsh
 Validate the result:
 
 ```bash
+v run scripts/check_tl_schema.vsh
 v fmt -w .
 v test .
 ```
@@ -51,10 +52,14 @@ Generated union-like result families use V interfaces such as `InputPeerType`, `
 When Telegram bumps layers:
 
 1. Run `v run scripts/fetch_schemas.vsh` to snapshot the new Telethon inputs.
-2. Review `tl/schema/snapshot.json` for layer and blob-sha changes.
+2. Review `tl/schema/snapshot.json`, `tl/schema/normalized.tl`, and the raw TL files for the expected layer and upstream blob-sha changes.
 3. Run `v run scripts/gen_tl.vsh`.
-4. Run `v test .`.
-5. If request/session behavior changed, keep runtime compatibility work in later phases separate from the generated schema commit.
+4. Run `v run scripts/check_tl_schema.vsh` to confirm the checked-in generated files exactly match the pinned snapshot.
+5. Run `v fmt -w .` and `v test .`.
+6. Run the credential-gated integration suite when the layer bump affects auth, session recovery, updates, or request/response decoding behavior.
+7. Keep purely generated schema refreshes separate from follow-up runtime compatibility fixes when a layer bump needs code changes outside `tl/`.
+
+`scripts/check_tl_schema.vsh` is also part of CI. If it fails, the repository contains a stale `tl/generated_schema_types.v` or `tl/generated_schema_dispatch.v` relative to `tl/schema/snapshot.json` and `tl/schema/normalized.tl`.
 
 ## Unknown constructors
 

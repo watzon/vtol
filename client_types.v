@@ -337,7 +337,7 @@ pub:
 	from_users      string
 	incoming        bool
 	outgoing        bool
-	forwards        ?bool = none
+	forwards        ?bool
 	pattern         string
 	pattern_matcher NewMessagePatternMatcher = unsafe { nil }
 }

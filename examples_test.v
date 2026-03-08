@@ -8,6 +8,7 @@ fn test_examples_compile() {
 		'./examples/send_message',
 		'./examples/download_file',
 		'./examples/watch_updates',
+		'./examples/userbot',
 	] {
 		result := os.execute('v -check ${path}')
 		assert result.exit_code == 0, 'failed to compile ${path}: ${result.output}'

@@ -860,13 +860,93 @@ fn test_resolve_peer_like_accepts_strings_cached_keys_and_input_peers() {
 		user_id:     42
 		access_hash: 77
 	}) or { panic(err) }
+	by_input_interface := client.resolve_peer_like(tl.InputPeerType(tl.InputPeerUser{
+		user_id:     42
+		access_hash: 77
+	})) or { panic(err) }
 	by_self := client.resolve_peer_like(tl.InputPeerSelf{}) or { panic(err) }
 
 	assert by_name.key == 'user:42'
 	assert by_key.username == 'alice'
 	assert by_input.key == 'user:42'
+	assert by_input_interface.key == 'user:42'
 	assert by_self.key == 'me'
 	assert state.invocations == ['contacts.resolveUsername']
+}
+
+fn test_pump_updates_once_caches_update_batch_peers_for_key_resolution() {
+	mut state := &FakeRuntimeState{
+		responses:      [
+			tl.Object(tl.UpdatesState{
+				pts:          0
+				qts:          0
+				date:         100
+				seq:          0
+				unread_count: 0
+			}),
+		]
+		update_batches: [
+			tl.UpdatesType(tl.Updates{
+				updates: [
+					tl.UpdateType(tl.UpdateNewChannelMessage{
+						message:   tl.MessageType(tl.Message{
+							id:                14591
+							out:               true
+							peer_id:           tl.PeerType(tl.PeerChannel{
+								channel_id: 1282897912
+							})
+							from_id:           tl.PeerType(tl.PeerUser{
+								user_id: 370663289
+							})
+							has_from_id_value: true
+							date:              1772931893
+							message:           '!ping'
+							media:             tl.MessageMediaType(tl.UnknownMessageMediaType{})
+							has_media_value:   false
+						})
+						pts:       26910
+						pts_count: 1
+					}),
+				]
+				users:   [
+					tl.UserType(tl.User{
+						self:                  true
+						id:                    370663289
+						access_hash:           -8985327148680330470
+						has_access_hash_value: true
+						username:              'watzon'
+						has_username_value:    true
+					}),
+				]
+				chats:   [
+					tl.ChatType(tl.Channel{
+						id:                    1282897912
+						access_hash:           5613688542548802597
+						has_access_hash_value: true
+						title:                 'Watzon Userbot'
+					}),
+				]
+				date:    1772931892
+				seq:     0
+			}),
+		]
+	}
+	mut client := new_fake_client(state)
+
+	_ = client.on_new_message(fn (_ NewMessageEvent) ! {}) or { panic(err) }
+
+	client.pump_updates_once() or { panic(err) }
+
+	resolved := client.resolve_peer_like('channel:1282897912') or { panic(err) }
+	match resolved.input_peer {
+		tl.InputPeerChannel {
+			assert resolved.input_peer.channel_id == 1282897912
+			assert resolved.input_peer.access_hash == 5613688542548802597
+		}
+		else {
+			assert false
+		}
+	}
 }
 
 fn test_collect_dialogs_paginates_and_caches_page_peers() {

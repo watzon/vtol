@@ -1,6 +1,7 @@
 module vtol
 
 import tl
+import updates
 
 // cached_input_peer returns a cached input peer without performing network resolution.
 pub fn (c Client) cached_input_peer(key string) ?tl.InputPeerType {
@@ -68,8 +69,55 @@ pub fn (mut c Client) resolve_peer_like[T](peer T) !ResolvedPeer {
 		return resolved_peer_from_input_peer(tl.InputPeerType(peer), c.peer_cache) or {
 			return error('unsupported input peer')
 		}
+	} $else $if T is tl.InputPeerType {
+		return resolved_peer_from_input_peer(peer, c.peer_cache) or {
+			return error('unsupported input peer')
+		}
 	} $else {
 		return error('unsupported peer reference')
+	}
+}
+
+fn (mut c Client) cache_update_entities(event updates.Event) {
+	match event.kind {
+		.live {
+			users, chats := update_entities_from_batch(event.batch)
+			c.cache_user_entities(users)
+			c.cache_chat_entities(chats)
+		}
+		.recovered {
+			users, chats := update_entities_from_difference(event.difference)
+			c.cache_user_entities(users)
+			c.cache_chat_entities(chats)
+		}
+	}
+}
+
+fn update_entities_from_batch(batch tl.UpdatesType) ([]tl.UserType, []tl.ChatType) {
+	return match batch {
+		tl.Updates {
+			batch.users.clone(), batch.chats.clone()
+		}
+		tl.UpdatesCombined {
+			batch.users.clone(), batch.chats.clone()
+		}
+		else {
+			[]tl.UserType{}, []tl.ChatType{}
+		}
+	}
+}
+
+fn update_entities_from_difference(diff tl.UpdatesDifferenceType) ([]tl.UserType, []tl.ChatType) {
+	return match diff {
+		tl.UpdatesDifference {
+			diff.users.clone(), diff.chats.clone()
+		}
+		tl.UpdatesDifferenceSlice {
+			diff.users.clone(), diff.chats.clone()
+		}
+		else {
+			[]tl.UserType{}, []tl.ChatType{}
+		}
 	}
 }
 

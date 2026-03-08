@@ -164,6 +164,7 @@ Runnable examples live under [`examples/`](examples):
 - [`examples/send_message`](examples/send_message)
 - [`examples/watch_updates`](examples/watch_updates)
 - [`examples/download_file`](examples/download_file)
+- [`examples/userbot`](examples/userbot)
 
 ## Documentation
 

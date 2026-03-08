@@ -5,12 +5,12 @@ import tl
 import updates
 
 struct RawUpdateHandlerState {
-	handler RawUpdateHandler
+	handler RawUpdateHandler = unsafe { nil }
 }
 
 struct NewMessageHandlerState {
 	config            NewMessageHandlerConfig
-	handler           NewMessageHandler
+	handler           NewMessageHandler = unsafe { nil }
 	pattern_regex     regex.RE
 	has_pattern_regex bool
 }
@@ -18,9 +18,9 @@ struct NewMessageHandlerState {
 struct MessageEventContext {
 	kind                 updates.EventKind
 	state                updates.StateVector
-	batch                tl.UpdatesType
+	batch                tl.UpdatesType = tl.UpdatesTooLong{}
 	has_batch_value      bool
-	difference           tl.UpdatesDifferenceType
+	difference           tl.UpdatesDifferenceType = tl.UnknownUpdatesDifferenceType{}
 	has_difference_value bool
 }
 
@@ -125,6 +125,7 @@ fn (mut c Client) dispatch_pending_event_handlers() ! {
 	}
 	for {
 		event := receive_managed_update_event(c.event_subscription) or { break }
+		c.cache_update_entities(event)
 		c.dispatch_raw_update_handlers(event)!
 		c.dispatch_new_message_handlers(event)!
 	}
@@ -505,7 +506,7 @@ fn event_peers_from_message(message tl.MessageType, users []tl.UserType, chats [
 			if message.out {
 				return chat, event_self_peer(), true
 			}
-			return chat, EventPeer{}, false
+			return chat, empty_event_peer(), false
 		}
 		tl.MessageService {
 			chat := event_peer_from_peer(message.peer_id, users, chats, cache)
@@ -515,11 +516,17 @@ fn event_peers_from_message(message tl.MessageType, users []tl.UserType, chats [
 			if message.out {
 				return chat, event_self_peer(), true
 			}
-			return chat, EventPeer{}, false
+			return chat, empty_event_peer(), false
 		}
 		else {
-			return EventPeer{}, EventPeer{}, false
+			return empty_event_peer(), empty_event_peer(), false
 		}
+	}
+}
+
+fn empty_event_peer() EventPeer {
+	return EventPeer{
+		peer: tl.PeerUser{}
 	}
 }
 

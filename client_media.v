@@ -116,7 +116,7 @@ pub fn (mut c Client) send_text_with[T](peer T, message RichTextInput, options S
 	resolved := c.resolve_peer_like(peer)!
 	text := rich_text_from_input(message)
 	batch := c.send_message_updates_with(resolved.input_peer, text, options)!
-	return sent_message_from_updates(resolved, batch, text.text)!
+	return sent_message_from_updates(c, resolved, batch, text.text)!
 }
 
 // send_message is an alias for send_text.
@@ -175,7 +175,7 @@ pub fn (mut c Client) send_message_updates_with(peer tl.InputPeerType, message R
 pub fn (mut c Client) send_file[T](peer T, name string, data []u8, options SendFileOptions) !SentMessage {
 	resolved := c.resolve_peer_like(peer)!
 	batch := c.send_file_updates(resolved, name, data, options)!
-	return sent_message_from_updates(resolved, batch, options.caption)!
+	return sent_message_from_updates(c, resolved, batch, options.caption)!
 }
 
 // send_file_updates uploads and sends a document and returns the raw updates payload.
@@ -226,7 +226,7 @@ pub fn (mut c Client) send_file_to_username(username string, name string, data [
 pub fn (mut c Client) send_photo[T](peer T, name string, data []u8, options SendPhotoOptions) !SentMessage {
 	resolved := c.resolve_peer_like(peer)!
 	batch := c.send_photo_updates(resolved, name, data, options)!
-	return sent_message_from_updates(resolved, batch, options.caption)!
+	return sent_message_from_updates(c, resolved, batch, options.caption)!
 }
 
 // send_photo_updates uploads and sends a photo and returns the raw updates payload.

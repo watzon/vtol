@@ -193,6 +193,11 @@ pub fn (mut c Client) each_dialog(options DialogPageOptions, callback DialogCall
 	}
 }
 
+// iter_dialogs is an alias for each_dialog.
+pub fn (mut c Client) iter_dialogs(options DialogPageOptions, callback DialogCallback) ! {
+	c.each_dialog(options, callback)!
+}
+
 // each_history_page iterates history pages until the callback or options stop pagination.
 pub fn (mut c Client) each_history_page[T](peer T, options HistoryPageOptions, callback HistoryPageCallback) ! {
 	base := normalize_history_page_options(options)
@@ -273,6 +278,11 @@ pub fn (mut c Client) each_history_message[T](peer T, options HistoryPageOptions
 		}
 		current = page.next_options
 	}
+}
+
+// iter_messages is an alias for each_history_message.
+pub fn (mut c Client) iter_messages[T](peer T, options HistoryPageOptions, callback HistoryMessageCallback) ! {
+	c.each_history_message(peer, options, callback)!
 }
 
 // collect_history paginates message history and returns a deduplicated aggregate batch.

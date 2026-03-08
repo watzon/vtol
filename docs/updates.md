@@ -8,20 +8,22 @@ For most applications, the happy path is:
 
 1. restore or log in
 2. register a handler with `on_new_message()`
-3. keep the client alive with `idle()` or your own pump loop
+3. keep the client alive with `run_until_disconnected()`, `idle()`, or your own pump loop
 
 ```v
 handler_id := client.on_new_message(fn (event vtol.NewMessageEvent) ! {
-	println('[${event.kind}] ${event.chat.key}: ${event.text}')
+	if event.text == '!ping' {
+		event.reply('pong')!
+	}
 })!
 defer {
 	client.remove_event_handler(handler_id)
 }
 
-client.idle()!
+client.run_until_disconnected()!
 ```
 
-`idle()` connects the client and keeps calling `pump_updates_once()` until the client disconnects.
+`run_until_disconnected()` is an alias for `idle()`. Both connect the client and keep calling `pump_updates_once()` until the client disconnects.
 
 ## `NewMessageEvent`
 
@@ -40,6 +42,8 @@ Useful fields include:
 - raw `message`, `media`, `update`, `batch`, and `difference` values when available
 
 That means you can stay in a message-oriented model most of the time without losing access to the underlying update data.
+
+`NewMessageEvent` also exposes `reply()`, `reply_with()`, `respond()`, and `respond_with()` for the common “answer this event” flow.
 
 ## Filtering New-Message Handlers
 
@@ -178,6 +182,6 @@ Most application code should start with `on_new_message()`.
 ## Recommended Mental Model
 
 - use `on_new_message()` for bots and long-lived app code
-- use `idle()` when VTOL can own the event loop
+- use `run_until_disconnected()` or `idle()` when VTOL can own the event loop
 - use `pump_updates_once()` when your application owns the loop
 - use `on_raw_update()` or `subscribe_updates()` when you need a lower-level integration

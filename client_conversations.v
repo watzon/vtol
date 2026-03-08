@@ -108,7 +108,7 @@ fn (conversation Conversation) client_ref() !&Client {
 fn (mut conversation Conversation) buffer_pending_messages(cache map[string]CachedPeer) {
 	for {
 		event := receive_managed_update_event(conversation.subscription) or { break }
-		for item in new_message_events_from_manager_event(event, cache) {
+		for item in new_message_events_from_manager_event(event, cache, conversation.client) {
 			if !event_peer_matches_filter(item.chat, conversation.peer.key) {
 				continue
 			}

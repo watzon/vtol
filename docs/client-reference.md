@@ -131,6 +131,8 @@ Check whether VTOL already knows a peer locally without a network request.
 
 Default high-level text send. Returns `SentMessage`.
 
+`SentMessage` also gives you `reply(...)`, `reply_with(...)`, `respond(...)`, and `respond_with(...)`.
+
 ### `send_text_with(peer, message, options)`
 
 Text send with `SendOptions`.
@@ -161,7 +163,7 @@ Fetch dialogs through a page wrapper instead of working with raw result unions i
 
 Default history browser for application code.
 
-### `each_dialog()`, `each_history_message()`
+### `each_dialog()`, `iter_dialogs()`, `each_history_message()`, `iter_messages()`
 
 Iterate across many pages without open-coding the pagination loop.
 
@@ -194,6 +196,10 @@ Lower-level handler for raw update batches and recovered differences.
 ### `idle()`
 
 Run the update loop until disconnection.
+
+### `run_until_disconnected()`
+
+Alias for `idle()`. Use this when you want the Telethon-style naming.
 
 ### `pump_updates_once()`
 

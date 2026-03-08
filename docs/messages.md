@@ -91,6 +91,18 @@ That wrapper includes:
 
 This lets common code stay message-oriented while still keeping the underlying Telegram result available.
 
+### Replying And Responding
+
+`SentMessage` can send follow-ups without rebuilding peer context.
+
+```v
+sent := client.send_text('me', 'hello')!
+sent.reply('replying to hello')!
+sent.respond('a fresh message to the same chat')!
+```
+
+Use `reply_with()` or `respond_with()` when you want explicit `SendOptions`.
+
 ## Sending Files
 
 Use `send_file()` or `send_file_path()` for generic documents.
@@ -187,6 +199,8 @@ client.each_history_message('me', vtol.HistoryPageOptions{
 	println(message.qualified_name())
 })!
 ```
+
+`iter_messages()` is an alias for `each_history_message()`.
 
 ### Collect a bounded batch
 

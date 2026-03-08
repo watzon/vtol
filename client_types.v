@@ -257,6 +257,8 @@ pub:
 	has_media_value    bool
 	entities           []tl.MessageEntityType
 	has_entities_value bool
+mut:
+	client &Client = unsafe { nil }
 }
 
 // SendOptions configures text-message send helpers.
@@ -367,6 +369,8 @@ pub:
 	has_batch_value      bool
 	difference           tl.UpdatesDifferenceType = tl.UnknownUpdatesDifferenceType{}
 	has_difference_value bool
+mut:
+	client &Client = unsafe { nil }
 }
 
 // NewMessageHandler handles a normalized new-message event.

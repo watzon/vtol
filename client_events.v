@@ -159,7 +159,7 @@ fn (c Client) dispatch_new_message_handlers(event updates.Event) ! {
 	if c.new_message_handlers.len == 0 {
 		return
 	}
-	items := new_message_events_from_manager_event(event, c.peer_cache)
+	items := new_message_events_from_manager_event(event, c.peer_cache, c)
 	for item in items {
 		for id, handler_state in c.new_message_handlers {
 			if !new_message_event_matches_config(item, handler_state) {
@@ -263,8 +263,8 @@ fn event_peer_matches_filter(peer EventPeer, filter string) bool {
 	return false
 }
 
-fn new_message_events_from_manager_event(event updates.Event, cache map[string]CachedPeer) []NewMessageEvent {
-	return match event.kind {
+fn new_message_events_from_manager_event(event updates.Event, cache map[string]CachedPeer, client &Client) []NewMessageEvent {
+	mut items := match event.kind {
 		.live {
 			new_message_events_from_batch(event.batch, MessageEventContext{
 				kind:            event.kind
@@ -282,6 +282,12 @@ fn new_message_events_from_manager_event(event updates.Event, cache map[string]C
 			}, cache)
 		}
 	}
+	for index in 0 .. items.len {
+		unsafe {
+			items[index].client = client
+		}
+	}
+	return items
 }
 
 fn new_message_events_from_batch(batch tl.UpdatesType, context MessageEventContext, cache map[string]CachedPeer) []NewMessageEvent {

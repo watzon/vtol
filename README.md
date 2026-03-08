@@ -149,13 +149,15 @@ For long-lived applications, register a handler and let the client own the updat
 
 ```v
 handler_id := client.on_new_message(fn (event vtol.NewMessageEvent) ! {
-	println('[${event.kind}] ${event.chat.key}: ${event.text}')
+	if event.text == '!ping' {
+		event.reply('pong')!
+	}
 })!
 defer {
 	client.remove_event_handler(handler_id)
 }
 
-client.idle()!
+client.run_until_disconnected()!
 ```
 
 Runnable examples live under [`examples/`](examples):
@@ -197,7 +199,7 @@ Common methods:
 - auth and lifecycle: `start`, `connect`, `disconnect`, `did_restore_session`, `get_me`, `login_bot`
 - messaging and media: `send_text`, `send_text_with`, `send_file`, `send_photo`, `download_file`
 - dialogs and history: `get_dialog_page`, `get_history_page`, `each_dialog`, `each_history_message`
-- updates: `on_new_message`, `on_raw_update`, `pump_updates_once`, `idle`
+- updates: `on_new_message`, `on_raw_update`, `pump_updates_once`, `idle`, `run_until_disconnected`
 - raw Telegram access: `invoke`
 
 Supporting modules are also public where needed:

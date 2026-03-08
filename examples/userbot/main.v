@@ -5,12 +5,6 @@ import vtol.example_support
 
 const command_prefix = '!'
 
-@[heap]
-struct UserbotState {
-mut:
-	client &vtol.Client = unsafe { nil }
-}
-
 fn main() {
 	run() or {
 		eprintln('userbot: ${err}')
@@ -22,9 +16,6 @@ fn run() ! {
 	session_file := example_support.session_file_from_env()
 
 	mut client := example_support.new_client_from_env(session_file)!
-	state := &UserbotState{
-		client: &client
-	}
 	defer {
 		client.disconnect() or {}
 	}
@@ -36,26 +27,21 @@ fn run() ! {
 		outgoing: true
 		forwards: false
 		pattern:  '^!'
-	}, fn [state] (event vtol.NewMessageEvent) ! {
-		unsafe {
-			state.handle_command(event)!
-		}
+	}, fn (event vtol.NewMessageEvent) ! {
+		handle_command(event)!
 	})!
 	defer {
 		client.remove_event_handler(handler_id)
 	}
 
 	println('userbot ready; try !ping, !echo hello, or !help')
-	client.idle()!
+	client.run_until_disconnected()!
 }
 
-fn (state UserbotState) handle_command(event vtol.NewMessageEvent) ! {
+fn handle_command(event vtol.NewMessageEvent) ! {
 	command, arguments := parse_command(event.text)
 	if command.len == 0 {
 		return
-	}
-	if isnil(state.client) {
-		return error('userbot is detached')
 	}
 
 	response := match command {
@@ -73,26 +59,7 @@ fn (state UserbotState) handle_command(event vtol.NewMessageEvent) ! {
 		}
 	}
 
-	if event.chat.has_input_peer_value {
-		unsafe {
-			state.client.send_text_with(vtol.ResolvedPeer{
-				key:        event.chat.key
-				username:   event.chat.username
-				peer:       event.chat.peer
-				input_peer: event.chat.input_peer
-			}, response, vtol.SendOptions{
-				reply_to_message_id:           event.id
-				has_reply_to_message_id_value: true
-			})!
-		}
-	} else {
-		unsafe {
-			state.client.send_text_with(event.chat.key, response, vtol.SendOptions{
-				reply_to_message_id:           event.id
-				has_reply_to_message_id_value: true
-			})!
-		}
-	}
+	event.reply(response)!
 	println('handled ${event.text} in ${event.chat.key}')
 }
 

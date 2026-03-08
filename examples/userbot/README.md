@@ -2,7 +2,7 @@
 
 Runnable userbot example that reuses the session created by `examples/auth_basic`.
 
-It watches self-issued `!`-prefixed messages from the logged-in account and replies in the same chat using VTOL's high-level message helpers.
+It watches self-issued `!`-prefixed messages from the logged-in account and replies in the same chat using `event.reply(...)`, then stays alive through `run_until_disconnected()`.
 
 ## Commands
 

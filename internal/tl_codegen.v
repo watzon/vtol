@@ -17,10 +17,19 @@ pub fn generate_tl_module(schema_dir string, tl_dir string) !TlGenerationSummary
 	dispatch_path := os.join_path(tl_dir, 'generated_schema_dispatch.v')
 	os.write_file(types_path, render_tl_types(doc))!
 	os.write_file(dispatch_path, render_tl_dispatch(doc, snapshot))!
+	format_generated_v_file(types_path)!
+	format_generated_v_file(dispatch_path)!
 	return TlGenerationSummary{
 		layer:             snapshot.layer
 		constructor_count: doc.entries.filter(it.section == .types).len
 		function_count:    doc.entries.filter(it.section == .functions).len
+	}
+}
+
+fn format_generated_v_file(path string) ! {
+	result := os.execute('${@VEXE} fmt -w "${path}"')
+	if result.exit_code != 0 {
+		return error('failed to format generated file ${path}: ${result.output.trim_space()}')
 	}
 }
 
@@ -187,7 +196,12 @@ fn render_entry(mut builder strings.Builder, entry TlEntry) {
 	builder.writeln('pub struct ${name} {')
 	builder.writeln('pub:')
 	for field in fields {
-		builder.writeln('\t${field.name} ${field_v_type(field)}')
+		default_expr := struct_field_default_expr(field)
+		if default_expr.len > 0 {
+			builder.writeln('\t${field.name} ${field_v_type(field)} = ${default_expr}')
+		} else {
+			builder.writeln('\t${field.name} ${field_v_type(field)}')
+		}
 		if field.kind == .conditional && !field.is_flag_bool {
 			builder.writeln('\t${presence_field_name(field)} bool')
 		}
@@ -432,7 +446,25 @@ fn default_value_expr(tl_type string) string {
 		'bytes', 'int128', 'int256' { '[]u8{}' }
 		'Bool', 'true' { 'false' }
 		'Object', 'X' { 'Object(UnknownObject{})' }
-		else { '${result_interface_name(tl_type)}(unsafe { nil })' }
+		else { '${result_interface_name(tl_type)}(${unknown_struct_name(tl_type)}{})' }
+	}
+}
+
+fn struct_field_default_expr(field TlField) string {
+	if field.kind == .conditional && field.is_flag_bool {
+		return ''
+	}
+	return match field.tl_type {
+		'Object', 'X' {
+			default_value_expr(field.tl_type)
+		}
+		else {
+			if is_builtin_tl_type(field.tl_type) || field.tl_type.starts_with('Vector<') {
+				''
+			} else {
+				default_value_expr(field.tl_type)
+			}
+		}
 	}
 }
 

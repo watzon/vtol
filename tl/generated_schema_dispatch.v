@@ -3,30 +3,30 @@ module tl
 
 pub fn current_layer_info() LayerInfo {
 	return LayerInfo{
-		layer: 222
-		schema_revision: 'telethon-v1-layer-222-mtproto-203df276-api-77968bd2'
+		layer:             222
+		schema_revision:   'telethon-v1-layer-222-mtproto-203df276-api-77968bd2'
 		constructor_count: 1588
-		function_count: 764
+		function_count:    764
 	}
 }
 
 pub fn current_schema_snapshot() SchemaSnapshot {
 	return SchemaSnapshot{
-		layer: 222
+		layer:           222
 		schema_revision: 'telethon-v1-layer-222-mtproto-203df276-api-77968bd2'
 		normalized_path: '/Users/watzon/Projects/personal/vtol/tl/schema/normalized.tl'
-		sources: [
+		sources:         [
 			SchemaSource{
-				name: 'mtproto'
+				name:         'mtproto'
 				download_url: 'https://raw.githubusercontent.com/LonamiWebs/Telethon/v1/telethon_generator/data/mtproto.tl'
-				blob_sha: '203df27607df6ed99c14e1494936324f1385e678'
-				raw_path: '/Users/watzon/Projects/personal/vtol/tl/schema/raw/mtproto.tl'
+				blob_sha:     '203df27607df6ed99c14e1494936324f1385e678'
+				raw_path:     '/Users/watzon/Projects/personal/vtol/tl/schema/raw/mtproto.tl'
 			},
 			SchemaSource{
-				name: 'api'
+				name:         'api'
 				download_url: 'https://raw.githubusercontent.com/LonamiWebs/Telethon/v1/telethon_generator/data/api.tl'
-				blob_sha: '77968bd224470f5fbef4e3fc8d761d0dd7f3315b'
-				raw_path: '/Users/watzon/Projects/personal/vtol/tl/schema/raw/api.tl'
+				blob_sha:     '77968bd224470f5fbef4e3fc8d761d0dd7f3315b'
+				raw_path:     '/Users/watzon/Projects/personal/vtol/tl/schema/raw/api.tl'
 			},
 		]
 	}
@@ -35,3823 +35,3823 @@ pub fn current_schema_snapshot() SchemaSnapshot {
 pub fn current_function_registry() []FunctionInfo {
 	return [
 		FunctionInfo{
-			method_name: 'req_pq'
-			constructor_id: 0x60469778
+			method_name:      'req_pq'
+			constructor_id:   0x60469778
 			result_type_name: 'ResPQ'
 		},
 		FunctionInfo{
-			method_name: 'req_pq_multi'
-			constructor_id: 0xbe7e8ef1
+			method_name:      'req_pq_multi'
+			constructor_id:   0xbe7e8ef1
 			result_type_name: 'ResPQ'
 		},
 		FunctionInfo{
-			method_name: 'req_DH_params'
-			constructor_id: 0xd712e4be
+			method_name:      'req_DH_params'
+			constructor_id:   0xd712e4be
 			result_type_name: 'Server_DH_Params'
 		},
 		FunctionInfo{
-			method_name: 'set_client_DH_params'
-			constructor_id: 0xf5045f1f
+			method_name:      'set_client_DH_params'
+			constructor_id:   0xf5045f1f
 			result_type_name: 'Set_client_DH_params_answer'
 		},
 		FunctionInfo{
-			method_name: 'destroy_auth_key'
-			constructor_id: 0xd1435160
+			method_name:      'destroy_auth_key'
+			constructor_id:   0xd1435160
 			result_type_name: 'DestroyAuthKeyRes'
 		},
 		FunctionInfo{
-			method_name: 'rpc_drop_answer'
-			constructor_id: 0x58e4a740
+			method_name:      'rpc_drop_answer'
+			constructor_id:   0x58e4a740
 			result_type_name: 'RpcDropAnswer'
 		},
 		FunctionInfo{
-			method_name: 'get_future_salts'
-			constructor_id: 0xb921bd04
+			method_name:      'get_future_salts'
+			constructor_id:   0xb921bd04
 			result_type_name: 'FutureSalts'
 		},
 		FunctionInfo{
-			method_name: 'ping'
-			constructor_id: 0x7abe77ec
+			method_name:      'ping'
+			constructor_id:   0x7abe77ec
 			result_type_name: 'Pong'
 		},
 		FunctionInfo{
-			method_name: 'ping_delay_disconnect'
-			constructor_id: 0xf3427b8c
+			method_name:      'ping_delay_disconnect'
+			constructor_id:   0xf3427b8c
 			result_type_name: 'Pong'
 		},
 		FunctionInfo{
-			method_name: 'destroy_session'
-			constructor_id: 0xe7512126
+			method_name:      'destroy_session'
+			constructor_id:   0xe7512126
 			result_type_name: 'DestroySessionRes'
 		},
 		FunctionInfo{
-			method_name: 'invokeAfterMsg'
-			constructor_id: 0xcb9f372d
+			method_name:      'invokeAfterMsg'
+			constructor_id:   0xcb9f372d
 			result_type_name: 'X'
 		},
 		FunctionInfo{
-			method_name: 'invokeAfterMsgs'
-			constructor_id: 0x3dc4b4f0
+			method_name:      'invokeAfterMsgs'
+			constructor_id:   0x3dc4b4f0
 			result_type_name: 'X'
 		},
 		FunctionInfo{
-			method_name: 'initConnection'
-			constructor_id: 0xc1cd5ea9
+			method_name:      'initConnection'
+			constructor_id:   0xc1cd5ea9
 			result_type_name: 'X'
 		},
 		FunctionInfo{
-			method_name: 'invokeWithLayer'
-			constructor_id: 0xda9b0d0d
+			method_name:      'invokeWithLayer'
+			constructor_id:   0xda9b0d0d
 			result_type_name: 'X'
 		},
 		FunctionInfo{
-			method_name: 'invokeWithoutUpdates'
-			constructor_id: 0xbf9459b7
+			method_name:      'invokeWithoutUpdates'
+			constructor_id:   0xbf9459b7
 			result_type_name: 'X'
 		},
 		FunctionInfo{
-			method_name: 'invokeWithMessagesRange'
-			constructor_id: 0x365275f2
+			method_name:      'invokeWithMessagesRange'
+			constructor_id:   0x365275f2
 			result_type_name: 'X'
 		},
 		FunctionInfo{
-			method_name: 'invokeWithTakeout'
-			constructor_id: 0xaca9fd2e
+			method_name:      'invokeWithTakeout'
+			constructor_id:   0xaca9fd2e
 			result_type_name: 'X'
 		},
 		FunctionInfo{
-			method_name: 'invokeWithBusinessConnection'
-			constructor_id: 0xdd289f8e
+			method_name:      'invokeWithBusinessConnection'
+			constructor_id:   0xdd289f8e
 			result_type_name: 'X'
 		},
 		FunctionInfo{
-			method_name: 'invokeWithGooglePlayIntegrity'
-			constructor_id: 0x1df92984
+			method_name:      'invokeWithGooglePlayIntegrity'
+			constructor_id:   0x1df92984
 			result_type_name: 'X'
 		},
 		FunctionInfo{
-			method_name: 'invokeWithApnsSecret'
-			constructor_id: 0x0dae54f8
+			method_name:      'invokeWithApnsSecret'
+			constructor_id:   0x0dae54f8
 			result_type_name: 'X'
 		},
 		FunctionInfo{
-			method_name: 'invokeWithReCaptcha'
-			constructor_id: 0xadbb0f94
+			method_name:      'invokeWithReCaptcha'
+			constructor_id:   0xadbb0f94
 			result_type_name: 'X'
 		},
 		FunctionInfo{
-			method_name: 'auth.sendCode'
-			constructor_id: 0xa677244f
+			method_name:      'auth.sendCode'
+			constructor_id:   0xa677244f
 			result_type_name: 'auth.SentCode'
 		},
 		FunctionInfo{
-			method_name: 'auth.signUp'
-			constructor_id: 0xaac7b717
+			method_name:      'auth.signUp'
+			constructor_id:   0xaac7b717
 			result_type_name: 'auth.Authorization'
 		},
 		FunctionInfo{
-			method_name: 'auth.signIn'
-			constructor_id: 0x8d52a951
+			method_name:      'auth.signIn'
+			constructor_id:   0x8d52a951
 			result_type_name: 'auth.Authorization'
 		},
 		FunctionInfo{
-			method_name: 'auth.logOut'
-			constructor_id: 0x3e72ba19
+			method_name:      'auth.logOut'
+			constructor_id:   0x3e72ba19
 			result_type_name: 'auth.LoggedOut'
 		},
 		FunctionInfo{
-			method_name: 'auth.resetAuthorizations'
-			constructor_id: 0x9fab0d1a
+			method_name:      'auth.resetAuthorizations'
+			constructor_id:   0x9fab0d1a
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'auth.exportAuthorization'
-			constructor_id: 0xe5bfffcd
+			method_name:      'auth.exportAuthorization'
+			constructor_id:   0xe5bfffcd
 			result_type_name: 'auth.ExportedAuthorization'
 		},
 		FunctionInfo{
-			method_name: 'auth.importAuthorization'
-			constructor_id: 0xa57a7dad
+			method_name:      'auth.importAuthorization'
+			constructor_id:   0xa57a7dad
 			result_type_name: 'auth.Authorization'
 		},
 		FunctionInfo{
-			method_name: 'auth.bindTempAuthKey'
-			constructor_id: 0xcdd42a05
+			method_name:      'auth.bindTempAuthKey'
+			constructor_id:   0xcdd42a05
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'auth.importBotAuthorization'
-			constructor_id: 0x67a3ff2c
+			method_name:      'auth.importBotAuthorization'
+			constructor_id:   0x67a3ff2c
 			result_type_name: 'auth.Authorization'
 		},
 		FunctionInfo{
-			method_name: 'auth.checkPassword'
-			constructor_id: 0xd18b4d16
+			method_name:      'auth.checkPassword'
+			constructor_id:   0xd18b4d16
 			result_type_name: 'auth.Authorization'
 		},
 		FunctionInfo{
-			method_name: 'auth.requestPasswordRecovery'
-			constructor_id: 0xd897bc66
+			method_name:      'auth.requestPasswordRecovery'
+			constructor_id:   0xd897bc66
 			result_type_name: 'auth.PasswordRecovery'
 		},
 		FunctionInfo{
-			method_name: 'auth.recoverPassword'
-			constructor_id: 0x37096c70
+			method_name:      'auth.recoverPassword'
+			constructor_id:   0x37096c70
 			result_type_name: 'auth.Authorization'
 		},
 		FunctionInfo{
-			method_name: 'auth.resendCode'
-			constructor_id: 0xcae47523
+			method_name:      'auth.resendCode'
+			constructor_id:   0xcae47523
 			result_type_name: 'auth.SentCode'
 		},
 		FunctionInfo{
-			method_name: 'auth.cancelCode'
-			constructor_id: 0x1f040578
+			method_name:      'auth.cancelCode'
+			constructor_id:   0x1f040578
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'auth.dropTempAuthKeys'
-			constructor_id: 0x8e48a188
+			method_name:      'auth.dropTempAuthKeys'
+			constructor_id:   0x8e48a188
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'auth.exportLoginToken'
-			constructor_id: 0xb7e085fe
+			method_name:      'auth.exportLoginToken'
+			constructor_id:   0xb7e085fe
 			result_type_name: 'auth.LoginToken'
 		},
 		FunctionInfo{
-			method_name: 'auth.importLoginToken'
-			constructor_id: 0x95ac5ce4
+			method_name:      'auth.importLoginToken'
+			constructor_id:   0x95ac5ce4
 			result_type_name: 'auth.LoginToken'
 		},
 		FunctionInfo{
-			method_name: 'auth.acceptLoginToken'
-			constructor_id: 0xe894ad4d
+			method_name:      'auth.acceptLoginToken'
+			constructor_id:   0xe894ad4d
 			result_type_name: 'Authorization'
 		},
 		FunctionInfo{
-			method_name: 'auth.checkRecoveryPassword'
-			constructor_id: 0x0d36bf79
+			method_name:      'auth.checkRecoveryPassword'
+			constructor_id:   0x0d36bf79
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'auth.importWebTokenAuthorization'
-			constructor_id: 0x2db873a9
+			method_name:      'auth.importWebTokenAuthorization'
+			constructor_id:   0x2db873a9
 			result_type_name: 'auth.Authorization'
 		},
 		FunctionInfo{
-			method_name: 'auth.requestFirebaseSms'
-			constructor_id: 0x8e39261e
+			method_name:      'auth.requestFirebaseSms'
+			constructor_id:   0x8e39261e
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'auth.resetLoginEmail'
-			constructor_id: 0x7e960193
+			method_name:      'auth.resetLoginEmail'
+			constructor_id:   0x7e960193
 			result_type_name: 'auth.SentCode'
 		},
 		FunctionInfo{
-			method_name: 'auth.reportMissingCode'
-			constructor_id: 0xcb9deff6
+			method_name:      'auth.reportMissingCode'
+			constructor_id:   0xcb9deff6
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'auth.checkPaidAuth'
-			constructor_id: 0x56e59f9c
+			method_name:      'auth.checkPaidAuth'
+			constructor_id:   0x56e59f9c
 			result_type_name: 'auth.SentCode'
 		},
 		FunctionInfo{
-			method_name: 'auth.initPasskeyLogin'
-			constructor_id: 0x518ad0b7
+			method_name:      'auth.initPasskeyLogin'
+			constructor_id:   0x518ad0b7
 			result_type_name: 'auth.PasskeyLoginOptions'
 		},
 		FunctionInfo{
-			method_name: 'auth.finishPasskeyLogin'
-			constructor_id: 0x9857ad07
+			method_name:      'auth.finishPasskeyLogin'
+			constructor_id:   0x9857ad07
 			result_type_name: 'auth.Authorization'
 		},
 		FunctionInfo{
-			method_name: 'account.registerDevice'
-			constructor_id: 0xec86017a
+			method_name:      'account.registerDevice'
+			constructor_id:   0xec86017a
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.unregisterDevice'
-			constructor_id: 0x6a0d3206
+			method_name:      'account.unregisterDevice'
+			constructor_id:   0x6a0d3206
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.updateNotifySettings'
-			constructor_id: 0x84be5b93
+			method_name:      'account.updateNotifySettings'
+			constructor_id:   0x84be5b93
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.getNotifySettings'
-			constructor_id: 0x12b3ad31
+			method_name:      'account.getNotifySettings'
+			constructor_id:   0x12b3ad31
 			result_type_name: 'PeerNotifySettings'
 		},
 		FunctionInfo{
-			method_name: 'account.resetNotifySettings'
-			constructor_id: 0xdb7e1747
+			method_name:      'account.resetNotifySettings'
+			constructor_id:   0xdb7e1747
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.updateProfile'
-			constructor_id: 0x78515775
+			method_name:      'account.updateProfile'
+			constructor_id:   0x78515775
 			result_type_name: 'User'
 		},
 		FunctionInfo{
-			method_name: 'account.updateStatus'
-			constructor_id: 0x6628562c
+			method_name:      'account.updateStatus'
+			constructor_id:   0x6628562c
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.getWallPapers'
-			constructor_id: 0x07967d36
+			method_name:      'account.getWallPapers'
+			constructor_id:   0x07967d36
 			result_type_name: 'account.WallPapers'
 		},
 		FunctionInfo{
-			method_name: 'account.reportPeer'
-			constructor_id: 0xc5ba3d86
+			method_name:      'account.reportPeer'
+			constructor_id:   0xc5ba3d86
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.checkUsername'
-			constructor_id: 0x2714d86c
+			method_name:      'account.checkUsername'
+			constructor_id:   0x2714d86c
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.updateUsername'
-			constructor_id: 0x3e0bdd7c
+			method_name:      'account.updateUsername'
+			constructor_id:   0x3e0bdd7c
 			result_type_name: 'User'
 		},
 		FunctionInfo{
-			method_name: 'account.getPrivacy'
-			constructor_id: 0xdadbc950
+			method_name:      'account.getPrivacy'
+			constructor_id:   0xdadbc950
 			result_type_name: 'account.PrivacyRules'
 		},
 		FunctionInfo{
-			method_name: 'account.setPrivacy'
-			constructor_id: 0xc9f81ce8
+			method_name:      'account.setPrivacy'
+			constructor_id:   0xc9f81ce8
 			result_type_name: 'account.PrivacyRules'
 		},
 		FunctionInfo{
-			method_name: 'account.deleteAccount'
-			constructor_id: 0xa2c0cf74
+			method_name:      'account.deleteAccount'
+			constructor_id:   0xa2c0cf74
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.getAccountTTL'
-			constructor_id: 0x08fc711d
+			method_name:      'account.getAccountTTL'
+			constructor_id:   0x08fc711d
 			result_type_name: 'AccountDaysTTL'
 		},
 		FunctionInfo{
-			method_name: 'account.setAccountTTL'
-			constructor_id: 0x2442485e
+			method_name:      'account.setAccountTTL'
+			constructor_id:   0x2442485e
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.sendChangePhoneCode'
-			constructor_id: 0x82574ae5
+			method_name:      'account.sendChangePhoneCode'
+			constructor_id:   0x82574ae5
 			result_type_name: 'auth.SentCode'
 		},
 		FunctionInfo{
-			method_name: 'account.changePhone'
-			constructor_id: 0x70c32edb
+			method_name:      'account.changePhone'
+			constructor_id:   0x70c32edb
 			result_type_name: 'User'
 		},
 		FunctionInfo{
-			method_name: 'account.updateDeviceLocked'
-			constructor_id: 0x38df3532
+			method_name:      'account.updateDeviceLocked'
+			constructor_id:   0x38df3532
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.getAuthorizations'
-			constructor_id: 0xe320c158
+			method_name:      'account.getAuthorizations'
+			constructor_id:   0xe320c158
 			result_type_name: 'account.Authorizations'
 		},
 		FunctionInfo{
-			method_name: 'account.resetAuthorization'
-			constructor_id: 0xdf77f3bc
+			method_name:      'account.resetAuthorization'
+			constructor_id:   0xdf77f3bc
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.getPassword'
-			constructor_id: 0x548a30f5
+			method_name:      'account.getPassword'
+			constructor_id:   0x548a30f5
 			result_type_name: 'account.Password'
 		},
 		FunctionInfo{
-			method_name: 'account.getPasswordSettings'
-			constructor_id: 0x9cd4eaf9
+			method_name:      'account.getPasswordSettings'
+			constructor_id:   0x9cd4eaf9
 			result_type_name: 'account.PasswordSettings'
 		},
 		FunctionInfo{
-			method_name: 'account.updatePasswordSettings'
-			constructor_id: 0xa59b102f
+			method_name:      'account.updatePasswordSettings'
+			constructor_id:   0xa59b102f
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.sendConfirmPhoneCode'
-			constructor_id: 0x1b3faa88
+			method_name:      'account.sendConfirmPhoneCode'
+			constructor_id:   0x1b3faa88
 			result_type_name: 'auth.SentCode'
 		},
 		FunctionInfo{
-			method_name: 'account.confirmPhone'
-			constructor_id: 0x5f2178c3
+			method_name:      'account.confirmPhone'
+			constructor_id:   0x5f2178c3
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.getTmpPassword'
-			constructor_id: 0x449e0b51
+			method_name:      'account.getTmpPassword'
+			constructor_id:   0x449e0b51
 			result_type_name: 'account.TmpPassword'
 		},
 		FunctionInfo{
-			method_name: 'account.getWebAuthorizations'
-			constructor_id: 0x182e6d6f
+			method_name:      'account.getWebAuthorizations'
+			constructor_id:   0x182e6d6f
 			result_type_name: 'account.WebAuthorizations'
 		},
 		FunctionInfo{
-			method_name: 'account.resetWebAuthorization'
-			constructor_id: 0x2d01b9ef
+			method_name:      'account.resetWebAuthorization'
+			constructor_id:   0x2d01b9ef
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.resetWebAuthorizations'
-			constructor_id: 0x682d2594
+			method_name:      'account.resetWebAuthorizations'
+			constructor_id:   0x682d2594
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.getAllSecureValues'
-			constructor_id: 0xb288bc7d
+			method_name:      'account.getAllSecureValues'
+			constructor_id:   0xb288bc7d
 			result_type_name: 'Vector<SecureValue>'
 		},
 		FunctionInfo{
-			method_name: 'account.getSecureValue'
-			constructor_id: 0x73665bc2
+			method_name:      'account.getSecureValue'
+			constructor_id:   0x73665bc2
 			result_type_name: 'Vector<SecureValue>'
 		},
 		FunctionInfo{
-			method_name: 'account.saveSecureValue'
-			constructor_id: 0x899fe31d
+			method_name:      'account.saveSecureValue'
+			constructor_id:   0x899fe31d
 			result_type_name: 'SecureValue'
 		},
 		FunctionInfo{
-			method_name: 'account.deleteSecureValue'
-			constructor_id: 0xb880bc4b
+			method_name:      'account.deleteSecureValue'
+			constructor_id:   0xb880bc4b
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.getAuthorizationForm'
-			constructor_id: 0xa929597a
+			method_name:      'account.getAuthorizationForm'
+			constructor_id:   0xa929597a
 			result_type_name: 'account.AuthorizationForm'
 		},
 		FunctionInfo{
-			method_name: 'account.acceptAuthorization'
-			constructor_id: 0xf3ed4c73
+			method_name:      'account.acceptAuthorization'
+			constructor_id:   0xf3ed4c73
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.sendVerifyPhoneCode'
-			constructor_id: 0xa5a356f9
+			method_name:      'account.sendVerifyPhoneCode'
+			constructor_id:   0xa5a356f9
 			result_type_name: 'auth.SentCode'
 		},
 		FunctionInfo{
-			method_name: 'account.verifyPhone'
-			constructor_id: 0x4dd3a7f6
+			method_name:      'account.verifyPhone'
+			constructor_id:   0x4dd3a7f6
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.sendVerifyEmailCode'
-			constructor_id: 0x98e037bb
+			method_name:      'account.sendVerifyEmailCode'
+			constructor_id:   0x98e037bb
 			result_type_name: 'account.SentEmailCode'
 		},
 		FunctionInfo{
-			method_name: 'account.verifyEmail'
-			constructor_id: 0x032da4cf
+			method_name:      'account.verifyEmail'
+			constructor_id:   0x032da4cf
 			result_type_name: 'account.EmailVerified'
 		},
 		FunctionInfo{
-			method_name: 'account.initTakeoutSession'
-			constructor_id: 0x8ef3eab0
+			method_name:      'account.initTakeoutSession'
+			constructor_id:   0x8ef3eab0
 			result_type_name: 'account.Takeout'
 		},
 		FunctionInfo{
-			method_name: 'account.finishTakeoutSession'
-			constructor_id: 0x1d2652ee
+			method_name:      'account.finishTakeoutSession'
+			constructor_id:   0x1d2652ee
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.confirmPasswordEmail'
-			constructor_id: 0x8fdf1920
+			method_name:      'account.confirmPasswordEmail'
+			constructor_id:   0x8fdf1920
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.resendPasswordEmail'
-			constructor_id: 0x7a7f2a15
+			method_name:      'account.resendPasswordEmail'
+			constructor_id:   0x7a7f2a15
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.cancelPasswordEmail'
-			constructor_id: 0xc1cbd5b6
+			method_name:      'account.cancelPasswordEmail'
+			constructor_id:   0xc1cbd5b6
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.getContactSignUpNotification'
-			constructor_id: 0x9f07c728
+			method_name:      'account.getContactSignUpNotification'
+			constructor_id:   0x9f07c728
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.setContactSignUpNotification'
-			constructor_id: 0xcff43f61
+			method_name:      'account.setContactSignUpNotification'
+			constructor_id:   0xcff43f61
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.getNotifyExceptions'
-			constructor_id: 0x53577479
+			method_name:      'account.getNotifyExceptions'
+			constructor_id:   0x53577479
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'account.getWallPaper'
-			constructor_id: 0xfc8ddbea
+			method_name:      'account.getWallPaper'
+			constructor_id:   0xfc8ddbea
 			result_type_name: 'WallPaper'
 		},
 		FunctionInfo{
-			method_name: 'account.uploadWallPaper'
-			constructor_id: 0xe39a8f03
+			method_name:      'account.uploadWallPaper'
+			constructor_id:   0xe39a8f03
 			result_type_name: 'WallPaper'
 		},
 		FunctionInfo{
-			method_name: 'account.saveWallPaper'
-			constructor_id: 0x6c5a5b37
+			method_name:      'account.saveWallPaper'
+			constructor_id:   0x6c5a5b37
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.installWallPaper'
-			constructor_id: 0xfeed5769
+			method_name:      'account.installWallPaper'
+			constructor_id:   0xfeed5769
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.resetWallPapers'
-			constructor_id: 0xbb3b9804
+			method_name:      'account.resetWallPapers'
+			constructor_id:   0xbb3b9804
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.getAutoDownloadSettings'
-			constructor_id: 0x56da0b3f
+			method_name:      'account.getAutoDownloadSettings'
+			constructor_id:   0x56da0b3f
 			result_type_name: 'account.AutoDownloadSettings'
 		},
 		FunctionInfo{
-			method_name: 'account.saveAutoDownloadSettings'
-			constructor_id: 0x76f36233
+			method_name:      'account.saveAutoDownloadSettings'
+			constructor_id:   0x76f36233
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.uploadTheme'
-			constructor_id: 0x1c3db333
+			method_name:      'account.uploadTheme'
+			constructor_id:   0x1c3db333
 			result_type_name: 'Document'
 		},
 		FunctionInfo{
-			method_name: 'account.createTheme'
-			constructor_id: 0x652e4400
+			method_name:      'account.createTheme'
+			constructor_id:   0x652e4400
 			result_type_name: 'Theme'
 		},
 		FunctionInfo{
-			method_name: 'account.updateTheme'
-			constructor_id: 0x2bf40ccc
+			method_name:      'account.updateTheme'
+			constructor_id:   0x2bf40ccc
 			result_type_name: 'Theme'
 		},
 		FunctionInfo{
-			method_name: 'account.saveTheme'
-			constructor_id: 0xf257106c
+			method_name:      'account.saveTheme'
+			constructor_id:   0xf257106c
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.installTheme'
-			constructor_id: 0xc727bb3b
+			method_name:      'account.installTheme'
+			constructor_id:   0xc727bb3b
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.getTheme'
-			constructor_id: 0x3a5869ec
+			method_name:      'account.getTheme'
+			constructor_id:   0x3a5869ec
 			result_type_name: 'Theme'
 		},
 		FunctionInfo{
-			method_name: 'account.getThemes'
-			constructor_id: 0x7206e458
+			method_name:      'account.getThemes'
+			constructor_id:   0x7206e458
 			result_type_name: 'account.Themes'
 		},
 		FunctionInfo{
-			method_name: 'account.setContentSettings'
-			constructor_id: 0xb574b16b
+			method_name:      'account.setContentSettings'
+			constructor_id:   0xb574b16b
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.getContentSettings'
-			constructor_id: 0x8b9b4dae
+			method_name:      'account.getContentSettings'
+			constructor_id:   0x8b9b4dae
 			result_type_name: 'account.ContentSettings'
 		},
 		FunctionInfo{
-			method_name: 'account.getMultiWallPapers'
-			constructor_id: 0x65ad71dc
+			method_name:      'account.getMultiWallPapers'
+			constructor_id:   0x65ad71dc
 			result_type_name: 'Vector<WallPaper>'
 		},
 		FunctionInfo{
-			method_name: 'account.getGlobalPrivacySettings'
-			constructor_id: 0xeb2b4cf6
+			method_name:      'account.getGlobalPrivacySettings'
+			constructor_id:   0xeb2b4cf6
 			result_type_name: 'GlobalPrivacySettings'
 		},
 		FunctionInfo{
-			method_name: 'account.setGlobalPrivacySettings'
-			constructor_id: 0x1edaaac2
+			method_name:      'account.setGlobalPrivacySettings'
+			constructor_id:   0x1edaaac2
 			result_type_name: 'GlobalPrivacySettings'
 		},
 		FunctionInfo{
-			method_name: 'account.reportProfilePhoto'
-			constructor_id: 0xfa8cc6f5
+			method_name:      'account.reportProfilePhoto'
+			constructor_id:   0xfa8cc6f5
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.resetPassword'
-			constructor_id: 0x9308ce1b
+			method_name:      'account.resetPassword'
+			constructor_id:   0x9308ce1b
 			result_type_name: 'account.ResetPasswordResult'
 		},
 		FunctionInfo{
-			method_name: 'account.declinePasswordReset'
-			constructor_id: 0x4c9409f6
+			method_name:      'account.declinePasswordReset'
+			constructor_id:   0x4c9409f6
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.getChatThemes'
-			constructor_id: 0xd638de89
+			method_name:      'account.getChatThemes'
+			constructor_id:   0xd638de89
 			result_type_name: 'account.Themes'
 		},
 		FunctionInfo{
-			method_name: 'account.setAuthorizationTTL'
-			constructor_id: 0xbf899aa0
+			method_name:      'account.setAuthorizationTTL'
+			constructor_id:   0xbf899aa0
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.changeAuthorizationSettings'
-			constructor_id: 0x40f48462
+			method_name:      'account.changeAuthorizationSettings'
+			constructor_id:   0x40f48462
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.getSavedRingtones'
-			constructor_id: 0xe1902288
+			method_name:      'account.getSavedRingtones'
+			constructor_id:   0xe1902288
 			result_type_name: 'account.SavedRingtones'
 		},
 		FunctionInfo{
-			method_name: 'account.saveRingtone'
-			constructor_id: 0x3dea5b03
+			method_name:      'account.saveRingtone'
+			constructor_id:   0x3dea5b03
 			result_type_name: 'account.SavedRingtone'
 		},
 		FunctionInfo{
-			method_name: 'account.uploadRingtone'
-			constructor_id: 0x831a83a2
+			method_name:      'account.uploadRingtone'
+			constructor_id:   0x831a83a2
 			result_type_name: 'Document'
 		},
 		FunctionInfo{
-			method_name: 'account.updateEmojiStatus'
-			constructor_id: 0xfbd3de6b
+			method_name:      'account.updateEmojiStatus'
+			constructor_id:   0xfbd3de6b
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.getDefaultEmojiStatuses'
-			constructor_id: 0xd6753386
+			method_name:      'account.getDefaultEmojiStatuses'
+			constructor_id:   0xd6753386
 			result_type_name: 'account.EmojiStatuses'
 		},
 		FunctionInfo{
-			method_name: 'account.getRecentEmojiStatuses'
-			constructor_id: 0x0f578105
+			method_name:      'account.getRecentEmojiStatuses'
+			constructor_id:   0x0f578105
 			result_type_name: 'account.EmojiStatuses'
 		},
 		FunctionInfo{
-			method_name: 'account.clearRecentEmojiStatuses'
-			constructor_id: 0x18201aae
+			method_name:      'account.clearRecentEmojiStatuses'
+			constructor_id:   0x18201aae
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.reorderUsernames'
-			constructor_id: 0xef500eab
+			method_name:      'account.reorderUsernames'
+			constructor_id:   0xef500eab
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.toggleUsername'
-			constructor_id: 0x58d6b376
+			method_name:      'account.toggleUsername'
+			constructor_id:   0x58d6b376
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.getDefaultProfilePhotoEmojis'
-			constructor_id: 0xe2750328
+			method_name:      'account.getDefaultProfilePhotoEmojis'
+			constructor_id:   0xe2750328
 			result_type_name: 'EmojiList'
 		},
 		FunctionInfo{
-			method_name: 'account.getDefaultGroupPhotoEmojis'
-			constructor_id: 0x915860ae
+			method_name:      'account.getDefaultGroupPhotoEmojis'
+			constructor_id:   0x915860ae
 			result_type_name: 'EmojiList'
 		},
 		FunctionInfo{
-			method_name: 'account.getAutoSaveSettings'
-			constructor_id: 0xadcbbcda
+			method_name:      'account.getAutoSaveSettings'
+			constructor_id:   0xadcbbcda
 			result_type_name: 'account.AutoSaveSettings'
 		},
 		FunctionInfo{
-			method_name: 'account.saveAutoSaveSettings'
-			constructor_id: 0xd69b8361
+			method_name:      'account.saveAutoSaveSettings'
+			constructor_id:   0xd69b8361
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.deleteAutoSaveExceptions'
-			constructor_id: 0x53bc0020
+			method_name:      'account.deleteAutoSaveExceptions'
+			constructor_id:   0x53bc0020
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.invalidateSignInCodes'
-			constructor_id: 0xca8ae8ba
+			method_name:      'account.invalidateSignInCodes'
+			constructor_id:   0xca8ae8ba
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.updateColor'
-			constructor_id: 0x684d214e
+			method_name:      'account.updateColor'
+			constructor_id:   0x684d214e
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.getDefaultBackgroundEmojis'
-			constructor_id: 0xa60ab9ce
+			method_name:      'account.getDefaultBackgroundEmojis'
+			constructor_id:   0xa60ab9ce
 			result_type_name: 'EmojiList'
 		},
 		FunctionInfo{
-			method_name: 'account.getChannelDefaultEmojiStatuses'
-			constructor_id: 0x7727a7d5
+			method_name:      'account.getChannelDefaultEmojiStatuses'
+			constructor_id:   0x7727a7d5
 			result_type_name: 'account.EmojiStatuses'
 		},
 		FunctionInfo{
-			method_name: 'account.getChannelRestrictedStatusEmojis'
-			constructor_id: 0x35a9e0d5
+			method_name:      'account.getChannelRestrictedStatusEmojis'
+			constructor_id:   0x35a9e0d5
 			result_type_name: 'EmojiList'
 		},
 		FunctionInfo{
-			method_name: 'account.updateBusinessWorkHours'
-			constructor_id: 0x4b00e066
+			method_name:      'account.updateBusinessWorkHours'
+			constructor_id:   0x4b00e066
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.updateBusinessLocation'
-			constructor_id: 0x9e6b131a
+			method_name:      'account.updateBusinessLocation'
+			constructor_id:   0x9e6b131a
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.updateBusinessGreetingMessage'
-			constructor_id: 0x66cdafc4
+			method_name:      'account.updateBusinessGreetingMessage'
+			constructor_id:   0x66cdafc4
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.updateBusinessAwayMessage'
-			constructor_id: 0xa26a7fa5
+			method_name:      'account.updateBusinessAwayMessage'
+			constructor_id:   0xa26a7fa5
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.updateConnectedBot'
-			constructor_id: 0x66a08c7e
+			method_name:      'account.updateConnectedBot'
+			constructor_id:   0x66a08c7e
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'account.getConnectedBots'
-			constructor_id: 0x4ea4c80f
+			method_name:      'account.getConnectedBots'
+			constructor_id:   0x4ea4c80f
 			result_type_name: 'account.ConnectedBots'
 		},
 		FunctionInfo{
-			method_name: 'account.getBotBusinessConnection'
-			constructor_id: 0x76a86270
+			method_name:      'account.getBotBusinessConnection'
+			constructor_id:   0x76a86270
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'account.updateBusinessIntro'
-			constructor_id: 0xa614d034
+			method_name:      'account.updateBusinessIntro'
+			constructor_id:   0xa614d034
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.toggleConnectedBotPaused'
-			constructor_id: 0x646e1097
+			method_name:      'account.toggleConnectedBotPaused'
+			constructor_id:   0x646e1097
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.disablePeerConnectedBot'
-			constructor_id: 0x5e437ed9
+			method_name:      'account.disablePeerConnectedBot'
+			constructor_id:   0x5e437ed9
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.updateBirthday'
-			constructor_id: 0xcc6e0c11
+			method_name:      'account.updateBirthday'
+			constructor_id:   0xcc6e0c11
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.createBusinessChatLink'
-			constructor_id: 0x8851e68e
+			method_name:      'account.createBusinessChatLink'
+			constructor_id:   0x8851e68e
 			result_type_name: 'BusinessChatLink'
 		},
 		FunctionInfo{
-			method_name: 'account.editBusinessChatLink'
-			constructor_id: 0x8c3410af
+			method_name:      'account.editBusinessChatLink'
+			constructor_id:   0x8c3410af
 			result_type_name: 'BusinessChatLink'
 		},
 		FunctionInfo{
-			method_name: 'account.deleteBusinessChatLink'
-			constructor_id: 0x60073674
+			method_name:      'account.deleteBusinessChatLink'
+			constructor_id:   0x60073674
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.getBusinessChatLinks'
-			constructor_id: 0x6f70dde1
+			method_name:      'account.getBusinessChatLinks'
+			constructor_id:   0x6f70dde1
 			result_type_name: 'account.BusinessChatLinks'
 		},
 		FunctionInfo{
-			method_name: 'account.resolveBusinessChatLink'
-			constructor_id: 0x5492e5ee
+			method_name:      'account.resolveBusinessChatLink'
+			constructor_id:   0x5492e5ee
 			result_type_name: 'account.ResolvedBusinessChatLinks'
 		},
 		FunctionInfo{
-			method_name: 'account.updatePersonalChannel'
-			constructor_id: 0xd94305e0
+			method_name:      'account.updatePersonalChannel'
+			constructor_id:   0xd94305e0
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.toggleSponsoredMessages'
-			constructor_id: 0xb9d9a38d
+			method_name:      'account.toggleSponsoredMessages'
+			constructor_id:   0xb9d9a38d
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.getReactionsNotifySettings'
-			constructor_id: 0x06dd654c
+			method_name:      'account.getReactionsNotifySettings'
+			constructor_id:   0x06dd654c
 			result_type_name: 'ReactionsNotifySettings'
 		},
 		FunctionInfo{
-			method_name: 'account.setReactionsNotifySettings'
-			constructor_id: 0x316ce548
+			method_name:      'account.setReactionsNotifySettings'
+			constructor_id:   0x316ce548
 			result_type_name: 'ReactionsNotifySettings'
 		},
 		FunctionInfo{
-			method_name: 'account.getCollectibleEmojiStatuses'
-			constructor_id: 0x2e7b4543
+			method_name:      'account.getCollectibleEmojiStatuses'
+			constructor_id:   0x2e7b4543
 			result_type_name: 'account.EmojiStatuses'
 		},
 		FunctionInfo{
-			method_name: 'account.getPaidMessagesRevenue'
-			constructor_id: 0x19ba4a67
+			method_name:      'account.getPaidMessagesRevenue'
+			constructor_id:   0x19ba4a67
 			result_type_name: 'account.PaidMessagesRevenue'
 		},
 		FunctionInfo{
-			method_name: 'account.toggleNoPaidMessagesException'
-			constructor_id: 0xfe2eda76
+			method_name:      'account.toggleNoPaidMessagesException'
+			constructor_id:   0xfe2eda76
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.setMainProfileTab'
-			constructor_id: 0x5dee78b0
+			method_name:      'account.setMainProfileTab'
+			constructor_id:   0x5dee78b0
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.saveMusic'
-			constructor_id: 0xb26732a9
+			method_name:      'account.saveMusic'
+			constructor_id:   0xb26732a9
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'account.getSavedMusicIds'
-			constructor_id: 0xe09d5faf
+			method_name:      'account.getSavedMusicIds'
+			constructor_id:   0xe09d5faf
 			result_type_name: 'account.SavedMusicIds'
 		},
 		FunctionInfo{
-			method_name: 'account.getUniqueGiftChatThemes'
-			constructor_id: 0xe42ce9c9
+			method_name:      'account.getUniqueGiftChatThemes'
+			constructor_id:   0xe42ce9c9
 			result_type_name: 'account.ChatThemes'
 		},
 		FunctionInfo{
-			method_name: 'account.initPasskeyRegistration'
-			constructor_id: 0x429547e8
+			method_name:      'account.initPasskeyRegistration'
+			constructor_id:   0x429547e8
 			result_type_name: 'account.PasskeyRegistrationOptions'
 		},
 		FunctionInfo{
-			method_name: 'account.registerPasskey'
-			constructor_id: 0x55b41fd6
+			method_name:      'account.registerPasskey'
+			constructor_id:   0x55b41fd6
 			result_type_name: 'Passkey'
 		},
 		FunctionInfo{
-			method_name: 'account.getPasskeys'
-			constructor_id: 0xea1f0c52
+			method_name:      'account.getPasskeys'
+			constructor_id:   0xea1f0c52
 			result_type_name: 'account.Passkeys'
 		},
 		FunctionInfo{
-			method_name: 'account.deletePasskey'
-			constructor_id: 0xf5b5563f
+			method_name:      'account.deletePasskey'
+			constructor_id:   0xf5b5563f
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'users.getUsers'
-			constructor_id: 0x0d91a548
+			method_name:      'users.getUsers'
+			constructor_id:   0x0d91a548
 			result_type_name: 'Vector<User>'
 		},
 		FunctionInfo{
-			method_name: 'users.getFullUser'
-			constructor_id: 0xb60f5918
+			method_name:      'users.getFullUser'
+			constructor_id:   0xb60f5918
 			result_type_name: 'users.UserFull'
 		},
 		FunctionInfo{
-			method_name: 'users.setSecureValueErrors'
-			constructor_id: 0x90c894b5
+			method_name:      'users.setSecureValueErrors'
+			constructor_id:   0x90c894b5
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'users.getRequirementsToContact'
-			constructor_id: 0xd89a83a3
+			method_name:      'users.getRequirementsToContact'
+			constructor_id:   0xd89a83a3
 			result_type_name: 'Vector<RequirementToContact>'
 		},
 		FunctionInfo{
-			method_name: 'users.getSavedMusic'
-			constructor_id: 0x788d7fe3
+			method_name:      'users.getSavedMusic'
+			constructor_id:   0x788d7fe3
 			result_type_name: 'users.SavedMusic'
 		},
 		FunctionInfo{
-			method_name: 'users.getSavedMusicByID'
-			constructor_id: 0x7573a4e9
+			method_name:      'users.getSavedMusicByID'
+			constructor_id:   0x7573a4e9
 			result_type_name: 'users.SavedMusic'
 		},
 		FunctionInfo{
-			method_name: 'users.suggestBirthday'
-			constructor_id: 0xfc533372
+			method_name:      'users.suggestBirthday'
+			constructor_id:   0xfc533372
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'contacts.getContactIDs'
-			constructor_id: 0x7adc669d
+			method_name:      'contacts.getContactIDs'
+			constructor_id:   0x7adc669d
 			result_type_name: 'Vector<int>'
 		},
 		FunctionInfo{
-			method_name: 'contacts.getStatuses'
-			constructor_id: 0xc4a353ee
+			method_name:      'contacts.getStatuses'
+			constructor_id:   0xc4a353ee
 			result_type_name: 'Vector<ContactStatus>'
 		},
 		FunctionInfo{
-			method_name: 'contacts.getContacts'
-			constructor_id: 0x5dd69e12
+			method_name:      'contacts.getContacts'
+			constructor_id:   0x5dd69e12
 			result_type_name: 'contacts.Contacts'
 		},
 		FunctionInfo{
-			method_name: 'contacts.importContacts'
-			constructor_id: 0x2c800be5
+			method_name:      'contacts.importContacts'
+			constructor_id:   0x2c800be5
 			result_type_name: 'contacts.ImportedContacts'
 		},
 		FunctionInfo{
-			method_name: 'contacts.deleteContacts'
-			constructor_id: 0x096a0e00
+			method_name:      'contacts.deleteContacts'
+			constructor_id:   0x096a0e00
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'contacts.deleteByPhones'
-			constructor_id: 0x1013fd9e
+			method_name:      'contacts.deleteByPhones'
+			constructor_id:   0x1013fd9e
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'contacts.block'
-			constructor_id: 0x2e2e8734
+			method_name:      'contacts.block'
+			constructor_id:   0x2e2e8734
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'contacts.unblock'
-			constructor_id: 0xb550d328
+			method_name:      'contacts.unblock'
+			constructor_id:   0xb550d328
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'contacts.getBlocked'
-			constructor_id: 0x9a868f80
+			method_name:      'contacts.getBlocked'
+			constructor_id:   0x9a868f80
 			result_type_name: 'contacts.Blocked'
 		},
 		FunctionInfo{
-			method_name: 'contacts.search'
-			constructor_id: 0x11f812d8
+			method_name:      'contacts.search'
+			constructor_id:   0x11f812d8
 			result_type_name: 'contacts.Found'
 		},
 		FunctionInfo{
-			method_name: 'contacts.resolveUsername'
-			constructor_id: 0x725afbbc
+			method_name:      'contacts.resolveUsername'
+			constructor_id:   0x725afbbc
 			result_type_name: 'contacts.ResolvedPeer'
 		},
 		FunctionInfo{
-			method_name: 'contacts.getTopPeers'
-			constructor_id: 0x973478b6
+			method_name:      'contacts.getTopPeers'
+			constructor_id:   0x973478b6
 			result_type_name: 'contacts.TopPeers'
 		},
 		FunctionInfo{
-			method_name: 'contacts.resetTopPeerRating'
-			constructor_id: 0x1ae373ac
+			method_name:      'contacts.resetTopPeerRating'
+			constructor_id:   0x1ae373ac
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'contacts.resetSaved'
-			constructor_id: 0x879537f1
+			method_name:      'contacts.resetSaved'
+			constructor_id:   0x879537f1
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'contacts.getSaved'
-			constructor_id: 0x82f1e39f
+			method_name:      'contacts.getSaved'
+			constructor_id:   0x82f1e39f
 			result_type_name: 'Vector<SavedContact>'
 		},
 		FunctionInfo{
-			method_name: 'contacts.toggleTopPeers'
-			constructor_id: 0x8514bdda
+			method_name:      'contacts.toggleTopPeers'
+			constructor_id:   0x8514bdda
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'contacts.addContact'
-			constructor_id: 0xd9ba2e54
+			method_name:      'contacts.addContact'
+			constructor_id:   0xd9ba2e54
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'contacts.acceptContact'
-			constructor_id: 0xf831a20f
+			method_name:      'contacts.acceptContact'
+			constructor_id:   0xf831a20f
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'contacts.getLocated'
-			constructor_id: 0xd348bc44
+			method_name:      'contacts.getLocated'
+			constructor_id:   0xd348bc44
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'contacts.blockFromReplies'
-			constructor_id: 0x29a8962c
+			method_name:      'contacts.blockFromReplies'
+			constructor_id:   0x29a8962c
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'contacts.resolvePhone'
-			constructor_id: 0x8af94344
+			method_name:      'contacts.resolvePhone'
+			constructor_id:   0x8af94344
 			result_type_name: 'contacts.ResolvedPeer'
 		},
 		FunctionInfo{
-			method_name: 'contacts.exportContactToken'
-			constructor_id: 0xf8654027
+			method_name:      'contacts.exportContactToken'
+			constructor_id:   0xf8654027
 			result_type_name: 'ExportedContactToken'
 		},
 		FunctionInfo{
-			method_name: 'contacts.importContactToken'
-			constructor_id: 0x13005788
+			method_name:      'contacts.importContactToken'
+			constructor_id:   0x13005788
 			result_type_name: 'User'
 		},
 		FunctionInfo{
-			method_name: 'contacts.editCloseFriends'
-			constructor_id: 0xba6705f0
+			method_name:      'contacts.editCloseFriends'
+			constructor_id:   0xba6705f0
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'contacts.setBlocked'
-			constructor_id: 0x94c65c76
+			method_name:      'contacts.setBlocked'
+			constructor_id:   0x94c65c76
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'contacts.getBirthdays'
-			constructor_id: 0xdaeda864
+			method_name:      'contacts.getBirthdays'
+			constructor_id:   0xdaeda864
 			result_type_name: 'contacts.ContactBirthdays'
 		},
 		FunctionInfo{
-			method_name: 'contacts.getSponsoredPeers'
-			constructor_id: 0xb6c8c393
+			method_name:      'contacts.getSponsoredPeers'
+			constructor_id:   0xb6c8c393
 			result_type_name: 'contacts.SponsoredPeers'
 		},
 		FunctionInfo{
-			method_name: 'contacts.updateContactNote'
-			constructor_id: 0x139f63fb
+			method_name:      'contacts.updateContactNote'
+			constructor_id:   0x139f63fb
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.getMessages'
-			constructor_id: 0x63c66506
+			method_name:      'messages.getMessages'
+			constructor_id:   0x63c66506
 			result_type_name: 'messages.Messages'
 		},
 		FunctionInfo{
-			method_name: 'messages.getDialogs'
-			constructor_id: 0xa0f4cb4f
+			method_name:      'messages.getDialogs'
+			constructor_id:   0xa0f4cb4f
 			result_type_name: 'messages.Dialogs'
 		},
 		FunctionInfo{
-			method_name: 'messages.getHistory'
-			constructor_id: 0x4423e6c5
+			method_name:      'messages.getHistory'
+			constructor_id:   0x4423e6c5
 			result_type_name: 'messages.Messages'
 		},
 		FunctionInfo{
-			method_name: 'messages.search'
-			constructor_id: 0x29ee847a
+			method_name:      'messages.search'
+			constructor_id:   0x29ee847a
 			result_type_name: 'messages.Messages'
 		},
 		FunctionInfo{
-			method_name: 'messages.readHistory'
-			constructor_id: 0x0e306d3a
+			method_name:      'messages.readHistory'
+			constructor_id:   0x0e306d3a
 			result_type_name: 'messages.AffectedMessages'
 		},
 		FunctionInfo{
-			method_name: 'messages.deleteHistory'
-			constructor_id: 0xb08f922a
+			method_name:      'messages.deleteHistory'
+			constructor_id:   0xb08f922a
 			result_type_name: 'messages.AffectedHistory'
 		},
 		FunctionInfo{
-			method_name: 'messages.deleteMessages'
-			constructor_id: 0xe58e95d2
+			method_name:      'messages.deleteMessages'
+			constructor_id:   0xe58e95d2
 			result_type_name: 'messages.AffectedMessages'
 		},
 		FunctionInfo{
-			method_name: 'messages.receivedMessages'
-			constructor_id: 0x05a954c0
+			method_name:      'messages.receivedMessages'
+			constructor_id:   0x05a954c0
 			result_type_name: 'Vector<ReceivedNotifyMessage>'
 		},
 		FunctionInfo{
-			method_name: 'messages.setTyping'
-			constructor_id: 0x58943ee2
+			method_name:      'messages.setTyping'
+			constructor_id:   0x58943ee2
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.sendMessage'
-			constructor_id: 0x545cd15a
+			method_name:      'messages.sendMessage'
+			constructor_id:   0x545cd15a
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.sendMedia'
-			constructor_id: 0x0330e77f
+			method_name:      'messages.sendMedia'
+			constructor_id:   0x0330e77f
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.forwardMessages'
-			constructor_id: 0x13704a7c
+			method_name:      'messages.forwardMessages'
+			constructor_id:   0x13704a7c
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.reportSpam'
-			constructor_id: 0xcf1592db
+			method_name:      'messages.reportSpam'
+			constructor_id:   0xcf1592db
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.getPeerSettings'
-			constructor_id: 0xefd9a6a2
+			method_name:      'messages.getPeerSettings'
+			constructor_id:   0xefd9a6a2
 			result_type_name: 'messages.PeerSettings'
 		},
 		FunctionInfo{
-			method_name: 'messages.report'
-			constructor_id: 0xfc78af9b
+			method_name:      'messages.report'
+			constructor_id:   0xfc78af9b
 			result_type_name: 'ReportResult'
 		},
 		FunctionInfo{
-			method_name: 'messages.getChats'
-			constructor_id: 0x49e9528f
+			method_name:      'messages.getChats'
+			constructor_id:   0x49e9528f
 			result_type_name: 'messages.Chats'
 		},
 		FunctionInfo{
-			method_name: 'messages.getFullChat'
-			constructor_id: 0xaeb00b34
+			method_name:      'messages.getFullChat'
+			constructor_id:   0xaeb00b34
 			result_type_name: 'messages.ChatFull'
 		},
 		FunctionInfo{
-			method_name: 'messages.editChatTitle'
-			constructor_id: 0x73783ffd
+			method_name:      'messages.editChatTitle'
+			constructor_id:   0x73783ffd
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.editChatPhoto'
-			constructor_id: 0x35ddd674
+			method_name:      'messages.editChatPhoto'
+			constructor_id:   0x35ddd674
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.addChatUser'
-			constructor_id: 0xcbc6d107
+			method_name:      'messages.addChatUser'
+			constructor_id:   0xcbc6d107
 			result_type_name: 'messages.InvitedUsers'
 		},
 		FunctionInfo{
-			method_name: 'messages.deleteChatUser'
-			constructor_id: 0xa2185cab
+			method_name:      'messages.deleteChatUser'
+			constructor_id:   0xa2185cab
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.createChat'
-			constructor_id: 0x92ceddd4
+			method_name:      'messages.createChat'
+			constructor_id:   0x92ceddd4
 			result_type_name: 'messages.InvitedUsers'
 		},
 		FunctionInfo{
-			method_name: 'messages.getDhConfig'
-			constructor_id: 0x26cf8950
+			method_name:      'messages.getDhConfig'
+			constructor_id:   0x26cf8950
 			result_type_name: 'messages.DhConfig'
 		},
 		FunctionInfo{
-			method_name: 'messages.requestEncryption'
-			constructor_id: 0xf64daf43
+			method_name:      'messages.requestEncryption'
+			constructor_id:   0xf64daf43
 			result_type_name: 'EncryptedChat'
 		},
 		FunctionInfo{
-			method_name: 'messages.acceptEncryption'
-			constructor_id: 0x3dbc0415
+			method_name:      'messages.acceptEncryption'
+			constructor_id:   0x3dbc0415
 			result_type_name: 'EncryptedChat'
 		},
 		FunctionInfo{
-			method_name: 'messages.discardEncryption'
-			constructor_id: 0xf393aea0
+			method_name:      'messages.discardEncryption'
+			constructor_id:   0xf393aea0
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.setEncryptedTyping'
-			constructor_id: 0x791451ed
+			method_name:      'messages.setEncryptedTyping'
+			constructor_id:   0x791451ed
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.readEncryptedHistory'
-			constructor_id: 0x7f4b690a
+			method_name:      'messages.readEncryptedHistory'
+			constructor_id:   0x7f4b690a
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.sendEncrypted'
-			constructor_id: 0x44fa7a15
+			method_name:      'messages.sendEncrypted'
+			constructor_id:   0x44fa7a15
 			result_type_name: 'messages.SentEncryptedMessage'
 		},
 		FunctionInfo{
-			method_name: 'messages.sendEncryptedFile'
-			constructor_id: 0x5559481d
+			method_name:      'messages.sendEncryptedFile'
+			constructor_id:   0x5559481d
 			result_type_name: 'messages.SentEncryptedMessage'
 		},
 		FunctionInfo{
-			method_name: 'messages.sendEncryptedService'
-			constructor_id: 0x32d439a4
+			method_name:      'messages.sendEncryptedService'
+			constructor_id:   0x32d439a4
 			result_type_name: 'messages.SentEncryptedMessage'
 		},
 		FunctionInfo{
-			method_name: 'messages.receivedQueue'
-			constructor_id: 0x55a5bb66
+			method_name:      'messages.receivedQueue'
+			constructor_id:   0x55a5bb66
 			result_type_name: 'Vector<long>'
 		},
 		FunctionInfo{
-			method_name: 'messages.reportEncryptedSpam'
-			constructor_id: 0x4b0c8c0f
+			method_name:      'messages.reportEncryptedSpam'
+			constructor_id:   0x4b0c8c0f
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.readMessageContents'
-			constructor_id: 0x36a73f77
+			method_name:      'messages.readMessageContents'
+			constructor_id:   0x36a73f77
 			result_type_name: 'messages.AffectedMessages'
 		},
 		FunctionInfo{
-			method_name: 'messages.getStickers'
-			constructor_id: 0xd5a5d3a1
+			method_name:      'messages.getStickers'
+			constructor_id:   0xd5a5d3a1
 			result_type_name: 'messages.Stickers'
 		},
 		FunctionInfo{
-			method_name: 'messages.getAllStickers'
-			constructor_id: 0xb8a0a1a8
+			method_name:      'messages.getAllStickers'
+			constructor_id:   0xb8a0a1a8
 			result_type_name: 'messages.AllStickers'
 		},
 		FunctionInfo{
-			method_name: 'messages.getWebPagePreview'
-			constructor_id: 0x570d6f6f
+			method_name:      'messages.getWebPagePreview'
+			constructor_id:   0x570d6f6f
 			result_type_name: 'messages.WebPagePreview'
 		},
 		FunctionInfo{
-			method_name: 'messages.exportChatInvite'
-			constructor_id: 0xa455de90
+			method_name:      'messages.exportChatInvite'
+			constructor_id:   0xa455de90
 			result_type_name: 'ExportedChatInvite'
 		},
 		FunctionInfo{
-			method_name: 'messages.checkChatInvite'
-			constructor_id: 0x3eadb1bb
+			method_name:      'messages.checkChatInvite'
+			constructor_id:   0x3eadb1bb
 			result_type_name: 'ChatInvite'
 		},
 		FunctionInfo{
-			method_name: 'messages.importChatInvite'
-			constructor_id: 0x6c50051c
+			method_name:      'messages.importChatInvite'
+			constructor_id:   0x6c50051c
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.getStickerSet'
-			constructor_id: 0xc8a0ec74
+			method_name:      'messages.getStickerSet'
+			constructor_id:   0xc8a0ec74
 			result_type_name: 'messages.StickerSet'
 		},
 		FunctionInfo{
-			method_name: 'messages.installStickerSet'
-			constructor_id: 0xc78fe460
+			method_name:      'messages.installStickerSet'
+			constructor_id:   0xc78fe460
 			result_type_name: 'messages.StickerSetInstallResult'
 		},
 		FunctionInfo{
-			method_name: 'messages.uninstallStickerSet'
-			constructor_id: 0xf96e55de
+			method_name:      'messages.uninstallStickerSet'
+			constructor_id:   0xf96e55de
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.startBot'
-			constructor_id: 0xe6df7378
+			method_name:      'messages.startBot'
+			constructor_id:   0xe6df7378
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.getMessagesViews'
-			constructor_id: 0x5784d3e1
+			method_name:      'messages.getMessagesViews'
+			constructor_id:   0x5784d3e1
 			result_type_name: 'messages.MessageViews'
 		},
 		FunctionInfo{
-			method_name: 'messages.editChatAdmin'
-			constructor_id: 0xa85bd1c2
+			method_name:      'messages.editChatAdmin'
+			constructor_id:   0xa85bd1c2
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.migrateChat'
-			constructor_id: 0xa2875319
+			method_name:      'messages.migrateChat'
+			constructor_id:   0xa2875319
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.searchGlobal'
-			constructor_id: 0x4bc6589a
+			method_name:      'messages.searchGlobal'
+			constructor_id:   0x4bc6589a
 			result_type_name: 'messages.Messages'
 		},
 		FunctionInfo{
-			method_name: 'messages.reorderStickerSets'
-			constructor_id: 0x78337739
+			method_name:      'messages.reorderStickerSets'
+			constructor_id:   0x78337739
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.getDocumentByHash'
-			constructor_id: 0xb1f2061f
+			method_name:      'messages.getDocumentByHash'
+			constructor_id:   0xb1f2061f
 			result_type_name: 'Document'
 		},
 		FunctionInfo{
-			method_name: 'messages.getSavedGifs'
-			constructor_id: 0x5cf09635
+			method_name:      'messages.getSavedGifs'
+			constructor_id:   0x5cf09635
 			result_type_name: 'messages.SavedGifs'
 		},
 		FunctionInfo{
-			method_name: 'messages.saveGif'
-			constructor_id: 0x327a30cb
+			method_name:      'messages.saveGif'
+			constructor_id:   0x327a30cb
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.getInlineBotResults'
-			constructor_id: 0x514e999d
+			method_name:      'messages.getInlineBotResults'
+			constructor_id:   0x514e999d
 			result_type_name: 'messages.BotResults'
 		},
 		FunctionInfo{
-			method_name: 'messages.setInlineBotResults'
-			constructor_id: 0xbb12a419
+			method_name:      'messages.setInlineBotResults'
+			constructor_id:   0xbb12a419
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.sendInlineBotResult'
-			constructor_id: 0xc0cf7646
+			method_name:      'messages.sendInlineBotResult'
+			constructor_id:   0xc0cf7646
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.getMessageEditData'
-			constructor_id: 0xfda68d36
+			method_name:      'messages.getMessageEditData'
+			constructor_id:   0xfda68d36
 			result_type_name: 'messages.MessageEditData'
 		},
 		FunctionInfo{
-			method_name: 'messages.editMessage'
-			constructor_id: 0x51e842e1
+			method_name:      'messages.editMessage'
+			constructor_id:   0x51e842e1
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.editInlineBotMessage'
-			constructor_id: 0x83557dba
+			method_name:      'messages.editInlineBotMessage'
+			constructor_id:   0x83557dba
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.getBotCallbackAnswer'
-			constructor_id: 0x9342ca07
+			method_name:      'messages.getBotCallbackAnswer'
+			constructor_id:   0x9342ca07
 			result_type_name: 'messages.BotCallbackAnswer'
 		},
 		FunctionInfo{
-			method_name: 'messages.setBotCallbackAnswer'
-			constructor_id: 0xd58f130a
+			method_name:      'messages.setBotCallbackAnswer'
+			constructor_id:   0xd58f130a
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.getPeerDialogs'
-			constructor_id: 0xe470bcfd
+			method_name:      'messages.getPeerDialogs'
+			constructor_id:   0xe470bcfd
 			result_type_name: 'messages.PeerDialogs'
 		},
 		FunctionInfo{
-			method_name: 'messages.saveDraft'
-			constructor_id: 0x54ae308e
+			method_name:      'messages.saveDraft'
+			constructor_id:   0x54ae308e
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.getAllDrafts'
-			constructor_id: 0x6a3f8d65
+			method_name:      'messages.getAllDrafts'
+			constructor_id:   0x6a3f8d65
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.getFeaturedStickers'
-			constructor_id: 0x64780b14
+			method_name:      'messages.getFeaturedStickers'
+			constructor_id:   0x64780b14
 			result_type_name: 'messages.FeaturedStickers'
 		},
 		FunctionInfo{
-			method_name: 'messages.readFeaturedStickers'
-			constructor_id: 0x5b118126
+			method_name:      'messages.readFeaturedStickers'
+			constructor_id:   0x5b118126
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.getRecentStickers'
-			constructor_id: 0x9da9403b
+			method_name:      'messages.getRecentStickers'
+			constructor_id:   0x9da9403b
 			result_type_name: 'messages.RecentStickers'
 		},
 		FunctionInfo{
-			method_name: 'messages.saveRecentSticker'
-			constructor_id: 0x392718f8
+			method_name:      'messages.saveRecentSticker'
+			constructor_id:   0x392718f8
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.clearRecentStickers'
-			constructor_id: 0x8999602d
+			method_name:      'messages.clearRecentStickers'
+			constructor_id:   0x8999602d
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.getArchivedStickers'
-			constructor_id: 0x57f17692
+			method_name:      'messages.getArchivedStickers'
+			constructor_id:   0x57f17692
 			result_type_name: 'messages.ArchivedStickers'
 		},
 		FunctionInfo{
-			method_name: 'messages.getMaskStickers'
-			constructor_id: 0x640f82b8
+			method_name:      'messages.getMaskStickers'
+			constructor_id:   0x640f82b8
 			result_type_name: 'messages.AllStickers'
 		},
 		FunctionInfo{
-			method_name: 'messages.getAttachedStickers'
-			constructor_id: 0xcc5b67cc
+			method_name:      'messages.getAttachedStickers'
+			constructor_id:   0xcc5b67cc
 			result_type_name: 'Vector<StickerSetCovered>'
 		},
 		FunctionInfo{
-			method_name: 'messages.setGameScore'
-			constructor_id: 0x8ef8ecc0
+			method_name:      'messages.setGameScore'
+			constructor_id:   0x8ef8ecc0
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.setInlineGameScore'
-			constructor_id: 0x15ad9f64
+			method_name:      'messages.setInlineGameScore'
+			constructor_id:   0x15ad9f64
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.getGameHighScores'
-			constructor_id: 0xe822649d
+			method_name:      'messages.getGameHighScores'
+			constructor_id:   0xe822649d
 			result_type_name: 'messages.HighScores'
 		},
 		FunctionInfo{
-			method_name: 'messages.getInlineGameHighScores'
-			constructor_id: 0x0f635e1b
+			method_name:      'messages.getInlineGameHighScores'
+			constructor_id:   0x0f635e1b
 			result_type_name: 'messages.HighScores'
 		},
 		FunctionInfo{
-			method_name: 'messages.getCommonChats'
-			constructor_id: 0xe40ca104
+			method_name:      'messages.getCommonChats'
+			constructor_id:   0xe40ca104
 			result_type_name: 'messages.Chats'
 		},
 		FunctionInfo{
-			method_name: 'messages.getWebPage'
-			constructor_id: 0x8d9692a3
+			method_name:      'messages.getWebPage'
+			constructor_id:   0x8d9692a3
 			result_type_name: 'messages.WebPage'
 		},
 		FunctionInfo{
-			method_name: 'messages.toggleDialogPin'
-			constructor_id: 0xa731e257
+			method_name:      'messages.toggleDialogPin'
+			constructor_id:   0xa731e257
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.reorderPinnedDialogs'
-			constructor_id: 0x3b1adf37
+			method_name:      'messages.reorderPinnedDialogs'
+			constructor_id:   0x3b1adf37
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.getPinnedDialogs'
-			constructor_id: 0xd6b94df2
+			method_name:      'messages.getPinnedDialogs'
+			constructor_id:   0xd6b94df2
 			result_type_name: 'messages.PeerDialogs'
 		},
 		FunctionInfo{
-			method_name: 'messages.setBotShippingResults'
-			constructor_id: 0xe5f672fa
+			method_name:      'messages.setBotShippingResults'
+			constructor_id:   0xe5f672fa
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.setBotPrecheckoutResults'
-			constructor_id: 0x09c2dd95
+			method_name:      'messages.setBotPrecheckoutResults'
+			constructor_id:   0x09c2dd95
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.uploadMedia'
-			constructor_id: 0x14967978
+			method_name:      'messages.uploadMedia'
+			constructor_id:   0x14967978
 			result_type_name: 'MessageMedia'
 		},
 		FunctionInfo{
-			method_name: 'messages.sendScreenshotNotification'
-			constructor_id: 0xa1405817
+			method_name:      'messages.sendScreenshotNotification'
+			constructor_id:   0xa1405817
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.getFavedStickers'
-			constructor_id: 0x04f1aaa9
+			method_name:      'messages.getFavedStickers'
+			constructor_id:   0x04f1aaa9
 			result_type_name: 'messages.FavedStickers'
 		},
 		FunctionInfo{
-			method_name: 'messages.faveSticker'
-			constructor_id: 0xb9ffc55b
+			method_name:      'messages.faveSticker'
+			constructor_id:   0xb9ffc55b
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.getUnreadMentions'
-			constructor_id: 0xf107e790
+			method_name:      'messages.getUnreadMentions'
+			constructor_id:   0xf107e790
 			result_type_name: 'messages.Messages'
 		},
 		FunctionInfo{
-			method_name: 'messages.readMentions'
-			constructor_id: 0x36e5bf4d
+			method_name:      'messages.readMentions'
+			constructor_id:   0x36e5bf4d
 			result_type_name: 'messages.AffectedHistory'
 		},
 		FunctionInfo{
-			method_name: 'messages.getRecentLocations'
-			constructor_id: 0x702a40e0
+			method_name:      'messages.getRecentLocations'
+			constructor_id:   0x702a40e0
 			result_type_name: 'messages.Messages'
 		},
 		FunctionInfo{
-			method_name: 'messages.sendMultiMedia'
-			constructor_id: 0x1bf89d74
+			method_name:      'messages.sendMultiMedia'
+			constructor_id:   0x1bf89d74
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.uploadEncryptedFile'
-			constructor_id: 0x5057c497
+			method_name:      'messages.uploadEncryptedFile'
+			constructor_id:   0x5057c497
 			result_type_name: 'EncryptedFile'
 		},
 		FunctionInfo{
-			method_name: 'messages.searchStickerSets'
-			constructor_id: 0x35705b8a
+			method_name:      'messages.searchStickerSets'
+			constructor_id:   0x35705b8a
 			result_type_name: 'messages.FoundStickerSets'
 		},
 		FunctionInfo{
-			method_name: 'messages.getSplitRanges'
-			constructor_id: 0x1cff7e08
+			method_name:      'messages.getSplitRanges'
+			constructor_id:   0x1cff7e08
 			result_type_name: 'Vector<MessageRange>'
 		},
 		FunctionInfo{
-			method_name: 'messages.markDialogUnread'
-			constructor_id: 0x8c5006f8
+			method_name:      'messages.markDialogUnread'
+			constructor_id:   0x8c5006f8
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.getDialogUnreadMarks'
-			constructor_id: 0x21202222
+			method_name:      'messages.getDialogUnreadMarks'
+			constructor_id:   0x21202222
 			result_type_name: 'Vector<DialogPeer>'
 		},
 		FunctionInfo{
-			method_name: 'messages.clearAllDrafts'
-			constructor_id: 0x7e58ee9c
+			method_name:      'messages.clearAllDrafts'
+			constructor_id:   0x7e58ee9c
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.updatePinnedMessage'
-			constructor_id: 0xd2aaf7ec
+			method_name:      'messages.updatePinnedMessage'
+			constructor_id:   0xd2aaf7ec
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.sendVote'
-			constructor_id: 0x10ea6184
+			method_name:      'messages.sendVote'
+			constructor_id:   0x10ea6184
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.getPollResults'
-			constructor_id: 0x73bb643b
+			method_name:      'messages.getPollResults'
+			constructor_id:   0x73bb643b
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.getOnlines'
-			constructor_id: 0x6e2be050
+			method_name:      'messages.getOnlines'
+			constructor_id:   0x6e2be050
 			result_type_name: 'ChatOnlines'
 		},
 		FunctionInfo{
-			method_name: 'messages.editChatAbout'
-			constructor_id: 0xdef60797
+			method_name:      'messages.editChatAbout'
+			constructor_id:   0xdef60797
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.editChatDefaultBannedRights'
-			constructor_id: 0xa5866b41
+			method_name:      'messages.editChatDefaultBannedRights'
+			constructor_id:   0xa5866b41
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.getEmojiKeywords'
-			constructor_id: 0x35a0e062
+			method_name:      'messages.getEmojiKeywords'
+			constructor_id:   0x35a0e062
 			result_type_name: 'EmojiKeywordsDifference'
 		},
 		FunctionInfo{
-			method_name: 'messages.getEmojiKeywordsDifference'
-			constructor_id: 0x1508b6af
+			method_name:      'messages.getEmojiKeywordsDifference'
+			constructor_id:   0x1508b6af
 			result_type_name: 'EmojiKeywordsDifference'
 		},
 		FunctionInfo{
-			method_name: 'messages.getEmojiKeywordsLanguages'
-			constructor_id: 0x4e9963b2
+			method_name:      'messages.getEmojiKeywordsLanguages'
+			constructor_id:   0x4e9963b2
 			result_type_name: 'Vector<EmojiLanguage>'
 		},
 		FunctionInfo{
-			method_name: 'messages.getEmojiURL'
-			constructor_id: 0xd5b10c26
+			method_name:      'messages.getEmojiURL'
+			constructor_id:   0xd5b10c26
 			result_type_name: 'EmojiURL'
 		},
 		FunctionInfo{
-			method_name: 'messages.getSearchCounters'
-			constructor_id: 0x1bbcf300
+			method_name:      'messages.getSearchCounters'
+			constructor_id:   0x1bbcf300
 			result_type_name: 'Vector<messages.SearchCounter>'
 		},
 		FunctionInfo{
-			method_name: 'messages.requestUrlAuth'
-			constructor_id: 0x198fb446
+			method_name:      'messages.requestUrlAuth'
+			constructor_id:   0x198fb446
 			result_type_name: 'UrlAuthResult'
 		},
 		FunctionInfo{
-			method_name: 'messages.acceptUrlAuth'
-			constructor_id: 0xb12c7125
+			method_name:      'messages.acceptUrlAuth'
+			constructor_id:   0xb12c7125
 			result_type_name: 'UrlAuthResult'
 		},
 		FunctionInfo{
-			method_name: 'messages.hidePeerSettingsBar'
-			constructor_id: 0x4facb138
+			method_name:      'messages.hidePeerSettingsBar'
+			constructor_id:   0x4facb138
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.getScheduledHistory'
-			constructor_id: 0xf516760b
+			method_name:      'messages.getScheduledHistory'
+			constructor_id:   0xf516760b
 			result_type_name: 'messages.Messages'
 		},
 		FunctionInfo{
-			method_name: 'messages.getScheduledMessages'
-			constructor_id: 0xbdbb0464
+			method_name:      'messages.getScheduledMessages'
+			constructor_id:   0xbdbb0464
 			result_type_name: 'messages.Messages'
 		},
 		FunctionInfo{
-			method_name: 'messages.sendScheduledMessages'
-			constructor_id: 0xbd38850a
+			method_name:      'messages.sendScheduledMessages'
+			constructor_id:   0xbd38850a
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.deleteScheduledMessages'
-			constructor_id: 0x59ae2b16
+			method_name:      'messages.deleteScheduledMessages'
+			constructor_id:   0x59ae2b16
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.getPollVotes'
-			constructor_id: 0xb86e380e
+			method_name:      'messages.getPollVotes'
+			constructor_id:   0xb86e380e
 			result_type_name: 'messages.VotesList'
 		},
 		FunctionInfo{
-			method_name: 'messages.toggleStickerSets'
-			constructor_id: 0xb5052fea
+			method_name:      'messages.toggleStickerSets'
+			constructor_id:   0xb5052fea
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.getDialogFilters'
-			constructor_id: 0xefd48c89
+			method_name:      'messages.getDialogFilters'
+			constructor_id:   0xefd48c89
 			result_type_name: 'messages.DialogFilters'
 		},
 		FunctionInfo{
-			method_name: 'messages.getSuggestedDialogFilters'
-			constructor_id: 0xa29cd42c
+			method_name:      'messages.getSuggestedDialogFilters'
+			constructor_id:   0xa29cd42c
 			result_type_name: 'Vector<DialogFilterSuggested>'
 		},
 		FunctionInfo{
-			method_name: 'messages.updateDialogFilter'
-			constructor_id: 0x1ad4a04a
+			method_name:      'messages.updateDialogFilter'
+			constructor_id:   0x1ad4a04a
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.updateDialogFiltersOrder'
-			constructor_id: 0xc563c1e4
+			method_name:      'messages.updateDialogFiltersOrder'
+			constructor_id:   0xc563c1e4
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.getOldFeaturedStickers'
-			constructor_id: 0x7ed094a1
+			method_name:      'messages.getOldFeaturedStickers'
+			constructor_id:   0x7ed094a1
 			result_type_name: 'messages.FeaturedStickers'
 		},
 		FunctionInfo{
-			method_name: 'messages.getReplies'
-			constructor_id: 0x22ddd30c
+			method_name:      'messages.getReplies'
+			constructor_id:   0x22ddd30c
 			result_type_name: 'messages.Messages'
 		},
 		FunctionInfo{
-			method_name: 'messages.getDiscussionMessage'
-			constructor_id: 0x446972fd
+			method_name:      'messages.getDiscussionMessage'
+			constructor_id:   0x446972fd
 			result_type_name: 'messages.DiscussionMessage'
 		},
 		FunctionInfo{
-			method_name: 'messages.readDiscussion'
-			constructor_id: 0xf731a9f4
+			method_name:      'messages.readDiscussion'
+			constructor_id:   0xf731a9f4
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.unpinAllMessages'
-			constructor_id: 0x062dd747
+			method_name:      'messages.unpinAllMessages'
+			constructor_id:   0x062dd747
 			result_type_name: 'messages.AffectedHistory'
 		},
 		FunctionInfo{
-			method_name: 'messages.deleteChat'
-			constructor_id: 0x5bd0ee50
+			method_name:      'messages.deleteChat'
+			constructor_id:   0x5bd0ee50
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.deletePhoneCallHistory'
-			constructor_id: 0xf9cbe409
+			method_name:      'messages.deletePhoneCallHistory'
+			constructor_id:   0xf9cbe409
 			result_type_name: 'messages.AffectedFoundMessages'
 		},
 		FunctionInfo{
-			method_name: 'messages.checkHistoryImport'
-			constructor_id: 0x43fe19f3
+			method_name:      'messages.checkHistoryImport'
+			constructor_id:   0x43fe19f3
 			result_type_name: 'messages.HistoryImportParsed'
 		},
 		FunctionInfo{
-			method_name: 'messages.initHistoryImport'
-			constructor_id: 0x34090c3b
+			method_name:      'messages.initHistoryImport'
+			constructor_id:   0x34090c3b
 			result_type_name: 'messages.HistoryImport'
 		},
 		FunctionInfo{
-			method_name: 'messages.uploadImportedMedia'
-			constructor_id: 0x2a862092
+			method_name:      'messages.uploadImportedMedia'
+			constructor_id:   0x2a862092
 			result_type_name: 'MessageMedia'
 		},
 		FunctionInfo{
-			method_name: 'messages.startHistoryImport'
-			constructor_id: 0xb43df344
+			method_name:      'messages.startHistoryImport'
+			constructor_id:   0xb43df344
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.getExportedChatInvites'
-			constructor_id: 0xa2b5a3f6
+			method_name:      'messages.getExportedChatInvites'
+			constructor_id:   0xa2b5a3f6
 			result_type_name: 'messages.ExportedChatInvites'
 		},
 		FunctionInfo{
-			method_name: 'messages.getExportedChatInvite'
-			constructor_id: 0x73746f5c
+			method_name:      'messages.getExportedChatInvite'
+			constructor_id:   0x73746f5c
 			result_type_name: 'messages.ExportedChatInvite'
 		},
 		FunctionInfo{
-			method_name: 'messages.editExportedChatInvite'
-			constructor_id: 0xbdca2f75
+			method_name:      'messages.editExportedChatInvite'
+			constructor_id:   0xbdca2f75
 			result_type_name: 'messages.ExportedChatInvite'
 		},
 		FunctionInfo{
-			method_name: 'messages.deleteRevokedExportedChatInvites'
-			constructor_id: 0x56987bd5
+			method_name:      'messages.deleteRevokedExportedChatInvites'
+			constructor_id:   0x56987bd5
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.deleteExportedChatInvite'
-			constructor_id: 0xd464a42b
+			method_name:      'messages.deleteExportedChatInvite'
+			constructor_id:   0xd464a42b
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.getAdminsWithInvites'
-			constructor_id: 0x3920e6ef
+			method_name:      'messages.getAdminsWithInvites'
+			constructor_id:   0x3920e6ef
 			result_type_name: 'messages.ChatAdminsWithInvites'
 		},
 		FunctionInfo{
-			method_name: 'messages.getChatInviteImporters'
-			constructor_id: 0xdf04dd4e
+			method_name:      'messages.getChatInviteImporters'
+			constructor_id:   0xdf04dd4e
 			result_type_name: 'messages.ChatInviteImporters'
 		},
 		FunctionInfo{
-			method_name: 'messages.setHistoryTTL'
-			constructor_id: 0xb80e5fe4
+			method_name:      'messages.setHistoryTTL'
+			constructor_id:   0xb80e5fe4
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.checkHistoryImportPeer'
-			constructor_id: 0x5dc60f03
+			method_name:      'messages.checkHistoryImportPeer'
+			constructor_id:   0x5dc60f03
 			result_type_name: 'messages.CheckedHistoryImportPeer'
 		},
 		FunctionInfo{
-			method_name: 'messages.setChatTheme'
-			constructor_id: 0x081202c9
+			method_name:      'messages.setChatTheme'
+			constructor_id:   0x081202c9
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.getMessageReadParticipants'
-			constructor_id: 0x31c1c44f
+			method_name:      'messages.getMessageReadParticipants'
+			constructor_id:   0x31c1c44f
 			result_type_name: 'Vector<ReadParticipantDate>'
 		},
 		FunctionInfo{
-			method_name: 'messages.getSearchResultsCalendar'
-			constructor_id: 0x6aa3f6bd
+			method_name:      'messages.getSearchResultsCalendar'
+			constructor_id:   0x6aa3f6bd
 			result_type_name: 'messages.SearchResultsCalendar'
 		},
 		FunctionInfo{
-			method_name: 'messages.getSearchResultsPositions'
-			constructor_id: 0x9c7f2f10
+			method_name:      'messages.getSearchResultsPositions'
+			constructor_id:   0x9c7f2f10
 			result_type_name: 'messages.SearchResultsPositions'
 		},
 		FunctionInfo{
-			method_name: 'messages.hideChatJoinRequest'
-			constructor_id: 0x7fe7e815
+			method_name:      'messages.hideChatJoinRequest'
+			constructor_id:   0x7fe7e815
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.hideAllChatJoinRequests'
-			constructor_id: 0xe085f4ea
+			method_name:      'messages.hideAllChatJoinRequests'
+			constructor_id:   0xe085f4ea
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.toggleNoForwards'
-			constructor_id: 0xb11eafa2
+			method_name:      'messages.toggleNoForwards'
+			constructor_id:   0xb11eafa2
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.saveDefaultSendAs'
-			constructor_id: 0xccfddf96
+			method_name:      'messages.saveDefaultSendAs'
+			constructor_id:   0xccfddf96
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.sendReaction'
-			constructor_id: 0xd30d78d4
+			method_name:      'messages.sendReaction'
+			constructor_id:   0xd30d78d4
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.getMessagesReactions'
-			constructor_id: 0x8bba90e6
+			method_name:      'messages.getMessagesReactions'
+			constructor_id:   0x8bba90e6
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.getMessageReactionsList'
-			constructor_id: 0x461b3f48
+			method_name:      'messages.getMessageReactionsList'
+			constructor_id:   0x461b3f48
 			result_type_name: 'messages.MessageReactionsList'
 		},
 		FunctionInfo{
-			method_name: 'messages.setChatAvailableReactions'
-			constructor_id: 0x864b2581
+			method_name:      'messages.setChatAvailableReactions'
+			constructor_id:   0x864b2581
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.getAvailableReactions'
-			constructor_id: 0x18dea0ac
+			method_name:      'messages.getAvailableReactions'
+			constructor_id:   0x18dea0ac
 			result_type_name: 'messages.AvailableReactions'
 		},
 		FunctionInfo{
-			method_name: 'messages.setDefaultReaction'
-			constructor_id: 0x4f47a016
+			method_name:      'messages.setDefaultReaction'
+			constructor_id:   0x4f47a016
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.translateText'
-			constructor_id: 0x63183030
+			method_name:      'messages.translateText'
+			constructor_id:   0x63183030
 			result_type_name: 'messages.TranslatedText'
 		},
 		FunctionInfo{
-			method_name: 'messages.getUnreadReactions'
-			constructor_id: 0xbd7f90ac
+			method_name:      'messages.getUnreadReactions'
+			constructor_id:   0xbd7f90ac
 			result_type_name: 'messages.Messages'
 		},
 		FunctionInfo{
-			method_name: 'messages.readReactions'
-			constructor_id: 0x9ec44f93
+			method_name:      'messages.readReactions'
+			constructor_id:   0x9ec44f93
 			result_type_name: 'messages.AffectedHistory'
 		},
 		FunctionInfo{
-			method_name: 'messages.searchSentMedia'
-			constructor_id: 0x107e31a0
+			method_name:      'messages.searchSentMedia'
+			constructor_id:   0x107e31a0
 			result_type_name: 'messages.Messages'
 		},
 		FunctionInfo{
-			method_name: 'messages.getAttachMenuBots'
-			constructor_id: 0x16fcc2cb
+			method_name:      'messages.getAttachMenuBots'
+			constructor_id:   0x16fcc2cb
 			result_type_name: 'AttachMenuBots'
 		},
 		FunctionInfo{
-			method_name: 'messages.getAttachMenuBot'
-			constructor_id: 0x77216192
+			method_name:      'messages.getAttachMenuBot'
+			constructor_id:   0x77216192
 			result_type_name: 'AttachMenuBotsBot'
 		},
 		FunctionInfo{
-			method_name: 'messages.toggleBotInAttachMenu'
-			constructor_id: 0x69f59d69
+			method_name:      'messages.toggleBotInAttachMenu'
+			constructor_id:   0x69f59d69
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.requestWebView'
-			constructor_id: 0x269dc2c1
+			method_name:      'messages.requestWebView'
+			constructor_id:   0x269dc2c1
 			result_type_name: 'WebViewResult'
 		},
 		FunctionInfo{
-			method_name: 'messages.prolongWebView'
-			constructor_id: 0xb0d81a83
+			method_name:      'messages.prolongWebView'
+			constructor_id:   0xb0d81a83
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.requestSimpleWebView'
-			constructor_id: 0x413a3e73
+			method_name:      'messages.requestSimpleWebView'
+			constructor_id:   0x413a3e73
 			result_type_name: 'WebViewResult'
 		},
 		FunctionInfo{
-			method_name: 'messages.sendWebViewResultMessage'
-			constructor_id: 0x0a4314f5
+			method_name:      'messages.sendWebViewResultMessage'
+			constructor_id:   0x0a4314f5
 			result_type_name: 'WebViewMessageSent'
 		},
 		FunctionInfo{
-			method_name: 'messages.sendWebViewData'
-			constructor_id: 0xdc0242c8
+			method_name:      'messages.sendWebViewData'
+			constructor_id:   0xdc0242c8
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.transcribeAudio'
-			constructor_id: 0x269e9a49
+			method_name:      'messages.transcribeAudio'
+			constructor_id:   0x269e9a49
 			result_type_name: 'messages.TranscribedAudio'
 		},
 		FunctionInfo{
-			method_name: 'messages.rateTranscribedAudio'
-			constructor_id: 0x7f1d072f
+			method_name:      'messages.rateTranscribedAudio'
+			constructor_id:   0x7f1d072f
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.getCustomEmojiDocuments'
-			constructor_id: 0xd9ab0f54
+			method_name:      'messages.getCustomEmojiDocuments'
+			constructor_id:   0xd9ab0f54
 			result_type_name: 'Vector<Document>'
 		},
 		FunctionInfo{
-			method_name: 'messages.getEmojiStickers'
-			constructor_id: 0xfbfca18f
+			method_name:      'messages.getEmojiStickers'
+			constructor_id:   0xfbfca18f
 			result_type_name: 'messages.AllStickers'
 		},
 		FunctionInfo{
-			method_name: 'messages.getFeaturedEmojiStickers'
-			constructor_id: 0x0ecf6736
+			method_name:      'messages.getFeaturedEmojiStickers'
+			constructor_id:   0x0ecf6736
 			result_type_name: 'messages.FeaturedStickers'
 		},
 		FunctionInfo{
-			method_name: 'messages.reportReaction'
-			constructor_id: 0x3f64c076
+			method_name:      'messages.reportReaction'
+			constructor_id:   0x3f64c076
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.getTopReactions'
-			constructor_id: 0xbb8125ba
+			method_name:      'messages.getTopReactions'
+			constructor_id:   0xbb8125ba
 			result_type_name: 'messages.Reactions'
 		},
 		FunctionInfo{
-			method_name: 'messages.getRecentReactions'
-			constructor_id: 0x39461db2
+			method_name:      'messages.getRecentReactions'
+			constructor_id:   0x39461db2
 			result_type_name: 'messages.Reactions'
 		},
 		FunctionInfo{
-			method_name: 'messages.clearRecentReactions'
-			constructor_id: 0x9dfeefb4
+			method_name:      'messages.clearRecentReactions'
+			constructor_id:   0x9dfeefb4
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.getExtendedMedia'
-			constructor_id: 0x84f80814
+			method_name:      'messages.getExtendedMedia'
+			constructor_id:   0x84f80814
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.setDefaultHistoryTTL'
-			constructor_id: 0x9eb51445
+			method_name:      'messages.setDefaultHistoryTTL'
+			constructor_id:   0x9eb51445
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.getDefaultHistoryTTL'
-			constructor_id: 0x658b7188
+			method_name:      'messages.getDefaultHistoryTTL'
+			constructor_id:   0x658b7188
 			result_type_name: 'DefaultHistoryTTL'
 		},
 		FunctionInfo{
-			method_name: 'messages.sendBotRequestedPeer'
-			constructor_id: 0x91b2d060
+			method_name:      'messages.sendBotRequestedPeer'
+			constructor_id:   0x91b2d060
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.getEmojiGroups'
-			constructor_id: 0x7488ce5b
+			method_name:      'messages.getEmojiGroups'
+			constructor_id:   0x7488ce5b
 			result_type_name: 'messages.EmojiGroups'
 		},
 		FunctionInfo{
-			method_name: 'messages.getEmojiStatusGroups'
-			constructor_id: 0x2ecd56cd
+			method_name:      'messages.getEmojiStatusGroups'
+			constructor_id:   0x2ecd56cd
 			result_type_name: 'messages.EmojiGroups'
 		},
 		FunctionInfo{
-			method_name: 'messages.getEmojiProfilePhotoGroups'
-			constructor_id: 0x21a548f3
+			method_name:      'messages.getEmojiProfilePhotoGroups'
+			constructor_id:   0x21a548f3
 			result_type_name: 'messages.EmojiGroups'
 		},
 		FunctionInfo{
-			method_name: 'messages.searchCustomEmoji'
-			constructor_id: 0x2c11c0d7
+			method_name:      'messages.searchCustomEmoji'
+			constructor_id:   0x2c11c0d7
 			result_type_name: 'EmojiList'
 		},
 		FunctionInfo{
-			method_name: 'messages.togglePeerTranslations'
-			constructor_id: 0xe47cb579
+			method_name:      'messages.togglePeerTranslations'
+			constructor_id:   0xe47cb579
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.getBotApp'
-			constructor_id: 0x34fdc5c3
+			method_name:      'messages.getBotApp'
+			constructor_id:   0x34fdc5c3
 			result_type_name: 'messages.BotApp'
 		},
 		FunctionInfo{
-			method_name: 'messages.requestAppWebView'
-			constructor_id: 0x53618bce
+			method_name:      'messages.requestAppWebView'
+			constructor_id:   0x53618bce
 			result_type_name: 'WebViewResult'
 		},
 		FunctionInfo{
-			method_name: 'messages.setChatWallPaper'
-			constructor_id: 0x8ffacae1
+			method_name:      'messages.setChatWallPaper'
+			constructor_id:   0x8ffacae1
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.searchEmojiStickerSets'
-			constructor_id: 0x92b4494c
+			method_name:      'messages.searchEmojiStickerSets'
+			constructor_id:   0x92b4494c
 			result_type_name: 'messages.FoundStickerSets'
 		},
 		FunctionInfo{
-			method_name: 'messages.getSavedDialogs'
-			constructor_id: 0x1e91fc99
+			method_name:      'messages.getSavedDialogs'
+			constructor_id:   0x1e91fc99
 			result_type_name: 'messages.SavedDialogs'
 		},
 		FunctionInfo{
-			method_name: 'messages.getSavedHistory'
-			constructor_id: 0x998ab009
+			method_name:      'messages.getSavedHistory'
+			constructor_id:   0x998ab009
 			result_type_name: 'messages.Messages'
 		},
 		FunctionInfo{
-			method_name: 'messages.deleteSavedHistory'
-			constructor_id: 0x4dc5085f
+			method_name:      'messages.deleteSavedHistory'
+			constructor_id:   0x4dc5085f
 			result_type_name: 'messages.AffectedHistory'
 		},
 		FunctionInfo{
-			method_name: 'messages.getPinnedSavedDialogs'
-			constructor_id: 0xd63d94e0
+			method_name:      'messages.getPinnedSavedDialogs'
+			constructor_id:   0xd63d94e0
 			result_type_name: 'messages.SavedDialogs'
 		},
 		FunctionInfo{
-			method_name: 'messages.toggleSavedDialogPin'
-			constructor_id: 0xac81bbde
+			method_name:      'messages.toggleSavedDialogPin'
+			constructor_id:   0xac81bbde
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.reorderPinnedSavedDialogs'
-			constructor_id: 0x8b716587
+			method_name:      'messages.reorderPinnedSavedDialogs'
+			constructor_id:   0x8b716587
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.getSavedReactionTags'
-			constructor_id: 0x3637e05b
+			method_name:      'messages.getSavedReactionTags'
+			constructor_id:   0x3637e05b
 			result_type_name: 'messages.SavedReactionTags'
 		},
 		FunctionInfo{
-			method_name: 'messages.updateSavedReactionTag'
-			constructor_id: 0x60297dec
+			method_name:      'messages.updateSavedReactionTag'
+			constructor_id:   0x60297dec
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.getDefaultTagReactions'
-			constructor_id: 0xbdf93428
+			method_name:      'messages.getDefaultTagReactions'
+			constructor_id:   0xbdf93428
 			result_type_name: 'messages.Reactions'
 		},
 		FunctionInfo{
-			method_name: 'messages.getOutboxReadDate'
-			constructor_id: 0x8c4bfe5d
+			method_name:      'messages.getOutboxReadDate'
+			constructor_id:   0x8c4bfe5d
 			result_type_name: 'OutboxReadDate'
 		},
 		FunctionInfo{
-			method_name: 'messages.getQuickReplies'
-			constructor_id: 0xd483f2a8
+			method_name:      'messages.getQuickReplies'
+			constructor_id:   0xd483f2a8
 			result_type_name: 'messages.QuickReplies'
 		},
 		FunctionInfo{
-			method_name: 'messages.reorderQuickReplies'
-			constructor_id: 0x60331907
+			method_name:      'messages.reorderQuickReplies'
+			constructor_id:   0x60331907
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.checkQuickReplyShortcut'
-			constructor_id: 0xf1d0fbd3
+			method_name:      'messages.checkQuickReplyShortcut'
+			constructor_id:   0xf1d0fbd3
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.editQuickReplyShortcut'
-			constructor_id: 0x5c003cef
+			method_name:      'messages.editQuickReplyShortcut'
+			constructor_id:   0x5c003cef
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.deleteQuickReplyShortcut'
-			constructor_id: 0x3cc04740
+			method_name:      'messages.deleteQuickReplyShortcut'
+			constructor_id:   0x3cc04740
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.getQuickReplyMessages'
-			constructor_id: 0x94a495c3
+			method_name:      'messages.getQuickReplyMessages'
+			constructor_id:   0x94a495c3
 			result_type_name: 'messages.Messages'
 		},
 		FunctionInfo{
-			method_name: 'messages.sendQuickReplyMessages'
-			constructor_id: 0x6c750de1
+			method_name:      'messages.sendQuickReplyMessages'
+			constructor_id:   0x6c750de1
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.deleteQuickReplyMessages'
-			constructor_id: 0xe105e910
+			method_name:      'messages.deleteQuickReplyMessages'
+			constructor_id:   0xe105e910
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.toggleDialogFilterTags'
-			constructor_id: 0xfd2dda49
+			method_name:      'messages.toggleDialogFilterTags'
+			constructor_id:   0xfd2dda49
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.getMyStickers'
-			constructor_id: 0xd0b5e1fc
+			method_name:      'messages.getMyStickers'
+			constructor_id:   0xd0b5e1fc
 			result_type_name: 'messages.MyStickers'
 		},
 		FunctionInfo{
-			method_name: 'messages.getEmojiStickerGroups'
-			constructor_id: 0x1dd840f5
+			method_name:      'messages.getEmojiStickerGroups'
+			constructor_id:   0x1dd840f5
 			result_type_name: 'messages.EmojiGroups'
 		},
 		FunctionInfo{
-			method_name: 'messages.getAvailableEffects'
-			constructor_id: 0xdea20a39
+			method_name:      'messages.getAvailableEffects'
+			constructor_id:   0xdea20a39
 			result_type_name: 'messages.AvailableEffects'
 		},
 		FunctionInfo{
-			method_name: 'messages.editFactCheck'
-			constructor_id: 0x0589ee75
+			method_name:      'messages.editFactCheck'
+			constructor_id:   0x0589ee75
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.deleteFactCheck'
-			constructor_id: 0xd1da940c
+			method_name:      'messages.deleteFactCheck'
+			constructor_id:   0xd1da940c
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.getFactCheck'
-			constructor_id: 0xb9cdc5ee
+			method_name:      'messages.getFactCheck'
+			constructor_id:   0xb9cdc5ee
 			result_type_name: 'Vector<FactCheck>'
 		},
 		FunctionInfo{
-			method_name: 'messages.requestMainWebView'
-			constructor_id: 0xc9e01e7b
+			method_name:      'messages.requestMainWebView'
+			constructor_id:   0xc9e01e7b
 			result_type_name: 'WebViewResult'
 		},
 		FunctionInfo{
-			method_name: 'messages.sendPaidReaction'
-			constructor_id: 0x58bbcb50
+			method_name:      'messages.sendPaidReaction'
+			constructor_id:   0x58bbcb50
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.togglePaidReactionPrivacy'
-			constructor_id: 0x435885b5
+			method_name:      'messages.togglePaidReactionPrivacy'
+			constructor_id:   0x435885b5
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.getPaidReactionPrivacy'
-			constructor_id: 0x472455aa
+			method_name:      'messages.getPaidReactionPrivacy'
+			constructor_id:   0x472455aa
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.viewSponsoredMessage'
-			constructor_id: 0x269e3643
+			method_name:      'messages.viewSponsoredMessage'
+			constructor_id:   0x269e3643
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.clickSponsoredMessage'
-			constructor_id: 0x8235057e
+			method_name:      'messages.clickSponsoredMessage'
+			constructor_id:   0x8235057e
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.reportSponsoredMessage'
-			constructor_id: 0x12cbf0c4
+			method_name:      'messages.reportSponsoredMessage'
+			constructor_id:   0x12cbf0c4
 			result_type_name: 'channels.SponsoredMessageReportResult'
 		},
 		FunctionInfo{
-			method_name: 'messages.getSponsoredMessages'
-			constructor_id: 0x3d6ce850
+			method_name:      'messages.getSponsoredMessages'
+			constructor_id:   0x3d6ce850
 			result_type_name: 'messages.SponsoredMessages'
 		},
 		FunctionInfo{
-			method_name: 'messages.savePreparedInlineMessage'
-			constructor_id: 0xf21f7f2f
+			method_name:      'messages.savePreparedInlineMessage'
+			constructor_id:   0xf21f7f2f
 			result_type_name: 'messages.BotPreparedInlineMessage'
 		},
 		FunctionInfo{
-			method_name: 'messages.getPreparedInlineMessage'
-			constructor_id: 0x857ebdb8
+			method_name:      'messages.getPreparedInlineMessage'
+			constructor_id:   0x857ebdb8
 			result_type_name: 'messages.PreparedInlineMessage'
 		},
 		FunctionInfo{
-			method_name: 'messages.searchStickers'
-			constructor_id: 0x29b1c66a
+			method_name:      'messages.searchStickers'
+			constructor_id:   0x29b1c66a
 			result_type_name: 'messages.FoundStickers'
 		},
 		FunctionInfo{
-			method_name: 'messages.reportMessagesDelivery'
-			constructor_id: 0x5a6d7395
+			method_name:      'messages.reportMessagesDelivery'
+			constructor_id:   0x5a6d7395
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.getSavedDialogsByID'
-			constructor_id: 0x6f6f9c96
+			method_name:      'messages.getSavedDialogsByID'
+			constructor_id:   0x6f6f9c96
 			result_type_name: 'messages.SavedDialogs'
 		},
 		FunctionInfo{
-			method_name: 'messages.readSavedHistory'
-			constructor_id: 0xba4a3b5b
+			method_name:      'messages.readSavedHistory'
+			constructor_id:   0xba4a3b5b
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'messages.toggleTodoCompleted'
-			constructor_id: 0xd3e03124
+			method_name:      'messages.toggleTodoCompleted'
+			constructor_id:   0xd3e03124
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.appendTodoList'
-			constructor_id: 0x21a61057
+			method_name:      'messages.appendTodoList'
+			constructor_id:   0x21a61057
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.toggleSuggestedPostApproval'
-			constructor_id: 0x8107455c
+			method_name:      'messages.toggleSuggestedPostApproval'
+			constructor_id:   0x8107455c
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.getForumTopics'
-			constructor_id: 0x3ba47bff
+			method_name:      'messages.getForumTopics'
+			constructor_id:   0x3ba47bff
 			result_type_name: 'messages.ForumTopics'
 		},
 		FunctionInfo{
-			method_name: 'messages.getForumTopicsByID'
-			constructor_id: 0xaf0a4a08
+			method_name:      'messages.getForumTopicsByID'
+			constructor_id:   0xaf0a4a08
 			result_type_name: 'messages.ForumTopics'
 		},
 		FunctionInfo{
-			method_name: 'messages.editForumTopic'
-			constructor_id: 0xcecc1134
+			method_name:      'messages.editForumTopic'
+			constructor_id:   0xcecc1134
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.updatePinnedForumTopic'
-			constructor_id: 0x175df251
+			method_name:      'messages.updatePinnedForumTopic'
+			constructor_id:   0x175df251
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.reorderPinnedForumTopics'
-			constructor_id: 0x0e7841f0
+			method_name:      'messages.reorderPinnedForumTopics'
+			constructor_id:   0x0e7841f0
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.createForumTopic'
-			constructor_id: 0x2f98c3d5
+			method_name:      'messages.createForumTopic'
+			constructor_id:   0x2f98c3d5
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'messages.deleteTopicHistory'
-			constructor_id: 0xd2816f10
+			method_name:      'messages.deleteTopicHistory'
+			constructor_id:   0xd2816f10
 			result_type_name: 'messages.AffectedHistory'
 		},
 		FunctionInfo{
-			method_name: 'messages.getEmojiGameInfo'
-			constructor_id: 0xfb7e8ca7
+			method_name:      'messages.getEmojiGameInfo'
+			constructor_id:   0xfb7e8ca7
 			result_type_name: 'messages.EmojiGameInfo'
 		},
 		FunctionInfo{
-			method_name: 'messages.summarizeText'
-			constructor_id: 0x9d4104e2
+			method_name:      'messages.summarizeText'
+			constructor_id:   0x9d4104e2
 			result_type_name: 'TextWithEntities'
 		},
 		FunctionInfo{
-			method_name: 'updates.getState'
-			constructor_id: 0xedd4882a
+			method_name:      'updates.getState'
+			constructor_id:   0xedd4882a
 			result_type_name: 'updates.State'
 		},
 		FunctionInfo{
-			method_name: 'updates.getDifference'
-			constructor_id: 0x19c2f763
+			method_name:      'updates.getDifference'
+			constructor_id:   0x19c2f763
 			result_type_name: 'updates.Difference'
 		},
 		FunctionInfo{
-			method_name: 'updates.getChannelDifference'
-			constructor_id: 0x03173d78
+			method_name:      'updates.getChannelDifference'
+			constructor_id:   0x03173d78
 			result_type_name: 'updates.ChannelDifference'
 		},
 		FunctionInfo{
-			method_name: 'photos.updateProfilePhoto'
-			constructor_id: 0x09e82039
+			method_name:      'photos.updateProfilePhoto'
+			constructor_id:   0x09e82039
 			result_type_name: 'photos.Photo'
 		},
 		FunctionInfo{
-			method_name: 'photos.uploadProfilePhoto'
-			constructor_id: 0x0388a3b5
+			method_name:      'photos.uploadProfilePhoto'
+			constructor_id:   0x0388a3b5
 			result_type_name: 'photos.Photo'
 		},
 		FunctionInfo{
-			method_name: 'photos.deletePhotos'
-			constructor_id: 0x87cf7f2f
+			method_name:      'photos.deletePhotos'
+			constructor_id:   0x87cf7f2f
 			result_type_name: 'Vector<long>'
 		},
 		FunctionInfo{
-			method_name: 'photos.getUserPhotos'
-			constructor_id: 0x91cd32a8
+			method_name:      'photos.getUserPhotos'
+			constructor_id:   0x91cd32a8
 			result_type_name: 'photos.Photos'
 		},
 		FunctionInfo{
-			method_name: 'photos.uploadContactProfilePhoto'
-			constructor_id: 0xe14c4a71
+			method_name:      'photos.uploadContactProfilePhoto'
+			constructor_id:   0xe14c4a71
 			result_type_name: 'photos.Photo'
 		},
 		FunctionInfo{
-			method_name: 'upload.saveFilePart'
-			constructor_id: 0xb304a621
+			method_name:      'upload.saveFilePart'
+			constructor_id:   0xb304a621
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'upload.getFile'
-			constructor_id: 0xbe5335be
+			method_name:      'upload.getFile'
+			constructor_id:   0xbe5335be
 			result_type_name: 'upload.File'
 		},
 		FunctionInfo{
-			method_name: 'upload.saveBigFilePart'
-			constructor_id: 0xde7b673d
+			method_name:      'upload.saveBigFilePart'
+			constructor_id:   0xde7b673d
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'upload.getWebFile'
-			constructor_id: 0x24e6818d
+			method_name:      'upload.getWebFile'
+			constructor_id:   0x24e6818d
 			result_type_name: 'upload.WebFile'
 		},
 		FunctionInfo{
-			method_name: 'upload.getCdnFile'
-			constructor_id: 0x395f69da
+			method_name:      'upload.getCdnFile'
+			constructor_id:   0x395f69da
 			result_type_name: 'upload.CdnFile'
 		},
 		FunctionInfo{
-			method_name: 'upload.reuploadCdnFile'
-			constructor_id: 0x9b2754a8
+			method_name:      'upload.reuploadCdnFile'
+			constructor_id:   0x9b2754a8
 			result_type_name: 'Vector<FileHash>'
 		},
 		FunctionInfo{
-			method_name: 'upload.getCdnFileHashes'
-			constructor_id: 0x91dc3f31
+			method_name:      'upload.getCdnFileHashes'
+			constructor_id:   0x91dc3f31
 			result_type_name: 'Vector<FileHash>'
 		},
 		FunctionInfo{
-			method_name: 'upload.getFileHashes'
-			constructor_id: 0x9156982a
+			method_name:      'upload.getFileHashes'
+			constructor_id:   0x9156982a
 			result_type_name: 'Vector<FileHash>'
 		},
 		FunctionInfo{
-			method_name: 'help.getConfig'
-			constructor_id: 0xc4f9186b
+			method_name:      'help.getConfig'
+			constructor_id:   0xc4f9186b
 			result_type_name: 'Config'
 		},
 		FunctionInfo{
-			method_name: 'help.getNearestDc'
-			constructor_id: 0x1fb33026
+			method_name:      'help.getNearestDc'
+			constructor_id:   0x1fb33026
 			result_type_name: 'NearestDc'
 		},
 		FunctionInfo{
-			method_name: 'help.getAppUpdate'
-			constructor_id: 0x522d5a7d
+			method_name:      'help.getAppUpdate'
+			constructor_id:   0x522d5a7d
 			result_type_name: 'help.AppUpdate'
 		},
 		FunctionInfo{
-			method_name: 'help.getInviteText'
-			constructor_id: 0x4d392343
+			method_name:      'help.getInviteText'
+			constructor_id:   0x4d392343
 			result_type_name: 'help.InviteText'
 		},
 		FunctionInfo{
-			method_name: 'help.getSupport'
-			constructor_id: 0x9cdf08cd
+			method_name:      'help.getSupport'
+			constructor_id:   0x9cdf08cd
 			result_type_name: 'help.Support'
 		},
 		FunctionInfo{
-			method_name: 'help.setBotUpdatesStatus'
-			constructor_id: 0xec22cfcd
+			method_name:      'help.setBotUpdatesStatus'
+			constructor_id:   0xec22cfcd
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'help.getCdnConfig'
-			constructor_id: 0x52029342
+			method_name:      'help.getCdnConfig'
+			constructor_id:   0x52029342
 			result_type_name: 'CdnConfig'
 		},
 		FunctionInfo{
-			method_name: 'help.getRecentMeUrls'
-			constructor_id: 0x3dc0f114
+			method_name:      'help.getRecentMeUrls'
+			constructor_id:   0x3dc0f114
 			result_type_name: 'help.RecentMeUrls'
 		},
 		FunctionInfo{
-			method_name: 'help.getTermsOfServiceUpdate'
-			constructor_id: 0x2ca51fd1
+			method_name:      'help.getTermsOfServiceUpdate'
+			constructor_id:   0x2ca51fd1
 			result_type_name: 'help.TermsOfServiceUpdate'
 		},
 		FunctionInfo{
-			method_name: 'help.acceptTermsOfService'
-			constructor_id: 0xee72f79a
+			method_name:      'help.acceptTermsOfService'
+			constructor_id:   0xee72f79a
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'help.getDeepLinkInfo'
-			constructor_id: 0x3fedc75f
+			method_name:      'help.getDeepLinkInfo'
+			constructor_id:   0x3fedc75f
 			result_type_name: 'help.DeepLinkInfo'
 		},
 		FunctionInfo{
-			method_name: 'help.getAppConfig'
-			constructor_id: 0x61e3f854
+			method_name:      'help.getAppConfig'
+			constructor_id:   0x61e3f854
 			result_type_name: 'help.AppConfig'
 		},
 		FunctionInfo{
-			method_name: 'help.saveAppLog'
-			constructor_id: 0x6f02f748
+			method_name:      'help.saveAppLog'
+			constructor_id:   0x6f02f748
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'help.getPassportConfig'
-			constructor_id: 0xc661ad08
+			method_name:      'help.getPassportConfig'
+			constructor_id:   0xc661ad08
 			result_type_name: 'help.PassportConfig'
 		},
 		FunctionInfo{
-			method_name: 'help.getSupportName'
-			constructor_id: 0xd360e72c
+			method_name:      'help.getSupportName'
+			constructor_id:   0xd360e72c
 			result_type_name: 'help.SupportName'
 		},
 		FunctionInfo{
-			method_name: 'help.getUserInfo'
-			constructor_id: 0x038a08d3
+			method_name:      'help.getUserInfo'
+			constructor_id:   0x038a08d3
 			result_type_name: 'help.UserInfo'
 		},
 		FunctionInfo{
-			method_name: 'help.editUserInfo'
-			constructor_id: 0x66b91b70
+			method_name:      'help.editUserInfo'
+			constructor_id:   0x66b91b70
 			result_type_name: 'help.UserInfo'
 		},
 		FunctionInfo{
-			method_name: 'help.getPromoData'
-			constructor_id: 0xc0977421
+			method_name:      'help.getPromoData'
+			constructor_id:   0xc0977421
 			result_type_name: 'help.PromoData'
 		},
 		FunctionInfo{
-			method_name: 'help.hidePromoData'
-			constructor_id: 0x1e251c95
+			method_name:      'help.hidePromoData'
+			constructor_id:   0x1e251c95
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'help.dismissSuggestion'
-			constructor_id: 0xf50dbaa1
+			method_name:      'help.dismissSuggestion'
+			constructor_id:   0xf50dbaa1
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'help.getCountriesList'
-			constructor_id: 0x735787a8
+			method_name:      'help.getCountriesList'
+			constructor_id:   0x735787a8
 			result_type_name: 'help.CountriesList'
 		},
 		FunctionInfo{
-			method_name: 'help.getPremiumPromo'
-			constructor_id: 0xb81b93d4
+			method_name:      'help.getPremiumPromo'
+			constructor_id:   0xb81b93d4
 			result_type_name: 'help.PremiumPromo'
 		},
 		FunctionInfo{
-			method_name: 'help.getPeerColors'
-			constructor_id: 0xda80f42f
+			method_name:      'help.getPeerColors'
+			constructor_id:   0xda80f42f
 			result_type_name: 'help.PeerColors'
 		},
 		FunctionInfo{
-			method_name: 'help.getPeerProfileColors'
-			constructor_id: 0xabcfa9fd
+			method_name:      'help.getPeerProfileColors'
+			constructor_id:   0xabcfa9fd
 			result_type_name: 'help.PeerColors'
 		},
 		FunctionInfo{
-			method_name: 'help.getTimezonesList'
-			constructor_id: 0x49b30240
+			method_name:      'help.getTimezonesList'
+			constructor_id:   0x49b30240
 			result_type_name: 'help.TimezonesList'
 		},
 		FunctionInfo{
-			method_name: 'channels.readHistory'
-			constructor_id: 0xcc104937
+			method_name:      'channels.readHistory'
+			constructor_id:   0xcc104937
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'channels.deleteMessages'
-			constructor_id: 0x84c1fd4e
+			method_name:      'channels.deleteMessages'
+			constructor_id:   0x84c1fd4e
 			result_type_name: 'messages.AffectedMessages'
 		},
 		FunctionInfo{
-			method_name: 'channels.reportSpam'
-			constructor_id: 0xf44a8315
+			method_name:      'channels.reportSpam'
+			constructor_id:   0xf44a8315
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'channels.getMessages'
-			constructor_id: 0xad8c9a23
+			method_name:      'channels.getMessages'
+			constructor_id:   0xad8c9a23
 			result_type_name: 'messages.Messages'
 		},
 		FunctionInfo{
-			method_name: 'channels.getParticipants'
-			constructor_id: 0x77ced9d0
+			method_name:      'channels.getParticipants'
+			constructor_id:   0x77ced9d0
 			result_type_name: 'channels.ChannelParticipants'
 		},
 		FunctionInfo{
-			method_name: 'channels.getParticipant'
-			constructor_id: 0xa0ab6cc6
+			method_name:      'channels.getParticipant'
+			constructor_id:   0xa0ab6cc6
 			result_type_name: 'channels.ChannelParticipant'
 		},
 		FunctionInfo{
-			method_name: 'channels.getChannels'
-			constructor_id: 0x0a7f6bbb
+			method_name:      'channels.getChannels'
+			constructor_id:   0x0a7f6bbb
 			result_type_name: 'messages.Chats'
 		},
 		FunctionInfo{
-			method_name: 'channels.getFullChannel'
-			constructor_id: 0x08736a09
+			method_name:      'channels.getFullChannel'
+			constructor_id:   0x08736a09
 			result_type_name: 'messages.ChatFull'
 		},
 		FunctionInfo{
-			method_name: 'channels.createChannel'
-			constructor_id: 0x91006707
+			method_name:      'channels.createChannel'
+			constructor_id:   0x91006707
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'channels.editAdmin'
-			constructor_id: 0xd33c8902
+			method_name:      'channels.editAdmin'
+			constructor_id:   0xd33c8902
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'channels.editTitle'
-			constructor_id: 0x566decd0
+			method_name:      'channels.editTitle'
+			constructor_id:   0x566decd0
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'channels.editPhoto'
-			constructor_id: 0xf12e57c9
+			method_name:      'channels.editPhoto'
+			constructor_id:   0xf12e57c9
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'channels.checkUsername'
-			constructor_id: 0x10e6bd2c
+			method_name:      'channels.checkUsername'
+			constructor_id:   0x10e6bd2c
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'channels.updateUsername'
-			constructor_id: 0x3514b3de
+			method_name:      'channels.updateUsername'
+			constructor_id:   0x3514b3de
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'channels.joinChannel'
-			constructor_id: 0x24b524c5
+			method_name:      'channels.joinChannel'
+			constructor_id:   0x24b524c5
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'channels.leaveChannel'
-			constructor_id: 0xf836aa95
+			method_name:      'channels.leaveChannel'
+			constructor_id:   0xf836aa95
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'channels.inviteToChannel'
-			constructor_id: 0xc9e33d54
+			method_name:      'channels.inviteToChannel'
+			constructor_id:   0xc9e33d54
 			result_type_name: 'messages.InvitedUsers'
 		},
 		FunctionInfo{
-			method_name: 'channels.deleteChannel'
-			constructor_id: 0xc0111fe3
+			method_name:      'channels.deleteChannel'
+			constructor_id:   0xc0111fe3
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'channels.exportMessageLink'
-			constructor_id: 0xe63fadeb
+			method_name:      'channels.exportMessageLink'
+			constructor_id:   0xe63fadeb
 			result_type_name: 'ExportedMessageLink'
 		},
 		FunctionInfo{
-			method_name: 'channels.toggleSignatures'
-			constructor_id: 0x418d549c
+			method_name:      'channels.toggleSignatures'
+			constructor_id:   0x418d549c
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'channels.getAdminedPublicChannels'
-			constructor_id: 0xf8b036af
+			method_name:      'channels.getAdminedPublicChannels'
+			constructor_id:   0xf8b036af
 			result_type_name: 'messages.Chats'
 		},
 		FunctionInfo{
-			method_name: 'channels.editBanned'
-			constructor_id: 0x96e6cd81
+			method_name:      'channels.editBanned'
+			constructor_id:   0x96e6cd81
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'channels.getAdminLog'
-			constructor_id: 0x33ddf480
+			method_name:      'channels.getAdminLog'
+			constructor_id:   0x33ddf480
 			result_type_name: 'channels.AdminLogResults'
 		},
 		FunctionInfo{
-			method_name: 'channels.setStickers'
-			constructor_id: 0xea8ca4f9
+			method_name:      'channels.setStickers'
+			constructor_id:   0xea8ca4f9
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'channels.readMessageContents'
-			constructor_id: 0xeab5dc38
+			method_name:      'channels.readMessageContents'
+			constructor_id:   0xeab5dc38
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'channels.deleteHistory'
-			constructor_id: 0x9baa9647
+			method_name:      'channels.deleteHistory'
+			constructor_id:   0x9baa9647
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'channels.togglePreHistoryHidden'
-			constructor_id: 0xeabbb94c
+			method_name:      'channels.togglePreHistoryHidden'
+			constructor_id:   0xeabbb94c
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'channels.getLeftChannels'
-			constructor_id: 0x8341ecc0
+			method_name:      'channels.getLeftChannels'
+			constructor_id:   0x8341ecc0
 			result_type_name: 'messages.Chats'
 		},
 		FunctionInfo{
-			method_name: 'channels.getGroupsForDiscussion'
-			constructor_id: 0xf5dad378
+			method_name:      'channels.getGroupsForDiscussion'
+			constructor_id:   0xf5dad378
 			result_type_name: 'messages.Chats'
 		},
 		FunctionInfo{
-			method_name: 'channels.setDiscussionGroup'
-			constructor_id: 0x40582bb2
+			method_name:      'channels.setDiscussionGroup'
+			constructor_id:   0x40582bb2
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'channels.editCreator'
-			constructor_id: 0x8f38cd1f
+			method_name:      'channels.editCreator'
+			constructor_id:   0x8f38cd1f
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'channels.editLocation'
-			constructor_id: 0x58e63f6d
+			method_name:      'channels.editLocation'
+			constructor_id:   0x58e63f6d
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'channels.toggleSlowMode'
-			constructor_id: 0xedd49ef0
+			method_name:      'channels.toggleSlowMode'
+			constructor_id:   0xedd49ef0
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'channels.getInactiveChannels'
-			constructor_id: 0x11e831ee
+			method_name:      'channels.getInactiveChannels'
+			constructor_id:   0x11e831ee
 			result_type_name: 'messages.InactiveChats'
 		},
 		FunctionInfo{
-			method_name: 'channels.convertToGigagroup'
-			constructor_id: 0x0b290c69
+			method_name:      'channels.convertToGigagroup'
+			constructor_id:   0x0b290c69
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'channels.getSendAs'
-			constructor_id: 0xe785a43f
+			method_name:      'channels.getSendAs'
+			constructor_id:   0xe785a43f
 			result_type_name: 'channels.SendAsPeers'
 		},
 		FunctionInfo{
-			method_name: 'channels.deleteParticipantHistory'
-			constructor_id: 0x367544db
+			method_name:      'channels.deleteParticipantHistory'
+			constructor_id:   0x367544db
 			result_type_name: 'messages.AffectedHistory'
 		},
 		FunctionInfo{
-			method_name: 'channels.toggleJoinToSend'
-			constructor_id: 0xe4cb9580
+			method_name:      'channels.toggleJoinToSend'
+			constructor_id:   0xe4cb9580
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'channels.toggleJoinRequest'
-			constructor_id: 0x4c2985b6
+			method_name:      'channels.toggleJoinRequest'
+			constructor_id:   0x4c2985b6
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'channels.reorderUsernames'
-			constructor_id: 0xb45ced1d
+			method_name:      'channels.reorderUsernames'
+			constructor_id:   0xb45ced1d
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'channels.toggleUsername'
-			constructor_id: 0x50f24105
+			method_name:      'channels.toggleUsername'
+			constructor_id:   0x50f24105
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'channels.deactivateAllUsernames'
-			constructor_id: 0x0a245dd3
+			method_name:      'channels.deactivateAllUsernames'
+			constructor_id:   0x0a245dd3
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'channels.toggleForum'
-			constructor_id: 0x3ff75734
+			method_name:      'channels.toggleForum'
+			constructor_id:   0x3ff75734
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'channels.toggleAntiSpam'
-			constructor_id: 0x68f3e4eb
+			method_name:      'channels.toggleAntiSpam'
+			constructor_id:   0x68f3e4eb
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'channels.reportAntiSpamFalsePositive'
-			constructor_id: 0xa850a693
+			method_name:      'channels.reportAntiSpamFalsePositive'
+			constructor_id:   0xa850a693
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'channels.toggleParticipantsHidden'
-			constructor_id: 0x6a6e7854
+			method_name:      'channels.toggleParticipantsHidden'
+			constructor_id:   0x6a6e7854
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'channels.updateColor'
-			constructor_id: 0xd8aa3671
+			method_name:      'channels.updateColor'
+			constructor_id:   0xd8aa3671
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'channels.toggleViewForumAsMessages'
-			constructor_id: 0x9738bb15
+			method_name:      'channels.toggleViewForumAsMessages'
+			constructor_id:   0x9738bb15
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'channels.getChannelRecommendations'
-			constructor_id: 0x25a71742
+			method_name:      'channels.getChannelRecommendations'
+			constructor_id:   0x25a71742
 			result_type_name: 'messages.Chats'
 		},
 		FunctionInfo{
-			method_name: 'channels.updateEmojiStatus'
-			constructor_id: 0xf0d3e6a8
+			method_name:      'channels.updateEmojiStatus'
+			constructor_id:   0xf0d3e6a8
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'channels.setBoostsToUnblockRestrictions'
-			constructor_id: 0xad399cee
+			method_name:      'channels.setBoostsToUnblockRestrictions'
+			constructor_id:   0xad399cee
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'channels.setEmojiStickers'
-			constructor_id: 0x3cd930b7
+			method_name:      'channels.setEmojiStickers'
+			constructor_id:   0x3cd930b7
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'channels.restrictSponsoredMessages'
-			constructor_id: 0x9ae91519
+			method_name:      'channels.restrictSponsoredMessages'
+			constructor_id:   0x9ae91519
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'channels.searchPosts'
-			constructor_id: 0xf2c4f24d
+			method_name:      'channels.searchPosts'
+			constructor_id:   0xf2c4f24d
 			result_type_name: 'messages.Messages'
 		},
 		FunctionInfo{
-			method_name: 'channels.updatePaidMessagesPrice'
-			constructor_id: 0x4b12327b
+			method_name:      'channels.updatePaidMessagesPrice'
+			constructor_id:   0x4b12327b
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'channels.toggleAutotranslation'
-			constructor_id: 0x167fc0a1
+			method_name:      'channels.toggleAutotranslation'
+			constructor_id:   0x167fc0a1
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'channels.getMessageAuthor'
-			constructor_id: 0xece2a0e6
+			method_name:      'channels.getMessageAuthor'
+			constructor_id:   0xece2a0e6
 			result_type_name: 'User'
 		},
 		FunctionInfo{
-			method_name: 'channels.checkSearchPostsFlood'
-			constructor_id: 0x22567115
+			method_name:      'channels.checkSearchPostsFlood'
+			constructor_id:   0x22567115
 			result_type_name: 'SearchPostsFlood'
 		},
 		FunctionInfo{
-			method_name: 'channels.setMainProfileTab'
-			constructor_id: 0x3583fcb1
+			method_name:      'channels.setMainProfileTab'
+			constructor_id:   0x3583fcb1
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'channels.getFutureCreatorAfterLeave'
-			constructor_id: 0xa00918af
+			method_name:      'channels.getFutureCreatorAfterLeave'
+			constructor_id:   0xa00918af
 			result_type_name: 'User'
 		},
 		FunctionInfo{
-			method_name: 'bots.sendCustomRequest'
-			constructor_id: 0xaa2769ed
+			method_name:      'bots.sendCustomRequest'
+			constructor_id:   0xaa2769ed
 			result_type_name: 'DataJSON'
 		},
 		FunctionInfo{
-			method_name: 'bots.answerWebhookJSONQuery'
-			constructor_id: 0xe6213f4d
+			method_name:      'bots.answerWebhookJSONQuery'
+			constructor_id:   0xe6213f4d
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'bots.setBotCommands'
-			constructor_id: 0x0517165a
+			method_name:      'bots.setBotCommands'
+			constructor_id:   0x0517165a
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'bots.resetBotCommands'
-			constructor_id: 0x3d8de0f9
+			method_name:      'bots.resetBotCommands'
+			constructor_id:   0x3d8de0f9
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'bots.getBotCommands'
-			constructor_id: 0xe34c0dd6
+			method_name:      'bots.getBotCommands'
+			constructor_id:   0xe34c0dd6
 			result_type_name: 'Vector<BotCommand>'
 		},
 		FunctionInfo{
-			method_name: 'bots.setBotMenuButton'
-			constructor_id: 0x4504d54f
+			method_name:      'bots.setBotMenuButton'
+			constructor_id:   0x4504d54f
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'bots.getBotMenuButton'
-			constructor_id: 0x9c60eb28
+			method_name:      'bots.getBotMenuButton'
+			constructor_id:   0x9c60eb28
 			result_type_name: 'BotMenuButton'
 		},
 		FunctionInfo{
-			method_name: 'bots.setBotBroadcastDefaultAdminRights'
-			constructor_id: 0x788464e1
+			method_name:      'bots.setBotBroadcastDefaultAdminRights'
+			constructor_id:   0x788464e1
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'bots.setBotGroupDefaultAdminRights'
-			constructor_id: 0x925ec9ea
+			method_name:      'bots.setBotGroupDefaultAdminRights'
+			constructor_id:   0x925ec9ea
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'bots.setBotInfo'
-			constructor_id: 0x10cf3123
+			method_name:      'bots.setBotInfo'
+			constructor_id:   0x10cf3123
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'bots.getBotInfo'
-			constructor_id: 0xdcd914fd
+			method_name:      'bots.getBotInfo'
+			constructor_id:   0xdcd914fd
 			result_type_name: 'bots.BotInfo'
 		},
 		FunctionInfo{
-			method_name: 'bots.reorderUsernames'
-			constructor_id: 0x9709b1c2
+			method_name:      'bots.reorderUsernames'
+			constructor_id:   0x9709b1c2
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'bots.toggleUsername'
-			constructor_id: 0x053ca973
+			method_name:      'bots.toggleUsername'
+			constructor_id:   0x053ca973
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'bots.canSendMessage'
-			constructor_id: 0x1359f4e6
+			method_name:      'bots.canSendMessage'
+			constructor_id:   0x1359f4e6
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'bots.allowSendMessage'
-			constructor_id: 0xf132e3ef
+			method_name:      'bots.allowSendMessage'
+			constructor_id:   0xf132e3ef
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'bots.invokeWebViewCustomMethod'
-			constructor_id: 0x087fc5e7
+			method_name:      'bots.invokeWebViewCustomMethod'
+			constructor_id:   0x087fc5e7
 			result_type_name: 'DataJSON'
 		},
 		FunctionInfo{
-			method_name: 'bots.getPopularAppBots'
-			constructor_id: 0xc2510192
+			method_name:      'bots.getPopularAppBots'
+			constructor_id:   0xc2510192
 			result_type_name: 'bots.PopularAppBots'
 		},
 		FunctionInfo{
-			method_name: 'bots.addPreviewMedia'
-			constructor_id: 0x17aeb75a
+			method_name:      'bots.addPreviewMedia'
+			constructor_id:   0x17aeb75a
 			result_type_name: 'BotPreviewMedia'
 		},
 		FunctionInfo{
-			method_name: 'bots.editPreviewMedia'
-			constructor_id: 0x8525606f
+			method_name:      'bots.editPreviewMedia'
+			constructor_id:   0x8525606f
 			result_type_name: 'BotPreviewMedia'
 		},
 		FunctionInfo{
-			method_name: 'bots.deletePreviewMedia'
-			constructor_id: 0x2d0135b3
+			method_name:      'bots.deletePreviewMedia'
+			constructor_id:   0x2d0135b3
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'bots.reorderPreviewMedias'
-			constructor_id: 0xb627f3aa
+			method_name:      'bots.reorderPreviewMedias'
+			constructor_id:   0xb627f3aa
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'bots.getPreviewInfo'
-			constructor_id: 0x423ab3ad
+			method_name:      'bots.getPreviewInfo'
+			constructor_id:   0x423ab3ad
 			result_type_name: 'bots.PreviewInfo'
 		},
 		FunctionInfo{
-			method_name: 'bots.getPreviewMedias'
-			constructor_id: 0xa2a5594d
+			method_name:      'bots.getPreviewMedias'
+			constructor_id:   0xa2a5594d
 			result_type_name: 'Vector<BotPreviewMedia>'
 		},
 		FunctionInfo{
-			method_name: 'bots.updateUserEmojiStatus'
-			constructor_id: 0xed9f30c5
+			method_name:      'bots.updateUserEmojiStatus'
+			constructor_id:   0xed9f30c5
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'bots.toggleUserEmojiStatusPermission'
-			constructor_id: 0x06de6392
+			method_name:      'bots.toggleUserEmojiStatusPermission'
+			constructor_id:   0x06de6392
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'bots.checkDownloadFileParams'
-			constructor_id: 0x50077589
+			method_name:      'bots.checkDownloadFileParams'
+			constructor_id:   0x50077589
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'bots.getAdminedBots'
-			constructor_id: 0xb0711d83
+			method_name:      'bots.getAdminedBots'
+			constructor_id:   0xb0711d83
 			result_type_name: 'Vector<User>'
 		},
 		FunctionInfo{
-			method_name: 'bots.updateStarRefProgram'
-			constructor_id: 0x778b5ab3
+			method_name:      'bots.updateStarRefProgram'
+			constructor_id:   0x778b5ab3
 			result_type_name: 'StarRefProgram'
 		},
 		FunctionInfo{
-			method_name: 'bots.setCustomVerification'
-			constructor_id: 0x8b89dfbd
+			method_name:      'bots.setCustomVerification'
+			constructor_id:   0x8b89dfbd
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'bots.getBotRecommendations'
-			constructor_id: 0xa1b70815
+			method_name:      'bots.getBotRecommendations'
+			constructor_id:   0xa1b70815
 			result_type_name: 'users.Users'
 		},
 		FunctionInfo{
-			method_name: 'payments.getPaymentForm'
-			constructor_id: 0x37148dbb
+			method_name:      'payments.getPaymentForm'
+			constructor_id:   0x37148dbb
 			result_type_name: 'payments.PaymentForm'
 		},
 		FunctionInfo{
-			method_name: 'payments.getPaymentReceipt'
-			constructor_id: 0x2478d1cc
+			method_name:      'payments.getPaymentReceipt'
+			constructor_id:   0x2478d1cc
 			result_type_name: 'payments.PaymentReceipt'
 		},
 		FunctionInfo{
-			method_name: 'payments.validateRequestedInfo'
-			constructor_id: 0xb6c8f12b
+			method_name:      'payments.validateRequestedInfo'
+			constructor_id:   0xb6c8f12b
 			result_type_name: 'payments.ValidatedRequestedInfo'
 		},
 		FunctionInfo{
-			method_name: 'payments.sendPaymentForm'
-			constructor_id: 0x2d03522f
+			method_name:      'payments.sendPaymentForm'
+			constructor_id:   0x2d03522f
 			result_type_name: 'payments.PaymentResult'
 		},
 		FunctionInfo{
-			method_name: 'payments.getSavedInfo'
-			constructor_id: 0x227d824b
+			method_name:      'payments.getSavedInfo'
+			constructor_id:   0x227d824b
 			result_type_name: 'payments.SavedInfo'
 		},
 		FunctionInfo{
-			method_name: 'payments.clearSavedInfo'
-			constructor_id: 0xd83d70c1
+			method_name:      'payments.clearSavedInfo'
+			constructor_id:   0xd83d70c1
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'payments.getBankCardData'
-			constructor_id: 0x2e79d779
+			method_name:      'payments.getBankCardData'
+			constructor_id:   0x2e79d779
 			result_type_name: 'payments.BankCardData'
 		},
 		FunctionInfo{
-			method_name: 'payments.exportInvoice'
-			constructor_id: 0x0f91b065
+			method_name:      'payments.exportInvoice'
+			constructor_id:   0x0f91b065
 			result_type_name: 'payments.ExportedInvoice'
 		},
 		FunctionInfo{
-			method_name: 'payments.assignAppStoreTransaction'
-			constructor_id: 0x80ed747d
+			method_name:      'payments.assignAppStoreTransaction'
+			constructor_id:   0x80ed747d
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'payments.assignPlayMarketTransaction'
-			constructor_id: 0xdffd50d3
+			method_name:      'payments.assignPlayMarketTransaction'
+			constructor_id:   0xdffd50d3
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'payments.getPremiumGiftCodeOptions'
-			constructor_id: 0x2757ba54
+			method_name:      'payments.getPremiumGiftCodeOptions'
+			constructor_id:   0x2757ba54
 			result_type_name: 'Vector<PremiumGiftCodeOption>'
 		},
 		FunctionInfo{
-			method_name: 'payments.checkGiftCode'
-			constructor_id: 0x8e51b4c1
+			method_name:      'payments.checkGiftCode'
+			constructor_id:   0x8e51b4c1
 			result_type_name: 'payments.CheckedGiftCode'
 		},
 		FunctionInfo{
-			method_name: 'payments.applyGiftCode'
-			constructor_id: 0xf6e26854
+			method_name:      'payments.applyGiftCode'
+			constructor_id:   0xf6e26854
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'payments.getGiveawayInfo'
-			constructor_id: 0xf4239425
+			method_name:      'payments.getGiveawayInfo'
+			constructor_id:   0xf4239425
 			result_type_name: 'payments.GiveawayInfo'
 		},
 		FunctionInfo{
-			method_name: 'payments.launchPrepaidGiveaway'
-			constructor_id: 0x5ff58f20
+			method_name:      'payments.launchPrepaidGiveaway'
+			constructor_id:   0x5ff58f20
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'payments.getStarsTopupOptions'
-			constructor_id: 0xc00ec7d3
+			method_name:      'payments.getStarsTopupOptions'
+			constructor_id:   0xc00ec7d3
 			result_type_name: 'Vector<StarsTopupOption>'
 		},
 		FunctionInfo{
-			method_name: 'payments.getStarsStatus'
-			constructor_id: 0x4ea9b3bf
+			method_name:      'payments.getStarsStatus'
+			constructor_id:   0x4ea9b3bf
 			result_type_name: 'payments.StarsStatus'
 		},
 		FunctionInfo{
-			method_name: 'payments.getStarsTransactions'
-			constructor_id: 0x69da4557
+			method_name:      'payments.getStarsTransactions'
+			constructor_id:   0x69da4557
 			result_type_name: 'payments.StarsStatus'
 		},
 		FunctionInfo{
-			method_name: 'payments.sendStarsForm'
-			constructor_id: 0x7998c914
+			method_name:      'payments.sendStarsForm'
+			constructor_id:   0x7998c914
 			result_type_name: 'payments.PaymentResult'
 		},
 		FunctionInfo{
-			method_name: 'payments.refundStarsCharge'
-			constructor_id: 0x25ae8f4a
+			method_name:      'payments.refundStarsCharge'
+			constructor_id:   0x25ae8f4a
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'payments.getStarsRevenueStats'
-			constructor_id: 0xd91ffad6
+			method_name:      'payments.getStarsRevenueStats'
+			constructor_id:   0xd91ffad6
 			result_type_name: 'payments.StarsRevenueStats'
 		},
 		FunctionInfo{
-			method_name: 'payments.getStarsRevenueWithdrawalUrl'
-			constructor_id: 0x2433dc92
+			method_name:      'payments.getStarsRevenueWithdrawalUrl'
+			constructor_id:   0x2433dc92
 			result_type_name: 'payments.StarsRevenueWithdrawalUrl'
 		},
 		FunctionInfo{
-			method_name: 'payments.getStarsRevenueAdsAccountUrl'
-			constructor_id: 0xd1d7efc5
+			method_name:      'payments.getStarsRevenueAdsAccountUrl'
+			constructor_id:   0xd1d7efc5
 			result_type_name: 'payments.StarsRevenueAdsAccountUrl'
 		},
 		FunctionInfo{
-			method_name: 'payments.getStarsTransactionsByID'
-			constructor_id: 0x2dca16b8
+			method_name:      'payments.getStarsTransactionsByID'
+			constructor_id:   0x2dca16b8
 			result_type_name: 'payments.StarsStatus'
 		},
 		FunctionInfo{
-			method_name: 'payments.getStarsGiftOptions'
-			constructor_id: 0xd3c96bc8
+			method_name:      'payments.getStarsGiftOptions'
+			constructor_id:   0xd3c96bc8
 			result_type_name: 'Vector<StarsGiftOption>'
 		},
 		FunctionInfo{
-			method_name: 'payments.getStarsSubscriptions'
-			constructor_id: 0x032512c5
+			method_name:      'payments.getStarsSubscriptions'
+			constructor_id:   0x032512c5
 			result_type_name: 'payments.StarsStatus'
 		},
 		FunctionInfo{
-			method_name: 'payments.changeStarsSubscription'
-			constructor_id: 0xc7770878
+			method_name:      'payments.changeStarsSubscription'
+			constructor_id:   0xc7770878
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'payments.fulfillStarsSubscription'
-			constructor_id: 0xcc5bebb3
+			method_name:      'payments.fulfillStarsSubscription'
+			constructor_id:   0xcc5bebb3
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'payments.getStarsGiveawayOptions'
-			constructor_id: 0xbd1efd3e
+			method_name:      'payments.getStarsGiveawayOptions'
+			constructor_id:   0xbd1efd3e
 			result_type_name: 'Vector<StarsGiveawayOption>'
 		},
 		FunctionInfo{
-			method_name: 'payments.getStarGifts'
-			constructor_id: 0xc4563590
+			method_name:      'payments.getStarGifts'
+			constructor_id:   0xc4563590
 			result_type_name: 'payments.StarGifts'
 		},
 		FunctionInfo{
-			method_name: 'payments.saveStarGift'
-			constructor_id: 0x2a2a697c
+			method_name:      'payments.saveStarGift'
+			constructor_id:   0x2a2a697c
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'payments.convertStarGift'
-			constructor_id: 0x74bf076b
+			method_name:      'payments.convertStarGift'
+			constructor_id:   0x74bf076b
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'payments.botCancelStarsSubscription'
-			constructor_id: 0x6dfa0622
+			method_name:      'payments.botCancelStarsSubscription'
+			constructor_id:   0x6dfa0622
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'payments.getConnectedStarRefBots'
-			constructor_id: 0x5869a553
+			method_name:      'payments.getConnectedStarRefBots'
+			constructor_id:   0x5869a553
 			result_type_name: 'payments.ConnectedStarRefBots'
 		},
 		FunctionInfo{
-			method_name: 'payments.getConnectedStarRefBot'
-			constructor_id: 0xb7d998f0
+			method_name:      'payments.getConnectedStarRefBot'
+			constructor_id:   0xb7d998f0
 			result_type_name: 'payments.ConnectedStarRefBots'
 		},
 		FunctionInfo{
-			method_name: 'payments.getSuggestedStarRefBots'
-			constructor_id: 0x0d6b48f7
+			method_name:      'payments.getSuggestedStarRefBots'
+			constructor_id:   0x0d6b48f7
 			result_type_name: 'payments.SuggestedStarRefBots'
 		},
 		FunctionInfo{
-			method_name: 'payments.connectStarRefBot'
-			constructor_id: 0x7ed5348a
+			method_name:      'payments.connectStarRefBot'
+			constructor_id:   0x7ed5348a
 			result_type_name: 'payments.ConnectedStarRefBots'
 		},
 		FunctionInfo{
-			method_name: 'payments.editConnectedStarRefBot'
-			constructor_id: 0xe4fca4a3
+			method_name:      'payments.editConnectedStarRefBot'
+			constructor_id:   0xe4fca4a3
 			result_type_name: 'payments.ConnectedStarRefBots'
 		},
 		FunctionInfo{
-			method_name: 'payments.getStarGiftUpgradePreview'
-			constructor_id: 0x9c9abcb1
+			method_name:      'payments.getStarGiftUpgradePreview'
+			constructor_id:   0x9c9abcb1
 			result_type_name: 'payments.StarGiftUpgradePreview'
 		},
 		FunctionInfo{
-			method_name: 'payments.upgradeStarGift'
-			constructor_id: 0xaed6e4f5
+			method_name:      'payments.upgradeStarGift'
+			constructor_id:   0xaed6e4f5
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'payments.transferStarGift'
-			constructor_id: 0x7f18176a
+			method_name:      'payments.transferStarGift'
+			constructor_id:   0x7f18176a
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'payments.getUniqueStarGift'
-			constructor_id: 0xa1974d72
+			method_name:      'payments.getUniqueStarGift'
+			constructor_id:   0xa1974d72
 			result_type_name: 'payments.UniqueStarGift'
 		},
 		FunctionInfo{
-			method_name: 'payments.getSavedStarGifts'
-			constructor_id: 0xa319e569
+			method_name:      'payments.getSavedStarGifts'
+			constructor_id:   0xa319e569
 			result_type_name: 'payments.SavedStarGifts'
 		},
 		FunctionInfo{
-			method_name: 'payments.getSavedStarGift'
-			constructor_id: 0xb455a106
+			method_name:      'payments.getSavedStarGift'
+			constructor_id:   0xb455a106
 			result_type_name: 'payments.SavedStarGifts'
 		},
 		FunctionInfo{
-			method_name: 'payments.getStarGiftWithdrawalUrl'
-			constructor_id: 0xd06e93a8
+			method_name:      'payments.getStarGiftWithdrawalUrl'
+			constructor_id:   0xd06e93a8
 			result_type_name: 'payments.StarGiftWithdrawalUrl'
 		},
 		FunctionInfo{
-			method_name: 'payments.toggleChatStarGiftNotifications'
-			constructor_id: 0x60eaefa1
+			method_name:      'payments.toggleChatStarGiftNotifications'
+			constructor_id:   0x60eaefa1
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'payments.toggleStarGiftsPinnedToTop'
-			constructor_id: 0x1513e7b0
+			method_name:      'payments.toggleStarGiftsPinnedToTop'
+			constructor_id:   0x1513e7b0
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'payments.canPurchaseStore'
-			constructor_id: 0x4fdc5ea7
+			method_name:      'payments.canPurchaseStore'
+			constructor_id:   0x4fdc5ea7
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'payments.getResaleStarGifts'
-			constructor_id: 0x7a5fa236
+			method_name:      'payments.getResaleStarGifts'
+			constructor_id:   0x7a5fa236
 			result_type_name: 'payments.ResaleStarGifts'
 		},
 		FunctionInfo{
-			method_name: 'payments.updateStarGiftPrice'
-			constructor_id: 0xedbe6ccb
+			method_name:      'payments.updateStarGiftPrice'
+			constructor_id:   0xedbe6ccb
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'payments.createStarGiftCollection'
-			constructor_id: 0x1f4a0e87
+			method_name:      'payments.createStarGiftCollection'
+			constructor_id:   0x1f4a0e87
 			result_type_name: 'StarGiftCollection'
 		},
 		FunctionInfo{
-			method_name: 'payments.updateStarGiftCollection'
-			constructor_id: 0x4fddbee7
+			method_name:      'payments.updateStarGiftCollection'
+			constructor_id:   0x4fddbee7
 			result_type_name: 'StarGiftCollection'
 		},
 		FunctionInfo{
-			method_name: 'payments.reorderStarGiftCollections'
-			constructor_id: 0xc32af4cc
+			method_name:      'payments.reorderStarGiftCollections'
+			constructor_id:   0xc32af4cc
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'payments.deleteStarGiftCollection'
-			constructor_id: 0xad5648e8
+			method_name:      'payments.deleteStarGiftCollection'
+			constructor_id:   0xad5648e8
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'payments.getStarGiftCollections'
-			constructor_id: 0x981b91dd
+			method_name:      'payments.getStarGiftCollections'
+			constructor_id:   0x981b91dd
 			result_type_name: 'payments.StarGiftCollections'
 		},
 		FunctionInfo{
-			method_name: 'payments.getUniqueStarGiftValueInfo'
-			constructor_id: 0x4365af6b
+			method_name:      'payments.getUniqueStarGiftValueInfo'
+			constructor_id:   0x4365af6b
 			result_type_name: 'payments.UniqueStarGiftValueInfo'
 		},
 		FunctionInfo{
-			method_name: 'payments.checkCanSendGift'
-			constructor_id: 0xc0c4edc9
+			method_name:      'payments.checkCanSendGift'
+			constructor_id:   0xc0c4edc9
 			result_type_name: 'payments.CheckCanSendGiftResult'
 		},
 		FunctionInfo{
-			method_name: 'payments.getStarGiftAuctionState'
-			constructor_id: 0x5c9ff4d6
+			method_name:      'payments.getStarGiftAuctionState'
+			constructor_id:   0x5c9ff4d6
 			result_type_name: 'payments.StarGiftAuctionState'
 		},
 		FunctionInfo{
-			method_name: 'payments.getStarGiftAuctionAcquiredGifts'
-			constructor_id: 0x6ba2cbec
+			method_name:      'payments.getStarGiftAuctionAcquiredGifts'
+			constructor_id:   0x6ba2cbec
 			result_type_name: 'payments.StarGiftAuctionAcquiredGifts'
 		},
 		FunctionInfo{
-			method_name: 'payments.getStarGiftActiveAuctions'
-			constructor_id: 0xa5d0514d
+			method_name:      'payments.getStarGiftActiveAuctions'
+			constructor_id:   0xa5d0514d
 			result_type_name: 'payments.StarGiftActiveAuctions'
 		},
 		FunctionInfo{
-			method_name: 'payments.resolveStarGiftOffer'
-			constructor_id: 0xe9ce781c
+			method_name:      'payments.resolveStarGiftOffer'
+			constructor_id:   0xe9ce781c
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'payments.sendStarGiftOffer'
-			constructor_id: 0x8fb86b41
+			method_name:      'payments.sendStarGiftOffer'
+			constructor_id:   0x8fb86b41
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'payments.getStarGiftUpgradeAttributes'
-			constructor_id: 0x6d038b58
+			method_name:      'payments.getStarGiftUpgradeAttributes'
+			constructor_id:   0x6d038b58
 			result_type_name: 'payments.StarGiftUpgradeAttributes'
 		},
 		FunctionInfo{
-			method_name: 'payments.getCraftStarGifts'
-			constructor_id: 0xfd05dd00
+			method_name:      'payments.getCraftStarGifts'
+			constructor_id:   0xfd05dd00
 			result_type_name: 'payments.SavedStarGifts'
 		},
 		FunctionInfo{
-			method_name: 'payments.craftStarGift'
-			constructor_id: 0xb0f9684f
+			method_name:      'payments.craftStarGift'
+			constructor_id:   0xb0f9684f
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'stickers.createStickerSet'
-			constructor_id: 0x9021ab67
+			method_name:      'stickers.createStickerSet'
+			constructor_id:   0x9021ab67
 			result_type_name: 'messages.StickerSet'
 		},
 		FunctionInfo{
-			method_name: 'stickers.removeStickerFromSet'
-			constructor_id: 0xf7760f51
+			method_name:      'stickers.removeStickerFromSet'
+			constructor_id:   0xf7760f51
 			result_type_name: 'messages.StickerSet'
 		},
 		FunctionInfo{
-			method_name: 'stickers.changeStickerPosition'
-			constructor_id: 0xffb6d4ca
+			method_name:      'stickers.changeStickerPosition'
+			constructor_id:   0xffb6d4ca
 			result_type_name: 'messages.StickerSet'
 		},
 		FunctionInfo{
-			method_name: 'stickers.addStickerToSet'
-			constructor_id: 0x8653febe
+			method_name:      'stickers.addStickerToSet'
+			constructor_id:   0x8653febe
 			result_type_name: 'messages.StickerSet'
 		},
 		FunctionInfo{
-			method_name: 'stickers.setStickerSetThumb'
-			constructor_id: 0xa76a5392
+			method_name:      'stickers.setStickerSetThumb'
+			constructor_id:   0xa76a5392
 			result_type_name: 'messages.StickerSet'
 		},
 		FunctionInfo{
-			method_name: 'stickers.checkShortName'
-			constructor_id: 0x284b3639
+			method_name:      'stickers.checkShortName'
+			constructor_id:   0x284b3639
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'stickers.suggestShortName'
-			constructor_id: 0x4dafc503
+			method_name:      'stickers.suggestShortName'
+			constructor_id:   0x4dafc503
 			result_type_name: 'stickers.SuggestedShortName'
 		},
 		FunctionInfo{
-			method_name: 'stickers.changeSticker'
-			constructor_id: 0xf5537ebc
+			method_name:      'stickers.changeSticker'
+			constructor_id:   0xf5537ebc
 			result_type_name: 'messages.StickerSet'
 		},
 		FunctionInfo{
-			method_name: 'stickers.renameStickerSet'
-			constructor_id: 0x124b1c00
+			method_name:      'stickers.renameStickerSet'
+			constructor_id:   0x124b1c00
 			result_type_name: 'messages.StickerSet'
 		},
 		FunctionInfo{
-			method_name: 'stickers.deleteStickerSet'
-			constructor_id: 0x87704394
+			method_name:      'stickers.deleteStickerSet'
+			constructor_id:   0x87704394
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'stickers.replaceSticker'
-			constructor_id: 0x4696459a
+			method_name:      'stickers.replaceSticker'
+			constructor_id:   0x4696459a
 			result_type_name: 'messages.StickerSet'
 		},
 		FunctionInfo{
-			method_name: 'phone.getCallConfig'
-			constructor_id: 0x55451fa9
+			method_name:      'phone.getCallConfig'
+			constructor_id:   0x55451fa9
 			result_type_name: 'DataJSON'
 		},
 		FunctionInfo{
-			method_name: 'phone.requestCall'
-			constructor_id: 0x42ff96ed
+			method_name:      'phone.requestCall'
+			constructor_id:   0x42ff96ed
 			result_type_name: 'phone.PhoneCall'
 		},
 		FunctionInfo{
-			method_name: 'phone.acceptCall'
-			constructor_id: 0x3bd2b4a0
+			method_name:      'phone.acceptCall'
+			constructor_id:   0x3bd2b4a0
 			result_type_name: 'phone.PhoneCall'
 		},
 		FunctionInfo{
-			method_name: 'phone.confirmCall'
-			constructor_id: 0x2efe1722
+			method_name:      'phone.confirmCall'
+			constructor_id:   0x2efe1722
 			result_type_name: 'phone.PhoneCall'
 		},
 		FunctionInfo{
-			method_name: 'phone.receivedCall'
-			constructor_id: 0x17d54f61
+			method_name:      'phone.receivedCall'
+			constructor_id:   0x17d54f61
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'phone.discardCall'
-			constructor_id: 0xb2cbc1c0
+			method_name:      'phone.discardCall'
+			constructor_id:   0xb2cbc1c0
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'phone.setCallRating'
-			constructor_id: 0x59ead627
+			method_name:      'phone.setCallRating'
+			constructor_id:   0x59ead627
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'phone.saveCallDebug'
-			constructor_id: 0x277add7e
+			method_name:      'phone.saveCallDebug'
+			constructor_id:   0x277add7e
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'phone.sendSignalingData'
-			constructor_id: 0xff7a9383
+			method_name:      'phone.sendSignalingData'
+			constructor_id:   0xff7a9383
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'phone.createGroupCall'
-			constructor_id: 0x48cdc6d8
+			method_name:      'phone.createGroupCall'
+			constructor_id:   0x48cdc6d8
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'phone.joinGroupCall'
-			constructor_id: 0x8fb53057
+			method_name:      'phone.joinGroupCall'
+			constructor_id:   0x8fb53057
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'phone.leaveGroupCall'
-			constructor_id: 0x500377f9
+			method_name:      'phone.leaveGroupCall'
+			constructor_id:   0x500377f9
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'phone.inviteToGroupCall'
-			constructor_id: 0x7b393160
+			method_name:      'phone.inviteToGroupCall'
+			constructor_id:   0x7b393160
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'phone.discardGroupCall'
-			constructor_id: 0x7a777135
+			method_name:      'phone.discardGroupCall'
+			constructor_id:   0x7a777135
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'phone.toggleGroupCallSettings'
-			constructor_id: 0x974392f2
+			method_name:      'phone.toggleGroupCallSettings'
+			constructor_id:   0x974392f2
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'phone.getGroupCall'
-			constructor_id: 0x041845db
+			method_name:      'phone.getGroupCall'
+			constructor_id:   0x041845db
 			result_type_name: 'phone.GroupCall'
 		},
 		FunctionInfo{
-			method_name: 'phone.getGroupParticipants'
-			constructor_id: 0xc558d8ab
+			method_name:      'phone.getGroupParticipants'
+			constructor_id:   0xc558d8ab
 			result_type_name: 'phone.GroupParticipants'
 		},
 		FunctionInfo{
-			method_name: 'phone.checkGroupCall'
-			constructor_id: 0xb59cf977
+			method_name:      'phone.checkGroupCall'
+			constructor_id:   0xb59cf977
 			result_type_name: 'Vector<int>'
 		},
 		FunctionInfo{
-			method_name: 'phone.toggleGroupCallRecord'
-			constructor_id: 0xf128c708
+			method_name:      'phone.toggleGroupCallRecord'
+			constructor_id:   0xf128c708
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'phone.editGroupCallParticipant'
-			constructor_id: 0xa5273abf
+			method_name:      'phone.editGroupCallParticipant'
+			constructor_id:   0xa5273abf
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'phone.editGroupCallTitle'
-			constructor_id: 0x1ca6ac0a
+			method_name:      'phone.editGroupCallTitle'
+			constructor_id:   0x1ca6ac0a
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'phone.getGroupCallJoinAs'
-			constructor_id: 0xef7c213a
+			method_name:      'phone.getGroupCallJoinAs'
+			constructor_id:   0xef7c213a
 			result_type_name: 'phone.JoinAsPeers'
 		},
 		FunctionInfo{
-			method_name: 'phone.exportGroupCallInvite'
-			constructor_id: 0xe6aa647f
+			method_name:      'phone.exportGroupCallInvite'
+			constructor_id:   0xe6aa647f
 			result_type_name: 'phone.ExportedGroupCallInvite'
 		},
 		FunctionInfo{
-			method_name: 'phone.toggleGroupCallStartSubscription'
-			constructor_id: 0x219c34e6
+			method_name:      'phone.toggleGroupCallStartSubscription'
+			constructor_id:   0x219c34e6
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'phone.startScheduledGroupCall'
-			constructor_id: 0x5680e342
+			method_name:      'phone.startScheduledGroupCall'
+			constructor_id:   0x5680e342
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'phone.saveDefaultGroupCallJoinAs'
-			constructor_id: 0x575e1f8c
+			method_name:      'phone.saveDefaultGroupCallJoinAs'
+			constructor_id:   0x575e1f8c
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'phone.joinGroupCallPresentation'
-			constructor_id: 0xcbea6bc4
+			method_name:      'phone.joinGroupCallPresentation'
+			constructor_id:   0xcbea6bc4
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'phone.leaveGroupCallPresentation'
-			constructor_id: 0x1c50d144
+			method_name:      'phone.leaveGroupCallPresentation'
+			constructor_id:   0x1c50d144
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'phone.getGroupCallStreamChannels'
-			constructor_id: 0x1ab21940
+			method_name:      'phone.getGroupCallStreamChannels'
+			constructor_id:   0x1ab21940
 			result_type_name: 'phone.GroupCallStreamChannels'
 		},
 		FunctionInfo{
-			method_name: 'phone.getGroupCallStreamRtmpUrl'
-			constructor_id: 0x5af4c73a
+			method_name:      'phone.getGroupCallStreamRtmpUrl'
+			constructor_id:   0x5af4c73a
 			result_type_name: 'phone.GroupCallStreamRtmpUrl'
 		},
 		FunctionInfo{
-			method_name: 'phone.saveCallLog'
-			constructor_id: 0x41248786
+			method_name:      'phone.saveCallLog'
+			constructor_id:   0x41248786
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'phone.createConferenceCall'
-			constructor_id: 0x7d0444bb
+			method_name:      'phone.createConferenceCall'
+			constructor_id:   0x7d0444bb
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'phone.deleteConferenceCallParticipants'
-			constructor_id: 0x8ca60525
+			method_name:      'phone.deleteConferenceCallParticipants'
+			constructor_id:   0x8ca60525
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'phone.sendConferenceCallBroadcast'
-			constructor_id: 0xc6701900
+			method_name:      'phone.sendConferenceCallBroadcast'
+			constructor_id:   0xc6701900
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'phone.inviteConferenceCallParticipant'
-			constructor_id: 0xbcf22685
+			method_name:      'phone.inviteConferenceCallParticipant'
+			constructor_id:   0xbcf22685
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'phone.declineConferenceCallInvite'
-			constructor_id: 0x3c479971
+			method_name:      'phone.declineConferenceCallInvite'
+			constructor_id:   0x3c479971
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'phone.getGroupCallChainBlocks'
-			constructor_id: 0xee9f88a6
+			method_name:      'phone.getGroupCallChainBlocks'
+			constructor_id:   0xee9f88a6
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'phone.sendGroupCallMessage'
-			constructor_id: 0xb1d11410
+			method_name:      'phone.sendGroupCallMessage'
+			constructor_id:   0xb1d11410
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'phone.sendGroupCallEncryptedMessage'
-			constructor_id: 0xe5afa56d
+			method_name:      'phone.sendGroupCallEncryptedMessage'
+			constructor_id:   0xe5afa56d
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'phone.deleteGroupCallMessages'
-			constructor_id: 0xf64f54f7
+			method_name:      'phone.deleteGroupCallMessages'
+			constructor_id:   0xf64f54f7
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'phone.deleteGroupCallParticipantMessages'
-			constructor_id: 0x1dbfeca0
+			method_name:      'phone.deleteGroupCallParticipantMessages'
+			constructor_id:   0x1dbfeca0
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'phone.getGroupCallStars'
-			constructor_id: 0x6f636302
+			method_name:      'phone.getGroupCallStars'
+			constructor_id:   0x6f636302
 			result_type_name: 'phone.GroupCallStars'
 		},
 		FunctionInfo{
-			method_name: 'phone.saveDefaultSendAs'
-			constructor_id: 0x4167add1
+			method_name:      'phone.saveDefaultSendAs'
+			constructor_id:   0x4167add1
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'langpack.getLangPack'
-			constructor_id: 0xf2f2330a
+			method_name:      'langpack.getLangPack'
+			constructor_id:   0xf2f2330a
 			result_type_name: 'LangPackDifference'
 		},
 		FunctionInfo{
-			method_name: 'langpack.getStrings'
-			constructor_id: 0xefea3803
+			method_name:      'langpack.getStrings'
+			constructor_id:   0xefea3803
 			result_type_name: 'Vector<LangPackString>'
 		},
 		FunctionInfo{
-			method_name: 'langpack.getDifference'
-			constructor_id: 0xcd984aa5
+			method_name:      'langpack.getDifference'
+			constructor_id:   0xcd984aa5
 			result_type_name: 'LangPackDifference'
 		},
 		FunctionInfo{
-			method_name: 'langpack.getLanguages'
-			constructor_id: 0x42c6978f
+			method_name:      'langpack.getLanguages'
+			constructor_id:   0x42c6978f
 			result_type_name: 'Vector<LangPackLanguage>'
 		},
 		FunctionInfo{
-			method_name: 'langpack.getLanguage'
-			constructor_id: 0x6a596502
+			method_name:      'langpack.getLanguage'
+			constructor_id:   0x6a596502
 			result_type_name: 'LangPackLanguage'
 		},
 		FunctionInfo{
-			method_name: 'folders.editPeerFolders'
-			constructor_id: 0x6847d0ab
+			method_name:      'folders.editPeerFolders'
+			constructor_id:   0x6847d0ab
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'stats.getBroadcastStats'
-			constructor_id: 0xab42441a
+			method_name:      'stats.getBroadcastStats'
+			constructor_id:   0xab42441a
 			result_type_name: 'stats.BroadcastStats'
 		},
 		FunctionInfo{
-			method_name: 'stats.loadAsyncGraph'
-			constructor_id: 0x621d5fa0
+			method_name:      'stats.loadAsyncGraph'
+			constructor_id:   0x621d5fa0
 			result_type_name: 'StatsGraph'
 		},
 		FunctionInfo{
-			method_name: 'stats.getMegagroupStats'
-			constructor_id: 0xdcdf8607
+			method_name:      'stats.getMegagroupStats'
+			constructor_id:   0xdcdf8607
 			result_type_name: 'stats.MegagroupStats'
 		},
 		FunctionInfo{
-			method_name: 'stats.getMessagePublicForwards'
-			constructor_id: 0x5f150144
+			method_name:      'stats.getMessagePublicForwards'
+			constructor_id:   0x5f150144
 			result_type_name: 'stats.PublicForwards'
 		},
 		FunctionInfo{
-			method_name: 'stats.getMessageStats'
-			constructor_id: 0xb6e0a3f5
+			method_name:      'stats.getMessageStats'
+			constructor_id:   0xb6e0a3f5
 			result_type_name: 'stats.MessageStats'
 		},
 		FunctionInfo{
-			method_name: 'stats.getStoryStats'
-			constructor_id: 0x374fef40
+			method_name:      'stats.getStoryStats'
+			constructor_id:   0x374fef40
 			result_type_name: 'stats.StoryStats'
 		},
 		FunctionInfo{
-			method_name: 'stats.getStoryPublicForwards'
-			constructor_id: 0xa6437ef6
+			method_name:      'stats.getStoryPublicForwards'
+			constructor_id:   0xa6437ef6
 			result_type_name: 'stats.PublicForwards'
 		},
 		FunctionInfo{
-			method_name: 'chatlists.exportChatlistInvite'
-			constructor_id: 0x8472478e
+			method_name:      'chatlists.exportChatlistInvite'
+			constructor_id:   0x8472478e
 			result_type_name: 'chatlists.ExportedChatlistInvite'
 		},
 		FunctionInfo{
-			method_name: 'chatlists.deleteExportedInvite'
-			constructor_id: 0x719c5c5e
+			method_name:      'chatlists.deleteExportedInvite'
+			constructor_id:   0x719c5c5e
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'chatlists.editExportedInvite'
-			constructor_id: 0x653db63d
+			method_name:      'chatlists.editExportedInvite'
+			constructor_id:   0x653db63d
 			result_type_name: 'ExportedChatlistInvite'
 		},
 		FunctionInfo{
-			method_name: 'chatlists.getExportedInvites'
-			constructor_id: 0xce03da83
+			method_name:      'chatlists.getExportedInvites'
+			constructor_id:   0xce03da83
 			result_type_name: 'chatlists.ExportedInvites'
 		},
 		FunctionInfo{
-			method_name: 'chatlists.checkChatlistInvite'
-			constructor_id: 0x41c10fff
+			method_name:      'chatlists.checkChatlistInvite'
+			constructor_id:   0x41c10fff
 			result_type_name: 'chatlists.ChatlistInvite'
 		},
 		FunctionInfo{
-			method_name: 'chatlists.joinChatlistInvite'
-			constructor_id: 0xa6b1e39a
+			method_name:      'chatlists.joinChatlistInvite'
+			constructor_id:   0xa6b1e39a
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'chatlists.getChatlistUpdates'
-			constructor_id: 0x89419521
+			method_name:      'chatlists.getChatlistUpdates'
+			constructor_id:   0x89419521
 			result_type_name: 'chatlists.ChatlistUpdates'
 		},
 		FunctionInfo{
-			method_name: 'chatlists.joinChatlistUpdates'
-			constructor_id: 0xe089f8f5
+			method_name:      'chatlists.joinChatlistUpdates'
+			constructor_id:   0xe089f8f5
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'chatlists.hideChatlistUpdates'
-			constructor_id: 0x66e486fb
+			method_name:      'chatlists.hideChatlistUpdates'
+			constructor_id:   0x66e486fb
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'chatlists.getLeaveChatlistSuggestions'
-			constructor_id: 0xfdbcd714
+			method_name:      'chatlists.getLeaveChatlistSuggestions'
+			constructor_id:   0xfdbcd714
 			result_type_name: 'Vector<Peer>'
 		},
 		FunctionInfo{
-			method_name: 'chatlists.leaveChatlist'
-			constructor_id: 0x74fae13a
+			method_name:      'chatlists.leaveChatlist'
+			constructor_id:   0x74fae13a
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'stories.canSendStory'
-			constructor_id: 0x30eb63f0
+			method_name:      'stories.canSendStory'
+			constructor_id:   0x30eb63f0
 			result_type_name: 'stories.CanSendStoryCount'
 		},
 		FunctionInfo{
-			method_name: 'stories.sendStory'
-			constructor_id: 0x737fc2ec
+			method_name:      'stories.sendStory'
+			constructor_id:   0x737fc2ec
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'stories.editStory'
-			constructor_id: 0xb583ba46
+			method_name:      'stories.editStory'
+			constructor_id:   0xb583ba46
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'stories.deleteStories'
-			constructor_id: 0xae59db5f
+			method_name:      'stories.deleteStories'
+			constructor_id:   0xae59db5f
 			result_type_name: 'Vector<int>'
 		},
 		FunctionInfo{
-			method_name: 'stories.togglePinned'
-			constructor_id: 0x9a75a1ef
+			method_name:      'stories.togglePinned'
+			constructor_id:   0x9a75a1ef
 			result_type_name: 'Vector<int>'
 		},
 		FunctionInfo{
-			method_name: 'stories.getAllStories'
-			constructor_id: 0xeeb0d625
+			method_name:      'stories.getAllStories'
+			constructor_id:   0xeeb0d625
 			result_type_name: 'stories.AllStories'
 		},
 		FunctionInfo{
-			method_name: 'stories.getPinnedStories'
-			constructor_id: 0x5821a5dc
+			method_name:      'stories.getPinnedStories'
+			constructor_id:   0x5821a5dc
 			result_type_name: 'stories.Stories'
 		},
 		FunctionInfo{
-			method_name: 'stories.getStoriesArchive'
-			constructor_id: 0xb4352016
+			method_name:      'stories.getStoriesArchive'
+			constructor_id:   0xb4352016
 			result_type_name: 'stories.Stories'
 		},
 		FunctionInfo{
-			method_name: 'stories.getStoriesByID'
-			constructor_id: 0x5774ca74
+			method_name:      'stories.getStoriesByID'
+			constructor_id:   0x5774ca74
 			result_type_name: 'stories.Stories'
 		},
 		FunctionInfo{
-			method_name: 'stories.toggleAllStoriesHidden'
-			constructor_id: 0x7c2557c4
+			method_name:      'stories.toggleAllStoriesHidden'
+			constructor_id:   0x7c2557c4
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'stories.readStories'
-			constructor_id: 0xa556dac8
+			method_name:      'stories.readStories'
+			constructor_id:   0xa556dac8
 			result_type_name: 'Vector<int>'
 		},
 		FunctionInfo{
-			method_name: 'stories.incrementStoryViews'
-			constructor_id: 0xb2028afb
+			method_name:      'stories.incrementStoryViews'
+			constructor_id:   0xb2028afb
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'stories.getStoryViewsList'
-			constructor_id: 0x7ed23c57
+			method_name:      'stories.getStoryViewsList'
+			constructor_id:   0x7ed23c57
 			result_type_name: 'stories.StoryViewsList'
 		},
 		FunctionInfo{
-			method_name: 'stories.getStoriesViews'
-			constructor_id: 0x28e16cc8
+			method_name:      'stories.getStoriesViews'
+			constructor_id:   0x28e16cc8
 			result_type_name: 'stories.StoryViews'
 		},
 		FunctionInfo{
-			method_name: 'stories.exportStoryLink'
-			constructor_id: 0x7b8def20
+			method_name:      'stories.exportStoryLink'
+			constructor_id:   0x7b8def20
 			result_type_name: 'ExportedStoryLink'
 		},
 		FunctionInfo{
-			method_name: 'stories.report'
-			constructor_id: 0x19d8eb45
+			method_name:      'stories.report'
+			constructor_id:   0x19d8eb45
 			result_type_name: 'ReportResult'
 		},
 		FunctionInfo{
-			method_name: 'stories.activateStealthMode'
-			constructor_id: 0x57bbd166
+			method_name:      'stories.activateStealthMode'
+			constructor_id:   0x57bbd166
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'stories.sendReaction'
-			constructor_id: 0x7fd736b2
+			method_name:      'stories.sendReaction'
+			constructor_id:   0x7fd736b2
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'stories.getPeerStories'
-			constructor_id: 0x2c4ada50
+			method_name:      'stories.getPeerStories'
+			constructor_id:   0x2c4ada50
 			result_type_name: 'stories.PeerStories'
 		},
 		FunctionInfo{
-			method_name: 'stories.getAllReadPeerStories'
-			constructor_id: 0x9b5ae7f9
+			method_name:      'stories.getAllReadPeerStories'
+			constructor_id:   0x9b5ae7f9
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'stories.getPeerMaxIDs'
-			constructor_id: 0x78499170
+			method_name:      'stories.getPeerMaxIDs'
+			constructor_id:   0x78499170
 			result_type_name: 'Vector<RecentStory>'
 		},
 		FunctionInfo{
-			method_name: 'stories.getChatsToSend'
-			constructor_id: 0xa56a8b60
+			method_name:      'stories.getChatsToSend'
+			constructor_id:   0xa56a8b60
 			result_type_name: 'messages.Chats'
 		},
 		FunctionInfo{
-			method_name: 'stories.togglePeerStoriesHidden'
-			constructor_id: 0xbd0415c4
+			method_name:      'stories.togglePeerStoriesHidden'
+			constructor_id:   0xbd0415c4
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'stories.getStoryReactionsList'
-			constructor_id: 0xb9b2881f
+			method_name:      'stories.getStoryReactionsList'
+			constructor_id:   0xb9b2881f
 			result_type_name: 'stories.StoryReactionsList'
 		},
 		FunctionInfo{
-			method_name: 'stories.togglePinnedToTop'
-			constructor_id: 0x0b297e9b
+			method_name:      'stories.togglePinnedToTop'
+			constructor_id:   0x0b297e9b
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'stories.searchPosts'
-			constructor_id: 0xd1810907
+			method_name:      'stories.searchPosts'
+			constructor_id:   0xd1810907
 			result_type_name: 'stories.FoundStories'
 		},
 		FunctionInfo{
-			method_name: 'stories.createAlbum'
-			constructor_id: 0xa36396e5
+			method_name:      'stories.createAlbum'
+			constructor_id:   0xa36396e5
 			result_type_name: 'StoryAlbum'
 		},
 		FunctionInfo{
-			method_name: 'stories.updateAlbum'
-			constructor_id: 0x5e5259b6
+			method_name:      'stories.updateAlbum'
+			constructor_id:   0x5e5259b6
 			result_type_name: 'StoryAlbum'
 		},
 		FunctionInfo{
-			method_name: 'stories.reorderAlbums'
-			constructor_id: 0x8535fbd9
+			method_name:      'stories.reorderAlbums'
+			constructor_id:   0x8535fbd9
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'stories.deleteAlbum'
-			constructor_id: 0x8d3456d0
+			method_name:      'stories.deleteAlbum'
+			constructor_id:   0x8d3456d0
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'stories.getAlbums'
-			constructor_id: 0x25b3eac7
+			method_name:      'stories.getAlbums'
+			constructor_id:   0x25b3eac7
 			result_type_name: 'stories.Albums'
 		},
 		FunctionInfo{
-			method_name: 'stories.getAlbumStories'
-			constructor_id: 0xac806d61
+			method_name:      'stories.getAlbumStories'
+			constructor_id:   0xac806d61
 			result_type_name: 'stories.Stories'
 		},
 		FunctionInfo{
-			method_name: 'stories.startLive'
-			constructor_id: 0xd069ccde
+			method_name:      'stories.startLive'
+			constructor_id:   0xd069ccde
 			result_type_name: 'Updates'
 		},
 		FunctionInfo{
-			method_name: 'premium.getBoostsList'
-			constructor_id: 0x60f67660
+			method_name:      'premium.getBoostsList'
+			constructor_id:   0x60f67660
 			result_type_name: 'premium.BoostsList'
 		},
 		FunctionInfo{
-			method_name: 'premium.getMyBoosts'
-			constructor_id: 0x0be77b4a
+			method_name:      'premium.getMyBoosts'
+			constructor_id:   0x0be77b4a
 			result_type_name: 'premium.MyBoosts'
 		},
 		FunctionInfo{
-			method_name: 'premium.applyBoost'
-			constructor_id: 0x6b7da746
+			method_name:      'premium.applyBoost'
+			constructor_id:   0x6b7da746
 			result_type_name: 'premium.MyBoosts'
 		},
 		FunctionInfo{
-			method_name: 'premium.getBoostsStatus'
-			constructor_id: 0x042f1f61
+			method_name:      'premium.getBoostsStatus'
+			constructor_id:   0x042f1f61
 			result_type_name: 'premium.BoostsStatus'
 		},
 		FunctionInfo{
-			method_name: 'premium.getUserBoosts'
-			constructor_id: 0x39854d1f
+			method_name:      'premium.getUserBoosts'
+			constructor_id:   0x39854d1f
 			result_type_name: 'premium.BoostsList'
 		},
 		FunctionInfo{
-			method_name: 'smsjobs.isEligibleToJoin'
-			constructor_id: 0x0edc39d0
+			method_name:      'smsjobs.isEligibleToJoin'
+			constructor_id:   0x0edc39d0
 			result_type_name: 'smsjobs.EligibilityToJoin'
 		},
 		FunctionInfo{
-			method_name: 'smsjobs.join'
-			constructor_id: 0xa74ece2d
+			method_name:      'smsjobs.join'
+			constructor_id:   0xa74ece2d
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'smsjobs.leave'
-			constructor_id: 0x9898ad73
+			method_name:      'smsjobs.leave'
+			constructor_id:   0x9898ad73
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'smsjobs.updateSettings'
-			constructor_id: 0x093fa0bf
+			method_name:      'smsjobs.updateSettings'
+			constructor_id:   0x093fa0bf
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'smsjobs.getStatus'
-			constructor_id: 0x10a698e8
+			method_name:      'smsjobs.getStatus'
+			constructor_id:   0x10a698e8
 			result_type_name: 'smsjobs.Status'
 		},
 		FunctionInfo{
-			method_name: 'smsjobs.getSmsJob'
-			constructor_id: 0x778d902f
+			method_name:      'smsjobs.getSmsJob'
+			constructor_id:   0x778d902f
 			result_type_name: 'SmsJob'
 		},
 		FunctionInfo{
-			method_name: 'smsjobs.finishJob'
-			constructor_id: 0x4f1ebf24
+			method_name:      'smsjobs.finishJob'
+			constructor_id:   0x4f1ebf24
 			result_type_name: 'Bool'
 		},
 		FunctionInfo{
-			method_name: 'fragment.getCollectibleInfo'
-			constructor_id: 0xbe1e85ba
+			method_name:      'fragment.getCollectibleInfo'
+			constructor_id:   0xbe1e85ba
 			result_type_name: 'fragment.CollectibleInfo'
 		},
 	]
@@ -10952,7 +10952,7 @@ fn decode_access_point_rule_type_from_decoder(mut decoder Decoder) !AccessPointR
 		UnknownObject {
 			return UnknownAccessPointRuleType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -10980,7 +10980,7 @@ fn decode_account_days_t_t_l_type_from_decoder(mut decoder Decoder) !AccountDays
 		UnknownObject {
 			return UnknownAccountDaysTTLType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11008,7 +11008,7 @@ fn decode_attach_menu_bot_type_from_decoder(mut decoder Decoder) !AttachMenuBotT
 		UnknownObject {
 			return UnknownAttachMenuBotType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11036,7 +11036,7 @@ fn decode_attach_menu_bot_icon_type_from_decoder(mut decoder Decoder) !AttachMen
 		UnknownObject {
 			return UnknownAttachMenuBotIconType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11064,7 +11064,7 @@ fn decode_attach_menu_bot_icon_color_type_from_decoder(mut decoder Decoder) !Att
 		UnknownObject {
 			return UnknownAttachMenuBotIconColorType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11095,7 +11095,7 @@ fn decode_attach_menu_bots_type_from_decoder(mut decoder Decoder) !AttachMenuBot
 		UnknownObject {
 			return UnknownAttachMenuBotsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11123,7 +11123,7 @@ fn decode_attach_menu_bots_bot_type_from_decoder(mut decoder Decoder) !AttachMen
 		UnknownObject {
 			return UnknownAttachMenuBotsBotType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11163,7 +11163,7 @@ fn decode_attach_menu_peer_type_type_from_decoder(mut decoder Decoder) !AttachMe
 		UnknownObject {
 			return UnknownAttachMenuPeerTypeType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11191,7 +11191,7 @@ fn decode_auction_bid_level_type_from_decoder(mut decoder Decoder) !AuctionBidLe
 		UnknownObject {
 			return UnknownAuctionBidLevelType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11219,7 +11219,7 @@ fn decode_authorization_type_from_decoder(mut decoder Decoder) !AuthorizationTyp
 		UnknownObject {
 			return UnknownAuthorizationType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11247,7 +11247,7 @@ fn decode_auto_download_settings_type_from_decoder(mut decoder Decoder) !AutoDow
 		UnknownObject {
 			return UnknownAutoDownloadSettingsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11275,7 +11275,7 @@ fn decode_auto_save_exception_type_from_decoder(mut decoder Decoder) !AutoSaveEx
 		UnknownObject {
 			return UnknownAutoSaveExceptionType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11303,7 +11303,7 @@ fn decode_auto_save_settings_type_from_decoder(mut decoder Decoder) !AutoSaveSet
 		UnknownObject {
 			return UnknownAutoSaveSettingsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11331,7 +11331,7 @@ fn decode_available_effect_type_from_decoder(mut decoder Decoder) !AvailableEffe
 		UnknownObject {
 			return UnknownAvailableEffectType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11359,7 +11359,7 @@ fn decode_available_reaction_type_from_decoder(mut decoder Decoder) !AvailableRe
 		UnknownObject {
 			return UnknownAvailableReactionType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11390,7 +11390,7 @@ fn decode_bad_msg_notification_type_from_decoder(mut decoder Decoder) !BadMsgNot
 		UnknownObject {
 			return UnknownBadMsgNotificationType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11418,7 +11418,7 @@ fn decode_bank_card_open_url_type_from_decoder(mut decoder Decoder) !BankCardOpe
 		UnknownObject {
 			return UnknownBankCardOpenUrlType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11458,7 +11458,7 @@ fn decode_base_theme_type_from_decoder(mut decoder Decoder) !BaseThemeType {
 		UnknownObject {
 			return UnknownBaseThemeType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11486,7 +11486,7 @@ fn decode_bind_auth_key_inner_type_from_decoder(mut decoder Decoder) !BindAuthKe
 		UnknownObject {
 			return UnknownBindAuthKeyInnerType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11514,7 +11514,7 @@ fn decode_birthday_type_from_decoder(mut decoder Decoder) !BirthdayType {
 		UnknownObject {
 			return UnknownBirthdayType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11542,7 +11542,7 @@ fn decode_boost_type_from_decoder(mut decoder Decoder) !BoostType {
 		UnknownObject {
 			return UnknownBoostType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11573,7 +11573,7 @@ fn decode_bot_app_type_from_decoder(mut decoder Decoder) !BotAppType {
 		UnknownObject {
 			return UnknownBotAppType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11601,7 +11601,7 @@ fn decode_bot_app_settings_type_from_decoder(mut decoder Decoder) !BotAppSetting
 		UnknownObject {
 			return UnknownBotAppSettingsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11629,7 +11629,7 @@ fn decode_bot_business_connection_type_from_decoder(mut decoder Decoder) !BotBus
 		UnknownObject {
 			return UnknownBotBusinessConnectionType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11657,7 +11657,7 @@ fn decode_bot_command_type_from_decoder(mut decoder Decoder) !BotCommandType {
 		UnknownObject {
 			return UnknownBotCommandType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11703,7 +11703,7 @@ fn decode_bot_command_scope_type_from_decoder(mut decoder Decoder) !BotCommandSc
 		UnknownObject {
 			return UnknownBotCommandScopeType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11731,7 +11731,7 @@ fn decode_bot_info_type_from_decoder(mut decoder Decoder) !BotInfoType {
 		UnknownObject {
 			return UnknownBotInfoType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11777,7 +11777,7 @@ fn decode_bot_inline_message_type_from_decoder(mut decoder Decoder) !BotInlineMe
 		UnknownObject {
 			return UnknownBotInlineMessageType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11808,7 +11808,7 @@ fn decode_bot_inline_result_type_from_decoder(mut decoder Decoder) !BotInlineRes
 		UnknownObject {
 			return UnknownBotInlineResultType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11842,7 +11842,7 @@ fn decode_bot_menu_button_type_from_decoder(mut decoder Decoder) !BotMenuButtonT
 		UnknownObject {
 			return UnknownBotMenuButtonType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11870,7 +11870,7 @@ fn decode_bot_preview_media_type_from_decoder(mut decoder Decoder) !BotPreviewMe
 		UnknownObject {
 			return UnknownBotPreviewMediaType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11898,7 +11898,7 @@ fn decode_bot_verification_type_from_decoder(mut decoder Decoder) !BotVerificati
 		UnknownObject {
 			return UnknownBotVerificationType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11926,7 +11926,7 @@ fn decode_bot_verifier_settings_type_from_decoder(mut decoder Decoder) !BotVerif
 		UnknownObject {
 			return UnknownBotVerifierSettingsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11954,7 +11954,7 @@ fn decode_business_away_message_type_from_decoder(mut decoder Decoder) !Business
 		UnknownObject {
 			return UnknownBusinessAwayMessageType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -11988,7 +11988,7 @@ fn decode_business_away_message_schedule_type_from_decoder(mut decoder Decoder) 
 		UnknownObject {
 			return UnknownBusinessAwayMessageScheduleType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12016,7 +12016,7 @@ fn decode_business_bot_recipients_type_from_decoder(mut decoder Decoder) !Busine
 		UnknownObject {
 			return UnknownBusinessBotRecipientsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12044,7 +12044,7 @@ fn decode_business_bot_rights_type_from_decoder(mut decoder Decoder) !BusinessBo
 		UnknownObject {
 			return UnknownBusinessBotRightsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12072,7 +12072,7 @@ fn decode_business_chat_link_type_from_decoder(mut decoder Decoder) !BusinessCha
 		UnknownObject {
 			return UnknownBusinessChatLinkType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12100,7 +12100,7 @@ fn decode_business_greeting_message_type_from_decoder(mut decoder Decoder) !Busi
 		UnknownObject {
 			return UnknownBusinessGreetingMessageType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12128,7 +12128,7 @@ fn decode_business_intro_type_from_decoder(mut decoder Decoder) !BusinessIntroTy
 		UnknownObject {
 			return UnknownBusinessIntroType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12156,7 +12156,7 @@ fn decode_business_location_type_from_decoder(mut decoder Decoder) !BusinessLoca
 		UnknownObject {
 			return UnknownBusinessLocationType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12184,7 +12184,7 @@ fn decode_business_recipients_type_from_decoder(mut decoder Decoder) !BusinessRe
 		UnknownObject {
 			return UnknownBusinessRecipientsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12212,7 +12212,7 @@ fn decode_business_weekly_open_type_from_decoder(mut decoder Decoder) !BusinessW
 		UnknownObject {
 			return UnknownBusinessWeeklyOpenType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12240,7 +12240,7 @@ fn decode_business_work_hours_type_from_decoder(mut decoder Decoder) !BusinessWo
 		UnknownObject {
 			return UnknownBusinessWorkHoursType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12268,7 +12268,7 @@ fn decode_cdn_config_type_from_decoder(mut decoder Decoder) !CdnConfigType {
 		UnknownObject {
 			return UnknownCdnConfigType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12296,7 +12296,7 @@ fn decode_cdn_public_key_type_from_decoder(mut decoder Decoder) !CdnPublicKeyTyp
 		UnknownObject {
 			return UnknownCdnPublicKeyType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12324,7 +12324,7 @@ fn decode_channel_admin_log_event_type_from_decoder(mut decoder Decoder) !Channe
 		UnknownObject {
 			return UnknownChannelAdminLogEventType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12502,7 +12502,7 @@ fn decode_channel_admin_log_event_action_type_from_decoder(mut decoder Decoder) 
 		UnknownObject {
 			return UnknownChannelAdminLogEventActionType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12530,7 +12530,7 @@ fn decode_channel_admin_log_events_filter_type_from_decoder(mut decoder Decoder)
 		UnknownObject {
 			return UnknownChannelAdminLogEventsFilterType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12561,7 +12561,7 @@ fn decode_channel_location_type_from_decoder(mut decoder Decoder) !ChannelLocati
 		UnknownObject {
 			return UnknownChannelLocationType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12592,7 +12592,7 @@ fn decode_channel_messages_filter_type_from_decoder(mut decoder Decoder) !Channe
 		UnknownObject {
 			return UnknownChannelMessagesFilterType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12635,7 +12635,7 @@ fn decode_channel_participant_type_from_decoder(mut decoder Decoder) !ChannelPar
 		UnknownObject {
 			return UnknownChannelParticipantType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12684,7 +12684,7 @@ fn decode_channel_participants_filter_type_from_decoder(mut decoder Decoder) !Ch
 		UnknownObject {
 			return UnknownChannelParticipantsFilterType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12724,7 +12724,7 @@ fn decode_chat_type_from_decoder(mut decoder Decoder) !ChatType {
 		UnknownObject {
 			return UnknownChatType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12752,7 +12752,7 @@ fn decode_chat_admin_rights_type_from_decoder(mut decoder Decoder) !ChatAdminRig
 		UnknownObject {
 			return UnknownChatAdminRightsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12780,7 +12780,7 @@ fn decode_chat_admin_with_invites_type_from_decoder(mut decoder Decoder) !ChatAd
 		UnknownObject {
 			return UnknownChatAdminWithInvitesType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12808,7 +12808,7 @@ fn decode_chat_banned_rights_type_from_decoder(mut decoder Decoder) !ChatBannedR
 		UnknownObject {
 			return UnknownChatBannedRightsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12839,7 +12839,7 @@ fn decode_chat_full_type_from_decoder(mut decoder Decoder) !ChatFullType {
 		UnknownObject {
 			return UnknownChatFullType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12873,7 +12873,7 @@ fn decode_chat_invite_type_from_decoder(mut decoder Decoder) !ChatInviteType {
 		UnknownObject {
 			return UnknownChatInviteType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12901,7 +12901,7 @@ fn decode_chat_invite_importer_type_from_decoder(mut decoder Decoder) !ChatInvit
 		UnknownObject {
 			return UnknownChatInviteImporterType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12929,7 +12929,7 @@ fn decode_chat_onlines_type_from_decoder(mut decoder Decoder) !ChatOnlinesType {
 		UnknownObject {
 			return UnknownChatOnlinesType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12963,7 +12963,7 @@ fn decode_chat_participant_type_from_decoder(mut decoder Decoder) !ChatParticipa
 		UnknownObject {
 			return UnknownChatParticipantType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -12994,7 +12994,7 @@ fn decode_chat_participants_type_from_decoder(mut decoder Decoder) !ChatParticip
 		UnknownObject {
 			return UnknownChatParticipantsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13025,7 +13025,7 @@ fn decode_chat_photo_type_from_decoder(mut decoder Decoder) !ChatPhotoType {
 		UnknownObject {
 			return UnknownChatPhotoType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13059,7 +13059,7 @@ fn decode_chat_reactions_type_from_decoder(mut decoder Decoder) !ChatReactionsTy
 		UnknownObject {
 			return UnknownChatReactionsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13090,7 +13090,7 @@ fn decode_chat_theme_type_from_decoder(mut decoder Decoder) !ChatThemeType {
 		UnknownObject {
 			return UnknownChatThemeType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13118,7 +13118,7 @@ fn decode_client_d_h_inner_data_type_from_decoder(mut decoder Decoder) !ClientDH
 		UnknownObject {
 			return UnknownClientDHInnerDataType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13146,7 +13146,7 @@ fn decode_code_settings_type_from_decoder(mut decoder Decoder) !CodeSettingsType
 		UnknownObject {
 			return UnknownCodeSettingsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13174,7 +13174,7 @@ fn decode_config_type_from_decoder(mut decoder Decoder) !ConfigType {
 		UnknownObject {
 			return UnknownConfigType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13202,7 +13202,7 @@ fn decode_connected_bot_type_from_decoder(mut decoder Decoder) !ConnectedBotType
 		UnknownObject {
 			return UnknownConnectedBotType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13230,7 +13230,7 @@ fn decode_connected_bot_star_ref_type_from_decoder(mut decoder Decoder) !Connect
 		UnknownObject {
 			return UnknownConnectedBotStarRefType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13258,7 +13258,7 @@ fn decode_contact_type_from_decoder(mut decoder Decoder) !ContactType {
 		UnknownObject {
 			return UnknownContactType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13286,7 +13286,7 @@ fn decode_contact_birthday_type_from_decoder(mut decoder Decoder) !ContactBirthd
 		UnknownObject {
 			return UnknownContactBirthdayType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13314,7 +13314,7 @@ fn decode_contact_status_type_from_decoder(mut decoder Decoder) !ContactStatusTy
 		UnknownObject {
 			return UnknownContactStatusType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13342,7 +13342,7 @@ fn decode_data_j_s_o_n_type_from_decoder(mut decoder Decoder) !DataJSONType {
 		UnknownObject {
 			return UnknownDataJSONType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13370,7 +13370,7 @@ fn decode_dc_option_type_from_decoder(mut decoder Decoder) !DcOptionType {
 		UnknownObject {
 			return UnknownDcOptionType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13398,7 +13398,7 @@ fn decode_default_history_t_t_l_type_from_decoder(mut decoder Decoder) !DefaultH
 		UnknownObject {
 			return UnknownDefaultHistoryTTLType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13432,7 +13432,7 @@ fn decode_destroy_auth_key_res_type_from_decoder(mut decoder Decoder) !DestroyAu
 		UnknownObject {
 			return UnknownDestroyAuthKeyResType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13463,7 +13463,7 @@ fn decode_destroy_session_res_type_from_decoder(mut decoder Decoder) !DestroySes
 		UnknownObject {
 			return UnknownDestroySessionResType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13494,7 +13494,7 @@ fn decode_dialog_type_from_decoder(mut decoder Decoder) !DialogType {
 		UnknownObject {
 			return UnknownDialogType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13528,7 +13528,7 @@ fn decode_dialog_filter_type_from_decoder(mut decoder Decoder) !DialogFilterType
 		UnknownObject {
 			return UnknownDialogFilterType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13556,7 +13556,7 @@ fn decode_dialog_filter_suggested_type_from_decoder(mut decoder Decoder) !Dialog
 		UnknownObject {
 			return UnknownDialogFilterSuggestedType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13587,7 +13587,7 @@ fn decode_dialog_peer_type_from_decoder(mut decoder Decoder) !DialogPeerType {
 		UnknownObject {
 			return UnknownDialogPeerType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13615,7 +13615,7 @@ fn decode_disallowed_gifts_settings_type_from_decoder(mut decoder Decoder) !Disa
 		UnknownObject {
 			return UnknownDisallowedGiftsSettingsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13646,7 +13646,7 @@ fn decode_document_type_from_decoder(mut decoder Decoder) !DocumentType {
 		UnknownObject {
 			return UnknownDocumentType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13695,7 +13695,7 @@ fn decode_document_attribute_type_from_decoder(mut decoder Decoder) !DocumentAtt
 		UnknownObject {
 			return UnknownDocumentAttributeType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13726,7 +13726,7 @@ fn decode_draft_message_type_from_decoder(mut decoder Decoder) !DraftMessageType
 		UnknownObject {
 			return UnknownDraftMessageType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13760,7 +13760,7 @@ fn decode_email_verification_type_from_decoder(mut decoder Decoder) !EmailVerifi
 		UnknownObject {
 			return UnknownEmailVerificationType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13794,7 +13794,7 @@ fn decode_email_verify_purpose_type_from_decoder(mut decoder Decoder) !EmailVeri
 		UnknownObject {
 			return UnknownEmailVerifyPurposeType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13828,7 +13828,7 @@ fn decode_emoji_group_type_from_decoder(mut decoder Decoder) !EmojiGroupType {
 		UnknownObject {
 			return UnknownEmojiGroupType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13859,7 +13859,7 @@ fn decode_emoji_keyword_type_from_decoder(mut decoder Decoder) !EmojiKeywordType
 		UnknownObject {
 			return UnknownEmojiKeywordType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13887,7 +13887,7 @@ fn decode_emoji_keywords_difference_type_from_decoder(mut decoder Decoder) !Emoj
 		UnknownObject {
 			return UnknownEmojiKeywordsDifferenceType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13915,7 +13915,7 @@ fn decode_emoji_language_type_from_decoder(mut decoder Decoder) !EmojiLanguageTy
 		UnknownObject {
 			return UnknownEmojiLanguageType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13946,7 +13946,7 @@ fn decode_emoji_list_type_from_decoder(mut decoder Decoder) !EmojiListType {
 		UnknownObject {
 			return UnknownEmojiListType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -13983,7 +13983,7 @@ fn decode_emoji_status_type_from_decoder(mut decoder Decoder) !EmojiStatusType {
 		UnknownObject {
 			return UnknownEmojiStatusType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14011,7 +14011,7 @@ fn decode_emoji_u_r_l_type_from_decoder(mut decoder Decoder) !EmojiURLType {
 		UnknownObject {
 			return UnknownEmojiURLType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14051,7 +14051,7 @@ fn decode_encrypted_chat_type_from_decoder(mut decoder Decoder) !EncryptedChatTy
 		UnknownObject {
 			return UnknownEncryptedChatType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14082,7 +14082,7 @@ fn decode_encrypted_file_type_from_decoder(mut decoder Decoder) !EncryptedFileTy
 		UnknownObject {
 			return UnknownEncryptedFileType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14113,7 +14113,7 @@ fn decode_encrypted_message_type_from_decoder(mut decoder Decoder) !EncryptedMes
 		UnknownObject {
 			return UnknownEncryptedMessageType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14141,7 +14141,7 @@ fn decode_error_type_from_decoder(mut decoder Decoder) !TlErrorType {
 		UnknownObject {
 			return UnknownTlErrorType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14172,7 +14172,7 @@ fn decode_exported_chat_invite_type_from_decoder(mut decoder Decoder) !ExportedC
 		UnknownObject {
 			return UnknownExportedChatInviteType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14200,7 +14200,7 @@ fn decode_exported_chatlist_invite_type_from_decoder(mut decoder Decoder) !Expor
 		UnknownObject {
 			return UnknownExportedChatlistInviteType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14228,7 +14228,7 @@ fn decode_exported_contact_token_type_from_decoder(mut decoder Decoder) !Exporte
 		UnknownObject {
 			return UnknownExportedContactTokenType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14256,7 +14256,7 @@ fn decode_exported_message_link_type_from_decoder(mut decoder Decoder) !Exported
 		UnknownObject {
 			return UnknownExportedMessageLinkType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14284,7 +14284,7 @@ fn decode_exported_story_link_type_from_decoder(mut decoder Decoder) !ExportedSt
 		UnknownObject {
 			return UnknownExportedStoryLinkType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14312,7 +14312,7 @@ fn decode_fact_check_type_from_decoder(mut decoder Decoder) !FactCheckType {
 		UnknownObject {
 			return UnknownFactCheckType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14340,7 +14340,7 @@ fn decode_file_hash_type_from_decoder(mut decoder Decoder) !FileHashType {
 		UnknownObject {
 			return UnknownFileHashType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14368,7 +14368,7 @@ fn decode_folder_type_from_decoder(mut decoder Decoder) !FolderType {
 		UnknownObject {
 			return UnknownFolderType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14396,7 +14396,7 @@ fn decode_folder_peer_type_from_decoder(mut decoder Decoder) !FolderPeerType {
 		UnknownObject {
 			return UnknownFolderPeerType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14427,7 +14427,7 @@ fn decode_forum_topic_type_from_decoder(mut decoder Decoder) !ForumTopicType {
 		UnknownObject {
 			return UnknownForumTopicType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14455,7 +14455,7 @@ fn decode_found_story_type_from_decoder(mut decoder Decoder) !FoundStoryType {
 		UnknownObject {
 			return UnknownFoundStoryType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14483,7 +14483,7 @@ fn decode_future_salt_type_from_decoder(mut decoder Decoder) !FutureSaltType {
 		UnknownObject {
 			return UnknownFutureSaltType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14511,7 +14511,7 @@ fn decode_future_salts_type_from_decoder(mut decoder Decoder) !FutureSaltsType {
 		UnknownObject {
 			return UnknownFutureSaltsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14539,7 +14539,7 @@ fn decode_game_type_from_decoder(mut decoder Decoder) !GameType {
 		UnknownObject {
 			return UnknownGameType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14570,7 +14570,7 @@ fn decode_geo_point_type_from_decoder(mut decoder Decoder) !GeoPointType {
 		UnknownObject {
 			return UnknownGeoPointType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14598,7 +14598,7 @@ fn decode_geo_point_address_type_from_decoder(mut decoder Decoder) !GeoPointAddr
 		UnknownObject {
 			return UnknownGeoPointAddressType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14626,7 +14626,7 @@ fn decode_global_privacy_settings_type_from_decoder(mut decoder Decoder) !Global
 		UnknownObject {
 			return UnknownGlobalPrivacySettingsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14657,7 +14657,7 @@ fn decode_group_call_type_from_decoder(mut decoder Decoder) !GroupCallType {
 		UnknownObject {
 			return UnknownGroupCallType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14685,7 +14685,7 @@ fn decode_group_call_donor_type_from_decoder(mut decoder Decoder) !GroupCallDono
 		UnknownObject {
 			return UnknownGroupCallDonorType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14713,7 +14713,7 @@ fn decode_group_call_message_type_from_decoder(mut decoder Decoder) !GroupCallMe
 		UnknownObject {
 			return UnknownGroupCallMessageType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14741,7 +14741,7 @@ fn decode_group_call_participant_type_from_decoder(mut decoder Decoder) !GroupCa
 		UnknownObject {
 			return UnknownGroupCallParticipantType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14769,7 +14769,7 @@ fn decode_group_call_participant_video_type_from_decoder(mut decoder Decoder) !G
 		UnknownObject {
 			return UnknownGroupCallParticipantVideoType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14797,12 +14797,13 @@ fn decode_group_call_participant_video_source_group_type_from_decoder(mut decode
 		UnknownObject {
 			return UnknownGroupCallParticipantVideoSourceGroupType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
 		else {
-			return error('expected GroupCallParticipantVideoSourceGroup, got ' + object.qualified_name())
+			return error('expected GroupCallParticipantVideoSourceGroup, got ' +
+				object.qualified_name())
 		}
 	}
 }
@@ -14825,7 +14826,7 @@ fn decode_group_call_stream_channel_type_from_decoder(mut decoder Decoder) !Grou
 		UnknownObject {
 			return UnknownGroupCallStreamChannelType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14853,7 +14854,7 @@ fn decode_high_score_type_from_decoder(mut decoder Decoder) !HighScoreType {
 		UnknownObject {
 			return UnknownHighScoreType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14881,7 +14882,7 @@ fn decode_http_wait_type_from_decoder(mut decoder Decoder) !HttpWaitType {
 		UnknownObject {
 			return UnknownHttpWaitType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14909,7 +14910,7 @@ fn decode_imported_contact_type_from_decoder(mut decoder Decoder) !ImportedConta
 		UnknownObject {
 			return UnknownImportedContactType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14937,7 +14938,7 @@ fn decode_inline_bot_switch_p_m_type_from_decoder(mut decoder Decoder) !InlineBo
 		UnknownObject {
 			return UnknownInlineBotSwitchPMType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -14965,7 +14966,7 @@ fn decode_inline_bot_web_view_type_from_decoder(mut decoder Decoder) !InlineBotW
 		UnknownObject {
 			return UnknownInlineBotWebViewType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15008,7 +15009,7 @@ fn decode_inline_query_peer_type_type_from_decoder(mut decoder Decoder) !InlineQ
 		UnknownObject {
 			return UnknownInlineQueryPeerTypeType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15036,7 +15037,7 @@ fn decode_input_app_event_type_from_decoder(mut decoder Decoder) !InputAppEventT
 		UnknownObject {
 			return UnknownInputAppEventType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15067,7 +15068,7 @@ fn decode_input_bot_app_type_from_decoder(mut decoder Decoder) !InputBotAppType 
 		UnknownObject {
 			return UnknownInputBotAppType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15116,7 +15117,7 @@ fn decode_input_bot_inline_message_type_from_decoder(mut decoder Decoder) !Input
 		UnknownObject {
 			return UnknownInputBotInlineMessageType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15147,7 +15148,7 @@ fn decode_input_bot_inline_message_i_d_type_from_decoder(mut decoder Decoder) !I
 		UnknownObject {
 			return UnknownInputBotInlineMessageIDType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15184,7 +15185,7 @@ fn decode_input_bot_inline_result_type_from_decoder(mut decoder Decoder) !InputB
 		UnknownObject {
 			return UnknownInputBotInlineResultType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15212,7 +15213,7 @@ fn decode_input_business_away_message_type_from_decoder(mut decoder Decoder) !In
 		UnknownObject {
 			return UnknownInputBusinessAwayMessageType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15240,7 +15241,7 @@ fn decode_input_business_bot_recipients_type_from_decoder(mut decoder Decoder) !
 		UnknownObject {
 			return UnknownInputBusinessBotRecipientsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15268,7 +15269,7 @@ fn decode_input_business_chat_link_type_from_decoder(mut decoder Decoder) !Input
 		UnknownObject {
 			return UnknownInputBusinessChatLinkType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15296,7 +15297,7 @@ fn decode_input_business_greeting_message_type_from_decoder(mut decoder Decoder)
 		UnknownObject {
 			return UnknownInputBusinessGreetingMessageType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15324,7 +15325,7 @@ fn decode_input_business_intro_type_from_decoder(mut decoder Decoder) !InputBusi
 		UnknownObject {
 			return UnknownInputBusinessIntroType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15352,7 +15353,7 @@ fn decode_input_business_recipients_type_from_decoder(mut decoder Decoder) !Inpu
 		UnknownObject {
 			return UnknownInputBusinessRecipientsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15386,7 +15387,7 @@ fn decode_input_channel_type_from_decoder(mut decoder Decoder) !InputChannelType
 		UnknownObject {
 			return UnknownInputChannelType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15420,7 +15421,7 @@ fn decode_input_chat_photo_type_from_decoder(mut decoder Decoder) !InputChatPhot
 		UnknownObject {
 			return UnknownInputChatPhotoType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15454,7 +15455,7 @@ fn decode_input_chat_theme_type_from_decoder(mut decoder Decoder) !InputChatThem
 		UnknownObject {
 			return UnknownInputChatThemeType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15482,7 +15483,7 @@ fn decode_input_chatlist_type_from_decoder(mut decoder Decoder) !InputChatlistTy
 		UnknownObject {
 			return UnknownInputChatlistType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15513,7 +15514,7 @@ fn decode_input_check_password_s_r_p_type_from_decoder(mut decoder Decoder) !Inp
 		UnknownObject {
 			return UnknownInputCheckPasswordSRPType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15541,7 +15542,7 @@ fn decode_input_client_proxy_type_from_decoder(mut decoder Decoder) !InputClient
 		UnknownObject {
 			return UnknownInputClientProxyType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15572,7 +15573,7 @@ fn decode_input_collectible_type_from_decoder(mut decoder Decoder) !InputCollect
 		UnknownObject {
 			return UnknownInputCollectibleType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15600,7 +15601,7 @@ fn decode_input_contact_type_from_decoder(mut decoder Decoder) !InputContactType
 		UnknownObject {
 			return UnknownInputContactType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15631,7 +15632,7 @@ fn decode_input_dialog_peer_type_from_decoder(mut decoder Decoder) !InputDialogP
 		UnknownObject {
 			return UnknownInputDialogPeerType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15662,7 +15663,7 @@ fn decode_input_document_type_from_decoder(mut decoder Decoder) !InputDocumentTy
 		UnknownObject {
 			return UnknownInputDocumentType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15690,7 +15691,7 @@ fn decode_input_encrypted_chat_type_from_decoder(mut decoder Decoder) !InputEncr
 		UnknownObject {
 			return UnknownInputEncryptedChatType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15727,7 +15728,7 @@ fn decode_input_encrypted_file_type_from_decoder(mut decoder Decoder) !InputEncr
 		UnknownObject {
 			return UnknownInputEncryptedFileType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15761,7 +15762,7 @@ fn decode_input_file_type_from_decoder(mut decoder Decoder) !InputFileType {
 		UnknownObject {
 			return UnknownInputFileType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15816,7 +15817,7 @@ fn decode_input_file_location_type_from_decoder(mut decoder Decoder) !InputFileL
 		UnknownObject {
 			return UnknownInputFileLocationType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15844,7 +15845,7 @@ fn decode_input_folder_peer_type_from_decoder(mut decoder Decoder) !InputFolderP
 		UnknownObject {
 			return UnknownInputFolderPeerType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15875,7 +15876,7 @@ fn decode_input_game_type_from_decoder(mut decoder Decoder) !InputGameType {
 		UnknownObject {
 			return UnknownInputGameType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15906,7 +15907,7 @@ fn decode_input_geo_point_type_from_decoder(mut decoder Decoder) !InputGeoPointT
 		UnknownObject {
 			return UnknownInputGeoPointType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -15940,7 +15941,7 @@ fn decode_input_group_call_type_from_decoder(mut decoder Decoder) !InputGroupCal
 		UnknownObject {
 			return UnknownInputGroupCallType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16010,7 +16011,7 @@ fn decode_input_invoice_type_from_decoder(mut decoder Decoder) !InputInvoiceType
 		UnknownObject {
 			return UnknownInputInvoiceType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16095,7 +16096,7 @@ fn decode_input_media_type_from_decoder(mut decoder Decoder) !InputMediaType {
 		UnknownObject {
 			return UnknownInputMediaType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16132,7 +16133,7 @@ fn decode_input_message_type_from_decoder(mut decoder Decoder) !InputMessageType
 		UnknownObject {
 			return UnknownInputMessageType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16172,7 +16173,7 @@ fn decode_input_notify_peer_type_from_decoder(mut decoder Decoder) !InputNotifyP
 		UnknownObject {
 			return UnknownInputNotifyPeerType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16203,7 +16204,7 @@ fn decode_input_passkey_credential_type_from_decoder(mut decoder Decoder) !Input
 		UnknownObject {
 			return UnknownInputPasskeyCredentialType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16234,7 +16235,7 @@ fn decode_input_passkey_response_type_from_decoder(mut decoder Decoder) !InputPa
 		UnknownObject {
 			return UnknownInputPasskeyResponseType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16271,7 +16272,7 @@ fn decode_input_payment_credentials_type_from_decoder(mut decoder Decoder) !Inpu
 		UnknownObject {
 			return UnknownInputPaymentCredentialsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16317,7 +16318,7 @@ fn decode_input_peer_type_from_decoder(mut decoder Decoder) !InputPeerType {
 		UnknownObject {
 			return UnknownInputPeerType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16345,7 +16346,7 @@ fn decode_input_peer_notify_settings_type_from_decoder(mut decoder Decoder) !Inp
 		UnknownObject {
 			return UnknownInputPeerNotifySettingsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16373,7 +16374,7 @@ fn decode_input_phone_call_type_from_decoder(mut decoder Decoder) !InputPhoneCal
 		UnknownObject {
 			return UnknownInputPhoneCallType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16404,7 +16405,7 @@ fn decode_input_photo_type_from_decoder(mut decoder Decoder) !InputPhotoType {
 		UnknownObject {
 			return UnknownInputPhotoType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16471,7 +16472,7 @@ fn decode_input_privacy_key_type_from_decoder(mut decoder Decoder) !InputPrivacy
 		UnknownObject {
 			return UnknownInputPrivacyKeyType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16532,7 +16533,7 @@ fn decode_input_privacy_rule_type_from_decoder(mut decoder Decoder) !InputPrivac
 		UnknownObject {
 			return UnknownInputPrivacyRuleType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16563,7 +16564,7 @@ fn decode_input_quick_reply_shortcut_type_from_decoder(mut decoder Decoder) !Inp
 		UnknownObject {
 			return UnknownInputQuickReplyShortcutType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16597,7 +16598,7 @@ fn decode_input_reply_to_type_from_decoder(mut decoder Decoder) !InputReplyToTyp
 		UnknownObject {
 			return UnknownInputReplyToType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16631,7 +16632,7 @@ fn decode_input_saved_star_gift_type_from_decoder(mut decoder Decoder) !InputSav
 		UnknownObject {
 			return UnknownInputSavedStarGiftType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16662,7 +16663,7 @@ fn decode_input_secure_file_type_from_decoder(mut decoder Decoder) !InputSecureF
 		UnknownObject {
 			return UnknownInputSecureFileType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16690,7 +16691,7 @@ fn decode_input_secure_value_type_from_decoder(mut decoder Decoder) !InputSecure
 		UnknownObject {
 			return UnknownInputSecureValueType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16718,7 +16719,7 @@ fn decode_input_single_media_type_from_decoder(mut decoder Decoder) !InputSingle
 		UnknownObject {
 			return UnknownInputSingleMediaType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16749,7 +16750,7 @@ fn decode_input_star_gift_auction_type_from_decoder(mut decoder Decoder) !InputS
 		UnknownObject {
 			return UnknownInputStarGiftAuctionType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16777,7 +16778,7 @@ fn decode_input_stars_transaction_type_from_decoder(mut decoder Decoder) !InputS
 		UnknownObject {
 			return UnknownInputStarsTransactionType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16838,7 +16839,7 @@ fn decode_input_sticker_set_type_from_decoder(mut decoder Decoder) !InputSticker
 		UnknownObject {
 			return UnknownInputStickerSetType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16866,7 +16867,7 @@ fn decode_input_sticker_set_item_type_from_decoder(mut decoder Decoder) !InputSt
 		UnknownObject {
 			return UnknownInputStickerSetItemType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16897,7 +16898,7 @@ fn decode_input_stickered_media_type_from_decoder(mut decoder Decoder) !InputSti
 		UnknownObject {
 			return UnknownInputStickeredMediaType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16946,7 +16947,7 @@ fn decode_input_store_payment_purpose_type_from_decoder(mut decoder Decoder) !In
 		UnknownObject {
 			return UnknownInputStorePaymentPurposeType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -16977,7 +16978,7 @@ fn decode_input_theme_type_from_decoder(mut decoder Decoder) !InputThemeType {
 		UnknownObject {
 			return UnknownInputThemeType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17005,7 +17006,7 @@ fn decode_input_theme_settings_type_from_decoder(mut decoder Decoder) !InputThem
 		UnknownObject {
 			return UnknownInputThemeSettingsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17042,7 +17043,7 @@ fn decode_input_user_type_from_decoder(mut decoder Decoder) !InputUserType {
 		UnknownObject {
 			return UnknownInputUserType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17076,7 +17077,7 @@ fn decode_input_wall_paper_type_from_decoder(mut decoder Decoder) !InputWallPape
 		UnknownObject {
 			return UnknownInputWallPaperType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17104,7 +17105,7 @@ fn decode_input_web_document_type_from_decoder(mut decoder Decoder) !InputWebDoc
 		UnknownObject {
 			return UnknownInputWebDocumentType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17138,7 +17139,7 @@ fn decode_input_web_file_location_type_from_decoder(mut decoder Decoder) !InputW
 		UnknownObject {
 			return UnknownInputWebFileLocationType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17166,7 +17167,7 @@ fn decode_invoice_type_from_decoder(mut decoder Decoder) !InvoiceType {
 		UnknownObject {
 			return UnknownInvoiceType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17197,7 +17198,7 @@ fn decode_ip_port_type_from_decoder(mut decoder Decoder) !IpPortType {
 		UnknownObject {
 			return UnknownIpPortType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17225,7 +17226,7 @@ fn decode_j_s_o_n_object_value_type_from_decoder(mut decoder Decoder) !JSONObjec
 		UnknownObject {
 			return UnknownJSONObjectValueType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17268,7 +17269,7 @@ fn decode_j_s_o_n_value_type_from_decoder(mut decoder Decoder) !JSONValueType {
 		UnknownObject {
 			return UnknownJSONValueType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17347,7 +17348,7 @@ fn decode_keyboard_button_type_from_decoder(mut decoder Decoder) !KeyboardButton
 		UnknownObject {
 			return UnknownKeyboardButtonType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17375,7 +17376,7 @@ fn decode_keyboard_button_row_type_from_decoder(mut decoder Decoder) !KeyboardBu
 		UnknownObject {
 			return UnknownKeyboardButtonRowType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17403,7 +17404,7 @@ fn decode_keyboard_button_style_type_from_decoder(mut decoder Decoder) !Keyboard
 		UnknownObject {
 			return UnknownKeyboardButtonStyleType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17431,7 +17432,7 @@ fn decode_labeled_price_type_from_decoder(mut decoder Decoder) !LabeledPriceType
 		UnknownObject {
 			return UnknownLabeledPriceType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17459,7 +17460,7 @@ fn decode_lang_pack_difference_type_from_decoder(mut decoder Decoder) !LangPackD
 		UnknownObject {
 			return UnknownLangPackDifferenceType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17487,7 +17488,7 @@ fn decode_lang_pack_language_type_from_decoder(mut decoder Decoder) !LangPackLan
 		UnknownObject {
 			return UnknownLangPackLanguageType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17521,7 +17522,7 @@ fn decode_lang_pack_string_type_from_decoder(mut decoder Decoder) !LangPackStrin
 		UnknownObject {
 			return UnknownLangPackStringType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17549,7 +17550,7 @@ fn decode_mask_coords_type_from_decoder(mut decoder Decoder) !MaskCoordsType {
 		UnknownObject {
 			return UnknownMaskCoordsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17601,7 +17602,7 @@ fn decode_media_area_type_from_decoder(mut decoder Decoder) !MediaAreaType {
 		UnknownObject {
 			return UnknownMediaAreaType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17629,7 +17630,7 @@ fn decode_media_area_coordinates_type_from_decoder(mut decoder Decoder) !MediaAr
 		UnknownObject {
 			return UnknownMediaAreaCoordinatesType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17663,7 +17664,7 @@ fn decode_message_type_from_decoder(mut decoder Decoder) !MessageType {
 		UnknownObject {
 			return UnknownMessageType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17874,7 +17875,7 @@ fn decode_message_action_type_from_decoder(mut decoder Decoder) !MessageActionTy
 		UnknownObject {
 			return UnknownMessageActionType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17962,7 +17963,7 @@ fn decode_message_entity_type_from_decoder(mut decoder Decoder) !MessageEntityTy
 		UnknownObject {
 			return UnknownMessageEntityType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -17993,7 +17994,7 @@ fn decode_message_extended_media_type_from_decoder(mut decoder Decoder) !Message
 		UnknownObject {
 			return UnknownMessageExtendedMediaType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18021,7 +18022,7 @@ fn decode_message_fwd_header_type_from_decoder(mut decoder Decoder) !MessageFwdH
 		UnknownObject {
 			return UnknownMessageFwdHeaderType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18103,7 +18104,7 @@ fn decode_message_media_type_from_decoder(mut decoder Decoder) !MessageMediaType
 		UnknownObject {
 			return UnknownMessageMediaType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18131,7 +18132,7 @@ fn decode_message_peer_reaction_type_from_decoder(mut decoder Decoder) !MessageP
 		UnknownObject {
 			return UnknownMessagePeerReactionType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18165,7 +18166,7 @@ fn decode_message_peer_vote_type_from_decoder(mut decoder Decoder) !MessagePeerV
 		UnknownObject {
 			return UnknownMessagePeerVoteType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18193,7 +18194,7 @@ fn decode_message_range_type_from_decoder(mut decoder Decoder) !MessageRangeType
 		UnknownObject {
 			return UnknownMessageRangeType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18221,7 +18222,7 @@ fn decode_message_reactions_type_from_decoder(mut decoder Decoder) !MessageReact
 		UnknownObject {
 			return UnknownMessageReactionsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18249,7 +18250,7 @@ fn decode_message_reactor_type_from_decoder(mut decoder Decoder) !MessageReactor
 		UnknownObject {
 			return UnknownMessageReactorType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18277,7 +18278,7 @@ fn decode_message_replies_type_from_decoder(mut decoder Decoder) !MessageReplies
 		UnknownObject {
 			return UnknownMessageRepliesType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18308,7 +18309,7 @@ fn decode_message_reply_header_type_from_decoder(mut decoder Decoder) !MessageRe
 		UnknownObject {
 			return UnknownMessageReplyHeaderType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18336,7 +18337,7 @@ fn decode_message_report_option_type_from_decoder(mut decoder Decoder) !MessageR
 		UnknownObject {
 			return UnknownMessageReportOptionType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18364,7 +18365,7 @@ fn decode_message_views_type_from_decoder(mut decoder Decoder) !MessageViewsType
 		UnknownObject {
 			return UnknownMessageViewsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18440,7 +18441,7 @@ fn decode_messages_filter_type_from_decoder(mut decoder Decoder) !MessagesFilter
 		UnknownObject {
 			return UnknownMessagesFilterType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18468,7 +18469,7 @@ fn decode_missing_invitee_type_from_decoder(mut decoder Decoder) !MissingInvitee
 		UnknownObject {
 			return UnknownMissingInviteeType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18499,7 +18500,7 @@ fn decode_msg_detailed_info_type_from_decoder(mut decoder Decoder) !MsgDetailedI
 		UnknownObject {
 			return UnknownMsgDetailedInfoType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18527,7 +18528,7 @@ fn decode_msg_resend_req_type_from_decoder(mut decoder Decoder) !MsgResendReqTyp
 		UnknownObject {
 			return UnknownMsgResendReqType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18555,7 +18556,7 @@ fn decode_msgs_ack_type_from_decoder(mut decoder Decoder) !MsgsAckType {
 		UnknownObject {
 			return UnknownMsgsAckType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18583,7 +18584,7 @@ fn decode_msgs_all_info_type_from_decoder(mut decoder Decoder) !MsgsAllInfoType 
 		UnknownObject {
 			return UnknownMsgsAllInfoType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18611,7 +18612,7 @@ fn decode_msgs_state_info_type_from_decoder(mut decoder Decoder) !MsgsStateInfoT
 		UnknownObject {
 			return UnknownMsgsStateInfoType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18639,7 +18640,7 @@ fn decode_msgs_state_req_type_from_decoder(mut decoder Decoder) !MsgsStateReqTyp
 		UnknownObject {
 			return UnknownMsgsStateReqType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18667,7 +18668,7 @@ fn decode_my_boost_type_from_decoder(mut decoder Decoder) !MyBoostType {
 		UnknownObject {
 			return UnknownMyBoostType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18695,7 +18696,7 @@ fn decode_nearest_dc_type_from_decoder(mut decoder Decoder) !NearestDcType {
 		UnknownObject {
 			return UnknownNearestDcType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18723,7 +18724,7 @@ fn decode_new_session_type_from_decoder(mut decoder Decoder) !NewSessionType {
 		UnknownObject {
 			return UnknownNewSessionType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18760,7 +18761,7 @@ fn decode_notification_sound_type_from_decoder(mut decoder Decoder) !Notificatio
 		UnknownObject {
 			return UnknownNotificationSoundType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18800,7 +18801,7 @@ fn decode_notify_peer_type_from_decoder(mut decoder Decoder) !NotifyPeerType {
 		UnknownObject {
 			return UnknownNotifyPeerType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18828,7 +18829,7 @@ fn decode_null_type_from_decoder(mut decoder Decoder) !NullType {
 		UnknownObject {
 			return UnknownNullType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18856,7 +18857,7 @@ fn decode_outbox_read_date_type_from_decoder(mut decoder Decoder) !OutboxReadDat
 		UnknownObject {
 			return UnknownOutboxReadDateType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18893,7 +18894,7 @@ fn decode_p_q_inner_data_type_from_decoder(mut decoder Decoder) !PQInnerDataType
 		UnknownObject {
 			return UnknownPQInnerDataType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -18921,7 +18922,7 @@ fn decode_page_type_from_decoder(mut decoder Decoder) !PageType {
 		UnknownObject {
 			return UnknownPageType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19033,7 +19034,7 @@ fn decode_page_block_type_from_decoder(mut decoder Decoder) !PageBlockType {
 		UnknownObject {
 			return UnknownPageBlockType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19061,7 +19062,7 @@ fn decode_page_caption_type_from_decoder(mut decoder Decoder) !PageCaptionType {
 		UnknownObject {
 			return UnknownPageCaptionType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19092,7 +19093,7 @@ fn decode_page_list_item_type_from_decoder(mut decoder Decoder) !PageListItemTyp
 		UnknownObject {
 			return UnknownPageListItemType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19123,7 +19124,7 @@ fn decode_page_list_ordered_item_type_from_decoder(mut decoder Decoder) !PageLis
 		UnknownObject {
 			return UnknownPageListOrderedItemType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19151,7 +19152,7 @@ fn decode_page_related_article_type_from_decoder(mut decoder Decoder) !PageRelat
 		UnknownObject {
 			return UnknownPageRelatedArticleType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19179,7 +19180,7 @@ fn decode_page_table_cell_type_from_decoder(mut decoder Decoder) !PageTableCellT
 		UnknownObject {
 			return UnknownPageTableCellType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19207,7 +19208,7 @@ fn decode_page_table_row_type_from_decoder(mut decoder Decoder) !PageTableRowTyp
 		UnknownObject {
 			return UnknownPageTableRowType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19241,7 +19242,7 @@ fn decode_paid_reaction_privacy_type_from_decoder(mut decoder Decoder) !PaidReac
 		UnknownObject {
 			return UnknownPaidReactionPrivacyType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19269,7 +19270,7 @@ fn decode_passkey_type_from_decoder(mut decoder Decoder) !PasskeyType {
 		UnknownObject {
 			return UnknownPasskeyType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19300,7 +19301,7 @@ fn decode_password_kdf_algo_type_from_decoder(mut decoder Decoder) !PasswordKdfA
 		UnknownObject {
 			return UnknownPasswordKdfAlgoType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19328,7 +19329,7 @@ fn decode_payment_charge_type_from_decoder(mut decoder Decoder) !PaymentChargeTy
 		UnknownObject {
 			return UnknownPaymentChargeType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19356,7 +19357,7 @@ fn decode_payment_form_method_type_from_decoder(mut decoder Decoder) !PaymentFor
 		UnknownObject {
 			return UnknownPaymentFormMethodType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19384,7 +19385,7 @@ fn decode_payment_requested_info_type_from_decoder(mut decoder Decoder) !Payment
 		UnknownObject {
 			return UnknownPaymentRequestedInfoType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19412,7 +19413,7 @@ fn decode_payment_saved_credentials_type_from_decoder(mut decoder Decoder) !Paym
 		UnknownObject {
 			return UnknownPaymentSavedCredentialsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19446,7 +19447,7 @@ fn decode_peer_type_from_decoder(mut decoder Decoder) !PeerType {
 		UnknownObject {
 			return UnknownPeerType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19474,7 +19475,7 @@ fn decode_peer_blocked_type_from_decoder(mut decoder Decoder) !PeerBlockedType {
 		UnknownObject {
 			return UnknownPeerBlockedType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19508,7 +19509,7 @@ fn decode_peer_color_type_from_decoder(mut decoder Decoder) !PeerColorType {
 		UnknownObject {
 			return UnknownPeerColorType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19539,7 +19540,7 @@ fn decode_peer_located_type_from_decoder(mut decoder Decoder) !PeerLocatedType {
 		UnknownObject {
 			return UnknownPeerLocatedType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19567,7 +19568,7 @@ fn decode_peer_notify_settings_type_from_decoder(mut decoder Decoder) !PeerNotif
 		UnknownObject {
 			return UnknownPeerNotifySettingsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19595,7 +19596,7 @@ fn decode_peer_settings_type_from_decoder(mut decoder Decoder) !PeerSettingsType
 		UnknownObject {
 			return UnknownPeerSettingsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19623,7 +19624,7 @@ fn decode_peer_stories_type_from_decoder(mut decoder Decoder) !PeerStoriesType {
 		UnknownObject {
 			return UnknownPeerStoriesType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19651,7 +19652,7 @@ fn decode_pending_suggestion_type_from_decoder(mut decoder Decoder) !PendingSugg
 		UnknownObject {
 			return UnknownPendingSuggestionType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19694,7 +19695,7 @@ fn decode_phone_call_type_from_decoder(mut decoder Decoder) !PhoneCallType {
 		UnknownObject {
 			return UnknownPhoneCallType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19734,7 +19735,7 @@ fn decode_phone_call_discard_reason_type_from_decoder(mut decoder Decoder) !Phon
 		UnknownObject {
 			return UnknownPhoneCallDiscardReasonType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19762,7 +19763,7 @@ fn decode_phone_call_protocol_type_from_decoder(mut decoder Decoder) !PhoneCallP
 		UnknownObject {
 			return UnknownPhoneCallProtocolType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19793,7 +19794,7 @@ fn decode_phone_connection_type_from_decoder(mut decoder Decoder) !PhoneConnecti
 		UnknownObject {
 			return UnknownPhoneConnectionType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19824,7 +19825,7 @@ fn decode_photo_type_from_decoder(mut decoder Decoder) !PhotoType {
 		UnknownObject {
 			return UnknownPhotoType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19867,7 +19868,7 @@ fn decode_photo_size_type_from_decoder(mut decoder Decoder) !PhotoSizeType {
 		UnknownObject {
 			return UnknownPhotoSizeType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19895,7 +19896,7 @@ fn decode_poll_type_from_decoder(mut decoder Decoder) !PollType {
 		UnknownObject {
 			return UnknownPollType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19923,7 +19924,7 @@ fn decode_poll_answer_type_from_decoder(mut decoder Decoder) !PollAnswerType {
 		UnknownObject {
 			return UnknownPollAnswerType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19951,7 +19952,7 @@ fn decode_poll_answer_voters_type_from_decoder(mut decoder Decoder) !PollAnswerV
 		UnknownObject {
 			return UnknownPollAnswerVotersType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -19979,7 +19980,7 @@ fn decode_poll_results_type_from_decoder(mut decoder Decoder) !PollResultsType {
 		UnknownObject {
 			return UnknownPollResultsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20007,7 +20008,7 @@ fn decode_pong_type_from_decoder(mut decoder Decoder) !PongType {
 		UnknownObject {
 			return UnknownPongType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20035,7 +20036,7 @@ fn decode_popular_contact_type_from_decoder(mut decoder Decoder) !PopularContact
 		UnknownObject {
 			return UnknownPopularContactType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20063,7 +20064,7 @@ fn decode_post_address_type_from_decoder(mut decoder Decoder) !PostAddressType {
 		UnknownObject {
 			return UnknownPostAddressType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20094,7 +20095,7 @@ fn decode_post_interaction_counters_type_from_decoder(mut decoder Decoder) !Post
 		UnknownObject {
 			return UnknownPostInteractionCountersType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20122,7 +20123,7 @@ fn decode_premium_gift_code_option_type_from_decoder(mut decoder Decoder) !Premi
 		UnknownObject {
 			return UnknownPremiumGiftCodeOptionType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20150,7 +20151,7 @@ fn decode_premium_subscription_option_type_from_decoder(mut decoder Decoder) !Pr
 		UnknownObject {
 			return UnknownPremiumSubscriptionOptionType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20181,7 +20182,7 @@ fn decode_prepaid_giveaway_type_from_decoder(mut decoder Decoder) !PrepaidGiveaw
 		UnknownObject {
 			return UnknownPrepaidGiveawayType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20248,7 +20249,7 @@ fn decode_privacy_key_type_from_decoder(mut decoder Decoder) !PrivacyKeyType {
 		UnknownObject {
 			return UnknownPrivacyKeyType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20309,7 +20310,7 @@ fn decode_privacy_rule_type_from_decoder(mut decoder Decoder) !PrivacyRuleType {
 		UnknownObject {
 			return UnknownPrivacyRuleType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20358,7 +20359,7 @@ fn decode_profile_tab_type_from_decoder(mut decoder Decoder) !ProfileTabType {
 		UnknownObject {
 			return UnknownProfileTabType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20389,7 +20390,7 @@ fn decode_public_forward_type_from_decoder(mut decoder Decoder) !PublicForwardTy
 		UnknownObject {
 			return UnknownPublicForwardType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20417,7 +20418,7 @@ fn decode_quick_reply_type_from_decoder(mut decoder Decoder) !QuickReplyType {
 		UnknownObject {
 			return UnknownQuickReplyType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20454,7 +20455,7 @@ fn decode_reaction_type_from_decoder(mut decoder Decoder) !ReactionType {
 		UnknownObject {
 			return UnknownReactionType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20482,7 +20483,7 @@ fn decode_reaction_count_type_from_decoder(mut decoder Decoder) !ReactionCountTy
 		UnknownObject {
 			return UnknownReactionCountType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20513,7 +20514,7 @@ fn decode_reaction_notifications_from_type_from_decoder(mut decoder Decoder) !Re
 		UnknownObject {
 			return UnknownReactionNotificationsFromType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20541,7 +20542,7 @@ fn decode_reactions_notify_settings_type_from_decoder(mut decoder Decoder) !Reac
 		UnknownObject {
 			return UnknownReactionsNotifySettingsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20569,7 +20570,7 @@ fn decode_read_participant_date_type_from_decoder(mut decoder Decoder) !ReadPart
 		UnknownObject {
 			return UnknownReadParticipantDateType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20597,7 +20598,7 @@ fn decode_received_notify_message_type_from_decoder(mut decoder Decoder) !Receiv
 		UnknownObject {
 			return UnknownReceivedNotifyMessageType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20637,7 +20638,7 @@ fn decode_recent_me_url_type_from_decoder(mut decoder Decoder) !RecentMeUrlType 
 		UnknownObject {
 			return UnknownRecentMeUrlType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20665,7 +20666,7 @@ fn decode_recent_story_type_from_decoder(mut decoder Decoder) !RecentStoryType {
 		UnknownObject {
 			return UnknownRecentStoryType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20702,7 +20703,7 @@ fn decode_reply_markup_type_from_decoder(mut decoder Decoder) !ReplyMarkupType {
 		UnknownObject {
 			return UnknownReplyMarkupType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20757,7 +20758,7 @@ fn decode_report_reason_type_from_decoder(mut decoder Decoder) !ReportReasonType
 		UnknownObject {
 			return UnknownReportReasonType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20791,7 +20792,7 @@ fn decode_report_result_type_from_decoder(mut decoder Decoder) !ReportResultType
 		UnknownObject {
 			return UnknownReportResultType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20825,7 +20826,7 @@ fn decode_request_peer_type_type_from_decoder(mut decoder Decoder) !RequestPeerT
 		UnknownObject {
 			return UnknownRequestPeerTypeType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20859,7 +20860,7 @@ fn decode_requested_peer_type_from_decoder(mut decoder Decoder) !RequestedPeerTy
 		UnknownObject {
 			return UnknownRequestedPeerType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20893,7 +20894,7 @@ fn decode_requirement_to_contact_type_from_decoder(mut decoder Decoder) !Require
 		UnknownObject {
 			return UnknownRequirementToContactType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20921,7 +20922,7 @@ fn decode_res_p_q_type_from_decoder(mut decoder Decoder) !ResPQType {
 		UnknownObject {
 			return UnknownResPQType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -20949,7 +20950,7 @@ fn decode_restriction_reason_type_from_decoder(mut decoder Decoder) !Restriction
 		UnknownObject {
 			return UnknownRestrictionReasonType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21022,7 +21023,7 @@ fn decode_rich_text_type_from_decoder(mut decoder Decoder) !RichTextType {
 		UnknownObject {
 			return UnknownRichTextType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21056,7 +21057,7 @@ fn decode_rpc_drop_answer_type_from_decoder(mut decoder Decoder) !RpcDropAnswerT
 		UnknownObject {
 			return UnknownRpcDropAnswerType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21084,7 +21085,7 @@ fn decode_rpc_error_type_from_decoder(mut decoder Decoder) !RpcErrorType {
 		UnknownObject {
 			return UnknownRpcErrorType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21112,7 +21113,7 @@ fn decode_saved_contact_type_from_decoder(mut decoder Decoder) !SavedContactType
 		UnknownObject {
 			return UnknownSavedContactType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21143,7 +21144,7 @@ fn decode_saved_dialog_type_from_decoder(mut decoder Decoder) !SavedDialogType {
 		UnknownObject {
 			return UnknownSavedDialogType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21171,7 +21172,7 @@ fn decode_saved_reaction_tag_type_from_decoder(mut decoder Decoder) !SavedReacti
 		UnknownObject {
 			return UnknownSavedReactionTagType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21199,7 +21200,7 @@ fn decode_saved_star_gift_type_from_decoder(mut decoder Decoder) !SavedStarGiftT
 		UnknownObject {
 			return UnknownSavedStarGiftType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21227,7 +21228,7 @@ fn decode_search_posts_flood_type_from_decoder(mut decoder Decoder) !SearchPosts
 		UnknownObject {
 			return UnknownSearchPostsFloodType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21255,7 +21256,7 @@ fn decode_search_results_calendar_period_type_from_decoder(mut decoder Decoder) 
 		UnknownObject {
 			return UnknownSearchResultsCalendarPeriodType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21283,7 +21284,7 @@ fn decode_search_results_position_type_from_decoder(mut decoder Decoder) !Search
 		UnknownObject {
 			return UnknownSearchResultsPositionType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21311,7 +21312,7 @@ fn decode_secure_credentials_encrypted_type_from_decoder(mut decoder Decoder) !S
 		UnknownObject {
 			return UnknownSecureCredentialsEncryptedType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21339,7 +21340,7 @@ fn decode_secure_data_type_from_decoder(mut decoder Decoder) !SecureDataType {
 		UnknownObject {
 			return UnknownSecureDataType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21370,7 +21371,7 @@ fn decode_secure_file_type_from_decoder(mut decoder Decoder) !SecureFileType {
 		UnknownObject {
 			return UnknownSecureFileType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21404,7 +21405,7 @@ fn decode_secure_password_kdf_algo_type_from_decoder(mut decoder Decoder) !Secur
 		UnknownObject {
 			return UnknownSecurePasswordKdfAlgoType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21435,7 +21436,7 @@ fn decode_secure_plain_data_type_from_decoder(mut decoder Decoder) !SecurePlainD
 		UnknownObject {
 			return UnknownSecurePlainDataType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21466,7 +21467,7 @@ fn decode_secure_required_type_type_from_decoder(mut decoder Decoder) !SecureReq
 		UnknownObject {
 			return UnknownSecureRequiredTypeType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21494,7 +21495,7 @@ fn decode_secure_secret_settings_type_from_decoder(mut decoder Decoder) !SecureS
 		UnknownObject {
 			return UnknownSecureSecretSettingsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21522,7 +21523,7 @@ fn decode_secure_value_type_from_decoder(mut decoder Decoder) !SecureValueType {
 		UnknownObject {
 			return UnknownSecureValueType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21574,7 +21575,7 @@ fn decode_secure_value_error_type_from_decoder(mut decoder Decoder) !SecureValue
 		UnknownObject {
 			return UnknownSecureValueErrorType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21602,7 +21603,7 @@ fn decode_secure_value_hash_type_from_decoder(mut decoder Decoder) !SecureValueH
 		UnknownObject {
 			return UnknownSecureValueHashType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21666,7 +21667,7 @@ fn decode_secure_value_type_type_from_decoder(mut decoder Decoder) !SecureValueT
 		UnknownObject {
 			return UnknownSecureValueTypeType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21694,7 +21695,7 @@ fn decode_send_as_peer_type_from_decoder(mut decoder Decoder) !SendAsPeerType {
 		UnknownObject {
 			return UnknownSendAsPeerType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21776,7 +21777,7 @@ fn decode_send_message_action_type_from_decoder(mut decoder Decoder) !SendMessag
 		UnknownObject {
 			return UnknownSendMessageActionType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21807,7 +21808,7 @@ fn decode_server_d_h_params_type_from_decoder(mut decoder Decoder) !ServerDHPara
 		UnknownObject {
 			return UnknownServerDHParamsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21835,7 +21836,7 @@ fn decode_server_d_h_inner_data_type_from_decoder(mut decoder Decoder) !ServerDH
 		UnknownObject {
 			return UnknownServerDHInnerDataType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21869,7 +21870,7 @@ fn decode_set_client_d_h_params_answer_type_from_decoder(mut decoder Decoder) !S
 		UnknownObject {
 			return UnknownSetClientDHParamsAnswerType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21897,7 +21898,7 @@ fn decode_shipping_option_type_from_decoder(mut decoder Decoder) !ShippingOption
 		UnknownObject {
 			return UnknownShippingOptionType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21925,7 +21926,7 @@ fn decode_sms_job_type_from_decoder(mut decoder Decoder) !SmsJobType {
 		UnknownObject {
 			return UnknownSmsJobType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21953,7 +21954,7 @@ fn decode_sponsored_message_type_from_decoder(mut decoder Decoder) !SponsoredMes
 		UnknownObject {
 			return UnknownSponsoredMessageType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -21981,7 +21982,7 @@ fn decode_sponsored_message_report_option_type_from_decoder(mut decoder Decoder)
 		UnknownObject {
 			return UnknownSponsoredMessageReportOptionType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22009,7 +22010,7 @@ fn decode_sponsored_peer_type_from_decoder(mut decoder Decoder) !SponsoredPeerTy
 		UnknownObject {
 			return UnknownSponsoredPeerType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22040,7 +22041,7 @@ fn decode_star_gift_type_from_decoder(mut decoder Decoder) !StarGiftType {
 		UnknownObject {
 			return UnknownStarGiftType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22068,7 +22069,7 @@ fn decode_star_gift_active_auction_state_type_from_decoder(mut decoder Decoder) 
 		UnknownObject {
 			return UnknownStarGiftActiveAuctionStateType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22105,7 +22106,7 @@ fn decode_star_gift_attribute_type_from_decoder(mut decoder Decoder) !StarGiftAt
 		UnknownObject {
 			return UnknownStarGiftAttributeType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22133,7 +22134,7 @@ fn decode_star_gift_attribute_counter_type_from_decoder(mut decoder Decoder) !St
 		UnknownObject {
 			return UnknownStarGiftAttributeCounterType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22167,7 +22168,7 @@ fn decode_star_gift_attribute_id_type_from_decoder(mut decoder Decoder) !StarGif
 		UnknownObject {
 			return UnknownStarGiftAttributeIdType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22207,7 +22208,7 @@ fn decode_star_gift_attribute_rarity_type_from_decoder(mut decoder Decoder) !Sta
 		UnknownObject {
 			return UnknownStarGiftAttributeRarityType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22235,7 +22236,7 @@ fn decode_star_gift_auction_acquired_gift_type_from_decoder(mut decoder Decoder)
 		UnknownObject {
 			return UnknownStarGiftAuctionAcquiredGiftType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22266,7 +22267,7 @@ fn decode_star_gift_auction_round_type_from_decoder(mut decoder Decoder) !StarGi
 		UnknownObject {
 			return UnknownStarGiftAuctionRoundType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22300,7 +22301,7 @@ fn decode_star_gift_auction_state_type_from_decoder(mut decoder Decoder) !StarGi
 		UnknownObject {
 			return UnknownStarGiftAuctionStateType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22328,7 +22329,7 @@ fn decode_star_gift_auction_user_state_type_from_decoder(mut decoder Decoder) !S
 		UnknownObject {
 			return UnknownStarGiftAuctionUserStateType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22356,7 +22357,7 @@ fn decode_star_gift_background_type_from_decoder(mut decoder Decoder) !StarGiftB
 		UnknownObject {
 			return UnknownStarGiftBackgroundType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22384,7 +22385,7 @@ fn decode_star_gift_collection_type_from_decoder(mut decoder Decoder) !StarGiftC
 		UnknownObject {
 			return UnknownStarGiftCollectionType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22412,7 +22413,7 @@ fn decode_star_gift_upgrade_price_type_from_decoder(mut decoder Decoder) !StarGi
 		UnknownObject {
 			return UnknownStarGiftUpgradePriceType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22440,7 +22441,7 @@ fn decode_star_ref_program_type_from_decoder(mut decoder Decoder) !StarRefProgra
 		UnknownObject {
 			return UnknownStarRefProgramType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22471,7 +22472,7 @@ fn decode_stars_amount_type_from_decoder(mut decoder Decoder) !StarsAmountType {
 		UnknownObject {
 			return UnknownStarsAmountType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22499,7 +22500,7 @@ fn decode_stars_gift_option_type_from_decoder(mut decoder Decoder) !StarsGiftOpt
 		UnknownObject {
 			return UnknownStarsGiftOptionType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22527,7 +22528,7 @@ fn decode_stars_giveaway_option_type_from_decoder(mut decoder Decoder) !StarsGiv
 		UnknownObject {
 			return UnknownStarsGiveawayOptionType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22555,7 +22556,7 @@ fn decode_stars_giveaway_winners_option_type_from_decoder(mut decoder Decoder) !
 		UnknownObject {
 			return UnknownStarsGiveawayWinnersOptionType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22583,7 +22584,7 @@ fn decode_stars_rating_type_from_decoder(mut decoder Decoder) !StarsRatingType {
 		UnknownObject {
 			return UnknownStarsRatingType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22611,7 +22612,7 @@ fn decode_stars_revenue_status_type_from_decoder(mut decoder Decoder) !StarsReve
 		UnknownObject {
 			return UnknownStarsRevenueStatusType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22639,7 +22640,7 @@ fn decode_stars_subscription_type_from_decoder(mut decoder Decoder) !StarsSubscr
 		UnknownObject {
 			return UnknownStarsSubscriptionType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22667,7 +22668,7 @@ fn decode_stars_subscription_pricing_type_from_decoder(mut decoder Decoder) !Sta
 		UnknownObject {
 			return UnknownStarsSubscriptionPricingType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22695,7 +22696,7 @@ fn decode_stars_topup_option_type_from_decoder(mut decoder Decoder) !StarsTopupO
 		UnknownObject {
 			return UnknownStarsTopupOptionType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22723,7 +22724,7 @@ fn decode_stars_transaction_type_from_decoder(mut decoder Decoder) !StarsTransac
 		UnknownObject {
 			return UnknownStarsTransactionType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22772,7 +22773,7 @@ fn decode_stars_transaction_peer_type_from_decoder(mut decoder Decoder) !StarsTr
 		UnknownObject {
 			return UnknownStarsTransactionPeerType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22800,7 +22801,7 @@ fn decode_stats_abs_value_and_prev_type_from_decoder(mut decoder Decoder) !Stats
 		UnknownObject {
 			return UnknownStatsAbsValueAndPrevType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22828,7 +22829,7 @@ fn decode_stats_date_range_days_type_from_decoder(mut decoder Decoder) !StatsDat
 		UnknownObject {
 			return UnknownStatsDateRangeDaysType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22862,7 +22863,7 @@ fn decode_stats_graph_type_from_decoder(mut decoder Decoder) !StatsGraphType {
 		UnknownObject {
 			return UnknownStatsGraphType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22890,7 +22891,7 @@ fn decode_stats_group_top_admin_type_from_decoder(mut decoder Decoder) !StatsGro
 		UnknownObject {
 			return UnknownStatsGroupTopAdminType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22918,7 +22919,7 @@ fn decode_stats_group_top_inviter_type_from_decoder(mut decoder Decoder) !StatsG
 		UnknownObject {
 			return UnknownStatsGroupTopInviterType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22946,7 +22947,7 @@ fn decode_stats_group_top_poster_type_from_decoder(mut decoder Decoder) !StatsGr
 		UnknownObject {
 			return UnknownStatsGroupTopPosterType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -22974,7 +22975,7 @@ fn decode_stats_percent_value_type_from_decoder(mut decoder Decoder) !StatsPerce
 		UnknownObject {
 			return UnknownStatsPercentValueType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23002,7 +23003,7 @@ fn decode_stats_u_r_l_type_from_decoder(mut decoder Decoder) !StatsURLType {
 		UnknownObject {
 			return UnknownStatsURLType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23030,7 +23031,7 @@ fn decode_sticker_keyword_type_from_decoder(mut decoder Decoder) !StickerKeyword
 		UnknownObject {
 			return UnknownStickerKeywordType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23058,7 +23059,7 @@ fn decode_sticker_pack_type_from_decoder(mut decoder Decoder) !StickerPackType {
 		UnknownObject {
 			return UnknownStickerPackType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23086,7 +23087,7 @@ fn decode_sticker_set_type_from_decoder(mut decoder Decoder) !StickerSetType {
 		UnknownObject {
 			return UnknownStickerSetType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23123,7 +23124,7 @@ fn decode_sticker_set_covered_type_from_decoder(mut decoder Decoder) !StickerSet
 		UnknownObject {
 			return UnknownStickerSetCoveredType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23151,7 +23152,7 @@ fn decode_stories_stealth_mode_type_from_decoder(mut decoder Decoder) !StoriesSt
 		UnknownObject {
 			return UnknownStoriesStealthModeType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23179,7 +23180,7 @@ fn decode_story_album_type_from_decoder(mut decoder Decoder) !StoryAlbumType {
 		UnknownObject {
 			return UnknownStoryAlbumType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23207,7 +23208,7 @@ fn decode_story_fwd_header_type_from_decoder(mut decoder Decoder) !StoryFwdHeade
 		UnknownObject {
 			return UnknownStoryFwdHeaderType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23241,7 +23242,7 @@ fn decode_story_item_type_from_decoder(mut decoder Decoder) !StoryItemType {
 		UnknownObject {
 			return UnknownStoryItemType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23275,7 +23276,7 @@ fn decode_story_reaction_type_from_decoder(mut decoder Decoder) !StoryReactionTy
 		UnknownObject {
 			return UnknownStoryReactionType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23309,7 +23310,7 @@ fn decode_story_view_type_from_decoder(mut decoder Decoder) !StoryViewType {
 		UnknownObject {
 			return UnknownStoryViewType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23337,7 +23338,7 @@ fn decode_story_views_type_from_decoder(mut decoder Decoder) !StoryViewsType {
 		UnknownObject {
 			return UnknownStoryViewsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23365,7 +23366,7 @@ fn decode_suggested_post_type_from_decoder(mut decoder Decoder) !SuggestedPostTy
 		UnknownObject {
 			return UnknownSuggestedPostType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23393,7 +23394,7 @@ fn decode_text_with_entities_type_from_decoder(mut decoder Decoder) !TextWithEnt
 		UnknownObject {
 			return UnknownTextWithEntitiesType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23421,7 +23422,7 @@ fn decode_theme_type_from_decoder(mut decoder Decoder) !ThemeType {
 		UnknownObject {
 			return UnknownThemeType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23449,7 +23450,7 @@ fn decode_theme_settings_type_from_decoder(mut decoder Decoder) !ThemeSettingsTy
 		UnknownObject {
 			return UnknownThemeSettingsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23477,7 +23478,7 @@ fn decode_timezone_type_from_decoder(mut decoder Decoder) !TimezoneType {
 		UnknownObject {
 			return UnknownTimezoneType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23523,7 +23524,7 @@ fn decode_tls_block_type_from_decoder(mut decoder Decoder) !TlsBlockType {
 		UnknownObject {
 			return UnknownTlsBlockType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23551,7 +23552,7 @@ fn decode_tls_client_hello_type_from_decoder(mut decoder Decoder) !TlsClientHell
 		UnknownObject {
 			return UnknownTlsClientHelloType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23579,7 +23580,7 @@ fn decode_todo_completion_type_from_decoder(mut decoder Decoder) !TodoCompletion
 		UnknownObject {
 			return UnknownTodoCompletionType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23607,7 +23608,7 @@ fn decode_todo_item_type_from_decoder(mut decoder Decoder) !TodoItemType {
 		UnknownObject {
 			return UnknownTodoItemType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23635,7 +23636,7 @@ fn decode_todo_list_type_from_decoder(mut decoder Decoder) !TodoListType {
 		UnknownObject {
 			return UnknownTodoListType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23663,7 +23664,7 @@ fn decode_top_peer_type_from_decoder(mut decoder Decoder) !TopPeerType {
 		UnknownObject {
 			return UnknownTopPeerType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23715,7 +23716,7 @@ fn decode_top_peer_category_type_from_decoder(mut decoder Decoder) !TopPeerCateg
 		UnknownObject {
 			return UnknownTopPeerCategoryType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23743,7 +23744,7 @@ fn decode_top_peer_category_peers_type_from_decoder(mut decoder Decoder) !TopPee
 		UnknownObject {
 			return UnknownTopPeerCategoryPeersType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -23771,7 +23772,7 @@ fn decode_true_type_from_decoder(mut decoder Decoder) !TrueType {
 		UnknownObject {
 			return UnknownTrueType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24252,7 +24253,7 @@ fn decode_update_type_from_decoder(mut decoder Decoder) !UpdateType {
 		UnknownObject {
 			return UnknownUpdateType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24298,7 +24299,7 @@ fn decode_updates_type_from_decoder(mut decoder Decoder) !UpdatesType {
 		UnknownObject {
 			return UnknownUpdatesType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24332,7 +24333,7 @@ fn decode_url_auth_result_type_from_decoder(mut decoder Decoder) !UrlAuthResultT
 		UnknownObject {
 			return UnknownUrlAuthResultType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24363,7 +24364,7 @@ fn decode_user_type_from_decoder(mut decoder Decoder) !UserType {
 		UnknownObject {
 			return UnknownUserType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24391,7 +24392,7 @@ fn decode_user_full_type_from_decoder(mut decoder Decoder) !UserFullType {
 		UnknownObject {
 			return UnknownUserFullType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24422,7 +24423,7 @@ fn decode_user_profile_photo_type_from_decoder(mut decoder Decoder) !UserProfile
 		UnknownObject {
 			return UnknownUserProfilePhotoType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24465,7 +24466,7 @@ fn decode_user_status_type_from_decoder(mut decoder Decoder) !UserStatusType {
 		UnknownObject {
 			return UnknownUserStatusType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24493,7 +24494,7 @@ fn decode_username_type_from_decoder(mut decoder Decoder) !UsernameType {
 		UnknownObject {
 			return UnknownUsernameType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24527,7 +24528,7 @@ fn decode_video_size_type_from_decoder(mut decoder Decoder) !VideoSizeType {
 		UnknownObject {
 			return UnknownVideoSizeType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24558,7 +24559,7 @@ fn decode_wall_paper_type_from_decoder(mut decoder Decoder) !WallPaperType {
 		UnknownObject {
 			return UnknownWallPaperType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24586,7 +24587,7 @@ fn decode_wall_paper_settings_type_from_decoder(mut decoder Decoder) !WallPaperS
 		UnknownObject {
 			return UnknownWallPaperSettingsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24614,7 +24615,7 @@ fn decode_web_authorization_type_from_decoder(mut decoder Decoder) !WebAuthoriza
 		UnknownObject {
 			return UnknownWebAuthorizationType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24645,7 +24646,7 @@ fn decode_web_document_type_from_decoder(mut decoder Decoder) !WebDocumentType {
 		UnknownObject {
 			return UnknownWebDocumentType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24682,7 +24683,7 @@ fn decode_web_page_type_from_decoder(mut decoder Decoder) !WebPageType {
 		UnknownObject {
 			return UnknownWebPageType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24725,7 +24726,7 @@ fn decode_web_page_attribute_type_from_decoder(mut decoder Decoder) !WebPageAttr
 		UnknownObject {
 			return UnknownWebPageAttributeType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24753,7 +24754,7 @@ fn decode_web_view_message_sent_type_from_decoder(mut decoder Decoder) !WebViewM
 		UnknownObject {
 			return UnknownWebViewMessageSentType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24781,7 +24782,7 @@ fn decode_web_view_result_type_from_decoder(mut decoder Decoder) !WebViewResultT
 		UnknownObject {
 			return UnknownWebViewResultType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24809,7 +24810,7 @@ fn decode_account_authorization_form_type_from_decoder(mut decoder Decoder) !Acc
 		UnknownObject {
 			return UnknownAccountAuthorizationFormType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24837,7 +24838,7 @@ fn decode_account_authorizations_type_from_decoder(mut decoder Decoder) !Account
 		UnknownObject {
 			return UnknownAccountAuthorizationsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24865,7 +24866,7 @@ fn decode_account_auto_download_settings_type_from_decoder(mut decoder Decoder) 
 		UnknownObject {
 			return UnknownAccountAutoDownloadSettingsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24893,7 +24894,7 @@ fn decode_account_auto_save_settings_type_from_decoder(mut decoder Decoder) !Acc
 		UnknownObject {
 			return UnknownAccountAutoSaveSettingsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24921,7 +24922,7 @@ fn decode_account_business_chat_links_type_from_decoder(mut decoder Decoder) !Ac
 		UnknownObject {
 			return UnknownAccountBusinessChatLinksType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24952,7 +24953,7 @@ fn decode_account_chat_themes_type_from_decoder(mut decoder Decoder) !AccountCha
 		UnknownObject {
 			return UnknownAccountChatThemesType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -24980,7 +24981,7 @@ fn decode_account_connected_bots_type_from_decoder(mut decoder Decoder) !Account
 		UnknownObject {
 			return UnknownAccountConnectedBotsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25008,7 +25009,7 @@ fn decode_account_content_settings_type_from_decoder(mut decoder Decoder) !Accou
 		UnknownObject {
 			return UnknownAccountContentSettingsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25039,7 +25040,7 @@ fn decode_account_email_verified_type_from_decoder(mut decoder Decoder) !Account
 		UnknownObject {
 			return UnknownAccountEmailVerifiedType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25070,7 +25071,7 @@ fn decode_account_emoji_statuses_type_from_decoder(mut decoder Decoder) !Account
 		UnknownObject {
 			return UnknownAccountEmojiStatusesType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25098,7 +25099,7 @@ fn decode_account_paid_messages_revenue_type_from_decoder(mut decoder Decoder) !
 		UnknownObject {
 			return UnknownAccountPaidMessagesRevenueType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25126,12 +25127,13 @@ fn decode_account_passkey_registration_options_type_from_decoder(mut decoder Dec
 		UnknownObject {
 			return UnknownAccountPasskeyRegistrationOptionsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
 		else {
-			return error('expected account.PasskeyRegistrationOptions, got ' + object.qualified_name())
+			return error('expected account.PasskeyRegistrationOptions, got ' +
+				object.qualified_name())
 		}
 	}
 }
@@ -25154,7 +25156,7 @@ fn decode_account_passkeys_type_from_decoder(mut decoder Decoder) !AccountPasske
 		UnknownObject {
 			return UnknownAccountPasskeysType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25182,7 +25184,7 @@ fn decode_account_password_type_from_decoder(mut decoder Decoder) !AccountPasswo
 		UnknownObject {
 			return UnknownAccountPasswordType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25210,7 +25212,7 @@ fn decode_account_password_input_settings_type_from_decoder(mut decoder Decoder)
 		UnknownObject {
 			return UnknownAccountPasswordInputSettingsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25238,7 +25240,7 @@ fn decode_account_password_settings_type_from_decoder(mut decoder Decoder) !Acco
 		UnknownObject {
 			return UnknownAccountPasswordSettingsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25266,7 +25268,7 @@ fn decode_account_privacy_rules_type_from_decoder(mut decoder Decoder) !AccountP
 		UnknownObject {
 			return UnknownAccountPrivacyRulesType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25300,7 +25302,7 @@ fn decode_account_reset_password_result_type_from_decoder(mut decoder Decoder) !
 		UnknownObject {
 			return UnknownAccountResetPasswordResultType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25328,12 +25330,13 @@ fn decode_account_resolved_business_chat_links_type_from_decoder(mut decoder Dec
 		UnknownObject {
 			return UnknownAccountResolvedBusinessChatLinksType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
 		else {
-			return error('expected account.ResolvedBusinessChatLinks, got ' + object.qualified_name())
+			return error('expected account.ResolvedBusinessChatLinks, got ' +
+				object.qualified_name())
 		}
 	}
 }
@@ -25359,7 +25362,7 @@ fn decode_account_saved_music_ids_type_from_decoder(mut decoder Decoder) !Accoun
 		UnknownObject {
 			return UnknownAccountSavedMusicIdsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25390,7 +25393,7 @@ fn decode_account_saved_ringtone_type_from_decoder(mut decoder Decoder) !Account
 		UnknownObject {
 			return UnknownAccountSavedRingtoneType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25421,7 +25424,7 @@ fn decode_account_saved_ringtones_type_from_decoder(mut decoder Decoder) !Accoun
 		UnknownObject {
 			return UnknownAccountSavedRingtonesType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25449,7 +25452,7 @@ fn decode_account_sent_email_code_type_from_decoder(mut decoder Decoder) !Accoun
 		UnknownObject {
 			return UnknownAccountSentEmailCodeType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25477,7 +25480,7 @@ fn decode_account_takeout_type_from_decoder(mut decoder Decoder) !AccountTakeout
 		UnknownObject {
 			return UnknownAccountTakeoutType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25508,7 +25511,7 @@ fn decode_account_themes_type_from_decoder(mut decoder Decoder) !AccountThemesTy
 		UnknownObject {
 			return UnknownAccountThemesType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25536,7 +25539,7 @@ fn decode_account_tmp_password_type_from_decoder(mut decoder Decoder) !AccountTm
 		UnknownObject {
 			return UnknownAccountTmpPasswordType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25567,7 +25570,7 @@ fn decode_account_wall_papers_type_from_decoder(mut decoder Decoder) !AccountWal
 		UnknownObject {
 			return UnknownAccountWallPapersType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25595,7 +25598,7 @@ fn decode_account_web_authorizations_type_from_decoder(mut decoder Decoder) !Acc
 		UnknownObject {
 			return UnknownAccountWebAuthorizationsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25626,7 +25629,7 @@ fn decode_auth_authorization_type_from_decoder(mut decoder Decoder) !AuthAuthori
 		UnknownObject {
 			return UnknownAuthAuthorizationType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25666,7 +25669,7 @@ fn decode_auth_code_type_type_from_decoder(mut decoder Decoder) !AuthCodeTypeTyp
 		UnknownObject {
 			return UnknownAuthCodeTypeType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25694,7 +25697,7 @@ fn decode_auth_exported_authorization_type_from_decoder(mut decoder Decoder) !Au
 		UnknownObject {
 			return UnknownAuthExportedAuthorizationType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25722,7 +25725,7 @@ fn decode_auth_logged_out_type_from_decoder(mut decoder Decoder) !AuthLoggedOutT
 		UnknownObject {
 			return UnknownAuthLoggedOutType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25756,7 +25759,7 @@ fn decode_auth_login_token_type_from_decoder(mut decoder Decoder) !AuthLoginToke
 		UnknownObject {
 			return UnknownAuthLoginTokenType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25784,7 +25787,7 @@ fn decode_auth_passkey_login_options_type_from_decoder(mut decoder Decoder) !Aut
 		UnknownObject {
 			return UnknownAuthPasskeyLoginOptionsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25812,7 +25815,7 @@ fn decode_auth_password_recovery_type_from_decoder(mut decoder Decoder) !AuthPas
 		UnknownObject {
 			return UnknownAuthPasswordRecoveryType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25846,7 +25849,7 @@ fn decode_auth_sent_code_type_from_decoder(mut decoder Decoder) !AuthSentCodeTyp
 		UnknownObject {
 			return UnknownAuthSentCodeType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25904,7 +25907,7 @@ fn decode_auth_sent_code_type_type_from_decoder(mut decoder Decoder) !AuthSentCo
 		UnknownObject {
 			return UnknownAuthSentCodeTypeType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25932,7 +25935,7 @@ fn decode_bots_bot_info_type_from_decoder(mut decoder Decoder) !BotsBotInfoType 
 		UnknownObject {
 			return UnknownBotsBotInfoType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25960,7 +25963,7 @@ fn decode_bots_popular_app_bots_type_from_decoder(mut decoder Decoder) !BotsPopu
 		UnknownObject {
 			return UnknownBotsPopularAppBotsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -25988,7 +25991,7 @@ fn decode_bots_preview_info_type_from_decoder(mut decoder Decoder) !BotsPreviewI
 		UnknownObject {
 			return UnknownBotsPreviewInfoType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26016,7 +26019,7 @@ fn decode_channels_admin_log_results_type_from_decoder(mut decoder Decoder) !Cha
 		UnknownObject {
 			return UnknownChannelsAdminLogResultsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26044,7 +26047,7 @@ fn decode_channels_channel_participant_type_from_decoder(mut decoder Decoder) !C
 		UnknownObject {
 			return UnknownChannelsChannelParticipantType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26075,7 +26078,7 @@ fn decode_channels_channel_participants_type_from_decoder(mut decoder Decoder) !
 		UnknownObject {
 			return UnknownChannelsChannelParticipantsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26103,7 +26106,7 @@ fn decode_channels_send_as_peers_type_from_decoder(mut decoder Decoder) !Channel
 		UnknownObject {
 			return UnknownChannelsSendAsPeersType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26137,12 +26140,13 @@ fn decode_channels_sponsored_message_report_result_type_from_decoder(mut decoder
 		UnknownObject {
 			return UnknownChannelsSponsoredMessageReportResultType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
 		else {
-			return error('expected channels.SponsoredMessageReportResult, got ' + object.qualified_name())
+			return error('expected channels.SponsoredMessageReportResult, got ' +
+				object.qualified_name())
 		}
 	}
 }
@@ -26168,7 +26172,7 @@ fn decode_chatlists_chatlist_invite_type_from_decoder(mut decoder Decoder) !Chat
 		UnknownObject {
 			return UnknownChatlistsChatlistInviteType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26196,7 +26200,7 @@ fn decode_chatlists_chatlist_updates_type_from_decoder(mut decoder Decoder) !Cha
 		UnknownObject {
 			return UnknownChatlistsChatlistUpdatesType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26224,7 +26228,7 @@ fn decode_chatlists_exported_chatlist_invite_type_from_decoder(mut decoder Decod
 		UnknownObject {
 			return UnknownChatlistsExportedChatlistInviteType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26252,7 +26256,7 @@ fn decode_chatlists_exported_invites_type_from_decoder(mut decoder Decoder) !Cha
 		UnknownObject {
 			return UnknownChatlistsExportedInvitesType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26283,7 +26287,7 @@ fn decode_contacts_blocked_type_from_decoder(mut decoder Decoder) !ContactsBlock
 		UnknownObject {
 			return UnknownContactsBlockedType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26311,7 +26315,7 @@ fn decode_contacts_contact_birthdays_type_from_decoder(mut decoder Decoder) !Con
 		UnknownObject {
 			return UnknownContactsContactBirthdaysType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26342,7 +26346,7 @@ fn decode_contacts_contacts_type_from_decoder(mut decoder Decoder) !ContactsCont
 		UnknownObject {
 			return UnknownContactsContactsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26370,7 +26374,7 @@ fn decode_contacts_found_type_from_decoder(mut decoder Decoder) !ContactsFoundTy
 		UnknownObject {
 			return UnknownContactsFoundType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26398,7 +26402,7 @@ fn decode_contacts_imported_contacts_type_from_decoder(mut decoder Decoder) !Con
 		UnknownObject {
 			return UnknownContactsImportedContactsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26426,7 +26430,7 @@ fn decode_contacts_resolved_peer_type_from_decoder(mut decoder Decoder) !Contact
 		UnknownObject {
 			return UnknownContactsResolvedPeerType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26457,7 +26461,7 @@ fn decode_contacts_sponsored_peers_type_from_decoder(mut decoder Decoder) !Conta
 		UnknownObject {
 			return UnknownContactsSponsoredPeersType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26491,7 +26495,7 @@ fn decode_contacts_top_peers_type_from_decoder(mut decoder Decoder) !ContactsTop
 		UnknownObject {
 			return UnknownContactsTopPeersType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26519,7 +26523,7 @@ fn decode_fragment_collectible_info_type_from_decoder(mut decoder Decoder) !Frag
 		UnknownObject {
 			return UnknownFragmentCollectibleInfoType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26550,7 +26554,7 @@ fn decode_help_app_config_type_from_decoder(mut decoder Decoder) !HelpAppConfigT
 		UnknownObject {
 			return UnknownHelpAppConfigType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26581,7 +26585,7 @@ fn decode_help_app_update_type_from_decoder(mut decoder Decoder) !HelpAppUpdateT
 		UnknownObject {
 			return UnknownHelpAppUpdateType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26609,7 +26613,7 @@ fn decode_help_config_simple_type_from_decoder(mut decoder Decoder) !HelpConfigS
 		UnknownObject {
 			return UnknownHelpConfigSimpleType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26640,7 +26644,7 @@ fn decode_help_countries_list_type_from_decoder(mut decoder Decoder) !HelpCountr
 		UnknownObject {
 			return UnknownHelpCountriesListType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26668,7 +26672,7 @@ fn decode_help_country_type_from_decoder(mut decoder Decoder) !HelpCountryType {
 		UnknownObject {
 			return UnknownHelpCountryType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26696,7 +26700,7 @@ fn decode_help_country_code_type_from_decoder(mut decoder Decoder) !HelpCountryC
 		UnknownObject {
 			return UnknownHelpCountryCodeType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26727,7 +26731,7 @@ fn decode_help_deep_link_info_type_from_decoder(mut decoder Decoder) !HelpDeepLi
 		UnknownObject {
 			return UnknownHelpDeepLinkInfoType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26755,7 +26759,7 @@ fn decode_help_invite_text_type_from_decoder(mut decoder Decoder) !HelpInviteTex
 		UnknownObject {
 			return UnknownHelpInviteTextType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26786,7 +26790,7 @@ fn decode_help_passport_config_type_from_decoder(mut decoder Decoder) !HelpPassp
 		UnknownObject {
 			return UnknownHelpPassportConfigType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26814,7 +26818,7 @@ fn decode_help_peer_color_option_type_from_decoder(mut decoder Decoder) !HelpPee
 		UnknownObject {
 			return UnknownHelpPeerColorOptionType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26845,7 +26849,7 @@ fn decode_help_peer_color_set_type_from_decoder(mut decoder Decoder) !HelpPeerCo
 		UnknownObject {
 			return UnknownHelpPeerColorSetType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26876,7 +26880,7 @@ fn decode_help_peer_colors_type_from_decoder(mut decoder Decoder) !HelpPeerColor
 		UnknownObject {
 			return UnknownHelpPeerColorsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26904,7 +26908,7 @@ fn decode_help_premium_promo_type_from_decoder(mut decoder Decoder) !HelpPremium
 		UnknownObject {
 			return UnknownHelpPremiumPromoType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26935,7 +26939,7 @@ fn decode_help_promo_data_type_from_decoder(mut decoder Decoder) !HelpPromoDataT
 		UnknownObject {
 			return UnknownHelpPromoDataType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26963,7 +26967,7 @@ fn decode_help_recent_me_urls_type_from_decoder(mut decoder Decoder) !HelpRecent
 		UnknownObject {
 			return UnknownHelpRecentMeUrlsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -26991,7 +26995,7 @@ fn decode_help_support_type_from_decoder(mut decoder Decoder) !HelpSupportType {
 		UnknownObject {
 			return UnknownHelpSupportType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27019,7 +27023,7 @@ fn decode_help_support_name_type_from_decoder(mut decoder Decoder) !HelpSupportN
 		UnknownObject {
 			return UnknownHelpSupportNameType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27047,7 +27051,7 @@ fn decode_help_terms_of_service_type_from_decoder(mut decoder Decoder) !HelpTerm
 		UnknownObject {
 			return UnknownHelpTermsOfServiceType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27078,7 +27082,7 @@ fn decode_help_terms_of_service_update_type_from_decoder(mut decoder Decoder) !H
 		UnknownObject {
 			return UnknownHelpTermsOfServiceUpdateType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27109,7 +27113,7 @@ fn decode_help_timezones_list_type_from_decoder(mut decoder Decoder) !HelpTimezo
 		UnknownObject {
 			return UnknownHelpTimezonesListType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27140,7 +27144,7 @@ fn decode_help_user_info_type_from_decoder(mut decoder Decoder) !HelpUserInfoTyp
 		UnknownObject {
 			return UnknownHelpUserInfoType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27168,7 +27172,7 @@ fn decode_messages_affected_found_messages_type_from_decoder(mut decoder Decoder
 		UnknownObject {
 			return UnknownMessagesAffectedFoundMessagesType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27196,7 +27200,7 @@ fn decode_messages_affected_history_type_from_decoder(mut decoder Decoder) !Mess
 		UnknownObject {
 			return UnknownMessagesAffectedHistoryType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27224,7 +27228,7 @@ fn decode_messages_affected_messages_type_from_decoder(mut decoder Decoder) !Mes
 		UnknownObject {
 			return UnknownMessagesAffectedMessagesType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27255,7 +27259,7 @@ fn decode_messages_all_stickers_type_from_decoder(mut decoder Decoder) !Messages
 		UnknownObject {
 			return UnknownMessagesAllStickersType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27283,7 +27287,7 @@ fn decode_messages_archived_stickers_type_from_decoder(mut decoder Decoder) !Mes
 		UnknownObject {
 			return UnknownMessagesArchivedStickersType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27314,7 +27318,7 @@ fn decode_messages_available_effects_type_from_decoder(mut decoder Decoder) !Mes
 		UnknownObject {
 			return UnknownMessagesAvailableEffectsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27345,7 +27349,7 @@ fn decode_messages_available_reactions_type_from_decoder(mut decoder Decoder) !M
 		UnknownObject {
 			return UnknownMessagesAvailableReactionsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27373,7 +27377,7 @@ fn decode_messages_bot_app_type_from_decoder(mut decoder Decoder) !MessagesBotAp
 		UnknownObject {
 			return UnknownMessagesBotAppType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27401,7 +27405,7 @@ fn decode_messages_bot_callback_answer_type_from_decoder(mut decoder Decoder) !M
 		UnknownObject {
 			return UnknownMessagesBotCallbackAnswerType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27429,12 +27433,13 @@ fn decode_messages_bot_prepared_inline_message_type_from_decoder(mut decoder Dec
 		UnknownObject {
 			return UnknownMessagesBotPreparedInlineMessageType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
 		else {
-			return error('expected messages.BotPreparedInlineMessage, got ' + object.qualified_name())
+			return error('expected messages.BotPreparedInlineMessage, got ' +
+				object.qualified_name())
 		}
 	}
 }
@@ -27457,7 +27462,7 @@ fn decode_messages_bot_results_type_from_decoder(mut decoder Decoder) !MessagesB
 		UnknownObject {
 			return UnknownMessagesBotResultsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27485,7 +27490,7 @@ fn decode_messages_chat_admins_with_invites_type_from_decoder(mut decoder Decode
 		UnknownObject {
 			return UnknownMessagesChatAdminsWithInvitesType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27513,7 +27518,7 @@ fn decode_messages_chat_full_type_from_decoder(mut decoder Decoder) !MessagesCha
 		UnknownObject {
 			return UnknownMessagesChatFullType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27541,7 +27546,7 @@ fn decode_messages_chat_invite_importers_type_from_decoder(mut decoder Decoder) 
 		UnknownObject {
 			return UnknownMessagesChatInviteImportersType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27572,7 +27577,7 @@ fn decode_messages_chats_type_from_decoder(mut decoder Decoder) !MessagesChatsTy
 		UnknownObject {
 			return UnknownMessagesChatsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27600,12 +27605,13 @@ fn decode_messages_checked_history_import_peer_type_from_decoder(mut decoder Dec
 		UnknownObject {
 			return UnknownMessagesCheckedHistoryImportPeerType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
 		else {
-			return error('expected messages.CheckedHistoryImportPeer, got ' + object.qualified_name())
+			return error('expected messages.CheckedHistoryImportPeer, got ' +
+				object.qualified_name())
 		}
 	}
 }
@@ -27631,7 +27637,7 @@ fn decode_messages_dh_config_type_from_decoder(mut decoder Decoder) !MessagesDhC
 		UnknownObject {
 			return UnknownMessagesDhConfigType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27659,7 +27665,7 @@ fn decode_messages_dialog_filters_type_from_decoder(mut decoder Decoder) !Messag
 		UnknownObject {
 			return UnknownMessagesDialogFiltersType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27693,7 +27699,7 @@ fn decode_messages_dialogs_type_from_decoder(mut decoder Decoder) !MessagesDialo
 		UnknownObject {
 			return UnknownMessagesDialogsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27721,7 +27727,7 @@ fn decode_messages_discussion_message_type_from_decoder(mut decoder Decoder) !Me
 		UnknownObject {
 			return UnknownMessagesDiscussionMessageType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27752,7 +27758,7 @@ fn decode_messages_emoji_game_info_type_from_decoder(mut decoder Decoder) !Messa
 		UnknownObject {
 			return UnknownMessagesEmojiGameInfoType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27780,7 +27786,7 @@ fn decode_messages_emoji_game_outcome_type_from_decoder(mut decoder Decoder) !Me
 		UnknownObject {
 			return UnknownMessagesEmojiGameOutcomeType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27811,7 +27817,7 @@ fn decode_messages_emoji_groups_type_from_decoder(mut decoder Decoder) !Messages
 		UnknownObject {
 			return UnknownMessagesEmojiGroupsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27842,7 +27848,7 @@ fn decode_messages_exported_chat_invite_type_from_decoder(mut decoder Decoder) !
 		UnknownObject {
 			return UnknownMessagesExportedChatInviteType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27870,7 +27876,7 @@ fn decode_messages_exported_chat_invites_type_from_decoder(mut decoder Decoder) 
 		UnknownObject {
 			return UnknownMessagesExportedChatInvitesType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27901,7 +27907,7 @@ fn decode_messages_faved_stickers_type_from_decoder(mut decoder Decoder) !Messag
 		UnknownObject {
 			return UnknownMessagesFavedStickersType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27932,7 +27938,7 @@ fn decode_messages_featured_stickers_type_from_decoder(mut decoder Decoder) !Mes
 		UnknownObject {
 			return UnknownMessagesFeaturedStickersType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27960,7 +27966,7 @@ fn decode_messages_forum_topics_type_from_decoder(mut decoder Decoder) !Messages
 		UnknownObject {
 			return UnknownMessagesForumTopicsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -27991,7 +27997,7 @@ fn decode_messages_found_sticker_sets_type_from_decoder(mut decoder Decoder) !Me
 		UnknownObject {
 			return UnknownMessagesFoundStickerSetsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28022,7 +28028,7 @@ fn decode_messages_found_stickers_type_from_decoder(mut decoder Decoder) !Messag
 		UnknownObject {
 			return UnknownMessagesFoundStickersType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28050,7 +28056,7 @@ fn decode_messages_high_scores_type_from_decoder(mut decoder Decoder) !MessagesH
 		UnknownObject {
 			return UnknownMessagesHighScoresType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28078,7 +28084,7 @@ fn decode_messages_history_import_type_from_decoder(mut decoder Decoder) !Messag
 		UnknownObject {
 			return UnknownMessagesHistoryImportType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28106,7 +28112,7 @@ fn decode_messages_history_import_parsed_type_from_decoder(mut decoder Decoder) 
 		UnknownObject {
 			return UnknownMessagesHistoryImportParsedType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28134,7 +28140,7 @@ fn decode_messages_inactive_chats_type_from_decoder(mut decoder Decoder) !Messag
 		UnknownObject {
 			return UnknownMessagesInactiveChatsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28162,7 +28168,7 @@ fn decode_messages_invited_users_type_from_decoder(mut decoder Decoder) !Message
 		UnknownObject {
 			return UnknownMessagesInvitedUsersType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28190,7 +28196,7 @@ fn decode_messages_message_edit_data_type_from_decoder(mut decoder Decoder) !Mes
 		UnknownObject {
 			return UnknownMessagesMessageEditDataType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28218,7 +28224,7 @@ fn decode_messages_message_reactions_list_type_from_decoder(mut decoder Decoder)
 		UnknownObject {
 			return UnknownMessagesMessageReactionsListType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28246,7 +28252,7 @@ fn decode_messages_message_views_type_from_decoder(mut decoder Decoder) !Message
 		UnknownObject {
 			return UnknownMessagesMessageViewsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28283,7 +28289,7 @@ fn decode_messages_messages_type_from_decoder(mut decoder Decoder) !MessagesMess
 		UnknownObject {
 			return UnknownMessagesMessagesType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28311,7 +28317,7 @@ fn decode_messages_my_stickers_type_from_decoder(mut decoder Decoder) !MessagesM
 		UnknownObject {
 			return UnknownMessagesMyStickersType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28339,7 +28345,7 @@ fn decode_messages_peer_dialogs_type_from_decoder(mut decoder Decoder) !Messages
 		UnknownObject {
 			return UnknownMessagesPeerDialogsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28367,7 +28373,7 @@ fn decode_messages_peer_settings_type_from_decoder(mut decoder Decoder) !Message
 		UnknownObject {
 			return UnknownMessagesPeerSettingsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28395,7 +28401,7 @@ fn decode_messages_prepared_inline_message_type_from_decoder(mut decoder Decoder
 		UnknownObject {
 			return UnknownMessagesPreparedInlineMessageType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28426,7 +28432,7 @@ fn decode_messages_quick_replies_type_from_decoder(mut decoder Decoder) !Message
 		UnknownObject {
 			return UnknownMessagesQuickRepliesType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28457,7 +28463,7 @@ fn decode_messages_reactions_type_from_decoder(mut decoder Decoder) !MessagesRea
 		UnknownObject {
 			return UnknownMessagesReactionsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28488,7 +28494,7 @@ fn decode_messages_recent_stickers_type_from_decoder(mut decoder Decoder) !Messa
 		UnknownObject {
 			return UnknownMessagesRecentStickersType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28522,7 +28528,7 @@ fn decode_messages_saved_dialogs_type_from_decoder(mut decoder Decoder) !Message
 		UnknownObject {
 			return UnknownMessagesSavedDialogsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28553,7 +28559,7 @@ fn decode_messages_saved_gifs_type_from_decoder(mut decoder Decoder) !MessagesSa
 		UnknownObject {
 			return UnknownMessagesSavedGifsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28584,7 +28590,7 @@ fn decode_messages_saved_reaction_tags_type_from_decoder(mut decoder Decoder) !M
 		UnknownObject {
 			return UnknownMessagesSavedReactionTagsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28612,7 +28618,7 @@ fn decode_messages_search_counter_type_from_decoder(mut decoder Decoder) !Messag
 		UnknownObject {
 			return UnknownMessagesSearchCounterType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28640,7 +28646,7 @@ fn decode_messages_search_results_calendar_type_from_decoder(mut decoder Decoder
 		UnknownObject {
 			return UnknownMessagesSearchResultsCalendarType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28668,7 +28674,7 @@ fn decode_messages_search_results_positions_type_from_decoder(mut decoder Decode
 		UnknownObject {
 			return UnknownMessagesSearchResultsPositionsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28699,7 +28705,7 @@ fn decode_messages_sent_encrypted_message_type_from_decoder(mut decoder Decoder)
 		UnknownObject {
 			return UnknownMessagesSentEncryptedMessageType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28730,7 +28736,7 @@ fn decode_messages_sponsored_messages_type_from_decoder(mut decoder Decoder) !Me
 		UnknownObject {
 			return UnknownMessagesSponsoredMessagesType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28761,7 +28767,7 @@ fn decode_messages_sticker_set_type_from_decoder(mut decoder Decoder) !MessagesS
 		UnknownObject {
 			return UnknownMessagesStickerSetType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28792,7 +28798,7 @@ fn decode_messages_sticker_set_install_result_type_from_decoder(mut decoder Deco
 		UnknownObject {
 			return UnknownMessagesStickerSetInstallResultType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28823,7 +28829,7 @@ fn decode_messages_stickers_type_from_decoder(mut decoder Decoder) !MessagesStic
 		UnknownObject {
 			return UnknownMessagesStickersType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28851,7 +28857,7 @@ fn decode_messages_transcribed_audio_type_from_decoder(mut decoder Decoder) !Mes
 		UnknownObject {
 			return UnknownMessagesTranscribedAudioType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28879,7 +28885,7 @@ fn decode_messages_translated_text_type_from_decoder(mut decoder Decoder) !Messa
 		UnknownObject {
 			return UnknownMessagesTranslatedTextType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28907,7 +28913,7 @@ fn decode_messages_votes_list_type_from_decoder(mut decoder Decoder) !MessagesVo
 		UnknownObject {
 			return UnknownMessagesVotesListType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28935,7 +28941,7 @@ fn decode_messages_web_page_type_from_decoder(mut decoder Decoder) !MessagesWebP
 		UnknownObject {
 			return UnknownMessagesWebPageType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28963,7 +28969,7 @@ fn decode_messages_web_page_preview_type_from_decoder(mut decoder Decoder) !Mess
 		UnknownObject {
 			return UnknownMessagesWebPagePreviewType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -28991,7 +28997,7 @@ fn decode_payments_bank_card_data_type_from_decoder(mut decoder Decoder) !Paymen
 		UnknownObject {
 			return UnknownPaymentsBankCardDataType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -29022,7 +29028,7 @@ fn decode_payments_check_can_send_gift_result_type_from_decoder(mut decoder Deco
 		UnknownObject {
 			return UnknownPaymentsCheckCanSendGiftResultType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -29050,7 +29056,7 @@ fn decode_payments_checked_gift_code_type_from_decoder(mut decoder Decoder) !Pay
 		UnknownObject {
 			return UnknownPaymentsCheckedGiftCodeType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -29078,7 +29084,7 @@ fn decode_payments_connected_star_ref_bots_type_from_decoder(mut decoder Decoder
 		UnknownObject {
 			return UnknownPaymentsConnectedStarRefBotsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -29106,7 +29112,7 @@ fn decode_payments_exported_invoice_type_from_decoder(mut decoder Decoder) !Paym
 		UnknownObject {
 			return UnknownPaymentsExportedInvoiceType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -29137,7 +29143,7 @@ fn decode_payments_giveaway_info_type_from_decoder(mut decoder Decoder) !Payment
 		UnknownObject {
 			return UnknownPaymentsGiveawayInfoType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -29171,7 +29177,7 @@ fn decode_payments_payment_form_type_from_decoder(mut decoder Decoder) !Payments
 		UnknownObject {
 			return UnknownPaymentsPaymentFormType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -29202,7 +29208,7 @@ fn decode_payments_payment_receipt_type_from_decoder(mut decoder Decoder) !Payme
 		UnknownObject {
 			return UnknownPaymentsPaymentReceiptType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -29233,7 +29239,7 @@ fn decode_payments_payment_result_type_from_decoder(mut decoder Decoder) !Paymen
 		UnknownObject {
 			return UnknownPaymentsPaymentResultType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -29261,7 +29267,7 @@ fn decode_payments_resale_star_gifts_type_from_decoder(mut decoder Decoder) !Pay
 		UnknownObject {
 			return UnknownPaymentsResaleStarGiftsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -29289,7 +29295,7 @@ fn decode_payments_saved_info_type_from_decoder(mut decoder Decoder) !PaymentsSa
 		UnknownObject {
 			return UnknownPaymentsSavedInfoType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -29317,7 +29323,7 @@ fn decode_payments_saved_star_gifts_type_from_decoder(mut decoder Decoder) !Paym
 		UnknownObject {
 			return UnknownPaymentsSavedStarGiftsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -29348,7 +29354,7 @@ fn decode_payments_star_gift_active_auctions_type_from_decoder(mut decoder Decod
 		UnknownObject {
 			return UnknownPaymentsStarGiftActiveAuctionsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -29376,12 +29382,13 @@ fn decode_payments_star_gift_auction_acquired_gifts_type_from_decoder(mut decode
 		UnknownObject {
 			return UnknownPaymentsStarGiftAuctionAcquiredGiftsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
 		else {
-			return error('expected payments.StarGiftAuctionAcquiredGifts, got ' + object.qualified_name())
+			return error('expected payments.StarGiftAuctionAcquiredGifts, got ' +
+				object.qualified_name())
 		}
 	}
 }
@@ -29404,7 +29411,7 @@ fn decode_payments_star_gift_auction_state_type_from_decoder(mut decoder Decoder
 		UnknownObject {
 			return UnknownPaymentsStarGiftAuctionStateType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -29435,7 +29442,7 @@ fn decode_payments_star_gift_collections_type_from_decoder(mut decoder Decoder) 
 		UnknownObject {
 			return UnknownPaymentsStarGiftCollectionsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -29463,12 +29470,13 @@ fn decode_payments_star_gift_upgrade_attributes_type_from_decoder(mut decoder De
 		UnknownObject {
 			return UnknownPaymentsStarGiftUpgradeAttributesType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
 		else {
-			return error('expected payments.StarGiftUpgradeAttributes, got ' + object.qualified_name())
+			return error('expected payments.StarGiftUpgradeAttributes, got ' +
+				object.qualified_name())
 		}
 	}
 }
@@ -29491,7 +29499,7 @@ fn decode_payments_star_gift_upgrade_preview_type_from_decoder(mut decoder Decod
 		UnknownObject {
 			return UnknownPaymentsStarGiftUpgradePreviewType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -29519,7 +29527,7 @@ fn decode_payments_star_gift_withdrawal_url_type_from_decoder(mut decoder Decode
 		UnknownObject {
 			return UnknownPaymentsStarGiftWithdrawalUrlType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -29550,7 +29558,7 @@ fn decode_payments_star_gifts_type_from_decoder(mut decoder Decoder) !PaymentsSt
 		UnknownObject {
 			return UnknownPaymentsStarGiftsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -29578,12 +29586,13 @@ fn decode_payments_stars_revenue_ads_account_url_type_from_decoder(mut decoder D
 		UnknownObject {
 			return UnknownPaymentsStarsRevenueAdsAccountUrlType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
 		else {
-			return error('expected payments.StarsRevenueAdsAccountUrl, got ' + object.qualified_name())
+			return error('expected payments.StarsRevenueAdsAccountUrl, got ' +
+				object.qualified_name())
 		}
 	}
 }
@@ -29606,7 +29615,7 @@ fn decode_payments_stars_revenue_stats_type_from_decoder(mut decoder Decoder) !P
 		UnknownObject {
 			return UnknownPaymentsStarsRevenueStatsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -29634,12 +29643,13 @@ fn decode_payments_stars_revenue_withdrawal_url_type_from_decoder(mut decoder De
 		UnknownObject {
 			return UnknownPaymentsStarsRevenueWithdrawalUrlType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
 		else {
-			return error('expected payments.StarsRevenueWithdrawalUrl, got ' + object.qualified_name())
+			return error('expected payments.StarsRevenueWithdrawalUrl, got ' +
+				object.qualified_name())
 		}
 	}
 }
@@ -29662,7 +29672,7 @@ fn decode_payments_stars_status_type_from_decoder(mut decoder Decoder) !Payments
 		UnknownObject {
 			return UnknownPaymentsStarsStatusType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -29690,7 +29700,7 @@ fn decode_payments_suggested_star_ref_bots_type_from_decoder(mut decoder Decoder
 		UnknownObject {
 			return UnknownPaymentsSuggestedStarRefBotsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -29718,7 +29728,7 @@ fn decode_payments_unique_star_gift_type_from_decoder(mut decoder Decoder) !Paym
 		UnknownObject {
 			return UnknownPaymentsUniqueStarGiftType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -29746,7 +29756,7 @@ fn decode_payments_unique_star_gift_value_info_type_from_decoder(mut decoder Dec
 		UnknownObject {
 			return UnknownPaymentsUniqueStarGiftValueInfoType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -29774,7 +29784,7 @@ fn decode_payments_validated_requested_info_type_from_decoder(mut decoder Decode
 		UnknownObject {
 			return UnknownPaymentsValidatedRequestedInfoType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -29802,7 +29812,7 @@ fn decode_phone_exported_group_call_invite_type_from_decoder(mut decoder Decoder
 		UnknownObject {
 			return UnknownPhoneExportedGroupCallInviteType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -29830,7 +29840,7 @@ fn decode_phone_group_call_type_from_decoder(mut decoder Decoder) !PhoneGroupCal
 		UnknownObject {
 			return UnknownPhoneGroupCallType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -29858,7 +29868,7 @@ fn decode_phone_group_call_stars_type_from_decoder(mut decoder Decoder) !PhoneGr
 		UnknownObject {
 			return UnknownPhoneGroupCallStarsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -29886,7 +29896,7 @@ fn decode_phone_group_call_stream_channels_type_from_decoder(mut decoder Decoder
 		UnknownObject {
 			return UnknownPhoneGroupCallStreamChannelsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -29914,7 +29924,7 @@ fn decode_phone_group_call_stream_rtmp_url_type_from_decoder(mut decoder Decoder
 		UnknownObject {
 			return UnknownPhoneGroupCallStreamRtmpUrlType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -29942,7 +29952,7 @@ fn decode_phone_group_participants_type_from_decoder(mut decoder Decoder) !Phone
 		UnknownObject {
 			return UnknownPhoneGroupParticipantsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -29970,7 +29980,7 @@ fn decode_phone_join_as_peers_type_from_decoder(mut decoder Decoder) !PhoneJoinA
 		UnknownObject {
 			return UnknownPhoneJoinAsPeersType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -29998,7 +30008,7 @@ fn decode_phone_phone_call_type_from_decoder(mut decoder Decoder) !PhonePhoneCal
 		UnknownObject {
 			return UnknownPhonePhoneCallType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -30026,7 +30036,7 @@ fn decode_photos_photo_type_from_decoder(mut decoder Decoder) !PhotosPhotoType {
 		UnknownObject {
 			return UnknownPhotosPhotoType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -30057,7 +30067,7 @@ fn decode_photos_photos_type_from_decoder(mut decoder Decoder) !PhotosPhotosType
 		UnknownObject {
 			return UnknownPhotosPhotosType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -30085,7 +30095,7 @@ fn decode_premium_boosts_list_type_from_decoder(mut decoder Decoder) !PremiumBoo
 		UnknownObject {
 			return UnknownPremiumBoostsListType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -30113,7 +30123,7 @@ fn decode_premium_boosts_status_type_from_decoder(mut decoder Decoder) !PremiumB
 		UnknownObject {
 			return UnknownPremiumBoostsStatusType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -30141,7 +30151,7 @@ fn decode_premium_my_boosts_type_from_decoder(mut decoder Decoder) !PremiumMyBoo
 		UnknownObject {
 			return UnknownPremiumMyBoostsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -30169,7 +30179,7 @@ fn decode_smsjobs_eligibility_to_join_type_from_decoder(mut decoder Decoder) !Sm
 		UnknownObject {
 			return UnknownSmsjobsEligibilityToJoinType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -30197,7 +30207,7 @@ fn decode_smsjobs_status_type_from_decoder(mut decoder Decoder) !SmsjobsStatusTy
 		UnknownObject {
 			return UnknownSmsjobsStatusType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -30225,7 +30235,7 @@ fn decode_stats_broadcast_stats_type_from_decoder(mut decoder Decoder) !StatsBro
 		UnknownObject {
 			return UnknownStatsBroadcastStatsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -30253,7 +30263,7 @@ fn decode_stats_megagroup_stats_type_from_decoder(mut decoder Decoder) !StatsMeg
 		UnknownObject {
 			return UnknownStatsMegagroupStatsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -30281,7 +30291,7 @@ fn decode_stats_message_stats_type_from_decoder(mut decoder Decoder) !StatsMessa
 		UnknownObject {
 			return UnknownStatsMessageStatsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -30309,7 +30319,7 @@ fn decode_stats_public_forwards_type_from_decoder(mut decoder Decoder) !StatsPub
 		UnknownObject {
 			return UnknownStatsPublicForwardsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -30337,7 +30347,7 @@ fn decode_stats_story_stats_type_from_decoder(mut decoder Decoder) !StatsStorySt
 		UnknownObject {
 			return UnknownStatsStoryStatsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -30365,7 +30375,7 @@ fn decode_stickers_suggested_short_name_type_from_decoder(mut decoder Decoder) !
 		UnknownObject {
 			return UnknownStickersSuggestedShortNameType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -30420,7 +30430,7 @@ fn decode_storage_file_type_type_from_decoder(mut decoder Decoder) !StorageFileT
 		UnknownObject {
 			return UnknownStorageFileTypeType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -30451,7 +30461,7 @@ fn decode_stories_albums_type_from_decoder(mut decoder Decoder) !StoriesAlbumsTy
 		UnknownObject {
 			return UnknownStoriesAlbumsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -30482,7 +30492,7 @@ fn decode_stories_all_stories_type_from_decoder(mut decoder Decoder) !StoriesAll
 		UnknownObject {
 			return UnknownStoriesAllStoriesType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -30510,7 +30520,7 @@ fn decode_stories_can_send_story_count_type_from_decoder(mut decoder Decoder) !S
 		UnknownObject {
 			return UnknownStoriesCanSendStoryCountType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -30538,7 +30548,7 @@ fn decode_stories_found_stories_type_from_decoder(mut decoder Decoder) !StoriesF
 		UnknownObject {
 			return UnknownStoriesFoundStoriesType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -30566,7 +30576,7 @@ fn decode_stories_peer_stories_type_from_decoder(mut decoder Decoder) !StoriesPe
 		UnknownObject {
 			return UnknownStoriesPeerStoriesType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -30594,7 +30604,7 @@ fn decode_stories_stories_type_from_decoder(mut decoder Decoder) !StoriesStories
 		UnknownObject {
 			return UnknownStoriesStoriesType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -30622,7 +30632,7 @@ fn decode_stories_story_reactions_list_type_from_decoder(mut decoder Decoder) !S
 		UnknownObject {
 			return UnknownStoriesStoryReactionsListType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -30650,7 +30660,7 @@ fn decode_stories_story_views_type_from_decoder(mut decoder Decoder) !StoriesSto
 		UnknownObject {
 			return UnknownStoriesStoryViewsType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -30678,7 +30688,7 @@ fn decode_stories_story_views_list_type_from_decoder(mut decoder Decoder) !Stori
 		UnknownObject {
 			return UnknownStoriesStoryViewsListType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -30712,7 +30722,7 @@ fn decode_updates_channel_difference_type_from_decoder(mut decoder Decoder) !Upd
 		UnknownObject {
 			return UnknownUpdatesChannelDifferenceType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -30749,7 +30759,7 @@ fn decode_updates_difference_type_from_decoder(mut decoder Decoder) !UpdatesDiff
 		UnknownObject {
 			return UnknownUpdatesDifferenceType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -30777,7 +30787,7 @@ fn decode_updates_state_type_from_decoder(mut decoder Decoder) !UpdatesStateType
 		UnknownObject {
 			return UnknownUpdatesStateType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -30808,7 +30818,7 @@ fn decode_upload_cdn_file_type_from_decoder(mut decoder Decoder) !UploadCdnFileT
 		UnknownObject {
 			return UnknownUploadCdnFileType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -30839,7 +30849,7 @@ fn decode_upload_file_type_from_decoder(mut decoder Decoder) !UploadFileType {
 		UnknownObject {
 			return UnknownUploadFileType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -30867,7 +30877,7 @@ fn decode_upload_web_file_type_from_decoder(mut decoder Decoder) !UploadWebFileT
 		UnknownObject {
 			return UnknownUploadWebFileType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -30898,7 +30908,7 @@ fn decode_users_saved_music_type_from_decoder(mut decoder Decoder) !UsersSavedMu
 		UnknownObject {
 			return UnknownUsersSavedMusicType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -30926,7 +30936,7 @@ fn decode_users_user_full_type_from_decoder(mut decoder Decoder) !UsersUserFullT
 		UnknownObject {
 			return UnknownUsersUserFullType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -30957,7 +30967,7 @@ fn decode_users_users_type_from_decoder(mut decoder Decoder) !UsersUsersType {
 		UnknownObject {
 			return UnknownUsersUsersType{
 				constructor: object.constructor
-				name: object.name
+				name:        object.name
 				raw_payload: object.raw_payload
 			}
 		}
@@ -33267,4 +33277,3 @@ pub fn decode_function(data []u8) !Function {
 		}
 	}
 }
-

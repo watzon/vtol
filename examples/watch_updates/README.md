@@ -14,7 +14,7 @@ Required:
 Optional:
 
 - `VTOL_EXAMPLE_SESSION_FILE` defaults to `.vtol.example.session.sqlite`
-- `VTOL_EXAMPLE_DC_HOST` defaults to `149.154.167.50`
+- `VTOL_EXAMPLE_DC_HOST` is only used when `VTOL_EXAMPLE_TEST_MODE=1`
 - `VTOL_EXAMPLE_TIMEOUT_MS` defaults to `30000`
 - `VTOL_EXAMPLE_PUMP_INTERVAL_MS` defaults to `250`
 - `VTOL_EXAMPLE_MAX_PUMPS` to stop after a fixed number of pump cycles

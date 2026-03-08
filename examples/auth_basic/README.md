@@ -24,7 +24,7 @@ Bot login:
 Optional:
 
 - `VTOL_EXAMPLE_SESSION_FILE` defaults to `.vtol.example.session.sqlite`
-- `VTOL_EXAMPLE_DC_HOST` defaults to `149.154.167.50` for the initial connection; the client discovers additional Telegram DCs automatically
+- `VTOL_EXAMPLE_DC_HOST` is only used when `VTOL_EXAMPLE_TEST_MODE=1`; production mode uses VTOL's built-in initial DC list
 - `VTOL_EXAMPLE_TIMEOUT_MS` defaults to `30000`
 - `VTOL_DEBUG_RPC=1` to print RPC request/result/error lines to stderr
 - `VTOL_DEBUG_MTPROTO=1` to print decoded MTProto messages to stderr

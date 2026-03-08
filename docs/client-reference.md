@@ -14,6 +14,8 @@ Use it for:
 - short-lived scripts
 - flows where you do not want persistence
 
+For normal production mode, `config` can be as small as `app_id` and `app_hash`. Add `dc_options` only for a custom bootstrap endpoint or Telegram test mode.
+
 ### `new_client_with_session_file(config, path)`
 
 Create a client backed by a SQLite session file.

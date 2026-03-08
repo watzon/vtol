@@ -33,6 +33,10 @@ pub fn new_client_from_env(session_file string) !vtol.Client {
 		'VTOL_EXAMPLE_API_HASH',
 		'VTOL_TEST_API_HASH',
 	])!
+	test_mode := env_flag([
+		'VTOL_EXAMPLE_TEST_MODE',
+		'VTOL_TEST_MODE',
+	])
 	dc_host := first_non_empty_env([
 		'VTOL_EXAMPLE_DC_HOST',
 		'VTOL_TEST_DC_HOST',
@@ -40,24 +44,32 @@ pub fn new_client_from_env(session_file string) !vtol.Client {
 	timeout_ms := env_int([
 		'VTOL_EXAMPLE_TIMEOUT_MS',
 	], default_timeout_ms)
-	return vtol.new_client_with_session_file(vtol.ClientConfig{
-		app_id:               app_id
-		app_hash:             app_hash
-		dc_options:           [
-			vtol.DcOption{
-				id:   2
-				host: dc_host
-				port: 443
-			},
-		]
-		default_call_options: rpc.CallOptions{
-			timeout_ms: timeout_ms
+	config := if test_mode {
+		vtol.ClientConfig{
+			app_id:               app_id
+			app_hash:             app_hash
+			dc_options:           [
+				vtol.DcOption{
+					id:   2
+					host: dc_host
+					port: 443
+				},
+			]
+			default_call_options: rpc.CallOptions{
+				timeout_ms: timeout_ms
+			}
+			test_mode:            true
 		}
-		test_mode:            env_flag([
-			'VTOL_EXAMPLE_TEST_MODE',
-			'VTOL_TEST_MODE',
-		])
-	}, session_file)
+	} else {
+		vtol.ClientConfig{
+			app_id:               app_id
+			app_hash:             app_hash
+			default_call_options: rpc.CallOptions{
+				timeout_ms: timeout_ms
+			}
+		}
+	}
+	return vtol.new_client_with_session_file(config, session_file)
 }
 
 pub fn require_restored_session(client vtol.Client, session_file string) ! {

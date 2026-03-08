@@ -17,7 +17,7 @@ Optional:
 - `VTOL_EXAMPLE_PEER` defaults to `me`
 - `VTOL_EXAMPLE_HISTORY_LIMIT` defaults to `50`
 - `VTOL_EXAMPLE_OUTPUT` to override the output path
-- `VTOL_EXAMPLE_DC_HOST` defaults to `149.154.167.50`
+- `VTOL_EXAMPLE_DC_HOST` is only used when `VTOL_EXAMPLE_TEST_MODE=1`
 - `VTOL_EXAMPLE_TEST_MODE=1` to target Telegram test mode
 
 ## Run

@@ -55,17 +55,12 @@ Characteristics:
 mut client := vtol.new_client(vtol.ClientConfig{
 	app_id:   12345
 	app_hash: 'your-app-hash'
-	dc_options: [
-		vtol.DcOption{
-			id:   2
-			host: '149.154.167.50'
-			port: 443
-		},
-	]
 })!
 ```
 
 `vtol.new_client(...)` uses an in-memory store internally.
+
+For production mode, `app_id` and `app_hash` are enough. Provide `dc_options` only when you need a custom initial endpoint or when running against Telegram test mode.
 
 ### `SQLiteSession`
 

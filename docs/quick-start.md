@@ -31,6 +31,8 @@ export VTOL_API_HASH=your-app-hash
 
 This example uses a SQLite-backed session file. The first run performs login. Later runs reuse the saved session automatically.
 
+For normal production use, VTOL supplies a built-in initial DC list. Only Telegram test mode requires explicit `dc_options`.
+
 ```v
 module main
 
@@ -48,13 +50,6 @@ fn run() ! {
 	mut client := vtol.new_client_with_session_file(vtol.ClientConfig{
 		app_id:   os.getenv('VTOL_API_ID').int()
 		app_hash: os.getenv('VTOL_API_HASH')
-		dc_options: [
-			vtol.DcOption{
-				id:   2
-				host: '149.154.167.50'
-				port: 443
-			},
-		]
 	}, '.vtol.session.sqlite')!
 	defer {
 		client.disconnect() or {}

@@ -404,8 +404,8 @@ fn validate_client_config(config ClientConfig) ! {
 	if config.app_hash.len == 0 {
 		return error('client config app_hash must not be empty')
 	}
-	if config.dc_options.len == 0 {
-		return error('client config must define at least one dc option')
+	if config.test_mode && config.dc_options.len == 0 {
+		return error('client config must define at least one dc option in test mode')
 	}
 	for dc in config.dc_options {
 		if dc.id == 0 {
@@ -424,7 +424,7 @@ fn (mut c Client) build_runtime() !(ClientRuntime, bool) {
 	mut transport_engine := c.new_transport_engine()!
 	stored := c.store.load() or {
 		primary_dc := c.primary_dc() or {
-			return error('client config must define at least one dc option')
+			return error('client config must define at least one dc option in test mode')
 		}
 		result := auth.authenticate_and_store(mut transport_engine, auth.ExchangeConfig{
 			dc_id:        primary_dc.id

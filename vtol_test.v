@@ -12,25 +12,30 @@ fn test_new_client_validates_required_fields() {
 
 fn test_new_client_exposes_primary_dc() {
 	client := new_client(ClientConfig{
-		app_id:     1
-		app_hash:   'test-hash'
-		dc_options: [
-			DcOption{
-				id:   2
-				host: '149.154.167.50'
-				port: 443
-			},
-		]
+		app_id:   1
+		app_hash: 'test-hash'
 	}) or { panic(err) }
 
 	assert client.client_state() == .disconnected
 
 	if dc := client.primary_dc() {
-		assert dc.id == 2
+		assert dc.id == 1
 		assert dc.port == 443
 	} else {
 		assert false
 	}
+}
+
+fn test_new_client_requires_explicit_dc_in_test_mode() {
+	_ := new_client(ClientConfig{
+		app_id:    1
+		app_hash:  'test-hash'
+		test_mode: true
+	}) or {
+		assert err.msg() == 'client config must define at least one dc option in test mode'
+		return
+	}
+	assert false
 }
 
 fn test_new_client_with_string_session_restores_encoded_state() {
@@ -51,15 +56,8 @@ fn test_new_client_with_string_session_restores_encoded_state() {
 	}) or { panic(err) }
 
 	mut client := new_client_with_string_session(ClientConfig{
-		app_id:     1
-		app_hash:   'test-hash'
-		dc_options: [
-			DcOption{
-				id:   2
-				host: '149.154.167.50'
-				port: 443
-			},
-		]
+		app_id:   1
+		app_hash: 'test-hash'
 	}, store.encoded()) or { panic(err) }
 
 	_, restored := client.build_runtime() or { panic(err) }

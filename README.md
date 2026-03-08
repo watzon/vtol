@@ -119,13 +119,6 @@ fn run() ! {
 	mut client := vtol.new_client_with_session_file(vtol.ClientConfig{
 		app_id:   os.getenv('VTOL_API_ID').int()
 		app_hash: os.getenv('VTOL_API_HASH')
-		dc_options: [
-			vtol.DcOption{
-				id:   2
-				host: '149.154.167.50'
-				port: 443
-			},
-		]
 	}, '.vtol.session.sqlite')!
 	defer {
 		client.disconnect() or {}
@@ -194,6 +187,8 @@ Core types and entry points:
 - `vtol.ClientConfig` configures MTProto transport, datacenter endpoints, retry behavior, and default RPC options.
 - `vtol.StartOptions` defines the callbacks used by `client.start(...)` for interactive user or bot login.
 - `vtol.Session`, `vtol.ResolvedPeer`, `vtol.SentMessage`, and `vtol.NewMessageEvent` provide the high-level results returned by common workflows.
+
+For normal production mode, `ClientConfig` only needs `app_id` and `app_hash`. Add `dc_options` only when you need a custom bootstrap endpoint or when targeting Telegram test mode.
 
 Common methods:
 
